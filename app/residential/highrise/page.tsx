@@ -1,5 +1,6 @@
 "use client";
 
+import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import SubpageCTA from "@/components/SubpageCTA";
 
@@ -155,6 +156,8 @@ export default function HighrisePage() {
 
       {/* CTA */}
       <SubpageCTA />
+
+      <Footer />
 
     </main>
   );

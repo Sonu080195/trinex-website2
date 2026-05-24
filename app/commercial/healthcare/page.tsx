@@ -2,6 +2,7 @@
 
 import Navbar from "@/components/Navbar";
 import SubpageCTA from "@/components/SubpageCTA";
+import Footer from "@/components/Footer";
 
 export default function HealthcarePage() {
 
@@ -155,6 +156,8 @@ export default function HealthcarePage() {
 
       {/* CTA */}
       <SubpageCTA />
+
+      <Footer />
 
     </main>
   );

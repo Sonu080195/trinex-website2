@@ -249,6 +249,10 @@ export default function Navbar() {
                       Residential
                     </Link>
 
+                    <Link href="/infrastructure" className="text-gray-300 text-lg">
+                      Residential
+                    </Link>
+
                   </div>
 
                 )}
