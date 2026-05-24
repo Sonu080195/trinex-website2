@@ -148,7 +148,7 @@ export default function Specialisations() {
         {
           title: "Bridge Construction",
           image: "/subsectors/Civil/Bridge.png",
-          link: "/civil/bridges",
+          link: "/civil/bridge",
         },
 
         {
