@@ -20,7 +20,7 @@ export default function Navbar() {
           </Link>
 
           {/* MENU */}
-          <nav className="hidden lg:flex items-center gap-8 text-white font-medium">
+          <nav className="hidden lg:flex items-center gap-6 text-white font-medium">
 
             <Link href="/">Home</Link>
 
@@ -39,13 +39,13 @@ export default function Navbar() {
           </nav>
 
           {/* BUTTONS */}
-          <div className="hidden lg:flex items-center gap-4">
+          <div className="hidden lg:flex items-center gap-6">
 
-            <button className="border border-[#C89B3C] text-white px-7 py-3 rounded-lg hover:bg-[#C89B3C] hover:text-black transition">
+            <button className="border border-[#C89B3C] text-white px-9 py-3 rounded-lg hover:bg-[#C89B3C] hover:text-black transition">
               Find Jobs
             </button>
 
-            <button className="bg-[#C89B3C] text-black px-7 py-3 rounded-lg font-semibold hover:opacity-90 transition">
+            <button className="bg-[#C89B3C] text-black px-9 py-3 rounded-lg font-semibold hover:opacity-90 transition">
               Hire Talent
             </button>
 
