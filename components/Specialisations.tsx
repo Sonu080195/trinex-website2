@@ -64,25 +64,25 @@ export default function Specialisations() {
         {
           title: "Distribution Center Construction",
           image: "/subsectors/Industrial/Distribution.png",
-          link: "/industrial/distribution-center",
+          link: "/industrial/distributioncenter",
         },
 
         {
           title: "Wastewater Treatment Construction",
           image: "/subsectors/Industrial/Wastewater.png",
-          link: "/industrial/wastewater-treatment",
+          link: "/industrial/wastewater",
         },
 
         {
           title: "Power Plant Construction",
           image: "/subsectors/Industrial/Powerplant.png",
-          link: "/industrial/power-plants",
+          link: "/industrial/powerplant",
         },
 
         {
           title: "Tilt-Up Construction",
           image: "/subsectors/Industrial/Tiltup.png",
-          link: "/industrial/tilt-up",
+          link: "/industrial/tiltup",
         },
 
       ],
@@ -154,13 +154,13 @@ export default function Specialisations() {
         {
           title: "Tunnel Construction",
           image: "/subsectors/Civil/Tunnel.png",
-          link: "/civil/tunnels",
+          link: "/civil/tunnel",
         },
 
         {
           title: "Airport Construction",
           image: "/subsectors/Civil/Airport.png",
-          link: "/civil/airports",
+          link: "/civil/airport",
         },
 
       ],

@@ -3,18 +3,18 @@
 import Navbar from "@/components/Navbar";
 import SubpageCTA from "@/components/SubpageCTA";
 
-export default function EducationalPage() {
+export default function BridgePage() {
 
   const roles = [
     "Project Managers",
-    "Superintendents",
-    "Educational Construction Managers",
-    "Project Engineers",
+    "Bridge Superintendents",
+    "Civil Project Engineers",
+    "Structural Engineers",
     "MEP Coordinators",
     "Estimators",
     "Schedulers",
     "Safety Managers",
-    "Campus Development Specialists",
+    "Infrastructure Specialists",
   ];
 
   return (
@@ -31,7 +31,7 @@ export default function EducationalPage() {
           className="absolute inset-0 bg-cover bg-center"
           style={{
             backgroundImage:
-              "linear-gradient(to right, rgba(7,17,31,0.95) 18%, rgba(7,17,31,0.78) 40%, rgba(7,17,31,0.20) 72%), url('/subsector-pages/educational-hero.png')",
+              "linear-gradient(to right, rgba(7,17,31,0.95) 18%, rgba(7,17,31,0.78) 40%, rgba(7,17,31,0.20) 72%), url('/subsector-pages/bridge-hero.png')",
           }}
         />
 
@@ -44,13 +44,13 @@ export default function EducationalPage() {
 
               {/* LABEL */}
               <p className="text-[#C89B3C] uppercase tracking-[4px] text-sm mb-5">
-                Commercial Construction Recruitment
+                Infrastructure Construction Recruitment
               </p>
 
               {/* HEADING */}
               <h1 className="text-white font-bold leading-[1.05] text-[46px] md:text-[58px] lg:text-[64px] mb-8">
 
-                Educational
+                Bridge
                 <br />
 
                 Construction
@@ -65,7 +65,7 @@ export default function EducationalPage() {
               {/* DESCRIPTION */}
               <p className="text-gray-300 text-[18px] leading-9 mb-10 max-w-[720px]">
 
-                TRINEX partners with contractors and developers to deliver experienced professionals specializing in educational facilities, campus developments, and institutional construction projects.
+                TRINEX provides specialized recruitment solutions for bridge and heavy civil infrastructure projects—connecting contractors with experienced professionals across complex structural developments.
 
               </p>
 
@@ -74,7 +74,7 @@ export default function EducationalPage() {
 
                 <button className="bg-[#C89B3C] text-black px-8 py-4 rounded-xl font-semibold hover:opacity-90 transition">
 
-                  Hire Educational Talent
+                  Hire Infrastructure Talent
 
                 </button>
 
@@ -103,25 +103,25 @@ export default function EducationalPage() {
           <div>
 
             <p className="text-[#C89B3C] uppercase tracking-[4px] text-sm mb-5">
-              Educational Infrastructure
+              Bridge Infrastructure
             </p>
 
             <h2 className="text-4xl lg:text-5xl font-bold leading-tight mb-8">
 
-              Recruiting Professionals For
-              Modern Learning Environments
+              Recruiting Experts For
+              Complex Structural Projects
 
             </h2>
 
             <p className="text-gray-300 text-lg leading-9 mb-8">
 
-              Educational construction projects require experienced professionals capable of managing campus developments, institutional coordination, and technically advanced learning facilities.
+              Bridge construction projects demand highly experienced professionals capable of managing technically advanced structural systems, heavy civil operations, and accelerated infrastructure schedules.
 
             </p>
 
             <p className="text-gray-300 text-lg leading-9">
 
-              We help contractors and developers secure project-ready leaders and technical specialists for schools, universities, student facilities, and educational infrastructure projects nationwide.
+              We help contractors and infrastructure developers secure proven construction leaders and technical specialists for highway bridges, transit structures, overpasses, and transportation expansions.
 
             </p>
 

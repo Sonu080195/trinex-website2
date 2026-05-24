@@ -3,53 +3,52 @@
 import Navbar from "@/components/Navbar";
 import SubpageCTA from "@/components/SubpageCTA";
 
-export default function RetailConstructionPage() {
+export default function RetailPage() {
 
   const roles = [
     "Project Managers",
-    "Superintendents",
+    "Retail Superintendents",
+    "Retail Construction Managers",
     "Project Engineers",
     "MEP Coordinators",
-    "Retail Construction Managers",
     "Estimators",
     "Schedulers",
     "Safety Managers",
-    "Project Executives",
+    "Tenant Improvement Specialists",
   ];
 
   return (
-
     <main className="bg-[#07111F] text-white overflow-hidden">
 
       {/* NAVBAR */}
       <Navbar />
 
       {/* HERO SECTION */}
-      <section className="relative h-screen w-full overflow-hidden">
+      <section className="relative min-h-screen flex items-center overflow-hidden">
 
-        {/* BACKGROUND */}
+        {/* BACKGROUND IMAGE */}
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
             backgroundImage:
-              "linear-gradient(to right, rgba(14,15,16,0.92) 16%, rgba(7,17,31,0.70) 38%, rgba(7,17,31,0.10) 70%), url('/subsector-pages/retail-hero.png')",
+              "linear-gradient(to right, rgba(7,17,31,0.95) 18%, rgba(7,17,31,0.78) 40%, rgba(7,17,31,0.20) 72%), url('/subsector-pages/retail-hero.png')",
           }}
         />
 
         {/* CONTENT */}
-        <div className="relative z-10 h-full flex items-center">
+        <div className="relative z-10 w-full">
 
-          <div className="max-w-7xl mx-auto w-full px-8 lg:px-18">
+          <div className="max-w-7xl mx-auto px-6 lg:px-18 pt-32 lg:pt-24">
 
-            <div className="max-w-[760px] pt-28">
+            <div className="max-w-[760px]">
 
               {/* LABEL */}
-              <p className="text-[#C89B3C] uppercase tracking-[4px] text-sm mb-4">
-                Commercial Construction
+              <p className="text-[#C89B3C] uppercase tracking-[4px] text-sm mb-5">
+                Commercial Construction Recruitment
               </p>
 
               {/* HEADING */}
-              <h1 className="text-white font-bold leading-[1.05] text-[52px] lg:text-[64px] mb-8">
+              <h1 className="text-white font-bold leading-[1.05] text-[46px] md:text-[58px] lg:text-[64px] mb-8">
 
                 Retail
                 <br />
@@ -64,14 +63,28 @@ export default function RetailConstructionPage() {
               </h1>
 
               {/* DESCRIPTION */}
-              <p className="text-gray-300 text-[18px] leading-10 max-w-[730px]">
+              <p className="text-gray-300 text-[18px] leading-9 mb-10 max-w-[720px]">
 
-                Delivering experienced retail construction talent
-                for shopping centers, mixed-use developments,
-                flagship stores, lifestyle centers,
-                and national retail buildouts.
+                TRINEX partners with contractors and developers to deliver experienced professionals specializing in retail developments, shopping centers, mixed-use spaces, and tenant improvement construction projects.
 
               </p>
+
+              {/* BUTTONS */}
+              <div className="flex flex-wrap gap-5 mb-14">
+
+                <button className="bg-[#C89B3C] text-black px-8 py-4 rounded-xl font-semibold hover:opacity-90 transition">
+
+                  Hire Retail Talent
+
+                </button>
+
+                <button className="border border-white/20 text-white px-8 py-4 rounded-xl hover:border-[#C89B3C] transition">
+
+                  Explore Opportunities
+
+                </button>
+
+              </div>
 
             </div>
 
@@ -81,135 +94,58 @@ export default function RetailConstructionPage() {
 
       </section>
 
-      {/* OVERVIEW */}
-      <section className="py-20 px-8">
+      {/* CONTENT SECTION */}
+      <section className="py-24 px-6 lg:px-18 bg-[#07111F]">
 
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-18 items-start">
 
           {/* LEFT */}
           <div>
 
             <p className="text-[#C89B3C] uppercase tracking-[4px] text-sm mb-5">
-              Sector Expertise
+              Retail Infrastructure
             </p>
 
-            <h2 className="text-5xl font-bold leading-tight mb-8">
-              Building Modern Retail Experiences
+            <h2 className="text-4xl lg:text-5xl font-bold leading-tight mb-8">
+
+              Recruiting Professionals For
+              Modern Retail Developments
+
             </h2>
 
-            <p className="text-gray-400 text-xl leading-10 mb-8">
+            <p className="text-gray-300 text-lg leading-9 mb-8">
 
-              TRINEX partners with leading retail contractors,
-              developers, and construction firms delivering
-              modern shopping destinations and commercial spaces.
+              Retail construction projects require experienced professionals capable of managing fast-track schedules, tenant coordination, phased construction operations, and customer-focused environments.
 
             </p>
 
-            <p className="text-gray-400 text-xl leading-10">
+            <p className="text-gray-300 text-lg leading-9">
 
-              From ground-up retail developments to fast-paced
-              tenant improvements and nationwide rollouts,
-              we connect companies with top construction professionals.
+              We help contractors and developers secure project-ready leaders and technical specialists for shopping centers, retail campuses, mixed-use developments, and tenant improvement projects nationwide.
 
             </p>
 
           </div>
 
           {/* RIGHT */}
-          <div className="grid grid-cols-2 gap-8">
+          <div className="bg-[#0D1726] border border-white/10 rounded-[30px] p-10">
 
-            <div className="bg-[#0E1726] rounded-3xl p-10 border border-white/10">
-
-              <h3 className="text-[#C89B3C] text-5xl font-bold mb-5">
-                Retail
-              </h3>
-
-              <p className="text-gray-400 leading-8">
-                Recruitment support for modern
-                retail and shopping center projects.
-              </p>
-
-            </div>
-
-            <div className="bg-[#0E1726] rounded-3xl p-10 border border-white/10">
-
-              <h3 className="text-[#C89B3C] text-5xl font-bold mb-5">
-                Mixed-Use
-              </h3>
-
-              <p className="text-gray-400 leading-8">
-                Talent solutions for large-scale
-                mixed-use commercial developments.
-              </p>
-
-            </div>
-
-            <div className="bg-[#0E1726] rounded-3xl p-10 border border-white/10">
-
-              <h3 className="text-[#C89B3C] text-5xl font-bold mb-5">
-                Tenant
-              </h3>
-
-              <p className="text-gray-400 leading-8">
-                Experienced professionals for
-                tenant improvements and interior buildouts.
-              </p>
-
-            </div>
-
-            <div className="bg-[#0E1726] rounded-3xl p-10 border border-white/10">
-
-              <h3 className="text-[#C89B3C] text-5xl font-bold mb-5">
-                National
-              </h3>
-
-              <p className="text-gray-400 leading-8">
-                Supporting nationwide retail expansion
-                and multi-site construction programs.
-              </p>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </section>
-
-      {/* ROLES */}
-      <section className="py-20 px-8 bg-[#0B1422]">
-
-        <div className="max-w-7xl mx-auto">
-
-          <div className="mb-16">
-
-            <p className="text-[#C89B3C] uppercase tracking-[4px] text-sm mb-5">
-              Key Positions
+            <p className="text-[#C89B3C] uppercase tracking-[4px] text-sm mb-6">
+              Key Roles We Recruit
             </p>
 
-            <h2 className="text-5xl font-bold">
-              Roles We Recruit
-            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
 
-          </div>
-
-          {/* GRID */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-
-            {roles.map((role, index) => (
-
-              <div
-                key={index}
-                className="bg-[#07111F] border border-white/10 rounded-3xl p-8 hover:border-[#C89B3C] transition"
-              >
-
-                <h3 className="text-2xl font-semibold leading-snug">
+              {roles.map((role, index) => (
+                <div
+                  key={index}
+                  className="bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-gray-200 hover:border-[#C89B3C] transition"
+                >
                   {role}
-                </h3>
+                </div>
+              ))}
 
-              </div>
-
-            ))}
+            </div>
 
           </div>
 
@@ -221,6 +157,5 @@ export default function RetailConstructionPage() {
       <SubpageCTA />
 
     </main>
-
   );
 }
