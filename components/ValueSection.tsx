@@ -46,7 +46,7 @@ export default function ValueSection() {
     <section className="bg-[#07111F] py-14 px-6 lg:px-20">
 
       {/* TOP */}
-      <div className="text-center mb-20">
+      <div className="text-center mb-18">
 
         <p className="text-[#C89B3C] uppercase tracking-[4px] text-sm mb-5">
           Our Approach

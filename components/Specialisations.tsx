@@ -11,10 +11,12 @@ export default function Specialisations() {
   const sectors = [
 
     {
-      title: "Commercial",
-      image: "/Commercial.png",
+  title: "Commercial",
+  image: "/Commercial.png",
+  description:
+    "Office buildings, retail, educational, and mixed-use projects.",
 
-      subsectors: [
+  subsectors: [
 
         {
           title: "Educational Construction",
@@ -50,10 +52,12 @@ export default function Specialisations() {
     },
 
     {
-      title: "Industrial",
-      image: "/Industrial.png",
+  title: "Industrial",
+  image: "/Industrial.png",
+  description:
+    "Warehouses, manufacturing, logistics, and energy facilities.",
 
-      subsectors: [
+  subsectors: [
 
         {
           title: "Warehouse Construction",
@@ -89,10 +93,12 @@ export default function Specialisations() {
     },
 
     {
-      title: "Residential",
-      image: "/Residential.png",
+  title: "Residential",
+  image: "/Residential.png",
+  description:
+    "Multifamily, high-rise, student housing, and communities.",
 
-      subsectors: [
+  subsectors: [
 
         {
           title: "Multi-Family Construction",
@@ -128,10 +134,12 @@ export default function Specialisations() {
     },
 
     {
-      title: "Civil",
-      image: "/Civil.png",
+  title: "Infrastructure",
+  image: "/Civil.png",
+  description:
+    "Transportation, civil, bridge, tunnel, and roadway projects.",
 
-      subsectors: [
+  subsectors: [
 
         {
           title: "Roadways Construction",
@@ -180,7 +188,9 @@ export default function Specialisations() {
         </p>
 
         <h2 className="text-[#07111F] text-5xl lg:text-6xl font-bold mb-6">
-          Specialist Recruitment Across Core Sectors
+          Expertise Across
+          <br />
+            High-Growth Construction Markets
         </h2>
 
         <p className="text-gray-500 text-xl leading-9 max-w-4xl mx-auto">
@@ -218,8 +228,12 @@ export default function Specialisations() {
             <div className="absolute bottom-8 left-7 z-10">
 
               <h3 className="text-white text-[40px] font-bold leading-none mb-4">
-                {sector.title}
-              </h3>
+  {sector.title}
+</h3>
+
+<p className="text-gray-300 text-[15px] leading-7 mb-5 max-w-[280px]">
+  {sector.description}
+</p>
 
               <div className="flex items-center gap-3">
 
