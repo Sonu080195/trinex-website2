@@ -66,7 +66,7 @@ export default function DistributionCenterPage() {
               {/* DESCRIPTION */}
               <p className="text-gray-300 text-[18px] leading-9 mb-10 max-w-[720px]">
 
-                TRINEX connects industrial contractors and developers with top-tier professionals specializing in large-scale distribution center and logistics facility construction projects.
+                RUDRON connects industrial contractors and developers with top-tier professionals specializing in large-scale distribution center and logistics facility construction projects.
 
               </p>
 

@@ -66,7 +66,7 @@ export default function MultifamilyPage() {
               {/* DESCRIPTION */}
               <p className="text-gray-300 text-[18px] leading-9 mb-10 max-w-[720px]">
 
-                TRINEX connects multifamily developers and contractors with experienced professionals specializing in apartment communities, mixed-use developments, and large-scale residential construction projects.
+                RUDRON connects multifamily developers and contractors with experienced professionals specializing in apartment communities, mixed-use developments, and large-scale residential construction projects.
 
               </p>
 

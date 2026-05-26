@@ -66,7 +66,7 @@ export default function BridgePage() {
               {/* DESCRIPTION */}
               <p className="text-gray-300 text-[18px] leading-9 mb-10 max-w-[720px]">
 
-                TRINEX provides specialized recruitment solutions for bridge and heavy civil infrastructure projects—connecting contractors with experienced professionals across complex structural developments.
+                RUDRON provides specialized recruitment solutions for bridge and heavy civil infrastructure projects—connecting contractors with experienced professionals across complex structural developments.
 
               </p>
 

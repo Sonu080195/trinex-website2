@@ -66,7 +66,7 @@ export default function DataCenterPage() {
               {/* DESCRIPTION */}
               <p className="text-gray-300 text-[18px] leading-9 mb-10 max-w-[720px]">
 
-                TRINEX partners with mission critical contractors and developers to deliver experienced professionals specializing in hyperscale, colocation, and enterprise data center construction projects.
+                RUDRON partners with mission critical contractors and developers to deliver experienced professionals specializing in hyperscale, colocation, and enterprise data center construction projects.
 
               </p>
 

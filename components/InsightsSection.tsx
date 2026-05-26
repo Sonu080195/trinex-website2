@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function InsightsSection() {
 
   const insights = [
@@ -5,20 +7,28 @@ export default function InsightsSection() {
       title: "2026 Construction Hiring Trends",
       image: "/insights/construction-trends.png",
       category: "Market Insights",
+      slug: "construction-hiring-trends",
+
       description:
         "Key trends shaping talent demand and how companies can stay ahead in a competitive market.",
     },
+
     {
       title: "The Growing Demand for Data Center Talent",
       image: "/insights/datacenter-talent.png",
       category: "Industry News",
+      slug: "data-center-construction-hiring",
+
       description:
         "Why hyperscale expansion is driving massive demand for mission critical professionals.",
     },
+
     {
       title: "MEP Salary & Workforce Insights",
       image: "/insights/mep-salary.png",
       category: "Salary Guides",
+      slug: "mep-talent-shortage",
+
       description:
         "Understanding compensation trends, workforce shortages, and hiring challenges across MEP markets.",
     },
@@ -26,31 +36,31 @@ export default function InsightsSection() {
 
   return (
 
-    <section className="bg-[#F7F7F7] px-6 lg:px-18 pb-24">
+    <section className="bg-[#F7F7F7] px-4 lg:px-12 pb-18">
 
       <div className="max-w-7xl mx-auto">
 
         {/* TOP */}
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-10">
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 mb-10">
 
           <div>
 
-            <p className="text-[#C89B3C] uppercase tracking-[4px] text-sm mb-5">
+            <p className="text-[#C89B3C] uppercase tracking-[4px] text-sm mb-4">
+
+              <br />
+              <br />
 
               Insights & Resources
 
             </p>
 
-            <h2 className="text-[#07111F] text-[38px] md:text-[52px] lg:text-[58px] font-bold leading-tight mb-5">
+            <h2 className="text-[#07111F] text-[38px] md:text-[52px] lg:text-[58px] font-bold leading-tight mb-4">
 
-              Stay Ahead Of
-              <br />
-
-              The Industry
+              Stay Ahead Of The Industry
 
             </h2>
 
-            <p className="text-gray-500 text-lg leading-8 max-w-3xl">
+            <p className="text-gray-500 text-lg leading-6 max-w-3xl">
 
               Explore recruitment trends, salary insights, and market updates
               shaping the future of AEC & MEP hiring.
@@ -60,7 +70,10 @@ export default function InsightsSection() {
           </div>
 
           {/* VIEW ALL */}
-          <button className="group flex items-center gap-3 text-[#07111F] text-lg font-semibold">
+          <Link
+            href="/insights"
+            className="group flex items-center gap-3 text-[#07111F] text-lg font-semibold"
+          >
 
             View All Insights
 
@@ -68,7 +81,7 @@ export default function InsightsSection() {
               →
             </span>
 
-          </button>
+          </Link>
 
         </div>
 
@@ -77,9 +90,10 @@ export default function InsightsSection() {
 
           {insights.map((item, index) => (
 
-            <div
+            <Link
+              href={`/insights/${item.slug}`}
               key={index}
-              className="group bg-white rounded-[28px] overflow-hidden border border-black/5 hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)] transition-all duration-500"
+              className="group bg-white rounded-[28px] overflow-hidden border border-black/5 hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)] transition-all duration-500 block"
             >
 
               {/* IMAGE */}
@@ -124,7 +138,7 @@ export default function InsightsSection() {
                 </p>
 
                 {/* READ MORE */}
-                <button className="group/read flex items-center gap-3 text-[#07111F] text-lg font-semibold">
+                <div className="group/read flex items-center gap-3 text-[#07111F] text-lg font-semibold">
 
                   Read More
 
@@ -132,11 +146,11 @@ export default function InsightsSection() {
                     →
                   </span>
 
-                </button>
+                </div>
 
               </div>
 
-            </div>
+            </Link>
 
           ))}
 

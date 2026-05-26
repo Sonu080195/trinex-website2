@@ -66,7 +66,7 @@ export default function PowerPlantPage() {
               {/* DESCRIPTION */}
               <p className="text-gray-300 text-[18px] leading-9 mb-10 max-w-[720px]">
 
-                TRINEX provides specialized recruitment solutions for power generation and energy infrastructure projects—connecting contractors with experienced professionals across complex industrial developments.
+                RUDRON provides specialized recruitment solutions for power generation and energy infrastructure projects—connecting contractors with experienced professionals across complex industrial developments.
 
               </p>
 

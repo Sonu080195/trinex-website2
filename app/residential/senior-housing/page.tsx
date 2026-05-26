@@ -66,7 +66,7 @@ export default function SeniorHousingPage() {
               {/* DESCRIPTION */}
               <p className="text-gray-300 text-[18px] leading-9 mb-10 max-w-[720px]">
 
-                TRINEX partners with developers and contractors to deliver experienced professionals specializing in senior living communities, assisted living facilities, and modern residential care developments.
+                RUDRON partners with developers and contractors to deliver experienced professionals specializing in senior living communities, assisted living facilities, and modern residential care developments.
 
               </p>
 

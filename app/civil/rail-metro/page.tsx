@@ -66,7 +66,7 @@ export default function RailMetroPage() {
               {/* DESCRIPTION */}
               <p className="text-gray-300 text-[18px] leading-9 mb-10 max-w-[720px]">
 
-                TRINEX provides specialized recruitment solutions for rail, metro, and transit infrastructure projects—connecting contractors with experienced transportation construction professionals.
+                RUDRON provides specialized recruitment solutions for rail, metro, and transit infrastructure projects—connecting contractors with experienced transportation construction professionals.
 
               </p>
 

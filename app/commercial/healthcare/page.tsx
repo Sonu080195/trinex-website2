@@ -66,7 +66,7 @@ export default function HealthcarePage() {
               {/* DESCRIPTION */}
               <p className="text-gray-300 text-[18px] leading-9 mb-10 max-w-[720px]">
 
-                TRINEX partners with contractors and healthcare developers to deliver experienced professionals specializing in hospitals, medical campuses, healthcare facilities, and mission-critical healthcare construction projects.
+                RUDRON partners with contractors and healthcare developers to deliver experienced professionals specializing in hospitals, medical campuses, healthcare facilities, and mission-critical healthcare construction projects.
 
               </p>
 

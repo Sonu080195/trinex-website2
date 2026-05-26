@@ -28,7 +28,7 @@ export default function HomeCTA() {
 
                 <img
                   src="/images/TRINEX Logo.png"
-                  alt="TRINEX"
+                  alt="RUDRON"
                   className="w-[150px] object-contain"
                 />
 

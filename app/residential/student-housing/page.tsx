@@ -66,7 +66,7 @@ export default function StudentHousingPage() {
               {/* DESCRIPTION */}
               <p className="text-gray-300 text-[18px] leading-9 mb-10 max-w-[720px]">
 
-                TRINEX partners with developers and contractors to deliver experienced professionals specializing in student housing communities, campus developments, and modern residential learning environments.
+                RUDRON partners with developers and contractors to deliver experienced professionals specializing in student housing communities, campus developments, and modern residential learning environments.
 
               </p>
 

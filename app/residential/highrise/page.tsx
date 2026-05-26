@@ -66,7 +66,7 @@ export default function HighrisePage() {
               {/* DESCRIPTION */}
               <p className="text-gray-300 text-[18px] leading-9 mb-10 max-w-[720px]">
 
-                TRINEX partners with developers and contractors to deliver experienced professionals specializing in high-rise residential towers, mixed-use developments, and luxury urban construction projects.
+                RUDRON partners with developers and contractors to deliver experienced professionals specializing in high-rise residential towers, mixed-use developments, and luxury urban construction projects.
 
               </p>
 

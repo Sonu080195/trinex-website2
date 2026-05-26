@@ -66,7 +66,7 @@ export default function TunnelPage() {
               {/* DESCRIPTION */}
               <p className="text-gray-300 text-[18px] leading-9 mb-10 max-w-[720px]">
 
-                TRINEX delivers specialized recruitment solutions for tunnel and underground infrastructure projects—connecting contractors with highly experienced heavy civil construction professionals.
+                RUDRON delivers specialized recruitment solutions for tunnel and underground infrastructure projects—connecting contractors with highly experienced heavy civil construction professionals.
 
               </p>
 

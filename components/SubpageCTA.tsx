@@ -29,7 +29,7 @@ export default function SubpageCTA() {
 
               <p className="text-gray-600 text-xl leading-10 mb-10 max-w-[620px]">
 
-                Partner with TRINEX to secure elite AEC & MEP
+                Partner with RUDRON to secure elite AEC & MEP
                 professionals for your critical construction projects.
 
               </p>

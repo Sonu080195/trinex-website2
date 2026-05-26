@@ -66,7 +66,7 @@ export default function AirportPage() {
               {/* DESCRIPTION */}
               <p className="text-gray-300 text-[18px] leading-9 mb-10 max-w-[720px]">
 
-                TRINEX delivers specialized recruitment solutions for airport and aviation infrastructure projects—connecting contractors with highly experienced construction professionals across complex transportation developments.
+                RUDRON delivers specialized recruitment solutions for airport and aviation infrastructure projects—connecting contractors with highly experienced construction professionals across complex transportation developments.
 
               </p>
 

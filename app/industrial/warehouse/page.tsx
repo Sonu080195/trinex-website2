@@ -66,7 +66,7 @@ export default function WarehousePage() {
               {/* DESCRIPTION */}
               <p className="text-gray-300 text-[18px] leading-9 mb-10 max-w-[720px]">
 
-                TRINEX delivers specialized recruitment solutions for warehouse and logistics construction projects—connecting contractors and developers with experienced professionals across large-scale industrial developments.
+                RUDRON delivers specialized recruitment solutions for warehouse and logistics construction projects—connecting contractors and developers with experienced professionals across large-scale industrial developments.
 
               </p>
 

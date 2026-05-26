@@ -66,7 +66,7 @@ export default function TiltUpPage() {
               {/* DESCRIPTION */}
               <p className="text-gray-300 text-[18px] leading-9 mb-10 max-w-[720px]">
 
-                TRINEX delivers specialized recruitment solutions for tilt-up and concrete construction projects—connecting contractors with highly experienced industrial construction professionals.
+                RUDRON delivers specialized recruitment solutions for tilt-up and concrete construction projects—connecting contractors with highly experienced industrial construction professionals.
 
               </p>
 

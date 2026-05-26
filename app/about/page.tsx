@@ -58,27 +58,30 @@ export default function AboutPage() {
               {/* LABEL */}
               <p className="text-[#C89B3C] uppercase tracking-[4px] text-sm mb-5">
 
-                About TRINEX
+                About RUDRON
 
               </p>
 
               {/* HEADING */}
               <h1 className="text-white font-bold leading-[1.05] text-[46px] md:text-[58px] lg:text-[64px] mb-8">
 
-                Building High-
+                RUDRON helps in Precision Hiring 
+                
                 <br />
-
-                Performing Teams
-                <br />
-
-                Across AEC & MEP
+                for
+                <span className="text-[#C89B3C]">
+                {" "}AEC & MEP
+              </span>
+                
+               {" "} leaders
+                
 
               </h1>
 
               {/* DESCRIPTION */}
-              <p className="text-gray-300 text-[18px] leading-9 mb-10 max-w-[720px]">
+              <p className="text-gray-300 text-[18px] leading-9 mb-5 max-w-[720px]">
 
-                TRINEX Global Talent Solutions is a specialist recruitment firm
+                RUDRON Global Talent Solutions is a specialist recruitment firm
                 connecting exceptional construction, engineering, and MEP talent
                 with leading companies across rapidly evolving markets.
 
@@ -120,7 +123,7 @@ export default function AboutPage() {
 
             <p className="text-gray-300 text-lg leading-9 mb-8">
 
-              TRINEX was established to provide a more strategic,
+              RUDRON was established to provide a more strategic,
               relationship-driven approach to recruitment across the
               AEC & MEP industries.
 
@@ -227,7 +230,7 @@ export default function AboutPage() {
 
             <p className="text-[#C89B3C] uppercase tracking-[4px] text-sm mb-5">
 
-              Why TRINEX
+              Why RUDRON
 
             </p>
 

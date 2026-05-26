@@ -66,7 +66,7 @@ export default function WastewaterPage() {
               {/* DESCRIPTION */}
               <p className="text-gray-300 text-[18px] leading-9 mb-10 max-w-[720px]">
 
-                TRINEX provides recruitment solutions for wastewater treatment and utility infrastructure projects—connecting contractors with highly skilled construction and engineering professionals.
+                RUDRON provides recruitment solutions for wastewater treatment and utility infrastructure projects—connecting contractors with highly skilled construction and engineering professionals.
 
               </p>
 

@@ -27,7 +27,7 @@ export default function Navbar() {
 
             <img
               src="/images/TRINEX Logo.png"
-              alt="TRINEX Logo"
+              alt="RUDRON Logo"
               className="h-20 lg:h-24 w-auto"
             />
 
@@ -95,7 +95,7 @@ export default function Navbar() {
 
               <img
                 src="/images/TRINEX Logo.png"
-                alt="TRINEX"
+                alt="RUDRON"
                 className="h-20 w-auto"
               />
 

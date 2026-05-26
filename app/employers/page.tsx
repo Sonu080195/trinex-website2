@@ -91,16 +91,19 @@ export default function EmployersPage() {
                 Building High-
                 <br />
 
-                Performing Project
+                Performing Teams
                 <br />
 
-                Teams Across AEC
+                Across
+                <span className="text-[#C89B3C]">
+                {" "}AEC & MEP
+              </span>
 
               </h1>
 
               <p className="text-gray-300 text-[18px] leading-9 mb-10 max-w-[720px]">
 
-                TRINEX delivers specialist recruitment solutions for
+                RUDRON delivers specialist recruitment solutions for
                 construction, engineering, MEP, and mission critical
                 markets across rapidly evolving industries.
 
@@ -171,7 +174,7 @@ export default function EmployersPage() {
 
       </section>
 
-      {/* WHY TRINEX */}
+      {/* WHY RUDRON */}
       <section className="bg-[#07111F] py-24 px-6 lg:px-18">
 
         <div className="max-w-7xl mx-auto">
@@ -181,7 +184,7 @@ export default function EmployersPage() {
 
             <p className="text-[#C89B3C] uppercase tracking-[4px] text-sm mb-5">
 
-              Why Companies Choose TRINEX
+              Why Companies Choose RUDRON
 
             </p>
 

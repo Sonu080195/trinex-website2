@@ -17,14 +17,14 @@ export default function Footer() {
             {/* LOGO */}
             <img
               src="/images/TRINEX Logo.png"
-              alt="TRINEX"
+              alt="RUDRON"
               className="w-[160px] mb-6"
             />
 
             {/* TEXT */}
             <p className="text-gray-400 leading-8 text-[15px] mb-8">
 
-              TRINEX Global Talent Solutions is a specialist recruitment firm
+              RUDRON Global Talent Solutions is a specialist recruitment firm
               focused on the AEC & MEP industries. We connect exceptional talent
               with leading companies to build the infrastructure of tomorrow.
 
@@ -144,7 +144,7 @@ export default function Footer() {
               </div>
 
               <div>
-                <p>info@trinexgts.com</p>
+                <p>info@rudron.com</p>
               </div>
 
             </div>
@@ -157,7 +157,7 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 pt-8">
 
           <p className="text-gray-500 text-sm">
-            © 2026 TRINEX Global Talent Solutions. All Rights Reserved.
+            © 2026 RUDRON Global Talent Solutions. All Rights Reserved.
           </p>
 
           <div className="flex items-center gap-8 text-sm">

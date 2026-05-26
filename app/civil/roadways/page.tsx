@@ -66,7 +66,7 @@ export default function RoadwaysPage() {
               {/* DESCRIPTION */}
               <p className="text-gray-300 text-[18px] leading-9 mb-10 max-w-[720px]">
 
-                TRINEX provides specialized recruitment solutions for roadway and transportation infrastructure projects—connecting contractors with experienced civil construction professionals nationwide.
+                RUDRON provides specialized recruitment solutions for roadway and transportation infrastructure projects—connecting contractors with experienced civil construction professionals nationwide.
 
               </p>
 

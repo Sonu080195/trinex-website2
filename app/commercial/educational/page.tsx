@@ -66,7 +66,7 @@ export default function EducationalPage() {
               {/* DESCRIPTION */}
               <p className="text-gray-300 text-[18px] leading-9 mb-10 max-w-[720px]">
 
-                TRINEX partners with contractors and developers to deliver experienced professionals specializing in educational facilities, campus developments, and institutional construction projects.
+                RUDRON partners with contractors and developers to deliver experienced professionals specializing in educational facilities, campus developments, and institutional construction projects.
 
               </p>
 

@@ -2,7 +2,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 
 export const metadata = {
-  title: "TRINEX Global Talent Solutions",
+  title: "RUDRON Global Talent Solutions",
   description: "AEC & MEP Recruitment Specialists",
 };
 

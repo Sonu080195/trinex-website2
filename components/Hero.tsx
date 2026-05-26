@@ -79,7 +79,7 @@ export default function Hero() {
             {/* DESCRIPTION */}
             <p className="text-gray-300 text-[17px] sm:text-[18px] leading-9 mb-10 max-w-[730px]">
 
-              TRINEX helps in precision hiring for AEC & MEP leaders—delivering project-ready talent from engineers to directors, across the country.
+              RUDRON helps in precision hiring for AEC & MEP leaders—delivering project-ready talent from engineers to directors, across the country.
 
             </p>
 

@@ -66,7 +66,7 @@ export default function OfficeBuildingPage() {
               {/* DESCRIPTION */}
               <p className="text-gray-300 text-[18px] leading-9 mb-10 max-w-[720px]">
 
-                TRINEX partners with contractors and developers to deliver experienced professionals specializing in office towers, corporate campuses, tenant improvements, and large-scale commercial workplace developments.
+                RUDRON partners with contractors and developers to deliver experienced professionals specializing in office towers, corporate campuses, tenant improvements, and large-scale commercial workplace developments.
 
               </p>
 

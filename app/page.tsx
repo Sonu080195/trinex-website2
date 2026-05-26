@@ -4,6 +4,7 @@ import ValueSection from "@/components/ValueSection";
 import HomeCTA from "@/components/HomeCTA";
 import InsightsSection from "@/components/InsightsSection";
 import Footer from "@/components/Footer";
+import HeroJobsCarousel from "@/components/HeroJobsCarousel";
 
 export default function Home() {
 
@@ -19,11 +20,14 @@ export default function Home() {
 
       <HomeCTA />
 
+      <HeroJobsCarousel />
+
       <InsightsSection />
 
       <Footer />
 
     </main>
+    
 
   );
 }

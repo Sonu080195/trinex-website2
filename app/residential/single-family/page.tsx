@@ -66,7 +66,7 @@ export default function SingleFamilyPage() {
               {/* DESCRIPTION */}
               <p className="text-gray-300 text-[18px] leading-9 mb-10 max-w-[720px]">
 
-                TRINEX partners with homebuilders and residential contractors to deliver experienced professionals specializing in single-family housing developments and custom residential construction projects.
+                RUDRON partners with homebuilders and residential contractors to deliver experienced professionals specializing in single-family housing developments and custom residential construction projects.
 
               </p>
 
