@@ -11,12 +11,12 @@ export default function Specialisations() {
   const sectors = [
 
     {
-  title: "Commercial",
-  image: "/Commercial.png",
-  description:
-    "Office buildings, retail, educational, and mixed-use projects.",
+      title: "Commercial",
+      image: "/Commercial.png",
+      description:
+        "Office buildings, retail, educational, and mixed-use projects.",
 
-  subsectors: [
+      subsectors: [
 
         {
           title: "Educational Construction",
@@ -52,12 +52,12 @@ export default function Specialisations() {
     },
 
     {
-  title: "Industrial",
-  image: "/Industrial.png",
-  description:
-    "Warehouses, manufacturing, logistics, and energy facilities.",
+      title: "Industrial",
+      image: "/Industrial.png",
+      description:
+        "Warehouses, manufacturing, logistics, and energy facilities.",
 
-  subsectors: [
+      subsectors: [
 
         {
           title: "Warehouse Construction",
@@ -93,12 +93,12 @@ export default function Specialisations() {
     },
 
     {
-  title: "Residential",
-  image: "/Residential.png",
-  description:
-    "Multifamily, high-rise, student housing, and communities.",
+      title: "Residential",
+      image: "/Residential.png",
+      description:
+        "Multifamily, high-rise, student housing, and communities.",
 
-  subsectors: [
+      subsectors: [
 
         {
           title: "Multi-Family Construction",
@@ -134,12 +134,12 @@ export default function Specialisations() {
     },
 
     {
-  title: "Infrastructure",
-  image: "/Civil.png",
-  description:
-    "Transportation, civil, bridge, tunnel, and roadway projects.",
+      title: "Infrastructure",
+      image: "/Civil.png",
+      description:
+        "Transportation, civil, bridge, tunnel, and roadway projects.",
 
-  subsectors: [
+      subsectors: [
 
         {
           title: "Roadways Construction",
@@ -178,37 +178,43 @@ export default function Specialisations() {
 
   return (
 
-    <section className="relative bg-[#F7F7F7] py-14 px-6 lg:px-20 overflow-hidden">
+    <section className="relative bg-[#F7F7F7] py-12 sm:py-14 px-5 sm:px-6 lg:px-20 overflow-hidden">
 
       {/* TOP TEXT */}
-      <div className="text-center mb-16">
+      <div className="text-center mb-10 sm:mb-16">
 
-        <p className="text-[#C89B3C] uppercase tracking-[4px] text-sm mb-5">
+        <p className="text-[#C89B3C] uppercase tracking-[3px] sm:tracking-[4px] text-[11px] sm:text-sm mb-4 sm:mb-5">
+
           Industry Sectors
+
         </p>
 
-        <h2 className="text-[#07111F] text-5xl lg:text-6xl font-bold mb-6">
+        <h2 className="text-[#07111F] text-[34px] sm:text-5xl lg:text-6xl font-bold leading-[1.08] mb-5 sm:mb-6">
+
           Expertise Across
           <br />
-            High-Growth Construction Markets
+          High-Growth Construction Markets
+
         </h2>
 
-        <p className="text-gray-500 text-xl leading-9 max-w-4xl mx-auto">
+        <p className="text-gray-500 text-[15px] sm:text-xl leading-7 sm:leading-9 max-w-4xl mx-auto">
+
           Delivering top-tier talent solutions across major
           construction and infrastructure markets.
+
         </p>
 
       </div>
 
-      {/* MAIN GRID */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      {/* MOBILE SCROLL */}
+      <div className="flex md:hidden gap-4 overflow-x-auto scrollbar-hide pb-2 snap-x snap-mandatory">
 
         {sectors.map((sector, index) => (
 
           <div
             key={index}
             onClick={() => setActiveSector(sector)}
-            className="group relative h-[320px] rounded-[28px] overflow-hidden cursor-pointer"
+            className="group relative min-w-[85%] h-[240px] rounded-[24px] overflow-hidden cursor-pointer snap-start shrink-0"
           >
 
             {/* IMAGE */}
@@ -225,24 +231,92 @@ export default function Specialisations() {
             <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition duration-500 pointer-events-none" />
 
             {/* CONTENT */}
+            <div className="absolute bottom-6 left-5 z-10">
+
+              <h3 className="text-white text-[30px] font-bold leading-none mb-3">
+
+                {sector.title}
+
+              </h3>
+
+              <p className="text-gray-300 text-[13px] leading-6 mb-4 max-w-[240px]">
+
+                {sector.description}
+
+              </p>
+
+              <div className="flex items-center gap-2">
+
+                <p className="text-white text-[14px] font-medium">
+
+                  Explore Sector
+
+                </p>
+
+                <span className="text-[#C89B3C] text-lg">
+
+                  →
+
+                </span>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        ))}
+
+      </div>
+
+      {/* DESKTOP GRID */}
+      <div className="hidden md:grid grid-cols-2 lg:grid-cols-4 gap-8">
+
+        {sectors.map((sector, index) => (
+
+          <div
+            key={index}
+            onClick={() => setActiveSector(sector)}
+            className="group relative h-[320px] rounded-[28px] overflow-hidden cursor-pointer"
+          >
+
+            <div
+              className="absolute inset-0 bg-cover bg-center transition duration-700 group-hover:scale-110"
+              style={{
+                backgroundImage: `url(${sector.image})`,
+              }}
+            />
+
+            <div className="absolute inset-0 bg-gradient-to-t from-[#07111F] via-[#07111F]/55 to-[#07111F]/10 pointer-events-none" />
+
+            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition duration-500 pointer-events-none" />
+
             <div className="absolute bottom-8 left-7 z-10">
 
               <h3 className="text-white text-[40px] font-bold leading-none mb-4">
-  {sector.title}
-</h3>
 
-<p className="text-gray-300 text-[15px] leading-7 mb-5 max-w-[280px]">
-  {sector.description}
-</p>
+                {sector.title}
+
+              </h3>
+
+              <p className="text-gray-300 text-[15px] leading-7 mb-5 max-w-[280px]">
+
+                {sector.description}
+
+              </p>
 
               <div className="flex items-center gap-3">
 
                 <p className="text-white text-lg font-medium">
+
                   Explore Sector
+
                 </p>
 
                 <span className="text-[#C89B3C] text-2xl">
+
                   →
+
                 </span>
 
               </div>
@@ -256,93 +330,162 @@ export default function Specialisations() {
       </div>
 
       {/* FULLSCREEN POPUP */}
-      {activeSector && (
+{activeSector && (
 
-        <div className="fixed inset-0 z-[999] bg-[#07111F]/96 backdrop-blur-xl overflow-y-auto">
+  <div className="fixed inset-0 z-[999] bg-[#07111F]/96 backdrop-blur-xl overflow-y-auto">
 
-          <div className="max-w-7xl mx-auto px-8 py-20">
+    <div className="max-w-7xl mx-auto px-5 sm:px-8 py-14 sm:py-20">
 
-            {/* TOP */}
-            <div className="flex items-start justify-between mb-16">
+      {/* TOP */}
+      <div className="flex items-start justify-between mb-10 sm:mb-16 gap-5">
 
-              <div>
+        <div>
 
-                <p className="text-[#C89B3C] uppercase tracking-[4px] text-sm mb-5">
-                  {activeSector.title} Construction
-                </p>
+          <p className="text-[#C89B3C] uppercase tracking-[3px] sm:tracking-[4px] text-[11px] sm:text-sm mb-4 sm:mb-5">
 
-                <h2 className="text-white text-5xl font-bold">
-                  Explore Specialisations
-                </h2>
+            {activeSector.title} Construction
 
-              </div>
+          </p>
 
-              {/* CLOSE */}
-              <button
-                onClick={() => setActiveSector(null)}
-                className="w-14 h-14 rounded-full border border-white/10 flex items-center justify-center text-white hover:bg-white/10 transition"
-              >
-                <X size={28} />
-              </button>
+          <h2 className="text-white text-[34px] sm:text-5xl font-bold leading-[1.05]">
 
-            </div>
+            Explore Specialisations
 
-            {/* SUBSECTOR GRID */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-              {activeSector.subsectors.map((item: any, index: number) => (
-
-                <Link
-                  href={item.link}
-                  key={index}
-                  className="group relative h-[300px] rounded-[28px] overflow-hidden block cursor-pointer"
-                >
-
-                  {/* IMAGE */}
-                  <div
-                    className="absolute inset-0 bg-cover bg-center transition duration-700 group-hover:scale-110"
-                    style={{
-                      backgroundImage: `url(${item.image})`,
-                    }}
-                  />
-
-                  {/* OVERLAY */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#07111F] via-[#07111F]/40 to-transparent pointer-events-none" />
-
-                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition duration-500 pointer-events-none" />
-
-                  {/* CONTENT */}
-                  <div className="absolute bottom-8 left-7 z-10">
-
-                    <h3 className="text-white text-3xl font-bold leading-tight mb-4 max-w-[260px]">
-                      {item.title}
-                    </h3>
-
-                    <div className="flex items-center gap-3">
-
-                      <p className="text-white text-lg font-medium">
-                        Explore
-                      </p>
-
-                      <span className="text-[#C89B3C] text-2xl transition duration-300 group-hover:translate-x-2">
-                        →
-                      </span>
-
-                    </div>
-
-                  </div>
-
-                </Link>
-
-              ))}
-
-            </div>
-
-          </div>
+          </h2>
 
         </div>
 
-      )}
+        {/* CLOSE */}
+        <button
+          onClick={() => setActiveSector(null)}
+          className="w-12 h-12 sm:w-14 sm:h-14 rounded-full border border-white/10 flex items-center justify-center text-white hover:bg-white/10 transition shrink-0"
+        >
+
+          <X size={24} />
+
+        </button>
+
+      </div>
+
+      {/* MOBILE SCROLL */}
+      <div className="flex lg:hidden gap-4 overflow-x-auto scrollbar-hide pb-2 snap-x snap-mandatory">
+
+        {activeSector.subsectors.map((item: any, index: number) => (
+
+          <Link
+            href={item.link}
+            key={index}
+            className="group relative min-w-[88%] h-[240px] rounded-[24px] overflow-hidden block cursor-pointer snap-start shrink-0"
+          >
+
+            {/* IMAGE */}
+            <div
+              className="absolute inset-0 bg-cover bg-center transition duration-700 group-hover:scale-110"
+              style={{
+                backgroundImage: `url(${item.image})`,
+              }}
+            />
+
+            {/* OVERLAY */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#07111F] via-[#07111F]/40 to-transparent pointer-events-none" />
+
+            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition duration-500 pointer-events-none" />
+
+            {/* CONTENT */}
+            <div className="absolute bottom-6 left-5 z-10">
+
+              <h3 className="text-white text-[24px] font-bold leading-tight mb-3 max-w-[220px]">
+
+                {item.title}
+
+              </h3>
+
+              <div className="flex items-center gap-2">
+
+                <p className="text-white text-[14px] font-medium">
+
+                  Explore
+
+                </p>
+
+                <span className="text-[#C89B3C] text-lg transition duration-300 group-hover:translate-x-2">
+
+                  →
+
+                </span>
+
+              </div>
+
+            </div>
+
+          </Link>
+
+        ))}
+
+      </div>
+
+      {/* DESKTOP GRID */}
+      <div className="hidden lg:grid grid-cols-3 gap-8">
+
+        {activeSector.subsectors.map((item: any, index: number) => (
+
+          <Link
+            href={item.link}
+            key={index}
+            className="group relative h-[300px] rounded-[28px] overflow-hidden block cursor-pointer"
+          >
+
+            {/* IMAGE */}
+            <div
+              className="absolute inset-0 bg-cover bg-center transition duration-700 group-hover:scale-110"
+              style={{
+                backgroundImage: `url(${item.image})`,
+              }}
+            />
+
+            {/* OVERLAY */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#07111F] via-[#07111F]/40 to-transparent pointer-events-none" />
+
+            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition duration-500 pointer-events-none" />
+
+            {/* CONTENT */}
+            <div className="absolute bottom-8 left-7 z-10">
+
+              <h3 className="text-white text-3xl font-bold leading-tight mb-4 max-w-[260px]">
+
+                {item.title}
+
+              </h3>
+
+              <div className="flex items-center gap-3">
+
+                <p className="text-white text-lg font-medium">
+
+                  Explore
+
+                </p>
+
+                <span className="text-[#C89B3C] text-2xl transition duration-300 group-hover:translate-x-2">
+
+                  →
+
+                </span>
+
+              </div>
+
+            </div>
+
+          </Link>
+
+        ))}
+
+      </div>
+
+    </div>
+
+  </div>
+
+)}
 
     </section>
 

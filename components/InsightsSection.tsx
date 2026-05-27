@@ -36,16 +36,16 @@ export default function InsightsSection() {
 
   return (
 
-    <section className="bg-[#F7F7F7] px-4 lg:px-12 pb-18">
+    <section className="bg-[#F7F7F7] px-5 sm:px-6 lg:px-12 pb-14 sm:pb-18 overflow-hidden">
 
       <div className="max-w-7xl mx-auto">
 
         {/* TOP */}
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 mb-10">
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 mb-8 sm:mb-10">
 
           <div>
 
-            <p className="text-[#C89B3C] uppercase tracking-[4px] text-sm mb-4">
+            <p className="text-[#C89B3C] uppercase tracking-[3px] sm:tracking-[4px] text-[11px] sm:text-sm mb-3 sm:mb-4">
 
               <br />
               <br />
@@ -54,13 +54,13 @@ export default function InsightsSection() {
 
             </p>
 
-            <h2 className="text-[#07111F] text-[38px] md:text-[52px] lg:text-[58px] font-bold leading-tight mb-4">
+            <h2 className="text-[#07111F] text-[32px] sm:text-[42px] md:text-[52px] lg:text-[58px] font-bold leading-[1.08] mb-4">
 
               Stay Ahead Of The Industry
 
             </h2>
 
-            <p className="text-gray-500 text-lg leading-6 max-w-3xl">
+            <p className="text-gray-500 text-[14px] sm:text-lg leading-7 sm:leading-6 max-w-3xl">
 
               Explore recruitment trends, salary insights, and market updates
               shaping the future of AEC & MEP hiring.
@@ -72,7 +72,7 @@ export default function InsightsSection() {
           {/* VIEW ALL */}
           <Link
             href="/insights"
-            className="group flex items-center gap-3 text-[#07111F] text-lg font-semibold"
+            className="group hidden sm:flex items-center gap-3 text-[#07111F] text-lg font-semibold"
           >
 
             View All Insights
@@ -85,8 +85,79 @@ export default function InsightsSection() {
 
         </div>
 
-        {/* GRID */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* MOBILE SCROLL CARDS */}
+        <div className="flex lg:hidden gap-4 overflow-x-auto scrollbar-hide pb-2 snap-x snap-mandatory">
+
+          {insights.map((item, index) => (
+
+            <Link
+              href={`/insights/${item.slug}`}
+              key={index}
+              className="group min-w-[88%] sm:min-w-[420px] bg-white rounded-[24px] overflow-hidden border border-black/5 hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)] transition-all duration-500 block snap-start shrink-0"
+            >
+
+              {/* IMAGE */}
+              <div className="relative h-[200px] sm:h-[220px] overflow-hidden">
+
+                <div
+                  className="absolute inset-0 bg-cover bg-center transition duration-700 group-hover:scale-110"
+                  style={{
+                    backgroundImage: `url(${item.image})`,
+                  }}
+                />
+
+                {/* OVERLAY */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#07111F]/70 to-transparent" />
+
+                {/* CATEGORY */}
+                <div className="absolute bottom-4 left-4">
+
+                  <div className="bg-[#C89B3C] text-black text-[10px] sm:text-xs font-semibold uppercase tracking-[2px] px-3 sm:px-4 py-2 rounded-full">
+
+                    {item.category}
+
+                  </div>
+
+                </div>
+
+              </div>
+
+              {/* CONTENT */}
+              <div className="p-5 sm:p-6">
+
+                <h3 className="text-[#07111F] text-[24px] sm:text-[28px] font-bold leading-tight mb-4">
+
+                  {item.title}
+
+                </h3>
+
+                <p className="text-gray-500 text-[14px] sm:text-[15px] leading-7 mb-6">
+
+                  {item.description}
+
+                </p>
+
+                {/* READ MORE */}
+                <div className="group/read flex items-center gap-2 text-[#07111F] text-[15px] sm:text-lg font-semibold">
+
+                  Read More
+
+                  <span className="text-[#C89B3C] text-xl sm:text-2xl transition duration-300 group-hover/read:translate-x-2">
+                    →
+                  </span>
+
+                </div>
+
+              </div>
+
+            </Link>
+
+          ))}
+
+        </div>
+
+        {/* DESKTOP GRID */}
+        <div className="hidden lg:grid grid-cols-3 gap-8">
 
           {insights.map((item, index) => (
 
@@ -153,6 +224,24 @@ export default function InsightsSection() {
             </Link>
 
           ))}
+
+        </div>
+
+        {/* MOBILE VIEW ALL */}
+        <div className="flex sm:hidden mt-7">
+
+          <Link
+            href="/insights"
+            className="group flex items-center gap-2 text-[#07111F] text-[15px] font-semibold"
+          >
+
+            View All Insights
+
+            <span className="text-[#C89B3C] text-xl transition duration-300 group-hover:translate-x-2">
+              →
+            </span>
+
+          </Link>
 
         </div>
 

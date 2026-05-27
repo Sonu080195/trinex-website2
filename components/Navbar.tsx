@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+
 import {
   Menu,
   X,
@@ -10,72 +11,166 @@ import {
 
 export default function Navbar() {
 
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] =
+    useState(false);
 
-  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [openDropdown, setOpenDropdown] =
+    useState<string | null>(null);
+
+  const [jobsDropdown, setJobsDropdown] =
+    useState(false);
 
   return (
 
     <header className="absolute top-0 left-0 w-full z-50">
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-6">
 
-        <div className="flex items-center justify-between py-5">
+        <div className="flex items-center justify-between py-3 lg:py-4">
 
           {/* LOGO */}
-          <Link href="/">
+          <Link href="/" className="relative z-[999]">
 
             <img
               src="/images/TRINEX Logo.png"
               alt="RUDRON Logo"
-              className="h-20 lg:h-24 w-auto"
+              className="h-18 sm:h-20 lg:h-26 w-auto"
             />
 
           </Link>
 
           {/* DESKTOP MENU */}
-          <nav className="hidden lg:flex items-center gap-8 text-white font-medium">
+          <nav className="hidden lg:flex items-center gap-6 text-white text-[16px] font-medium">
 
-            <Link href="/">Home</Link>
+            <Link
+              href="/"
+              className="hover:text-[#C89B3C] transition duration-300"
+            >
+              Home
+            </Link>
 
-            <Link href="/about">About</Link>
+            <Link
+              href="/about"
+              className="hover:text-[#C89B3C] transition duration-300"
+            >
+              About
+            </Link>
 
-            <Link href="/industries">Industries</Link>
+            <Link
+              href="/industries"
+              className="hover:text-[#C89B3C] transition duration-300"
+            >
+              Industries
+            </Link>
 
-            <Link href="/employers">Employers</Link>
+            <Link
+              href="/employers"
+              className="hover:text-[#C89B3C] transition duration-300"
+            >
+              Employers
+            </Link>
 
-            <Link href="/candidates">Candidates</Link>
+            <Link
+              href="/candidates"
+              className="hover:text-[#C89B3C] transition duration-300"
+            >
+              Candidates
+            </Link>
 
-            <Link href="/specialisations">Specialisations</Link>
+            <Link
+              href="/specialisations"
+              className="hover:text-[#C89B3C] transition duration-300"
+            >
+              Specialisations
+            </Link>
 
-            <Link href="/contact">Contact</Link>
+            <Link
+              href="/contact"
+              className="hover:text-[#C89B3C] transition duration-300"
+            >
+              Contact
+            </Link>
 
           </nav>
 
           {/* DESKTOP BUTTONS */}
-          <div className="hidden lg:flex items-center gap-4">
+          <div className="hidden lg:flex items-center gap-3">
 
-            <button className="border border-[#C89B3C] text-white px-7 py-3 rounded-xl hover:bg-[#C89B3C] hover:text-black transition-all duration-300">
+            {/* JOBS DROPDOWN */}
+            <div
+              className="relative"
+              onMouseEnter={() =>
+                setJobsDropdown(true)
+              }
+              onMouseLeave={() =>
+                setJobsDropdown(false)
+              }
+            >
 
-              Find Jobs
+              <button className="border border-[#C89B3C] text-white px-5 py-2.5 rounded-xl text-[14px] hover:bg-[#C89B3C] hover:text-black transition-all duration-300 flex items-center gap-2">
 
-            </button>
+                Jobs
 
-            <button className="bg-[#C89B3C] text-black px-7 py-3 rounded-xl font-semibold hover:opacity-90 transition-all duration-300">
+                <ChevronDown
+                  size={16}
+                  className={`transition duration-300 ${
+                    jobsDropdown
+                      ? "rotate-180"
+                      : ""
+                  }`}
+                />
+
+              </button>
+
+              {jobsDropdown && (
+
+                <div className="absolute top-full right-0 pt-3 w-[220px] bg-[#0D1726]/95 backdrop-blur-xl border border-white/5 rounded-2xl p-3 shadow-2xl">
+
+                  <div className="flex flex-col">
+
+                    <Link
+                      href="/jobs"
+                      className="px-4 py-3 rounded-xl text-[14px] text-white hover:bg-white/5 transition duration-300"
+                    >
+                      Open Jobs
+                    </Link>
+
+                    <Link
+                      href="/saved-jobs"
+                      className="px-4 py-3 rounded-xl text-[14px] text-white hover:bg-white/5 transition duration-300"
+                    >
+                      Saved Jobs
+                    </Link>
+
+                  </div>
+
+                </div>
+
+              )}
+
+            </div>
+
+            {/* HIRE TALENT */}
+            <Link
+              href="/contact"
+              className="bg-[#C89B3C] text-black px-5 py-2.5 rounded-xl text-[14px] font-semibold hover:opacity-90 transition-all duration-300"
+            >
 
               Hire Talent
 
-            </button>
+            </Link>
 
           </div>
 
           {/* MOBILE MENU BUTTON */}
           <button
-            onClick={() => setMenuOpen(true)}
-            className="lg:hidden text-white"
+            onClick={() =>
+              setMenuOpen(true)
+            }
+            className="lg:hidden relative z-[999] flex items-center justify-center w-11 h-11 rounded-xl bg-white/5 border border-white/10 text-white active:scale-95 transition"
           >
 
-            <Menu size={34} />
+            <Menu size={24} />
 
           </button>
 
@@ -86,69 +181,79 @@ export default function Navbar() {
       {/* MOBILE MENU */}
       {menuOpen && (
 
-        <div className="fixed inset-0 bg-[#07111F] z-[999] overflow-y-auto">
+        <div className="fixed inset-0 bg-[#07111F] z-[9999] overflow-y-auto">
 
-          <div className="px-6 py-6 min-h-screen flex flex-col">
+          <div className="min-h-screen flex flex-col px-5 pt-5 pb-8">
 
             {/* TOP */}
-            <div className="flex items-center justify-between mb-14">
+            <div className="flex items-center justify-between mb-8">
 
               <img
                 src="/images/TRINEX Logo.png"
                 alt="RUDRON"
-                className="h-20 w-auto"
+                className="h-14 w-auto"
               />
 
               <button
-                onClick={() => setMenuOpen(false)}
-                className="text-white"
+                onClick={() =>
+                  setMenuOpen(false)
+                }
+                className="flex items-center justify-center w-11 h-11 rounded-xl bg-white/5 border border-white/10 text-white active:scale-95 transition"
               >
 
-                <X size={34} />
+                <X size={24} />
 
               </button>
 
             </div>
 
-            {/* MENU ITEMS */}
-            <div className="flex flex-col">
+            {/* MENU */}
+            <div className="flex flex-col rounded-3xl bg-[#0D1726] border border-white/5 overflow-hidden">
 
-              {/* HOME */}
-              <Link
-                href="/"
-                className="text-white text-2xl py-5 border-b border-white/10"
-              >
-                Home
-              </Link>
+              {[
+                ["Home", "/"],
+                ["About", "/about"],
+                ["Industries", "/industries"],
+                ["Employers", "/employers"],
+                ["Candidates", "/candidates"],
+                ["Contact", "/contact"],
+              ].map(([label, href]) => (
 
-              {/* ABOUT */}
-              <Link
-                href="/about"
-                className="text-white text-2xl py-5 border-b border-white/10"
-              >
-                About
-              </Link>
+                <Link
+                  key={label}
+                  href={href}
+                  className="px-5 py-4 text-white text-[16px] border-b border-white/5 active:bg-white/5 transition"
+                  onClick={() =>
+                    setMenuOpen(false)
+                  }
+                >
 
-              {/* INDUSTRIES */}
-              <div className="border-b border-white/10">
+                  {label}
+
+                </Link>
+
+              ))}
+
+              {/* JOBS */}
+              <div className="border-b border-white/5">
 
                 <button
                   onClick={() =>
                     setOpenDropdown(
-                      openDropdown === "industries"
+                      openDropdown === "jobs"
                         ? null
-                        : "industries"
+                        : "jobs"
                     )
                   }
-                  className="w-full flex items-center justify-between text-white text-2xl py-5"
+                  className="w-full flex items-center justify-between px-5 py-4 text-white text-[16px]"
                 >
 
-                  Industries
+                  Jobs
 
                   <ChevronDown
-                    size={24}
+                    size={18}
                     className={`transition duration-300 ${
-                      openDropdown === "industries"
+                      openDropdown === "jobs"
                         ? "rotate-180"
                         : ""
                     }`}
@@ -156,32 +261,28 @@ export default function Navbar() {
 
                 </button>
 
-                {openDropdown === "industries" && (
+                {openDropdown === "jobs" && (
 
-                  <div className="pb-6 pl-4 flex flex-col gap-5">
+                  <div className="pb-4 px-5 flex flex-col gap-3">
 
-                    <Link href="#" className="text-gray-300 text-lg">
-                      Architecture
+                    <Link
+                      href="/jobs"
+                      className="text-gray-300 text-[14px]"
+                      onClick={() =>
+                        setMenuOpen(false)
+                      }
+                    >
+                      Open Jobs
                     </Link>
 
-                    <Link href="#" className="text-gray-300 text-lg">
-                      Engineering
-                    </Link>
-
-                    <Link href="#" className="text-gray-300 text-lg">
-                      Construction
-                    </Link>
-
-                    <Link href="#" className="text-gray-300 text-lg">
-                      Mechanical
-                    </Link>
-
-                    <Link href="#" className="text-gray-300 text-lg">
-                      Electrical
-                    </Link>
-
-                    <Link href="#" className="text-gray-300 text-lg">
-                      Plumbing
+                    <Link
+                      href="/saved-jobs"
+                      className="text-gray-300 text-[14px]"
+                      onClick={() =>
+                        setMenuOpen(false)
+                      }
+                    >
+                      Saved Jobs
                     </Link>
 
                   </div>
@@ -190,24 +291,8 @@ export default function Navbar() {
 
               </div>
 
-              {/* EMPLOYERS */}
-              <Link
-                href="/employers"
-                className="text-white text-2xl py-5 border-b border-white/10"
-              >
-                Employers
-              </Link>
-
-              {/* CANDIDATES */}
-              <Link
-                href="/candidates"
-                className="text-white text-2xl py-5 border-b border-white/10"
-              >
-                Candidates
-              </Link>
-
               {/* SPECIALISATIONS */}
-              <div className="border-b border-white/10">
+              <div>
 
                 <button
                   onClick={() =>
@@ -217,13 +302,13 @@ export default function Navbar() {
                         : "specialisations"
                     )
                   }
-                  className="w-full flex items-center justify-between text-white text-2xl py-5"
+                  className="w-full flex items-center justify-between px-5 py-4 text-white text-[16px]"
                 >
 
                   Specialisations
 
                   <ChevronDown
-                    size={24}
+                    size={18}
                     className={`transition duration-300 ${
                       openDropdown === "specialisations"
                         ? "rotate-180"
@@ -235,22 +320,34 @@ export default function Navbar() {
 
                 {openDropdown === "specialisations" && (
 
-                  <div className="pb-6 pl-4 flex flex-col gap-5">
+                  <div className="pb-4 px-5 flex flex-col gap-3">
 
-                    <Link href="/commercial" className="text-gray-300 text-lg">
+                    <Link
+                      href="/commercial"
+                      className="text-gray-300 text-[14px]"
+                    >
                       Commercial
                     </Link>
 
-                    <Link href="/industrial" className="text-gray-300 text-lg">
+                    <Link
+                      href="/industrial"
+                      className="text-gray-300 text-[14px]"
+                    >
                       Industrial
                     </Link>
 
-                    <Link href="/residential" className="text-gray-300 text-lg">
+                    <Link
+                      href="/residential"
+                      className="text-gray-300 text-[14px]"
+                    >
                       Residential
                     </Link>
 
-                    <Link href="/infrastructure" className="text-gray-300 text-lg">
-                      Residential
+                    <Link
+                      href="/infrastructure"
+                      className="text-gray-300 text-[14px]"
+                    >
+                      Infrastructure
                     </Link>
 
                   </div>
@@ -259,30 +356,28 @@ export default function Navbar() {
 
               </div>
 
-              {/* CONTACT */}
-              <Link
-                href="/contact"
-                className="text-white text-2xl py-5 border-b border-white/10"
-              >
-                Contact
-              </Link>
-
             </div>
 
             {/* BOTTOM BUTTONS */}
-            <div className="mt-auto pt-14 flex flex-col gap-5">
+            <div className="mt-6 flex flex-col gap-3">
 
-              <button className="border border-[#C89B3C] text-white py-5 rounded-2xl text-lg font-medium">
+              <Link
+                href="/jobs"
+                className="border border-[#C89B3C] text-white py-3.5 rounded-2xl text-[14px] font-medium text-center"
+              >
 
-                Find Jobs
+                Explore Jobs
 
-              </button>
+              </Link>
 
-              <button className="bg-[#C89B3C] text-black py-5 rounded-2xl text-lg font-semibold">
+              <Link
+                href="/contact"
+                className="bg-[#C89B3C] text-black py-3.5 rounded-2xl text-[14px] font-semibold text-center"
+              >
 
                 Hire Talent
 
-              </button>
+              </Link>
 
             </div>
 

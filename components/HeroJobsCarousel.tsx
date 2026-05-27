@@ -36,7 +36,7 @@ export default function HeroJobsCarousel() {
 
   return (
 
-    <section className="relative h-[560px] overflow-hidden">
+    <section className="relative h-[640px] sm:h-[620px] lg:h-[560px] overflow-hidden">
 
       {/* BG */}
       <div
@@ -45,26 +45,29 @@ export default function HeroJobsCarousel() {
           backgroundImage: `
             linear-gradient(
               to right,
-              rgba(7,17,31,0.95) 15%,
-              rgba(7,17,31,0.75) 45%,
-              rgba(7,17,31,0.30) 100%
+              rgba(7,17,31,0.96) 12%,
+              rgba(7,17,31,0.82) 42%,
+              rgba(7,17,31,0.38) 100%
             ),
             url(${activeJob.heroImage})
           `,
         }}
       />
 
+      {/* MOBILE EXTRA OVERLAY */}
+      <div className="absolute inset-0 bg-[#07111F]/25 sm:hidden" />
+
       {/* CONTENT */}
       <div className="relative z-10 h-full flex items-center">
 
-        <div className="max-w-7xl mx-auto w-full px-6 lg:px-12">
+        <div className="max-w-7xl mx-auto w-full px-5 sm:px-6 lg:px-12">
 
-          <div className="max-w-[620px]">
+          <div className="max-w-[620px] pt-10 sm:pt-0">
 
             {/* BADGES */}
-            <div className="flex flex-wrap gap-3 mb-4">
+            <div className="flex flex-wrap gap-2 sm:gap-3 mb-4">
 
-              <div className="bg-[#C89B3C] text-black text-xs font-semibold uppercase tracking-[2px] px-4 py-2 rounded-full">
+              <div className="bg-[#C89B3C] text-black text-[10px] sm:text-xs font-semibold uppercase tracking-[2px] px-3 sm:px-4 py-2 rounded-full">
 
                 {activeJob.specialisation}
 
@@ -72,7 +75,7 @@ export default function HeroJobsCarousel() {
 
               {activeJob.urgent && (
 
-                <div className="bg-red-500 text-white text-xs font-semibold uppercase tracking-[2px] px-4 py-2 rounded-full">
+                <div className="bg-red-500 text-white text-[10px] sm:text-xs font-semibold uppercase tracking-[2px] px-3 sm:px-4 py-2 rounded-full">
 
                   Urgent Hiring
 
@@ -83,21 +86,21 @@ export default function HeroJobsCarousel() {
             </div>
 
             {/* TITLE */}
-            <h1 className="text-white text-[42px] md:text-[54px] font-bold leading-[1.02] mb-4">
+            <h1 className="text-white text-[32px] sm:text-[42px] md:text-[54px] font-bold leading-[1.04] mb-4 max-w-[95%]">
 
               {activeJob.title}
 
             </h1>
 
             {/* COMPANY */}
-            <p className="text-[#C89B3C] text-[18px] mb-4">
+            <p className="text-[#C89B3C] text-[15px] sm:text-[18px] mb-4">
 
               {activeJob.company}
 
             </p>
 
             {/* DETAILS */}
-            <div className="flex flex-wrap gap-6 text-gray-300 text-[17px] mb-8">
+            <div className="flex flex-wrap gap-x-5 gap-y-2 text-gray-300 text-[13px] sm:text-[17px] mb-6 sm:mb-8">
 
               <p>{activeJob.location}</p>
 
@@ -108,18 +111,18 @@ export default function HeroJobsCarousel() {
             </div>
 
             {/* DESCRIPTION */}
-            <p className="text-gray-300 text-[15px] leading-7 max-w-2xl mb-7">
+            <p className="text-gray-300 text-[14px] sm:text-[15px] leading-6 sm:leading-7 max-w-2xl mb-7">
 
               {activeJob.description}
 
             </p>
 
             {/* BUTTONS */}
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
 
               <Link
                 href={`/jobs/${activeJob.slug}`}
-                className="bg-[#C89B3C] hover:bg-[#d6ab52] text-black font-semibold px-8 py-4 rounded-xl transition-all duration-300"
+                className="bg-[#C89B3C] hover:bg-[#d6ab52] text-black text-[14px] sm:text-[15px] font-semibold px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl transition-all duration-300 text-center"
               >
 
                 View Position
@@ -128,7 +131,7 @@ export default function HeroJobsCarousel() {
 
               <Link
                 href="/jobs"
-                className="border border-white/20 hover:border-[#C89B3C] text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300"
+                className="border border-white/20 hover:border-[#C89B3C] text-white text-[14px] sm:text-[15px] font-semibold px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl transition-all duration-300 text-center"
               >
 
                 Explore Opportunities
@@ -138,7 +141,7 @@ export default function HeroJobsCarousel() {
             </div>
 
             {/* RECRUITER */}
-            <div className="mt-8 text-gray-400 text-sm uppercase tracking-[3px]">
+            <div className="mt-7 sm:mt-8 text-gray-400 text-[11px] sm:text-sm uppercase tracking-[2px] sm:tracking-[3px] leading-6">
 
               Managed By:
               <span className="text-white ml-2">
@@ -156,7 +159,7 @@ export default function HeroJobsCarousel() {
       </div>
 
       {/* INDICATORS */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-3 z-20">
+      <div className="absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 flex gap-2 sm:gap-3 z-20">
 
         {featuredJobs.map((_, index) => (
 
@@ -167,7 +170,7 @@ export default function HeroJobsCarousel() {
             }
             className={`h-2 rounded-full transition-all duration-300 ${
               activeIndex === index
-                ? "w-12 bg-[#C89B3C]"
+                ? "w-10 sm:w-12 bg-[#C89B3C]"
                 : "w-2 bg-white/40"
             }`}
           />
@@ -177,5 +180,6 @@ export default function HeroJobsCarousel() {
       </div>
 
     </section>
+
   );
 }

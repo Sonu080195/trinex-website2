@@ -75,7 +75,7 @@ export default function CandidatesPage() {
         {/* CONTENT */}
         <div className="relative z-10 w-full">
 
-          <div className="max-w-7xl mx-auto px-6 lg:px-18 pt-32 lg:pt-24">
+          <div className="max-w-7xl mx-auto px-6 lg:px-18 pt-32 lg:pt-22">
 
             <div className="max-w-[760px]">
 

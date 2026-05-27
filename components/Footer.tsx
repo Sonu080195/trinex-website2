@@ -4,12 +4,12 @@ export default function Footer() {
 
   return (
 
-    <footer className="bg-[#07111F] px-6 lg:px-18 pt-20 pb-10">
+    <footer className="bg-[#07111F] px-5 sm:px-6 lg:px-18 pt-12 sm:pt-14 lg:pt-16 pb-6 sm:pb-8">
 
       <div className="max-w-7xl mx-auto">
 
         {/* TOP GRID */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-14 border-b border-white/10 pb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-y-10 sm:gap-y-12 gap-x-8 border-b border-white/10 pb-10 sm:pb-12">
 
           {/* BRAND */}
           <div className="lg:col-span-1">
@@ -18,11 +18,11 @@ export default function Footer() {
             <img
               src="/images/TRINEX Logo.png"
               alt="RUDRON"
-              className="w-[160px] mb-6"
+              className="w-[135px] sm:w-[150px] mb-4 sm:mb-5"
             />
 
             {/* TEXT */}
-            <p className="text-gray-400 leading-8 text-[15px] mb-8">
+            <p className="text-gray-400 leading-7 text-[14px] sm:text-[15px] max-w-[320px]">
 
               RUDRON Global Talent Solutions is a specialist recruitment firm
               focused on the AEC & MEP industries. We connect exceptional talent
@@ -35,11 +35,11 @@ export default function Footer() {
           {/* EMPLOYERS */}
           <div>
 
-            <h3 className="text-white text-lg font-semibold mb-6">
+            <h3 className="text-white text-[17px] sm:text-lg font-semibold mb-4 sm:mb-5">
               For Employers
             </h3>
 
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-3 text-[14px] sm:text-[15px]">
 
               <Link href="#" className="text-gray-400 hover:text-white transition">
                 Hire Talent
@@ -64,11 +64,11 @@ export default function Footer() {
           {/* CANDIDATES */}
           <div>
 
-            <h3 className="text-white text-lg font-semibold mb-6">
+            <h3 className="text-white text-[17px] sm:text-lg font-semibold mb-4 sm:mb-5">
               For Candidates
             </h3>
 
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-3 text-[14px] sm:text-[15px]">
 
               <Link href="#" className="text-gray-400 hover:text-white transition">
                 Find Jobs
@@ -93,11 +93,11 @@ export default function Footer() {
           {/* SPECIALISATIONS */}
           <div>
 
-            <h3 className="text-white text-lg font-semibold mb-6">
+            <h3 className="text-white text-[17px] sm:text-lg font-semibold mb-4 sm:mb-5">
               Specialisations
             </h3>
 
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-3 text-[14px] sm:text-[15px]">
 
               <Link href="#" className="text-gray-400 hover:text-white transition">
                 AEC Recruitment
@@ -122,11 +122,11 @@ export default function Footer() {
           {/* CONTACT */}
           <div>
 
-            <h3 className="text-white text-lg font-semibold mb-6">
+            <h3 className="text-white text-[17px] sm:text-lg font-semibold mb-4 sm:mb-5">
               Contact Us
             </h3>
 
-            <div className="flex flex-col gap-5 text-gray-400 text-[15px]">
+            <div className="flex flex-col gap-4 text-gray-400 text-[14px] sm:text-[15px]">
 
               <div>
                 <p className="text-[#C89B3C] mb-1">USA</p>
@@ -154,13 +154,15 @@ export default function Footer() {
         </div>
 
         {/* BOTTOM */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6 pt-8">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-6 pt-6 sm:pt-7">
 
-          <p className="text-gray-500 text-sm">
+          <p className="text-gray-500 text-[12px] sm:text-sm leading-6">
+
             © 2026 RUDRON Global Talent Solutions. All Rights Reserved.
+
           </p>
 
-          <div className="flex items-center gap-8 text-sm">
+          <div className="flex items-center gap-5 sm:gap-8 text-[12px] sm:text-sm">
 
             <Link href="#" className="text-gray-500 hover:text-white transition">
               Privacy Policy

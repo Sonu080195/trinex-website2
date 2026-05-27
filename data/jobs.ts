@@ -48,7 +48,7 @@ export const jobs: Job[] = [
 
   postedDate: "2 Days Ago",
 
-  recruiter: "TRINEX Executive Search",
+  recruiter: "RUDRON Executive Search",
 
   heroImage:
     "/jobs/commercial-pm.jpg",
