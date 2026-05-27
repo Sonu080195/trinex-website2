@@ -85,76 +85,80 @@ export default function InsightsSection() {
 
         </div>
 
-        {/* MOBILE SCROLL CARDS */}
-        <div className="flex lg:hidden gap-4 overflow-x-auto scrollbar-hide pb-2 snap-x snap-mandatory">
+        {/* MOBILE STACKED CARDS */}
+<div className="flex flex-col lg:hidden gap-5">
 
-          {insights.map((item, index) => (
+  {insights.map((item, index) => (
 
-            <Link
-              href={`/insights/${item.slug}`}
-              key={index}
-              className="group min-w-[88%] sm:min-w-[420px] bg-white rounded-[24px] overflow-hidden border border-black/5 hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)] transition-all duration-500 block snap-start shrink-0"
-            >
+    <Link
+      href={`/insights/${item.slug}`}
+      key={index}
+      className="group bg-white rounded-[22px] overflow-hidden border border-black/5 hover:shadow-[0_10px_30px_rgba(0,0,0,0.06)] transition-all duration-500 block"
+    >
 
-              {/* IMAGE */}
-              <div className="relative h-[200px] sm:h-[220px] overflow-hidden">
+      <div className="flex flex-col">
 
-                <div
-                  className="absolute inset-0 bg-cover bg-center transition duration-700 group-hover:scale-110"
-                  style={{
-                    backgroundImage: `url(${item.image})`,
-                  }}
-                />
+        {/* IMAGE */}
+        <div className="relative h-[180px] overflow-hidden">
 
-                {/* OVERLAY */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#07111F]/70 to-transparent" />
+          <div
+            className="absolute inset-0 bg-cover bg-center transition duration-700 group-hover:scale-105"
+            style={{
+              backgroundImage: `url(${item.image})`,
+            }}
+          />
 
-                {/* CATEGORY */}
-                <div className="absolute bottom-4 left-4">
+          {/* OVERLAY */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#07111F]/70 to-transparent" />
 
-                  <div className="bg-[#C89B3C] text-black text-[10px] sm:text-xs font-semibold uppercase tracking-[2px] px-3 sm:px-4 py-2 rounded-full">
+          {/* CATEGORY */}
+          <div className="absolute bottom-4 left-4">
 
-                    {item.category}
+            <div className="bg-[#C89B3C] text-black text-[10px] font-semibold uppercase tracking-[2px] px-3 py-2 rounded-full">
 
-                  </div>
+              {item.category}
 
-                </div>
+            </div>
 
-              </div>
-
-              {/* CONTENT */}
-              <div className="p-5 sm:p-6">
-
-                <h3 className="text-[#07111F] text-[24px] sm:text-[28px] font-bold leading-tight mb-4">
-
-                  {item.title}
-
-                </h3>
-
-                <p className="text-gray-500 text-[14px] sm:text-[15px] leading-7 mb-6">
-
-                  {item.description}
-
-                </p>
-
-                {/* READ MORE */}
-                <div className="group/read flex items-center gap-2 text-[#07111F] text-[15px] sm:text-lg font-semibold">
-
-                  Read More
-
-                  <span className="text-[#C89B3C] text-xl sm:text-2xl transition duration-300 group-hover/read:translate-x-2">
-                    →
-                  </span>
-
-                </div>
-
-              </div>
-
-            </Link>
-
-          ))}
+          </div>
 
         </div>
+
+        {/* CONTENT */}
+        <div className="p-5">
+
+          <h3 className="text-[#07111F] text-[22px] font-bold leading-[1.2] mb-3">
+
+            {item.title}
+
+          </h3>
+
+          <p className="text-gray-500 text-[14px] leading-7 mb-5">
+
+            {item.description}
+
+          </p>
+
+          {/* READ MORE */}
+          <div className="group/read flex items-center gap-2 text-[#07111F] text-[14px] font-semibold">
+
+            Read More
+
+            <span className="text-[#C89B3C] text-lg transition duration-300 group-hover/read:translate-x-2">
+              →
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </Link>
+
+  ))}
+
+</div>
 
         {/* DESKTOP GRID */}
         <div className="hidden lg:grid grid-cols-3 gap-8">
