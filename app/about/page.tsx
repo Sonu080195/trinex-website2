@@ -37,7 +37,7 @@ export default function AboutPage() {
       <Navbar />
 
       {/* HERO SECTION */}
-      <section className="relative min-h-screen flex items-center overflow-hidden">
+      <section className="relative min-h-[82vh] md:min-h-screen flex items-center overflow-hidden">
 
         {/* BACKGROUND */}
         <div
@@ -51,7 +51,7 @@ export default function AboutPage() {
         {/* CONTENT */}
         <div className="relative z-10 w-full">
 
-          <div className="max-w-7xl mx-auto px-6 lg:px-18 pt-32 lg:pt-24">
+          <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-18 pt-28 sm:pt-32 lg:pt-22">
 
             <div className="max-w-[760px]">
 
@@ -63,7 +63,7 @@ export default function AboutPage() {
               </p>
 
               {/* HEADING */}
-              <h1 className="text-white font-bold leading-[1.05] text-[46px] md:text-[58px] lg:text-[64px] mb-8">
+              <h1 className="text-white font-bold leading-[1.05] text-[34px] sm:text-[42px] md:text-[58px] lg:text-[64px] mb-8">
 
                 RUDRON helps in Precision Hiring 
                 
@@ -79,7 +79,7 @@ export default function AboutPage() {
               </h1>
 
               {/* DESCRIPTION */}
-              <p className="text-gray-300 text-[18px] leading-9 mb-5 max-w-[720px]">
+              <p className="text-gray-300 text-[15px] sm:text-[17px] leading-7 sm:leading-8 mb-5 max-w-[720px]">
 
                 RUDRON Global Talent Solutions is a specialist recruitment firm
                 connecting exceptional construction, engineering, and MEP talent
@@ -96,9 +96,9 @@ export default function AboutPage() {
       </section>
 
       {/* COMPANY STORY */}
-      <section className="py-24 px-6 lg:px-18 bg-[#07111F]">
+      <section className="py-14 sm:py-18 lg:py-24 px-5 sm:px-6 lg:px-18 bg-[#07111F]">
 
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 lg:gap-20 items-center">
 
           {/* LEFT */}
           <div>
@@ -109,7 +109,7 @@ export default function AboutPage() {
 
             </p>
 
-            <h2 className="text-4xl lg:text-5xl font-bold leading-tight mb-8">
+            <h2 className="text-[32px] sm:text-4xl lg:text-5xl font-bold leading-tight mb-8">
 
               A Recruitment Partner
               <br />
@@ -121,7 +121,7 @@ export default function AboutPage() {
 
             </h2>
 
-            <p className="text-gray-300 text-lg leading-9 mb-8">
+            <p className="text-gray-300 text-[15px] sm:text-lg leading-7 sm:leading-9 mb-8">
 
               RUDRON was established to provide a more strategic,
               relationship-driven approach to recruitment across the
@@ -129,7 +129,7 @@ export default function AboutPage() {
 
             </p>
 
-            <p className="text-gray-300 text-lg leading-9">
+            <p className="text-gray-300 text-[15px] sm:text-lg leading-7 sm:leading-9">
 
               We understand the challenges companies face in securing
               technically skilled professionals within highly competitive
@@ -145,7 +145,7 @@ export default function AboutPage() {
           <div>
 
             <div
-              className="h-[600px] rounded-[32px] overflow-hidden bg-cover bg-center"
+              className="h-[320px] sm:h-[460px] lg:h-[600px] rounded-[32px] overflow-hidden bg-cover bg-center"
               style={{
                 backgroundImage: "url('/about/about-story.png')",
               }}
@@ -158,12 +158,12 @@ export default function AboutPage() {
       </section>
 
       {/* MISSION + VISION */}
-      <section className="bg-[#F7F7F7] py-24 px-6 lg:px-18">
+      <section className="bg-[#F7F7F7] py-14 sm:py-18 lg:py-24 px-5 sm:px-6 lg:px-18">
 
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-8">
 
           {/* MISSION */}
-          <div className="bg-white rounded-[32px] p-12 border border-black/5">
+          <div className="bg-white rounded-[32px] p-7 sm:p-10 lg:p-12 border border-black/5">
 
             <p className="text-[#C89B3C] uppercase tracking-[4px] text-sm mb-5">
 
@@ -171,7 +171,7 @@ export default function AboutPage() {
 
             </p>
 
-            <h3 className="text-[#07111F] text-4xl font-bold leading-tight mb-6">
+            <h3 className="text-[#07111F] text-[30px] sm:text-4xl font-bold leading-tight mb-6">
 
               Delivering Talent
               Solutions That Create
@@ -179,7 +179,7 @@ export default function AboutPage() {
 
             </h3>
 
-            <p className="text-gray-600 text-lg leading-9">
+            <p className="text-gray-600 text-[15px] sm:text-lg leading-7 sm:leading-9">
 
               Our mission is to help companies build high-performing teams
               while creating meaningful career opportunities for professionals
@@ -190,7 +190,7 @@ export default function AboutPage() {
           </div>
 
           {/* VISION */}
-          <div className="bg-[#07111F] rounded-[32px] p-12">
+          <div className="bg-[#07111F] rounded-[32px] p-7 sm:p-10 lg:p-12">
 
             <p className="text-[#C89B3C] uppercase tracking-[4px] text-sm mb-5">
 
@@ -198,7 +198,7 @@ export default function AboutPage() {
 
             </p>
 
-            <h3 className="text-white text-4xl font-bold leading-tight mb-6">
+            <h3 className="text-white text-[30px] sm:text-4xl font-bold leading-tight mb-6">
 
               Becoming A Trusted
               Global Partner Across
@@ -206,7 +206,7 @@ export default function AboutPage() {
 
             </h3>
 
-            <p className="text-gray-300 text-lg leading-9">
+            <p className="text-gray-300 text-[15px] sm:text-lg leading-7 sm:leading-9">
 
               We aim to become a globally recognised recruitment partner
               known for industry expertise, long-term relationships,
@@ -221,7 +221,7 @@ export default function AboutPage() {
       </section>
 
       {/* VALUES */}
-      <section className="bg-[#07111F] py-24 px-6 lg:px-18">
+      <section className="bg-[#07111F] py-14 sm:py-18 lg:py-24 px-5 sm:px-6 lg:px-18">
 
         <div className="max-w-7xl mx-auto">
 
@@ -234,7 +234,7 @@ export default function AboutPage() {
 
             </p>
 
-            <h2 className="text-white text-[40px] md:text-[52px] lg:text-[58px] font-bold leading-tight mb-6">
+            <h2 className="text-white text-[32px] sm:text-[42px] md:text-[52px] lg:text-[58px] font-bold leading-tight mb-6">
 
               Recruitment Solutions
               <br />
@@ -246,16 +246,16 @@ export default function AboutPage() {
           </div>
 
           {/* GRID */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-8">
 
             {values.map((item, index) => (
 
               <div
                 key={index}
-                className="bg-[#0D1726] border border-white/10 rounded-[28px] p-10 hover:border-[#C89B3C]/30 transition-all duration-500"
+                className="bg-[#0D1726] border border-white/10 rounded-[28px] p-6 sm:p-8 lg:p-10 hover:border-[#C89B3C]/30 transition-all duration-500"
               >
 
-                <h3 className="text-white text-2xl font-semibold mb-5">
+                <h3 className="text-white text-[20px] sm:text-2xl font-semibold mb-5">
 
                   {item.title}
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 
 import {
@@ -20,6 +20,27 @@ export default function Navbar() {
   const [jobsDropdown, setJobsDropdown] =
     useState(false);
 
+  /* LOCK BODY SCROLL */
+  useEffect(() => {
+
+    if (menuOpen) {
+
+      document.body.style.overflow = "hidden";
+
+    } else {
+
+      document.body.style.overflow = "auto";
+
+    }
+
+    return () => {
+
+      document.body.style.overflow = "auto";
+
+    };
+
+  }, [menuOpen]);
+
   return (
 
     <header className="absolute top-0 left-0 w-full z-50">
@@ -29,12 +50,15 @@ export default function Navbar() {
         <div className="flex items-center justify-between py-3 lg:py-4">
 
           {/* LOGO */}
-          <Link href="/" className="relative z-[999]">
+          <Link
+            href="/"
+            className="relative z-[999]"
+          >
 
             <img
               src="/images/TRINEX Logo.png"
               alt="RUDRON Logo"
-              className="h-18 sm:h-20 lg:h-26 w-auto"
+              className="h-16 sm:h-20 lg:h-24 w-auto"
             />
 
           </Link>
@@ -124,23 +148,27 @@ export default function Navbar() {
 
               {jobsDropdown && (
 
-                <div className="absolute top-full right-0 pt-3 w-[220px] bg-[#0D1726]/95 backdrop-blur-xl border border-white/5 rounded-2xl p-3 shadow-2xl">
+                <div className="absolute top-full right-0 pt-3 w-[220px]">
 
-                  <div className="flex flex-col">
+                  <div className="bg-[#0D1726]/95 backdrop-blur-xl border border-white/5 rounded-2xl p-3 shadow-2xl">
 
-                    <Link
-                      href="/jobs"
-                      className="px-4 py-3 rounded-xl text-[14px] text-white hover:bg-white/5 transition duration-300"
-                    >
-                      Open Jobs
-                    </Link>
+                    <div className="flex flex-col">
 
-                    <Link
-                      href="/saved-jobs"
-                      className="px-4 py-3 rounded-xl text-[14px] text-white hover:bg-white/5 transition duration-300"
-                    >
-                      Saved Jobs
-                    </Link>
+                      <Link
+                        href="/jobs"
+                        className="px-4 py-3 rounded-xl text-[14px] text-white hover:bg-white/5 transition duration-300"
+                      >
+                        Open Jobs
+                      </Link>
+
+                      <Link
+                        href="/saved-jobs"
+                        className="px-4 py-3 rounded-xl text-[14px] text-white hover:bg-white/5 transition duration-300"
+                      >
+                        Saved Jobs
+                      </Link>
+
+                    </div>
 
                   </div>
 
@@ -162,15 +190,15 @@ export default function Navbar() {
 
           </div>
 
-          {/* MOBILE MENU BUTTON */}
+          {/* MOBILE BUTTON */}
           <button
             onClick={() =>
               setMenuOpen(true)
             }
-            className="lg:hidden relative z-[999] flex items-center justify-center w-11 h-11 rounded-xl bg-white/5 border border-white/10 text-white active:scale-95 transition"
+            className="lg:hidden relative z-[999] flex items-center justify-center w-11 h-11 rounded-xl bg-white/5 border border-white/10 text-white active:scale-95 transition-all duration-300"
           >
 
-            <Menu size={24} />
+            <Menu size={23} />
 
           </button>
 
@@ -191,14 +219,14 @@ export default function Navbar() {
               <img
                 src="/images/TRINEX Logo.png"
                 alt="RUDRON"
-                className="h-14 w-auto"
+                className="h-14 sm:h-16 w-auto"
               />
 
               <button
                 onClick={() =>
                   setMenuOpen(false)
                 }
-                className="flex items-center justify-center w-11 h-11 rounded-xl bg-white/5 border border-white/10 text-white active:scale-95 transition"
+                className="flex items-center justify-center w-11 h-11 rounded-xl bg-white/5 border border-white/10 text-white active:scale-95 transition-all duration-300"
               >
 
                 <X size={24} />
@@ -222,10 +250,12 @@ export default function Navbar() {
                 <Link
                   key={label}
                   href={href}
-                  className="px-5 py-4 text-white text-[16px] border-b border-white/5 active:bg-white/5 transition"
-                  onClick={() =>
-                    setMenuOpen(false)
-                  }
+                  className="px-5 py-4 text-white text-[15px] sm:text-[16px] border-b border-white/5 active:bg-white/5 transition"
+                  onClick={() => {
+
+                    setMenuOpen(false);
+
+                  }}
                 >
 
                   {label}
@@ -245,7 +275,7 @@ export default function Navbar() {
                         : "jobs"
                     )
                   }
-                  className="w-full flex items-center justify-between px-5 py-4 text-white text-[16px]"
+                  className="w-full flex items-center justify-between px-5 py-4 text-white text-[15px] sm:text-[16px]"
                 >
 
                   Jobs
@@ -268,21 +298,29 @@ export default function Navbar() {
                     <Link
                       href="/jobs"
                       className="text-gray-300 text-[14px]"
-                      onClick={() =>
-                        setMenuOpen(false)
-                      }
+                      onClick={() => {
+
+                        setMenuOpen(false);
+
+                      }}
                     >
+
                       Open Jobs
+
                     </Link>
 
                     <Link
                       href="/saved-jobs"
                       className="text-gray-300 text-[14px]"
-                      onClick={() =>
-                        setMenuOpen(false)
-                      }
+                      onClick={() => {
+
+                        setMenuOpen(false);
+
+                      }}
                     >
+
                       Saved Jobs
+
                     </Link>
 
                   </div>
@@ -302,7 +340,7 @@ export default function Navbar() {
                         : "specialisations"
                     )
                   }
-                  className="w-full flex items-center justify-between px-5 py-4 text-white text-[16px]"
+                  className="w-full flex items-center justify-between px-5 py-4 text-white text-[15px] sm:text-[16px]"
                 >
 
                   Specialisations
@@ -322,33 +360,29 @@ export default function Navbar() {
 
                   <div className="pb-4 px-5 flex flex-col gap-3">
 
-                    <Link
-                      href="/commercial"
-                      className="text-gray-300 text-[14px]"
-                    >
-                      Commercial
-                    </Link>
+                    {[
+                      ["Commercial", "/commercial"],
+                      ["Industrial", "/industrial"],
+                      ["Residential", "/residential"],
+                      ["Infrastructure", "/infrastructure"],
+                    ].map(([label, href]) => (
 
-                    <Link
-                      href="/industrial"
-                      className="text-gray-300 text-[14px]"
-                    >
-                      Industrial
-                    </Link>
+                      <Link
+                        key={label}
+                        href={href}
+                        className="text-gray-300 text-[14px]"
+                        onClick={() => {
 
-                    <Link
-                      href="/residential"
-                      className="text-gray-300 text-[14px]"
-                    >
-                      Residential
-                    </Link>
+                          setMenuOpen(false);
 
-                    <Link
-                      href="/infrastructure"
-                      className="text-gray-300 text-[14px]"
-                    >
-                      Infrastructure
-                    </Link>
+                        }}
+                      >
+
+                        {label}
+
+                      </Link>
+
+                    ))}
 
                   </div>
 
@@ -363,7 +397,12 @@ export default function Navbar() {
 
               <Link
                 href="/jobs"
-                className="border border-[#C89B3C] text-white py-3.5 rounded-2xl text-[14px] font-medium text-center"
+                onClick={() => {
+
+                  setMenuOpen(false);
+
+                }}
+                className="border border-[#C89B3C] text-white py-3.5 rounded-2xl text-[14px] font-medium text-center active:scale-[0.98] transition-all duration-300"
               >
 
                 Explore Jobs
@@ -372,7 +411,12 @@ export default function Navbar() {
 
               <Link
                 href="/contact"
-                className="bg-[#C89B3C] text-black py-3.5 rounded-2xl text-[14px] font-semibold text-center"
+                onClick={() => {
+
+                  setMenuOpen(false);
+
+                }}
+                className="bg-[#C89B3C] text-black py-3.5 rounded-2xl text-[14px] font-semibold text-center active:scale-[0.98] transition-all duration-300"
               >
 
                 Hire Talent

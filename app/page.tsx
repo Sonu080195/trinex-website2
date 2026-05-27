@@ -5,6 +5,7 @@ import HomeCTA from "@/components/HomeCTA";
 import InsightsSection from "@/components/InsightsSection";
 import Footer from "@/components/Footer";
 import HeroJobsCarousel from "@/components/HeroJobsCarousel";
+import WhyChooseUs from "@/components/WhyChooseUs";
 
 export default function Home() {
 
@@ -16,13 +17,15 @@ export default function Home() {
 
       <Specialisations />
 
-      <ValueSection />
+      <WhyChooseUs />
 
-      <HomeCTA />
+      <ValueSection />
 
       <HeroJobsCarousel />
 
       <InsightsSection />
+
+      <HomeCTA />
 
       <Footer />
 

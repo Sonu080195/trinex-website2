@@ -115,8 +115,9 @@ export default function JobsPage() {
       <Navbar />
 
       {/* HERO */}
-      <section className="relative min-h-[58vh] flex items-center overflow-hidden">
+      <section className="relative min-h-[62vh] md:min-h-[58vh] flex items-center overflow-hidden">
 
+        {/* BG */}
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
@@ -127,24 +128,24 @@ export default function JobsPage() {
 
         <div className="relative z-10 w-full">
 
-          <div className="max-w-7xl mx-auto px-6 lg:px-12 pt-24">
+          <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-12 pt-28 sm:pt-30 lg:pt-24 pb-20 sm:pb-24">
 
             <div className="max-w-[720px]">
 
-              <p className="text-[#C89B3C] uppercase tracking-[4px] text-xs mb-4">
+              <p className="text-[#C89B3C] uppercase tracking-[3px] sm:tracking-[4px] text-[11px] sm:text-xs mb-4">
 
                 Career Opportunities
 
               </p>
 
-              <h1 className="text-white font-bold leading-[1.02] text-[42px] md:text-[54px] lg:text-[62px] mb-5">
+              <h1 className="text-white font-bold leading-[1.04] text-[34px] sm:text-[44px] md:text-[54px] lg:text-[62px] mb-5">
 
                 Explore Construction
                 Career Opportunities
 
               </h1>
 
-              <p className="text-gray-300 text-[15px] leading-7 max-w-[620px]">
+              <p className="text-gray-300 text-[14px] sm:text-[15px] leading-7 sm:leading-8 max-w-[620px]">
 
                 Discover opportunities across commercial,
                 infrastructure, mission critical,
@@ -161,13 +162,13 @@ export default function JobsPage() {
       </section>
 
       {/* SEARCH */}
-      <section className="px-6 lg:px-12 -mt-16 relative z-20">
+      <section className="px-5 sm:px-6 lg:px-12 -mt-10 sm:-mt-14 lg:-mt-16 relative z-20">
 
         <div className="max-w-7xl mx-auto">
 
-          <div className="bg-[#0D1726]/95 backdrop-blur-xl border border-white/5 rounded-[26px] p-4 shadow-2xl">
+          <div className="bg-[#0D1726]/95 backdrop-blur-xl border border-white/5 rounded-[22px] sm:rounded-[26px] p-4 sm:p-5 shadow-2xl">
 
-            <div className="grid lg:grid-cols-[1fr_auto_auto] gap-3 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_auto] gap-3 items-center">
 
               {/* SEARCH INPUT */}
               <input
@@ -179,7 +180,7 @@ export default function JobsPage() {
                     e.target.value
                   )
                 }
-                className="w-full h-[50px] bg-[#07111F] border border-white/10 rounded-xl px-5 text-white outline-none text-sm"
+                className="w-full h-[48px] sm:h-[50px] bg-[#07111F] border border-white/10 rounded-xl px-4 sm:px-5 text-white outline-none text-[14px] sm:text-sm"
               />
 
               {/* FEATURED */}
@@ -189,7 +190,7 @@ export default function JobsPage() {
                     !featuredOnly
                   )
                 }
-                className={`h-[50px] px-5 rounded-xl text-sm font-semibold transition-all duration-300 ${
+                className={`h-[48px] sm:h-[50px] px-5 rounded-xl text-[13px] sm:text-sm font-semibold transition-all duration-300 ${
                   featuredOnly
                     ? "bg-[#C89B3C] text-black"
                     : "bg-white/10 text-white"
@@ -207,7 +208,7 @@ export default function JobsPage() {
                     !urgentOnly
                   )
                 }
-                className={`h-[50px] px-5 rounded-xl text-sm font-semibold transition-all duration-300 ${
+                className={`h-[48px] sm:h-[50px] px-5 rounded-xl text-[13px] sm:text-sm font-semibold transition-all duration-300 ${
                   urgentOnly
                     ? "bg-red-500 text-white"
                     : "bg-white/10 text-white"
@@ -227,9 +228,9 @@ export default function JobsPage() {
       </section>
 
       {/* JOBS */}
-      <section className="py-10 px-6 lg:px-12">
+      <section className="py-8 sm:py-10 px-5 sm:px-6 lg:px-12">
 
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-[270px_1fr] gap-6">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[270px_1fr] gap-5 sm:gap-6">
 
           {/* SIDEBAR */}
           <JobsSidebar
@@ -250,15 +251,15 @@ export default function JobsPage() {
           <div className="space-y-4">
 
             {/* TOP BAR */}
-            <div className="flex items-center justify-between mb-2">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
 
-              <h2 className="text-white text-[24px] font-bold">
+              <h2 className="text-white text-[22px] sm:text-[24px] font-bold">
 
                 Open Positions
 
               </h2>
 
-              <div className="text-gray-400 text-sm">
+              <div className="text-gray-400 text-[13px] sm:text-sm">
 
                 {filteredJobs.length} Jobs Found
 
@@ -287,15 +288,15 @@ export default function JobsPage() {
 
             ) : (
 
-              <div className="bg-[#0D1726] border border-white/5 rounded-[24px] p-8 text-center">
+              <div className="bg-[#0D1726] border border-white/5 rounded-[22px] sm:rounded-[24px] p-6 sm:p-8 text-center">
 
-                <h3 className="text-white text-[24px] font-bold mb-3">
+                <h3 className="text-white text-[22px] sm:text-[24px] font-bold mb-3">
 
                   No Jobs Found
 
                 </h3>
 
-                <p className="text-gray-400 text-sm">
+                <p className="text-gray-400 text-[13px] sm:text-sm leading-7">
 
                   No positions currently available for the selected filters.
 
