@@ -12,16 +12,19 @@ export default function CandidatesPage() {
       description:
         "Access confidential roles with leading construction and engineering firms.",
     },
+
     {
       title: "Career Growth",
       description:
         "We help professionals secure opportunities aligned with long-term career goals.",
     },
+
     {
       title: "Industry Expertise",
       description:
         "Our recruiters understand the AEC & MEP industries and hiring landscape.",
     },
+
     {
       title: "Personalised Support",
       description:
@@ -57,47 +60,42 @@ export default function CandidatesPage() {
 
     <main className="bg-[#07111F] text-white overflow-hidden">
 
-      {/* NAVBAR */}
       <Navbar />
 
       {/* HERO */}
-      <section className="relative min-h-[82vh] md:min-h-screen flex items-center overflow-hidden">
+      <section className="relative min-h-[72vh] lg:min-h-[82vh] flex items-center overflow-hidden">
 
         {/* BG */}
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
             backgroundImage:
-              "linear-gradient(to right, rgba(7,17,31,0.96) 18%, rgba(7,17,31,0.78) 42%, rgba(7,17,31,0.18) 75%), url('/candidates/candidates-hero.png')",
+              "linear-gradient(to right, rgba(7,17,31,0.96) 18%, rgba(7,17,31,0.78) 42%, rgba(7,17,31,0.22) 75%), url('/candidates/candidates-hero.png')",
           }}
         />
 
         {/* CONTENT */}
         <div className="relative z-10 w-full">
 
-          <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-18 pt-28 sm:pt-32 lg:pt-22">
+          <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-6 pt-28 sm:pt-30 lg:pt-20">
 
-            <div className="max-w-[760px]">
+            <div className="max-w-[640px]">
 
-              <p className="text-[#C89B3C] uppercase tracking-[3px] sm:tracking-[4px] text-[11px] sm:text-sm mb-4 sm:mb-5">
+              <p className="text-[#C89B3C] uppercase tracking-[4px] text-[11px] sm:text-sm mb-4">
 
                 Candidates
 
               </p>
 
-              <h1 className="text-white font-bold leading-[1.05] text-[34px] sm:text-[42px] md:text-[58px] lg:text-[66px] mb-6 sm:mb-8">
+              <h1 className="text-white font-bold leading-[1.02] text-[34px] sm:text-[48px] lg:text-[64px] mb-6">
 
                 Connecting
-                <br />
-
                 Professionals With
-                <br />
-
                 Industry-Leading Roles
 
               </h1>
 
-              <p className="text-gray-300 text-[15px] sm:text-[17px] leading-7 sm:leading-9 mb-8 sm:mb-10 max-w-[720px]">
+              <p className="text-gray-300 text-[15px] sm:text-[17px] leading-7 sm:leading-8">
 
                 RUDRON partners with top construction and engineering firms
                 to connect skilled professionals with high-impact career opportunities
@@ -114,20 +112,20 @@ export default function CandidatesPage() {
       </section>
 
       {/* WHY RUDRON */}
-      <section className="bg-[#F7F7F7] py-14 sm:py-18 lg:py-24 px-5 sm:px-6 lg:px-18">
+      <section className="bg-[#F7F7F7] py-12 sm:py-16 lg:py-18 px-5 sm:px-6 lg:px-6">
 
         <div className="max-w-7xl mx-auto">
 
           {/* TOP */}
-          <div className="text-center mb-10 sm:mb-14">
+          <div className="text-center mb-8 sm:mb-10">
 
-            <p className="text-[#C89B3C] uppercase tracking-[3px] sm:tracking-[4px] text-[11px] sm:text-sm mb-4 sm:mb-5">
+            <p className="text-[#C89B3C] uppercase tracking-[4px] text-[11px] sm:text-sm mb-4">
 
               Why Work With RUDRON
 
             </p>
 
-            <h2 className="text-[#07111F] text-[32px] sm:text-[42px] md:text-[52px] lg:text-[58px] font-bold leading-tight mb-5 sm:mb-6">
+            <h2 className="text-[#07111F] text-[30px] sm:text-[42px] lg:text-[52px] font-bold leading-[1.08]">
 
               Career Opportunities
               Built Around Growth
@@ -137,22 +135,22 @@ export default function CandidatesPage() {
           </div>
 
           {/* GRID */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
 
             {benefits.map((item, index) => (
 
               <div
                 key={index}
-                className="bg-white rounded-[26px] sm:rounded-[30px] p-6 sm:p-8 lg:p-10 border border-black/5 hover:-translate-y-2 transition duration-500"
+                className="bg-white rounded-[24px] p-5 sm:p-6 border border-black/5 hover:-translate-y-1 transition duration-500"
               >
 
-                <h3 className="text-[#07111F] text-[20px] sm:text-2xl font-bold mb-4 sm:mb-5 leading-snug">
+                <h3 className="text-[#07111F] text-[18px] sm:text-[20px] font-bold mb-4">
 
                   {item.title}
 
                 </h3>
 
-                <p className="text-gray-600 text-[15px] sm:text-lg leading-7 sm:leading-8">
+                <p className="text-gray-600 text-[14px] sm:text-[15px] leading-7">
 
                   {item.description}
 
@@ -169,17 +167,17 @@ export default function CandidatesPage() {
       </section>
 
       {/* ROLES */}
-      <section className="bg-[#07111F] py-14 sm:py-18 lg:py-24 px-5 sm:px-6 lg:px-18">
+      <section className="bg-[#07111F] py-12 sm:py-16 lg:py-18 px-5 sm:px-6 lg:px-6">
 
         <div className="max-w-7xl mx-auto text-center">
 
-          <p className="text-[#C89B3C] uppercase tracking-[3px] sm:tracking-[4px] text-[11px] sm:text-sm mb-4 sm:mb-5">
+          <p className="text-[#C89B3C] uppercase tracking-[4px] text-[11px] sm:text-sm mb-4">
 
             Roles We Recruit For
 
           </p>
 
-          <h2 className="text-white text-[32px] sm:text-[42px] md:text-[52px] lg:text-[58px] font-bold leading-tight mb-10 sm:mb-14">
+          <h2 className="text-white text-[30px] sm:text-[42px] lg:text-[52px] font-bold leading-[1.08] mb-8 sm:mb-10">
 
             Opportunities Across
             Key Construction Roles
@@ -192,10 +190,10 @@ export default function CandidatesPage() {
 
               <div
                 key={index}
-                className="bg-[#0D1726] border border-white/10 rounded-[24px] sm:rounded-[28px] p-5 sm:p-6"
+                className="bg-[#0D1726] border border-white/10 rounded-[24px] p-5 sm:p-6"
               >
 
-                <h3 className="text-white text-[20px] sm:text-2xl font-semibold leading-snug">
+                <h3 className="text-white text-[18px] sm:text-[20px] font-semibold leading-snug">
 
                   {role}
 
@@ -212,33 +210,33 @@ export default function CandidatesPage() {
       </section>
 
       {/* INDUSTRIES */}
-      <section className="bg-[#F7F7F7] py-14 sm:py-18 lg:py-24 px-5 sm:px-6 lg:px-18">
+      <section className="bg-[#F7F7F7] py-12 sm:py-16 lg:py-18 px-5 sm:px-6 lg:px-6">
 
         <div className="max-w-7xl mx-auto text-center">
 
-          <p className="text-[#C89B3C] uppercase tracking-[3px] sm:tracking-[4px] text-[11px] sm:text-sm mb-4 sm:mb-5">
+          <p className="text-[#C89B3C] uppercase tracking-[4px] text-[11px] sm:text-sm mb-4">
 
             Industries We Support
 
           </p>
 
-          <h2 className="text-[#07111F] text-[32px] sm:text-[42px] md:text-[52px] lg:text-[58px] font-bold leading-tight mb-10 sm:mb-12">
+          <h2 className="text-[#07111F] text-[30px] sm:text-[42px] lg:text-[52px] font-bold leading-[1.08] mb-8 sm:mb-10">
 
             Expertise Across
             High-Growth Markets
 
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
 
             {industries.map((industry, index) => (
 
               <div
                 key={index}
-                className="bg-white border border-black/5 rounded-[24px] sm:rounded-[28px] p-6 sm:p-8"
+                className="bg-white border border-black/5 rounded-[24px] p-5 sm:p-6"
               >
 
-                <h3 className="text-[#07111F] text-[20px] sm:text-2xl font-semibold leading-snug">
+                <h3 className="text-[#07111F] text-[18px] sm:text-[20px] font-semibold leading-snug">
 
                   {industry}
 
@@ -255,20 +253,20 @@ export default function CandidatesPage() {
       </section>
 
       {/* PROCESS */}
-      <section className="bg-[#07111F] py-14 sm:py-18 lg:py-24 px-5 sm:px-6 lg:px-18">
+      <section className="bg-[#07111F] py-12 sm:py-16 lg:py-18 px-5 sm:px-6 lg:px-6">
 
         <div className="max-w-7xl mx-auto">
 
           {/* TOP */}
-          <div className="text-center mb-10 sm:mb-14">
+          <div className="text-center mb-8 sm:mb-10">
 
-            <p className="text-[#C89B3C] uppercase tracking-[3px] sm:tracking-[4px] text-[11px] sm:text-sm mb-4 sm:mb-5">
+            <p className="text-[#C89B3C] uppercase tracking-[4px] text-[11px] sm:text-sm mb-4">
 
               Candidate Process
 
             </p>
 
-            <h2 className="text-white text-[32px] sm:text-[42px] md:text-[52px] lg:text-[58px] font-bold leading-tight">
+            <h2 className="text-white text-[30px] sm:text-[42px] lg:text-[52px] font-bold leading-[1.08]">
 
               Supporting Your
               Career Journey
@@ -278,22 +276,22 @@ export default function CandidatesPage() {
           </div>
 
           {/* STEPS */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-5 sm:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-5">
 
             {process.map((step, index) => (
 
               <div
                 key={index}
-                className="bg-[#0D1726] rounded-[24px] sm:rounded-[28px] border border-white/10 p-6 sm:p-8 lg:p-10 text-center"
+                className="bg-[#0D1726] rounded-[24px] border border-white/10 p-5 sm:p-6 text-center"
               >
 
-                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#C89B3C] text-black flex items-center justify-center text-lg sm:text-xl font-bold mx-auto mb-5 sm:mb-6">
+                <div className="w-12 h-12 rounded-full bg-[#C89B3C] text-black flex items-center justify-center text-[16px] font-bold mx-auto mb-5">
 
                   {index + 1}
 
                 </div>
 
-                <h3 className="text-white text-[18px] sm:text-xl font-semibold leading-7 sm:leading-8">
+                <h3 className="text-white text-[17px] sm:text-[18px] font-semibold leading-7">
 
                   {step}
 
@@ -309,10 +307,8 @@ export default function CandidatesPage() {
 
       </section>
 
-      {/* CTA */}
       <HomeCTA />
 
-      {/* FOOTER */}
       <Footer />
 
     </main>

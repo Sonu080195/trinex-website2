@@ -12,26 +12,31 @@ export default function EmployersPage() {
       description:
         "Targeted leadership hiring solutions for senior construction and MEP professionals.",
     },
+
     {
       title: "Project Staffing",
       description:
         "Connecting companies with project-ready talent across commercial and industrial sectors.",
     },
+
     {
       title: "MEP Recruitment",
       description:
         "Specialist recruitment solutions across mechanical, electrical, and plumbing markets.",
     },
+
     {
       title: "Mission Critical",
       description:
         "Supporting hyperscale data center and critical infrastructure developments.",
     },
+
     {
       title: "Direct Hire",
       description:
         "Permanent placement solutions focused on long-term retention and cultural fit.",
     },
+
     {
       title: "Contract Staffing",
       description:
@@ -51,57 +56,52 @@ export default function EmployersPage() {
     "Commercial Construction",
     "Industrial Construction",
     "Residential Construction",
-    "Infrastructure & Civil",
+    "Infrastructure & Civil Construction",
   ];
 
   return (
 
     <main className="bg-[#07111F] text-white overflow-hidden">
 
-      {/* NAVBAR */}
       <Navbar />
 
       {/* HERO */}
-      <section className="relative min-h-[82vh] md:min-h-screen flex items-center overflow-hidden">
+      <section className="relative min-h-[72vh] lg:min-h-[82vh] flex items-center overflow-hidden">
 
         {/* BG */}
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
             backgroundImage:
-              "linear-gradient(to right, rgba(7,17,31,0.96) 18%, rgba(7,17,31,0.78) 42%, rgba(7,17,31,0.18) 75%), url('/employers/employers-hero.png')",
+              "linear-gradient(to right, rgba(7,17,31,0.96) 18%, rgba(7,17,31,0.78) 42%, rgba(7,17,31,0.22) 75%), url('/employers/employers-hero.png')",
           }}
         />
 
         {/* CONTENT */}
         <div className="relative z-10 w-full">
 
-          <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-18 pt-28 sm:pt-32 lg:pt-22">
+          <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-6 pt-28 sm:pt-30 lg:pt-20">
 
-            <div className="max-w-[760px]">
+            <div className="max-w-[640px]">
 
-              <p className="text-[#C89B3C] uppercase tracking-[4px] text-sm mb-5">
+              <p className="text-[#C89B3C] uppercase tracking-[4px] text-[11px] sm:text-sm mb-4">
 
                 Employers
 
               </p>
 
-              <h1 className="text-white font-bold leading-[1.05] text-[34px] sm:text-[42px] md:text-[58px] lg:text-[66px] mb-8">
+              <h1 className="text-white font-bold leading-[1.02] text-[34px] sm:text-[48px] lg:text-[64px] mb-6">
 
                 Building High-
-                <br />
-
                 Performing Teams
-                <br />
-
                 Across
                 <span className="text-[#C89B3C]">
-                {" "}AEC & MEP
-              </span>
+                  {" "}AEC & MEP
+                </span>
 
               </h1>
 
-              <p className="text-gray-300 text-[15px] sm:text-[17px] leading-7 sm:leading-9 mb-10 max-w-[720px]">
+              <p className="text-gray-300 text-[15px] sm:text-[17px] leading-7 sm:leading-8">
 
                 RUDRON delivers specialist recruitment solutions for
                 construction, engineering, MEP, and mission critical
@@ -118,24 +118,22 @@ export default function EmployersPage() {
       </section>
 
       {/* SERVICES */}
-      <section className="bg-[#F7F7F7] py-14 sm:py-18 lg:py-24 px-5 sm:px-6 lg:px-18">
+      <section className="bg-[#F7F7F7] py-12 sm:py-16 lg:py-18 px-5 sm:px-6 lg:px-6">
 
         <div className="max-w-7xl mx-auto">
 
           {/* TOP */}
-          <div className="text-center mb-10 sm:mb-14">
+          <div className="text-center mb-8 sm:mb-10">
 
-            <p className="text-[#C89B3C] uppercase tracking-[4px] text-sm mb-5">
+            <p className="text-[#C89B3C] uppercase tracking-[4px] text-[11px] sm:text-sm mb-4">
 
               Recruitment Services
 
             </p>
 
-            <h2 className="text-[#07111F] text-[32px] sm:text-[42px] md:text-[52px] lg:text-[58px] font-bold leading-tight mb-6">
+            <h2 className="text-[#07111F] text-[30px] sm:text-[42px] lg:text-[52px] font-bold leading-[1.08]">
 
               Talent Solutions
-              <br />
-
               Designed For Growth
 
             </h2>
@@ -143,22 +141,22 @@ export default function EmployersPage() {
           </div>
 
           {/* GRID */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
 
             {services.map((service, index) => (
 
               <div
                 key={index}
-                className="bg-white rounded-[30px] p-6 sm:p-8 lg:p-10 border border-black/5 hover:-translate-y-2 transition duration-500"
+                className="bg-white rounded-[24px] p-5 sm:p-6 border border-black/5 hover:-translate-y-1 transition duration-500"
               >
 
-                <h3 className="text-[#07111F] text-[20px] sm:text-2xl font-bold mb-5">
+                <h3 className="text-[#07111F] text-[18px] sm:text-[20px] font-bold mb-4">
 
                   {service.title}
 
                 </h3>
 
-                <p className="text-gray-600 text-[15px] sm:text-lg leading-7 sm:leading-8">
+                <p className="text-gray-600 text-[14px] sm:text-[15px] leading-7">
 
                   {service.description}
 
@@ -175,20 +173,20 @@ export default function EmployersPage() {
       </section>
 
       {/* WHY RUDRON */}
-      <section className="bg-[#07111F] py-14 sm:py-18 lg:py-24 px-5 sm:px-6 lg:px-18">
+      <section className="bg-[#07111F] py-12 sm:py-16 lg:py-18 px-5 sm:px-6 lg:px-6">
 
         <div className="max-w-7xl mx-auto">
 
           {/* TOP */}
-          <div className="text-center mb-10 sm:mb-14">
+          <div className="text-center mb-8 sm:mb-10">
 
-            <p className="text-[#C89B3C] uppercase tracking-[4px] text-sm mb-5">
+            <p className="text-[#C89B3C] uppercase tracking-[4px] text-[11px] sm:text-sm mb-4">
 
               Why Companies Choose RUDRON
 
             </p>
 
-            <h2 className="text-white text-[32px] sm:text-[42px] md:text-[52px] lg:text-[58px] font-bold leading-tight">
+            <h2 className="text-white text-[30px] sm:text-[42px] lg:text-[52px] font-bold leading-[1.08]">
 
               Recruitment Built
               Around Precision &
@@ -199,7 +197,7 @@ export default function EmployersPage() {
           </div>
 
           {/* GRID */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
 
             {[
               "Industry Specialisation",
@@ -210,10 +208,10 @@ export default function EmployersPage() {
 
               <div
                 key={index}
-                className="bg-[#0D1726] rounded-[28px] border border-white/10 p-6 sm:p-8 lg:p-10"
+                className="bg-[#0D1726] rounded-[24px] border border-white/10 p-5 sm:p-6"
               >
 
-                <h3 className="text-white text-2xl font-semibold leading-snug">
+                <h3 className="text-white text-[18px] sm:text-[20px] font-semibold leading-snug">
 
                   {item}
 
@@ -230,20 +228,20 @@ export default function EmployersPage() {
       </section>
 
       {/* PROCESS */}
-      <section className="bg-[#F7F7F7] py-14 sm:py-18 lg:py-24 px-5 sm:px-6 lg:px-18">
+      <section className="bg-[#F7F7F7] py-12 sm:py-16 lg:py-18 px-5 sm:px-6 lg:px-6">
 
         <div className="max-w-7xl mx-auto">
 
           {/* TOP */}
-          <div className="text-center mb-10 sm:mb-14">
+          <div className="text-center mb-8 sm:mb-10">
 
-            <p className="text-[#C89B3C] uppercase tracking-[4px] text-sm mb-5">
+            <p className="text-[#C89B3C] uppercase tracking-[4px] text-[11px] sm:text-sm mb-4">
 
               Our Hiring Process
 
             </p>
 
-            <h2 className="text-[#07111F] text-[32px] sm:text-[42px] md:text-[52px] lg:text-[58px] font-bold leading-tight">
+            <h2 className="text-[#07111F] text-[30px] sm:text-[42px] lg:text-[52px] font-bold leading-[1.08]">
 
               A Strategic Approach
               To Talent Acquisition
@@ -252,23 +250,23 @@ export default function EmployersPage() {
 
           </div>
 
-          {/* TIMELINE */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+          {/* PROCESS GRID */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-5">
 
             {process.map((step, index) => (
 
               <div
                 key={index}
-                className="bg-white rounded-[28px] p-6 sm:p-8 lg:p-10 border border-black/5 text-center"
+                className="bg-white rounded-[24px] p-5 sm:p-6 border border-black/5 text-center"
               >
 
-                <div className="w-14 h-14 rounded-full bg-[#C89B3C] text-black flex items-center justify-center text-[18px] sm:text-xl font-bold mx-auto mb-6">
+                <div className="w-12 h-12 rounded-full bg-[#C89B3C] text-black flex items-center justify-center text-[16px] font-bold mx-auto mb-5">
 
                   {index + 1}
 
                 </div>
 
-                <h3 className="text-[#07111F] text-xl font-semibold leading-8">
+                <h3 className="text-[#07111F] text-[17px] sm:text-[18px] font-semibold leading-7">
 
                   {step}
 
@@ -285,33 +283,33 @@ export default function EmployersPage() {
       </section>
 
       {/* MARKETS */}
-      <section className="bg-[#07111F] py-14 sm:py-18 lg:py-24 px-5 sm:px-6 lg:px-18">
+      <section className="bg-[#07111F] py-12 sm:py-16 lg:py-18 px-5 sm:px-6 lg:px-6">
 
         <div className="max-w-7xl mx-auto text-center">
 
-          <p className="text-[#C89B3C] uppercase tracking-[4px] text-sm mb-5">
+          <p className="text-[#C89B3C] uppercase tracking-[4px] text-[11px] sm:text-sm mb-4">
 
             Markets We Support
 
           </p>
 
-          <h2 className="text-white text-[32px] sm:text-[42px] md:text-[52px] lg:text-[58px] font-bold leading-tight mb-10 sm:mb-14">
+          <h2 className="text-white text-[30px] sm:text-[42px] lg:text-[52px] font-bold leading-[1.08] mb-8 sm:mb-10">
 
             Expertise Across
             Key Construction Sectors
 
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
 
             {markets.map((market, index) => (
 
               <div
                 key={index}
-                className="bg-[#0D1726] border border-white/10 rounded-[28px] p-6 sm:p-8 lg:p-10"
+                className="bg-[#0D1726] border border-white/10 rounded-[24px] p-5 sm:p-6"
               >
 
-                <h3 className="text-white text-2xl font-semibold leading-snug">
+                <h3 className="text-white text-[18px] sm:text-[20px] font-semibold leading-snug">
 
                   {market}
 
@@ -327,10 +325,8 @@ export default function EmployersPage() {
 
       </section>
 
-      {/* CTA */}
       <HomeCTA />
 
-      {/* FOOTER */}
       <Footer />
 
     </main>

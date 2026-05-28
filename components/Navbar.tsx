@@ -81,13 +81,6 @@ export default function Navbar() {
             </Link>
 
             <Link
-              href="/industries"
-              className="hover:text-[#C89B3C] transition duration-300"
-            >
-              Industries
-            </Link>
-
-            <Link
               href="/employers"
               className="hover:text-[#C89B3C] transition duration-300"
             >
@@ -99,6 +92,13 @@ export default function Navbar() {
               className="hover:text-[#C89B3C] transition duration-300"
             >
               Candidates
+            </Link>
+
+            <Link
+              href="/industries"
+              className="hover:text-[#C89B3C] transition duration-300"
+            >
+              Industries
             </Link>
 
             <Link
