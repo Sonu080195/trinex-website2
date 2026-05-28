@@ -50,6 +50,8 @@ export default function JobsPage() {
         ${job.responsibilities?.join(" ")}
         ${job.requirements?.join(" ")}
         ${job.benefits?.join(" ")}
+        ${job.specialisation}
+        ${job.industry}
       `.toLowerCase();
 
       const queryMatch =
@@ -108,48 +110,55 @@ export default function JobsPage() {
     urgentOnly,
   ]);
 
+  const featuredJobs =
+    jobs.filter((job) => job.featured);
+
   return (
 
-    <main className="bg-[#07111F] text-white overflow-hidden min-h-screen">
+    <main className="bg-[#07111F] text-white overflow-hidden">
 
       <Navbar />
 
       {/* HERO */}
-      <section className="relative min-h-[62vh] md:min-h-[58vh] flex items-center overflow-hidden">
+      <section className="relative min-h-[72vh] lg:min-h-[82vh] flex items-center overflow-hidden">
 
         {/* BG */}
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
             backgroundImage:
-              "linear-gradient(to right, rgba(7,17,31,0.96) 18%, rgba(7,17,31,0.72) 45%, rgba(7,17,31,0.25) 80%), url('/jobs/jobs-hero.png')",
+              "linear-gradient(to right, rgba(7,17,31,0.96) 12%, rgba(7,17,31,0.76) 42%, rgba(7,17,31,0.25) 85%), url('/jobs/jobs-hero.png')",
           }}
         />
 
+        {/* MOBILE OVERLAY */}
+        <div className="absolute inset-0 bg-[#07111F]/35 sm:hidden" />
+
+        {/* CONTENT */}
         <div className="relative z-10 w-full">
 
-          <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-12 pt-28 sm:pt-30 lg:pt-24 pb-20 sm:pb-24">
+          <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-6 pt-28 sm:pt-32 lg:pt-20 pb-20 sm:pb-24 lg:pb-32">
 
-            <div className="max-w-[720px]">
+            <div className="max-w-[700px]">
 
-              <p className="text-[#C89B3C] uppercase tracking-[3px] sm:tracking-[4px] text-[11px] sm:text-xs mb-4">
+              <p className="text-[#C89B3C] uppercase tracking-[4px] text-[10px] sm:text-sm mb-4">
 
                 Career Opportunities
 
               </p>
 
-              <h1 className="text-white font-bold leading-[1.04] text-[34px] sm:text-[44px] md:text-[54px] lg:text-[62px] mb-5">
+              <h1 className="text-white font-bold leading-[1.02] text-[36px] sm:text-[52px] lg:text-[64px] mb-5 sm:mb-6">
 
                 Explore Construction
                 Career Opportunities
 
               </h1>
 
-              <p className="text-gray-300 text-[14px] sm:text-[15px] leading-7 sm:leading-8 max-w-[620px]">
+              <p className="text-gray-300 text-[15px] sm:text-[17px] leading-7 sm:leading-8 max-w-[680px]">
 
                 Discover opportunities across commercial,
-                infrastructure, mission critical,
-                architecture, and executive construction sectors.
+                industrial, infrastructure, mission critical,
+                and executive construction sectors.
 
               </p>
 
@@ -161,63 +170,120 @@ export default function JobsPage() {
 
       </section>
 
-      {/* SEARCH */}
-      <section className="px-5 sm:px-6 lg:px-12 -mt-10 sm:-mt-14 lg:-mt-16 relative z-20">
+      {/* SEARCH FLOATING PANEL */}
+      <section className="relative z-30 px-4 sm:px-6 lg:px-6 -mt-10 sm:-mt-24 lg:-mt-34">
 
         <div className="max-w-7xl mx-auto">
 
-          <div className="bg-[#0D1726]/95 backdrop-blur-xl border border-white/5 rounded-[22px] sm:rounded-[26px] p-4 sm:p-5 shadow-2xl">
+          <div className="bg-white rounded-[24px] sm:rounded-[28px] border border-black/5 shadow-[0_20px_60px_rgba(0,0,0,0.16)] p-4 sm:p-6 lg:p-7 max-w-5xl">
 
-            <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_auto] gap-3 items-center">
+            {/* FILTERS */}
+            <div className="grid grid-cols-1 lg:grid-cols-[1fr_190px_190px] gap-3">
 
-              {/* SEARCH INPUT */}
-              <input
-                type="text"
-                placeholder="Search skills, titles, locations..."
-                value={searchQuery}
-                onChange={(e) =>
-                  setSearchQuery(
-                    e.target.value
-                  )
-                }
-                className="w-full h-[48px] sm:h-[50px] bg-[#07111F] border border-white/10 rounded-xl px-4 sm:px-5 text-white outline-none text-[14px] sm:text-sm"
-              />
+              {/* SEARCH */}
+              <div>
 
-              {/* FEATURED */}
-              <button
-                onClick={() =>
-                  setFeaturedOnly(
-                    !featuredOnly
-                  )
-                }
-                className={`h-[48px] sm:h-[50px] px-5 rounded-xl text-[13px] sm:text-sm font-semibold transition-all duration-300 ${
-                  featuredOnly
-                    ? "bg-[#C89B3C] text-black"
-                    : "bg-white/10 text-white"
-                }`}
-              >
+                <label className="text-[#07111F] text-[12px] sm:text-[13px] font-semibold mb-2 block">
 
-                Featured Jobs
+                  Search Opportunities
 
-              </button>
+                </label>
 
-              {/* URGENT */}
-              <button
-                onClick={() =>
-                  setUrgentOnly(
-                    !urgentOnly
-                  )
-                }
-                className={`h-[48px] sm:h-[50px] px-5 rounded-xl text-[13px] sm:text-sm font-semibold transition-all duration-300 ${
-                  urgentOnly
-                    ? "bg-red-500 text-white"
-                    : "bg-white/10 text-white"
-                }`}
-              >
+                <input
+                  type="text"
+                  placeholder="Project Manager, BIM, Procore, Superintendent..."
+                  value={searchQuery}
+                  onChange={(e) =>
+                    setSearchQuery(
+                      e.target.value
+                    )
+                  }
+                  className="w-full h-[48px] sm:h-[52px] rounded-[14px] border border-gray-200 px-4 sm:px-5 text-[#07111F] text-[14px] sm:text-[15px] outline-none focus:border-[#C89B3C]"
+                />
 
-                Urgent Hiring
+              </div>
 
-              </button>
+              {/* INDUSTRY */}
+              <div>
+
+                <label className="text-[#07111F] text-[12px] sm:text-[13px] font-semibold mb-2 block">
+
+                  Industry
+
+                </label>
+
+                <select
+                  value={selectedIndustry}
+                  onChange={(e) =>
+                    setSelectedIndustry(
+                      e.target.value
+                    )
+                  }
+                  className="w-full h-[48px] sm:h-[52px] rounded-[14px] border border-gray-200 px-4 text-[#07111F] text-[14px] sm:text-[15px] outline-none focus:border-[#C89B3C]"
+                >
+
+                  <option value="">
+                    All Industries
+                  </option>
+
+                  <option value="Construction">
+                    Construction
+                  </option>
+
+                  <option value="MEP">
+                    MEP
+                  </option>
+
+                  <option value="Engineering">
+                    Engineering
+                  </option>
+
+                </select>
+
+              </div>
+
+              {/* LOCATION */}
+              <div>
+
+                <label className="text-[#07111F] text-[12px] sm:text-[13px] font-semibold mb-2 block">
+
+                  Location
+
+                </label>
+
+                <select
+                  value={selectedCountry}
+                  onChange={(e) =>
+                    setSelectedCountry(
+                      e.target.value
+                    )
+                  }
+                  className="w-full h-[48px] sm:h-[52px] rounded-[14px] border border-gray-200 px-4 text-[#07111F] text-[14px] sm:text-[15px] outline-none focus:border-[#C89B3C]"
+                >
+
+                  <option value="">
+                    All Countries
+                  </option>
+
+                  <option value="United States">
+                    United States
+                  </option>
+
+                  <option value="Canada">
+                    Canada
+                  </option>
+
+                  <option value="UAE">
+                    UAE
+                  </option>
+
+                  <option value="India">
+                    India
+                  </option>
+
+                </select>
+
+              </div>
 
             </div>
 
@@ -227,19 +293,67 @@ export default function JobsPage() {
 
       </section>
 
-      {/* JOBS */}
-      <section className="py-8 sm:py-10 px-5 sm:px-6 lg:px-12">
+      {/* FEATURED */}
+     <section className="bg-[#F7F7F7] py-12 sm:py-16 lg:py-18 px-5 sm:px-6 lg:px-6">
 
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[270px_1fr] gap-5 sm:gap-6">
+        <div className="max-w-7xl mx-auto">
 
-          {/* SIDEBAR */}
+          {/* TOP */}
+          <div className="text-center mb-8 sm:mb-10">
+
+            <p className="text-[#C89B3C] uppercase tracking-[4px] text-[10px] sm:text-sm mb-4">
+
+              Featured Opportunities
+
+            </p>
+
+            <h2 className="text-[#07111F] text-[30px] sm:text-[42px] lg:text-[50px] font-bold leading-[1.05] max-w-[980px] mx-auto">
+
+              Executive &
+              Construction Careers
+              Across Leading Markets
+
+            </h2>
+
+          </div>
+
+          {/* GRID */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+
+            {featuredJobs.slice(0, 3).map(
+              (job: any, index: number) => (
+
+                <JobCard
+                  key={index}
+                  title={job.title}
+                  company={job.company}
+                  location={job.location}
+                  salary={job.salary}
+                  type={job.type}
+                  industry={job.specialisation}
+                  slug={job.slug}
+                />
+
+              )
+            )}
+
+          </div>
+
+        </div>
+
+      </section>
+
+      {/* ALL JOBS */}
+      <section className="bg-[#07111F] py-10 sm:py-14 lg:py-16 px-4 sm:px-6 lg:px-6">
+
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[260px_1fr] gap-5 sm:gap-6">
+
           <JobsSidebar
             selectedIndustry={selectedIndustry}
             selectedSpecialisation={selectedSpecialisation}
             selectedCountry={selectedCountry}
             selectedState={selectedState}
             selectedEmployment={selectedEmployment}
-
             setSelectedIndustry={setSelectedIndustry}
             setSelectedSpecialisation={setSelectedSpecialisation}
             setSelectedCountry={setSelectedCountry}
@@ -247,64 +361,92 @@ export default function JobsPage() {
             setSelectedEmployment={setSelectedEmployment}
           />
 
-          {/* JOB LIST */}
-          <div className="space-y-4">
+          <div>
 
-            {/* TOP BAR */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+            {/* TOP */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 sm:mb-7">
 
-              <h2 className="text-white text-[22px] sm:text-[24px] font-bold">
+              <div>
 
-                Open Positions
+                <p className="text-[#C89B3C] uppercase tracking-[4px] text-[10px] sm:text-sm mb-3">
 
-              </h2>
+                  Current Openings
 
-              <div className="text-gray-400 text-[13px] sm:text-sm">
+                </p>
 
-                {filteredJobs.length} Jobs Found
+                <h2 className="text-white text-[30px] sm:text-[38px] lg:text-[44px] font-bold leading-[1.06]">
+
+                  Explore Open Positions
+
+                </h2>
 
               </div>
 
-            </div>
+              <div className="bg-[#0D1726] border border-white/10 rounded-[18px] px-5 py-4 min-w-[160px]">
 
-            {filteredJobs.length > 0 ? (
+                <p className="text-gray-400 text-[10px] sm:text-[11px] uppercase tracking-[2px] mb-1">
 
-              filteredJobs.map(
-                (job: any, index: number) => (
+                  Available Roles
 
-                  <JobCard
-                    key={index}
-                    title={job.title}
-                    company={job.company}
-                    location={job.location}
-                    salary={job.salary}
-                    type={job.type}
-                    industry={job.specialisation}
-                    slug={job.slug}
-                  />
+                </p>
 
-                )
-              )
+                <p className="text-white text-[22px] sm:text-[24px] font-bold">
 
-            ) : (
-
-              <div className="bg-[#0D1726] border border-white/5 rounded-[22px] sm:rounded-[24px] p-6 sm:p-8 text-center">
-
-                <h3 className="text-white text-[22px] sm:text-[24px] font-bold mb-3">
-
-                  No Jobs Found
-
-                </h3>
-
-                <p className="text-gray-400 text-[13px] sm:text-sm leading-7">
-
-                  No positions currently available for the selected filters.
+                  {filteredJobs.length}
 
                 </p>
 
               </div>
 
-            )}
+            </div>
+
+            {/* JOBS */}
+            <div className="space-y-4">
+
+              {filteredJobs.length > 0 ? (
+
+                filteredJobs.map(
+                  (
+                    job: any,
+                    index: number
+                  ) => (
+
+                    <JobCard
+                      key={index}
+                      title={job.title}
+                      company={job.company}
+                      location={job.location}
+                      salary={job.salary}
+                      type={job.type}
+                      industry={job.specialisation}
+                      slug={job.slug}
+                    />
+
+                  )
+                )
+
+              ) : (
+
+                <div className="bg-[#0D1726] border border-white/10 rounded-[24px] p-8 sm:p-10 text-center">
+
+                  <h3 className="text-white text-[24px] sm:text-[28px] font-bold mb-4">
+
+                    No Matching Positions Found
+
+                  </h3>
+
+                  <p className="text-gray-400 text-[14px] sm:text-[15px] leading-7 sm:leading-8 max-w-[520px] mx-auto">
+
+                    Try adjusting your filters or search
+                    keywords to discover additional opportunities.
+
+                  </p>
+
+                </div>
+
+              )}
+
+            </div>
 
           </div>
 
@@ -317,5 +459,6 @@ export default function JobsPage() {
       <Footer />
 
     </main>
+
   );
 }

@@ -192,8 +192,7 @@ export default async function IndustryDetailPage({
 
   const { slug } = await params;
 
-  const industry =
-    industryData[slug];
+  const industry = industryData[slug];
 
   if (!industry) {
 
@@ -205,10 +204,11 @@ export default async function IndustryDetailPage({
 
     <main className="bg-[#07111F] text-white overflow-hidden">
 
+      {/* NAVBAR */}
       <Navbar />
 
       {/* HERO */}
-      <section className="relative min-h-[72vh] lg:min-h-[82vh] flex items-center overflow-hidden">
+      <section className="relative min-h-[68vh] sm:min-h-[72vh] lg:min-h-[82vh] flex items-center overflow-hidden">
 
         {/* BG */}
         <div
@@ -217,9 +217,9 @@ export default async function IndustryDetailPage({
             backgroundImage: `
               linear-gradient(
                 to right,
-                rgba(7,17,31,0.96) 18%,
-                rgba(7,17,31,0.78) 42%,
-                rgba(7,17,31,0.22) 75%
+                rgba(7,17,31,0.97) 16%,
+                rgba(7,17,31,0.80) 42%,
+                rgba(7,17,31,0.22) 76%
               ),
               url(${industry.image})
             `,
@@ -231,7 +231,7 @@ export default async function IndustryDetailPage({
 
           <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-6 pt-28 sm:pt-30 lg:pt-20">
 
-            <div className="max-w-[640px]">
+            <div className="max-w-[660px]">
 
               <p className="text-[#C89B3C] uppercase tracking-[4px] text-[11px] sm:text-sm mb-4">
 
@@ -239,7 +239,7 @@ export default async function IndustryDetailPage({
 
               </p>
 
-              <h1 className="text-white font-bold leading-[1.02] text-[34px] sm:text-[48px] lg:text-[64px] mb-6">
+              <h1 className="text-white font-bold leading-[1.02] text-[36px] sm:text-[50px] lg:text-[66px] mb-6">
 
                 {industry.title}
 
@@ -272,14 +272,14 @@ export default async function IndustryDetailPage({
 
             </p>
 
-            <h2 className="text-[#07111F] text-[30px] sm:text-[42px] lg:text-[52px] font-bold leading-[1.08] mb-6">
+            <h2 className="text-[#07111F] text-[30px] sm:text-[42px] lg:text-[54px] font-bold leading-[1.08] mb-6">
 
               Recruitment Built
               Around Industry Demand
 
             </h2>
 
-            <p className="text-gray-600 text-[15px] sm:text-[17px] leading-8">
+            <p className="text-gray-600 text-[15px] sm:text-[17px] leading-7 sm:leading-8">
 
               {industry.overview}
 
@@ -296,8 +296,7 @@ export default async function IndustryDetailPage({
 
         <div className="max-w-7xl mx-auto">
 
-          {/* TOP */}
-          <div className="text-center mb-8 sm:mb-10">
+          <div className="text-center max-w-[850px] mx-auto mb-9 sm:mb-11">
 
             <p className="text-[#C89B3C] uppercase tracking-[4px] text-[11px] sm:text-sm mb-4">
 
@@ -305,12 +304,20 @@ export default async function IndustryDetailPage({
 
             </p>
 
-            <h2 className="text-white text-[30px] sm:text-[42px] lg:text-[52px] font-bold leading-[1.08]">
+            <h2 className="text-white text-[30px] sm:text-[42px] lg:text-[54px] font-bold leading-[1.08] mb-5">
 
               Supporting
               High-Performance Teams
 
             </h2>
+
+            <p className="text-gray-400 text-[15px] sm:text-[17px] leading-7 sm:leading-8">
+
+              We connect organizations with experienced professionals capable
+              of supporting technical operations, leadership functions,
+              and complex project environments.
+
+            </p>
 
           </div>
 
@@ -353,13 +360,22 @@ export default async function IndustryDetailPage({
 
           </p>
 
-          <h2 className="text-[#07111F] text-[30px] sm:text-[42px] lg:text-[52px] font-bold leading-[1.08] mb-8 sm:mb-10">
+          <h2 className="text-[#07111F] text-[30px] sm:text-[42px] lg:text-[54px] font-bold leading-[1.08] mb-5">
 
             Supporting Growth
             Across Critical Sectors
 
           </h2>
 
+          <p className="text-gray-600 text-[15px] sm:text-[17px] leading-7 sm:leading-8 max-w-[820px] mx-auto mb-9 sm:mb-11">
+
+            Our recruitment expertise supports organizations operating
+            across fast-growing and technically advanced sectors throughout
+            the built environment.
+
+          </p>
+
+          {/* GRID */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
 
             {industry.markets.map(
@@ -392,8 +408,7 @@ export default async function IndustryDetailPage({
 
         <div className="max-w-7xl mx-auto">
 
-          {/* TOP */}
-          <div className="text-center mb-8 sm:mb-10">
+          <div className="text-center max-w-[850px] mx-auto mb-9 sm:mb-11">
 
             <p className="text-[#C89B3C] uppercase tracking-[4px] text-[11px] sm:text-sm mb-4">
 
@@ -401,7 +416,7 @@ export default async function IndustryDetailPage({
 
             </p>
 
-            <h2 className="text-white text-[30px] sm:text-[42px] lg:text-[52px] font-bold leading-[1.08]">
+            <h2 className="text-white text-[30px] sm:text-[42px] lg:text-[54px] font-bold leading-[1.08] mb-5">
 
               Recruitment Built
               Around Precision &
@@ -409,16 +424,39 @@ export default async function IndustryDetailPage({
 
             </h2>
 
+            <p className="text-gray-400 text-[15px] sm:text-[17px] leading-7 sm:leading-8">
+
+              We combine technical market understanding with relationship-driven
+              recruitment strategies to help organizations build stronger teams.
+
+            </p>
+
           </div>
 
           {/* GRID */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
 
             {[
-              "Executive Search",
-              "Project Staffing",
-              "Industry Specialisation",
-              "Relationship-Driven Hiring",
+              {
+                title: "Executive Search",
+                desc: "Leadership recruitment for high-growth organizations.",
+              },
+
+              {
+                title: "Project Staffing",
+                desc: "Flexible hiring solutions aligned with project demand.",
+              },
+
+              {
+                title: "Industry Specialisation",
+                desc: "Deep expertise across AEC and MEP environments.",
+              },
+
+              {
+                title: "Relationship-Driven Hiring",
+                desc: "Long-term recruitment partnerships built on trust.",
+              },
+
             ].map((item, index) => (
 
               <div
@@ -426,11 +464,17 @@ export default async function IndustryDetailPage({
                 className="bg-[#0D1726] border border-white/10 rounded-[24px] p-5 sm:p-6"
               >
 
-                <h3 className="text-white text-[18px] sm:text-[20px] font-semibold leading-snug">
+                <h3 className="text-white text-[19px] sm:text-[21px] font-semibold leading-snug mb-4">
 
-                  {item}
+                  {item.title}
 
                 </h3>
+
+                <p className="text-gray-400 text-[14px] sm:text-[15px] leading-7">
+
+                  {item.desc}
+
+                </p>
 
               </div>
 
@@ -442,8 +486,10 @@ export default async function IndustryDetailPage({
 
       </section>
 
+      {/* CTA */}
       <HomeCTA />
 
+      {/* FOOTER */}
       <Footer />
 
     </main>

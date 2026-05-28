@@ -19,73 +19,55 @@ export default function OfficeBuildingPage() {
   ];
 
   return (
+
     <main className="bg-[#07111F] text-white overflow-hidden">
 
       {/* NAVBAR */}
       <Navbar />
 
-      {/* HERO SECTION */}
-      <section className="relative min-h-screen flex items-center overflow-hidden">
+      {/* HERO */}
+      <section className="relative min-h-[72vh] lg:min-h-[82vh] flex items-center overflow-hidden">
 
-        {/* BACKGROUND IMAGE */}
+        {/* BG */}
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
             backgroundImage:
-              "linear-gradient(to right, rgba(7,17,31,0.95) 18%, rgba(7,17,31,0.78) 40%, rgba(7,17,31,0.20) 72%), url('/subsector-pages/office-hero.png')",
+              "linear-gradient(to right, rgba(7,17,31,0.96) 18%, rgba(7,17,31,0.78) 42%, rgba(7,17,31,0.22) 75%), url('/subsector-pages/office-hero.png')",
           }}
         />
 
         {/* CONTENT */}
         <div className="relative z-10 w-full">
 
-          <div className="max-w-7xl mx-auto px-6 lg:px-18 pt-32 lg:pt-24">
+          <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-6 pt-28 sm:pt-30 lg:pt-20">
 
-            <div className="max-w-[760px]">
+            <div className="max-w-[640px]">
 
               {/* LABEL */}
-              <p className="text-[#C89B3C] uppercase tracking-[4px] text-sm mb-5">
+              <p className="text-[#C89B3C] uppercase tracking-[4px] text-[11px] sm:text-sm mb-4">
+
                 Commercial Construction Recruitment
+
               </p>
 
               {/* HEADING */}
-              <h1 className="text-white font-bold leading-[1.05] text-[46px] md:text-[58px] lg:text-[64px] mb-8">
+              <h1 className="text-white font-bold leading-[1.02] text-[34px] sm:text-[48px] lg:text-[64px] mb-6">
 
                 Office Building
-                <br />
-
                 Construction
-                <br />
-
                 <span className="text-[#C89B3C]">
-                  Recruitment
+                  {" "}Recruitment
                 </span>
 
               </h1>
 
               {/* DESCRIPTION */}
-              <p className="text-gray-300 text-[18px] leading-9 mb-10 max-w-[720px]">
+              <p className="text-gray-300 text-[15px] sm:text-[17px] leading-7 sm:leading-8">
 
                 RUDRON partners with contractors and developers to deliver experienced professionals specializing in office towers, corporate campuses, tenant improvements, and large-scale commercial workplace developments.
 
               </p>
-
-              {/* BUTTONS */}
-              <div className="flex flex-wrap gap-5 mb-14">
-
-                <button className="bg-[#C89B3C] text-black px-8 py-4 rounded-xl font-semibold hover:opacity-90 transition">
-
-                  Hire Office Building Talent
-
-                </button>
-
-                <button className="border border-white/20 text-white px-8 py-4 rounded-xl hover:border-[#C89B3C] transition">
-
-                  Explore Opportunities
-
-                </button>
-
-              </div>
 
             </div>
 
@@ -95,32 +77,35 @@ export default function OfficeBuildingPage() {
 
       </section>
 
-      {/* CONTENT SECTION */}
-      <section className="py-24 px-6 lg:px-18 bg-[#07111F]">
+      {/* CONTENT */}
+      <section className="bg-[#07111F] py-12 sm:py-16 lg:py-18 px-5 sm:px-6 lg:px-6">
 
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-18 items-start">
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
 
           {/* LEFT */}
           <div>
 
-            <p className="text-[#C89B3C] uppercase tracking-[4px] text-sm mb-5">
+            <p className="text-[#C89B3C] uppercase tracking-[4px] text-[11px] sm:text-sm mb-4">
+
               Commercial Office Infrastructure
+
             </p>
 
-            <h2 className="text-4xl lg:text-5xl font-bold leading-tight mb-8">
+            <h2 className="text-[30px] sm:text-[42px] lg:text-[52px] font-bold leading-[1.08] mb-6">
 
-              Recruiting Professionals For
-              Modern Workplace Developments
+              Recruiting Professionals
+              For Modern Workplace
+              Developments
 
             </h2>
 
-            <p className="text-gray-300 text-lg leading-9 mb-8">
+            <p className="text-gray-300 text-[15px] sm:text-[17px] leading-7 sm:leading-8 mb-6">
 
               Office building construction projects require experienced professionals capable of managing technically advanced commercial spaces, tenant coordination, and fast-paced urban development environments.
 
             </p>
 
-            <p className="text-gray-300 text-lg leading-9">
+            <p className="text-gray-300 text-[15px] sm:text-[17px] leading-7 sm:leading-8">
 
               We help contractors and developers secure project-ready leaders and technical specialists for office towers, mixed-use developments, tenant improvements, and corporate campus projects nationwide.
 
@@ -129,21 +114,27 @@ export default function OfficeBuildingPage() {
           </div>
 
           {/* RIGHT */}
-          <div className="bg-[#0D1726] border border-white/10 rounded-[30px] p-10">
+          <div className="bg-[#0D1726] border border-white/10 rounded-[24px] p-5 sm:p-6">
 
-            <p className="text-[#C89B3C] uppercase tracking-[4px] text-sm mb-6">
+            <p className="text-[#C89B3C] uppercase tracking-[4px] text-[11px] sm:text-sm mb-5">
+
               Key Roles We Recruit
+
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
 
               {roles.map((role, index) => (
+
                 <div
                   key={index}
-                  className="bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-gray-200 hover:border-[#C89B3C] transition"
+                  className="bg-white/5 border border-white/10 rounded-[18px] px-4 py-4 text-gray-200 text-[14px] sm:text-[15px] leading-6 hover:border-[#C89B3C]/40 transition"
                 >
+
                   {role}
+
                 </div>
+
               ))}
 
             </div>
@@ -157,8 +148,10 @@ export default function OfficeBuildingPage() {
       {/* CTA */}
       <SubpageCTA />
 
+      {/* FOOTER */}
       <Footer />
 
     </main>
+
   );
 }

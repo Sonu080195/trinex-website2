@@ -85,32 +85,35 @@ export default function InsightsPage() {
 
     <main className="bg-[#07111F] text-white overflow-hidden">
 
+      {/* NAVBAR */}
       <Navbar />
 
       {/* HERO */}
-      <section className="relative min-h-[72vh] flex items-center overflow-hidden">
+      <section className="relative min-h-[68vh] sm:min-h-[72vh] lg:min-h-[82vh] flex items-center overflow-hidden">
 
+        {/* BG */}
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
             backgroundImage:
-              "linear-gradient(to right, rgba(7,17,31,0.96) 18%, rgba(7,17,31,0.75) 45%, rgba(7,17,31,0.2) 80%), url('/insights/featured-insight.png')",
+              "linear-gradient(to right, rgba(7,17,31,0.97) 16%, rgba(7,17,31,0.80) 42%, rgba(7,17,31,0.22) 76%), url('/insights/featured-insight.png')",
           }}
         />
 
+        {/* CONTENT */}
         <div className="relative z-10 w-full">
 
-          <div className="max-w-7xl mx-auto px-6 lg:px-16 pt-24">
+          <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-6 pt-28 sm:pt-30 lg:pt-20">
 
-            <div className="max-w-[760px]">
+            <div className="max-w-[720px]">
 
-              <p className="text-[#C89B3C] uppercase tracking-[4px] text-sm mb-5">
+              <p className="text-[#C89B3C] uppercase tracking-[4px] text-[11px] sm:text-sm mb-4">
 
                 Industry Intelligence
 
               </p>
 
-              <h1 className="text-white font-bold leading-[1.05] text-[44px] md:text-[58px] lg:text-[68px] mb-8">
+              <h1 className="text-white font-bold leading-[1.02] text-[36px] sm:text-[50px] lg:text-[66px] mb-6">
 
                 Construction
                 Hiring Trends,
@@ -119,7 +122,7 @@ export default function InsightsPage() {
 
               </h1>
 
-              <p className="text-gray-300 text-[18px] leading-9 max-w-[700px]">
+              <p className="text-gray-300 text-[15px] sm:text-[17px] leading-7 sm:leading-8 max-w-[680px]">
 
                 Explore construction hiring trends, workforce intelligence,
                 salary insights, and market reports shaping the future
@@ -136,15 +139,15 @@ export default function InsightsPage() {
       </section>
 
       {/* FEATURED REPORT */}
-      <section className="bg-[#F7F7F7] py-18 px-6 lg:px-16">
+      <section className="bg-[#F7F7F7] py-12 sm:py-16 lg:py-18 px-5 sm:px-6 lg:px-6">
 
         <div className="max-w-7xl mx-auto">
 
-          <div className="grid lg:grid-cols-2 gap-8 items-center">
+          <div className="grid lg:grid-cols-2 gap-6 lg:gap-10 items-center">
 
             {/* IMAGE */}
             <div
-              className="h-[420px] rounded-[32px] bg-cover bg-center"
+              className="h-[260px] sm:h-[360px] lg:h-[440px] rounded-[28px] bg-cover bg-center"
               style={{
                 backgroundImage:
                   "url('/insights/featured-insight.png')",
@@ -154,13 +157,13 @@ export default function InsightsPage() {
             {/* CONTENT */}
             <div>
 
-              <p className="text-[#C89B3C] uppercase tracking-[4px] text-sm mb-4">
+              <p className="text-[#C89B3C] uppercase tracking-[4px] text-[11px] sm:text-sm mb-4">
 
                 Featured Report
 
               </p>
 
-              <h2 className="text-[#07111F] text-[40px] lg:text-[54px] font-bold leading-tight mb-6">
+              <h2 className="text-[#07111F] text-[30px] sm:text-[42px] lg:text-[54px] font-bold leading-[1.08] mb-5">
 
                 AI Infrastructure &
                 The Future Of
@@ -168,7 +171,7 @@ export default function InsightsPage() {
 
               </h2>
 
-              <p className="text-gray-600 text-[17px] leading-8 mb-8">
+              <p className="text-gray-600 text-[15px] sm:text-[17px] leading-7 sm:leading-8 mb-8">
 
                 AI expansion, hyperscale development, and mission critical
                 infrastructure are creating unprecedented demand for
@@ -180,7 +183,7 @@ export default function InsightsPage() {
                 href="https://www.datacenterfrontier.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 bg-[#07111F] text-white px-8 py-4 rounded-xl font-medium hover:bg-[#0D1726] transition-all duration-300"
+                className="inline-flex items-center gap-3 bg-[#07111F] text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-medium hover:bg-[#0D1726] transition-all duration-300"
               >
 
                 Explore Industry Report →
@@ -196,29 +199,37 @@ export default function InsightsPage() {
       </section>
 
       {/* LATEST INSIGHTS */}
-      <section className="bg-[#07111F] py-18 px-6 lg:px-16">
+      <section className="bg-[#07111F] py-12 sm:py-16 lg:py-18 px-5 sm:px-6 lg:px-6">
 
         <div className="max-w-7xl mx-auto">
 
           {/* TOP */}
-          <div className="mb-12">
+          <div className="max-w-[780px] mb-9 sm:mb-11">
 
-            <p className="text-[#C89B3C] uppercase tracking-[4px] text-sm mb-4">
+            <p className="text-[#C89B3C] uppercase tracking-[4px] text-[11px] sm:text-sm mb-4">
 
               Latest Insights
 
             </p>
 
-            <h2 className="text-white text-[40px] lg:text-[54px] font-bold">
+            <h2 className="text-white text-[30px] sm:text-[42px] lg:text-[54px] font-bold leading-[1.08] mb-5">
 
               Market Intelligence
 
             </h2>
 
+            <p className="text-gray-400 text-[15px] sm:text-[17px] leading-7 sm:leading-8">
+
+              Stay informed with construction workforce trends, hiring
+              strategies, compensation insights, and market developments
+              shaping the built environment sector.
+
+            </p>
+
           </div>
 
           {/* GRID */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
 
             {insights.map((item, index) => (
 
@@ -228,26 +239,26 @@ export default function InsightsPage() {
                 className="group"
               >
 
-                <div className="bg-[#0D1726] rounded-[28px] overflow-hidden border border-white/5 hover:border-[#C89B3C]/30 transition-all duration-500">
+                <div className="bg-[#0D1726] rounded-[24px] overflow-hidden border border-white/5 hover:border-[#C89B3C]/30 transition-all duration-500 h-full">
 
                   {/* IMAGE */}
                   <div
-                    className="h-[250px] bg-cover bg-center transition duration-700 group-hover:scale-105"
+                    className="h-[220px] sm:h-[240px] bg-cover bg-center transition duration-700 group-hover:scale-105"
                     style={{
                       backgroundImage: `url(${item.image})`,
                     }}
                   />
 
                   {/* CONTENT */}
-                  <div className="p-7">
+                  <div className="p-5 sm:p-6">
 
-                    <p className="text-[#C89B3C] text-sm uppercase tracking-[3px] mb-4">
+                    <p className="text-[#C89B3C] text-[11px] sm:text-sm uppercase tracking-[3px] mb-4">
 
                       {item.category}
 
                     </p>
 
-                    <h3 className="text-white text-[28px] font-bold leading-tight mb-5">
+                    <h3 className="text-white text-[24px] sm:text-[28px] font-bold leading-tight mb-5">
 
                       {item.title}
 
@@ -255,12 +266,16 @@ export default function InsightsPage() {
 
                     <div className="flex items-center gap-3">
 
-                      <p className="text-white font-medium">
+                      <p className="text-white text-[15px] font-medium">
+
                         Read Insight
+
                       </p>
 
-                      <span className="text-[#C89B3C] text-2xl transition duration-300 group-hover:translate-x-2">
+                      <span className="text-[#C89B3C] text-xl sm:text-2xl transition duration-300 group-hover:translate-x-2">
+
                         →
+
                       </span>
 
                     </div>
@@ -280,29 +295,36 @@ export default function InsightsPage() {
       </section>
 
       {/* INDUSTRY RESOURCES */}
-      <section className="bg-[#F7F7F7] py-18 px-6 lg:px-16">
+      <section className="bg-[#F7F7F7] py-12 sm:py-16 lg:py-18 px-5 sm:px-6 lg:px-6">
 
         <div className="max-w-7xl mx-auto">
 
           {/* TOP */}
-          <div className="mb-12 text-center">
+          <div className="text-center max-w-[860px] mx-auto mb-9 sm:mb-11">
 
-            <p className="text-[#C89B3C] uppercase tracking-[4px] text-sm mb-4">
+            <p className="text-[#C89B3C] uppercase tracking-[4px] text-[11px] sm:text-sm mb-4">
 
               Industry Resources
 
             </p>
 
-            <h2 className="text-[#07111F] text-[40px] lg:text-[54px] font-bold">
+            <h2 className="text-[#07111F] text-[30px] sm:text-[42px] lg:text-[54px] font-bold leading-[1.08] mb-5">
 
               Trusted Market Sources
 
             </h2>
 
+            <p className="text-gray-600 text-[15px] sm:text-[17px] leading-7 sm:leading-8">
+
+              Access trusted construction news, workforce intelligence,
+              infrastructure insights, and industry-leading market analysis.
+
+            </p>
+
           </div>
 
           {/* GRID */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
 
             {resources.map((item, index) => (
 
@@ -311,16 +333,16 @@ export default function InsightsPage() {
                 href={item.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-white rounded-[24px] p-7 border border-black/5 hover:shadow-[0_10px_35px_rgba(0,0,0,0.08)] transition-all duration-500"
+                className="bg-white rounded-[24px] p-5 sm:p-6 border border-black/5 hover:shadow-[0_10px_35px_rgba(0,0,0,0.08)] transition-all duration-500"
               >
 
-                <h3 className="text-[#07111F] text-[24px] font-bold leading-tight mb-4">
+                <h3 className="text-[#07111F] text-[22px] sm:text-[24px] font-bold leading-tight mb-4">
 
                   {item.title}
 
                 </h3>
 
-                <p className="text-gray-500 leading-8 text-[15px] mb-6">
+                <p className="text-gray-500 leading-7 text-[14px] sm:text-[15px] mb-6">
 
                   {item.description}
 
@@ -328,12 +350,16 @@ export default function InsightsPage() {
 
                 <div className="flex items-center gap-3">
 
-                  <p className="text-[#07111F] font-semibold">
+                  <p className="text-[#07111F] text-[15px] font-semibold">
+
                     Visit Resource
+
                   </p>
 
-                  <span className="text-[#C89B3C] text-2xl">
+                  <span className="text-[#C89B3C] text-xl sm:text-2xl">
+
                     →
+
                   </span>
 
                 </div>
@@ -348,8 +374,10 @@ export default function InsightsPage() {
 
       </section>
 
+      {/* CTA */}
       <HomeCTA />
 
+      {/* FOOTER */}
       <Footer />
 
     </main>

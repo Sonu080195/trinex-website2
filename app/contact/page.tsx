@@ -13,15 +13,10 @@ export default function ContactPage() {
       "Alabama",
       "Alaska",
       "Arizona",
-      "Arkansas",
       "California",
       "Colorado",
-      "Connecticut",
-      "Delaware",
       "Florida",
       "Georgia",
-      "Hawaii",
-      "Idaho",
       "Illinois",
       "Maryland",
       "Missouri",
@@ -78,7 +73,7 @@ export default function ContactPage() {
     },
 
     India: {
-      phone: "+91 98765 43210",
+      phone: "+91 99671 44597",
       hours: "Mon - Sat | 9AM - 7PM",
       email: "india@rudron.com",
     },
@@ -90,7 +85,7 @@ export default function ContactPage() {
     },
 
     "United Arab Emirates": {
-      phone: "+971 50 123 4567",
+      phone: "+971 56 957 5207",
       hours: "Mon - Fri | 9AM - 6PM",
       email: "uae@rudron.com",
     },
@@ -104,31 +99,31 @@ export default function ContactPage() {
       <Navbar />
 
       {/* HERO */}
-      <section className="relative min-h-[72vh] md:min-h-[75vh] flex items-center overflow-hidden">
+      <section className="relative min-h-[65vh] sm:min-h-[70vh] lg:min-h-[78vh] flex items-center overflow-hidden">
 
         {/* BG */}
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
             backgroundImage:
-              "linear-gradient(to right, rgba(7,17,31,0.96) 18%, rgba(7,17,31,0.78) 42%, rgba(7,17,31,0.18) 75%), url('/contact/contact-hero.png')",
+              "linear-gradient(to right, rgba(7,17,31,0.97) 18%, rgba(7,17,31,0.80) 42%, rgba(7,17,31,0.22) 75%), url('/contact/contact-hero.png')",
           }}
         />
 
         {/* CONTENT */}
         <div className="relative z-10 w-full">
 
-          <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-16 pt-28 sm:pt-30 lg:pt-16">
+          <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-6 pt-28 sm:pt-30 lg:pt-20">
 
-            <div className="max-w-[700px]">
+            <div className="max-w-[640px]">
 
-              <p className="text-[#C89B3C] uppercase tracking-[3px] sm:tracking-[4px] text-[11px] sm:text-sm mb-4">
+              <p className="text-[#C89B3C] uppercase tracking-[4px] text-[11px] sm:text-sm mb-4">
 
                 Contact RUDRON
 
               </p>
 
-              <h1 className="text-white font-bold leading-[1.05] text-[34px] sm:text-[42px] md:text-[54px] lg:text-[60px] mb-5 sm:mb-6">
+              <h1 className="text-white font-bold leading-[1.03] text-[36px] sm:text-[48px] lg:text-[64px] mb-5">
 
                 Let’s Build
                 <br />
@@ -140,10 +135,9 @@ export default function ContactPage() {
 
               </h1>
 
-              <p className="text-gray-300 text-[15px] sm:text-[17px] leading-7 sm:leading-8 max-w-[680px]">
+              <p className="text-gray-300 text-[15px] sm:text-[17px] leading-7 sm:leading-8 max-w-[620px]">
 
-                Whether you're hiring exceptional talent or exploring
-                your next career opportunity, our team is ready to help.
+                Whether you're hiring exceptional talent or exploring your next career opportunity, our team is ready to help.
 
               </p>
 
@@ -155,26 +149,25 @@ export default function ContactPage() {
 
       </section>
 
-      {/* COMBINED SECTION */}
-      <section className="bg-[#F7F7F7] py-12 sm:py-14 px-5 sm:px-6 lg:px-16">
+      {/* CONTACT SECTION */}
+      <section className="bg-[#F7F7F7] py-10 sm:py-14 lg:py-16 px-5 sm:px-6 lg:px-6">
 
         <div className="max-w-7xl mx-auto">
 
-          <div className="grid grid-cols-1 lg:grid-cols-[0.88fr_1.12fr] gap-5 lg:gap-6 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-5 lg:gap-6 items-start">
 
-            {/* LEFT PANEL */}
-            <div className="bg-white rounded-[24px] sm:rounded-[28px] p-5 sm:p-6 lg:p-7 border border-black/5">
+            {/* LEFT */}
+            <div className="bg-white rounded-[24px] sm:rounded-[28px] border border-black/5 p-5 sm:p-6 lg:p-7">
 
-              {/* TITLE */}
-              <div className="mb-7 sm:mb-8">
+              <div className="mb-7">
 
-                <p className="text-[#C89B3C] uppercase tracking-[3px] sm:tracking-[4px] text-[11px] sm:text-sm mb-3">
+                <p className="text-[#C89B3C] uppercase tracking-[4px] text-[11px] sm:text-sm mb-3">
 
                   Contact Information
 
                 </p>
 
-                <h2 className="text-[#07111F] text-[30px] sm:text-3xl lg:text-[42px] font-bold leading-tight">
+                <h2 className="text-[#07111F] text-[30px] sm:text-[38px] lg:text-[44px] font-bold leading-[1.1]">
 
                   Connect With
                   Our Team
@@ -184,7 +177,7 @@ export default function ContactPage() {
               </div>
 
               {/* COUNTRY */}
-              <div className="mb-5 sm:mb-6">
+              <div className="mb-5">
 
                 <label className="block text-[#07111F] text-[14px] font-medium mb-2">
 
@@ -195,7 +188,7 @@ export default function ContactPage() {
                 <select
                   value={selectedCountry}
                   onChange={(e) => setSelectedCountry(e.target.value)}
-                  className="w-full border border-black/10 rounded-xl px-4 sm:px-5 py-3 text-[#07111F] outline-none text-[14px] sm:text-[15px]"
+                  className="w-full border border-black/10 rounded-xl px-4 py-3 text-[#07111F] outline-none text-[14px] sm:text-[15px]"
                 >
 
                   {Object.keys(countryInfo).map((country) => (
@@ -211,64 +204,76 @@ export default function ContactPage() {
               </div>
 
               {/* INFO CARDS */}
-              <div className="space-y-3 sm:space-y-4">
+              <div className="space-y-3">
 
-                <div className="border border-black/5 rounded-[18px] sm:rounded-[20px] p-4 sm:p-5">
+                <div className="border border-black/5 rounded-[18px] p-4 sm:p-5">
 
-                  <h3 className="text-[#07111F] font-semibold text-[16px] sm:text-[17px] mb-2">
+                  <h3 className="text-[#07111F] font-semibold text-[16px] mb-2">
+
                     Call Us
+
                   </h3>
 
                   <p className="text-gray-600 text-[14px] sm:text-[15px]">
+
                     {countryInfo[selectedCountry].phone}
+
                   </p>
 
                 </div>
 
-                <div className="border border-black/5 rounded-[18px] sm:rounded-[20px] p-4 sm:p-5">
+                <div className="border border-black/5 rounded-[18px] p-4 sm:p-5">
 
-                  <h3 className="text-[#07111F] font-semibold text-[16px] sm:text-[17px] mb-2">
+                  <h3 className="text-[#07111F] font-semibold text-[16px] mb-2">
+
                     Email
+
                   </h3>
 
                   <p className="text-gray-600 text-[14px] sm:text-[15px] break-all">
+
                     {countryInfo[selectedCountry].email}
+
                   </p>
 
                 </div>
 
-                <div className="border border-black/5 rounded-[18px] sm:rounded-[20px] p-4 sm:p-5">
+                <div className="border border-black/5 rounded-[18px] p-4 sm:p-5">
 
-                  <h3 className="text-[#07111F] font-semibold text-[16px] sm:text-[17px] mb-2">
+                  <h3 className="text-[#07111F] font-semibold text-[16px] mb-2">
+
                     Business Hours
+
                   </h3>
 
                   <p className="text-gray-600 text-[14px] sm:text-[15px]">
+
                     {countryInfo[selectedCountry].hours}
+
                   </p>
 
                 </div>
 
               </div>
 
-              {/* GLOBAL */}
-              <div className="mt-7 sm:mt-8 pt-5 sm:pt-6 border-t border-black/10">
+              {/* INFO */}
+              <div className="mt-7 pt-6 border-t border-black/10">
 
-                <p className="text-[#C89B3C] uppercase tracking-[3px] text-[11px] sm:text-xs mb-3">
+                <p className="text-[#C89B3C] uppercase tracking-[4px] text-[11px] sm:text-xs mb-3">
 
-                  Contact Us
+                  Global Recruitment Support
 
                 </p>
 
-                <p className="text-gray-600 leading-7 text-[14px] sm:text-[15px] mb-5">
+                <p className="text-gray-600 leading-7 text-[14px] sm:text-[15px] mb-4">
 
-                  Need to grow your team, explore new career opportunities, or get expert recruiting insight? RUDRON Global Talent Solution delivers a tailored approach focused on connecting exceptional talent with leading companies.
+                  RUDRON Global Talent Solutions partners with leading construction and infrastructure firms across commercial, industrial, mission critical, and residential sectors.
 
                 </p>
 
                 <p className="text-gray-600 leading-7 text-[14px] sm:text-[15px]">
 
-                  Submit the form, and our team will reach out shortly to assist you.
+                  Submit the form and our recruitment team will connect with you shortly.
 
                 </p>
 
@@ -276,19 +281,18 @@ export default function ContactPage() {
 
             </div>
 
-            {/* RIGHT PANEL */}
+            {/* RIGHT */}
             <div className="bg-[#0D1726] rounded-[24px] sm:rounded-[28px] border border-white/10 p-5 sm:p-6 lg:p-7">
 
-              {/* TOP */}
-              <div className="mb-7 sm:mb-8">
+              <div className="mb-7">
 
-                <p className="text-[#C89B3C] uppercase tracking-[3px] sm:tracking-[4px] text-[11px] sm:text-sm mb-3">
+                <p className="text-[#C89B3C] uppercase tracking-[4px] text-[11px] sm:text-sm mb-3">
 
                   Send An Inquiry
 
                 </p>
 
-                <h2 className="text-white text-[30px] sm:text-3xl lg:text-[42px] font-bold leading-tight">
+                <h2 className="text-white text-[30px] sm:text-[38px] lg:text-[44px] font-bold leading-[1.1]">
 
                   Let’s Start
                   The Conversation
@@ -297,7 +301,6 @@ export default function ContactPage() {
 
               </div>
 
-              {/* FORM */}
               <form>
 
                 {/* ROW 1 */}
@@ -306,13 +309,13 @@ export default function ContactPage() {
                   <input
                     type="text"
                     placeholder="Full Name"
-                    className="bg-[#07111F] border border-white/10 rounded-xl px-4 sm:px-5 py-3 text-white outline-none text-[14px] sm:text-[15px]"
+                    className="bg-[#07111F] border border-white/10 rounded-xl px-4 py-3 text-white outline-none text-[14px] sm:text-[15px]"
                   />
 
                   <input
                     type="email"
                     placeholder="Email Address"
-                    className="bg-[#07111F] border border-white/10 rounded-xl px-4 sm:px-5 py-3 text-white outline-none text-[14px] sm:text-[15px]"
+                    className="bg-[#07111F] border border-white/10 rounded-xl px-4 py-3 text-white outline-none text-[14px] sm:text-[15px]"
                   />
 
                 </div>
@@ -323,13 +326,13 @@ export default function ContactPage() {
                   <input
                     type="text"
                     placeholder="Company Name"
-                    className="bg-[#07111F] border border-white/10 rounded-xl px-4 sm:px-5 py-3 text-white outline-none text-[14px] sm:text-[15px]"
+                    className="bg-[#07111F] border border-white/10 rounded-xl px-4 py-3 text-white outline-none text-[14px] sm:text-[15px]"
                   />
 
                   <input
                     type="text"
                     placeholder="Phone Number (Optional)"
-                    className="bg-[#07111F] border border-white/10 rounded-xl px-4 sm:px-5 py-3 text-white outline-none text-[14px] sm:text-[15px]"
+                    className="bg-[#07111F] border border-white/10 rounded-xl px-4 py-3 text-white outline-none text-[14px] sm:text-[15px]"
                   />
 
                 </div>
@@ -340,7 +343,7 @@ export default function ContactPage() {
                   <select
                     value={selectedCountry}
                     onChange={(e) => setSelectedCountry(e.target.value)}
-                    className="bg-[#07111F] border border-white/10 rounded-xl px-4 sm:px-5 py-3 text-white outline-none text-[14px] sm:text-[15px]"
+                    className="bg-[#07111F] border border-white/10 rounded-xl px-4 py-3 text-white outline-none text-[14px] sm:text-[15px]"
                   >
 
                     {Object.keys(statesByCountry).map((country) => (
@@ -354,7 +357,7 @@ export default function ContactPage() {
                   </select>
 
                   <select
-                    className="bg-[#07111F] border border-white/10 rounded-xl px-4 sm:px-5 py-3 text-white outline-none text-[14px] sm:text-[15px]"
+                    className="bg-[#07111F] border border-white/10 rounded-xl px-4 py-3 text-white outline-none text-[14px] sm:text-[15px]"
                   >
 
                     <option>Select State</option>
@@ -375,7 +378,7 @@ export default function ContactPage() {
                 <div className="mb-4">
 
                   <select
-                    className="w-full bg-[#07111F] border border-white/10 rounded-xl px-4 sm:px-5 py-3 text-white outline-none text-[14px] sm:text-[15px]"
+                    className="w-full bg-[#07111F] border border-white/10 rounded-xl px-4 py-3 text-white outline-none text-[14px] sm:text-[15px]"
                   >
 
                     <option>Service Needed</option>
@@ -391,15 +394,15 @@ export default function ContactPage() {
                 <div className="mb-4">
 
                   <textarea
-                    rows={4}
+                    rows={5}
                     placeholder="Tell us about your hiring needs or career goals..."
-                    className="w-full bg-[#07111F] border border-white/10 rounded-xl px-4 sm:px-5 py-4 text-white outline-none resize-none text-[14px] sm:text-[15px]"
+                    className="w-full bg-[#07111F] border border-white/10 rounded-xl px-4 py-4 text-white outline-none resize-none text-[14px] sm:text-[15px]"
                   />
 
                 </div>
 
                 {/* FILE */}
-                <div className="mb-2">
+                <div className="mb-3">
 
                   <input
                     type="file"
@@ -415,7 +418,9 @@ export default function ContactPage() {
                   />
 
                   <p className="text-gray-500 text-[12px] sm:text-sm mt-2">
+
                     Max. file size: 10 MB.
+
                   </p>
 
                 </div>
@@ -431,12 +436,10 @@ export default function ContactPage() {
 
                   <label
                     htmlFor="consent"
-                    className="text-gray-400 leading-6 sm:leading-7 text-[13px] sm:text-[14px]"
+                    className="text-gray-400 leading-6 text-[13px] sm:text-[14px]"
                   >
 
-                    I consent to RUDRON Global Talent Solutions storing
-                    and sharing my information for recruitment-related
-                    opportunities.
+                    I consent to RUDRON Global Talent Solutions storing and sharing my information for recruitment-related opportunities.
 
                   </label>
 
