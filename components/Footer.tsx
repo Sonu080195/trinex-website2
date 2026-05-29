@@ -30,7 +30,7 @@ export default function Footer() {
 
               </div>
 
-              <p className="text-gray-400 text-[12px] leading-8 max-w-[480px]">
+              <p className="text-gray-400 text-[14px] leading-8 max-w-[480px]">
 
                 RUDRON Global Talent Solutions is a specialist recruitment
                 partner serving the Architecture, Engineering,

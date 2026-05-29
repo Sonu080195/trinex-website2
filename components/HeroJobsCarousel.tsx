@@ -66,7 +66,7 @@ export default function HeroJobsCarousel() {
         </div>
 
         {/* CARD */}
-        <div className="relative overflow-hidden rounded-[32px] h-[420px] lg:h-[500px]">
+        <div className="relative overflow-hidden rounded-[28px] min-h-[720px] sm:min-h-[560px] lg:h-[500px]">
 
           {/* BG */}
           <div
@@ -85,9 +85,9 @@ export default function HeroJobsCarousel() {
           />
 
           {/* CONTENT */}
-          <div className="relative z-10 h-full flex items-center">
+          <div className="relative z-10 h-full flex items-start sm:items-center">
 
-            <div className="max-w-7xl mx-auto w-full px-6 lg:px-10">
+            <div className="max-w-7xl mx-auto w-full px-5 sm:px-6 lg:px-10 py-8 sm:py-0">
 
               <div className="max-w-[700px]">
 
@@ -113,21 +113,21 @@ export default function HeroJobsCarousel() {
                 </div>
 
                 {/* TITLE */}
-                <h3 className="text-white text-[24px] sm:text-[38px] lg:text-[48px] font-bold leading-[1.02] mb-4">
+                <h3 className="text-white text-[22px] sm:text-[38px] lg:text-[48px] font-bold leading-[1.08] mb-3">
 
                   {activeJob.title}
 
                 </h3>
 
                 {/* COMPANY */}
-                <p className="text-[#C89B3C] text-[18px] sm:text-[20px] mb-6">
+                <p className="text-[#C89B3C] text-[15px] sm:text-[20px] mb-4">
 
                   {activeJob.company}
 
                 </p>
 
                 {/* DETAILS */}
-                <div className="flex flex-wrap gap-5 mb-7">
+                <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-5 mb-5">
 
                   <div className="flex items-center gap-2 text-gray-300">
 
@@ -156,14 +156,14 @@ export default function HeroJobsCarousel() {
                 </div>
 
                 {/* DESCRIPTION */}
-                <p className="text-gray-300 text-[15px] sm:text-[16px] leading-8 mb-8 max-w-[650px]">
+                <p className="text-gray-300 text-[14px] sm:text-[16px] leading-7 mb-6 max-w-[650px] line-clamp-4 sm:line-clamp-none">
 
                   {activeJob.description}
 
                 </p>
 
                 {/* CTA */}
-                <div className="flex flex-col sm:flex-row gap-4">
+                <div className="flex flex-col sm:flex-row gap-3">
 
                   <Link
                     href={`/jobs/${activeJob.slug}`}
@@ -186,7 +186,7 @@ export default function HeroJobsCarousel() {
                 </div>
 
                 {/* RECRUITER */}
-                <div className="mt-8 flex items-center gap-3">
+                <div className="mt-5 sm:mt-8 flex items-center gap-2">
 
                   <BriefcaseBusiness
                     size={16}
@@ -214,7 +214,7 @@ export default function HeroJobsCarousel() {
           </div>
 
           {/* INDICATORS */}
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-3 z-20">
+          <div className="absolute bottom-5 sm:bottom-8 left-1/2 -translate-x-1/2 flex gap-3 z-20">
 
             {featuredJobs.map((_, index) => (
 

@@ -43,7 +43,7 @@ export default function ValueSection() {
   ];
 
   return (
-    <section className="bg-[#07111F] py-12 px-6 lg:px-20">
+    <section className="relative bg-[#F7F7F7] py-12 px-6 lg:px-20">
 
       {/* TOP */}
       <div className="text-center mb-18">
@@ -52,7 +52,7 @@ export default function ValueSection() {
           Our Approach
         </p>
 
-        <h2 className="text-white text-[30px] sm:text-[42px] lg:text-[52px] font-bold leading-[1.08]">
+        <h2 className="text-[#07111F] text-[30px] sm:text-[42px] lg:text-[52px] font-bold leading-[1.08]">
           Recruitment Solutions That Create Value
         </h2>
 
@@ -86,12 +86,12 @@ export default function ValueSection() {
               </div>
 
               {/* TITLE */}
-              <h3 className="text-white text-2xl font-semibold mb-4">
+              <h3 className="text-[#07111F] text-2xl font-semibold mb-4">
                 {item.title}
               </h3>
 
               {/* DESCRIPTION */}
-              <p className="text-gray-400 leading-8 text-lg">
+              <p className="text-gray-400 leading-6 text-md">
                 {item.description}
               </p>
 
