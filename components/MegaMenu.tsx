@@ -56,23 +56,56 @@ export default function MegaMenu() {
 
       <div className="max-w-7xl mx-auto px-10 py-12">
 
-        <div className="grid grid-cols-4 gap-8">
+        <div
+  className="
+    flex flex-col gap-5
+    md:grid md:grid-cols-4 md:gap-8
+
+    max-h-[80vh] overflow-y-auto
+    snap-y snap-mandatory
+
+    md:max-h-none md:overflow-visible
+  "
+>
 
           {industries.map((industry, index) => (
             <div
-              key={index}
-              className="group cursor-pointer"
-            >
+  key={index}
+  className="
+    group cursor-pointer
+
+    snap-start
+    min-h-[70vh]
+
+    md:min-h-0
+  "
+>
 
               {/* IMAGE CARD */}
-              <div className="relative h-[180px] rounded-2xl overflow-hidden mb-5">
+              <div
+  className="
+    relative
+    h-[260px]
+
+    md:h-[180px]
+
+    rounded-2xl
+    overflow-hidden
+    mb-5
+  "
+>
 
                 <div
-                  className="absolute inset-0 bg-cover bg-center transition duration-700 group-hover:scale-110"
-                  style={{
-                    backgroundImage: `url(${industry.image})`,
-                  }}
-                />
+  className="
+    absolute inset-0
+    bg-cover bg-center bg-no-repeat
+    transition duration-700
+    group-hover:scale-110
+  "
+  style={{
+    backgroundImage: `url(${industry.image})`,
+  }}
+/>
 
                 {/* OVERLAY */}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#07111F] via-[#07111F]/30 to-transparent" />

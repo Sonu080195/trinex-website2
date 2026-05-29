@@ -70,7 +70,7 @@ export default function WhyChooseUs() {
 
           </h2>
 
-          <p className="text-gray-500 text-[12px] sm:text-[16px] leading-7 sm:leading-6 max-w-3xl">
+          <p className="text-gray-500 text-[15px] sm:text-xl leading-7 sm:leading-9 max-w-4xl mx-auto">
 
             We deliver strategic talent solutions for construction firms, general contractors, subcontractors, and mission critical organizations across high-growth markets.
 
