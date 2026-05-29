@@ -1,150 +1,199 @@
 import Link from "next/link";
 
 export default function Footer() {
-
   return (
+    <footer className="bg-[#050D18] border-t border-white/5">
 
-    <footer className="bg-[#07111F] px-5 sm:px-6 lg:px-18 pt-12 sm:pt-14 lg:pt-16 pb-6 sm:pb-8">
+      <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-6">
 
-      <div className="max-w-7xl mx-auto">
+        {/* TOP */}
+        <div className="py-12 sm:py-14 lg:py-16 border-b border-white/10">
 
-        {/* TOP GRID */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-y-10 sm:gap-y-12 gap-x-8 border-b border-white/10 pb-10 sm:pb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
 
-          {/* BRAND */}
-          <div className="lg:col-span-1">
+            {/* BRAND */}
+            <div className="lg:col-span-2">
 
-            {/* LOGO */}
-            <img
-              src="/images/TRINEX Logo.png"
-              alt="RUDRON"
-              className="w-[135px] sm:w-[150px] mb-4 sm:mb-5"
-            />
+              <img
+                src="/images/TRINEX Logo.png"
+                alt="RUDRON"
+                className="w-[150px] sm:w-[170px] mb-5"
+              />
 
-            {/* TEXT */}
-            <p className="text-gray-400 leading-7 text-[14px] sm:text-[15px] max-w-[320px]">
+              <div className="inline-flex items-center bg-[#C89B3C]/10 border border-[#C89B3C]/20 rounded-full px-4 py-2 mb-5">
 
-              RUDRON Global Talent Solutions is a specialist recruitment firm
-              focused on the AEC & MEP industries. We connect exceptional talent
-              with leading companies to build the infrastructure of tomorrow.
+                <p className="text-[#C89B3C] text-[11px] uppercase tracking-[2px] font-medium">
 
-            </p>
+                  Serving USA • UAE • India
 
-          </div>
+                </p>
 
-          {/* EMPLOYERS */}
-          <div>
+              </div>
 
-            <h3 className="text-white text-[17px] sm:text-lg font-semibold mb-4 sm:mb-5">
-              For Employers
-            </h3>
+              <p className="text-gray-400 text-[12px] leading-8 max-w-[480px]">
 
-            <div className="flex flex-col gap-3 text-[14px] sm:text-[15px]">
+                RUDRON Global Talent Solutions is a specialist recruitment
+                partner serving the Architecture, Engineering,
+                Construction, Mechanical, Electrical and Plumbing industries.
+                We connect exceptional talent with industry-leading
+                organizations across commercial, industrial,
+                infrastructure and mission-critical markets.
 
-              <Link href="#" className="text-gray-400 hover:text-white transition">
-                Hire Talent
-              </Link>
-
-              <Link href="#" className="text-gray-400 hover:text-white transition">
-                Our Process
-              </Link>
-
-              <Link href="#" className="text-gray-400 hover:text-white transition">
-                Industries
-              </Link>
-
-              <Link href="#" className="text-gray-400 hover:text-white transition">
-                Case Studies
-              </Link>
+              </p>
 
             </div>
 
-          </div>
+            {/* COMPANY */}
+            <div>
 
-          {/* CANDIDATES */}
-          <div>
+              <h3 className="text-white text-[18px] font-semibold mb-5">
 
-            <h3 className="text-white text-[17px] sm:text-lg font-semibold mb-4 sm:mb-5">
-              For Candidates
-            </h3>
+                Company
 
-            <div className="flex flex-col gap-3 text-[14px] sm:text-[15px]">
+              </h3>
 
-              <Link href="#" className="text-gray-400 hover:text-white transition">
-                Find Jobs
-              </Link>
+              <div className="flex flex-col gap-3 text-[15px]">
 
-              <Link href="#" className="text-gray-400 hover:text-white transition">
-                Submit Resume
-              </Link>
+                <Link
+                  href="/about"
+                  className="text-gray-400 hover:text-white transition"
+                >
+                  About Us
+                </Link>
 
-              <Link href="#" className="text-gray-400 hover:text-white transition">
-                Career Resources
-              </Link>
+                <Link
+                  href="/industries"
+                  className="text-gray-400 hover:text-white transition"
+                >
+                  Industries
+                </Link>
 
-              <Link href="#" className="text-gray-400 hover:text-white transition">
-                Interview Tips
-              </Link>
+                <Link
+                  href="/insights"
+                  className="text-gray-400 hover:text-white transition"
+                >
+                  Insights
+                </Link>
+
+                <Link
+                  href="/contact"
+                  className="text-gray-400 hover:text-white transition"
+                >
+                  Contact
+                </Link>
+
+              </div>
 
             </div>
 
-          </div>
+            {/* SERVICES */}
+            <div>
 
-          {/* SPECIALISATIONS */}
-          <div>
+              <h3 className="text-white text-[18px] font-semibold mb-5">
 
-            <h3 className="text-white text-[17px] sm:text-lg font-semibold mb-4 sm:mb-5">
-              Specialisations
-            </h3>
+                Services
 
-            <div className="flex flex-col gap-3 text-[14px] sm:text-[15px]">
+              </h3>
 
-              <Link href="#" className="text-gray-400 hover:text-white transition">
-                AEC Recruitment
-              </Link>
+              <div className="flex flex-col gap-3 text-[15px]">
 
-              <Link href="#" className="text-gray-400 hover:text-white transition">
-                MEP Recruitment
-              </Link>
+                <Link
+                  href="/employers"
+                  className="text-gray-400 hover:text-white transition"
+                >
+                  For Employers
+                </Link>
 
-              <Link href="#" className="text-gray-400 hover:text-white transition">
-                Mission Critical
-              </Link>
+                <Link
+                  href="/candidates"
+                  className="text-gray-400 hover:text-white transition"
+                >
+                  For Candidates
+                </Link>
 
-              <Link href="#" className="text-gray-400 hover:text-white transition">
-                Leadership Hiring
-              </Link>
+                <Link
+                  href="/jobs"
+                  className="text-gray-400 hover:text-white transition"
+                >
+                  Browse Jobs
+                </Link>
+
+                <Link
+                  href="/contact"
+                  className="text-gray-400 hover:text-white transition"
+                >
+                  Request Talent
+                </Link>
+
+              </div>
 
             </div>
 
-          </div>
+            {/* CONTACT */}
+            <div>
 
-          {/* CONTACT */}
-          <div>
+              <h3 className="text-white text-[18px] font-semibold mb-5">
 
-            <h3 className="text-white text-[17px] sm:text-lg font-semibold mb-4 sm:mb-5">
-              Contact Us
-            </h3>
+                Contact
 
-            <div className="flex flex-col gap-4 text-gray-400 text-[14px] sm:text-[15px]">
+              </h3>
 
-              <div>
-                <p className="text-[#C89B3C] mb-1">USA</p>
-                <p>+1 (239) 309 3969</p>
-              </div>
+              <div className="space-y-4">
 
-              <div>
-                <p className="text-[#C89B3C] mb-1">UAE</p>
-                <p>+971 56 957 5207</p>
-              </div>
+                <div>
 
-              <div>
-                <p className="text-[#C89B3C] mb-1">India</p>
-                <p>+91 99671 44597</p>
-              </div>
+                  <p className="text-[#C89B3C] text-sm mb-1">
 
-              <div>
-                <p>info@rudron.com</p>
+                    United States
+
+                  </p>
+
+                  <p className="text-gray-400 text-[15px]">
+
+                    +1 (239) 309 3969
+
+                  </p>
+
+                </div>
+
+                <div>
+
+                  <p className="text-[#C89B3C] text-sm mb-1">
+
+                    United Arab Emirates
+
+                  </p>
+
+                  <p className="text-gray-400 text-[15px]">
+
+                    +971 56 957 5207
+
+                  </p>
+
+                </div>
+
+                <div>
+
+                  <p className="text-[#C89B3C] text-sm mb-1">
+
+                    India
+
+                  </p>
+
+                  <p className="text-gray-400 text-[15px]">
+
+                    +91 99671 44597
+
+                  </p>
+
+                </div>
+
+                <p className="text-gray-400 text-[15px]">
+
+                  admin@rudron.com
+
+                </p>
+
               </div>
 
             </div>
@@ -154,24 +203,29 @@ export default function Footer() {
         </div>
 
         {/* BOTTOM */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-6 pt-6 sm:pt-7">
+        <div className="py-6 flex flex-col md:flex-row items-center justify-between gap-4">
 
-          <p className="text-gray-500 text-[12px] sm:text-sm leading-6">
+          <p className="text-gray-500 text-[13px] text-center md:text-left">
 
             © 2026 RUDRON Global Talent Solutions. All Rights Reserved.
 
           </p>
 
-          <div className="flex items-center gap-5 sm:gap-8 text-[12px] sm:text-sm">
+          <div className="flex items-center gap-6 text-[13px]">
 
-            <Link href="#" className="text-gray-500 hover:text-white transition">
+            <Link
+              href="/privacy-policy"
+              className="text-gray-500 hover:text-white transition"
+            >
               Privacy Policy
             </Link>
 
-            <Link href="#" className="text-gray-500 hover:text-white transition">
+            <Link
+              href="/terms"
+              className="text-gray-500 hover:text-white transition"
+            >
               Terms & Conditions
             </Link>
-
           </div>
 
         </div>
@@ -179,6 +233,5 @@ export default function Footer() {
       </div>
 
     </footer>
-
   );
 }

@@ -45,7 +45,7 @@ export default function HomeCTA() {
 
               </p>
 
-              <h2 className="text-[#07111F] text-[34px] lg:text-[46px] font-bold leading-tight mb-5">
+              <h2 className="text-[#07111F] text-[30px] lg:text-[42px] font-bold leading-tight mb-5">
 
                 Looking To Hire Or Exploring
                 <br />
@@ -54,7 +54,7 @@ export default function HomeCTA() {
 
               </h2>
 
-              <p className="text-gray-600 text-lg leading-8 max-w-2xl">
+              <p className="text-gray-600 text-md leading-8 max-w-2xl">
 
                 Whether you're hiring top talent or looking for your next
                 career move, we're here to help you take the next step.

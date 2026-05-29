@@ -43,23 +43,23 @@ export default function ValueSection() {
   ];
 
   return (
-    <section className="bg-[#07111F] py-14 px-6 lg:px-20">
+    <section className="bg-[#07111F] py-12 px-6 lg:px-20">
 
       {/* TOP */}
       <div className="text-center mb-18">
 
-        <p className="text-[#C89B3C] uppercase tracking-[4px] text-sm mb-5">
+        <p className="text-[#C89B3C] uppercase tracking-[4px] text-sm mb-7">
           Our Approach
         </p>
 
-        <h2 className="text-white text-5xl lg:text-6xl font-bold mb-6">
+        <h2 className="text-white text-[30px] sm:text-[42px] lg:text-[52px] font-bold leading-[1.08]">
           Recruitment Solutions That Create Value
         </h2>
 
       </div>
 
       {/* GRID */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
 
         {items.map((item, index) => {
 

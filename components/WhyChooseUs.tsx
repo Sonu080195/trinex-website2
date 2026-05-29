@@ -45,7 +45,7 @@ export default function WhyChooseUs() {
 
   return (
 
-    <section className="relative bg-[#07111F] overflow-hidden py-14 sm:py-16 lg:py-20 px-5 sm:px-6 lg:px-16">
+    <section className="relative bg-[#07111F] overflow-hidden py-12 sm:py-16 lg:py-20 px-5 sm:px-6 lg:px-16">
 
       {/* BACKGROUND GLOW */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(200,155,60,0.12),transparent_30%)]" />
@@ -55,13 +55,13 @@ export default function WhyChooseUs() {
         {/* TOP */}
         <div className="max-w-3xl mb-10 sm:mb-14">
 
-          <p className="text-[#C89B3C] uppercase tracking-[3px] sm:tracking-[4px] text-[11px] sm:text-sm mb-4">
+          <p className="text-[#C89B3C] uppercase tracking-[3px] sm:tracking-[4px] text-[11px] sm:text-sm mb-5">
 
             Why Industry Leaders Choose RUDRON
 
           </p>
 
-          <h2 className="text-white text-[32px] sm:text-[42px] lg:text-[56px] font-bold leading-[1.08] mb-5">
+        <h2 className="text-white text-[30px] sm:text-[42px] md:text-[52px] lg:text-[58px] font-bold leading-[1.02] mb-4">
 
             Recruitment Built For
             <br />
@@ -70,7 +70,7 @@ export default function WhyChooseUs() {
 
           </h2>
 
-          <p className="text-gray-400 text-[14px] sm:text-[17px] leading-7 sm:leading-8 max-w-2xl">
+          <p className="text-gray-500 text-[12px] sm:text-[16px] leading-7 sm:leading-6 max-w-3xl">
 
             We deliver strategic talent solutions for construction firms, general contractors, subcontractors, and mission critical organizations across high-growth markets.
 

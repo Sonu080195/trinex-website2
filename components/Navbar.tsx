@@ -102,10 +102,10 @@ export default function Navbar() {
             </Link>
 
             <Link
-              href="/specialisations"
+              href="/insights"
               className="hover:text-[#C89B3C] transition duration-300"
             >
-              Specialisations
+              Insights
             </Link>
 
             <Link
@@ -241,9 +241,10 @@ export default function Navbar() {
               {[
                 ["Home", "/"],
                 ["About", "/about"],
-                ["Industries", "/industries"],
                 ["Employers", "/employers"],
                 ["Candidates", "/candidates"],
+                ["Industries", "/industries"],
+                ["Insights", "/insights"],
                 ["Contact", "/contact"],
               ].map(([label, href]) => (
 

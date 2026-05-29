@@ -181,7 +181,7 @@ export default function Specialisations() {
     <section className="relative bg-[#F7F7F7] py-12 sm:py-14 px-5 sm:px-6 lg:px-20 overflow-hidden">
 
       {/* TOP TEXT */}
-      <div className="text-center mb-10 sm:mb-16">
+      <div className="text-center mb-6 sm:mb-16">
 
         <p className="text-[#C89B3C] uppercase tracking-[3px] sm:tracking-[4px] text-[11px] sm:text-sm mb-4 sm:mb-5">
 
@@ -189,7 +189,7 @@ export default function Specialisations() {
 
         </p>
 
-        <h2 className="text-[#07111F] text-[34px] sm:text-5xl lg:text-6xl font-bold leading-[1.08] mb-5 sm:mb-6">
+        <h2 className="text-[#07111F] text-[30px] sm:text-[42px] md:text-[52px] lg:text-[58px] font-bold leading-[1.08] mb-4">
 
           Expertise Across
           <br />
@@ -337,7 +337,7 @@ export default function Specialisations() {
     <div className="max-w-7xl mx-auto px-5 sm:px-8 py-14 sm:py-20">
 
       {/* TOP */}
-      <div className="flex items-start justify-between mb-10 sm:mb-16 gap-5">
+      <div className="flex items-start justify-between mb-6 sm:mb-16 gap-5">
 
         <div>
 

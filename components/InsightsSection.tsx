@@ -36,7 +36,7 @@ export default function InsightsSection() {
 
   return (
 
-    <section className="bg-[#F7F7F7] px-5 sm:px-6 lg:px-12 pb-14 sm:pb-18 overflow-hidden">
+    <section className="bg-[#F7F7F7] px-5 sm:px-4 lg:px-10 pb-12 sm:pb-16 overflow-hidden">
 
       <div className="max-w-7xl mx-auto">
 
@@ -54,13 +54,13 @@ export default function InsightsSection() {
 
             </p>
 
-            <h2 className="text-[#07111F] text-[32px] sm:text-[42px] md:text-[52px] lg:text-[58px] font-bold leading-[1.08] mb-4">
+            <h2 className="text-[#07111F] text-[30px] sm:text-[42px] md:text-[52px] lg:text-[58px] font-bold leading-[1.02] mb-4">
 
               Stay Ahead Of The Industry
 
             </h2>
 
-            <p className="text-gray-500 text-[14px] sm:text-lg leading-7 sm:leading-6 max-w-3xl">
+            <p className="text-gray-500 text-[12px] sm:text-[16px] leading-7 sm:leading-6 max-w-3xl">
 
               Explore recruitment trends, salary insights, and market updates
               shaping the future of AEC & MEP hiring.
@@ -185,7 +185,7 @@ export default function InsightsSection() {
                 <div className="absolute inset-0 bg-gradient-to-t from-[#07111F]/70 to-transparent" />
 
                 {/* CATEGORY */}
-                <div className="absolute bottom-5 left-5">
+                <div className="absolute bottom-3 left-3">
 
                   <div className="bg-[#C89B3C] text-black text-xs font-semibold uppercase tracking-[2px] px-4 py-2 rounded-full">
 

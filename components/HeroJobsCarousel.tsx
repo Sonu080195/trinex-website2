@@ -3,6 +3,13 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
+import {
+  MapPin,
+  DollarSign,
+  Clock3,
+  BriefcaseBusiness,
+} from "lucide-react";
+
 import { jobs } from "@/data/jobs";
 
 export default function HeroJobsCarousel() {
@@ -23,7 +30,7 @@ export default function HeroJobsCarousel() {
           : prev + 1
       );
 
-    }, 5000);
+    }, 6000);
 
     return () => clearInterval(interval);
 
@@ -36,146 +43,231 @@ export default function HeroJobsCarousel() {
 
   return (
 
-    <section className="relative h-[640px] sm:h-[620px] lg:h-[560px] overflow-hidden">
+    <section className="bg-[#07111F] py-14 sm:py-16 lg:py-18 px-5 sm:px-6 lg:px-6">
 
-      {/* BG */}
-      <div
-        className="absolute inset-0 bg-cover bg-center transition-all duration-1000"
-        style={{
-          backgroundImage: `
-            linear-gradient(
-              to right,
-              rgba(7,17,31,0.96) 12%,
-              rgba(7,17,31,0.82) 42%,
-              rgba(7,17,31,0.38) 100%
-            ),
-            url(${activeJob.heroImage})
-          `,
-        }}
-      />
+      <div className="max-w-7xl mx-auto">
 
-      {/* MOBILE EXTRA OVERLAY */}
-      <div className="absolute inset-0 bg-[#07111F]/25 sm:hidden" />
+        {/* TOP */}
+        <div className="text-center mb-8 sm:mb-10">
 
-      {/* CONTENT */}
-      <div className="relative z-10 h-full flex items-center">
+          <p className="text-[#C89B3C] uppercase tracking-[4px] text-[11px] sm:text-sm mb-4">
 
-        <div className="max-w-7xl mx-auto w-full px-5 sm:px-6 lg:px-12">
+            Featured Opportunities
 
-          <div className="max-w-[620px] pt-10 sm:pt-0">
+          </p>
 
-            {/* BADGES */}
-            <div className="flex flex-wrap gap-2 sm:gap-3 mb-4">
+          <h2 className="text-white text-[30px] sm:text-[42px] lg:text-[52px] font-bold leading-[1.08]">
 
-              <div className="bg-[#C89B3C] text-black text-[10px] sm:text-xs font-semibold uppercase tracking-[2px] px-3 sm:px-4 py-2 rounded-full">
+            Executive & Project
+            Leadership Opportunities
 
-                {activeJob.specialisation}
+          </h2>
 
-              </div>
+        </div>
 
-              {activeJob.urgent && (
+        {/* CARD */}
+        <div className="relative overflow-hidden rounded-[32px] h-[420px] lg:h-[500px]">
 
-                <div className="bg-red-500 text-white text-[10px] sm:text-xs font-semibold uppercase tracking-[2px] px-3 sm:px-4 py-2 rounded-full">
+          {/* BG */}
+          <div
+            className="absolute inset-0 bg-cover bg-center transition-all duration-1000"
+            style={{
+              backgroundImage: `
+                linear-gradient(
+                  to right,
+                  rgba(7,17,31,0.97) 10%,
+                  rgba(7,17,31,0.82) 45%,
+                  rgba(7,17,31,0.35) 100%
+                ),
+                url(${activeJob.heroImage})
+              `,
+            }}
+          />
 
-                  Urgent Hiring
+          {/* CONTENT */}
+          <div className="relative z-10 h-full flex items-center">
+
+            <div className="max-w-7xl mx-auto w-full px-6 lg:px-10">
+
+              <div className="max-w-[700px]">
+
+                {/* BADGES */}
+                <div className="flex flex-wrap gap-3 mb-5">
+
+                  <div className="bg-[#C89B3C] text-black text-xs font-semibold uppercase tracking-[2px] px-4 py-2 rounded-full">
+
+                    {activeJob.specialisation}
+
+                  </div>
+
+                  {activeJob.urgent && (
+
+                    <div className="bg-red-500 text-white text-xs font-semibold uppercase tracking-[2px] px-4 py-2 rounded-full">
+
+                      Urgent Hiring
+
+                    </div>
+
+                  )}
 
                 </div>
 
-              )}
+                {/* TITLE */}
+                <h3 className="text-white text-[24px] sm:text-[38px] lg:text-[48px] font-bold leading-[1.02] mb-4">
 
-            </div>
+                  {activeJob.title}
 
-            {/* TITLE */}
-            <h1 className="text-white text-[32px] sm:text-[42px] md:text-[54px] font-bold leading-[1.04] mb-4 max-w-[95%]">
+                </h3>
 
-              {activeJob.title}
+                {/* COMPANY */}
+                <p className="text-[#C89B3C] text-[18px] sm:text-[20px] mb-6">
 
-            </h1>
+                  {activeJob.company}
 
-            {/* COMPANY */}
-            <p className="text-[#C89B3C] text-[15px] sm:text-[18px] mb-4">
+                </p>
 
-              {activeJob.company}
+                {/* DETAILS */}
+                <div className="flex flex-wrap gap-5 mb-7">
 
-            </p>
+                  <div className="flex items-center gap-2 text-gray-300">
 
-            {/* DETAILS */}
-            <div className="flex flex-wrap gap-x-5 gap-y-2 text-gray-300 text-[13px] sm:text-[17px] mb-6 sm:mb-8">
+                    <MapPin size={16} />
 
-              <p>{activeJob.location}</p>
+                    <span>{activeJob.location}</span>
 
-              <p>{activeJob.salary}</p>
+                  </div>
 
-              <p>{activeJob.postedDate}</p>
+                  <div className="flex items-center gap-2 text-gray-300">
 
-            </div>
+                    <DollarSign size={16} />
 
-            {/* DESCRIPTION */}
-            <p className="text-gray-300 text-[14px] sm:text-[15px] leading-6 sm:leading-7 max-w-2xl mb-7">
+                    <span>{activeJob.salary}</span>
 
-              {activeJob.description}
+                  </div>
 
-            </p>
+                  <div className="flex items-center gap-2 text-gray-300">
 
-            {/* BUTTONS */}
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                    <Clock3 size={16} />
 
-              <Link
-                href={`/jobs/${activeJob.slug}`}
-                className="bg-[#C89B3C] hover:bg-[#d6ab52] text-black text-[14px] sm:text-[15px] font-semibold px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl transition-all duration-300 text-center"
-              >
+                    <span>{activeJob.postedDate}</span>
 
-                View Position
+                  </div>
 
-              </Link>
+                </div>
 
-              <Link
-                href="/jobs"
-                className="border border-white/20 hover:border-[#C89B3C] text-white text-[14px] sm:text-[15px] font-semibold px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl transition-all duration-300 text-center"
-              >
+                {/* DESCRIPTION */}
+                <p className="text-gray-300 text-[15px] sm:text-[16px] leading-8 mb-8 max-w-[650px]">
 
-                Explore Opportunities
+                  {activeJob.description}
 
-              </Link>
+                </p>
 
-            </div>
+                {/* CTA */}
+                <div className="flex flex-col sm:flex-row gap-4">
 
-            {/* RECRUITER */}
-            <div className="mt-7 sm:mt-8 text-gray-400 text-[11px] sm:text-sm uppercase tracking-[2px] sm:tracking-[3px] leading-6">
+                  <Link
+                    href={`/jobs/${activeJob.slug}`}
+                    className="bg-[#C89B3C] hover:bg-[#d6ab52] text-black font-semibold px-8 py-4 rounded-xl text-center transition"
+                  >
 
-              Managed By:
-              <span className="text-white ml-2">
+                    View Position
 
-                {activeJob.recruiter}
+                  </Link>
 
-              </span>
+                  <Link
+                    href="/jobs"
+                    className="border border-white/20 hover:border-[#C89B3C] text-white font-semibold px-8 py-4 rounded-xl text-center transition"
+                  >
+
+                    Explore All Opportunities
+
+                  </Link>
+
+                </div>
+
+                {/* RECRUITER */}
+                <div className="mt-8 flex items-center gap-3">
+
+                  <BriefcaseBusiness
+                    size={16}
+                    className="text-[#C89B3C]"
+                  />
+
+                  <p className="text-gray-400 text-sm uppercase tracking-[2px]">
+
+                    Managed By
+
+                    <span className="text-white ml-2">
+
+                      {activeJob.recruiter}
+
+                    </span>
+
+                  </p>
+
+                </div>
+
+              </div>
 
             </div>
 
           </div>
 
+          {/* INDICATORS */}
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-3 z-20">
+
+            {featuredJobs.map((_, index) => (
+
+              <button
+                key={index}
+                onClick={() =>
+                  setActiveIndex(index)
+                }
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  activeIndex === index
+                    ? "w-12 bg-[#C89B3C]"
+                    : "w-2 bg-white/40"
+                }`}
+              />
+
+            ))}
+
+          </div>
+
         </div>
 
-      </div>
+        {/* STATS */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
 
-      {/* INDICATORS */}
-      <div className="absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 flex gap-2 sm:gap-3 z-20">
+          {[
+            ["100+", "Placements"],
+            ["30+", "Markets Served"],
+            ["95%", "Retention Rate"],
+            ["USA", "Nationwide Reach"],
+          ].map((item, index) => (
 
-        {featuredJobs.map((_, index) => (
+            <div
+              key={index}
+              className="bg-[#0D1726] border border-white/8 rounded-[16px] p-4 text-center"
+            >
 
-          <button
-            key={index}
-            onClick={() =>
-              setActiveIndex(index)
-            }
-            className={`h-2 rounded-full transition-all duration-300 ${
-              activeIndex === index
-                ? "w-10 sm:w-12 bg-[#C89B3C]"
-                : "w-2 bg-white/40"
-            }`}
-          />
+              <h3 className="text-[#C89B3C] text-[24px] font-bold">
 
-        ))}
+                {item[0]}
+
+              </h3>
+
+              <p className="text-gray-400 text-sm mt-1">
+
+                {item[1]}
+
+              </p>
+
+            </div>
+
+          ))}
+
+        </div>
 
       </div>
 

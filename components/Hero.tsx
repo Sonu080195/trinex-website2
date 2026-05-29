@@ -6,6 +6,7 @@ import {
   Users,
   Target,
   Globe,
+  BriefcaseBusiness,
 } from "lucide-react";
 
 import EmployerModal from "@/components/EmployerModal";
@@ -21,24 +22,26 @@ export default function Hero() {
 
   const features = [
     {
-      icon: Users,
-      title: "AEC & MEP",
-      subtitle: "Recruitment Experts",
+      icon: BriefcaseBusiness,
+      title: "Executive Search",
+      subtitle:
+        "Leadership & Strategic Hiring",
     },
     {
       icon: Target,
-      title: "Industry Focused",
-      subtitle: "Technical. Skilled. Professional.",
+      title: "Project Staffing",
+      subtitle:
+        "Project-Ready Professionals",
     },
     {
       icon: Globe,
-      title: "Global Reach",
-      subtitle: "USA | Canada | UAE | India",
+      title: "Global Talent Network",
+      subtitle:
+        "USA • Canada • UAE • India",
     },
   ];
 
   return (
-
     <>
 
       {/* EMPLOYER MODAL */}
@@ -57,73 +60,74 @@ export default function Hero() {
         }
       />
 
-      <section className="relative min-h-screen w-full overflow-hidden">
+      <section className="relative min-h-[85vh] overflow-hidden">
 
-        {/* BACKGROUND IMAGE */}
+        {/* BACKGROUND */}
         <div
-          className="
-            absolute inset-0
-            bg-cover
-            bg-[76%]
-            sm:bg-center
-          "
+          className="absolute inset-0 bg-cover bg-[76%] sm:bg-center"
           style={{
             backgroundImage:
-              "linear-gradient(to right, rgba(10,10,10,0.92) 12%, rgba(7,17,31,0.78) 40%, rgba(7,17,31,0.22) 100%), url('/hero-bg.png')",
+              "linear-gradient(to right, rgba(7,17,31,0.97) 10%, rgba(7,17,31,0.88) 42%, rgba(7,17,31,0.30) 100%), url('/hero-bg.png')",
           }}
         />
 
         {/* CONTENT */}
         <div className="relative z-10 min-h-screen flex items-center">
 
-          <div className="max-w-7xl mx-auto w-full px-5 lg:px-18">
+          <div className="max-w-7xl mx-auto w-full px-5 sm:px-6 lg:px-6">
 
-            {/* CONTENT WRAPPER */}
-            <div className="max-w-[760px] pt-28 sm:pt-36 lg:pt-48 pb-12 sm:pb-16">
+            <div className="max-w-[820px] pt-28 sm:pt-36 lg:pt-44 pb-12">
 
               {/* LABEL */}
-              <p className="text-[#C89B3C] uppercase tracking-[3px] sm:tracking-[4px] text-[10px] sm:text-sm mb-4 sm:mb-5 leading-6">
+              <p className="text-[#C89B3C] uppercase tracking-[4px] text-[11px] sm:text-sm mb-5">
 
-                AEC & MEP Recruitment Specialists
+                AEC • MEP • Construction Recruitment
 
               </p>
 
               {/* HEADING */}
-              <h1 className="text-white font-bold leading-[1.04] text-[34px] sm:text-[48px] lg:text-[64px] mb-5 sm:mb-7">
+              <h1 className="text-white font-bold leading-[1.08] text-[34px] sm:text-[48px] lg:text-[64px] mb-6">
 
-                Enabling
+                Connecting Exceptional
+                
+                <br/>
                 <span className="text-[#C89B3C]">
-                  {" "}AEC & MEP
+                  {" "} AEC & MEP
                 </span>
 
-                <br />
-
-                Leaders To Hire
+                {" "} Talent
 
                 <br />
 
-                The Right Talent.
+                With Industry Leaders
 
               </h1>
 
               {/* DESCRIPTION */}
-              <p className="text-gray-300 text-[15px] sm:text-[18px] leading-7 sm:leading-9 mb-8 sm:mb-10 max-w-[680px]">
+              <p className="text-gray-300 text-[12px] sm:text-[16px] leading-8 sm:leading-9 mb-10 max-w-[860px]">
 
-                RUDRON helps in precision hiring for AEC & MEP leaders—delivering project-ready talent from engineers to directors, across the country.
+                RUDRON is a specialist executive search and
+                recruitment partner serving the AEC & MEP industries.
+
+                We help employers secure project-ready
+                professionals, leadership talent and
+                hard-to-find technical specialists across
+                commercial, industrial, infrastructure and
+                mission-critical markets.
 
               </p>
 
               {/* BUTTONS */}
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-10 sm:mb-14">
+              <div className="flex flex-col sm:flex-row gap-4 mb-12">
 
                 <button
                   onClick={() =>
                     setEmployerOpen(true)
                   }
-                  className="bg-[#C89B3C] text-black px-6 sm:px-7 py-3.5 sm:py-4 rounded-xl text-[14px] sm:text-base font-semibold hover:opacity-90 transition w-full sm:w-auto"
+                  className="bg-[#C89B3C] text-black px-8 py-4 rounded-xl text-[15px] font-semibold hover:opacity-90 transition"
                 >
 
-                  For Employers
+                  Hire Talent
 
                 </button>
 
@@ -131,17 +135,19 @@ export default function Hero() {
                   onClick={() =>
                     setCandidateOpen(true)
                   }
-                  className="border border-white/20 text-white px-6 sm:px-7 py-3.5 sm:py-4 rounded-xl text-[14px] sm:text-base hover:border-[#C89B3C] transition w-full sm:w-auto"
+                  className="border border-white/20 text-white px-8 py-4 rounded-xl text-[15px] font-medium hover:border-[#C89B3C] transition"
                 >
 
-                  For Candidates
+                  Explore Opportunities
 
                 </button>
 
               </div>
 
-              {/* FEATURE POINTS */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:flex lg:flex-wrap gap-5 sm:gap-7 lg:gap-12">
+              
+
+              {/* FEATURES */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-10">
 
                 {features.map((item, index) => {
 
@@ -151,10 +157,9 @@ export default function Hero() {
 
                     <div
                       key={index}
-                      className="flex items-start gap-3 sm:gap-4"
+                      className="flex items-start gap-4"
                     >
 
-                      {/* ICON */}
                       <div className="mt-1 shrink-0">
 
                         <Icon
@@ -165,16 +170,15 @@ export default function Hero() {
 
                       </div>
 
-                      {/* TEXT */}
                       <div>
 
-                        <h4 className="text-white font-semibold text-[14px] sm:text-base mb-1">
+                        <h4 className="text-white font-semibold text-[15px] sm:text-base mb-1">
 
                           {item.title}
 
                         </h4>
 
-                        <p className="text-gray-300 text-[12px] sm:text-sm leading-6">
+                        <p className="text-gray-400 text-[13px] sm:text-sm leading-6">
 
                           {item.subtitle}
 
@@ -199,6 +203,5 @@ export default function Hero() {
       </section>
 
     </>
-
   );
 }
