@@ -125,7 +125,7 @@ export default function CandidateModal({
 
               {/* FORM */}
               <form
-                action="https://formsubmit.co/info@rudron.com"
+                action="#"
                 method="POST"
                 encType="multipart/form-data"
                 className="space-y-4"

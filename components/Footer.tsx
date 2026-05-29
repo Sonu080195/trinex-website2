@@ -15,7 +15,7 @@ export default function Footer() {
             <div className="lg:col-span-2">
 
               <img
-                src="/images/TRINEX Logo.png"
+                src="/images/RUDRON Logo.png"
                 alt="RUDRON"
                 className="w-[150px] sm:w-[170px] mb-5"
               />

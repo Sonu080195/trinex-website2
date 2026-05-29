@@ -27,9 +27,9 @@ export default function HomeCTA() {
               <div className="absolute inset-0 flex items-center justify-center">
 
                 <img
-                  src="/images/TRINEX Logo.png"
+                  src="/images/RUDRON Logo.png"
                   alt="RUDRON"
-                  className="w-[150px] object-contain"
+                  className="w-[200px] object-contain"
                 />
 
               </div>

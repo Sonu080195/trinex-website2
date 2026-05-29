@@ -56,9 +56,9 @@ export default function Navbar() {
           >
 
             <img
-              src="/images/TRINEX Logo.png"
+              src="/images/RUDRON Logo.png"
               alt="RUDRON Logo"
-              className="h-16 sm:h-20 lg:h-24 w-auto"
+              className="h-24 sm:h-28 lg:h-32 w-auto"
             />
 
           </Link>
@@ -217,9 +217,9 @@ export default function Navbar() {
             <div className="flex items-center justify-between mb-8">
 
               <img
-                src="/images/TRINEX Logo.png"
+                src="/images/RUDRON Logo.png"
                 alt="RUDRON"
-                className="h-14 sm:h-16 w-auto"
+                className="h-16 sm:h-18 w-auto"
               />
 
               <button
