@@ -1,6 +1,20 @@
 "use client";
 
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+import RequestCallModal from "./RequestCallModal";
+import CandidateModal from "./CandidateModal";
+
 export default function SubpageCTA() {
+
+const [showCandidateModal, setShowCandidateModal] =
+  useState(false);
+
+  const [showRequestCallModal, setShowRequestCallModal] =
+  useState(false);
+
+const router = useRouter();
 
   return (
 
@@ -36,17 +50,19 @@ export default function SubpageCTA() {
 
               <div className="flex flex-wrap gap-5">
 
-                <button className="border-2 border-[#C89B3C] text-[#07111F] px-8 py-4 rounded-xl font-semibold hover:bg-[#C89B3C] transition">
+                <button
+  onClick={() => router.push("/contact")}
+  className="border-2 border-[#C89B3C] text-[#07111F] px-8 py-4 rounded-xl font-semibold hover:bg-[#C89B3C] transition"
+>
+  Upload Job Requirement
+</button>
 
-                  Upload Job Requirement
-
-                </button>
-
-                <button className="bg-[#07111F] text-white px-8 py-4 rounded-xl font-semibold hover:opacity-90 transition">
-
-                  Request A Call
-
-                </button>
+                <button
+  onClick={() => setShowRequestCallModal(true)}
+  className="bg-[#07111F] text-white px-8 py-4 rounded-xl font-semibold hover:opacity-90 transition"
+>
+  Request A Call
+</button>
 
               </div>
 
@@ -72,17 +88,19 @@ export default function SubpageCTA() {
 
               <div className="flex flex-wrap gap-5">
 
-                <button className="border-2 border-[#C89B3C] text-[#07111F] px-8 py-4 rounded-xl font-semibold hover:bg-[#C89B3C] transition">
+                <button
+  onClick={() => setShowCandidateModal(true)}
+  className="border-2 border-[#C89B3C] text-[#07111F] px-8 py-4 rounded-xl font-semibold hover:bg-[#C89B3C] transition"
+>
+  Submit Resume
+</button>
 
-                  Submit Resume
-
-                </button>
-
-                <button className="bg-[#07111F] text-white px-8 py-4 rounded-xl font-semibold hover:opacity-90 transition">
-
-                  View Live Jobs
-
-                </button>
+                <button
+  onClick={() => router.push("/jobs")}
+  className="bg-[#07111F] text-white px-8 py-4 rounded-xl font-semibold hover:opacity-90 transition"
+>
+  View Live Jobs
+</button>
 
               </div>
 
@@ -93,6 +111,16 @@ export default function SubpageCTA() {
         </div>
 
       </div>
+
+      <RequestCallModal
+  isOpen={showRequestCallModal}
+  onClose={() => setShowRequestCallModal(false)}
+/>
+
+<CandidateModal
+  isOpen={showCandidateModal}
+  onClose={() => setShowCandidateModal(false)}
+/>
 
     </section>
 

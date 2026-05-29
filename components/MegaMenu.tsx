@@ -3,7 +3,7 @@
 const industries = [
   {
     title: "Commercial",
-    image: "public/mega-menu/Commercial.png",
+    image: "/subsectors/Commercial.png",
     items: [
       "Educational Construction",
       "Healthcare Construction",
@@ -15,7 +15,7 @@ const industries = [
 
   {
     title: "Industrial",
-    image: "public/mega-menu/Industrial.png",
+    image: "/subsectors/Industrial.png",
     items: [
       "Warehouse",
       "Distribution Centers",
@@ -27,7 +27,7 @@ const industries = [
 
   {
     title: "Residential",
-    image: "public/mega-menu/Residential.png",
+    image: "/subsectors/Residential.png",
     items: [
       "Multi-Family",
       "Single-Family",
@@ -39,7 +39,7 @@ const industries = [
 
   {
     title: "Civil",
-    image: "public/mega-menu/Civil.png",
+    image: "/subsectors/Civil.png",
     items: [
       "Roadways",
       "Rail & Metro",
