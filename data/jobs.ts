@@ -370,4 +370,254 @@ export const jobs: Job[] = [
     "401(k) with company match",
   ],
 },
+
+{
+  id: 7,
+
+  featured: false,
+
+  urgent: true,
+
+  postedDate: "1",
+
+  recruiter: "RUDRON Executive Search",
+
+  heroImage:
+    "/jobs/commercial-pm.jpg",
+
+  title: "Project Manager – Process Piping (Pharmaceutical & Data Center Projects)",
+
+  company: "Mechanical Contractor",
+
+  location: "Charlotte, NC",
+
+  salary: "$120K - $180K",
+
+  type: "Full Time",
+
+  industry: "Construction",
+
+  specialisation: "Mechanical",
+
+  slug: "project-manager-Process-Piping-charlotte",
+
+  description:
+    "A leading mechanical contractor is seeking a Project Manager with a strong piping background to join a growing mechanical contractor specializing in self-perform process piping systems. This role is focused exclusively on piping scopes across pharmaceutical and mission-critical/data center projects, offering the opportunity to manage highly technical, large-scale builds.",
+
+  responsibilities: [
+    "Manage full lifecycle of piping projects from kickoff through completion",
+    "Oversee self-perform piping scopes including labor, materials, and execution strategy",
+    "Coordinate with superintendents, field teams, engineers, and clients",
+    "Manage budgets, schedules, procurement, RFIs, submittals, and change orders",
+    "Ensure compliance with safety standards, quality control, and project specifications",
+    "Support preconstruction including estimating, planning, and constructability reviews",
+    "Maintain and grow client relationships within pharmaceutical and data center sectors",
+  ],
+
+  requirements: [
+    "5–7+ years of experience in construction project management with a focus on piping systems",
+    "Experience managing process piping or high-purity piping projects in pharma, biotech, semiconductor, or data center environments",
+    "Strong knowledge of piping materials, fabrication, and installation methods",
+    "Proven ability to manage project budgets, schedules, and field operations",
+    "Proficiency with construction software (Procore, Bluebeam, MS Project, etc.)",
+    "Industries: Pharmaceutical Manufacturing, Data Centers (Mission-Critical)",
+  ],
+
+  benefits: [
+    "Comprehensive benefits: Health, Dental, Vision",
+    "401K with company match",
+    "Relocation assistance available (if applicable)",
+    "401(k) with company match",
+  ],
+},
+
+{
+  id: 8,
+
+  featured: false,
+
+  urgent: false,
+
+  postedDate: "1",
+
+  recruiter: "RUDRON Executive Search",
+
+  heroImage:
+    "/jobs/commercial-pm.jpg",
+
+  title: "Estimator",
+
+  company: "Electrical Contractor",
+
+  location: "Seattle, WA",
+
+  salary: "$125K - $155K",
+
+  type: "Full Time",
+
+  industry: "Construction",
+
+  specialisation: "Electrical",
+
+  slug: "estimator-seattle",
+
+  description:
+    "A leading electrical contractor is seeking an experienced Electrical Estimator to join a growing commercial and industrial construction team in Seattle, WA. This role is responsible for preparing accurate and competitive cost estimates for complex electrical construction projects, including industrial facilities, manufacturing plants, commercial buildings, healthcare, data centers, and mission-critical environments.",
+
+  responsibilities: [
+    "Prepare detailed electrical estimates and bid proposals for commercial and industrial construction projects",
+    "Review drawings, specifications, and project documents to determine scope and material requirements",
+    "Perform quantity takeoffs for electrical systems including power distribution, lighting, low voltage, controls, and equipment",
+    "Solicit and evaluate subcontractor and vendor pricing",
+    "Develop labor, material, and equipment cost estimates",
+    "Analyze project risks, value engineering opportunities, and constructability concerns",
+    "Coordinate with project management and operations teams during bid turnover",
+    "Maintain current pricing databases and estimating tools",
+    "Participate in pre-bid meetings, site walks, and client presentations as needed",
+    "Support negotiated and design-build project pursuits",
+  ],
+
+  requirements: [
+    "4+ years of electrical estimating experience in commercial and/or industrial construction",
+    "Strong understanding of NEC codes, electrical systems, and construction methodologies",
+    "Experience estimating projects ranging from $1M to $50M+ preferred",
+    "Proficiency with estimating software such as Accubid, ConEst, Bluebeam, or similar platforms",
+    "Ability to read and interpret construction drawings and specifications",
+    "Excellent communication, organizational, and problem-solving skills",
+    "Bachelor’s degree in Construction Management, Electrical Engineering, or related field preferred",
+    "Field experience as an electrician or project engineer is a plus",
+  ],
+
+  benefits: [
+    "Performance-based bonus structure",
+    "Comprehensive medical, dental, and vision coverage",
+    "401(k) with company match",
+    "Paid time off and company holidays",
+    "Vehicle allowance or company vehicle",
+    "Career advancement opportunities within a growing organization",
+  ],
+},
+
+{
+  id: 9,
+
+  featured: false,
+
+  urgent: true,
+
+  postedDate: "3",
+
+  recruiter: "RUDRON Executive Search",
+
+  heroImage:
+    "/jobs/commercial-pm.jpg",
+
+  title: "Senior Project Manager",
+
+  company: "General Contractor",
+
+  location: "Philadelphia, PA",
+
+  salary: "$100K - $135K",
+
+  type: "Full Time",
+
+  industry: "Construction",
+
+  specialisation: "Commercial/Industrial",
+
+  slug: "senior-project-manager-Philadelphia",
+
+  description:
+    "A leading general contractor is seeking an experienced Senior Project Manager to lead and oversee commercial and industrial construction projects in the Philadelphia area. This role is ideal for a driven professional who can manage complex builds, lead cross-functional teams, and ensure projects are delivered on time, within budget, and to the highest quality standards.",
+
+  responsibilities: [
+    "Manage all phases of commercial and industrial construction projects from pre-construction through closeout",
+    "Develop and maintain project schedules, budgets, and forecasts",
+    "Coordinate with clients, architects, engineers, subcontractors, and internal teams",
+    "Lead project meetings and provide regular updates to stakeholders",
+    "Ensure compliance with safety regulations, building codes, and company standards",
+    "Identify and mitigate risks, resolving issues proactively",
+    "Oversee procurement, contract administration, and change order management",
+    "Mentor and guide junior project management staff",
+  ],
+
+  requirements: [
+    "Minimum of 7 years of experience in commercial and/or industrial construction project management",
+    "Proven track record of successfully delivering ground-up and/or large-scale renovation projects",
+    "Strong knowledge of construction methods, materials, and project management principles",
+    "Proficiency in project management software (e.g., Procore, MS Project, or similar)",
+    "Excellent leadership, communication, and organizational skills",
+    "Ability to manage multiple projects simultaneously in a fast-paced environment",
+    "Bachelor’s degree in Construction Management, Engineering, or related field preferred",
+  ],
+
+  benefits: [
+    "Performance-based bonuses",
+    "Comprehensive benefits package (medical, dental, vision)",
+    "401(k) with company match",
+    "Paid time off and holidays",
+    "Opportunities for career growth and advancement",
+  ],
+},
+
+{
+  id: 10,
+
+  featured: false,
+
+  urgent: false,
+
+  postedDate: "10",
+
+  recruiter: "RUDRON Executive Search",
+
+  heroImage:
+    "/jobs/commercial-pm.jpg",
+
+  title: "Pipe Designer – Process Piping",
+
+  company: "Mechanical Contractor",
+
+  location: "Remote or Atlanta, GA",
+
+  salary: "$100K - $130K",
+
+  type: "Full Time",
+
+  industry: "Construction",
+
+  specialisation: "Mechanical",
+
+  slug: "piping-designer-remote",
+
+  description:
+    "A leading mechanical contractor is seeking a Pipe Designer with strong MEP and fabrication experience to support complex piping systems across pharmaceutical and mission-critical/data center projects. This role will focus on detailed piping design, coordination, and clash detection within a fast-paced, self-perform mechanical construction environment.",
+
+  responsibilities: [
+    "Develop detailed 3D piping models using Revit for construction and fabrication",
+    "Perform clash detection and coordination using Navisworks",
+    "Produce fabrication-ready drawings and spool sheets for field installation",
+    "Coordinate with project managers, engineers, and field teams to ensure constructability",
+    "Participate in BIM coordination meetings with clients and trade partners",
+    "Support prefabrication efforts and optimize layouts for efficiency",
+    "Maintain drawing accuracy, standards, and version control",
+  ],
+
+  requirements: [
+    "Proven experience in piping design within an MEP or mechanical construction environment",
+    "Strong proficiency in Revit (piping modeling)",
+    "Experience with Navisworks for clash detection and coordination",
+    "Familiarity with fabrication workflows and spool drawings",
+    "Experience working on pharmaceutical, industrial, or mission-critical projects preferred",
+    "Stratus experience is a strong plus",
+    "Strong understanding of constructability and installation sequencing",
+  ],
+
+  benefits: [
+    "Full benefits package (health, dental, vision)",
+    "401K with company match",
+    "Flexible work environment (Remote or Atlanta-based)",
+  ],
+},
 ];
