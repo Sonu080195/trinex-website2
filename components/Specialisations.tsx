@@ -206,53 +206,8 @@ export default function Specialisations() {
 
       </div>
 
-      {/* MOBILE STICKY STACK */}
-<div className="md:hidden space-y-4">
-
-  {sectors.map((sector, index) => (
-
-    <div
-      key={index}
-      onClick={() => setActiveSector(sector)}
-      className="sticky top-[80px] h-[200px] rounded-[24px] overflow-hidden cursor-pointer"
-      style={{
-        zIndex: index + 1,
-      }}
-    >
-
-      {/* IMAGE */}
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage: `url(${sector.image})`,
-        }}
-      />
-
-      {/* OVERLAY */}
-      <div className="absolute inset-0 bg-gradient-to-t from-[#07111F] via-[#07111F]/50 to-transparent" />
-
-      {/* CONTENT */}
-      <div className="absolute bottom-5 left-5 z-10">
-
-        <h3 className="text-white text-[28px] font-bold mb-2">
-
-          {sector.title}
-
-        </h3>
-
-        <p className="text-gray-300 text-[13px] leading-6 max-w-[240px]">
-
-          {sector.description}
-
-        </p>
-
-      </div>
-
-    </div>
-
-  ))}
-
-</div>
+      {/* MOBILE SCROLL */}
+      <div className="flex md:hidden gap-4 overflow-x-auto scrollbar-hide pb-2 snap-x snap-mandatory">
 
         {sectors.map((sector, index) => (
 
@@ -312,6 +267,7 @@ export default function Specialisations() {
 
         ))}
 
+      </div>
 
       {/* DESKTOP GRID */}
       <div className="hidden md:grid grid-cols-2 lg:grid-cols-4 gap-8">
