@@ -1,5 +1,6 @@
 "use client";
 
+import Script from "next/script";
 import { useState } from "react";
 import Link from "next/link";
 
@@ -48,7 +49,42 @@ export default function JobDetailsClient({
 
   return (
 
-    <main className="bg-[#07111F] text-white overflow-hidden">
+  <main className="bg-[#07111F] text-white overflow-hidden">
+
+    <Script
+      id="job-posting-schema"
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "JobPosting",
+
+          title: job.title,
+
+          description: job.description,
+
+          employmentType: job.type,
+
+          industry: job.industry,
+
+          hiringOrganization: {
+            "@type": "Organization",
+            name: "RUDRON Global Talent Solutions",
+            sameAs: "https://www.rudrongts.com",
+          },
+
+          jobLocation: {
+            "@type": "Place",
+            address: {
+              "@type": "PostalAddress",
+              addressLocality: job.location,
+            },
+          },
+        }),
+      }}
+    />
+
+    <Navbar />
 
       <Navbar />
 
@@ -188,7 +224,7 @@ export default function JobDetailsClient({
 
                 <SummaryItem
                   label="Posted"
-                  value="2 Days Ago"
+                  value="Recently Posted"
                 />
 
               </div>

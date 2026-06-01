@@ -1,13 +1,17 @@
+import Script from "next/script";
 import "./globals.css";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 
 import Navbar from "@/components/Navbar";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.rudron.com"),
+  metadataBase: new URL(
+    "https://www.rudrongts.com"
+  ),
 
   title: {
-    default: "RUDRON | Construction, Engineering & MEP Recruitment",
+    default:
+      "RUDRON Global Talent Solutions | Construction, Engineering & MEP Recruitment",
     template: "%s | RUDRON",
   },
 
@@ -15,27 +19,42 @@ export const metadata: Metadata = {
     "RUDRON is a specialist recruitment partner connecting top talent with leading Construction, Engineering, Architecture, Mechanical, Electrical and Plumbing organizations across North America and global markets.",
 
   keywords: [
-  "construction recruitment",
-  "construction recruiters",
-  "engineering recruitment",
-  "engineering recruiters",
-  "MEP recruitment",
-  "AEC recruitment",
-  "executive search",
-  "construction staffing",
-  "project manager recruitment",
-  "superintendent recruitment",
-  "commercial construction recruitment",
-  "industrial construction recruitment",
-  "civil construction recruitment",
-  "residential construction recruitment",
-  "data center recruitment",
-  "mission critical recruitment",
-  "construction jobs",
-  "construction careers",
-  "engineering jobs",
-  "MEP jobs",
-],
+    "construction recruitment",
+    "construction recruiters",
+    "engineering recruitment",
+    "engineering recruiters",
+    "MEP recruitment",
+    "AEC recruitment",
+    "executive search",
+    "construction staffing",
+    "project manager recruitment",
+    "superintendent recruitment",
+    "commercial construction recruitment",
+    "industrial construction recruitment",
+    "civil construction recruitment",
+    "residential construction recruitment",
+    "data center recruitment",
+    "mission critical recruitment",
+    "construction jobs",
+    "construction careers",
+    "engineering jobs",
+    "MEP jobs",
+    "construction executive search",
+    "engineering executive search",
+    "construction headhunter",
+    "engineering headhunter",
+    "construction talent acquisition",
+    "engineering talent acquisition",
+    "architecture recruitment",
+    "architecture recruiters",
+    "general contractor recruitment",
+    "construction staffing agency",
+    "engineering staffing agency",
+    "MEP staffing agency",
+    "construction recruitment agency",
+    "engineering recruitment agency",
+    "recruitment firm",
+  ],
 
   authors: [
     {
@@ -64,7 +83,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://www.rudron.com",
+    url: "https://www.rudrongts.com",
     siteName: "RUDRON",
 
     title:
@@ -100,13 +119,19 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#ffffff",
+};
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en-US">
 
       <body>
 

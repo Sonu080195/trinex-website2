@@ -111,7 +111,7 @@ export default function ApplyModal({
 
             {/* FORM */}
             <form
-              action="https://formsubmit.co/info@rudron.com"
+              action="https://formsubmit.co/jobs@rudrongts.com"
               method="POST"
               encType="multipart/form-data"
               className="space-y-4"

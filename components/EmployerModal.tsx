@@ -125,7 +125,7 @@ export default function EmployerModal({
 
               {/* FORM */}
               <form
-                action="#"
+                action="https://formsubmit.co/business@rudrongts.com"
                 method="POST"
                 className="space-y-4"
                 target="hidden_iframe"

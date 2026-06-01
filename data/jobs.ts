@@ -150,7 +150,7 @@ export const jobs: Job[] = [
 
   urgent: true,
 
-  postedDate: "10",
+  postedDate: "10 Days Ago",
 
   recruiter: "RUDRON Executive Search",
 
@@ -284,7 +284,7 @@ export const jobs: Job[] = [
 
   specialisation: "Electrical",
 
-  slug: "senior-project-manager-dallas",
+  slug: "senior-electrical-project-manager-dallas",
 
   description:
     "A leading electrical contractor is seeking an experienced Senior Project Manager (Sr PM) to lead complex electrical construction projects across commercial, industrial, and transportation sectors.",
@@ -320,7 +320,7 @@ export const jobs: Job[] = [
 
   urgent: false,
 
-  postedDate: "10",
+  postedDate: "10 Days Ago",
 
   recruiter: "RUDRON Executive Search",
 
@@ -378,7 +378,7 @@ export const jobs: Job[] = [
 
   urgent: true,
 
-  postedDate: "1",
+  postedDate: "1 Day Ago",
 
   recruiter: "RUDRON Executive Search",
 
@@ -438,7 +438,7 @@ export const jobs: Job[] = [
 
   urgent: false,
 
-  postedDate: "1",
+  postedDate: "1 Day Ago",
 
   recruiter: "RUDRON Executive Search",
 
@@ -505,7 +505,7 @@ export const jobs: Job[] = [
 
   urgent: true,
 
-  postedDate: "3",
+  postedDate: "3 Days Ago",
 
   recruiter: "RUDRON Executive Search",
 
@@ -568,7 +568,7 @@ export const jobs: Job[] = [
 
   urgent: false,
 
-  postedDate: "10",
+  postedDate: "10 Days Ago",
 
   recruiter: "RUDRON Executive Search",
 

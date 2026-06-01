@@ -125,7 +125,7 @@ export default function CandidateModal({
 
               {/* FORM */}
               <form
-                action="#"
+                action="https://formsubmit.co/jobs@rudrongts.com"
                 method="POST"
                 encType="multipart/form-data"
                 className="space-y-4"

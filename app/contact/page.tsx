@@ -301,20 +301,40 @@ export default function ContactPage() {
 
               </div>
 
-              <form>
+              <form
+              action="https://formsubmit.co/admin@rudrongts.com"
+              method="POST"
+              encType="multipart/form-data"
+            >
+
+              <input
+              type="hidden"
+              name="_subject"
+              value="New Website Contact Inquiry"
+            />
+            
+            <input
+            type="hidden"
+            name="_captcha"
+            value="false"
+          />
 
                 {/* ROW 1 */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
 
                   <input
                     type="text"
+                    name="Full Name"
                     placeholder="Full Name"
+                    required
                     className="bg-[#07111F] border border-white/10 rounded-xl px-4 py-3 text-white outline-none text-[14px] sm:text-[15px]"
                   />
 
                   <input
                     type="email"
+                    name="Email Address"
                     placeholder="Email Address"
+                    required
                     className="bg-[#07111F] border border-white/10 rounded-xl px-4 py-3 text-white outline-none text-[14px] sm:text-[15px]"
                   />
 
@@ -325,12 +345,14 @@ export default function ContactPage() {
 
                   <input
                     type="text"
+                    name="company"
                     placeholder="Company Name"
                     className="bg-[#07111F] border border-white/10 rounded-xl px-4 py-3 text-white outline-none text-[14px] sm:text-[15px]"
                   />
 
                   <input
                     type="text"
+                    name="phone"
                     placeholder="Phone Number (Optional)"
                     className="bg-[#07111F] border border-white/10 rounded-xl px-4 py-3 text-white outline-none text-[14px] sm:text-[15px]"
                   />
@@ -395,6 +417,7 @@ export default function ContactPage() {
 
                   <textarea
                     rows={5}
+                    name="message"
                     placeholder="Tell us about your hiring needs or career goals..."
                     className="w-full bg-[#07111F] border border-white/10 rounded-xl px-4 py-4 text-white outline-none resize-none text-[14px] sm:text-[15px]"
                   />
@@ -406,6 +429,7 @@ export default function ContactPage() {
 
                   <input
                     type="file"
+                    name="attachment"
                     className="w-full text-gray-400 text-[13px] sm:text-sm
                     file:mr-3
                     file:px-4
@@ -431,6 +455,7 @@ export default function ContactPage() {
                   <input
                     type="checkbox"
                     id="consent"
+                    required
                     className="mt-1 w-4 h-4 accent-[#C89B3C]"
                   />
 
