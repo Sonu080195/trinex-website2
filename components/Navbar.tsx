@@ -58,7 +58,7 @@ export default function Navbar() {
             <img
               src="/images/RUDRON Logo.webp"
               alt="RUDRON Logo"
-              className="h-22 sm:h-26 lg:h-30 w-auto"
+              className="h-20 sm:h-24 lg:h-26 w-auto"
             />
 
           </Link>
@@ -219,7 +219,7 @@ export default function Navbar() {
               <img
                 src="/images/RUDRON Logo.webp"
                 alt="RUDRON"
-                className="h-16 sm:h-18 w-auto"
+                className="h-22 sm:h-26 lg:h-30 w-auto"
               />
 
               <button

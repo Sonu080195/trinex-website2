@@ -9,42 +9,42 @@ export default function InsightsPage() {
 
     {
       title: "2026 Construction Hiring Trends",
-      image: "/insights/construction-trends.png",
+      image: "/insights/construction-trends.webp",
       category: "Market Insights",
       slug: "construction-hiring-trends",
     },
 
     {
       title: "The Growing Demand for Data Center Talent",
-      image: "/insights/datacenter-talent.png",
+      image: "/insights/datacenter-talent.webp",
       category: "Industry News",
       slug: "data-center-construction-hiring",
     },
 
     {
       title: "MEP Salary & Workforce Insights",
-      image: "/insights/mep-salary.png",
+      image: "/insights/mep-salary.webp",
       category: "Salary Guides",
       slug: "mep-talent-shortage",
     },
 
     {
       title: "Commercial Construction Market Outlook",
-      image: "/insights/commercial-outlook.png",
+      image: "/insights/commercial-outlook.webp",
       category: "Commercial",
       slug: "commercial-construction-outlook",
     },
 
     {
       title: "Executive Search Strategies For Contractors",
-      image: "/insights/executive-search.png",
+      image: "/insights/executive-search.webp",
       category: "Executive Search",
       slug: "executive-search-construction",
     },
 
     {
       title: "Infrastructure Talent Shortages Continue Rising",
-      image: "/insights/infrastructure-talent.png",
+      image: "/insights/infrastructure-talent.webp",
       category: "Infrastructure",
       slug: "infrastructure-talent-shortage",
     },
@@ -96,7 +96,7 @@ export default function InsightsPage() {
           className="absolute inset-0 bg-cover bg-center"
           style={{
             backgroundImage:
-              "linear-gradient(to right, rgba(7,17,31,0.97) 16%, rgba(7,17,31,0.80) 42%, rgba(7,17,31,0.22) 76%), url('/insights/featured-insight.png')",
+              "linear-gradient(to right, rgba(7,17,31,0.97) 16%, rgba(7,17,31,0.80) 42%, rgba(7,17,31,0.22) 76%), url('/insights/featured-insight.webp')",
           }}
         />
 
@@ -150,7 +150,7 @@ export default function InsightsPage() {
               className="h-[260px] sm:h-[360px] lg:h-[440px] rounded-[28px] bg-cover bg-center"
               style={{
                 backgroundImage:
-                  "url('/insights/featured-insight.png')",
+                  "url('/insights/featured-insight.webp')",
               }}
             />
 

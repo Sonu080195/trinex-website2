@@ -51,7 +51,7 @@ export const jobs: Job[] = [
   recruiter: "RUDRON Executive Search",
 
   heroImage:
-    "/jobs/commercial-pm.jpg",
+    "/jobs/commercial-pm.webp",
 
   title: "Senior Project Manager",
 
@@ -103,7 +103,7 @@ export const jobs: Job[] = [
     recruiter: "RUDRON Executive Search",
 
     heroImage:
-        "/jobs/mep-superintendent.jpg",
+        "/jobs/mep-superintendent.webp",
 
     title: "MEP Superintendent",
 
@@ -155,7 +155,7 @@ export const jobs: Job[] = [
   recruiter: "RUDRON Executive Search",
 
   heroImage:
-    "/jobs/commercial-pm.jpg",
+    "/jobs/commercial-pm.webp",
 
   title: "Piping Project Manager",
 
@@ -211,7 +211,7 @@ export const jobs: Job[] = [
   recruiter: "RUDRON Executive Search",
 
   heroImage:
-    "/jobs/commercial-pm.jpg",
+    "/jobs/commercial-pm.webp",
 
   title: "Sr. Project Manager - Healthcare",
 
@@ -268,7 +268,7 @@ export const jobs: Job[] = [
   recruiter: "RUDRON Executive Search",
 
   heroImage:
-    "/jobs/commercial-pm.jpg",
+    "/jobs/commercial-pm.webp",
 
   title: "Senior Project Manager",
 
@@ -325,7 +325,7 @@ export const jobs: Job[] = [
   recruiter: "RUDRON Executive Search",
 
   heroImage:
-    "/jobs/commercial-pm.jpg",
+    "/jobs/commercial-pm.webp",
 
   title: "Field Operations Manager",
 
@@ -383,7 +383,7 @@ export const jobs: Job[] = [
   recruiter: "RUDRON Executive Search",
 
   heroImage:
-    "/jobs/commercial-pm.jpg",
+    "/jobs/commercial-pm.webp",
 
   title: "Project Manager – Process Piping (Pharmaceutical & Data Center Projects)",
 
@@ -443,7 +443,7 @@ export const jobs: Job[] = [
   recruiter: "RUDRON Executive Search",
 
   heroImage:
-    "/jobs/commercial-pm.jpg",
+    "/jobs/commercial-pm.webp",
 
   title: "Estimator",
 
@@ -510,7 +510,7 @@ export const jobs: Job[] = [
   recruiter: "RUDRON Executive Search",
 
   heroImage:
-    "/jobs/commercial-pm.jpg",
+    "/jobs/commercial-pm.webp",
 
   title: "Senior Project Manager",
 
@@ -573,7 +573,7 @@ export const jobs: Job[] = [
   recruiter: "RUDRON Executive Search",
 
   heroImage:
-    "/jobs/commercial-pm.jpg",
+    "/jobs/commercial-pm.webp",
 
   title: "Pipe Designer – Process Piping",
 

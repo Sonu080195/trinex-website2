@@ -19,7 +19,7 @@ const articles: Record<
 
     category: "Market Insights",
 
-    image: "/insights/construction-trends.png",
+    image: "/insights/construction-trends.webp",
 
     content: [
 
@@ -49,7 +49,7 @@ const articles: Record<
 
     category: "Industry News",
 
-    image: "/insights/datacenter-talent.png",
+    image: "/insights/datacenter-talent.webp",
 
     content: [
 
@@ -79,7 +79,7 @@ const articles: Record<
 
     category: "Salary Guides",
 
-    image: "/insights/mep-salary.png",
+    image: "/insights/mep-salary.webp",
 
     content: [
 
@@ -109,7 +109,7 @@ const articles: Record<
 
     category: "Commercial",
 
-    image: "/insights/commercial-outlook.png",
+    image: "/insights/commercial-outlook.webp",
 
     content: [
 
@@ -139,7 +139,7 @@ const articles: Record<
 
     category: "Executive Search",
 
-    image: "/insights/executive-search.png",
+    image: "/insights/executive-search.webp",
 
     content: [
 
@@ -169,7 +169,7 @@ const articles: Record<
 
     category: "Infrastructure",
 
-    image: "/insights/infrastructure-talent.png",
+    image: "/insights/infrastructure-talent.webp",
 
     content: [
 

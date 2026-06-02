@@ -29,7 +29,7 @@ export default function HomeCTA() {
                 <img
                   src="/images/RUDRON Logo.webp"
                   alt="RUDRON"
-                  className="w-[200px] object-contain"
+                  className="w-[150px] sm:w-[170px] mb-5"
                 />
 
               </div>
