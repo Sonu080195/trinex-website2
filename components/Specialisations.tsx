@@ -20,31 +20,31 @@ export default function Specialisations() {
 
         {
           title: "Educational Construction",
-          image: "/subsectors/Commercial/Educational.png",
+          image: "/subsectors/Commercial/Educational.webp",
           link: "/commercial/educational",
         },
 
         {
           title: "Healthcare Construction",
-          image: "/subsectors/Commercial/Healthcare.png",
+          image: "/subsectors/Commercial/Healthcare.webp",
           link: "/commercial/healthcare",
         },
 
         {
           title: "Data Center Construction",
-          image: "/subsectors/Commercial/DataCenter.png",
+          image: "/subsectors/Commercial/DataCenter.webp",
           link: "/commercial/data-centers",
         },
 
         {
           title: "Retail Construction",
-          image: "/subsectors/Commercial/Retail.png",
+          image: "/subsectors/Commercial/Retail.webp",
           link: "/commercial/retail",
         },
 
         {
           title: "Office Building Construction",
-          image: "/subsectors/Commercial/Office.png",
+          image: "/subsectors/Commercial/Office.webp",
           link: "/commercial/office-buildings",
         },
 

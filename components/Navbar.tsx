@@ -330,67 +330,7 @@ export default function Navbar() {
 
               </div>
 
-              {/* SPECIALISATIONS */}
-              <div>
-
-                <button
-                  onClick={() =>
-                    setOpenDropdown(
-                      openDropdown === "specialisations"
-                        ? null
-                        : "specialisations"
-                    )
-                  }
-                  className="w-full flex items-center justify-between px-5 py-4 text-white text-[15px] sm:text-[16px]"
-                >
-
-                  Specialisations
-
-                  <ChevronDown
-                    size={18}
-                    className={`transition duration-300 ${
-                      openDropdown === "specialisations"
-                        ? "rotate-180"
-                        : ""
-                    }`}
-                  />
-
-                </button>
-
-                {openDropdown === "specialisations" && (
-
-                  <div className="pb-4 px-5 flex flex-col gap-3">
-
-                    {[
-                      ["Commercial", "/commercial"],
-                      ["Industrial", "/industrial"],
-                      ["Residential", "/residential"],
-                      ["Infrastructure", "/infrastructure"],
-                    ].map(([label, href]) => (
-
-                      <Link
-                        key={label}
-                        href={href}
-                        className="text-gray-300 text-[14px]"
-                        onClick={() => {
-
-                          setMenuOpen(false);
-
-                        }}
-                      >
-
-                        {label}
-
-                      </Link>
-
-                    ))}
-
-                  </div>
-
-                )}
-
-              </div>
-
+             
             </div>
 
             {/* BOTTOM BUTTONS */}
