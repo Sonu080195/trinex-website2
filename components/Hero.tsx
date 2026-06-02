@@ -104,7 +104,7 @@ export default function Hero() {
               </h1>
 
               {/* DESCRIPTION */}
-              <p className="text-gray-300 text-[13px] sm:text-[15px] leading-8 sm:leading-7 mb-10 max-w-[860px]">
+              <p className="text-gray-300 text-[15px] sm:text-[17px] leading-8 sm:leading-9 mb-10 max-w-[860px]">
 
                 RUDRON is a specialist executive search and
                 recruitment partner serving the AEC & MEP industries.
