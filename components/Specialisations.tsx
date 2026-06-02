@@ -12,7 +12,7 @@ export default function Specialisations() {
 
     {
       title: "Commercial",
-      image: "/Commercial.png",
+      image: "/Commercial.webp",
       description:
         "Office buildings, retail, educational, and mixed-use projects.",
 
@@ -53,7 +53,7 @@ export default function Specialisations() {
 
     {
       title: "Industrial",
-      image: "/Industrial.png",
+      image: "/Industrial.webp",
       description:
         "Warehouses, manufacturing, logistics, and energy facilities.",
 
@@ -94,7 +94,7 @@ export default function Specialisations() {
 
     {
       title: "Residential",
-      image: "/Residential.png",
+      image: "/Residential.webp",
       description:
         "Multifamily, high-rise, student housing, and communities.",
 
@@ -135,7 +135,7 @@ export default function Specialisations() {
 
     {
       title: "Infrastructure",
-      image: "/Civil.png",
+      image: "/Civil.webp",
       description:
         "Transportation, civil, bridge, tunnel, and roadway projects.",
 

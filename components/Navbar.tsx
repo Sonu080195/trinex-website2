@@ -45,9 +45,9 @@ export default function Navbar() {
 
     <header className="absolute top-0 left-0 w-full z-50">
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-6">
+      <div className="max-w-7xl mx-auto px-3 sm:px-5 lg:px-5">
 
-        <div className="flex items-center justify-between py-3 lg:py-4">
+        <div className="flex items-center justify-between py-1 lg:py-2">
 
           {/* LOGO */}
           <Link
@@ -56,15 +56,15 @@ export default function Navbar() {
           >
 
             <img
-              src="/images/RUDRON Logo.png"
+              src="/images/RUDRON Logo.webp"
               alt="RUDRON Logo"
-              className="h-24 sm:h-28 lg:h-32 w-auto"
+              className="h-22 sm:h-26 lg:h-30 w-auto"
             />
 
           </Link>
 
           {/* DESKTOP MENU */}
-          <nav className="hidden lg:flex items-center gap-6 text-white text-[16px] font-medium">
+          <nav className="hidden lg:flex items-center gap-6 text-white text-[20px] font-medium">
 
             <Link
               href="/"
@@ -131,7 +131,7 @@ export default function Navbar() {
               }
             >
 
-              <button className="border border-[#C89B3C] text-white px-5 py-2.5 rounded-xl text-[14px] hover:bg-[#C89B3C] hover:text-black transition-all duration-300 flex items-center gap-2">
+              <button className="border border-[#C89B3C] text-white px-5 py-2.5 rounded-xl text-[20px] hover:bg-[#C89B3C] hover:text-black transition-all duration-300 flex items-center gap-2">
 
                 Jobs
 
@@ -156,14 +156,14 @@ export default function Navbar() {
 
                       <Link
                         href="/jobs"
-                        className="px-4 py-3 rounded-xl text-[14px] text-white hover:bg-white/5 transition duration-300"
+                        className="px-4 py-3 rounded-xl text-[20px] text-white hover:bg-white/5 transition duration-300"
                       >
                         Open Jobs
                       </Link>
 
                       <Link
                         href="/saved-jobs"
-                        className="px-4 py-3 rounded-xl text-[14px] text-white hover:bg-white/5 transition duration-300"
+                        className="px-4 py-3 rounded-xl text-[20px] text-white hover:bg-white/5 transition duration-300"
                       >
                         Saved Jobs
                       </Link>
@@ -181,7 +181,7 @@ export default function Navbar() {
             {/* HIRE TALENT */}
             <Link
               href="/contact"
-              className="bg-[#C89B3C] text-black px-5 py-2.5 rounded-xl text-[14px] font-semibold hover:opacity-90 transition-all duration-300"
+              className="bg-[#C89B3C] text-black px-5 py-2.5 rounded-xl text-[20px] font-semibold hover:opacity-90 transition-all duration-300"
             >
 
               Hire Talent
@@ -217,7 +217,7 @@ export default function Navbar() {
             <div className="flex items-center justify-between mb-8">
 
               <img
-                src="/images/RUDRON Logo.png"
+                src="/images/RUDRON Logo.webp"
                 alt="RUDRON"
                 className="h-16 sm:h-18 w-auto"
               />

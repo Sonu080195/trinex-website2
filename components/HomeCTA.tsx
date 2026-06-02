@@ -16,7 +16,7 @@ export default function HomeCTA() {
             <div
               className="relative h-[180px] lg:h-[170px] rounded-[22px] overflow-hidden bg-cover bg-center"
               style={{
-                backgroundImage: "url('/hero-bg.png')",
+                backgroundImage: "url('/hero-bg.webp')",
               }}
             >
 
@@ -27,7 +27,7 @@ export default function HomeCTA() {
               <div className="absolute inset-0 flex items-center justify-center">
 
                 <img
-                  src="/images/RUDRON Logo.png"
+                  src="/images/RUDRON Logo.webp"
                   alt="RUDRON"
                   className="w-[200px] object-contain"
                 />

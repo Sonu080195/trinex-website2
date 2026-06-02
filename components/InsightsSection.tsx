@@ -5,7 +5,7 @@ export default function InsightsSection() {
   const insights = [
     {
       title: "2026 Construction Hiring Trends",
-      image: "/insights/construction-trends.png",
+      image: "/insights/construction-trends.webp",
       category: "Market Insights",
       slug: "construction-hiring-trends",
 
@@ -15,7 +15,7 @@ export default function InsightsSection() {
 
     {
       title: "The Growing Demand for Data Center Talent",
-      image: "/insights/datacenter-talent.png",
+      image: "/insights/datacenter-talent.webp",
       category: "Industry News",
       slug: "data-center-construction-hiring",
 
@@ -25,7 +25,7 @@ export default function InsightsSection() {
 
     {
       title: "MEP Salary & Workforce Insights",
-      image: "/insights/mep-salary.png",
+      image: "/insights/mep-salary.webp",
       category: "Salary Guides",
       slug: "mep-talent-shortage",
 
