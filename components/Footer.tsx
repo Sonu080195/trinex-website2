@@ -17,7 +17,7 @@ export default function Footer() {
               <img
                 src="/images/RUDRON Logo.webp"
                 alt="RUDRON"
-                className="w-[150px] sm:w-[170px] mb-5"
+                className="w-[130px] sm:w-[140px] mb-3"
               />
 
               <div className="inline-flex items-center bg-[#C89B3C]/10 border border-[#C89B3C]/20 rounded-full px-4 py-2 mb-5">
