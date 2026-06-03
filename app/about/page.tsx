@@ -85,7 +85,7 @@ export default function AboutPage() {
                 </h1>
 
               {/* DESCRIPTION */}
-              <p className="text-gray-300 text-[15px] sm:text-[17px] leading-8 sm:leading-9 mb-10 max-w-[860px]">
+              <p className="text-gray-300 text-[15px] sm:text-[17px] leading-7 sm:leading-8 max-w-[700px]">
                 RUDRON Global Talent Solutions is a specialist recruitment firm
                 connecting exceptional construction, engineering, and MEP talent with leading companies
                 across rapidly evolving markets.
@@ -142,11 +142,11 @@ export default function AboutPage() {
 
 <div className="lg:sticky lg:top-32 self-start">
 
-  <p className="uppercase tracking-[5px] text-[#C89B3C] text-sm mb-4">
+  <p className="uppercase tracking-[5px] text-[#F7F7F7] text-sm mb-4">
     Our Story
   </p>
 
-  <h2 className="text-[26px] lg:text-[40px] font-bold leading-[1.08] mb-6">
+  <h2 className="text-[26px] lg:text-[56px] font-bold leading-[1.08] mb-6">
     Building The Teams Behind
     Tomorrow's Infrastructure,
     Data Centers & Critical Projects
@@ -426,8 +426,8 @@ desc:"As construction technologies evolve and workforce demands continue to chan
             </h3>
 
             <p className="text-gray-600 text-[14px] sm:text-[15px] lg:text-base leading-6 leading-8">
-              To be recognised as a leading recruitment partner across North
-              America by consistently delivering expertise, relationships and
+              To be recognised as a leading recruitment partner across the Globe
+              by consistently delivering expertise, relationships and
               exceptional hiring outcomes.
             </p>
           </div>

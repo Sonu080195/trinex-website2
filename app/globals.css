@@ -26,3 +26,70 @@ body {
 .story-scroll {
   animation: scrollStory 55s linear infinite;
 }
+
+@keyframes floatOne {
+  0%,100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes floatTwo {
+  0%,100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(15px);
+  }
+}
+
+.floating-card {
+  animation: floatOne 6s ease-in-out infinite;
+}
+
+.floating-card-2 {
+  animation: floatTwo 8s ease-in-out infinite;
+}
+
+@keyframes rolesMarquee {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.roles-marquee {
+  width: max-content;
+  animation: rolesMarquee 50s linear infinite;
+}
+
+.roles-marquee:hover {
+  animation-play-state: paused;
+}
+
+@keyframes testimonialMarquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.testimonial-marquee {
+  width: max-content;
+  display: flex;
+  animation: testimonialMarquee 35s linear infinite;
+}
+
+.testimonial-marquee:hover {
+  animation-play-state: paused;
+}

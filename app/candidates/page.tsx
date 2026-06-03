@@ -6,55 +6,103 @@ import Footer from "@/components/Footer";
 
 export default function CandidatesPage() {
 
-  const benefits = [
-    {
-      title: "Exclusive Opportunities",
-      description:
-        "Access confidential roles with leading construction and engineering firms.",
-    },
+const opportunityCards = [
+  {
+    sector: "Healthcare Construction",
+    role: "Project Executive",
+    salary: "$180k+",
+  },
+  {
+    sector: "Data Center Construction",
+    role: "Senior Superintendent",
+    salary: "$170k+",
+  },
+  {
+    sector: "Mission Critical",
+    role: "MEP Director",
+    salary: "$220k+",
+  },
+  {
+    sector: "Commercial Construction",
+    role: "Preconstruction Manager",
+    salary: "$165k+",
+  },
+];
 
-    {
-      title: "Career Growth",
-      description:
-        "We help professionals secure opportunities aligned with long-term career goals.",
-    },
+const marqueeRoles = [
+  "PROJECT EXECUTIVE",
+  "PROJECT MANAGER",
+  "SUPERINTENDENT",
+  "ESTIMATOR",
+  "PRECONSTRUCTION",
+  "MEP MANAGER",
+  "COMMISSIONING",
+  "VDC LEADER",
+  "QUALITY MANAGER",
+  "SAFETY DIRECTOR",
+  "DATA CENTER PM",
+  "HEALTHCARE LEADER",
+];
 
-    {
-      title: "Industry Expertise",
-      description:
-        "Our recruiters understand the AEC & MEP industries and hiring landscape.",
-    },
+const candidateJourney = [
+  {
+    step: "01",
+    title: "Career Consultation",
+    description:
+      "We take the time to understand your experience, career goals, preferred markets, and long-term aspirations.",
+  },
+  {
+    step: "02",
+    title: "Market Alignment",
+    description:
+      "Our team identifies opportunities that align with your technical expertise, leadership experience, and career objectives.",
+  },
+  {
+    step: "03",
+    title: "Opportunity Matching",
+    description:
+      "We connect you with organizations where your skills and experience can create meaningful impact.",
+  },
+  {
+    step: "04",
+    title: "Interview Preparation",
+    description:
+      "Guidance, market insights, and preparation support to help you perform confidently throughout the hiring process.",
+  },
+  {
+    step: "05",
+    title: "Offer Negotiation",
+    description:
+      "We assist with compensation discussions, expectations, and offer evaluation to support informed decisions.",
+  },
+  {
+    step: "06",
+    title: "Long-Term Career Growth",
+    description:
+      "Our relationship continues beyond placement as we support future career progression and leadership opportunities.",
+  },
+];
 
-    {
-      title: "Personalised Support",
-      description:
-        "From interviews to offer negotiations, we support candidates throughout the process.",
-    },
-  ];
-
-  const roles = [
-    "Project Managers",
-    "Superintendents",
-    "Project Executives",
-    "Estimators",
-    "MEP Leaders",
-    "Construction Engineers",
-  ];
-
-  const industries = [
-    "Commercial Construction",
-    "Industrial Construction",
-    "Residential Construction",
-    "Infrastructure & Civil",
-  ];
-
-  const process = [
-    "Career Consultation",
-    "Opportunity Matching",
-    "Interview Preparation",
-    "Offer Negotiation",
-    "Long-Term Career Support",
-  ];
+const testimonials = [
+  {
+    role: "Project Executive",
+    market: "Healthcare Construction",
+    quote:
+      "RUDRON introduced me to a leadership opportunity that aligned perfectly with my long-term goals and project experience.",
+  },
+  {
+    role: "Senior Superintendent",
+    market: "Data Centers",
+    quote:
+      "The team provided exceptional support throughout the process and helped me secure a role on a major mission-critical project.",
+  },
+  {
+    role: "MEP Director",
+    market: "Mission Critical",
+    quote:
+      "Their understanding of the construction market made the entire process efficient, professional, and highly targeted.",
+  },
+];
 
   return (
 
@@ -63,249 +111,448 @@ export default function CandidatesPage() {
       <Navbar />
 
       {/* HERO */}
-      <section className="relative min-h-[72vh] lg:min-h-[82vh] flex items-center overflow-hidden">
+      <section className="relative min-h-[85vh] flex items-center">
 
-        {/* BG */}
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage:
-              "linear-gradient(to right, rgba(7,17,31,0.96) 18%, rgba(7,17,31,0.78) 42%, rgba(7,17,31,0.22) 75%), url('/candidates/candidates-hero.png')",
-          }}
-        />
+  <div
+    className="absolute inset-0 bg-cover bg-center"
+    style={{
+      backgroundImage:
+        "linear-gradient(to right, rgba(7,17,31,.95) 20%, rgba(7,17,31,.82) 45%, rgba(7,17,31,.4) 100%), url('/candidates/candidates-hero.png')",
+    }}
+  />
 
-        {/* CONTENT */}
         <div className="relative z-10 w-full">
+          <div className="max-w-7xl mx-auto px-6 pt-28">
+            <div className="max-w-[760px]">
+              <p className="uppercase tracking-[4px] text-[#C89B3C] text-sm mb-5">
+          Candidates
 
-          <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-6 pt-28 sm:pt-30 lg:pt-20">
+        </p>
+        
+        <h1 className="text-[34px] sm:text-[48px] lg:text-[64px] font-bold leading-[1.08] mb-6">
+          Connecting
+          Professionals With
+          
+          <br/>
+        <span className="text-[#C89B3C]">
+            {" "} Industry-Leading
+          </span>
 
-            <div className="max-w-[640px]">
+        {" "} Roles
 
-              <p className="text-[#C89B3C] uppercase tracking-[4px] text-[11px] sm:text-sm mb-4">
+          <br />
 
-                Candidates
+        </h1>
 
-              </p>
+        <p className="text-gray-300 text-[15px] sm:text-[17px] leading-7 sm:leading-8 max-w-[700px]">
 
-              <h1 className="text-white font-bold leading-[1.02] text-[34px] sm:text-[48px] lg:text-[64px] mb-6">
+          RUDRON partners with top construction and engineering firms
+          to connect skilled professionals with high-impact career opportunities
+          across rapidly growing markets.
 
-                Connecting
-                Professionals With
-                Industry-Leading Roles
+        </p>
 
-              </h1>
+        <div className="flex flex-wrap gap-3 mt-8">
 
-              <p className="text-gray-300 text-[15px] sm:text-[17px] leading-7 sm:leading-8">
+          {[
+            "Project Management",
+            "Superintendents",
+            "Estimating",
+            "MEP Leadership",
+            "Executive Search",
+            "Data Centers",
+          ].map((item) => (
 
-                RUDRON partners with top construction and engineering firms
-                to connect skilled professionals with high-impact career opportunities
-                across rapidly growing markets.
-
-              </p>
-
+            <div
+              key={item}
+              className="px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border border-white/15 bg-white/5 backdrop-blur-sm"
+            >
+              {item}
             </div>
 
-          </div>
+          ))}
 
         </div>
 
-      </section>
+      </div>
 
-      {/* WHY RUDRON */}
-      <section className="bg-[#F7F7F7] py-12 sm:py-16 lg:py-18 px-5 sm:px-6 lg:px-6">
+    </div>
 
-        <div className="max-w-7xl mx-auto">
+  </div>
 
-          {/* TOP */}
-          <div className="text-center mb-8 sm:mb-10">
+</section>
 
-            <p className="text-[#C89B3C] uppercase tracking-[4px] text-[11px] sm:text-sm mb-4">
+{/* CAREER GROWTH SHOWCASE */}
 
-              Why Work With RUDRON
+<section className="py-12 lg:py-16 px-4 sm:px-6 bg-[#F7F7F7] overflow-hidden">
 
-            </p>
+  <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-8 lg:gap-14">
 
-            <h2 className="text-[#07111F] text-[30px] sm:text-[42px] lg:text-[52px] font-bold leading-[1.08]">
+    {/* LEFT */}
+    <div className="lg:sticky lg:top-32 self-start">
 
-              Career Opportunities
-              Built Around Growth
+  <p className="uppercase tracking-[5px] text-[#C89B3C] text-sm mb-4">
 
-            </h2>
+        Career Growth
+
+      </p>
+
+      <h2 className="text-[#07111F] text-[26px] sm:text-[32px] lg:text-[56px] font-bold leading-[1.08] mb-6">
+
+        Build The Career
+        You've Been
+        Working Toward
+
+      </h2>
+
+      <div className="w-20 h-[3px] bg-[#C89B3C] rounded-full mb-8" />
+
+      <p className="text-gray-600 text-[15px] sm:text-[17px] leading-7 sm:leading-8 mb-6">
+
+        Whether you're seeking larger projects,
+        leadership opportunities, higher compensation,
+        or long-term career growth, our team is committed
+        to helping you identify opportunities aligned with
+        your professional goals.
+
+      </p>
+
+      <p className="text-gray-600 text-[15px] sm:text-[17px] leading-7 sm:leading-8 mb-6">
+
+        We partner with leading contractors,
+        developers, engineering consultancies,
+        mission-critical operators, and owners
+        across healthcare, commercial construction,
+        industrial manufacturing, infrastructure,
+        and data center markets.
+
+      </p>
+
+      <p className="text-gray-600 text-[15px] sm:text-[17px] leading-7 sm:leading-8">
+
+        Our goal is simple:
+        connect exceptional professionals with
+        exceptional opportunities.
+
+      </p>
+
+    </div>
+
+    {/* RIGHT */}
+
+    <div className="relative min-h-[520px] lg:min-h-[620px]">
+
+      <div className="floating-card absolute top-0 left-0 bg-[#07111F] text-white rounded-[28px] p-6 border border-white/10 w-[250px] sm:w-[290px]">
+
+        <p className="text-[#C89B3C] text-sm mb-2">
+          Healthcare Construction
+        </p>
+
+        <h3 className="text-xl font-bold mb-3">
+          Project Executive
+        </h3>
+
+        <p className="text-3xl font-bold">
+          $180k+
+        </p>
+
+      </div>
+
+      <div className="floating-card-2 absolute top-24 right-0 bg-[#0D1726] text-white rounded-[28px] p-6 border border-white/10 w-[250px] sm:w-[290px]">
+
+        <p className="text-[#C89B3C] text-sm mb-2">
+          Data Centers
+        </p>
+
+        <h3 className="text-xl font-bold mb-3">
+          Senior Superintendent
+        </h3>
+
+        <p className="text-3xl font-bold">
+          $170k+
+        </p>
+
+      </div>
+
+      <div className="floating-card absolute bottom-20 left-6 lg:left-10 bg-[#07111F] text-white rounded-[28px] p-6 border border-white/10 w-[250px] sm:w-[290px]">
+
+        <p className="text-[#C89B3C] text-sm mb-2">
+          Mission Critical
+        </p>
+
+        <h3 className="text-xl font-bold mb-3">
+          MEP Director
+        </h3>
+
+        <p className="text-3xl font-bold">
+          $220k+
+        </p>
+
+      </div>
+
+      <div className="floating-card-2 absolute bottom-0 right-4 lg:right-10 bg-[#0D1726] text-white rounded-[28px] p-6 border border-white/10 w-[250px] sm:w-[290px]">
+
+        <p className="text-[#C89B3C] text-sm mb-2">
+          Commercial Construction
+        </p>
+
+        <h3 className="text-xl font-bold mb-3">
+          Preconstruction Manager
+        </h3>
+
+        <p className="text-3xl font-bold">
+          $165k+
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+{/* ROLES MARQUEE */}
+
+<section className="bg-[#07111F] py-4 lg:py-6 overflow-hidden border-y border-white/10">
+
+  <div className="roles-marquee flex whitespace-nowrap">
+
+    {[...marqueeRoles, ...marqueeRoles].map((role, index) => (
+
+      <div
+        key={index}
+        className="flex items-center"
+      >
+
+        <span className="text-white text-[18px] sm:text-[26px] lg:text-[38px] font-bold mx-6">
+
+          {role}
+
+        </span>
+
+        <span className="text-[#C89B3C] text-[30px]">
+
+          •
+
+        </span>
+
+      </div>
+
+    ))}
+
+  </div>
+
+</section>
+
+{/* FEATURED CAREER PATHS */}
+
+<section className="bg-[#F7F7F7] py-12 lg:py-16 px-4 sm:px-6">
+
+  <div className="max-w-7xl mx-auto">
+
+    <div className="text-center mb-12">
+
+      <p className="uppercase tracking-[5px] text-[#C89B3C] text-xs sm:text-sm mb-4">
+        Featured Career Paths
+      </p>
+
+      <h2 className="text-[#07111F] text-[26px] sm:text-[32px] lg:text-[56px] font-bold leading-[1.05]">
+        Opportunities Across Every Stage
+        Of Your Construction Career
+      </h2>
+
+    </div>
+
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+
+      {[
+        {
+          title: "Project Management",
+          desc: "Lead complex projects from planning through completion across commercial, healthcare and mission-critical markets.",
+        },
+        {
+          title: "Superintendents",
+          desc: "Drive field operations, site execution and project delivery for leading construction organizations.",
+        },
+        {
+          title: "Preconstruction",
+          desc: "Support estimating, planning, budgeting and procurement activities on high-value projects.",
+        },
+        {
+          title: "MEP Leadership",
+          desc: "Oversee critical mechanical, electrical and plumbing systems across complex facilities.",
+        },
+        {
+          title: "Executive Leadership",
+          desc: "Strategic opportunities for directors, VPs and executive leaders shaping organizational growth.",
+        },
+        {
+          title: "Mission Critical",
+          desc: "Join high-performance teams delivering data centers and mission-critical facilities nationwide.",
+        },
+      ].map((item) => (
+
+        <div
+          key={item.title}
+          className="group bg-white rounded-[28px] p-6 border border-black/5 hover:border-[#C89B3C]/30 transition-all duration-500 hover:-translate-y-2"
+        >
+
+          <div className="text-[#C89B3C] text-5xl font-bold opacity-20 mb-4">
+
+            0{[
+              "Project Management",
+              "Superintendents",
+              "Preconstruction",
+              "MEP Leadership",
+              "Executive Leadership",
+              "Mission Critical",
+            ].indexOf(item.title) + 1}
 
           </div>
 
-          {/* GRID */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+          <h3 className="text-[#07111F] text-xl font-bold mb-4 group-hover:text-[#C89B3C] transition-colors">
 
-            {benefits.map((item, index) => (
+            {item.title}
 
-              <div
-                key={index}
-                className="bg-white rounded-[24px] p-5 sm:p-6 border border-black/5 hover:-translate-y-1 transition duration-500"
-              >
+          </h3>
 
-                <h3 className="text-[#07111F] text-[18px] sm:text-[20px] font-bold mb-4">
+          <p className="text-gray-600 leading-7">
 
-                  {item.title}
-
-                </h3>
-
-                <p className="text-gray-600 text-[14px] sm:text-[15px] leading-7">
-
-                  {item.description}
-
-                </p>
-
-              </div>
-
-            ))}
-
-          </div>
-
-        </div>
-
-      </section>
-
-      {/* ROLES */}
-      <section className="bg-[#07111F] py-12 sm:py-16 lg:py-18 px-5 sm:px-6 lg:px-6">
-
-        <div className="max-w-7xl mx-auto text-center">
-
-          <p className="text-[#C89B3C] uppercase tracking-[4px] text-[11px] sm:text-sm mb-4">
-
-            Roles We Recruit For
+            {item.desc}
 
           </p>
 
-          <h2 className="text-white text-[30px] sm:text-[42px] lg:text-[52px] font-bold leading-[1.08] mb-8 sm:mb-10">
+        </div>
 
-            Opportunities Across
-            Key Construction Roles
+      ))}
 
-          </h2>
+    </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+  </div>
 
-            {roles.map((role, index) => (
+</section>
 
-              <div
-                key={index}
-                className="bg-[#0D1726] border border-white/10 rounded-[24px] p-5 sm:p-6"
-              >
+{/* CANDIDATE JOURNEY */}
 
-                <h3 className="text-white text-[18px] sm:text-[20px] font-semibold leading-snug">
+<section className="bg-[#07111F] py-12 lg:py-16 px-4 sm:px-6">
 
-                  {role}
+  <div className="max-w-6xl mx-auto">
 
-                </h3>
+    <div className="text-center mb-14">
 
-              </div>
+      <p className="uppercase tracking-[5px] text-[#C89B3C] text-xs sm:text-sm mb-4">
+        Candidate Journey
+      </p>
 
-            ))}
+      <h2 className="text-white text-[26px] sm:text-[32px] lg:text-[56px] font-bold leading-[1.05]">
+
+        Supporting Your Career
+        Every Step Of The Way
+
+      </h2>
+
+    </div>
+
+    <div className="relative">
+
+      <div className="absolute left-5 lg:left-1/2 top-6 bottom-6 w-[2px] bg-[#C89B3C]/30" />
+
+      {candidateJourney.map((item, index) => (
+
+        <div
+          key={item.step}
+          className={`relative flex mb-6 lg:mb-8 ${
+            index % 2 === 0
+              ? "lg:justify-start"
+              : "lg:justify-end"
+          }`}
+        >
+
+          <div className="absolute left-0 lg:left-1/2 lg:-translate-x-1/2 w-10 h-10 rounded-full bg-[#C89B3C] text-black flex items-center justify-center font-bold">
+
+            {item.step}
 
           </div>
 
-        </div>
+          <div className="ml-16 lg:ml-0 w-full lg:w-[44%] bg-[#0D1726] border border-white/10 rounded-[28px] p-5 lg:p-6">
 
-      </section>
+            <h3 className="text-white text-lg lg:text-xl font-bold mb-4">
 
-      {/* INDUSTRIES */}
-      <section className="bg-[#F7F7F7] py-12 sm:py-16 lg:py-18 px-5 sm:px-6 lg:px-6">
+              {item.title}
 
-        <div className="max-w-7xl mx-auto text-center">
+            </h3>
 
-          <p className="text-[#C89B3C] uppercase tracking-[4px] text-[11px] sm:text-sm mb-4">
+            <p className="text-gray-400 leading-6">
 
-            Industries We Support
-
-          </p>
-
-          <h2 className="text-[#07111F] text-[30px] sm:text-[42px] lg:text-[52px] font-bold leading-[1.08] mb-8 sm:mb-10">
-
-            Expertise Across
-            High-Growth Markets
-
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
-
-            {industries.map((industry, index) => (
-
-              <div
-                key={index}
-                className="bg-white border border-black/5 rounded-[24px] p-5 sm:p-6"
-              >
-
-                <h3 className="text-[#07111F] text-[18px] sm:text-[20px] font-semibold leading-snug">
-
-                  {industry}
-
-                </h3>
-
-              </div>
-
-            ))}
-
-          </div>
-
-        </div>
-
-      </section>
-
-      {/* PROCESS */}
-      <section className="bg-[#07111F] py-12 sm:py-16 lg:py-18 px-5 sm:px-6 lg:px-6">
-
-        <div className="max-w-7xl mx-auto">
-
-          {/* TOP */}
-          <div className="text-center mb-8 sm:mb-10">
-
-            <p className="text-[#C89B3C] uppercase tracking-[4px] text-[11px] sm:text-sm mb-4">
-
-              Candidate Process
+              {item.description}
 
             </p>
 
-            <h2 className="text-white text-[30px] sm:text-[42px] lg:text-[52px] font-bold leading-[1.08]">
-
-              Supporting Your
-              Career Journey
-
-            </h2>
-
-          </div>
-
-          {/* STEPS */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-5">
-
-            {process.map((step, index) => (
-
-              <div
-                key={index}
-                className="bg-[#0D1726] rounded-[24px] border border-white/10 p-5 sm:p-6 text-center"
-              >
-
-                <div className="w-12 h-12 rounded-full bg-[#C89B3C] text-black flex items-center justify-center text-[16px] font-bold mx-auto mb-5">
-
-                  {index + 1}
-
-                </div>
-
-                <h3 className="text-white text-[17px] sm:text-[18px] font-semibold leading-7">
-
-                  {step}
-
-                </h3>
-
-              </div>
-
-            ))}
-
           </div>
 
         </div>
 
-      </section>
+      ))}
+
+    </div>
+
+  </div>
+
+</section>
+
+{/* SUCCESS STORIES */}
+
+<section className="bg-[#F7F7F7] py-12 lg:py-16 overflow-hidden">
+
+  <div className="text-center mb-12">
+
+    <p className="uppercase tracking-[5px] text-[#C89B3C] text-xs sm:text-sm mb-4">
+      Success Stories
+    </p>
+
+    <h2 className="text-[#07111F] text-[26px] sm:text-[32px] lg:text-[56px] font-bold">
+
+      Career Growth In Action
+
+    </h2>
+
+  </div>
+
+  <div className="testimonial-marquee gap-6">
+
+    {[...testimonials, ...testimonials].map((item, index) => (
+
+      <div
+        key={index}
+        className="min-w-[340px] max-w-[340px] bg-white rounded-[28px] p-8 border border-black/5"
+      >
+
+        <p className="text-[#C89B3C] text-sm mb-3">
+
+          {item.market}
+
+        </p>
+
+        <h3 className="text-[#07111F] text-xl font-bold mb-4">
+
+          {item.role}
+
+        </h3>
+
+        <p className="text-gray-600 leading-8">
+
+          "{item.quote}"
+
+        </p>
+
+      </div>
+
+    ))}
+
+  </div>
+
+</section>
 
       <HomeCTA />
 
