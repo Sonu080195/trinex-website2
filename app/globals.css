@@ -12,3 +12,17 @@ body {
 * {
   box-sizing: border-box;
 }
+
+@keyframes scrollStory {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+.story-scroll {
+  animation: scrollStory 55s linear infinite;
+}
