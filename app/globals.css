@@ -85,8 +85,8 @@ body {
 }
 
 .testimonial-marquee {
-  width: max-content;
   display: flex;
+  width: max-content;
   animation: testimonialMarquee 35s linear infinite;
 }
 

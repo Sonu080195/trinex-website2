@@ -142,11 +142,11 @@ export default function AboutPage() {
 
 <div className="lg:sticky lg:top-32 self-start">
 
-  <p className="uppercase tracking-[5px] text-[#F7F7F7] text-sm mb-4">
+  <p className="uppercase tracking-[5px] text-[#C89B3C] text-sm mb-4">
     Our Story
   </p>
 
-  <h2 className="text-[26px] lg:text-[56px] font-bold leading-[1.08] mb-6">
+  <h2 className="text-[26px] sm:text-[32px] lg:text-[56px] font-bold leading-[1.08] mb-6">
     Building The Teams Behind
     Tomorrow's Infrastructure,
     Data Centers & Critical Projects
@@ -382,7 +382,7 @@ desc:"As construction technologies evolve and workforce demands continue to chan
             Specialized Recruitment Across Key Construction Sectors
           </h2>
 
-          <div className="w-20 h-[3px] bg-[#C89B3C] rounded-full mx-auto mb-12" />
+          <div className="w-20 h-[3px] bg-[#C89B3C] rounded-full mx-auto mb-6" />
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
             {industries.map((industry) => (

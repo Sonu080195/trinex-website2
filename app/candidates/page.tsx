@@ -351,7 +351,7 @@ const testimonials = [
 
   <div className="max-w-7xl mx-auto">
 
-    <div className="text-center mb-12">
+    <div className="text-center mb-6">
 
       <p className="uppercase tracking-[5px] text-[#C89B3C] text-xs sm:text-sm mb-4">
         Featured Career Paths
@@ -439,9 +439,9 @@ const testimonials = [
 
   <div className="max-w-6xl mx-auto">
 
-    <div className="text-center mb-14">
+    <div className="text-center mb-6">
 
-      <p className="uppercase tracking-[5px] text-[#C89B3C] text-xs sm:text-sm mb-4">
+      <p className="uppercase tracking-[5px] text-[#C89B3C] text-sm mb-4">
         Candidate Journey
       </p>
 
@@ -462,7 +462,7 @@ const testimonials = [
 
         <div
           key={item.step}
-          className={`relative flex mb-6 lg:mb-8 ${
+          className={`relative flex mb-4 lg:mb-6 ${
             index % 2 === 0
               ? "lg:justify-start"
               : "lg:justify-end"
@@ -475,7 +475,7 @@ const testimonials = [
 
           </div>
 
-          <div className="ml-16 lg:ml-0 w-full lg:w-[44%] bg-[#0D1726] border border-white/10 rounded-[28px] p-5 lg:p-6">
+          <div className="ml-16 lg:ml-0 w-full lg:w-[46%] bg-[#0D1726] border border-white/10 rounded-[28px] p-5 lg:p-6">
 
             <h3 className="text-white text-lg lg:text-xl font-bold mb-4">
 
@@ -505,7 +505,7 @@ const testimonials = [
 
 <section className="bg-[#F7F7F7] py-12 lg:py-16 overflow-hidden">
 
-  <div className="text-center mb-12">
+  <div className="text-center mb-6">
 
     <p className="uppercase tracking-[5px] text-[#C89B3C] text-xs sm:text-sm mb-4">
       Success Stories
@@ -525,7 +525,7 @@ const testimonials = [
 
       <div
         key={index}
-        className="min-w-[340px] max-w-[340px] bg-white rounded-[28px] p-8 border border-black/5"
+        className="min-w-[280px] lg:min-w-[320px] max-w-[340px] bg-white rounded-[28px] p-6 border border-black/5"
       >
 
         <p className="text-[#C89B3C] text-sm mb-3">
@@ -540,7 +540,7 @@ const testimonials = [
 
         </h3>
 
-        <p className="text-gray-600 leading-8">
+        <p className="text-gray-600 leading-6">
 
           "{item.quote}"
 
