@@ -66,7 +66,7 @@ export default function AboutPage() {
         <div className="relative z-10 w-full">
           <div className="max-w-7xl mx-auto px-6 pt-28">
             <div className="max-w-[760px]">
-              <p className="uppercase tracking-[5px] text-[#C89B3C] text-sm mb-5">
+              <p className="uppercase tracking-[4px] text-[#C89B3C] text-sm mb-5">
                 About RUDRON
               </p>
 
@@ -96,7 +96,7 @@ export default function AboutPage() {
                   (item) => (
                     <div
                       key={item}
-                      className="px-5 py-2 rounded-full border border-white/15 bg-white/5 backdrop-blur-sm"
+                      className="px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border border-white/15 bg-white/5 backdrop-blur-sm"
                     >
                       {item}
                     </div>
@@ -109,7 +109,7 @@ export default function AboutPage() {
       </section>
 
       {/* STATS */}
-      <section className="py-16 px-2">
+      <section className="py-10 lg:py-16 px-3 sm:px-4">
         <div className="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-5">
           {[
             "AEC & MEP Specialists",
@@ -119,18 +119,24 @@ export default function AboutPage() {
           ].map((item) => (
             <div
               key={item}
-              className="bg-[#0D1726] border border-white/10 rounded-[20px] p-6 text-center"
+              className="bg-[#0D1726]
+              border border-white/10
+              rounded-[18px]
+              p-4
+              sm:p-5
+              lg:p-6
+              text-center"
             >
-              <h3 className="font-semibold text-lg">{item}</h3>
+              <h3 className="font-semibold text-sm sm:text-base lg:text-lg">{item}</h3>
             </div>
           ))}
         </div>
       </section>
 
 {/* STORY */}
-<section className="py-16 px-6 bg-[#07111F] overflow-hidden">
+<section className="py-12 lg:py-16 px-4 sm:px-6 bg-[#07111F] overflow-hidden">
 
-  <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-14">
+  <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-8 lg:gap-14">
 
     {/* LEFT CONTENT */}
 
@@ -146,29 +152,29 @@ export default function AboutPage() {
     Data Centers & Critical Projects
   </h2>
 
-  <div className="w-85 h-[2px] bg-[#C89B3C] rounded-full mb-8" />
+  <div className="w-20 sm:w-32 lg:w-85 h-[2px] bg-[#C89B3C] rounded-full mb-8" />
 
-  <p className="text-gray-300 text-lg leading-8 mb-6">
+  <p className="text-[15px] sm:text-[16px] lg:text-lg leading-7 lg:leading-8 mb-6">
     RUDRON was founded with a simple mission: to elevate recruitment
     within the construction and engineering industries through a more
     strategic, consultative, and relationship-driven approach.
   </p>
 
-  <p className="text-gray-300 text-lg leading-8 mb-6">
+  <p className="text-[15px] sm:text-[16px] lg:text-lg leading-7 lg:leading-8 mb-6">
     As construction projects become increasingly complex and talent
     shortages continue to impact project delivery, organizations require
     more than recruiters — they need partners who understand the
     realities of the built environment.
   </p>
 
-  <p className="text-gray-300 text-lg leading-8 mb-6">
+  <p className="text-[15px] sm:text-[16px] lg:text-lg leading-7 lg:leading-8 mb-6">
     We work alongside contractors, engineering consultancies,
     developers, owners, manufacturers, and mission-critical operators
     to identify professionals capable of delivering results across some
     of the industry's most demanding projects.
   </p>
 
-  <p className="text-gray-300 text-lg leading-8 mb-8">
+  <p className="text-[15px] sm:text-[16px] lg:text-lg leading-7 lg:leading-8 mb-8">
     From commercial developments and healthcare facilities to data
     centers, industrial manufacturing plants, and critical
     infrastructure projects, our focus remains the same:
@@ -177,46 +183,46 @@ export default function AboutPage() {
 
   {/* FEATURE BOX */}
 
-  <div className="bg-[#0D1726] border border-[#C89B3C]/15 rounded-[25px] p-4">
+  <div className="bg-[#0D1726] border border-[#C89B3C]/15 rounded-[25px] p-3 sm:p-4">
 
-    <div className="grid grid-cols-2 gap-5">
+    <div className="grid grid-cols-2 gap-3 sm:gap-5">
 
       <div>
-        <p className="text-[#C89B3C] text-2xl font-bold">
+        <p className="text-[#C89B3C] text-lg sm:text-xl lg:text-2xl font-bold">
           AEC
         </p>
 
-        <p className="text-gray-400 text-sm mt-2">
+        <p className="text-gray-400 text-sm mt-1">
           Architecture, Engineering & Construction
         </p>
       </div>
 
       <div>
-        <p className="text-[#C89B3C] text-2xl font-bold">
+        <p className="text-[#C89B3C] text-lg sm:text-xl lg:text-2xl font-bold">
           MEP
         </p>
 
-        <p className="text-gray-400 text-sm mt-2">
+        <p className="text-gray-400 text-sm mt-1">
           Mechanical, Electrical & Plumbing
         </p>
       </div>
 
       <div>
-        <p className="text-[#C89B3C] text-2xl font-bold">
+        <p className="text-[#C89B3C] text-lg sm:text-xl lg:text-2xl font-bold">
           DC
         </p>
 
-        <p className="text-gray-400 text-sm mt-2">
+        <p className="text-gray-400 text-sm mt-1">
           Mission Critical & Data Centers
         </p>
       </div>
 
       <div>
-        <p className="text-[#C89B3C] text-2xl font-bold">
+        <p className="text-[#C89B3C] text-lg sm:text-xl lg:text-2xl font-bold">
           INF
         </p>
 
-        <p className="text-gray-400 text-sm mt-2">
+        <p className="text-gray-400 text-sm mt-1">
           Infrastructure & Transportation
         </p>
       </div>
@@ -229,7 +235,7 @@ export default function AboutPage() {
 
     {/* RIGHT MOVING TIMELINE */}
 
-    <div className="h-[700px] overflow-hidden relative">
+    <div className="h-[500px] sm:h-[600px] lg:h-[700px] overflow-hidden relative">
 
       <div className="story-scroll space-y-6">
 
@@ -324,10 +330,12 @@ desc:"As construction technologies evolve and workforce demands continue to chan
 
           <div
             key={index}
-            className="relative bg-[#0D1726]/90 backdrop-blur-xl border border-white/10 rounded-[32px] p-8 overflow-hidden transition-all duration-500 group-hover:border-[#C89B3C]/50 hover:-translate-y-2"
+            className="relative bg-[#0D1726]/90 backdrop-blur-xl border border-white/10 rounded-[24px]
+            lg:rounded-[32px] p-5 sm:p-6 lg:p-8
+            overflow-hidden transition-all duration-500 hover:-translate-y-2"
           >
 
-            <div className="absolute right-4 top-3 text-[120px] font-bold text-white/[0.04]">
+            <div className="absolute right-4 top-3 text-[70px] sm:text-[90px] lg:text-[120px] font-bold text-white/[0.04]">
               {item.number}
             </div>
 
@@ -335,11 +343,11 @@ desc:"As construction technologies evolve and workforce demands continue to chan
               {item.number}
             </p>
 
-            <h3 className="text-2xl font-bold mb-4">
+            <h3 className="text-lg sm:text-xl lg:text-2xl font-bold mb-4">
               {item.title}
             </h3>
 
-            <p className="text-gray-400 leading-8">
+            <p className="text-[13px] sm:text-[14px] lg:text-[15px] text-gray-400 leading-6 lg:leading-8">
               {item.desc}
             </p>
 
@@ -370,13 +378,13 @@ desc:"As construction technologies evolve and workforce demands continue to chan
             Markets We Support
           </p>
 
-          <h2 className="text-[36px] lg:text-[56px] font-bold mb-6">
+          <h2 className="text-[26px] sm:text-[32px] lg:text-[56px] font-bold mb-6">
             Specialized Recruitment Across Key Construction Sectors
           </h2>
 
           <div className="w-20 h-[3px] bg-[#C89B3C] rounded-full mx-auto mb-12" />
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
             {industries.map((industry) => (
               <div
                 key={industry}
@@ -392,32 +400,32 @@ desc:"As construction technologies evolve and workforce demands continue to chan
       {/* MISSION VISION */}
       <section className="py-16 px-4 bg-[#F7F7F7]">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-8">
-          <div className="bg-white rounded-[36px] p-10 shadow-sm">
+          <div className="bg-white rounded-[24px] sm:rounded-[30px] lg:rounded-[36px] p-5 sm:p-8 lg:p-10 shadow-sm">
             <p className="uppercase tracking-[5px] text-[#C89B3C] text-sm mb-4">
               Our Mission
             </p>
 
-            <h3 className="text-[#07111F] text-[40px] font-bold mb-6">
+            <h3 className="text-[#07111F] text-[24px] sm:text-[30px] lg:text-[40px] font-bold mb-6">
               Building Teams That Deliver Successful Projects
             </h3>
 
-            <p className="text-gray-600 text-lg leading-8">
+            <p className="text-gray-600 text-[14px] sm:text-[15px] lg:text-base leading-6 leading-8">
               Helping organisations secure exceptional talent while creating
               meaningful career opportunities across construction and
               engineering markets.
             </p>
           </div>
 
-          <div className="bg-[#07111F] rounded-[36px] p-10">
+          <div className="bg-[#07111F] rounded-[24px] sm:rounded-[30px] lg:rounded-[36px] p-5 sm:p-8 lg:p-10">
             <p className="uppercase tracking-[5px] text-[#C89B3C] text-sm mb-4">
               Our Vision
             </p>
 
-            <h3 className="text-white text-[40px] font-bold mb-6">
+            <h3 className="text-white text-[24px] sm:text-[30px] lg:text-[40px] font-bold mb-6">
               Becoming The Most Trusted Construction Recruitment Partner
             </h3>
 
-            <p className="text-gray-300 text-lg leading-8">
+            <p className="text-gray-600 text-[14px] sm:text-[15px] lg:text-base leading-6 leading-8">
               To be recognised as a leading recruitment partner across North
               America by consistently delivering expertise, relationships and
               exceptional hiring outcomes.
@@ -434,7 +442,7 @@ desc:"As construction technologies evolve and workforce demands continue to chan
               Why Companies Choose RUDRON
             </p>
 
-            <h2 className="text-[36px] lg:text-[56px] font-bold">
+            <h2 className="text-[26px] sm:text-[32px] lg:text-[56px] font-bold">
               Expertise. Relationships. Results.
             </h2>
           </div>
@@ -443,9 +451,9 @@ desc:"As construction technologies evolve and workforce demands continue to chan
             {strengths.map((item) => (
               <div
                 key={item.title}
-                className="bg-[#0D1726] border border-white/10 rounded-[30px] p-8 hover:-translate-y-2 hover:border-[#C89B3C]/40 transition-all duration-500"
+                className="bg-[#0D1726] border border-white/10 rounded-[30px] p-5 sm:p-6 lg:p-8 hover:-translate-y-2 hover:border-[#C89B3C]/40 transition-all duration-500"
               >
-                <h3 className="text-xl font-semibold mb-4">{item.title}</h3>
+                <h3 className="text-lg sm:text-xl font-semibold mb-4">{item.title}</h3>
 
                 <p className="text-gray-400 leading-8">
                   {item.description}
