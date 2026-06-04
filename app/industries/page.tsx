@@ -225,7 +225,7 @@ export default function IndustriesPage() {
         </p>
 
         <h3 className="text-2xl font-bold">
-          Mechanical • Electrical • Plumbing
+          MEP
         </h3>
 
       </div>
@@ -302,7 +302,7 @@ export default function IndustriesPage() {
           </div>
 
           {/* GRID */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-5">
 
             {industries.map((item, index) => (
 
@@ -400,7 +400,7 @@ export default function IndustriesPage() {
 
     </div>
 
-    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+    <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
 
       {[
         "Project Management",
