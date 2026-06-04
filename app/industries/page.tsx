@@ -60,6 +60,15 @@ export default function IndustriesPage() {
 
   ];
 
+  const industryMarquee = [
+  "ARCHITECTURE",
+  "ENGINEERING",
+  "CONSTRUCTION",
+  "MECHANICAL",
+  "ELECTRICAL",
+  "PLUMBING",
+];
+
   return (
 
     <main className="bg-[#07111F] text-white overflow-hidden">
@@ -116,8 +125,152 @@ export default function IndustriesPage() {
 
       </section>
 
+      {/* INDUSTRY EXPERTISE SHOWCASE */}
+
+<section className="bg-[#F7F7F7] py-12 lg:py-16 px-4 sm:px-6 overflow-hidden">
+
+  <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+
+    {/* LEFT */}
+
+    <div>
+
+      <p className="uppercase tracking-[5px] text-[#C89B3C] text-sm mb-4">
+
+        Industry Expertise
+
+      </p>
+
+      <h2 className="text-[#07111F] text-[26px] sm:text-[32px] lg:text-[56px] font-bold leading-[1.05] mb-6">
+
+        Recruitment Built
+        Around Industry
+        Knowledge
+
+      </h2>
+
+      <div className="w-20 h-[3px] bg-[#C89B3C] rounded-full mb-8" />
+
+      <p className="text-gray-600 text-[15px] sm:text-[17px] leading-7 sm:leading-8 mb-6">
+
+        Every sector of the built environment operates with unique
+        challenges, project requirements, technical disciplines,
+        and leadership expectations.
+
+      </p>
+
+      <p className="text-gray-600 text-[15px] sm:text-[17px] leading-7 sm:leading-8 mb-6">
+
+        RUDRON delivers recruitment solutions tailored to the
+        architecture, engineering, construction, and MEP markets,
+        helping organizations secure the talent required to deliver
+        complex projects and sustain long-term growth.
+
+      </p>
+
+      <p className="text-gray-600 text-[15px] sm:text-[17px] leading-7 sm:leading-8">
+
+        Our sector-specific expertise enables us to understand
+        technical requirements, market trends, project demands,
+        and leadership challenges across the industries we support.
+
+      </p>
+
+    </div>
+
+    {/* RIGHT */}
+
+    <div className="relative min-h-[520px] lg:min-h-[620px]">
+
+      <div className="floating-card absolute top-0 left-0 bg-[#07111F] text-white rounded-[28px] p-6 border border-white/10 w-[260px] lg:w-[320px]">
+
+        <p className="text-[#C89B3C] mb-3">
+          Industry
+        </p>
+
+        <h3 className="text-2xl font-bold">
+          Architecture
+        </h3>
+
+      </div>
+
+      <div className="floating-card-2 absolute top-24 right-0 bg-[#0D1726] text-white rounded-[28px] p-6 border border-white/10 w-[260px] lg:w-[320px]">
+
+        <p className="text-[#C89B3C] mb-3">
+          Industry
+        </p>
+
+        <h3 className="text-2xl font-bold">
+          Engineering
+        </h3>
+
+      </div>
+
+      <div className="floating-card absolute bottom-24 left-8 bg-[#07111F] text-white rounded-[28px] p-6 border border-white/10 w-[260px] lg:w-[320px]">
+
+        <p className="text-[#C89B3C] mb-3">
+          Industry
+        </p>
+
+        <h3 className="text-2xl font-bold">
+          Construction
+        </h3>
+
+      </div>
+
+      <div className="floating-card-2 absolute bottom-0 right-8 bg-[#0D1726] text-white rounded-[28px] p-6 border border-white/10 w-[260px] lg:w-[320px]">
+
+        <p className="text-[#C89B3C] mb-3">
+          Industry
+        </p>
+
+        <h3 className="text-2xl font-bold">
+          Mechanical • Electrical • Plumbing
+        </h3>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+{/* INDUSTRY MARQUEE */}
+
+<section className="bg-[#07111F] py-4 lg:py-6 overflow-hidden border-y border-white/10">
+
+  <div className="roles-marquee flex whitespace-nowrap">
+
+    {[...industryMarquee, ...industryMarquee].map((item, index) => (
+
+      <div
+        key={index}
+        className="flex items-center"
+      >
+
+        <span className="text-white text-[18px] sm:text-[26px] lg:text-[38px] font-bold mx-6">
+
+          {item}
+
+        </span>
+
+        <span className="text-[#C89B3C] text-[28px]">
+
+          ◆
+
+        </span>
+
+      </div>
+
+    ))}
+
+  </div>
+
+</section>
+
       {/* INDUSTRIES GRID */}
-      <section className="bg-[#F7F7F7] py-12 sm:py-16 lg:py-18 px-5 sm:px-6 lg:px-6">
+      <section className="bg-[#0D1726] py-12 sm:py-16 lg:py-18 px-5 sm:px-6 lg:px-6">
 
         <div className="max-w-7xl mx-auto">
 
@@ -130,7 +283,7 @@ export default function IndustriesPage() {
 
             </p>
 
-            <h2 className="text-[#07111F] text-[30px] sm:text-[42px] lg:text-[54px] font-bold leading-[1.08] mb-5">
+            <h2 className="text-[#F7F7F7] text-[26px] sm:text-[32px] lg:text-[56px] font-bold leading-[1.05] mb-5">
 
               Recruitment Expertise
               Built Around
@@ -138,7 +291,7 @@ export default function IndustriesPage() {
 
             </h2>
 
-            <p className="text-gray-600 text-[15px] sm:text-[17px] leading-7 sm:leading-8">
+            <p className="text-gray-500 text-[15px] sm:text-[17px] leading-7 sm:leading-8">
 
               Our recruitment teams understand the technical demands,
               leadership requirements, and project complexities shaping
@@ -216,148 +369,130 @@ export default function IndustriesPage() {
 
       </section>
 
-      {/* WHY RUDRON */}
-      <section className="bg-[#07111F] py-12 sm:py-16 lg:py-18 px-5 sm:px-6 lg:px-6">
+      {/* RECRUITMENT COVERAGE */}
 
-        <div className="max-w-7xl mx-auto">
+<section className="bg-[#F7F7F7] py-12 lg:py-16 px-4 sm:px-6">
 
-          {/* TOP */}
-          <div className="text-center max-w-[850px] mx-auto mb-9 sm:mb-11">
+  <div className="max-w-7xl mx-auto">
 
-            <p className="text-[#C89B3C] uppercase tracking-[4px] text-[11px] sm:text-sm mb-4">
+    <div className="text-center mb-12">
 
-              Why Companies Choose RUDRON
+      <p className="uppercase tracking-[5px] text-[#C89B3C] text-sm mb-4">
 
-            </p>
+        Recruitment Coverage
 
-            <h2 className="text-white text-[30px] sm:text-[42px] lg:text-[54px] font-bold leading-[1.08] mb-5">
+      </p>
 
-              Recruitment Built
-              Around Technical
-              Precision
+      <h2 className="text-[#07111F] text-[28px] sm:text-[36px] lg:text-[56px] font-bold leading-[1.05]">
 
-            </h2>
+        Roles That Drive
+        Project Success
 
-            <p className="text-gray-400 text-[15px] sm:text-[17px] leading-7 sm:leading-8">
+      </h2>
 
-              We combine market expertise, technical understanding,
-              and relationship-driven recruitment strategies to help
-              organizations scale with confidence.
+      <p className="text-gray-600 text-[15px] sm:text-[17px] leading-7 sm:leading-8 max-w-3xl mx-auto mt-6">
 
-            </p>
+        From project delivery and field operations to executive leadership,
+        we help organizations secure the professionals required to
+        deliver successful outcomes.
 
-          </div>
+      </p>
 
-          {/* GRID */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+    </div>
 
-            {[
-              {
-                title: "Industry Specialisation",
-                desc: "Deep understanding of technical construction and engineering markets.",
-              },
+    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
 
-              {
-                title: "Project-Focused Hiring",
-                desc: "Talent solutions aligned with project timelines and operational goals.",
-              },
+      {[
+        "Project Management",
+        "Superintendents",
+        "Estimating",
+        "Preconstruction",
+        "Executive Leadership",
+        "Operations Management",
+        "MEP Leadership",
+        "Commissioning",
+      ].map((item, index) => (
 
-              {
-                title: "Executive Search",
-                desc: "Strategic leadership recruitment for growth-focused organizations.",
-              },
+        <div
+          key={item}
+          className="group bg-white rounded-[28px] border border-black/5 p-6 hover:-translate-y-2 hover:border-[#C89B3C]/30 transition-all duration-500"
+        >
 
-              {
-                title: "Global Talent Reach",
-                desc: "Access to nationwide and international recruitment networks.",
-              },
+          <div className="text-[#C89B3C] text-5xl font-bold opacity-20 mb-4">
 
-            ].map((item, index) => (
-
-              <div
-                key={index}
-                className="bg-[#0D1726] rounded-[24px] border border-white/10 p-5 sm:p-6"
-              >
-
-                <h3 className="text-white text-[19px] sm:text-[21px] font-semibold leading-snug mb-4">
-
-                  {item.title}
-
-                </h3>
-
-                <p className="text-gray-400 text-[14px] sm:text-[15px] leading-7">
-
-                  {item.desc}
-
-                </p>
-
-              </div>
-
-            ))}
+            0{index + 1}
 
           </div>
+
+          <h3 className="text-[#07111F] text-lg font-bold group-hover:text-[#C89B3C] transition-colors">
+
+            {item}
+
+          </h3>
 
         </div>
 
-      </section>
+      ))}
 
-      {/* MARKET SUPPORT */}
-      <section className="bg-[#F7F7F7] py-12 sm:py-16 lg:py-18 px-5 sm:px-6 lg:px-6">
+    </div>
 
-        <div className="max-w-7xl mx-auto text-center">
+  </div>
 
-          <p className="text-[#C89B3C] uppercase tracking-[4px] text-[11px] sm:text-sm mb-4">
+</section>
 
-            Areas We Support
+{/* INDUSTRY IMPACT */}
+
+<section className="bg-[#07111F] py-8 lg:py-12 px-4 sm:px-6">
+
+  <div className="max-w-7xl mx-auto">
+
+    <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
+
+      {[
+        {
+          title: "AEC",
+          desc: "Industry Expertise",
+        },
+        {
+          title: "MEP",
+          desc: "Technical Recruitment",
+        },
+        {
+          title: "DC",
+          desc: "Mission Critical Focus",
+        },
+        {
+          title: "National",
+          desc: "Talent Network",
+        },
+      ].map((item) => (
+
+        <div
+          key={item.title}
+          className="bg-[#0D1726] border border-white/10 rounded-[24px] p-4 text-center"
+        >
+
+          <h3 className="text-[#C89B3C] text-[28px] lg:text-[30px] font-bold mb-2">
+
+            {item.title}
+
+          </h3>
+
+          <p className="text-gray-400">
+
+            {item.desc}
 
           </p>
-
-          <h2 className="text-[#07111F] text-[30px] sm:text-[42px] lg:text-[54px] font-bold leading-[1.08] mb-5">
-
-            Supporting Growth
-            Across Critical
-            Market Segments
-
-          </h2>
-
-          <p className="text-gray-600 text-[15px] sm:text-[17px] leading-7 sm:leading-8 max-w-[820px] mx-auto mb-9 sm:mb-11">
-
-            From commercial developments and mission critical facilities
-            to industrial infrastructure and residential communities,
-            we help companies secure the talent required to deliver projects successfully.
-
-          </p>
-
-          {/* GRID */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
-
-            {[
-              "Commercial",
-              "Industrial",
-              "Residential",
-              "Infrastructure & Civil",
-            ].map((market, index) => (
-
-              <div
-                key={index}
-                className="bg-white border border-black/5 rounded-[24px] p-5 sm:p-6"
-              >
-
-                <h3 className="text-[#07111F] text-[18px] sm:text-[20px] font-semibold leading-snug">
-
-                  {market}
-
-                </h3>
-
-              </div>
-
-            ))}
-
-          </div>
 
         </div>
 
-      </section>
+      ))}
+
+    </div>
+
+  </div>
+
+</section>
 
       {/* CTA */}
       <HomeCTA />
