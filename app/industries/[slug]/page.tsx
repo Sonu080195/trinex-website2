@@ -408,9 +408,9 @@ export default async function IndustryDetailPage({
 
 <section className="bg-[#07111F] py-12 lg:py-16 px-4 sm:px-6">
 
-  <div className="max-w-7xl mx-auto">
+  <div className="max-w-6xl mx-auto">
 
-    <div className="text-center mb-12">
+    <div className="text-center mb-8">
 
       <p className="uppercase tracking-[5px] text-[#C89B3C] text-sm mb-4">
 
@@ -418,7 +418,7 @@ export default async function IndustryDetailPage({
 
       </p>
 
-      <h2 className="text-white text-[28px] sm:text-[36px] lg:text-[56px] font-bold leading-[1.05]">
+      <h2 className="text-white text-[22px] sm:text-[36px] lg:text-[56px] font-bold leading-[1.05]">
 
         Roles We Recruit For
 
@@ -426,17 +426,17 @@ export default async function IndustryDetailPage({
 
     </div>
 
-    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+    <div className="grid grid-cols-2 lg:grid-cols-3 gap-5">
 
       {industry.roles.map(
         (role: string, index: number) => (
 
           <div
             key={index}
-            className="group relative bg-[#0D1726] rounded-[28px] border border-white/10 p-6 hover:-translate-y-2 hover:border-[#C89B3C]/30 transition-all duration-500 overflow-hidden"
+            className="group relative bg-[#0D1726] rounded-[22px] border border-white/10 p-6 hover:-translate-y-2 hover:border-[#C89B3C]/30 transition-all duration-500 overflow-hidden"
           >
 
-            <div className="absolute right-4 -top-3 text-[70px] font-bold text-white/[0.04]">
+            <div className="absolute right-4 -top-3 text-[50px] font-bold text-white/[0.04]">
 
               0{index + 1}
 
@@ -619,21 +619,21 @@ export default async function IndustryDetailPage({
 
               <div
                 key={index}
-                className="bg-[#0D1726] rounded-[28px] border border-white/10 p-6 hover:-translate-y-2 hover:border-[#C89B3C]/30 transition-all duration-500"
+                className="bg-[#0D1726] rounded-[24px] border border-white/10 p-6 hover:-translate-y-2 hover:border-[#C89B3C]/30 transition-all duration-500"
               >
 
-                <div className="text-[#C89B3C] text-5xl font-bold opacity-50 mb-4">
+                <div className="text-[#C89B3C] text-4xl font-bold opacity-50 mb-4">
 
               0{index + 1}
 
-                <h3 className="text-[#C89B3C] text-5xl sm:text-[21px] font-bold opacity-90 leading-snug mb-4">
+                <h3 className="text-[#C89B3C] text-3xl sm:text-[18px] font-bold opacity-90 leading-snug mb-4">
                   
 
                   {item.title}
 
                 </h3>
 
-                <p className="text-gray-100 text-[14px] sm:text-[15px] leading-7">
+                <p className="text-gray-100 text-[14px] sm:text-[15px] leading-6">
 
                   {item.desc}
 
