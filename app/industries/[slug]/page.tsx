@@ -426,14 +426,14 @@ export default async function IndustryDetailPage({
 
     </div>
 
-    <div className="grid grid-cols-2 lg:grid-cols-3 gap-5">
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
 
       {industry.roles.map(
         (role: string, index: number) => (
 
           <div
             key={index}
-            className="group relative bg-[#0D1726] rounded-[14px] border border-white/10 p-6 hover:-translate-y-2 hover:border-[#C89B3C]/30 transition-all duration-500 overflow-hidden"
+            className="group relative bg-[#0D1726] border border-white/10 rounded-[30px] p-5 sm:p-6 lg:p-8 hover:-translate-y-2 hover:border-[#C89B3C]/40 transition-all duration-500"
           >
 
             <div className="absolute right-4 -top-3 text-[50px] font-bold text-white/[0.04]">
@@ -442,7 +442,7 @@ export default async function IndustryDetailPage({
 
             </div>
 
-            <h3 className="text-white text-xl font-bold group-hover:text-[#C89B3C] transition-colors">
+            <h3 className="text-white text-lg sm:text-xl font-bold group-hover:text-[#C89B3C] transition-colors">
 
               {role}
 
