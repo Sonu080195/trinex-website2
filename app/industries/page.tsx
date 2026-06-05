@@ -182,9 +182,9 @@ export default function IndustriesPage() {
 
     <div className="relative min-h-[520px] lg:min-h-[620px]">
 
-      <div className="floating-card absolute top-0 left-0 bg-[#07111F] text-white rounded-[28px] p-6 border border-white/10 w-[260px] lg:w-[320px]">
+      <div className="floating-card absolute top-0 left-0 bg-[#07111F] text-white rounded-[28px] p-6 border border-white/10 w-[190px] sm:w-[240px] lg:w-[320px]">
 
-        <p className="text-[#C89B3C] mb-3">
+        <p className="text-[#C89B3C] mb-2">
           Industry
         </p>
 
@@ -194,9 +194,9 @@ export default function IndustriesPage() {
 
       </div>
 
-      <div className="floating-card-2 absolute top-24 right-0 bg-[#0D1726] text-white rounded-[28px] p-6 border border-white/10 w-[260px] lg:w-[320px]">
+      <div className="floating-card-2 absolute top-24 right-0 bg-[#0D1726] text-white rounded-[28px] p-6 border border-white/10 w-[190px] sm:w-[240px] lg:w-[320px]">
 
-        <p className="text-[#C89B3C] mb-3">
+        <p className="text-[#C89B3C] mb-2">
           Industry
         </p>
 
@@ -206,9 +206,9 @@ export default function IndustriesPage() {
 
       </div>
 
-      <div className="floating-card absolute bottom-24 left-8 bg-[#07111F] text-white rounded-[28px] p-6 border border-white/10 w-[260px] lg:w-[320px]">
+      <div className="floating-card absolute bottom-20 left-0 lg:left-0 bg-[#07111F] text-white rounded-[28px] p-6 border border-white/10 w-[190px] sm:w-[240px] lg:w-[320px]">
 
-        <p className="text-[#C89B3C] mb-3">
+        <p className="text-[#C89B3C] mb-2">
           Industry
         </p>
 
@@ -218,9 +218,9 @@ export default function IndustriesPage() {
 
       </div>
 
-      <div className="floating-card-2 absolute bottom-0 right-8 bg-[#0D1726] text-white rounded-[28px] p-6 border border-white/10 w-[260px] lg:w-[320px]">
+      <div className="floating-card-2 absolute bottom-0 right-0 lg:right-0 bg-[#0D1726] text-white rounded-[28px] p-6 border border-white/10 w-[190px] sm:w-[240px] lg:w-[320px]">
 
-        <p className="text-[#C89B3C] mb-3">
+        <p className="text-[#C89B3C] mb-2">
           Industry
         </p>
 

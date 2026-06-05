@@ -269,49 +269,49 @@ const recruitmentSolutions = [
 
     <div className="relative min-h-[520px] lg:min-h-[620px]">
 
-      <div className="floating-card absolute top-0 left-0 bg-[#07111F] text-white rounded-[28px] p-6 border border-white/10 w-[260px] lg:w-[320px]">
+      <div className="floating-card absolute top-0 left-0 bg-[#07111F] text-white rounded-[28px] p-6 border border-white/10 w-[190px] sm:w-[240px] lg:w-[320px]">
 
-        <h3 className="text-xl font-bold mb-3">
+        <h3 className="text-[#C89B3C] font-bold mb-2">
           Talent Shortages
         </h3>
 
-        <p className="text-gray-300 leading-7">
+        <p className="text-gray-300 mb-3">
           Competition for skilled construction professionals continues to intensify.
         </p>
 
       </div>
 
-      <div className="floating-card-2 absolute top-24 right-0 bg-[#0D1726] text-white rounded-[28px] p-6 border border-white/10 w-[260px] lg:w-[320px]">
+      <div className="floating-card-2 absolute top-24 right-0 bg-[#0D1726] text-white rounded-[28px] p-6 border border-white/10 w-[190px] sm:w-[240px] lg:w-[320px]">
 
-        <h3 className="text-xl font-bold mb-3">
+        <h3 className="text-[#C89B3C] font-bold mb-2">
           Leadership Gaps
         </h3>
 
-        <p className="text-gray-300 leading-7">
+        <p className="text-gray-300 mb-3">
           Critical vacancies can directly impact project performance.
         </p>
 
       </div>
 
-      <div className="floating-card absolute bottom-24 left-8 bg-[#07111F] text-white rounded-[28px] p-6 border border-white/10 w-[260px] lg:w-[320px]">
+      <div className="floating-card absolute bottom-20 left-0 lg:left-0 bg-[#07111F] text-white rounded-[28px] p-6 border border-white/10 w-[190px] sm:w-[240px] lg:w-[320px]">
 
-        <h3 className="text-xl font-bold mb-3">
+        <h3 className="text-[#C89B3C] font-bold mb-2">
           Specialized Hiring
         </h3>
 
-        <p className="text-gray-300 leading-7">
+        <p className="text-gray-300 mb-3">
           Technical construction roles require highly targeted recruitment.
         </p>
 
       </div>
 
-      <div className="floating-card-2 absolute bottom-0 right-8 bg-[#0D1726] text-white rounded-[28px] p-6 border border-white/10 w-[260px] lg:w-[320px]">
+      <div className="floating-card-2 absolute bottom-0 right-0 lg:right-0 bg-[#0D1726] text-white rounded-[28px] p-6 border border-white/10 w-[190px] sm:w-[240px] lg:w-[320px]">  
 
-        <h3 className="text-xl font-bold mb-3">
+        <h3 className="text-[#C89B3C] font-bold mb-2">
           Mission Critical Growth
         </h3>
 
-        <p className="text-gray-300 leading-7">
+        <p className="text-gray-300 mb-3">
           Data center expansion is creating unprecedented hiring demand.
         </p>
 

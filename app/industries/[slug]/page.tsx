@@ -244,7 +244,7 @@ export default async function IndustryDetailPage({
 
   return (
 
-    <main className="bg-[#07111F] text-white overflow-hidden">
+    <main className="industry-glow bg-[#07111F] text-white overflow-hidden">
 
       {/* NAVBAR */}
       <Navbar />
@@ -303,7 +303,7 @@ export default async function IndustryDetailPage({
 
       {/* INDUSTRY OVERVIEW */}
 
-<section className="bg-[#F7F7F7] py-12 lg:py-16 px-4 sm:px-6">
+<section className="industry-glow bg-[#F7F7F7] py-12 lg:py-16 px-4 sm:px-6">
 
   <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
 
@@ -317,7 +317,7 @@ export default async function IndustryDetailPage({
 
       </p>
 
-      <h2 className="text-[#07111F] text-[28px] sm:text-[36px] lg:text-[56px] font-bold leading-[1.05] mb-6">
+      <h2 className="text-[#07111F] text-[26px] sm:text-[34px] lg:text-[56px] font-bold leading-[1.05] mb-6">
 
         Recruitment Built
         Around Industry Demand
@@ -343,7 +343,7 @@ export default async function IndustryDetailPage({
 
           <div
             key={index}
-            className="bg-white rounded-[28px] border border-black/5 p-6 text-center"
+            className="industry-glow bg-white rounded-[28px] border border-black/5 p-6 text-center"
           >
 
             <div className="text-[#C89B3C] text-4xl font-bold opacity-20 mb-4">
@@ -369,9 +369,76 @@ export default async function IndustryDetailPage({
 
 </section>
 
+{/* WHY THIS INDUSTRY MATTERS */}
+
+<section className="industry-glow bg-white py-12 lg:py-16 px-4 sm:px-6">
+
+  <div className="max-w-7xl mx-auto">
+
+    <div className="text-center mb-12">
+
+      <p className="uppercase tracking-[5px] text-[#C89B3C] text-sm mb-4">
+        Industry Insights
+      </p>
+
+      <h2 className="text-[#07111F] text-[26px] sm:text-[34px] lg:text-[56px] font-bold leading-[1.05]">
+        Why This Industry
+        Continues To Evolve
+      </h2>
+
+    </div>
+
+    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+
+      {[
+        {
+          title: "Project Growth",
+          desc: "Increasing investment continues to drive hiring demand.",
+        },
+        {
+          title: "Technology",
+          desc: "Digital transformation is reshaping technical requirements.",
+        },
+        {
+          title: "Leadership",
+          desc: "Organizations need stronger leadership pipelines.",
+        },
+        {
+          title: "Talent Demand",
+          desc: "Competition for experienced professionals remains high.",
+        },
+      ].map((item, index) => (
+
+        <div
+          key={index}
+          className="industry-glow bg-[#F7F7F7] rounded-[28px] p-6 border border-black/5 hover:-translate-y-2 transition-all duration-500"
+        >
+
+          <div className="text-[#C89B3C] text-5xl font-bold opacity-20 mb-4">
+            0{index + 1}
+          </div>
+
+          <h3 className="text-[#07111F] text-xl font-bold mb-4">
+            {item.title}
+          </h3>
+
+          <p className="text-gray-600 leading-7">
+            {item.desc}
+          </p>
+
+        </div>
+
+      ))}
+
+    </div>
+
+  </div>
+
+</section>
+
 {/* INDUSTRY MARQUEE */}
 
-<section className="bg-[#07111F] py-4 overflow-hidden border-y border-white/10">
+<section className="industry-glow bg-[#07111F] py-4 overflow-hidden border-y border-white/10">
 
   <div className="roles-marquee flex whitespace-nowrap">
 
@@ -406,7 +473,7 @@ export default async function IndustryDetailPage({
 
       {/* KEY POSITIONS */}
 
-<section className="bg-[#07111F] py-12 lg:py-16 px-4 sm:px-6">
+<section className="industry-glow bg-[#07111F] py-12 lg:py-16 px-4 sm:px-6">
 
   <div className="max-w-6xl mx-auto">
 
@@ -461,7 +528,7 @@ export default async function IndustryDetailPage({
 
       {/* RECRUITMENT CHALLENGES */}
 
-<section className="bg-[#F7F7F7] py-12 lg:py-16 px-4 sm:px-6">
+<section className="industry-glow bg-[#F7F7F7] py-12 lg:py-16 px-4 sm:px-6">
 
   <div className="max-w-6xl mx-auto">
 
@@ -562,7 +629,7 @@ export default async function IndustryDetailPage({
 </section>
 
       {/* WHY RUDRON */}
-      <section className="bg-[#07111F] py-12 lg:py-16 px-4 sm:px-6">
+      <section className="industry-glow bg-[#07111F] py-12 lg:py-16 px-4 sm:px-6">
 
         <div className="max-w-7xl mx-auto">
 
@@ -619,7 +686,7 @@ export default async function IndustryDetailPage({
 
               <div
                 key={index}
-                className="bg-[#0D1726] rounded-[24px] border border-white/10 p-6 hover:-translate-y-2 hover:border-[#C89B3C]/30 transition-all duration-500"
+                className="industry-glow bg-[#0D1726] rounded-[24px] border border-white/10 p-6 hover:-translate-y-2 hover:border-[#C89B3C]/30 transition-all duration-500"
               >
 
                 <div className="text-[#C89B3C] text-4xl font-bold opacity-50 mb-4">
@@ -653,7 +720,7 @@ export default async function IndustryDetailPage({
 
       {/* INDUSTRY IMPACT */}
 
-<section className="bg-[#F7F7F7] py-12 lg:py-16 px-4 sm:px-6">
+<section className="industry-glow bg-[#F7F7F7] py-12 lg:py-16 px-4 sm:px-6">
 
   <div className="max-w-7xl mx-auto">
 
@@ -680,7 +747,7 @@ export default async function IndustryDetailPage({
 
         <div
           key={item.title}
-          className="bg-white rounded-[28px] border border-black/5 p-6 text-center hover:-translate-y-2 transition-all duration-500"
+          className="industry-glow bg-white rounded-[28px] border border-black/5 p-6 text-center hover:-translate-y-2 transition-all duration-500"
         >
 
           <h3 className="text-[#C89B3C] text-[22px] lg:text-[34px] font-bold mb-3">
