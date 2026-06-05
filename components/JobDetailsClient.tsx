@@ -86,8 +86,6 @@ export default function JobDetailsClient({
 
     <Navbar />
 
-      <Navbar />
-
       {/* HERO */}
       <section className="relative min-h-[44vh] flex items-center overflow-hidden">
 
@@ -144,26 +142,232 @@ export default function JobDetailsClient({
 
       </section>
 
+      {/* OPPORTUNITY SNAPSHOT */}
+
+<section className="bg-[#F7F7F7] py-4 lg:py-8 px-4 sm:px-6">
+
+  <div className="max-w-7xl mx-auto">
+
+    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+
+      {[
+        {
+          title: job.location,
+          label: "Location",
+        },
+        {
+          title: job.type,
+          label: "Employment",
+        },
+        {
+          title: job.salary,
+          label: "Compensation",
+        },
+        {
+          title: job.specialisation,
+          label: "Specialisation",
+        },
+      ].map((item) => (
+
+        <div
+          key={item.label}
+          className="
+          floating-card
+          bg-white
+          rounded-[24px]
+          border
+          border-black/5
+          p-5
+          text-center
+          "
+        >
+
+          <h3 className="text-[#07111F] font-bold text-lg mb-2">
+
+            {item.title}
+
+          </h3>
+
+          <p className="text-gray-500 text-sm">
+
+            {item.label}
+
+          </p>
+
+        </div>
+
+      ))}
+
+    </div>
+
+  </div>
+
+</section>
+
+{/* CAREER MARQUEE */}
+
+<section className="bg-[#07111F] py-4 overflow-hidden border-y border-white/10">
+
+  <div className="roles-marquee flex whitespace-nowrap">
+
+    {[
+      "PROJECT MANAGEMENT",
+      "SUPERINTENDENT",
+      "PRECONSTRUCTION",
+      "DATA CENTERS",
+      "MEP LEADERSHIP",
+      "HEALTHCARE",
+      "MISSION CRITICAL",
+      "PROJECT MANAGEMENT",
+      "SUPERINTENDENT",
+      "PRECONSTRUCTION",
+    ].map((item, index) => (
+
+      <div
+        key={index}
+        className="flex items-center"
+      >
+
+        <span className="text-white text-[18px] sm:text-[24px] lg:text-[34px] font-bold mx-5">
+
+          {item}
+
+        </span>
+
+        <span className="text-[#C89B3C] text-2xl">
+
+          ◆
+
+        </span>
+
+      </div>
+
+    ))}
+
+  </div>
+
+</section>
+
+{/* KEY HIGHLIGHTS */}
+
+<section className="bg-[#07111F] px-4 sm:px-6 py-4 pb-8">
+
+  <div className="max-w-7xl mx-auto">
+
+    <div className="grid md:grid-cols-3 gap-5">
+
+      {[
+        {
+          title: "Career Growth",
+          desc: "Leadership opportunities and long-term advancement potential.",
+        },
+        {
+          title: "Competitive Package",
+          desc: "Attractive compensation and benefits structure.",
+        },
+        {
+          title: "Industry Impact",
+          desc: "Contribute to major projects shaping the built environment.",
+        },
+      ].map((item, index) => (
+
+        <div
+          key={item.title}
+          className="
+          bg-[#0D1726]
+          rounded-[28px]
+          border
+          border-white/10
+          p-6
+          relative
+          overflow-hidden
+          "
+        >
+
+          <div className="absolute right-4 top-0 text-[70px] font-bold text-white/[0.04]">
+
+            0{index + 1}
+
+          </div>
+
+          <h3 className="text-white text-xl font-bold mb-4">
+
+            {item.title}
+
+          </h3>
+
+          <p className="text-gray-400 leading-7">
+
+            {item.desc}
+
+          </p>
+
+        </div>
+
+      ))}
+
+    </div>
+
+  </div>
+
+</section>
+
       {/* CONTENT */}
-      <section className="py-10 px-6 lg:px-12">
+      <section className="py-6 px-6 lg:px-12">
 
         <div className="max-w-7xl mx-auto grid lg:grid-cols-[1fr_320px] gap-6">
 
           {/* LEFT */}
           <div className="space-y-5">
 
-            <InfoCard title="Job Overview">
+            <div className="space-y-6">
 
+  <div className="grid md:grid-cols-3 gap-4 mb-6">
+
+    {[
+      "Leadership Opportunity",
+      "Career Growth",
+      "Strategic Impact",
+    ].map((item, index) => (
+
+      <div
+        key={item}
+        className="
+        bg-[#07111F]
+        border
+        border-white/10
+        rounded-[20px]
+        p-4
+        "
+      >
+
+        <div className="text-[#C89B3C] text-2xl font-bold opacity-30 mb-2">
+
+          0{index + 1}
+
+        </div>
+
+        <p className="text-white text-sm">
+
+          {item}
+
+        </p>
+
+      </div>
+
+    ))}
+
+  </div>
               <p className="text-gray-300 leading-7 text-[15px]">
 
                 {job.description}
 
               </p>
 
-            </InfoCard>
+            </div>
 
             <InfoList
-              title="Responsibilities"
+              title="Key Responsibilities"
               items={job.responsibilities}
             />
 
@@ -183,12 +387,49 @@ export default function JobDetailsClient({
           <div>
 
             <div className="bg-[#0D1726] border border-white/5 rounded-[24px] p-6 sticky top-28">
+            
+          <h3 className="text-white text-[24px] font-bold mb-5">
+            
+            Apply For This
+            Opportunity
+            
+            </h3>
 
-              <h3 className="text-white text-[22px] font-bold mb-5">
+            <div className="grid grid-cols-2 gap-3 mb-6">
 
-                Job Summary
+  <div className="bg-[#07111F] rounded-[18px] p-4">
 
-              </h3>
+    <p className="text-[#C89B3C] text-xs uppercase mb-2">
+
+      Industry
+
+    </p>
+
+    <p className="text-white text-sm font-semibold">
+
+      {job.industry}
+
+    </p>
+
+  </div>
+
+  <div className="bg-[#07111F] rounded-[18px] p-4">
+
+    <p className="text-[#C89B3C] text-xs uppercase mb-2">
+
+      Type
+
+    </p>
+
+    <p className="text-white text-sm font-semibold">
+
+      {job.type}
+
+    </p>
+
+  </div>
+
+</div>
 
               <div className="space-y-4 mb-7">
 
@@ -228,16 +469,40 @@ export default function JobDetailsClient({
                 />
 
               </div>
+              
 
               {/* BUTTON */}
               <button
                 onClick={() => setIsModalOpen(true)}
-                className="w-full bg-[#C89B3C] hover:bg-[#d6ab52] text-black font-semibold py-3 rounded-xl transition-all duration-300"
+                className="w-full bg-[#C89B3C] hover:bg-[#d6ab52] text-black font-semibold py-3 rounded-xl transition-all duration-300 hover:scale-[1.02]"
               >
 
-                Apply Now
+                Apply For This Role →
 
               </button>
+
+              <div className="
+mt-5
+bg-[#07111F]
+rounded-[18px]
+p-4
+">
+
+  <p className="text-[#C89B3C] text-sm font-semibold mb-2">
+
+    Recruiter Support
+
+  </p>
+
+  <p className="text-gray-400 text-xs leading-7">
+
+    Our team provides interview preparation,
+    market insight, offer guidance and career
+    support throughout the hiring process.
+
+  </p>
+
+</div>
 
             </div>
 
@@ -392,9 +657,9 @@ function InfoList({
 
   return (
 
-    <div className="bg-[#0D1726] border border-white/5 rounded-[24px] p-6">
+    <div className="bg-[#0D1726] border border-white/5 rounded-[24px] p-6 hover:border-[#C89B3C]/20 transition-all duration-500">
 
-      <h2 className="text-white text-[24px] font-bold mb-5">
+      <h2 className="text-white text-[24px] lg:text-[30px] font-bold mb-5">
 
         {title}
 

@@ -77,7 +77,7 @@ export default function IndustriesPage() {
       <Navbar />
 
       {/* HERO */}
-      <section className="relative min-h-[68vh] sm:min-h-[72vh] lg:min-h-[82vh] flex items-center overflow-hidden">
+      <section className="relative min-h-[68vh] sm:min-h-[72vh] lg:min-h-[85vh] flex items-center overflow-hidden">
 
         {/* BG */}
         <div
@@ -101,11 +101,17 @@ export default function IndustriesPage() {
 
               </p>
 
-              <h1 className="text-white font-bold leading-[1.02] text-[36px] sm:text-[50px] lg:text-[66px] mb-6">
+              <h1 className="text-white font-bold leading-[1.02] text-[34px] sm:text-[48px] lg:text-[64px] mb-6">
 
                 Specialized Talent
                 Solutions Across
-                The Built Environment
+                
+                <br/>
+                The
+            
+                <span className="text-[#C89B3C]">
+                  {" "} Built Environment
+                </span>
 
               </h1>
 
@@ -184,49 +190,49 @@ export default function IndustriesPage() {
 
       <div className="floating-card absolute top-0 left-0 bg-[#07111F] text-white rounded-[28px] p-6 border border-white/10 w-[190px] sm:w-[240px] lg:w-[320px]">
 
-        <p className="text-[#C89B3C] mb-2">
+        <h3 className="text-[#C89B3C] font-bold mb-2">
           Industry
-        </p>
-
-        <h3 className="text-2xl font-bold">
-          Architecture
         </h3>
+
+        <p className="text-gray-300 mb-3">
+          Architecture
+        </p>
 
       </div>
 
       <div className="floating-card-2 absolute top-24 right-0 bg-[#0D1726] text-white rounded-[28px] p-6 border border-white/10 w-[190px] sm:w-[240px] lg:w-[320px]">
 
-        <p className="text-[#C89B3C] mb-2">
+        <h3 className="text-[#C89B3C] font-bold mb-2">
           Industry
-        </p>
-
-        <h3 className="text-2xl font-bold">
-          Engineering
         </h3>
+
+        <p className="text-gray-300 mb-3">
+          Engineering
+        </p>
 
       </div>
 
       <div className="floating-card absolute bottom-20 left-0 lg:left-0 bg-[#07111F] text-white rounded-[28px] p-6 border border-white/10 w-[190px] sm:w-[240px] lg:w-[320px]">
 
-        <p className="text-[#C89B3C] mb-2">
+        <h3 className="text-[#C89B3C] font-bold mb-2">
           Industry
-        </p>
-
-        <h3 className="text-2xl font-bold">
-          Construction
         </h3>
+
+        <p className="text-gray-300 mb-3">
+          Construction
+        </p>
 
       </div>
 
-      <div className="floating-card-2 absolute bottom-0 right-0 lg:right-0 bg-[#0D1726] text-white rounded-[28px] p-6 border border-white/10 w-[190px] sm:w-[240px] lg:w-[320px]">
+      <div className="floating-card-2 absolute bottom-0 right-0 lg:right-0 bg-[#0D1726] text-white rounded-[28px] p-6 border border-white/10 w-[190px] sm:w-[240px] lg:w-[320px]">  
 
-        <p className="text-[#C89B3C] mb-2">
+        <h3 className="text-[#C89B3C] font-bold mb-2">
           Industry
-        </p>
-
-        <h3 className="text-2xl font-bold">
-          MEP
         </h3>
+
+        <p className="text-gray-300 mb-3">
+          MEP
+        </p>
 
       </div>
 

@@ -109,3 +109,30 @@ body {
 .industry-glow {
   animation: pulseGlow 5s ease-in-out infinite;
 }
+
+.article-card {
+  transition:
+    transform .4s ease,
+    box-shadow .4s ease;
+}
+
+.article-card:hover {
+  transform: translateY(-6px);
+
+  box-shadow:
+    0 20px 50px rgba(0,0,0,.08);
+}
+
+@keyframes subtleFloat {
+  0%,100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.floating-insight {
+  animation: subtleFloat 6s ease-in-out infinite;
+}

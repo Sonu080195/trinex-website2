@@ -142,12 +142,16 @@ const insightsMarquee = [
 
               </p>
 
-              <h1 className="text-white font-bold leading-[1.02] text-[36px] sm:text-[50px] lg:text-[66px] mb-6">
+              <h1 className="text-white font-bold leading-[1.02] text-[34px] sm:text-[48px] lg:text-[64px] mb-6">
 
                 Construction
                 Hiring Trends,
                 Market Insights
-                & Industry Reports
+                & 
+                <span className="text-[#C89B3C]">
+                  {" "} Industry Reports
+                </span>
+                
 
               </h1>
 
@@ -212,51 +216,51 @@ const insightsMarquee = [
 
     {/* RIGHT */}
 
-    <div className="relative min-h-[360px] sm:min-h-[420px] lg:min-h-[620px]">
+    <div className="relative min-h-[520px] lg:min-h-[620px]">
 
-      <div className="floating-card absolute top-0 left-0 bg-[#07111F] text-white rounded-[28px] p-5 lg:p-6 border border-white/10 w-[190px] sm:w-[240px] lg:w-[320px]">
+      <div className="floating-card absolute top-0 left-0 bg-[#07111F] text-white rounded-[28px] p-6 border border-white/10 w-[190px] sm:w-[240px] lg:w-[320px]">
 
-        <h3 className="text-[#C89B3C] text-lg lg:text-xl font-bold mb-3">
+        <h3 className="text-[#C89B3C] font-bold mb-2">
           Data Center Expansion
         </h3>
 
-        <p className="text-gray-300 leading-6">
+        <p className="text-gray-300 mb-3">
           Hyperscale development continues accelerating.
         </p>
 
       </div>
 
-      <div className="floating-card-2 absolute top-20 right-0 bg-[#0D1726] text-white rounded-[28px] p-5 lg:p-6 border border-white/10 w-[190px] sm:w-[240px] lg:w-[320px]">
+      <div className="floating-card-2 absolute top-24 right-0 bg-[#0D1726] text-white rounded-[28px] p-6 border border-white/10 w-[190px] sm:w-[240px] lg:w-[320px]">
 
-        <h3 className="text-[#C89B3C] text-lg lg:text-xl font-bold mb-3">
+        <h3 className="text-[#C89B3C] font-bold mb-2">
           MEP Talent Shortages
         </h3>
 
-        <p className="text-gray-300 leading-6">
+        <p className="text-gray-300 mb-3">
           Specialized talent remains highly competitive.
         </p>
 
       </div>
 
-      <div className="floating-card absolute bottom-20 left-0 lg:left-0 bg-[#07111F] text-white rounded-[28px] p-5 lg:p-6 border border-white/10 w-[190px] sm:w-[240px] lg:w-[320px]">
+      <div className="floating-card absolute bottom-20 left-0 lg:left-0 bg-[#07111F] text-white rounded-[28px] p-6 border border-white/10 w-[190px] sm:w-[240px] lg:w-[320px]">
 
-        <h3 className="text-[#C89B3C] text-lg lg:text-xl font-bold mb-3">
+        <h3 className="text-[#C89B3C] font-bold mb-2">
           Executive Hiring
         </h3>
 
-        <p className="text-gray-300 leading-6">
+        <p className="text-gray-300 mb-3">
           Leadership demand continues rising nationwide.
         </p>
 
       </div>
 
-      <div className="floating-card-2 absolute bottom-0 right-0 lg:right-0 bg-[#0D1726] text-white rounded-[28px] p-5 lg:p-6 border border-white/10 w-[190px] sm:w-[240px] lg:w-[320px]">
+      <div className="floating-card-2 absolute bottom-0 right-0 lg:right-0 bg-[#0D1726] text-white rounded-[28px] p-6 border border-white/10 w-[190px] sm:w-[240px] lg:w-[320px]">  
 
-        <h3 className="text-[#C89B3C] text-lg lg:text-xl font-bold mb-3">
+        <h3 className="text-[#C89B3C] font-bold mb-2">
           Infrastructure Growth
         </h3>
 
-        <p className="text-gray-300 leading-6">
+        <p className="text-gray-300 mb-3">
           Public investment is creating workforce demand.
         </p>
 
@@ -461,13 +465,13 @@ const insightsMarquee = [
 
       {/* INTELLIGENCE CATEGORIES */}
 
-<section className="bg-[#07111F] py-12 lg:py-16 px-4 sm:px-6">
+<section className="bg-[#07111F] py-8 lg:py-12 px-4 sm:px-6">
 
-  <div className="max-w-7xl mx-auto">
+  <div className="max-w-5xl mx-auto">
 
-    <div className="text-center mb-12">
+    <div className="text-center mb-6">
 
-      <p className="uppercase tracking-[5px] text-[#C89B3C] text-sm mb-4">
+      <p className="uppercase tracking-[5px] text-[#C89B3C] text-sm mb-6">
 
         Intelligence Categories
 
@@ -526,10 +530,10 @@ const insightsMarquee = [
           group
           relative
           bg-[#0D1726]
-          rounded-[28px]
+          rounded-[24px]
           border
-          border-white/10
-          p-6
+          border-white/8
+          p-4
           hover:-translate-y-2
           hover:border-[#C89B3C]/30
           transition-all
@@ -538,7 +542,7 @@ const insightsMarquee = [
           "
         >
 
-          <div className="absolute right-4 top-0 text-[90px] font-bold text-white/[0.04]">
+          <div className="absolute right-4 top-0 text-[60px] font-bold text-white/[0.04]">
 
             {item.number}
 
@@ -567,7 +571,20 @@ const insightsMarquee = [
 </section>
 
       {/* INDUSTRY RESOURCES */}
-      <section className="bg-[#F7F7F7] py-12 sm:py-16 lg:py-18 px-5 sm:px-6 lg:px-6">
+      <section className="
+      group
+      relative
+      bg-white
+      rounded-[28px]
+      border
+      border-black/5
+      p-6
+      hover:-translate-y-2
+      hover:border-[#C89B3C]/30
+      transition-all
+      duration-500
+      overflow-hidden"
+      >
 
         <div className="max-w-7xl mx-auto">
 
@@ -610,11 +627,16 @@ const insightsMarquee = [
 
                 <h3 className="text-[#07111F] text-[22px] sm:text-[24px] font-bold leading-tight mb-4">
 
+                  <div className="text-[#C89B3C] text-3xl mb-4">
+                    ↗
+                    </div>
+
                   {item.title}
 
                 </h3>
 
-                <p className="text-gray-500 leading-7 text-[14px] sm:text-[15px] mb-6">
+                <p className="text-[#07111F] text-xl font-bold mb-4 group-hover:text-[#C89B3C] transition-colors"
+                >
 
                   {item.description}
 

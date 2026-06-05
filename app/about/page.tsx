@@ -453,7 +453,9 @@ desc:"As construction technologies evolve and workforce demands continue to chan
                 key={item.title}
                 className="bg-[#0D1726] border border-white/10 rounded-[30px] p-5 sm:p-6 lg:p-8 hover:-translate-y-2 hover:border-[#C89B3C]/40 transition-all duration-500"
               >
-                <h3 className="text-lg sm:text-xl font-semibold mb-4">{item.title}</h3>
+                <h3 className="text-lg sm:text-xl font-semibold mb-4">
+                  
+                  {item.title}</h3>
 
                 <p className="text-gray-400 leading-8">
                   {item.description}

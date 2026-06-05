@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import Navbar from "@/components/Navbar";
 import HomeCTA from "@/components/HomeCTA";
 import Footer from "@/components/Footer";
@@ -224,6 +226,10 @@ export default async function InsightArticlePage({
     );
   }
 
+  const relatedArticles = Object.entries(articles)
+  .filter(([articleSlug]) => articleSlug !== slug)
+  .slice(0, 3);
+
   return (
 
     <main className="bg-[#07111F] text-white overflow-hidden">
@@ -270,38 +276,202 @@ export default async function InsightArticlePage({
 
       </section>
 
+      {/* INSIGHT SUMMARY */}
+
+<section className="bg-[#F7F7F7] py-6 lg:py-8 px-4 sm:px-6">
+
+  <div className="max-w-7xl mx-auto">
+
+    <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
+
+      {[
+        {
+          title: article.category,
+          desc: "Category",
+        },
+        {
+          title: "AEC & MEP",
+          desc: "Industry Focus",
+        },
+        {
+          title: "Employers",
+          desc: "Primary Audience",
+        },
+        {
+          title: "Market Intelligence",
+          desc: "Insight Type",
+        },
+      ].map((item) => (
+
+        <div
+          key={item.title}
+          className="floating-insight
+          bg-white
+          rounded-[28px]
+          border
+          border-black/5
+          p-6
+          text-center
+          hover:-translate-y-2
+          transition-all
+          duration-500
+          "
+        >
+
+          <h3 className="text-[#C89B3C] text-lg lg:text-xl font-bold mb-3">
+
+            {item.title}
+
+          </h3>
+
+          <p className="text-gray-600">
+
+            {item.desc}
+
+          </p>
+
+        </div>
+
+      ))}
+
+    </div>
+
+  </div>
+
+</section>
+
+{/* ARTICLE MARQUEE */}
+
+<section className="bg-[#07111F] py-4 overflow-hidden border-y border-white/10">
+
+  <div className="roles-marquee flex whitespace-nowrap">
+
+    {[
+      "WORKFORCE INTELLIGENCE",
+      "RECRUITMENT STRATEGY",
+      "TALENT SHORTAGES",
+      "LEADERSHIP HIRING",
+      "PROJECT GROWTH",
+      "MARKET TRENDS",
+      "CONSTRUCTION TALENT",
+      "WORKFORCE INTELLIGENCE",
+      "RECRUITMENT STRATEGY",
+      "TALENT SHORTAGES",
+    ].map((item, index) => (
+
+      <div
+        key={index}
+        className="flex items-center"
+      >
+
+        <span className="text-white text-[18px] sm:text-[24px] lg:text-[34px] font-bold mx-5">
+
+          {item}
+
+        </span>
+
+        <span className="text-[#C89B3C] text-2xl">
+
+          ◆
+
+        </span>
+
+      </div>
+
+    ))}
+
+  </div>
+
+</section>
+
       {/* ARTICLE */}
-      <section className="bg-[#F7F7F7] py-12 sm:py-16 lg:py-18 px-5 sm:px-6 lg:px-6">
+      <section className="bg-[#F7F7F7] py-6 sm:py-8 lg:py-10 px-5 sm:px-6 lg:px-6">
 
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-6xl mx-auto">
 
-          <div className="bg-white rounded-[28px] sm:rounded-[32px] p-6 sm:p-8 lg:p-12 border border-black/5 shadow-[0_10px_40px_rgba(0,0,0,0.04)]">
+          <div className="article-card bg-white rounded-[28px] sm:rounded-[32px] p-6 sm:p-8 lg:p-12 border border-black/5 shadow-[0_10px_40px_rgba(0,0,0,0.04)]">
 
             {/* TOP */}
-            <div className="mb-8 sm:mb-10 pb-8 border-b border-black/5">
+            <div className="mb-10 pb-8 border-b border-black/5">
 
-              <p className="text-[#C89B3C] uppercase tracking-[4px] text-[11px] sm:text-sm mb-4">
+  <div className="flex flex-wrap gap-3 mb-6">
 
-                Industry Intelligence
+    <span className="px-4 py-2 rounded-full bg-[#07111F] text-white text-sm">
 
-              </p>
+      {article.category}
 
-              <h2 className="text-[#07111F] text-[28px] sm:text-[40px] lg:text-[52px] font-bold leading-[1.08] mb-5">
+    </span>
 
-                Market Insights &
-                Workforce Intelligence
+    <span className="px-4 py-2 rounded-full bg-[#C89B3C]/10 text-[#C89B3C] text-sm">
 
-              </h2>
+      Market Intelligence
 
-              <p className="text-gray-600 text-[15px] sm:text-[17px] leading-7 sm:leading-8 max-w-[850px]">
+    </span>
 
-                Explore deeper workforce trends, recruitment strategies,
-                market demand shifts, and industry developments shaping
-                the future of construction hiring across AEC & MEP sectors.
+  </div>
 
-              </p>
+  <h2 className="text-[#07111F] text-[28px] sm:text-[38px] lg:text-[52px] font-bold leading-[1.08] mb-5">
 
-            </div>
+    Industry Intelligence
+    Report
+
+  </h2>
+
+  <p className="text-gray-600 text-[15px] sm:text-[17px] leading-8 max-w-[900px]">
+
+    Analysis covering workforce trends,
+    hiring demand, leadership recruitment,
+    talent shortages, and emerging developments
+    across construction and engineering markets.
+
+  </p>
+
+</div>
+            
+
+            {/* KEY TAKEAWAYS */}
+
+<div className="grid md:grid-cols-3 gap-4 mb-10">
+
+  {[
+    "Workforce demand continues increasing across major construction sectors.",
+    "Leadership hiring remains one of the industry's biggest challenges.",
+    "Organizations with proactive talent strategies outperform competitors.",
+  ].map((item, index) => (
+
+    <div
+      key={index}
+      className="
+group
+bg-[#F7F7F7]
+rounded-[24px]
+p-5
+border
+border-black/5
+hover:-translate-y-2
+hover:border-[#C89B3C]/30
+transition-all
+duration-500
+"
+    >
+
+      <div className="text-[#C89B3C] text-3xl font-bold opacity-20 mb-3">
+
+        0{index + 1}
+
+      </div>
+
+      <p className="text-gray-700 leading-7">
+
+        {item}
+
+      </p>
+
+    </div>
+
+  ))}
+
+</div>
 
             {/* CONTENT */}
             <div className="space-y-7 sm:space-y-8">
@@ -326,6 +496,98 @@ export default async function InsightArticlePage({
         </div>
 
       </section>
+
+      {/* RELATED INSIGHTS */}
+
+<section className="bg-[#07111F] py-12 lg:py-16 px-4 sm:px-6">
+
+  <div className="max-w-7xl mx-auto">
+
+    <div className="text-center mb-12">
+
+      <p className="uppercase tracking-[5px] text-[#C89B3C] text-sm mb-4">
+
+        Related Insights
+
+      </p>
+
+      <h2 className="text-white text-[28px] sm:text-[36px] lg:text-[56px] font-bold leading-[1.05]">
+
+        Continue Exploring
+        Market Intelligence
+
+      </h2>
+
+      <p className="text-gray-400 text-[15px] sm:text-[17px] leading-7 max-w-3xl mx-auto mt-6">
+
+        Explore additional workforce trends,
+        hiring strategies, industry developments,
+        and recruitment intelligence shaping the
+        future of construction talent acquisition.
+
+      </p>
+
+    </div>
+
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+
+      {relatedArticles.map(([relatedSlug, related]) => (
+
+        <Link
+          key={relatedSlug}
+          href={`/insights/${relatedSlug}`}
+          className="
+          group
+          bg-[#0D1726]
+          border
+          border-white/10
+          rounded-[28px]
+          overflow-hidden
+          hover:-translate-y-2
+          hover:border-[#C89B3C]/30
+          transition-all
+          duration-500
+          "
+        >
+
+          <div
+            className="h-[180px] bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+            style={{
+              backgroundImage: `url(${related.image})`,
+            }}
+          />
+
+          <div className="p-6">
+
+            <p className="text-[#C89B3C] text-sm mb-3">
+
+              {related.category}
+
+            </p>
+
+            <h3 className="text-white text-xl font-bold mb-4">
+
+              {related.title}
+
+            </h3>
+
+            <span className="text-[#C89B3C] font-semibold">
+
+              Read Insight →
+
+            </span>
+
+          </div>
+
+        </Link>
+
+      ))}
+
+    </div>
+
+  </div>
+
+</section>
 
       {/* CTA */}
       <HomeCTA />
