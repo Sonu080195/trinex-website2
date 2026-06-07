@@ -20,7 +20,7 @@ export default function Specialisations() {
 
         {
           title: "Educational Construction",
-          image: "/subsectors/Commercial/Educational.webp",
+          image: "/subsectors/Commercial/Education.webp",
           link: "/commercial/educational",
         },
 
@@ -178,7 +178,7 @@ export default function Specialisations() {
 
   return (
 
-    <section className="relative bg-[#F7F7F7] py-12 sm:py-14 px-5 sm:px-6 lg:px-20 overflow-hidden">
+    <section className="relative bg-[#F7F7F7] py-10 sm:py-14 px-5 sm:px-6 lg:px-20 overflow-hidden">
 
       {/* TOP TEXT */}
       <div className="text-center mb-6 sm:mb-16">
@@ -189,20 +189,74 @@ export default function Specialisations() {
 
         </p>
 
-        <h2 className="text-[#07111F] text-[30px] sm:text-[42px] md:text-[52px] lg:text-[58px] font-bold leading-[1.08] mb-4">
+        <div className="flex flex-wrap justify-center gap-8 lg:gap-14 mb-4">
 
-          Expertise Across
-          <br />
-          High-Growth Construction Markets
+  <div>
 
-        </h2>
+    <p className="text-[#C89B3C] text-[28px] font-bold">
 
-        <p className="text-gray-500 text-[15px] sm:text-xl leading-7 sm:leading-9 max-w-4xl mx-auto">
+      4
 
-          Delivering top-tier talent solutions across major
-          construction and infrastructure markets.
+    </p>
 
-        </p>
+    <p className="text-gray-500 text-sm">
+
+      Core Sectors
+
+    </p>
+
+  </div>
+
+  <div>
+
+    <p className="text-[#C89B3C] text-[28px] font-bold">
+
+      20+
+
+    </p>
+
+    <p className="text-gray-500 text-sm">
+
+      Specialisations
+
+    </p>
+
+  </div>
+
+  <div>
+
+    <p className="text-[#C89B3C] text-[28px] font-bold">
+
+      USA
+
+    </p>
+
+    <p className="text-gray-500 text-sm">
+
+      Primary Market
+
+    </p>
+
+  </div>
+
+</div>
+
+<h2 className="text-[#07111F] text-[28px] sm:text-[36px] lg:text-[56px] font-bold leading-[1.05] mb-4">
+
+Expertise Across
+<br />
+High-Growth Construction Markets
+
+</h2>
+
+<p className="text-gray-600 text-[15px] sm:text-[17px] leading-5 sm:leading-6 max-w-3xl mx-auto">
+
+  Supporting contractors, developers,
+  engineering consultancies and owners
+  across the most competitive construction,
+  infrastructure and mission-critical markets.
+
+</p>
 
       </div>
 
@@ -242,6 +296,7 @@ export default function Specialisations() {
               <p className="text-gray-300 text-[13px] leading-6 mb-4 max-w-[240px]">
 
                 {sector.description}
+                
 
               </p>
 
@@ -304,6 +359,12 @@ export default function Specialisations() {
                 {sector.description}
 
               </p>
+
+              <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm text-white text-sm mb-5">
+
+  {sector.subsectors.length} Specialisations
+
+</div>
 
               <div className="flex items-center gap-3">
 

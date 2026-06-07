@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 import {
   Menu,
@@ -10,6 +11,9 @@ import {
 } from "lucide-react";
 
 export default function Navbar() {
+
+  const pathname =
+  usePathname();
 
   const [menuOpen, setMenuOpen] =
     useState(false);
@@ -20,32 +24,91 @@ export default function Navbar() {
   const [jobsDropdown, setJobsDropdown] =
     useState(false);
 
+  const [scrolled, setScrolled] =
+  useState(false);
+
   /* LOCK BODY SCROLL */
-  useEffect(() => {
+  /* LOCK BODY SCROLL */
+useEffect(() => {
 
-    if (menuOpen) {
+  if (menuOpen) {
 
-      document.body.style.overflow = "hidden";
+    document.body.style.overflow = "hidden";
 
-    } else {
+  } else {
 
-      document.body.style.overflow = "auto";
+    document.body.style.overflow = "auto";
 
-    }
+  }
 
-    return () => {
+  return () => {
 
-      document.body.style.overflow = "auto";
+    document.body.style.overflow = "auto";
 
-    };
+  };
 
-  }, [menuOpen]);
+}, [menuOpen]);
+
+/* NAVBAR SCROLL EFFECT */
+useEffect(() => {
+
+  const handleScroll = () => {
+
+    setScrolled(window.scrollY > 50);
+
+  };
+
+  window.addEventListener(
+    "scroll",
+    handleScroll
+  );
+
+  return () => {
+
+    window.removeEventListener(
+      "scroll",
+      handleScroll
+    );
+
+  };
+
+}, []);
 
   return (
 
-    <header className="absolute top-0 left-0 w-full z-50">
+    <header
+  className={`
+  fixed
+  top-0
+  left-0
+  w-full
+  z-[999]
+  transition-all
+  duration-500
+  ${
+    scrolled
+      ? "bg-[#07111F]/80 backdrop-blur-xl border-b border-white/10"
+      : "bg-transparent"
+  }
+`}
+>
 
-      <div className="max-w-7xl mx-auto px-3 sm:px-5 lg:px-5">
+      <div
+  className={`
+  max-w-7xl
+  mx-auto
+  px-3
+  sm:px-5
+  lg:px-5
+  transition-all
+  duration-500
+  ${
+    scrolled
+      ? "py-1"
+      : "py-0"
+  }
+`}
+>
 
         <div className="flex items-center justify-between py-1 lg:py-2">
 
@@ -58,7 +121,16 @@ export default function Navbar() {
             <img
               src="/images/RUDRON Logo.webp"
               alt="RUDRON Logo"
-              className="h-18 sm:h-22 lg:h-26 w-auto"
+              className={`
+w-auto
+transition-all
+duration-500
+${
+  scrolled
+    ? "h-14 lg:h-18"
+    : "h-18 sm:h-22 lg:h-26"
+}
+`}
             />
 
           </Link>
@@ -67,9 +139,19 @@ export default function Navbar() {
           <nav className="hidden lg:flex items-center gap-6 text-white text-[20px] font-medium">
 
             <Link
-              href="/"
-              className="hover:text-[#C89B3C] transition duration-300"
-            >
+  href="/"
+  className={`
+  relative
+  hover:text-[#C89B3C]
+  transition
+  duration-300
+  ${
+    pathname === "/"
+      ? "text-[#C89B3C]"
+      : ""
+  }
+  `}
+>
               Home
             </Link>
 

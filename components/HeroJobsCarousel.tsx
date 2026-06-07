@@ -43,12 +43,12 @@ export default function HeroJobsCarousel() {
 
   return (
 
-    <section className="bg-[#07111F] py-14 sm:py-16 lg:py-18 px-5 sm:px-6 lg:px-6">
+    <section className="bg-[#07111F] py-14 sm:py-16 lg:py-10 px-5 sm:px-6 lg:px-6">
 
       <div className="max-w-7xl mx-auto">
 
         {/* TOP */}
-        <div className="text-center mb-8 sm:mb-10">
+        <div className="text-center mb-6 sm:mb-8">
 
           <p className="text-[#C89B3C] uppercase tracking-[4px] text-[11px] sm:text-sm mb-4">
 
@@ -56,17 +56,25 @@ export default function HeroJobsCarousel() {
 
           </p>
 
-          <h2 className="text-white text-[30px] sm:text-[42px] lg:text-[52px] font-bold leading-[1.08]">
+          <h2 className="text-white text-[28px] sm:text-[36px] lg:text-[56px] font-bold leading-[1.05] mb-5">
 
             Executive & Project
             Leadership Opportunities
 
           </h2>
 
+          <p className="text-gray-400 text-[15px] sm:text-[17px] leading-7 sm:leading-8 max-w-3xl mx-auto">
+
+  Explore executive, leadership and project
+  delivery opportunities across construction,
+  mission critical, healthcare and infrastructure markets.
+
+</p>
+
         </div>
 
         {/* CARD */}
-        <div className="relative overflow-hidden rounded-[28px] min-h-[720px] sm:min-h-[560px] lg:h-[500px]">
+        <div className="relative overflow-hidden rounded-[32px] min-h-[720px] sm:min-h-[560px] lg:h-[560px]">
 
           {/* BG */}
           <div
@@ -119,15 +127,45 @@ export default function HeroJobsCarousel() {
 
                 </h3>
 
-                {/* COMPANY */}
-                <p className="text-[#C89B3C] text-[15px] sm:text-[20px] mb-4">
+{/* COMPANY */}
+<p className="text-[#C89B3C] text-[15px] sm:text-[20px] mb-4">
 
-                  {activeJob.company}
+{activeJob.company}
 
-                </p>
+</p>
+
+<div className="flex flex-wrap gap-3 mb-5">
+
+  {[
+    "Executive Search",
+    "Career Growth",
+    "Confidential Search",
+  ].map((item) => (
+
+    <span
+      key={item}
+      className="
+      px-4
+      py-2
+      rounded-full
+      bg-white/5
+      border
+      border-white/10
+      text-white
+      text-xs
+      "
+    >
+
+      {item}
+
+    </span>
+
+  ))}
+
+</div>
 
                 {/* DETAILS */}
-                <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-5 mb-5">
+                <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-5 mb-4">
 
                   <div className="flex items-center gap-2 text-gray-300">
 
@@ -213,6 +251,32 @@ export default function HeroJobsCarousel() {
 
           </div>
 
+<div className="hidden xl:block absolute top-8 right-8 z-20">
+
+  <div className="bg-[#07111F]/90 backdrop-blur-md border border-white/10 rounded-[24px] p-5 w-[250px]">
+
+    <p className="text-[#C89B3C] text-xs uppercase tracking-[2px] mb-2">
+
+      Featured Search
+
+    </p>
+
+    <h4 className="text-white text-lg font-bold mb-3">
+
+      {activeJob.title}
+
+    </h4>
+
+    <p className="text-gray-400 text-sm">
+
+      {activeJob.location}
+
+    </p>
+
+  </div>
+
+</div>
+
           {/* INDICATORS */}
           <div className="absolute bottom-5 sm:bottom-8 left-1/2 -translate-x-1/2 flex gap-3 z-20">
 
@@ -236,19 +300,19 @@ export default function HeroJobsCarousel() {
 
         </div>
 
-        {/* STATS */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
+{/* STATS */}
+<div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
 
-          {[
-            ["100+", "Placements"],
-            ["30+", "Markets Served"],
-            ["95%", "Retention Rate"],
-            ["USA", "Nationwide Reach"],
-          ].map((item, index) => (
+{[
+  ["Executive", "Search"],
+  ["Mission Critical", "Markets"],
+  ["Healthcare", "Construction"],
+  ["Nationwide", "Talent Network"],
+].map((item, index) => (
 
             <div
               key={index}
-              className="bg-[#0D1726] border border-white/8 rounded-[16px] p-4 text-center"
+              className="bg-[#0D1726] border border-white/8 rounded-[16px] p-2 text-center"
             >
 
               <h3 className="text-[#C89B3C] text-[24px] font-bold">

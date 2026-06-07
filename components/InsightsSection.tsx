@@ -5,6 +5,7 @@ export default function InsightsSection() {
   const insights = [
     {
       title: "2026 Construction Hiring Trends",
+      readTime: "4 Min Read",
       image: "/insights/construction-trends.webp",
       category: "Market Insights",
       slug: "construction-hiring-trends",
@@ -15,6 +16,7 @@ export default function InsightsSection() {
 
     {
       title: "The Growing Demand for Data Center Talent",
+      readTime: "4 Min Read",
       image: "/insights/datacenter-talent.webp",
       category: "Industry News",
       slug: "data-center-construction-hiring",
@@ -25,6 +27,7 @@ export default function InsightsSection() {
 
     {
       title: "MEP Salary & Workforce Insights",
+      readTime: "4 Min Read",
       image: "/insights/mep-salary.webp",
       category: "Salary Guides",
       slug: "mep-talent-shortage",
@@ -48,19 +51,18 @@ export default function InsightsSection() {
             <p className="text-[#C89B3C] uppercase tracking-[3px] sm:tracking-[4px] text-[11px] sm:text-sm mb-3 sm:mb-4">
 
               <br />
-              <br />
 
-              Insights & Resources
+              Industry Intelligence
 
             </p>
 
-            <h2 className="text-[#07111F] text-[30px] sm:text-[42px] md:text-[52px] lg:text-[58px] font-bold leading-[1.02] mb-4">
+            <h2 className="text-[#07111F] text-[28px] sm:text-[36px] lg:text-[56px] font-bold leading-[1.05] mb-4">
 
               Stay Ahead Of The Industry
 
             </h2>
 
-            <p className="text-gray-500 text-[12px] sm:text-[16px] leading-7 sm:leading-6 max-w-3xl">
+            <p className="text-gray-600 text-[15px] sm:text-[17px] leading-5 sm:leading-6 max-w-3xl">
 
               Explore recruitment trends, salary insights, and market updates
               shaping the future of AEC & MEP hiring.
@@ -112,6 +114,7 @@ export default function InsightsSection() {
           <div className="absolute inset-0 bg-gradient-to-t from-[#07111F]/70 to-transparent" />
 
           {/* CATEGORY */}
+
           <div className="absolute bottom-4 left-4">
 
             <div className="bg-[#C89B3C] text-black text-[10px] font-semibold uppercase tracking-[2px] px-3 py-2 rounded-full">
@@ -168,7 +171,20 @@ export default function InsightsSection() {
             <Link
               href={`/insights/${item.slug}`}
               key={index}
-              className="group bg-white rounded-[28px] overflow-hidden border border-black/5 hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)] transition-all duration-500 block"
+              className="
+group
+bg-white
+rounded-[30px]
+overflow-hidden
+border
+border-black/5
+hover:-translate-y-3
+hover:border-[#C89B3C]/20
+hover:shadow-[0_20px_60px_rgba(0,0,0,0.08)]
+transition-all
+duration-500
+block
+"
             >
 
               {/* IMAGE */}
@@ -185,6 +201,16 @@ export default function InsightsSection() {
                 <div className="absolute inset-0 bg-gradient-to-t from-[#07111F]/70 to-transparent" />
 
                 {/* CATEGORY */}
+                <div className="absolute top-4 right-4">
+
+  <div className="bg-white/10 backdrop-blur-sm text-white text-xs px-3 py-2 rounded-full">
+
+    {item.readTime}
+
+  </div>
+
+</div>
+
                 <div className="absolute bottom-3 left-3">
 
                   <div className="bg-[#C89B3C] text-black text-xs font-semibold uppercase tracking-[2px] px-4 py-2 rounded-full">

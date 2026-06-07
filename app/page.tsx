@@ -1,4 +1,5 @@
 import Hero from "@/components/Hero";
+import HomeMarquee from "@/components/HomeMarquee";
 import Specialisations from "@/components/Specialisations";
 import ValueSection from "@/components/ValueSection";
 import HomeCTA from "@/components/HomeCTA";
@@ -6,6 +7,7 @@ import InsightsSection from "@/components/InsightsSection";
 import Footer from "@/components/Footer";
 import HeroJobsCarousel from "@/components/HeroJobsCarousel";
 import WhyChooseUs from "@/components/WhyChooseUs";
+import Reveal from "@/components/Reveal";
 
 export default function Home() {
 
@@ -15,15 +17,27 @@ export default function Home() {
 
       <Hero />
 
-      <Specialisations />
+      <HomeMarquee />
 
-      <WhyChooseUs />
+      <Reveal>
+        <Specialisations />
+        </Reveal>
 
-      <HeroJobsCarousel />
+      <Reveal>
+        <WhyChooseUs />
+        </Reveal>
 
-      <ValueSection />
+      <Reveal>
+        <HeroJobsCarousel />
+        </Reveal>
 
-      <InsightsSection />
+      <Reveal>
+        <ValueSection />
+        </Reveal>
+
+      <Reveal>
+        <InsightsSection />
+        </Reveal>
 
       <HomeCTA />
 

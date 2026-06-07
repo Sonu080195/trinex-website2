@@ -1,105 +1,114 @@
-import {
-  Briefcase,
-  Search,
-  ShieldCheck,
-  Handshake,
-  TrendingUp,
-  Users,
-} from "lucide-react";
-
 export default function ValueSection() {
 
   const items = [
-    {
-      icon: Users,
-       title: "Specialist Recruiters",
-      description:
-        "Industry-experienced consultants who understand your business and talent needs.",
-    },
-    {
-      icon: Search,
-      title: "Tailored Search",
-      description:
-        "A customised approach to identify the right talent for your projects and culture.",
-    },
-    {
-      icon: ShieldCheck,
-      title: "Quality Focused",
-      description:
-        "We focus on long-term fit and value over volume and speed.",
-    },
-    {
-      icon: Handshake,
-      title: "Client Partnership",
-      description:
-        "We build strong partnerships based on trust, transparency and results.",
-    },
-    {
-      icon: TrendingUp,
-      title: "Long-Term Impact",
-      description:
-        "Our goal is to help you build high-performing teams that drive success.",
-    },
-  ];
+  {
+    number: "01",
+    title: "Industry Specialists",
+    description:
+      "Dedicated recruiters focused exclusively on construction, engineering, MEP and mission critical markets.",
+  },
+  {
+    number: "02",
+    title: "Executive Search",
+    description:
+      "Supporting confidential leadership and executive hiring across high-growth construction sectors.",
+  },
+  {
+    number: "03",
+    title: "Quality Over Volume",
+    description:
+      "We prioritize long-term success and cultural alignment over transactional placements.",
+  },
+  {
+    number: "04",
+    title: "Partnership Approach",
+    description:
+      "Building trusted relationships with clients and candidates through transparency and consistency.",
+  },
+  {
+    number: "05",
+    title: "Growth Focused",
+    description:
+      "Helping businesses secure talent capable of supporting long-term project and organizational growth.",
+  },
+];
 
   return (
-    <section className="relative bg-[#F7F7F7] py-12 px-6 lg:px-20">
+    <section className="relative bg-[#F7F7F7] py-8 px-6 lg:px-20">
 
       {/* TOP */}
-      <div className="text-center mb-18">
+      <div className="text-center mb-10 lg:mb-12">
 
-        <p className="text-[#C89B3C] uppercase tracking-[4px] text-sm mb-7">
+        <p className="text-[#C89B3C] uppercase tracking-[4px] text-sm mb-4">
           Our Approach
         </p>
 
-        <h2 className="text-[#07111F] text-[30px] sm:text-[42px] lg:text-[52px] font-bold leading-[1.08]">
+        <h2 className="text-[#07111F] text-[28px] sm:text-[36px] lg:text-[56px] font-bold leading-[1.05] mb-4">
           Recruitment Solutions That Create Value
         </h2>
+
+        <p className="text-gray-600 text-[15px] sm:text-[17px] leading-5 sm:leading-6 max-w-3xl mx-auto">
+
+  A recruitment strategy built around market
+  expertise, long-term partnerships and
+  exceptional talent delivery.
+
+</p>
 
       </div>
 
       {/* GRID */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+      <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-5">
 
-        {items.map((item, index) => {
+  {items.map((item) => (
 
-          const Icon = item.icon;
+    <div
+      key={item.number}
+      className="
+      group
+      bg-white
+      border
+      border-black/5
+      rounded-[28px]
+      p-6
+      hover:-translate-y-3
+      hover:border-[#C89B3C]/30
+      transition-all
+      duration-500
+      relative
+      overflow-hidden
+      "
+    >
 
-          return (
-            <div
-              key={index}
-              className="text-center"
-            >
+      <div className="absolute right-4 top-0 text-[90px] font-bold text-black/[0.04] leading-none">
 
-              {/* ICON */}
-              <div className="flex justify-center mb-6">
-
-                <div className="w-20 h-20 rounded-full border border-[#C89B3C]/30 flex items-center justify-center">
-
-                  <Icon
-                    size={34}
-                    className="text-[#C89B3C]"
-                  />
-
-                </div>
-
-              </div>
-
-              {/* TITLE */}
-              <h3 className="text-[#07111F] text-2xl font-semibold mb-4">
-                {item.title}
-              </h3>
-
-              {/* DESCRIPTION */}
-              <p className="text-gray-400 leading-6 text-md">
-                {item.description}
-              </p>
-
-            </div>
-          );
-        })}
+        {item.number}
 
       </div>
+
+      <p className="text-[#C89B3C] text-sm font-bold tracking-[2px] uppercase mb-4">
+
+        {item.number}
+
+      </p>
+
+      <h3 className="text-[#07111F] text-xl font-bold mb-4 leading-tight">
+
+        {item.title}
+
+      </h3>
+
+      <p className="text-gray-600 text-[15px] leading-7">
+
+        {item.description}
+
+      </p>
+
+    </div>
+
+  ))}
+
+</div>
 
     </section>
   );

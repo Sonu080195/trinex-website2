@@ -4,11 +4,19 @@ export default function HomeCTA() {
 
   return (
 
-    <section className="bg-[#F7F7F7] px-6 lg:px-18 pb-20">
+    <section className="bg-[#F7F7F7] px-5 sm:px-6 lg:px-10 pb-20">
 
       <div className="max-w-9xl mx-auto">
 
-        <div className="bg-[#F9F7F2] rounded-[30px] border border-black/5 overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.05)]">
+        <div className="
+relative
+bg-[#F9F7F2]
+rounded-[36px]
+border
+border-black/5
+overflow-hidden
+shadow-[0_20px_60px_rgba(0,0,0,0.06)]
+">
 
           <div className="grid grid-cols-1 lg:grid-cols-[320px_1fr_280px] items-center gap-8 p-8 lg:p-8">
 
@@ -45,7 +53,7 @@ export default function HomeCTA() {
 
               </p>
 
-              <h2 className="text-[#07111F] text-[30px] lg:text-[42px] font-bold leading-tight mb-5">
+              <h2 className="text-[#07111F] text-[24px] sm:text-[30px] lg:text-[38px] font-bold leading-[1.05] mb-4">
 
                 Looking To Hire Or Exploring
                 <br />
@@ -54,7 +62,7 @@ export default function HomeCTA() {
 
               </h2>
 
-              <p className="text-gray-600 text-md leading-8 max-w-2xl">
+              <p className="text-gray-600 text-md leading-6 text-sm">
 
                 Whether you're hiring top talent or looking for your next
                 career move, we're here to help you take the next step.
@@ -69,7 +77,25 @@ export default function HomeCTA() {
               {/* BUTTON 1 */}
               <Link
                 href="/contact"
-                className="group w-full lg:w-[250px] bg-[#C89B3C] hover:bg-[#d3a647] transition-all duration-300 text-black font-semibold px-8 py-5 rounded-2xl flex items-center justify-center gap-4"
+                className="
+group
+w-full
+lg:w-[260px]
+bg-[#C89B3C]
+hover:bg-[#d3a647]
+hover:-translate-y-1
+transition-all
+duration-300
+text-black
+font-semibold
+px-8
+py-5
+rounded-2xl
+flex
+items-center
+justify-center
+gap-4
+"
               >
 
                 Hire Top Talent
@@ -83,7 +109,27 @@ export default function HomeCTA() {
               {/* BUTTON 2 */}
               <Link
                 href="/jobs"
-                className="group w-full lg:w-[250px] border border-black/10 hover:border-[#C89B3C] transition-all duration-300 text-[#07111F] font-semibold px-8 py-5 rounded-2xl flex items-center justify-center gap-4 bg-white"
+                className="
+group
+w-full
+lg:w-[260px]
+border
+border-black/10
+hover:border-[#C89B3C]
+hover:-translate-y-1
+transition-all
+duration-300
+text-[#07111F]
+font-semibold
+px-8
+py-5
+rounded-2xl
+flex
+items-center
+justify-center
+gap-4
+bg-white
+"
               >
 
                 Explore Jobs
@@ -93,6 +139,58 @@ export default function HomeCTA() {
                 </span>
 
               </Link>
+              
+              <div className="flex flex-wrap gap-6 mt-0">
+
+  <div>
+
+    <p className="text-[#C89B3C] text-1xl font-bold">
+
+      100+
+
+    </p>
+
+    <p className="text-gray-500 text-xs">
+
+      Placements
+
+    </p>
+
+  </div>
+
+  <div>
+
+    <p className="text-[#C89B3C] text-1xl font-bold">
+
+      USA
+
+    </p>
+
+    <p className="text-gray-500 text-xs">
+
+      Coverage
+
+    </p>
+
+  </div>
+
+  <div>
+
+    <p className="text-[#C89B3C] text-1xl font-bold">
+
+      AEC + MEP
+
+    </p>
+
+    <p className="text-gray-500 text-xs">
+
+      Specialists
+
+    </p>
+
+  </div>
+
+</div>
 
             </div>
 

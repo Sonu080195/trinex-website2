@@ -2,13 +2,6 @@
 
 import { useState } from "react";
 
-import {
-  Users,
-  Target,
-  Globe,
-  BriefcaseBusiness,
-} from "lucide-react";
-
 import EmployerModal from "@/components/EmployerModal";
 import CandidateModal from "@/components/CandidateModal";
 
@@ -21,25 +14,23 @@ export default function Hero() {
     useState(false);
 
   const features = [
-    {
-      icon: BriefcaseBusiness,
-      title: "Executive Search",
-      subtitle:
-        "Leadership & Strategic Hiring",
-    },
-    {
-      icon: Target,
-      title: "Project Staffing",
-      subtitle:
-        "Project-Ready Professionals",
-    },
-    {
-      icon: Globe,
-      title: "Global Talent Network",
-      subtitle:
-        "USA • Canada • UAE • India",
-    },
-  ];
+  {
+    title: "Executive Search",
+    subtitle: "Leadership & Strategic Hiring",
+  },
+  {
+    title: "Project Staffing",
+    subtitle: "Project-Ready Professionals",
+  },
+  {
+    title: "Global Talent Network",
+    subtitle: "USA • Canada • UAE • India",
+  },
+  {
+    title: "5000+ Professionals",
+    subtitle: "Construction Talent Network",
+  },
+];
 
   return (
     <>
@@ -72,21 +63,58 @@ export default function Hero() {
         />
 
         {/* CONTENT */}
-        <div className="relative z-10 min-h-screen flex items-center">
+        <div className="relative z-10 w-full">
+          <div className="max-w-7xl mx-auto px-6 pt-28">
+            <div className="max-w-[760px] pb-8">
 
-          <div className="max-w-7xl mx-auto w-full px-5 sm:px-6 lg:px-6">
-
-            <div className="max-w-[820px] pt-28 sm:pt-36 lg:pt-44 pb-12">
+              </div>
 
               {/* LABEL */}
-              <p className="text-[#C89B3C] uppercase tracking-[4px] text-[11px] sm:text-sm mb-5">
+              <div className="mb-4">
 
-                AEC • MEP • Construction Recruitment
+  <p className="uppercase tracking-[4px] text-[#C89B3C] text-sm mb-5">
 
-              </p>
+    AEC • MEP • Construction Recruitment
+
+  </p>
+
+</div>
+
+<div className="flex flex-wrap gap-3 mb-6">
+
+  {[
+    "Data Centers",
+    "Mission Critical",
+    "Healthcare",
+    "Commercial",
+    "Infrastructure",
+  ].map((item) => (
+
+    <span
+      key={item}
+      className="
+      px-4
+      py-2
+      rounded-full
+      border
+      border-white/10
+      bg-white/5
+      backdrop-blur-sm
+      text-white
+      text-sm
+      "
+    >
+
+      {item}
+
+    </span>
+
+  ))}
+
+</div>
 
               {/* HEADING */}
-              <h1 className="text-white font-bold leading-[1.08] text-[34px] sm:text-[48px] lg:text-[64px] mb-6">
+              <h1 className="text-white font-bold leading-[1.08] text-[34px] sm:text-[48px] lg:text-[64px] mb-4">
 
                 Connecting Exceptional
                 
@@ -118,7 +146,7 @@ export default function Hero() {
               </p>
 
               {/* BUTTONS */}
-              <div className="flex flex-col sm:flex-row gap-4 mb-12">
+              <div className="flex flex-col sm:flex-row gap-4 mb-8">
 
                 <button
                   onClick={() =>
@@ -144,61 +172,101 @@ export default function Hero() {
 
               </div>
 
-              
+              <div className="flex flex-wrap gap-8 mb-8">
 
-              {/* FEATURES */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-10">
+  <div>
+    <p className="text-[#C89B3C] text-2xl font-bold">
 
-                {features.map((item, index) => {
+      100+
 
-                  const Icon = item.icon;
+    </p>
 
-                  return (
+    <p className="text-gray-400 text-sm">
 
-                    <div
-                      key={index}
-                      className="flex items-start gap-4"
-                    >
+      Placements Supported
 
-                      <div className="mt-1 shrink-0">
+    </p>
+  </div>
 
-                        <Icon
-                          className="text-[#C89B3C]"
-                          size={22}
-                          strokeWidth={1.8}
-                        />
+  <div>
+    <p className="text-[#C89B3C] text-2xl font-bold">
 
-                      </div>
+      4
 
-                      <div>
+    </p>
 
-                        <h4 className="text-white font-semibold text-[15px] sm:text-base mb-1">
+    <p className="text-gray-400 text-sm">
 
-                          {item.title}
+      Global Markets
 
-                        </h4>
+    </p>
+  </div>
 
-                        <p className="text-gray-400 text-[13px] sm:text-sm leading-6">
+  <div>
+    <p className="text-[#C89B3C] text-2xl font-bold">
 
-                          {item.subtitle}
+      20+
 
-                        </p>
+    </p>
 
-                      </div>
+    <p className="text-gray-400 text-sm">
 
-                    </div>
+      Industry Specialisations
 
-                  );
+    </p>
+  </div>
 
-                })}
+</div>
 
-              </div>
+{/* FEATURE CARDS */}
 
-            </div>
+<div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
 
-          </div>
+  {features.map((item, index) => (
 
-        </div>
+    <div
+      key={index}
+      className="
+      floating-card
+      bg-white/5
+      backdrop-blur-md
+      border
+      border-white/10
+      rounded-[18px]
+      p-3
+      hover:-translate-y-2
+      hover:border-[#C89B3C]/30
+      transition-all
+      duration-500"
+    >
+
+      <div className="text-[#C89B3C] text-[32px] font-bold opacity-30 mb-3">
+
+        0{index + 1}
+
+      </div>
+
+      <h4 className="text-white font-semibold text-[15px] mb-2">
+
+        {item.title}
+
+      </h4>
+
+      <p className="text-gray-400 text-sm leading-6">
+
+        {item.subtitle}
+
+      </p>
+
+    </div>
+
+  ))}
+
+</div>
+
+</div>
+
+</div>
 
       </section>
 

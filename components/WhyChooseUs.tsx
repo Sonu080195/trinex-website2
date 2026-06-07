@@ -1,51 +1,49 @@
 export default function WhyChooseUs() {
 
   const stats = [
+  {
+    value: "01",
+    title: "Industry Specialists",
+    description:
+      "Focused exclusively on AEC, MEP, mission critical, healthcare and infrastructure recruitment markets.",
+  },
 
-    {
-      value: "100+",
-      title: "Successful Placements",
-      description:
-        "Connecting top-tier AEC & MEP professionals with industry-leading firms.",
-    },
+  {
+    value: "02",
+    title: "Executive Search Expertise",
+    description:
+      "Supporting confidential leadership, operational and executive hiring across North America.",
+  },
 
-    {
-      value: "48H",
-      title: "Average Shortlist Delivery",
-      description:
-        "Rapid access to qualified talent for urgent and confidential hiring needs.",
-    },
+  {
+    value: "03",
+    title: "Relationship Driven",
+    description:
+      "Long-term partnerships built through trust, market knowledge and consistent delivery.",
+  },
 
-    {
-      value: "92%",
-      title: "Retention Success",
-      description:
-        "Long-term placements that align with company culture and project goals.",
-    },
-
-    {
-      value: "AEC + MEP",
-      title: "Specialized Recruitment",
-      description:
-        "Deep market expertise across commercial, industrial, civil, and mission critical sectors.",
-    },
-
-  ];
+  {
+    value: "04",
+    title: "Market Intelligence",
+    description:
+      "Salary benchmarking, talent mapping and hiring insights that support informed decisions.",
+  },
+];
 
   const features = [
-
-    "Executive Search",
-    "Confidential Hiring",
-    "Project Staffing",
-    "Leadership Recruitment",
-    "Nationwide Talent Network",
-    "Market Intelligence",
-
-  ];
+  "Healthcare Construction",
+  "Data Centers",
+  "Mission Critical",
+  "Commercial Construction",
+  "Infrastructure",
+  "Executive Search",
+  "Project Staffing",
+  "MEP Recruitment",
+];
 
   return (
 
-    <section className="relative bg-[#07111F] overflow-hidden py-12 sm:py-16 lg:py-20 px-5 sm:px-6 lg:px-16">
+    <section className="relative bg-[#07111F] overflow-hidden py-10 sm:py-14 lg:py-16 px-5 sm:px-6 lg:px-16">
 
       {/* BACKGROUND GLOW */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(200,155,60,0.12),transparent_30%)]" />
@@ -53,15 +51,15 @@ export default function WhyChooseUs() {
       <div className="relative z-10 max-w-7xl mx-auto">
 
         {/* TOP */}
-        <div className="max-w-3xl mb-10 sm:mb-14">
+        <div className="max-w-3xl mb-8 sm:mb-12">
 
-          <p className="text-[#C89B3C] uppercase tracking-[3px] sm:tracking-[4px] text-[11px] sm:text-sm mb-5">
+          <p className="text-[#C89B3C] uppercase tracking-[3px] sm:tracking-[4px] text-[11px] sm:text-sm mb-4">
 
             Why Industry Leaders Choose RUDRON
 
           </p>
 
-        <h2 className="text-white text-[30px] sm:text-[42px] md:text-[52px] lg:text-[58px] font-bold leading-[1.02] mb-4">
+        <h2 className="text-white text-[28px] sm:text-[36px] lg:text-[56px] font-bold leading-[1.05] mb-4">
 
             Recruitment Built For
             <br />
@@ -70,28 +68,52 @@ export default function WhyChooseUs() {
 
           </h2>
 
-          <p className="text-gray-500 text-[15px] sm:text-xl leading-7 sm:leading-9 max-w-4xl mx-auto">
+          <p className="text-gray-400 text-[15px] sm:text-[17px] leading-5 sm:leading-6 max-w-2xl">
 
-            We deliver strategic talent solutions for construction firms, general contractors, subcontractors, and mission critical organizations across high-growth markets.
+  RUDRON combines industry expertise,
+  executive search capability and deep
+  construction market knowledge to help
+  organizations secure exceptional talent
+  across critical business functions.
 
-          </p>
+</p>
 
         </div>
 
         {/* STATS */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-5 mb-10 sm:mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-5 mb-8 sm:mb-8">
 
           {stats.map((item, index) => (
 
             <div
               key={index}
-              className="bg-white/[0.03] border border-white/10 rounded-[24px] p-5 sm:p-6 backdrop-blur-sm hover:border-[#C89B3C]/30 transition-all duration-500"
+              className="
+group
+bg-white/[0.03]
+border
+border-white/10
+rounded-[28px]
+p-6
+backdrop-blur-sm
+hover:-translate-y-3
+hover:border-[#C89B3C]/30
+transition-all
+duration-500
+relative
+overflow-hidden
+"
             >
 
-              {/* VALUE */}
-              <h3 className="text-[#C89B3C] text-[28px] sm:text-[34px] font-bold mb-3 leading-none">
+{/* VALUE */}
+<h3 className="text-[#C89B3C] text-[18px] font-bold mb-4 uppercase tracking-[2px]">
 
-                {item.value}
+{item.value}
+
+<div className="absolute right-4 top-0 text-[90px] font-bold text-white/[0.04] leading-none">
+
+  {item.value}
+
+</div>
 
               </h3>
 
@@ -122,7 +144,18 @@ export default function WhyChooseUs() {
 
             <div
               key={index}
-              className="bg-white/[0.04] border border-white/10 rounded-full px-4 sm:px-5 py-2.5 sm:py-3"
+              className="
+bg-white/[0.04]
+border
+border-white/10
+rounded-full
+px-5
+py-3
+hover:border-[#C89B3C]/30
+hover:text-[#C89B3C]
+transition-all
+duration-300
+"
             >
 
               <p className="text-white text-[12px] sm:text-[14px] font-medium">
