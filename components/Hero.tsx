@@ -51,7 +51,7 @@ export default function Hero() {
         }
       />
 
-      <section className="relative min-h-[85vh] overflow-hidden">
+      <section className="relative min-h-[85vh] overflow-hidden pointer-events-none">
 
         {/* BACKGROUND */}
         <div
@@ -63,7 +63,7 @@ export default function Hero() {
         />
 
         {/* CONTENT */}
-        <div className="relative z-10 w-full">
+        <div className="relative z-10 w-full pointer-events-auto">
           <div className="max-w-7xl mx-auto px-5 sm:px-6 pt-20 sm:pt-24 lg:pt-28">
             <div className="max-w-[760px] pb-8">
 
@@ -140,7 +140,7 @@ export default function Hero() {
 
               </div>
 
-              <div className="grid grid-cols-3 gap-4 mb-6">
+              <div className="grid grid-cols-3 gap-3 mb-6">
 
   <div>
     <p className="text-[#C89B3C] text-xl lg:text-2xl font-bold">

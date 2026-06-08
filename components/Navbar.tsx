@@ -53,15 +53,18 @@ useEffect(() => {
 
   const handleScroll = () => {
 
-  if (menuOpen) return;
+    if (menuOpen) return;
 
-  setScrolled(window.scrollY > 50);
+    setScrolled(window.scrollY > 50);
 
-};
+  };
+
+  handleScroll();
 
   window.addEventListener(
     "scroll",
-    handleScroll
+    handleScroll,
+    { passive: true }
   );
 
   return () => {
@@ -78,12 +81,15 @@ useEffect(() => {
   return (
 
     <header
+style={{
+  isolation: "isolate",
+}}
   className={`
   fixed
   top-0
   left-0
   w-full
-  z-[999]
+  z-[999999]
   transition-all
   duration-500
   ${
