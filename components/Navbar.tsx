@@ -28,7 +28,6 @@ export default function Navbar() {
   useState(false);
 
   /* LOCK BODY SCROLL */
-  /* LOCK BODY SCROLL */
 useEffect(() => {
 
   if (menuOpen) {
@@ -54,9 +53,11 @@ useEffect(() => {
 
   const handleScroll = () => {
 
-    setScrolled(window.scrollY > 50);
+  if (menuOpen) return;
 
-  };
+  setScrolled(window.scrollY > 50);
+
+};
 
   window.addEventListener(
     "scroll",
@@ -72,7 +73,7 @@ useEffect(() => {
 
   };
 
-}, []);
+}, [menuOpen]);
 
   return (
 
@@ -87,35 +88,30 @@ useEffect(() => {
   duration-500
   ${
     scrolled
-      ? "bg-[#07111F]/80 backdrop-blur-xl border-b border-white/10"
-      : "bg-transparent"
+? "bg-[#07111F]/70 backdrop-blur-xl border-b border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.15)]"
+: "bg-transparent"
   }
 `}
 >
 
       <div
-  className={`
-  max-w-7xl
-  mx-auto
-  px-3
-  sm:px-5
-  lg:px-5
-  transition-all
-  duration-500
-  ${
-    scrolled
-      ? "py-1"
-      : "py-0"
-  }
-`}
->
+  className="
+max-w-7xl
+mx-auto
+px-3
+sm:px-5
+lg:px-5
+py-1
+transition-all
+duration-500
+">
 
         <div className="flex items-center justify-between py-1 lg:py-2">
 
           {/* LOGO */}
           <Link
             href="/"
-            className="relative z-[999]"
+            className="relative z-20"
           >
 
             <img
@@ -127,8 +123,8 @@ transition-all
 duration-500
 ${
   scrolled
-    ? "h-14 lg:h-18"
-    : "h-18 sm:h-22 lg:h-26"
+  ? "h-12 lg:h-18"
+  : "h-14 sm:h-18 lg:h-26"
 }
 `}
             />
@@ -136,7 +132,7 @@ ${
           </Link>
 
           {/* DESKTOP MENU */}
-          <nav className="hidden lg:flex items-center gap-6 text-white text-[20px] font-medium">
+          <nav className="hidden lg:flex items-center gap-6 text-white text-[15px] font-medium">
 
             <Link
   href="/"
@@ -145,8 +141,7 @@ ${
   hover:text-[#C89B3C]
   transition
   duration-300
-  ${
-    pathname === "/"
+  ${pathname === "/"
       ? "text-[#C89B3C]"
       : ""
   }
@@ -156,44 +151,92 @@ ${
             </Link>
 
             <Link
-              href="/about"
-              className="hover:text-[#C89B3C] transition duration-300"
-            >
+  href="/about"
+  className={`
+  transition
+  duration-300
+  ${
+    pathname === "/about"
+      ? "text-[#C89B3C]"
+      : "hover:text-[#C89B3C]"
+  }
+  `}
+>
               About
             </Link>
 
             <Link
-              href="/employers"
-              className="hover:text-[#C89B3C] transition duration-300"
-            >
+  href="/employers"
+  className={`
+  transition
+  duration-300
+  ${
+    pathname === "/employers"
+      ? "text-[#C89B3C]"
+      : "hover:text-[#C89B3C]"
+  }
+  `}
+>
               Employers
             </Link>
 
             <Link
-              href="/candidates"
-              className="hover:text-[#C89B3C] transition duration-300"
-            >
+  href="/candidates"
+  className={`
+  transition
+  duration-300
+  ${
+    pathname === "/candidates"
+      ? "text-[#C89B3C]"
+      : "hover:text-[#C89B3C]"
+  }
+  `}
+>
               Candidates
             </Link>
 
             <Link
-              href="/industries"
-              className="hover:text-[#C89B3C] transition duration-300"
-            >
+  href="/industries"
+  className={`
+  transition
+  duration-300
+  ${
+    pathname === "/industries"
+      ? "text-[#C89B3C]"
+      : "hover:text-[#C89B3C]"
+  }
+  `}
+>
               Industries
             </Link>
 
             <Link
-              href="/insights"
-              className="hover:text-[#C89B3C] transition duration-300"
-            >
+  href="/insights"
+  className={`
+  transition
+  duration-300
+  ${
+    pathname === "/insights"
+      ? "text-[#C89B3C]"
+      : "hover:text-[#C89B3C]"
+  }
+  `}
+>
               Insights
             </Link>
 
             <Link
-              href="/contact"
-              className="hover:text-[#C89B3C] transition duration-300"
-            >
+  href="/contact"
+  className={`
+  transition
+  duration-300
+  ${
+    pathname === "/contact"
+      ? "text-[#C89B3C]"
+      : "hover:text-[#C89B3C]"
+  }
+  `}
+>
               Contact
             </Link>
 
@@ -213,7 +256,7 @@ ${
               }
             >
 
-              <button className="border border-[#C89B3C] text-white px-5 py-2.5 rounded-xl text-[20px] hover:bg-[#C89B3C] hover:text-black transition-all duration-300 flex items-center gap-2">
+              <button className="border border-[#C89B3C] text-white px-5 py-2.5 rounded-xl text-[15px] hover:bg-[#C89B3C] hover:text-black transition-all duration-300 flex items-center gap-2">
 
                 Jobs
 
@@ -238,14 +281,14 @@ ${
 
                       <Link
                         href="/jobs"
-                        className="px-4 py-3 rounded-xl text-[20px] text-white hover:bg-white/5 transition duration-300"
+                        className="px-4 py-3 rounded-xl text-[15px] text-white hover:bg-white/5 transition duration-300"
                       >
                         Open Jobs
                       </Link>
 
                       <Link
                         href="/saved-jobs"
-                        className="px-4 py-3 rounded-xl text-[20px] text-white hover:bg-white/5 transition duration-300"
+                        className="px-4 py-3 rounded-xl text-[15px] text-white hover:bg-white/5 transition duration-300"
                       >
                         Saved Jobs
                       </Link>
@@ -263,7 +306,7 @@ ${
             {/* HIRE TALENT */}
             <Link
               href="/contact"
-              className="bg-[#C89B3C] text-black px-5 py-2.5 rounded-xl text-[20px] font-semibold hover:opacity-90 transition-all duration-300"
+              className="bg-[#C89B3C] text-black px-5 py-2.5 rounded-xl text-[15px] font-semibold hover:opacity-90 transition-all duration-300"
             >
 
               Hire Talent
@@ -277,7 +320,7 @@ ${
             onClick={() =>
               setMenuOpen(true)
             }
-            className="lg:hidden relative z-[999] flex items-center justify-center w-11 h-11 rounded-xl bg-white/5 border border-white/10 text-white active:scale-95 transition-all duration-300"
+            className="lg:hidden relative z-[1001] flex items-center justify-center w-11 h-11 rounded-xl bg-white/5 border border-white/10 text-white active:scale-95 transition-all duration-300"
           >
 
             <Menu size={23} />
@@ -291,12 +334,12 @@ ${
       {/* MOBILE MENU */}
       {menuOpen && (
 
-        <div className="fixed inset-0 bg-[#07111F] z-[9999] overflow-y-auto">
+        <div className="fixed inset-0 bg-[#07111F] z-[99999] overflow-y-auto">
 
-          <div className="min-h-screen flex flex-col px-5 pt-5 pb-8">
+          <div className="min-h-screen flex flex-col px-5 pt-20 pb-8">
 
             {/* TOP */}
-            <div className="flex items-center justify-between mb-8">
+            <div className="flex items-center justify-between mb-8 lg:mb-12">
 
               <img
                 src="/images/RUDRON Logo.webp"
@@ -333,7 +376,18 @@ ${
                 <Link
                   key={label}
                   href={href}
-                  className="px-5 py-4 text-white text-[15px] sm:text-[16px] border-b border-white/5 active:bg-white/5 transition"
+                  className="
+                  px-5
+                  py-4
+                  text-white
+                  text-[15px]
+                  font-medium
+                  border-b
+                  border-white/5
+                  hover:bg-white/5
+                  transition-all
+                  duration-300"
+
                   onClick={() => {
 
                     setMenuOpen(false);
