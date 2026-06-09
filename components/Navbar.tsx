@@ -339,10 +339,9 @@ ${
 
       {/* MOBILE MENU */}
       {menuOpen && (
+        <div className="fixed inset-0 bg-[#07111F] z-[1000000] overflow-y-auto">
 
-  <div className="fixed inset-0 bg-red-500 z-[1000000]">
-
-          <div className="min-h-screen flex flex-col px-5 pt-20 pb-8">
+          <div className="min-h-screen flex flex-col px-5 pt-5 pb-8">
 
             {/* TOP */}
             <div className="flex items-center justify-between mb-8 lg:mb-12">
