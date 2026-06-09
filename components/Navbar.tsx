@@ -47,7 +47,7 @@ export default function Navbar() {
         <div className="px-5 pt-5 pb-8">
 
           {/* TOP */}
-          <div className="flex items-center justify-between mb-8">
+          <div className="flex items-center justify-between mb-8 pb-6 border-b border-white/10">
             <img
               src="/images/RUDRON Logo.webp"
               alt="RUDRON"
@@ -75,7 +75,19 @@ export default function Navbar() {
               <Link
                 key={label}
                 href={href}
-                className="px-5 py-4 text-white text-[15px] font-medium border-b border-white/5 hover:bg-white/5 transition-all duration-300"
+                className="
+px-5
+py-4
+text-white
+text-[15px]
+font-medium
+border-b
+border-white/5
+hover:bg-white/[0.04]
+hover:text-[#C89B3C]
+transition-all
+duration-300
+"
                 onClick={() => setMenuOpen(false)}
               >
                 {label}
@@ -152,7 +164,9 @@ export default function Navbar() {
         className={`
           fixed top-0 left-0 w-full z-50
           transition-all duration-500
-          ${scrolled ? "bg-[#07111F] border-b border-white/10" : "bg-transparent"}
+          ${scrolled
+  ? "bg-[#07111F]/95 backdrop-blur-xl border-b border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.25)]"
+  : "bg-transparent"}
         `}
       >
         <div className="max-w-7xl mx-auto px-3 sm:px-5 lg:px-5 py-1 transition-all duration-500">
@@ -181,13 +195,34 @@ export default function Navbar() {
                 ["Insights", "/insights"],
                 ["Contact", "/contact"],
               ].map(([label, href]) => (
-                <Link
-                  key={label}
-                  href={href}
-                  className={`transition duration-300 ${
-                    pathname === href ? "text-[#C89B3C]" : "hover:text-[#C89B3C]"
-                  }`}
-                >
+<Link
+key={label}
+href={href}
+className={`
+relative
+transition-all
+duration-300
+${
+  pathname === href
+    ? "text-[#C89B3C]"
+    : "hover:text-[#C89B3C]"
+}
+`}
+  >
+
+    {pathname === href && (
+  <span
+    className="
+    absolute
+    -bottom-2
+    left-0
+    w-full
+    h-[2px]
+    bg-[#C89B3C]
+    rounded-full
+    "
+  />
+)}
                   {label}
                 </Link>
               ))}
@@ -226,11 +261,24 @@ export default function Navbar() {
                 )}
               </div>
 
-              {/* HIRE TALENT */}
-              <Link
-                href="/contact"
-                className="bg-[#C89B3C] text-black px-5 py-2.5 rounded-xl text-[15px] font-semibold hover:opacity-90 transition-all duration-300"
-              >
+{/* HIRE TALENT */}
+<Link
+href="/contact"
+className="
+group
+bg-[#C89B3C]
+text-black
+px-5
+py-2.5
+rounded-xl
+text-[15px]
+font-semibold
+transition-all
+duration-300
+hover:-translate-y-0.5
+hover:shadow-[0_10px_30px_rgba(200,155,60,0.35)]
+"
+  >
                 Hire Talent
               </Link>
 

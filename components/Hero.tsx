@@ -53,6 +53,27 @@ export default function Hero() {
 
       <section className="relative min-h-[85vh] overflow-hidden pointer-events-none">
 
+        {/* GRID PATTERN */}
+<div
+  className="absolute inset-0 opacity-[0.04]"
+  style={{
+    backgroundImage: `
+      linear-gradient(rgba(200,155,60,1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(200,155,60,1) 1px, transparent 1px)
+    `,
+    backgroundSize: "70px 70px",
+  }}
+/>
+
+{/* GOLD GLOW */}
+<div
+  className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px]"
+  style={{
+    background:
+      "radial-gradient(circle, rgba(200,155,60,0.12) 0%, transparent 70%)",
+  }}
+/>
+
         {/* BACKGROUND */}
         <div
           className="absolute inset-0 bg-cover bg-[76%] sm:bg-center"
@@ -62,6 +83,24 @@ export default function Hero() {
           }}
         />
 
+        {/* GOLD GLOW */}
+
+<div
+  className="
+  absolute
+  top-0
+  left-1/2
+  -translate-x-1/2
+  w-[700px]
+  h-[350px]
+  pointer-events-none
+  "
+  style={{
+    background:
+      "radial-gradient(circle, rgba(200,155,60,0.12) 0%, transparent 70%)",
+  }}
+/>
+
         {/* CONTENT */}
         <div className="relative z-10 w-full pointer-events-auto">
           <div className="max-w-7xl mx-auto px-5 sm:px-6 pt-20 sm:pt-24 lg:pt-28">
@@ -70,13 +109,22 @@ export default function Hero() {
               </div>
 
               {/* LABEL */}
-              <div className="mb-4">
 
-  <p className="uppercase tracking-[4px] text-[#C89B3C] text-sm mb-5">
+<div className="mb-6">
 
-    AEC • MEP • Construction Recruitment
+  <div className="inline-flex items-center gap-3">
 
-  </p>
+    <span className="h-px w-8 bg-[#C89B3C]" />
+
+    <p className="uppercase tracking-[5px] text-[#C89B3C] text-[11px] font-semibold">
+
+      AEC • MEP • Construction Recruitment
+
+    </p>
+
+    <span className="h-px w-8 bg-[#C89B3C]" />
+
+  </div>
 
 </div>
 
@@ -86,18 +134,33 @@ export default function Hero() {
 
                 Connecting Exceptional
                 
-                <br/>
-                <span className="text-[#C89B3C]">
-                  {" "} AEC & MEP
-                </span>
+<br/>
+<span className="relative inline-block text-[#C89B3C]">
 
-                {" "} Talent
+  {" "}AEC & MEP
 
-                <br />
+  <span
+    className="
+    absolute
+    left-0
+    bottom-0
+    w-full
+    h-[3px]
+    bg-[#C89B3C]
+    rounded-full
+    opacity-20
+    "
+  />
 
-                With Industry Leaders
+</span>
 
-              </h1>
+{" "} Talent
+
+<br />
+
+With Industry Leaders
+
+</h1>
 
               {/* DESCRIPTION */}
               <p className="text-gray-300 text-[13px] lg:text-[15px] sm:text-[17px] leading-8 sm:leading-9 mb-6 lg:mb-10 max-w-[860px]">
@@ -140,49 +203,41 @@ export default function Hero() {
 
               </div>
 
-              <div className="grid grid-cols-3 gap-3 mb-6">
+<div className="grid grid-cols-3 gap-3 mb-8">
 
-  <div>
-    <p className="text-[#C89B3C] text-xl lg:text-2xl font-bold">
+  {[
+    ["100+", "Placements Supported"],
+    ["4", "Global Markets"],
+    ["20+", "Industry Specialisations"],
+  ].map((item) => (
 
-      100+
+    <div
+      key={item[1]}
+      className="
+      bg-white/[0.04]
+      border
+      border-white/10
+      rounded-[18px]
+      p-2
+      backdrop-blur-md
+      "
+    >
 
-    </p>
+      <h3 className="text-[#C89B3C] text-xl lg:text-2xl font-bold">
 
-    <p className="text-gray-400 text-[11px] lg:text-sm">
+        {item[0]}
 
-      Placements Supported
+      </h3>
 
-    </p>
-  </div>
+      <p className="text-gray-400 text-[11px] lg:text-sm">
 
-  <div>
-    <p className="text-[#C89B3C] text-xl lg:text-2xl font-bold">
+        {item[1]}
 
-      4
+      </p>
 
-    </p>
+    </div>
 
-    <p className="text-gray-400 text-[11px] lg:text-sm">
-
-      Global Markets
-
-    </p>
-  </div>
-
-  <div>
-    <p className="text-[#C89B3C] text-xl lg:text-2xl font-bold">
-
-      20+
-
-    </p>
-
-    <p className="text-gray-400 text-[11px] lg:text-sm">
-
-      Industry Specialisations
-
-    </p>
-  </div>
+  ))}
 
 </div>
 

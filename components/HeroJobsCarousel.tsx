@@ -315,7 +315,7 @@ export default function HeroJobsCarousel() {
               className="bg-[#0D1726] border border-white/8 rounded-[16px] p-2 text-center"
             >
 
-              <h3 className="text-[#C89B3C] text-[24px] font-bold">
+              <h3 className="text-[#C89B3C] text-[14px] sm:text-[22px] font-bold">
 
                 {item[0]}
 
