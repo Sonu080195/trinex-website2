@@ -83,7 +83,7 @@ export default function ValueSection() {
   const { ref: gridRef, inView: gridInView } = useInView(0.05);
 
   return (
-    <section className="relative bg-[#F4F4F0] py-8 lg:py-14 px-5 sm:px-8 lg:px-20 overflow-hidden">
+    <section className="relative bg-[#F4F4F0] py-8 lg:py-10 px-4 sm:px-4 lg:px-20 overflow-hidden">
 
       {/* Subtle background grid pattern */}
       <div

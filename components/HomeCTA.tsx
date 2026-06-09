@@ -4,9 +4,30 @@ export default function HomeCTA() {
 
   return (
 
-    <section className="bg-[#F7F7F7] px-5 sm:px-6 lg:px-10 pb-20">
+    <section className="relative bg-[#F4F4F0] py-8 lg:py-10 px-4 sm:px-4 lg:px-20 overflow-hidden">
 
       <div className="max-w-9xl mx-auto">
+
+        {/* Grid Pattern */}
+<div
+  className="absolute inset-0 pointer-events-none"
+  style={{
+    backgroundImage: `
+      linear-gradient(rgba(200,155,60,0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(200,155,60,0.045) 1px, transparent 1px)
+    `,
+    backgroundSize: "50px 50px",
+  }}
+/>
+
+{/* Glow */}
+<div
+  className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[250px] pointer-events-none"
+  style={{
+    background:
+      "radial-gradient(ellipse at top, rgba(200,155,60,0.07) 0%, transparent 45%)",
+  }}
+/>
 
         <div className="
 relative

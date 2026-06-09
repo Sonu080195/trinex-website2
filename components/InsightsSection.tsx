@@ -39,37 +39,69 @@ export default function InsightsSection() {
 
   return (
 
-    <section className="bg-[#F7F7F7] px-5 sm:px-4 lg:px-10 pb-12 sm:pb-16 overflow-hidden">
+    <section className="relative bg-[#F4F4F0] py-8 lg:py-10 px-4 sm:px-4 lg:px-20 overflow-hidden">
 
       <div className="max-w-7xl mx-auto">
 
+        {/* Grid Pattern */}
+<div
+  className="absolute inset-0 pointer-events-none"
+  style={{
+    backgroundImage: `
+      linear-gradient(rgba(200,155,60,0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(200,155,60,0.045) 1px, transparent 1px)
+    `,
+    backgroundSize: "60px 60px",
+  }}
+/>
+
+{/* Glow */}
+<div
+  className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[250px] pointer-events-none"
+  style={{
+    background:
+      "radial-gradient(ellipse at top, rgba(200,155,60,0.07) 0%, transparent 65%)",
+  }}
+/>
+
         {/* TOP */}
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 mb-8 sm:mb-10">
+        <div className="relative text-center mb-6 lg:mb-8">
 
-          <div>
+  <div className="inline-flex items-center gap-3 mb-4">
 
-            <p className="text-[#C89B3C] uppercase tracking-[3px] sm:tracking-[4px] text-[11px] sm:text-sm mb-3 sm:mb-4">
+    <span className="h-px w-8 bg-[#C89B3C]" />
 
-              <br />
+    <p className="text-[#C89B3C] uppercase tracking-[5px] text-xs font-semibold">
 
-              Industry Intelligence
+      Industry Intelligence
 
-            </p>
+    </p>
 
-            <h2 className="text-[#07111F] text-[28px] sm:text-[36px] lg:text-[56px] font-bold leading-[1.05] mb-4">
+    <span className="h-px w-8 bg-[#C89B3C]" />
 
-              Stay Ahead Of The Industry
+  </div>
 
-            </h2>
+  <h2 className="text-[#07111F] text-[28px] sm:text-[36px] lg:text-[52px] font-bold leading-[1.02] mb-4">
 
-            <p className="text-gray-600 text-[15px] sm:text-[17px] leading-5 sm:leading-6 max-w-3xl">
+    Stay Ahead Of The
 
-              Explore recruitment trends, salary insights, and market updates
-              shaping the future of AEC & MEP hiring.
+    <span className="text-[#C89B3C] ml-2">
 
-            </p>
+      Industry
 
-          </div>
+    </span>
+
+  </h2>
+
+  <p className="text-gray-500 text-[15px] sm:text-[17px] leading-relaxed max-w-5xl mx-auto">
+
+    Explore recruitment trends, salary insights,
+    workforce intelligence and market reports
+    shaping the future of construction hiring.
+
+  </p>
+
+</div>
 
           {/* VIEW ALL */}
           <Link
@@ -188,7 +220,7 @@ block
             >
 
               {/* IMAGE */}
-              <div className="relative h-[240px] overflow-hidden">
+              <div className="relative h-[180px] overflow-hidden">
 
                 <div
                   className="absolute inset-0 bg-cover bg-center transition duration-700 group-hover:scale-110"
@@ -224,15 +256,15 @@ block
               </div>
 
               {/* CONTENT */}
-              <div className="p-8">
+              <div className="p-6">
 
-                <h3 className="text-[#07111F] text-[28px] font-bold leading-tight mb-5">
+                <h3 className="text-[#07111F] text-[22px] font-bold leading-tight mb-5">
 
                   {item.title}
 
                 </h3>
 
-                <p className="text-gray-500 text-[16px] leading-8 mb-8">
+                <p className="text-gray-500 text-[16px] leading-8 mb-5">
 
                   {item.description}
 
@@ -274,8 +306,6 @@ block
           </Link>
 
         </div>
-
-      </div>
 
     </section>
 

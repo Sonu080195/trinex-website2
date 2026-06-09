@@ -43,27 +43,67 @@ export default function HeroJobsCarousel() {
 
   return (
 
-    <section className="bg-[#07111F] py-14 sm:py-16 lg:py-10 px-5 sm:px-6 lg:px-6">
+    <section className="bg-[#07111F] py-8 lg:py-10 px-4 sm:px-4 lg:px-20 overflow-hidden">
+
+      <div
+  className="absolute inset-0 opacity-[0.03]"
+  style={{
+    backgroundImage: `
+      linear-gradient(rgba(200,155,60,1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(200,155,60,1) 1px, transparent 1px)
+    `,
+    backgroundSize: "60px 60px",
+  }}
+/>
 
       <div className="max-w-7xl mx-auto">
 
         {/* TOP */}
-        <div className="text-center mb-6 sm:mb-8">
+        <div className="text-center mb-10 lg:mb-14">
 
-          <p className="text-[#C89B3C] uppercase tracking-[4px] text-[11px] sm:text-sm mb-4">
+  <div className="inline-flex items-center gap-3 mb-4">
 
-            Featured Opportunities
+    <span className="h-px w-8 bg-[#C89B3C]" />
 
-          </p>
+    <p className="text-[#C89B3C] uppercase tracking-[5px] text-xs font-semibold">
 
-          <h2 className="text-white text-[28px] sm:text-[36px] lg:text-[56px] font-bold leading-[1.05] mb-5">
+      Featured Opportunities
+
+    </p>
+
+    <span className="h-px w-8 bg-[#C89B3C]" />
+
+  </div>
+
+          <h2 className="text-white text-[28px] sm:text-[36px] lg:text-[56px] font-bold leading-[1.02] mb-5">
 
             Executive & Project
-            Leadership Opportunities
+            Leadership 
+            
+            <br />
+
+    <span className="relative inline-block text-[#C89B3C]">
+
+      Opportunities
+
+      <span
+        className="
+        absolute
+        bottom-0
+        left-0
+        w-full
+        h-[3px]
+        bg-[#C89B3C]
+        opacity-20
+        rounded-full
+        "
+      />
+
+    </span>
 
           </h2>
 
-          <p className="text-gray-400 text-[15px] sm:text-[17px] leading-7 sm:leading-8 max-w-3xl mx-auto">
+          <p className="text-gray-400 text-[15px] sm:text-[17px] leading-7 sm:leading-8 max-w-7xl mx-auto">
 
   Explore executive, leadership and project
   delivery opportunities across construction,
@@ -74,7 +114,7 @@ export default function HeroJobsCarousel() {
         </div>
 
         {/* CARD */}
-        <div className="relative overflow-hidden rounded-[32px] min-h-[720px] sm:min-h-[560px] lg:h-[560px]">
+        <div className="relative overflow-hidden rounded-[36px] border border-white/10 shadow-[0_25px_80px_rgba(0,0,0,0.35) min-h-[720px] sm:min-h-[560px] lg:h-[560px]">
 
           {/* BG */}
           <div
@@ -98,6 +138,16 @@ export default function HeroJobsCarousel() {
             <div className="max-w-7xl mx-auto w-full px-5 sm:px-6 lg:px-10 py-8 sm:py-0">
 
               <div className="max-w-[700px]">
+
+                <div className="absolute right-0 top-0 hidden lg:block">
+
+  <div className="text-[180px] font-black text-white/[0.03] leading-none">
+
+    0{activeIndex + 1}
+
+  </div>
+
+</div>
 
                 {/* BADGES */}
                 <div className="flex flex-wrap gap-3 mb-5">
@@ -128,7 +178,7 @@ export default function HeroJobsCarousel() {
                 </h3>
 
 {/* COMPANY */}
-<p className="text-[#C89B3C] text-[15px] sm:text-[20px] mb-4">
+<p className="text-[#C89B3C] text-[15px] sm:text-[20px] mb-5 font-medium tracking-[1px]">
 
 {activeJob.company}
 
@@ -203,23 +253,52 @@ export default function HeroJobsCarousel() {
                 {/* CTA */}
                 <div className="flex flex-col sm:flex-row gap-3">
 
-                  <Link
-                    href={`/jobs/${activeJob.slug}`}
-                    className="bg-[#C89B3C] hover:bg-[#d6ab52] text-black font-semibold px-8 py-4 rounded-xl text-center transition"
-                  >
+<Link
+  href={`/jobs/${activeJob.slug}`}
+className="
+group
+bg-[#C89B3C]
+hover:bg-[#d6ab52]
+text-black
+font-semibold
+px-8
+py-4
+rounded-xl
+text-center
+transition-all
+duration-300
+hover:-translate-y-1
+hover:shadow-[0_12px_30px_rgba(200,155,60,0.35)]
+"
+        >
 
-                    View Position
+View Position
 
-                  </Link>
+</Link>
 
-                  <Link
-                    href="/jobs"
-                    className="border border-white/20 hover:border-[#C89B3C] text-white font-semibold px-8 py-4 rounded-xl text-center transition"
-                  >
+<Link
+href="/jobs"
+className="
+border
+border-white/20
+hover:border-[#C89B3C]
+bg-white/[0.03]
+backdrop-blur-sm
+text-white
+font-semibold
+px-8
+py-4
+rounded-xl
+text-center
+transition-all
+duration-300
+hover:-translate-y-1
+"
+>
 
-                    Explore All Opportunities
+Explore All Opportunities
 
-                  </Link>
+</Link>
 
                 </div>
 
@@ -251,31 +330,6 @@ export default function HeroJobsCarousel() {
 
           </div>
 
-<div className="hidden xl:block absolute top-8 right-8 z-20">
-
-  <div className="bg-[#07111F]/90 backdrop-blur-md border border-white/10 rounded-[24px] p-5 w-[250px]">
-
-    <p className="text-[#C89B3C] text-xs uppercase tracking-[2px] mb-2">
-
-      Featured Search
-
-    </p>
-
-    <h4 className="text-white text-lg font-bold mb-3">
-
-      {activeJob.title}
-
-    </h4>
-
-    <p className="text-gray-400 text-sm">
-
-      {activeJob.location}
-
-    </p>
-
-  </div>
-
-</div>
 
           {/* INDICATORS */}
           <div className="absolute bottom-5 sm:bottom-8 left-1/2 -translate-x-1/2 flex gap-3 z-20">

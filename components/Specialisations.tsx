@@ -178,87 +178,121 @@ export default function Specialisations() {
 
   return (
 
-    <section className="relative bg-[#F7F7F7] py-10 sm:py-14 px-5 sm:px-6 lg:px-20 overflow-hidden">
+    <section className="relative bg-[#F4F4F0] py-8 lg:py-10 px-4 sm:px-4 lg:px-20 overflow-hidden">
+
+{/* Subtle background grid pattern */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage: `
+            linear-gradient(rgba(200,155,60,0.045) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(200,155,60,0.045) 1px, transparent 1px)
+          `,
+          backgroundSize: "60px 60px",
+        }}
+      />
+
+      {/* Faint radial glow top-center */}
+      <div
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[250px] pointer-events-none"
+        style={{
+          background: "radial-gradient(ellipse at top, rgba(200,155,60,0.07) 0%, transparent 65%)",
+        }}
+      />
 
       {/* TOP TEXT */}
-      <div className="text-center mb-6 sm:mb-16">
+<div className="text-center mb-6 lg:mb-10">
 
-        <p className="text-[#C89B3C] uppercase tracking-[3px] sm:tracking-[4px] text-[11px] sm:text-sm mb-4 sm:mb-5">
+  <div className="inline-flex items-center gap-3 mb-4">
 
-          Industry Sectors
+    <span className="h-px w-8 bg-[#C89B3C]" />
+
+    <p className="text-[#C89B3C] uppercase tracking-[5px] text-xs font-semibold">
+
+      Industry Expertise
+
+    </p>
+
+    <span className="h-px w-8 bg-[#C89B3C]" />
+
+  </div>
+
+  <h2 className="text-[#07111F] text-[28px] sm:text-[36px] lg:text-[56px] font-bold leading-[1.02] mb-4">
+
+    Expertise Across
+
+    <br />
+
+    <span className="relative inline-block text-[#C89B3C]">
+
+      Construction Markets
+
+      <span
+        className="
+        absolute
+        bottom-0
+        left-0
+        w-full
+        h-[3px]
+        bg-[#C89B3C]
+        opacity-20
+        rounded-full
+        "
+      />
+
+    </span>
+
+  </h2>
+
+  <p className="text-gray-500 text-[15px] sm:text-[17px] leading-relaxed max-w-7xl mx-auto mb-4">
+
+    Supporting contractors, developers,
+    engineering consultancies and owners
+    across the most competitive construction
+    and infrastructure sectors.
+
+  </p>
+
+  <div className="flex justify-center gap-4 lg:gap-6 flex-wrap">
+
+    {[
+      ["4", "Core Sectors"],
+      ["20+", "Specialisations"],
+      ["USA", "Primary Market"],
+    ].map((item) => (
+
+      <div
+        key={item[1]}
+        className="
+        bg-white
+        border
+        border-black/5
+        rounded-[18px]
+        px-5
+        py-4
+        min-w-[120px]
+        "
+      >
+
+        <h3 className="text-[#C89B3C] text-2xl font-bold">
+
+          {item[0]}
+
+        </h3>
+
+        <p className="text-gray-500 text-sm">
+
+          {item[1]}
 
         </p>
 
-        <div className="flex flex-wrap justify-center gap-8 lg:gap-14 mb-4">
+      </div>
 
-  <div>
-
-    <p className="text-[#C89B3C] text-[28px] font-bold">
-
-      4
-
-    </p>
-
-    <p className="text-gray-500 text-sm">
-
-      Core Sectors
-
-    </p>
-
-  </div>
-
-  <div>
-
-    <p className="text-[#C89B3C] text-[28px] font-bold">
-
-      20+
-
-    </p>
-
-    <p className="text-gray-500 text-sm">
-
-      Specialisations
-
-    </p>
-
-  </div>
-
-  <div>
-
-    <p className="text-[#C89B3C] text-[28px] font-bold">
-
-      USA
-
-    </p>
-
-    <p className="text-gray-500 text-sm">
-
-      Primary Market
-
-    </p>
+    ))}
 
   </div>
 
 </div>
-
-<h2 className="text-[#07111F] text-[28px] sm:text-[36px] lg:text-[56px] font-bold leading-[1.05] mb-4">
-
-Expertise Across
-<br />
-High-Growth Construction Markets
-
-</h2>
-
-<p className="text-gray-600 text-[15px] sm:text-[17px] leading-5 sm:leading-6 max-w-3xl mx-auto">
-
-  Supporting contractors, developers,
-  engineering consultancies and owners
-  across the most competitive construction,
-  infrastructure and mission-critical markets.
-
-</p>
-
-      </div>
 
       {/* MOBILE SCROLL */}
       <div className="flex md:hidden gap-4 overflow-x-auto scrollbar-hide pb-2 snap-x snap-mandatory">
@@ -329,11 +363,25 @@ High-Growth Construction Markets
 
         {sectors.map((sector, index) => (
 
-          <div
-            key={index}
-            onClick={() => setActiveSector(sector)}
-            className="group relative h-[320px] rounded-[28px] overflow-hidden cursor-pointer"
-          >
+<div
+key={index}
+onClick={() => setActiveSector(sector)}
+className="
+group
+relative
+h-[340px]
+rounded-[28px]
+overflow-hidden
+cursor-pointer
+border
+border-black/5
+shadow-[0_4px_20px_rgba(0,0,0,0.04)]
+hover:-translate-y-2
+hover:shadow-[0_20px_60px_rgba(0,0,0,0.12)]
+transition-all
+duration-500
+"
+  >
 
             <div
               className="absolute inset-0 bg-cover bg-center transition duration-700 group-hover:scale-110"

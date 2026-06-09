@@ -2,14 +2,35 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#050D18] border-t border-white/5">
+    <footer className="relative bg-[#07111F] border-t border-white/5 overflow-hidden">
 
       <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-6">
+
+        {/* GRID PATTERN */}
+
+<div
+  className="absolute inset-0 opacity-[0.04]"
+  style={{
+    backgroundImage: `
+      linear-gradient(rgba(200, 156, 60, 0.67) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(200, 156, 60, 0.67) 1px, transparent 1px)
+    `,
+    backgroundSize: "60px 60px",
+  }}
+/>
+
+      {/* BACKGROUND GLOW */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(200,155,60,0.12),transparent_30%)]" />
+
+      <div className="relative z-10 max-w-7xl mx-auto">
+        
+      </div>
 
         {/* TOP */}
         <div className="py-12 sm:py-14 lg:py-16 border-b border-white/10">
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
+            
 
             {/* BRAND */}
             <div className="lg:col-span-2">
@@ -54,37 +75,93 @@ export default function Footer() {
 
               <div className="flex flex-col gap-3 text-[15px]">
 
-                <Link
-                  href="/about"
-                  className="text-gray-400 hover:text-white transition"
-                >
-                  About Us
-                </Link>
+<Link
+href="/about"
+className="
+group
+flex
+items-center
+gap-2
+text-gray-400
+hover:text-white
+transition-all
+duration-300
+"
+>
+<>
+  About Us
+  <span className="opacity-0 group-hover:opacity-100 transition-all">
+    →
+  </span>
+</>
+</Link>
 
-                <Link
-                  href="/industries"
-                  className="text-gray-400 hover:text-white transition"
-                >
-                  Industries
-                </Link>
+<Link
+href="/industries"
+className="
+group
+flex
+items-center
+gap-2
+text-gray-400
+hover:text-white
+transition-all
+duration-300
+"
+>
+<>
+  Industries
+  <span className="opacity-0 group-hover:opacity-100 transition-all">
+    →
+  </span>
+</>
+</Link>
 
-                <Link
-                  href="/insights"
-                  className="text-gray-400 hover:text-white transition"
-                >
-                  Insights
-                </Link>
+<Link
+href="/insights"
+className="
+group
+flex
+items-center
+gap-2
+text-gray-400
+hover:text-white
+transition-all
+duration-300
+"
+>
+<>
+  Insights
+  <span className="opacity-0 group-hover:opacity-100 transition-all">
+    →
+  </span>
+</>
+</Link>
 
-                <Link
-                  href="/contact"
-                  className="text-gray-400 hover:text-white transition"
-                >
-                  Contact
-                </Link>
+<Link
+href="/contact"
+className="
+group
+flex
+items-center
+gap-2
+text-gray-400
+hover:text-white
+transition-all
+duration-300
+"
+>
+<>
+  Contact
+  <span className="opacity-0 group-hover:opacity-100 transition-all">
+    →
+  </span>
+</>
+</Link>
 
-              </div>
+</div>
 
-            </div>
+</div>
 
             {/* SERVICES */}
             <div>
@@ -99,30 +176,86 @@ export default function Footer() {
 
                 <Link
                   href="/employers"
-                  className="text-gray-400 hover:text-white transition"
+                  className="
+                  group
+                  flex
+                  items-center
+                  gap-2
+                  text-gray-400
+                  hover:text-white
+                  transition-all
+                  duration-300
+                  "
                 >
+                  <>
                   For Employers
+                  <span className="opacity-0 group-hover:opacity-100 transition-all">
+                    →
+                  </span>
+                </>
                 </Link>
 
                 <Link
                   href="/candidates"
-                  className="text-gray-400 hover:text-white transition"
+                  className="
+                  group
+                  flex
+                  items-center
+                  gap-2
+                  text-gray-400
+                  hover:text-white
+                  transition-all
+                  duration-300
+                  "
                 >
+                  <>
                   For Candidates
+                  <span className="opacity-0 group-hover:opacity-100 transition-all">
+                    →
+                  </span>
+                </>
                 </Link>
 
                 <Link
                   href="/jobs"
-                  className="text-gray-400 hover:text-white transition"
+                  className="
+                  group
+                  flex
+                  items-center
+                  gap-2
+                  text-gray-400
+                  hover:text-white
+                  transition-all
+                  duration-300
+                  "
                 >
+                  <>
                   Browse Jobs
+                  <span className="opacity-0 group-hover:opacity-100 transition-all">
+                    →
+                  </span>
+                </>
                 </Link>
 
                 <Link
                   href="/contact"
-                  className="text-gray-400 hover:text-white transition"
+                  className="
+                  group
+                  flex
+                  items-center
+                  gap-2
+                  text-gray-400
+                  hover:text-white
+                  transition-all
+                  duration-300
+                  "
                 >
+                  <>
                   Request Talent
+                  <span className="opacity-0 group-hover:opacity-100 transition-all">
+                    →
+                  </span>
+                </>
                 </Link>
 
               </div>
@@ -140,62 +273,65 @@ export default function Footer() {
 
               <div className="space-y-4">
 
-                <div>
+                <div className="space-y-3">
 
-                  <p className="text-[#C89B3C] text-sm mb-1">
+  <div className="bg-white/5 border border-white/10 rounded-xl p-4">
 
-                    United States
+    <p className="text-[#C89B3C] text-sm mb-1">
 
-                  </p>
+      🇺🇸 United States
 
-                  <p className="text-gray-400 text-[15px]">
+    </p>
 
-                    +1 (239) 309 3969
+    <p className="text-gray-300">
 
-                  </p>
+      +1 (239) 309 3969
 
-                </div>
+    </p>
 
-                <div>
+  </div>
 
-                  <p className="text-[#C89B3C] text-sm mb-1">
+  <div className="bg-white/5 border border-white/10 rounded-xl p-4">
 
-                    United Arab Emirates
+    <p className="text-[#C89B3C] text-sm mb-1">
 
-                  </p>
+      🇦🇪 UAE
 
-                  <p className="text-gray-400 text-[15px]">
+    </p>
 
-                    +971 56 957 5207
+    <p className="text-gray-300">
 
-                  </p>
+      +971 56 957 5207
 
-                </div>
+    </p>
 
-                <div>
+  </div>
 
-                  <p className="text-[#C89B3C] text-sm mb-1">
+  <div className="bg-white/5 border border-white/10 rounded-xl p-4">
 
-                    India
+    <p className="text-[#C89B3C] text-sm mb-1">
 
-                  </p>
+      🇮🇳 India
 
-                  <p className="text-gray-400 text-[15px]">
+    </p>
 
-                    +91 99671 44597
+    <p className="text-gray-300">
 
-                  </p>
+      +91 99671 44597
 
-                </div>
+    </p>
 
-                <p className="text-gray-400 text-[15px]">
+  </div>
 
-                  admin@rudron.com
+  <p className="text-gray-400 text-sm pt-2">
 
-                </p>
+    admin@rudrongts.com
 
-              </div>
+  </p>
 
+</div>
+
+</div>
             </div>
 
           </div>

@@ -43,7 +43,20 @@ export default function WhyChooseUs() {
 
   return (
 
-    <section className="relative bg-[#07111F] overflow-hidden py-10 sm:py-14 lg:py-16 px-5 sm:px-6 lg:px-16">
+    <section className="relative bg-[#07111F] overflow-hidden py-8 lg:py-10 px-4 sm:px-4 lg:px-20 overflow-hidden">
+
+      {/* GRID PATTERN */}
+
+<div
+  className="absolute inset-0 opacity-[0.04]"
+  style={{
+    backgroundImage: `
+      linear-gradient(rgba(200,155,60,1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(200,155,60,1) 1px, transparent 1px)
+    `,
+    backgroundSize: "60px 60px",
+  }}
+/>
 
       {/* BACKGROUND GLOW */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(200,155,60,0.12),transparent_30%)]" />
@@ -51,34 +64,97 @@ export default function WhyChooseUs() {
       <div className="relative z-10 max-w-7xl mx-auto">
 
         {/* TOP */}
-        <div className="max-w-3xl mb-8 sm:mb-12">
+        <div className="max-w-4xl mb-10 lg:mb-14">
 
-          <p className="text-[#C89B3C] uppercase tracking-[3px] sm:tracking-[4px] text-[11px] sm:text-sm mb-4">
+  <div className="inline-flex items-center gap-3 mb-4">
 
-            Why Industry Leaders Choose RUDRON
+    <span className="h-px w-8 bg-[#C89B3C]" />
 
-          </p>
+    <p className="text-[#C89B3C] uppercase tracking-[5px] text-xs font-semibold">
 
-        <h2 className="text-white text-[28px] sm:text-[36px] lg:text-[56px] font-bold leading-[1.05] mb-4">
+      Why Industry Leaders Choose RUDRON
 
-            Recruitment Built For
-            <br />
+    </p>
 
-            High-Performance Teams.
+    <span className="h-px w-8 bg-[#C89B3C]" />
 
-          </h2>
+  </div>
 
-          <p className="text-gray-400 text-[15px] sm:text-[17px] leading-5 sm:leading-6 max-w-2xl">
+  <h2 className="text-white text-[30px] sm:text-[40px] lg:text-[56px] font-bold leading-[1.02] mb-5">
 
-  RUDRON combines industry expertise,
-  executive search capability and deep
-  construction market knowledge to help
-  organizations secure exceptional talent
-  across critical business functions.
+    Recruitment Built For
 
-</p>
+    <br />
 
-        </div>
+    <span className="relative inline-block text-[#C89B3C]">
+
+      High-Performance Teams
+
+      <span
+        className="
+        absolute
+        left-0
+        bottom-0
+        w-full
+        h-[3px]
+        bg-[#C89B3C]
+        rounded-full
+        opacity-20
+        "
+      />
+
+    </span>
+
+  </h2>
+
+  <p className="text-gray-400 text-[15px] sm:text-[17px] leading-relaxed max-w-5xl">
+
+    RUDRON combines industry expertise,
+    executive search capability and deep
+    construction market knowledge to help
+    organizations secure exceptional talent.
+
+  </p>
+
+</div>
+
+<div className="flex flex-wrap gap-4 mb-6">
+
+  {[
+    ["100+", "Placements"],
+    ["48H", "Shortlist Delivery"],
+    ["95%", "Retention Rate"],
+  ].map((item) => (
+
+    <div
+      key={item[1]}
+      className="
+      bg-white/[0.04]
+      border
+      border-white/10
+      rounded-[18px]
+      px-5
+      py-4
+      "
+    >
+
+      <h3 className="text-[#C89B3C] text-2xl font-bold">
+
+        {item[0]}
+
+      </h3>
+
+      <p className="text-gray-400 text-sm">
+
+        {item[1]}
+
+      </p>
+
+    </div>
+
+  ))}
+
+</div>
 
         {/* STATS */}
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-5 mb-8 sm:mb-8">
@@ -97,6 +173,7 @@ p-6
 backdrop-blur-sm
 hover:-translate-y-3
 hover:border-[#C89B3C]/30
+hover:shadow-[0_20px_50px_rgba(200,155,60,0.08)]
 transition-all
 duration-500
 relative
@@ -105,6 +182,7 @@ overflow-hidden
             >
 
 {/* VALUE */}
+
 <h3 className="text-[#C89B3C] text-[18px] font-bold mb-4 uppercase tracking-[2px]">
 
 {item.value}
@@ -158,7 +236,7 @@ duration-300
 "
             >
 
-              <p className="text-white text-[12px] sm:text-[14px] font-medium">
+              <p className="text-gray-300 text-[12px] sm:text-[14px] font-medium group-hover:text-[#C89B3C] transition-colors duration-300">
 
                 {feature}
 

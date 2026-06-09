@@ -163,7 +163,7 @@ With Industry Leaders
 </h1>
 
               {/* DESCRIPTION */}
-              <p className="text-gray-300 text-[13px] lg:text-[15px] sm:text-[17px] leading-8 sm:leading-9 mb-6 lg:mb-10 max-w-[860px]">
+              <p className="text-gray-300 text-[13px] lg:text-[15px] sm:text-[17px] leading-6 sm:leading-7 mb-6 lg:mb-10 max-w-[860px]">
 
                 RUDRON is a specialist executive search and
                 recruitment partner serving the AEC & MEP industries.
