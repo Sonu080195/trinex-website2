@@ -89,7 +89,7 @@ style={{
   top-0
   left-0
   w-full
-  z-[999999]
+  z-50
   transition-all
   duration-500
   ${
@@ -340,7 +340,7 @@ ${
       {/* MOBILE MENU */}
       {menuOpen && (
 
-        <div className="fixed inset-0 bg-[#07111F] z-[99999] overflow-y-auto">
+  <div className="fixed inset-0 bg-red-500 z-[1000000]">
 
           <div className="min-h-screen flex flex-col px-5 pt-20 pb-8">
 
