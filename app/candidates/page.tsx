@@ -1,10 +1,21 @@
 "use client";
 
+import { useEffect, useState } from "react";
+
 import Navbar from "@/components/Navbar";
 import HomeCTA from "@/components/HomeCTA";
 import Footer from "@/components/Footer";
 
 export default function CandidatesPage() {
+  const [heroVisible, setHeroVisible] = useState(false);
+
+useEffect(() => {
+  const timer = setTimeout(() => {
+    setHeroVisible(true);
+  }, 100);
+
+  return () => clearTimeout(timer);
+}, []);
 
 const opportunityCards = [
   {
@@ -29,7 +40,7 @@ const opportunityCards = [
   },
 ];
 
-const marqueeRoles = [
+const marqueeItems = [
   "PROJECT EXECUTIVE",
   "PROJECT MANAGER",
   "SUPERINTENDENT",
@@ -110,49 +121,142 @@ const testimonials = [
 
       <Navbar />
 
-      {/* HERO */}
-      <section className="relative min-h-[85vh] flex items-center">
+{/* HERO */}
+
+<section className="relative min-h-[90vh] flex items-center overflow-hidden">
+
+  {/* BACKGROUND */}
+
+  <div className="absolute inset-0">
+
+    <div
+      className="absolute inset-0 bg-cover bg-center transition-transform duration-[9000ms] ease-out"
+      style={{
+        backgroundImage:
+          "url('/candidates/candidates-hero.webp')",
+        transform: heroVisible
+          ? "scale(1.05)"
+          : "scale(1)",
+      }}
+    />
+
+    <div className="absolute inset-0 bg-gradient-to-r from-[#07111F] via-[#07111F]/88 to-[#07111F]/35" />
+
+    <div className="absolute inset-0 bg-gradient-to-t from-[#07111F] via-transparent to-transparent" />
+
+  </div>
+
+  {/* GOLD LINE */}
 
   <div
-    className="absolute inset-0 bg-cover bg-center"
+    className="absolute left-0 top-0 bottom-0 w-[3px] transition-all duration-1000 delay-500"
     style={{
-      backgroundImage:
-        "linear-gradient(to right, rgba(7,17,31,.95) 20%, rgba(7,17,31,.82) 45%, rgba(7,17,31,.4) 100%), url('/candidates/candidates-hero.png')",
+      background:
+        "linear-gradient(to bottom, transparent, #C89B3C, transparent)",
+      opacity: heroVisible ? 0.6 : 0,
     }}
   />
 
-        <div className="relative z-10 w-full">
-          <div className="max-w-7xl mx-auto px-6 pt-28">
-            <div className="max-w-[760px]">
-              <p className="uppercase tracking-[4px] text-[#C89B3C] text-sm mb-5">
-          Candidates
+  {/* GLOW */}
 
-        </p>
-        
-        <h1 className="text-[34px] sm:text-[48px] lg:text-[64px] font-bold leading-[1.08] mb-6">
+  <div
+    className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px]"
+    style={{
+      background:
+        "radial-gradient(ellipse at top, rgba(200,155,60,.10) 0%, transparent 70%)",
+    }}
+  />
+
+  <div className="relative z-10 w-full">
+
+    <div className="max-w-7xl mx-auto px-5 lg:px-6 pt-32 lg:pt-40 pb-16">
+
+      <div className="max-w-[760px]">
+
+        {/* EYEBROW */}
+
+        <div
+          className="flex items-center gap-3 mb-6 transition-all duration-700"
+          style={{
+            opacity: heroVisible ? 1 : 0,
+            transform: heroVisible
+              ? "translateY(0)"
+              : "translateY(18px)",
+          }}
+        >
+
+          <span className="h-px w-10 bg-[#C89B3C]" />
+
+          <p className="text-[#C89B3C] uppercase tracking-[5px] text-[11px] font-semibold">
+
+            Candidates
+
+          </p>
+
+          <span className="h-px w-10 bg-[#C89B3C]" />
+
+        </div>
+
+        {/* TITLE */}
+
+        <h1
+          className="text-white text-[32px] sm:text-[50px] lg:text-[68px] font-bold leading-[1.02] mb-6 transition-all duration-700 delay-150"
+          style={{
+            opacity: heroVisible ? 1 : 0,
+            transform: heroVisible
+              ? "translateY(0)"
+              : "translateY(28px)",
+          }}
+        >
+
           Connecting
-          Professionals With
-          
-          <br/>
-        <span className="text-[#C89B3C]">
-            {" "} Industry-Leading
-          </span>
-
-        {" "} Roles
 
           <br />
 
+          Professionals With
+
+          <br />
+
+          <span className="relative inline-block text-[#C89B3C]">
+
+            Industry-Leading Roles
+
+            <span className="absolute left-0 bottom-0 w-full h-[3px] bg-[#C89B3C] rounded-full opacity-20" />
+
+          </span>
+
         </h1>
 
-        <p className="text-gray-300 text-[15px] sm:text-[17px] leading-7 sm:leading-8 max-w-[700px]">
+        {/* BODY */}
 
-          RUDRON partners with top construction and engineering firms
-          to connect skilled professionals with high-impact career opportunities
-          across rapidly growing markets.
+        <p
+          className="text-gray-300 text-[14px] lg:text-[16px] leading-7 max-w-[720px] mb-8 transition-all duration-700 delay-300"
+          style={{
+            opacity: heroVisible ? 1 : 0,
+            transform: heroVisible
+              ? "translateY(0)"
+              : "translateY(20px)",
+          }}
+        >
+
+          RUDRON partners with leading construction,
+          engineering and mission-critical organizations
+          to connect exceptional professionals with
+          career-defining opportunities across North America.
 
         </p>
 
-        <div className="flex flex-wrap gap-3 mt-8">
+        {/* TAGS */}
+
+        <div
+          className="flex flex-wrap gap-3 mb-8 transition-all duration-700 delay-500"
+          style={{
+            opacity: heroVisible ? 1 : 0,
+            transform: heroVisible
+              ? "translateY(0)"
+              : "translateY(16px)",
+          }}
+        >
 
           {[
             "Project Management",
@@ -163,11 +267,72 @@ const testimonials = [
             "Data Centers",
           ].map((item) => (
 
-            <div
+            <span
               key={item}
-              className="px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border border-white/15 bg-white/5 backdrop-blur-sm"
+              className="
+              px-5
+              py-2.5
+              rounded-full
+              border
+              border-white/15
+              bg-white/5
+              backdrop-blur-md
+              text-sm
+              text-white
+              hover:border-[#C89B3C]/40
+              transition-all
+              duration-300
+              "
             >
               {item}
+            </span>
+
+          ))}
+
+        </div>
+
+        {/* STATS */}
+
+        <div
+          className="grid grid-cols-3 gap-3 max-w-[620px] transition-all duration-700 delay-700"
+          style={{
+            opacity: heroVisible ? 1 : 0,
+            transform: heroVisible
+              ? "translateY(0)"
+              : "translateY(20px)",
+          }}
+        >
+
+          {[
+            ["Executive", "Roles"],
+            ["Mission Critical", "Projects"],
+            ["Nationwide", "Opportunities"],
+          ].map((item) => (
+
+            <div
+              key={item[0]}
+              className="
+              bg-white/[0.04]
+              border
+              border-white/10
+              rounded-[18px]
+              backdrop-blur-md
+              p-4
+              "
+            >
+
+              <h3 className="text-[#C89B3C] text-lg lg:text-xl font-bold">
+
+                {item[0]}
+
+              </h3>
+
+              <p className="text-gray-400 text-[11px] lg:text-sm">
+
+                {item[1]}
+
+              </p>
+
             </div>
 
           ))}
@@ -314,36 +479,16 @@ const testimonials = [
 
 {/* ROLES MARQUEE */}
 
-<section className="bg-[#07111F] py-4 lg:py-6 overflow-hidden border-y border-white/10">
-
-  <div className="roles-marquee flex whitespace-nowrap">
-
-    {[...marqueeRoles, ...marqueeRoles].map((role, index) => (
-
-      <div
-        key={index}
-        className="flex items-center"
-      >
-
-        <span className="text-white text-[18px] sm:text-[26px] lg:text-[38px] font-bold mx-6">
-
-          {role}
-
-        </span>
-
-        <span className="text-[#C89B3C] text-[30px]">
-
-          •
-
-        </span>
-
+      <div className="border-y border-white/8 bg-[#060D18] py-5 overflow-hidden">
+        <div className="flex whitespace-nowrap" style={{ animation: "marquee 30s linear infinite" }}>
+          {[...marqueeItems, ...marqueeItems, ...marqueeItems].map((item, i) => (
+            <div key={i} className="flex items-center flex-shrink-0">
+              <span className="text-white/70 text-[13px] sm:text-[15px] font-semibold tracking-[0.2em] uppercase mx-6">{item}</span>
+              <span className="text-[#C89B3C] text-[8px]">◆</span>
+            </div>
+          ))}
+        </div>
       </div>
-
-    ))}
-
-  </div>
-
-</section>
 
 {/* FEATURED CAREER PATHS */}
 

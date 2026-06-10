@@ -73,7 +73,7 @@ export default function ContactPage() {
           <div
             className="absolute inset-0 bg-cover bg-center transition-transform duration-[8000ms] ease-out"
             style={{
-              backgroundImage: "url('/contact/contact-hero.png')",
+              backgroundImage: "url('/contact/contact-hero.webp')",
               transform: heroVisible ? "scale(1.05)" : "scale(1)",
             }}
           />

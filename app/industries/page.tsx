@@ -1,12 +1,22 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import HomeCTA from "@/components/HomeCTA";
 
 export default function IndustriesPage() {
+  const [heroVisible, setHeroVisible] = useState(false);
+
+useEffect(() => {
+  const timer = setTimeout(() => {
+    setHeroVisible(true);
+  }, 100);
+
+  return () => clearTimeout(timer);
+}, []);
 
   const industries = [
 
@@ -60,7 +70,7 @@ export default function IndustriesPage() {
 
   ];
 
-  const industryMarquee = [
+  const marqueeItems = [
   "ARCHITECTURE",
   "ENGINEERING",
   "CONSTRUCTION",
@@ -76,165 +86,374 @@ export default function IndustriesPage() {
       {/* NAVBAR */}
       <Navbar />
 
-      {/* HERO */}
-      <section className="relative min-h-[68vh] sm:min-h-[72vh] lg:min-h-[85vh] flex items-center overflow-hidden">
+{/* HERO */}
 
-        {/* BG */}
+<section className="relative min-h-[90vh] flex items-center overflow-hidden">
+
+  {/* BACKGROUND */}
+
+  <div className="absolute inset-0">
+
+    <div
+      className="absolute inset-0 bg-cover bg-center transition-transform duration-[9000ms] ease-out"
+      style={{
+        backgroundImage:
+          "url('/industries/industries-hero.webp')",
+        transform: heroVisible
+          ? "scale(1.05)"
+          : "scale(1)",
+      }}
+    />
+
+    {/* OVERLAYS */}
+
+    <div className="absolute inset-0 bg-gradient-to-r from-[#07111F] via-[#07111F]/88 to-[#07111F]/30" />
+
+    <div className="absolute inset-0 bg-gradient-to-t from-[#07111F] via-transparent to-transparent" />
+
+  </div>
+
+  {/* GOLD LINE */}
+
+  <div
+    className="absolute left-0 top-0 bottom-0 w-[3px]"
+    style={{
+      background:
+        "linear-gradient(to bottom, transparent, #C89B3C, transparent)",
+      opacity: heroVisible ? 0.7 : 0,
+      transition: "all 1s ease",
+    }}
+  />
+
+  {/* GOLD GLOW */}
+
+  <div
+    className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px]"
+    style={{
+      background:
+        "radial-gradient(ellipse at top, rgba(200,155,60,.10) 0%, transparent 70%)",
+    }}
+  />
+
+  <div className="relative z-10 w-full">
+
+    <div className="max-w-7xl mx-auto px-5 lg:px-6 pt-32 lg:pt-40 pb-16">
+
+      <div className="max-w-[760px]">
+
+        {/* EYEBROW */}
+
         <div
-          className="absolute inset-0 bg-cover bg-center"
+          className="flex items-center gap-3 mb-6"
           style={{
-            backgroundImage:
-              "linear-gradient(to right, rgba(7,17,31,0.97) 16%, rgba(7,17,31,0.78) 42%, rgba(7,17,31,0.20) 76%), url('/industries/industries-hero.png')",
+            opacity: heroVisible ? 1 : 0,
+            transform: heroVisible
+              ? "translateY(0)"
+              : "translateY(20px)",
+            transition: "all .8s ease",
           }}
-        />
+        >
 
-        {/* CONTENT */}
-        <div className="relative z-10 w-full">
+          <span className="h-px w-10 bg-[#C89B3C]" />
 
-          <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-6 pt-28 sm:pt-30 lg:pt-20">
+          <p className="text-[#C89B3C] uppercase tracking-[5px] text-[11px] font-semibold">
 
-            <div className="max-w-[660px]">
+            Industry Expertise
 
-              <p className="text-[#C89B3C] uppercase tracking-[4px] text-[11px] sm:text-sm mb-4">
+          </p>
 
-                Industry Expertise
+          <span className="h-px w-10 bg-[#C89B3C]" />
 
-              </p>
+        </div>
 
-              <h1 className="text-white font-bold leading-[1.02] text-[34px] sm:text-[48px] lg:text-[64px] mb-6">
+        {/* HEADING */}
 
-                Specialized Talent
-                Solutions Across
-                
-                <br/>
-                The
-            
-                <span className="text-[#C89B3C]">
-                  {" "} Built Environment
-                </span>
+        <h1
+          className="text-white text-[34px] sm:text-[52px] lg:text-[72px] font-bold leading-[1.02] mb-6"
+          style={{
+            opacity: heroVisible ? 1 : 0,
+            transform: heroVisible
+              ? "translateY(0)"
+              : "translateY(30px)",
+            transition: "all .8s ease .15s",
+          }}
+        >
 
-              </h1>
+          Specialized Talent
 
-              <p className="text-gray-300 text-[15px] sm:text-[17px] leading-7 sm:leading-8 max-w-[620px]">
+          <br />
 
-                RUDRON partners with organizations across architecture,
-                engineering, construction, and MEP sectors to deliver
-                project-ready professionals across rapidly evolving markets.
+          Solutions Across
+
+          <br />
+
+          The{" "}
+
+          <span className="relative inline-block text-[#C89B3C]">
+
+            Built Environment
+
+            <span className="absolute left-0 bottom-0 h-[3px] w-full bg-[#C89B3C] rounded-full opacity-20" />
+
+          </span>
+
+        </h1>
+
+        {/* BODY */}
+
+        <p
+          className="text-gray-300 text-[15px] lg:text-[17px] leading-8 max-w-[700px] mb-10"
+          style={{
+            opacity: heroVisible ? 1 : 0,
+            transform: heroVisible
+              ? "translateY(0)"
+              : "translateY(20px)",
+            transition: "all .8s ease .3s",
+          }}
+        >
+
+          RUDRON partners with organizations across
+          architecture, engineering, construction,
+          mechanical, electrical and plumbing markets,
+          delivering specialist recruitment solutions
+          that support project success and long-term growth.
+
+        </p>
+
+        {/* TAGS */}
+
+        <div
+          className="flex flex-wrap gap-3 mb-8"
+          style={{
+            opacity: heroVisible ? 1 : 0,
+            transform: heroVisible
+              ? "translateY(0)"
+              : "translateY(16px)",
+            transition: "all .8s ease .5s",
+          }}
+        >
+
+          {[
+            "Architecture",
+            "Engineering",
+            "Construction",
+            "Mechanical",
+            "Electrical",
+            "Plumbing",
+          ].map((item) => (
+
+            <span
+              key={item}
+              className="
+              px-5
+              py-2.5
+              rounded-full
+              border
+              border-white/15
+              bg-white/5
+              backdrop-blur-md
+              text-sm
+              text-white
+              hover:border-[#C89B3C]/40
+              transition-all
+              duration-300
+              "
+            >
+              {item}
+            </span>
+
+          ))}
+
+        </div>
+
+        {/* STATS */}
+
+        <div
+          className="grid grid-cols-3 gap-3 max-w-[620px]"
+          style={{
+            opacity: heroVisible ? 1 : 0,
+            transform: heroVisible
+              ? "translateY(0)"
+              : "translateY(20px)",
+            transition: "all .8s ease .7s",
+          }}
+        >
+
+          {[
+            ["6", "Core Industries"],
+            ["Global", "Coverage"],
+            ["Executive", "Search"],
+          ].map((item) => (
+
+            <div
+              key={item[0]}
+              className="
+              bg-white/[0.04]
+              border
+              border-white/10
+              backdrop-blur-md
+              rounded-[18px]
+              p-4
+              "
+            >
+
+              <h3 className="text-[#C89B3C] text-xl font-bold">
+
+                {item[0]}
+
+              </h3>
+
+              <p className="text-gray-400 text-sm">
+
+                {item[1]}
 
               </p>
 
             </div>
 
-          </div>
+          ))}
 
         </div>
 
-      </section>
+      </div>
 
-      {/* INDUSTRY EXPERTISE SHOWCASE */}
+    </div>
 
-<section className="bg-[#F7F7F7] py-12 lg:py-16 px-4 sm:px-6 overflow-hidden">
+  </div>
 
-  <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+</section>
 
-    {/* LEFT */}
+{/* INDUSTRY EXPERTISE */}
 
-    <div>
+<section className="relative bg-[#F4F4F0] py-10 lg:py-14 px-4 sm:px-6 lg:px-20 overflow-hidden">
 
-      <p className="uppercase tracking-[5px] text-[#C89B3C] text-sm mb-4">
+  {/* GRID PATTERN */}
 
-        Industry Expertise
+  <div
+    className="absolute inset-0 pointer-events-none"
+    style={{
+      backgroundImage: `
+        linear-gradient(rgba(200,155,60,0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(200,155,60,0.045) 1px, transparent 1px)
+      `,
+      backgroundSize: "60px 60px",
+    }}
+  />
 
-      </p>
+  {/* GOLD GLOW */}
 
-      <h2 className="text-[#07111F] text-[26px] sm:text-[32px] lg:text-[56px] font-bold leading-[1.05] mb-6">
+  <div
+    className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[250px]"
+    style={{
+      background:
+        "radial-gradient(ellipse at top, rgba(200,155,60,.08) 0%, transparent 70%)",
+    }}
+  />
 
-        Recruitment Built
-        Around Industry
-        Knowledge
+  <div className="relative max-w-7xl mx-auto">
+
+    {/* HEADER */}
+
+    <div className="text-center mb-8">
+
+      <div className="inline-flex items-center gap-3 mb-4">
+
+        <span className="h-px w-8 bg-[#C89B3C]" />
+
+        <p className="text-[#C89B3C] uppercase tracking-[5px] text-xs font-semibold">
+
+          Industry Coverage
+
+        </p>
+
+        <span className="h-px w-8 bg-[#C89B3C]" />
+
+      </div>
+
+      <h2 className="text-[#07111F] text-[28px] sm:text-[38px] lg:text-[56px] font-bold leading-[1.02] mb-5">
+
+        Recruitment Expertise
+
+        <br />
+
+        <span className="text-[#C89B3C]">
+
+          Built Around Industry Knowledge
+
+        </span>
 
       </h2>
 
-      <div className="w-20 h-[3px] bg-[#C89B3C] rounded-full mb-8" />
+      <p className="text-gray-500 text-[15px] sm:text-[17px] leading-relaxed max-w-3xl mx-auto">
 
-      <p className="text-gray-600 text-[15px] sm:text-[17px] leading-7 sm:leading-8 mb-6">
-
-        Every sector of the built environment operates with unique
-        challenges, project requirements, technical disciplines,
-        and leadership expectations.
-
-      </p>
-
-      <p className="text-gray-600 text-[15px] sm:text-[17px] leading-7 sm:leading-8 mb-6">
-
-        RUDRON delivers recruitment solutions tailored to the
-        architecture, engineering, construction, and MEP markets,
-        helping organizations secure the talent required to deliver
-        complex projects and sustain long-term growth.
-
-      </p>
-
-      <p className="text-gray-600 text-[15px] sm:text-[17px] leading-7 sm:leading-8">
-
-        Our sector-specific expertise enables us to understand
-        technical requirements, market trends, project demands,
-        and leadership challenges across the industries we support.
+        Every sector within the built environment
+        requires a unique understanding of talent,
+        project delivery, leadership and technical expertise.
 
       </p>
 
     </div>
 
-    {/* RIGHT */}
+    {/* INDUSTRIES GRID */}
 
-    <div className="relative min-h-[520px] lg:min-h-[620px]">
+    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
 
-      <div className="floating-card absolute top-0 left-0 bg-[#07111F] text-white rounded-[28px] p-6 border border-white/10 w-[190px] sm:w-[240px] lg:w-[320px]">
+      {[
+        "Architecture",
+        "Engineering",
+        "Construction",
+        "Mechanical",
+        "Electrical",
+        "Plumbing",
+      ].map((industry, index) => (
 
-        <h3 className="text-[#C89B3C] font-bold mb-2">
-          Industry
-        </h3>
+        <div
+          key={industry}
+          className="
+          group
+          bg-white
+          rounded-[24px]
+          border
+          border-black/5
+          p-6
+          overflow-hidden
+          relative
+          hover:-translate-y-2
+          hover:border-[#C89B3C]/30
+          transition-all
+          duration-500
+          "
+        >
 
-        <p className="text-gray-300 mb-3">
-          Architecture
-        </p>
+          {/* GHOST NUMBER */}
 
-      </div>
+          <div className="absolute -right-2 -top-2 text-[90px] font-black text-black/[0.04]">
 
-      <div className="floating-card-2 absolute top-24 right-0 bg-[#0D1726] text-white rounded-[28px] p-6 border border-white/10 w-[190px] sm:w-[240px] lg:w-[320px]">
+            0{index + 1}
 
-        <h3 className="text-[#C89B3C] font-bold mb-2">
-          Industry
-        </h3>
+          </div>
 
-        <p className="text-gray-300 mb-3">
-          Engineering
-        </p>
+          {/* TOP BAR */}
 
-      </div>
+          <div className="w-10 h-[2px] bg-[#C89B3C] mb-5 transition-all duration-500 group-hover:w-20" />
 
-      <div className="floating-card absolute bottom-20 left-0 lg:left-0 bg-[#07111F] text-white rounded-[28px] p-6 border border-white/10 w-[190px] sm:w-[240px] lg:w-[320px]">
+          <h3 className="text-[#07111F] text-[22px] font-bold mb-3">
 
-        <h3 className="text-[#C89B3C] font-bold mb-2">
-          Industry
-        </h3>
+            {industry}
 
-        <p className="text-gray-300 mb-3">
-          Construction
-        </p>
+          </h3>
 
-      </div>
+          <p className="text-gray-500 leading-7 text-[15px]">
 
-      <div className="floating-card-2 absolute bottom-0 right-0 lg:right-0 bg-[#0D1726] text-white rounded-[28px] p-6 border border-white/10 w-[190px] sm:w-[240px] lg:w-[320px]">  
+            Specialist recruitment solutions tailored
+            to the unique hiring requirements and
+            project demands of the {industry.toLowerCase()} sector.
 
-        <h3 className="text-[#C89B3C] font-bold mb-2">
-          Industry
-        </h3>
+          </p>
 
-        <p className="text-gray-300 mb-3">
-          MEP
-        </p>
+        </div>
 
-      </div>
+      ))}
 
     </div>
 
@@ -244,36 +463,16 @@ export default function IndustriesPage() {
 
 {/* INDUSTRY MARQUEE */}
 
-<section className="bg-[#07111F] py-4 lg:py-6 overflow-hidden border-y border-white/10">
-
-  <div className="roles-marquee flex whitespace-nowrap">
-
-    {[...industryMarquee, ...industryMarquee].map((item, index) => (
-
-      <div
-        key={index}
-        className="flex items-center"
-      >
-
-        <span className="text-white text-[18px] sm:text-[26px] lg:text-[38px] font-bold mx-6">
-
-          {item}
-
-        </span>
-
-        <span className="text-[#C89B3C] text-[28px]">
-
-          ◆
-
-        </span>
-
+      <div className="border-y border-white/8 bg-[#060D18] py-5 overflow-hidden">
+        <div className="flex whitespace-nowrap" style={{ animation: "marquee 30s linear infinite" }}>
+          {[...marqueeItems, ...marqueeItems, ...marqueeItems].map((item, i) => (
+            <div key={i} className="flex items-center flex-shrink-0">
+              <span className="text-white/70 text-[13px] sm:text-[15px] font-semibold tracking-[0.2em] uppercase mx-6">{item}</span>
+              <span className="text-[#C89B3C] text-[8px]">◆</span>
+            </div>
+          ))}
+        </div>
       </div>
-
-    ))}
-
-  </div>
-
-</section>
 
       {/* INDUSTRIES GRID */}
       <section className="bg-[#0D1726] py-12 sm:py-16 lg:py-18 px-5 sm:px-6 lg:px-6">
@@ -375,38 +574,80 @@ export default function IndustriesPage() {
 
       </section>
 
-      {/* RECRUITMENT COVERAGE */}
+{/* RECRUITMENT COVERAGE */}
 
-<section className="bg-[#F7F7F7] py-12 lg:py-16 px-4 sm:px-6">
+<section className="relative bg-[#F4F4F0] py-10 lg:py-14 px-4 sm:px-6 lg:px-20 overflow-hidden">
 
-  <div className="max-w-7xl mx-auto">
+  {/* GRID */}
 
-    <div className="text-center mb-12">
+  <div
+    className="absolute inset-0 pointer-events-none"
+    style={{
+      backgroundImage: `
+        linear-gradient(rgba(200,155,60,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(200,155,60,0.035) 1px, transparent 1px)
+      `,
+      backgroundSize: "60px 60px",
+    }}
+  />
 
-      <p className="uppercase tracking-[5px] text-[#C89B3C] text-sm mb-4">
+  {/* GLOW */}
 
-        Recruitment Coverage
+  <div
+    className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[250px]"
+    style={{
+      background:
+        "radial-gradient(ellipse at top, rgba(200,155,60,.07) 0%, transparent 70%)",
+    }}
+  />
 
-      </p>
+  <div className="relative max-w-7xl mx-auto">
 
-      <h2 className="text-[#07111F] text-[28px] sm:text-[36px] lg:text-[56px] font-bold leading-[1.05]">
+    {/* HEADER */}
+
+    <div className="text-center mb-8">
+
+      <div className="inline-flex items-center gap-3 mb-4">
+
+        <span className="h-px w-8 bg-[#C89B3C]" />
+
+        <p className="text-[#C89B3C] uppercase tracking-[5px] text-xs font-semibold">
+
+          Recruitment Coverage
+
+        </p>
+
+        <span className="h-px w-8 bg-[#C89B3C]" />
+
+      </div>
+
+      <h2 className="text-[#07111F] text-[28px] sm:text-[38px] lg:text-[56px] font-bold leading-[1.02] mb-5">
 
         Roles That Drive
-        Project Success
+
+        <br />
+
+        <span className="text-[#C89B3C]">
+
+          Project Success
+
+        </span>
 
       </h2>
 
-      <p className="text-gray-600 text-[15px] sm:text-[17px] leading-7 sm:leading-8 max-w-3xl mx-auto mt-6">
+      <p className="text-gray-500 text-[15px] sm:text-[17px] leading-relaxed max-w-3xl mx-auto">
 
-        From project delivery and field operations to executive leadership,
-        we help organizations secure the professionals required to
-        deliver successful outcomes.
+        From field leadership to executive management,
+        we connect organizations with the professionals
+        required to deliver complex projects successfully.
 
       </p>
 
     </div>
 
-    <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
+    {/* GRID */}
+
+    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
 
       {[
         "Project Management",
@@ -421,16 +662,36 @@ export default function IndustriesPage() {
 
         <div
           key={item}
-          className="group bg-white rounded-[28px] border border-black/5 p-6 hover:-translate-y-2 hover:border-[#C89B3C]/30 transition-all duration-500"
+          className="
+          group
+          bg-white
+          rounded-[24px]
+          border
+          border-black/5
+          p-6
+          hover:-translate-y-2
+          hover:border-[#C89B3C]/30
+          hover:shadow-[0_20px_50px_rgba(200,155,60,.08)]
+          transition-all
+          duration-500
+          relative
+          overflow-hidden
+          "
         >
 
-          <div className="text-[#C89B3C] text-5xl font-bold opacity-20 mb-4">
+          {/* NUMBER */}
+
+          <div className="absolute -right-2 -top-2 text-[85px] font-black text-black/[0.04]">
 
             0{index + 1}
 
           </div>
 
-          <h3 className="text-[#07111F] text-lg font-bold group-hover:text-[#C89B3C] transition-colors">
+          {/* GOLD BAR */}
+
+          <div className="w-10 h-[2px] bg-[#C89B3C] mb-5 transition-all duration-500 group-hover:w-20" />
+
+          <h3 className="text-[#07111F] text-[18px] font-bold leading-snug">
 
             {item}
 
@@ -446,45 +707,125 @@ export default function IndustriesPage() {
 
 </section>
 
-{/* INDUSTRY IMPACT */}
+{/* WHY ORGANIZATIONS CHOOSE RUDRON */}
 
-<section className="bg-[#07111F] py-8 lg:py-12 px-4 sm:px-6">
+<section className="relative bg-[#07111F] py-10 lg:py-14 px-4 sm:px-6 lg:px-20 overflow-hidden">
 
-  <div className="max-w-7xl mx-auto">
+  {/* GOLD GLOW */}
 
-    <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
+  <div
+    className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[300px]"
+    style={{
+      background:
+        "radial-gradient(ellipse at top, rgba(200,155,60,.10) 0%, transparent 70%)",
+    }}
+  />
+
+  <div className="relative max-w-7xl mx-auto">
+
+    {/* HEADER */}
+
+    <div className="text-center mb-8">
+
+      <div className="inline-flex items-center gap-3 mb-4">
+
+        <span className="h-px w-8 bg-[#C89B3C]" />
+
+        <p className="text-[#C89B3C] uppercase tracking-[5px] text-xs font-semibold">
+
+          Why RUDRON
+
+        </p>
+
+        <span className="h-px w-8 bg-[#C89B3C]" />
+
+      </div>
+
+      <h2 className="text-white text-[28px] sm:text-[38px] lg:text-[56px] font-bold leading-[1.02] mb-5">
+
+        Built For The
+
+        <br />
+
+        <span className="text-[#C89B3C]">
+
+          Built Environment
+
+        </span>
+
+      </h2>
+
+      <p className="text-gray-400 text-[15px] sm:text-[17px] leading-relaxed max-w-3xl mx-auto">
+
+        Combining industry expertise, executive search capability
+        and project staffing experience across architecture,
+        engineering, construction and MEP markets.
+
+      </p>
+
+    </div>
+
+    {/* GRID */}
+
+    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
 
       {[
         {
-          title: "AEC",
-          desc: "Industry Expertise",
+          title: "Industry Specialists",
+          desc: "Dedicated recruitment expertise across AEC and MEP sectors.",
         },
         {
-          title: "MEP",
-          desc: "Technical Recruitment",
+          title: "Executive Search",
+          desc: "Confidential leadership hiring for critical business functions.",
         },
         {
-          title: "DC",
-          desc: "Mission Critical Focus",
+          title: "Project Staffing",
+          desc: "Project-ready professionals supporting delivery and growth.",
         },
         {
-          title: "National",
-          desc: "Talent Network",
+          title: "National Reach",
+          desc: "Access to talent networks across major construction markets.",
         },
-      ].map((item) => (
+      ].map((item, index) => (
 
         <div
           key={item.title}
-          className="bg-[#0D1726] border border-white/10 rounded-[24px] p-4 text-center"
+          className="
+          group
+          bg-white/[0.04]
+          backdrop-blur-md
+          border
+          border-white/10
+          rounded-[24px]
+          p-6
+          hover:-translate-y-2
+          hover:border-[#C89B3C]/30
+          transition-all
+          duration-500
+          relative
+          overflow-hidden
+          "
         >
 
-          <h3 className="text-[#C89B3C] text-[28px] lg:text-[30px] font-bold mb-2">
+          {/* NUMBER */}
+
+          <div className="absolute -right-2 -top-2 text-[90px] font-black text-white/[0.04]">
+
+            0{index + 1}
+
+          </div>
+
+          {/* GOLD BAR */}
+
+          <div className="w-10 h-[2px] bg-[#C89B3C] mb-5 transition-all duration-500 group-hover:w-20" />
+
+          <h3 className="text-white text-[20px] font-bold mb-3">
 
             {item.title}
 
           </h3>
 
-          <p className="text-gray-400">
+          <p className="text-gray-400 text-[14px] leading-7">
 
             {item.desc}
 

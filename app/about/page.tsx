@@ -1,10 +1,22 @@
 "use client";
 
+import { useEffect, useState } from "react";
+
 import Navbar from "@/components/Navbar";
 import HomeCTA from "@/components/HomeCTA";
 import Footer from "@/components/Footer";
 
 export default function AboutPage() {
+  const [heroVisible, setHeroVisible] = useState(false);
+
+useEffect(() => {
+  const timer = setTimeout(() => {
+    setHeroVisible(true);
+  }, 100);
+
+  return () => clearTimeout(timer);
+}, []);
+
   const industries = [
     "Commercial Construction",
     "Data Centers",
@@ -55,52 +67,93 @@ export default function AboutPage() {
 
       {/* HERO */}
 
-<section className="relative min-h-[85vh] overflow-hidden pointer-events-none">
+<section className="relative min-h-[90vh] flex items-center overflow-hidden">
 
-  {/* BACKGROUND IMAGE */}
+  {/* IMAGE */}
+
+  <div className="absolute inset-0">
+
+    <div
+      className="absolute inset-0 bg-cover bg-center transition-transform duration-[9000ms] ease-out"
+      style={{
+        backgroundImage:
+          "url('/about/about-hero.webp')",
+        transform: heroVisible
+          ? "scale(1.05)"
+          : "scale(1)",
+      }}
+    />
+
+    {/* OVERLAYS */}
+
+    <div className="absolute inset-0 bg-gradient-to-r from-[#07111F] via-[#07111F]/88 to-[#07111F]/35" />
+
+    <div className="absolute inset-0 bg-gradient-to-t from-[#07111F] via-transparent to-transparent" />
+
+  </div>
+
+  {/* GOLD VERTICAL LINE */}
 
   <div
-    className="absolute inset-0 bg-cover bg-center"
+    className="absolute left-0 top-0 bottom-0 w-[3px] transition-all duration-1000 delay-500"
     style={{
-      backgroundImage:
-        "linear-gradient(to right, rgba(7,17,31,.97) 15%, rgba(7,17,31,.85) 45%, rgba(7,17,31,.35) 100%), url('/about/about-hero.png')",
+      background:
+        "linear-gradient(to bottom, transparent, #C89B3C, transparent)",
+      opacity: heroVisible ? 0.6 : 0,
     }}
   />
 
   {/* GOLD GLOW */}
+
   <div
-    className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[250px] pointer-events-none"
+    className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px]"
     style={{
       background:
-        "radial-gradient(ellipse at top, rgba(200,155,60,0.08) 0%, transparent 70%)",
+        "radial-gradient(ellipse at top, rgba(200,155,60,.10) 0%, transparent 70%)",
     }}
   />
 
-  <div className="relative z-10">
+  <div className="relative z-10 w-full">
 
     <div className="max-w-7xl mx-auto px-5 lg:px-6 pt-32 lg:pt-40 pb-16">
 
-      <div className="max-w-[850px]">
+      <div className="max-w-[760px]">
 
-        {/* CONTENT */}
+        {/* EYEBROW */}
 
-        <div className="inline-flex items-center gap-3 mb-6">
+        <div
+          className="flex items-center gap-3 mb-6 transition-all duration-700"
+          style={{
+            opacity: heroVisible ? 1 : 0,
+            transform: heroVisible
+              ? "translateY(0)"
+              : "translateY(18px)",
+          }}
+        >
 
           <span className="h-px w-10 bg-[#C89B3C]" />
 
-          <p className="text-[#C89B3C] uppercase tracking-[5px] text-xs font-semibold">
+          <p className="text-[#C89B3C] uppercase tracking-[5px] text-[11px] font-semibold">
 
             About RUDRON
 
           </p>
 
-          <span className="h-px w-8 bg-[#C89B3C]" />
+          <span className="h-px w-10 bg-[#C89B3C]" />
 
         </div>
 
         {/* TITLE */}
 
-        <h1 className="text-white text-[30px] sm:text-[48px] lg:text-[64px] font-bold leading-[1.08] mb-6">
+        <h1
+          className="text-white text-[32px] sm:text-[50px] lg:text-[68px] font-bold leading-[1.02] mb-6 transition-all duration-700 delay-150"
+          style={{
+            opacity: heroVisible ? 1 : 0,
+            transform: heroVisible
+              ? "translateY(0)"
+              : "translateY(28px)",
+          }}
+        >
 
           Building The Teams
 
@@ -108,42 +161,49 @@ export default function AboutPage() {
 
           Behind The World's
 
-          <br/>
+          <br />
+
           <span className="relative inline-block text-[#C89B3C]">
 
-            {" "}Most Critical Projects
+            Most Critical Projects
 
-            <span
-              className="
-              absolute
-              left-0
-              bottom-0
-              w-full
-              h-[3px]
-              bg-[#C89B3C]
-              rounded-full
-              opacity-20
-              "
-            />
+            <span className="absolute left-0 bottom-0 w-full h-[3px] bg-[#C89B3C] rounded-full opacity-20" />
 
           </span>
 
         </h1>
 
-        {/* DESCRIPTION */}
+        {/* TEXT */}
 
-        <p className="text-gray-300 text-[13px] lg:text-[15px] sm:text-[17px] leading-6 sm:leading-7 mb-6 lg:mb-10 max-w-[860px]">
+        <p
+          className="text-gray-300 text-[14px] lg:text-[16px] leading-7 max-w-[720px] mb-8 transition-all duration-700 delay-300"
+          style={{
+            opacity: heroVisible ? 1 : 0,
+            transform: heroVisible
+              ? "translateY(0)"
+              : "translateY(20px)",
+          }}
+        >
 
-          RUDRON Global Talent Solutions partners with construction,
-          engineering, infrastructure and mission-critical organizations
-          to secure exceptional professionals, strengthen leadership teams
-          and support long-term business growth.
+          RUDRON Global Talent Solutions partners with
+          construction, engineering, infrastructure and
+          mission-critical organizations to secure
+          exceptional professionals, strengthen leadership
+          teams and support long-term business growth.
 
         </p>
 
-        {/* INDUSTRY TAGS */}
+        {/* TAGS */}
 
-        <div className="flex flex-wrap gap-3 mb-12">
+        <div
+          className="flex flex-wrap gap-3 mb-8 transition-all duration-700 delay-500"
+          style={{
+            opacity: heroVisible ? 1 : 0,
+            transform: heroVisible
+              ? "translateY(0)"
+              : "translateY(16px)",
+          }}
+        >
 
           {[
             "Commercial",
@@ -152,27 +212,25 @@ export default function AboutPage() {
             "Infrastructure",
           ].map((item) => (
 
-            <div
+            <span
               key={item}
               className="
-              bg-white/5
-              backdrop-blur-md
-              border
-              border-white/10
-              rounded-full
               px-5
               py-2.5
+              rounded-full
+              border
+              border-white/15
+              bg-white/5
+              backdrop-blur-md
               text-sm
               text-white
-              hover:border-[#C89B3C]/30
+              hover:border-[#C89B3C]/40
               transition-all
               duration-300
               "
             >
-
               {item}
-
-            </div>
+            </span>
 
           ))}
 
@@ -180,43 +238,51 @@ export default function AboutPage() {
 
         {/* STATS */}
 
-        <div className="grid grid-cols-3 gap-3 mb-4">
+        <div
+          className="grid grid-cols-3 gap-3 max-w-[620px] transition-all duration-700 delay-700"
+          style={{
+            opacity: heroVisible ? 1 : 0,
+            transform: heroVisible
+              ? "translateY(0)"
+              : "translateY(20px)",
+          }}
+        >
 
-  {[
-    ["100+", "Placements Supported"],
-    ["4", "Global Markets"],
-    ["20+", "Industry Specialisations"],
-  ].map((item) => (
+          {[
+            ["100+", "Placements Supported"],
+            ["4", "Global Markets"],
+            ["20+", "Industry Specialisations"],
+          ].map((item) => (
 
-    <div
-      key={item[1]}
-      className="
-      bg-white/[0.04]
-      border
-      border-white/10
-      rounded-[18px]
-      p-2
-      backdrop-blur-md
-      "
-    >
+            <div
+              key={item[1]}
+              className="
+              bg-white/[0.04]
+              border
+              border-white/10
+              rounded-[18px]
+              backdrop-blur-md
+              p-4
+              "
+            >
 
-      <h3 className="text-[#C89B3C] text-xl lg:text-2xl font-bold">
+              <h3 className="text-[#C89B3C] text-xl lg:text-2xl font-bold">
 
-        {item[0]}
+                {item[0]}
 
-      </h3>
+              </h3>
 
-      <p className="text-gray-400 text-[11px] lg:text-sm">
+              <p className="text-gray-400 text-[11px] lg:text-sm">
 
-        {item[1]}
+                {item[1]}
 
-      </p>
+              </p>
 
-    </div>
+            </div>
 
-  ))}
+          ))}
 
-</div>
+        </div>
 
       </div>
 
@@ -885,36 +951,170 @@ desc:"As construction technologies evolve and workforce demands continue to chan
 </section>
 
       {/* WHY CLIENTS CHOOSE US */}
-      <section className="py-16 px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-14">
-            <p className="uppercase tracking-[5px] text-[#C89B3C] text-sm mb-4">
-              Why Companies Choose RUDRON
-            </p>
 
-            <h2 className="text-[26px] sm:text-[32px] lg:text-[56px] font-bold">
-              Expertise. Relationships. Results.
-            </h2>
+<section className="relative bg-[#07111F] py-12 lg:py-16 px-4 lg:px-20 overflow-hidden">
+
+  {/* GRID */}
+
+  <div
+    className="absolute inset-0 opacity-[0.04]"
+    style={{
+      backgroundImage: `
+        linear-gradient(rgba(200,155,60,1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(200,155,60,1) 1px, transparent 1px)
+      `,
+      backgroundSize: "70px 70px",
+    }}
+  />
+
+  {/* GOLD GLOW */}
+
+  <div
+    className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px]"
+    style={{
+      background:
+        "radial-gradient(ellipse at top, rgba(200,155,60,.10) 0%, transparent 70%)",
+    }}
+  />
+
+  <div className="relative max-w-7xl mx-auto">
+
+    {/* HEADER */}
+
+    <div className="text-center mb-10">
+
+      <div className="inline-flex items-center gap-3 mb-4">
+
+        <span className="h-px w-8 bg-[#C89B3C]" />
+
+        <p className="text-[#C89B3C] uppercase tracking-[5px] text-xs font-semibold">
+
+          Why Organizations Choose RUDRON
+
+        </p>
+
+        <span className="h-px w-8 bg-[#C89B3C]" />
+
+      </div>
+
+      <h2 className="text-white text-[30px] sm:text-[40px] lg:text-[56px] font-bold leading-[1.05] mb-5">
+
+        Recruitment Built For
+        <span className="text-[#C89B3C]"> High Performance</span>
+
+      </h2>
+
+      <p className="text-gray-400 max-w-3xl mx-auto text-[15px] lg:text-[17px] leading-8">
+
+        We combine construction industry expertise, executive search
+        capabilities and long-term partnership strategies to deliver
+        exceptional hiring outcomes.
+
+      </p>
+
+    </div>
+
+    {/* CARDS */}
+
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+
+      {[
+        {
+          number: "01",
+          title: "Construction Expertise",
+          desc: "Deep market understanding across commercial, infrastructure, healthcare and mission critical sectors.",
+        },
+        {
+          number: "02",
+          title: "Executive Search",
+          desc: "Supporting confidential leadership, operational and executive hiring assignments.",
+        },
+        {
+          number: "03",
+          title: "Talent Mapping",
+          desc: "Providing market intelligence and strategic talent insights before hiring decisions are made.",
+        },
+        {
+          number: "04",
+          title: "Relationship Driven",
+          desc: "Building long-term partnerships through transparency, communication and trust.",
+        },
+        {
+          number: "05",
+          title: "Nationwide Reach",
+          desc: "Access to highly qualified professionals across key construction markets.",
+        },
+        {
+          number: "06",
+          title: "Quality Focused",
+          desc: "Delivering candidates aligned with project requirements, culture and long-term growth objectives.",
+        },
+      ].map((item, index) => (
+
+        <div
+          key={index}
+          className="
+          group
+          relative
+          bg-white/[0.03]
+          backdrop-blur-xl
+          border
+          border-white/10
+          rounded-[28px]
+          p-7
+          hover:-translate-y-2
+          hover:border-[#C89B3C]/30
+          transition-all
+          duration-500
+          overflow-hidden
+          "
+        >
+
+          {/* GHOST NUMBER */}
+
+          <div className="absolute right-4 top-0 text-[90px] font-black text-white/[0.04]">
+
+            {item.number}
+
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {strengths.map((item) => (
-              <div
-                key={item.title}
-                className="bg-[#0D1726] border border-white/10 rounded-[30px] p-5 sm:p-6 lg:p-8 hover:-translate-y-2 hover:border-[#C89B3C]/40 transition-all duration-500"
-              >
-                <h3 className="text-lg sm:text-xl font-semibold mb-4">
-                  
-                  {item.title}</h3>
+          {/* TOP LINE */}
 
-                <p className="text-gray-400 leading-8">
-                  {item.description}
-                </p>
-              </div>
-            ))}
-          </div>
+          <div className="w-12 h-[2px] bg-[#C89B3C] mb-5 group-hover:w-20 transition-all duration-500" />
+
+          {/* NUMBER */}
+
+          <p className="text-[#C89B3C] text-xs font-bold tracking-[3px] uppercase mb-4">
+
+            {item.number}
+
+          </p>
+
+          {/* TITLE */}
+
+          <h3 className="text-white text-[22px] font-bold leading-tight mb-4">
+
+            {item.title}
+
+          </h3>
+
+          {/* DESCRIPTION */}
+
+          <p className="text-gray-400 leading-7 text-[14px]">
+
+            {item.desc}
+
+          </p>
+
         </div>
-      </section>
+
+      ))}
+
+    </div>
+
+  </div>
+
+</section>
 
       <HomeCTA />
 

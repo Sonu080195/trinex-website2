@@ -1,10 +1,21 @@
 "use client";
 
+import { useEffect, useState } from "react";
+
 import Navbar from "@/components/Navbar";
 import HomeCTA from "@/components/HomeCTA";
 import Footer from "@/components/Footer";
 
 export default function EmployersPage() {
+  const [heroVisible, setHeroVisible] = useState(false);
+
+useEffect(() => {
+  const timer = setTimeout(() => {
+    setHeroVisible(true);
+  }, 100);
+
+  return () => clearTimeout(timer);
+}, []);
 
   const talentChallenges = [
   {
@@ -39,7 +50,7 @@ export default function EmployersPage() {
   },
 ];
 
-const marketMarquee = [
+const marqueeItems = [
   "DATA CENTERS",
   "HEALTHCARE",
   "COMMERCIAL",
@@ -144,73 +155,234 @@ const recruitmentSolutions = [
       <Navbar />
 
       {/* HERO */}
-      <section className="relative min-h-[85vh] flex items-center">
 
-        {/* BG */}
+<section className="relative min-h-[90vh] flex items-center overflow-hidden">
+
+  {/* BACKGROUND */}
+
+  <div className="absolute inset-0">
+
+    <div
+      className="absolute inset-0 bg-cover bg-center transition-transform duration-[9000ms] ease-out"
+      style={{
+        backgroundImage:
+          "url('/employers/employers-hero.webp')",
+        transform: heroVisible
+          ? "scale(1.05)"
+          : "scale(1)",
+      }}
+    />
+
+    {/* OVERLAYS */}
+
+    <div className="absolute inset-0 bg-gradient-to-r from-[#07111F] via-[#07111F]/88 to-[#07111F]/35" />
+
+    <div className="absolute inset-0 bg-gradient-to-t from-[#07111F] via-transparent to-transparent" />
+
+  </div>
+
+  {/* GOLD VERTICAL LINE */}
+
+  <div
+    className="absolute left-0 top-0 bottom-0 w-[3px] transition-all duration-1000 delay-500"
+    style={{
+      background:
+        "linear-gradient(to bottom, transparent, #C89B3C, transparent)",
+      opacity: heroVisible ? 0.6 : 0,
+    }}
+  />
+
+  {/* GOLD GLOW */}
+
+  <div
+    className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px]"
+    style={{
+      background:
+        "radial-gradient(ellipse at top, rgba(200,155,60,.10) 0%, transparent 70%)",
+    }}
+  />
+
+  <div className="relative z-10 w-full">
+
+    <div className="max-w-7xl mx-auto px-5 lg:px-6 pt-32 lg:pt-40 pb-16">
+
+      <div className="max-w-[760px]">
+
+        {/* EYEBROW */}
+
         <div
-          className="absolute inset-0 bg-cover bg-center"
+          className="flex items-center gap-3 mb-6 transition-all duration-700"
           style={{
-            backgroundImage:
-              "linear-gradient(to right, rgba(7,17,31,0.96) 18%, rgba(7,17,31,0.78) 42%, rgba(7,17,31,0.22) 75%), url('/employers/employers-hero.png')",
+            opacity: heroVisible ? 1 : 0,
+            transform: heroVisible
+              ? "translateY(0)"
+              : "translateY(18px)",
           }}
-        />
+        >
 
-        {/* CONTENT */}
-        <div className="relative z-10 w-full">
-          <div className="max-w-7xl mx-auto px-6 pt-28">
-            <div className="max-w-[760px]">
-              <p className="uppercase tracking-[4px] text-[#C89B3C] text-sm mb-5">
-                Employers
+          <span className="h-px w-10 bg-[#C89B3C]" />
 
-              </p>
+          <p className="text-[#C89B3C] uppercase tracking-[5px] text-[11px] font-semibold">
 
-              <h1 className="text-[34px] sm:text-[48px] lg:text-[64px] font-bold leading-[1.08] mb-6">
+            Employers
 
-                Building High-
-                Performing Teams
-                Across
-                <span className="text-[#C89B3C]">
-                  {" "}AEC & MEP
-                </span>
+          </p>
 
-              </h1>
-
-              <p className="text-gray-300 text-[15px] sm:text-[17px] leading-7 sm:leading-8 max-w-[700px]">
-
-                RUDRON delivers specialist recruitment solutions for
-                construction, engineering, MEP, and mission critical
-                markets across rapidly evolving industries.
-
-              </p>
-
-              <div className="flex flex-wrap gap-3 mt-8">
-                {[
-                  "Executive Search",
-                  "Project Staffing",
-                  "Data Centers",
-                  "Healthcare",
-                  "Mission Critical",
-                  "MEP",
-                ].map((item) => (
-                
-              <div
-      key={item}
-      className="px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border border-white/15 bg-white/5 backdrop-blur-sm"
-            >
-      {item}
-    </div>
-
-  ))}
-
-</div>
-
-            </div>
-
-          </div>
+          <span className="h-px w-10 bg-[#C89B3C]" />
 
         </div>
 
-      </section>
+        {/* TITLE */}
+
+        <h1
+          className="text-white text-[32px] sm:text-[50px] lg:text-[68px] font-bold leading-[1.02] mb-6 transition-all duration-700 delay-150"
+          style={{
+            opacity: heroVisible ? 1 : 0,
+            transform: heroVisible
+              ? "translateY(0)"
+              : "translateY(28px)",
+          }}
+        >
+
+          Building High-Performing
+
+          <br />
+
+          Teams Across
+
+          <br />
+
+          <span className="relative inline-block text-[#C89B3C]">
+
+            AEC & MEP Markets
+
+            <span className="absolute left-0 bottom-0 w-full h-[3px] bg-[#C89B3C] rounded-full opacity-20" />
+
+          </span>
+
+        </h1>
+
+        {/* BODY */}
+
+        <p
+          className="text-gray-300 text-[14px] lg:text-[16px] leading-7 max-w-[720px] mb-8 transition-all duration-700 delay-300"
+          style={{
+            opacity: heroVisible ? 1 : 0,
+            transform: heroVisible
+              ? "translateY(0)"
+              : "translateY(20px)",
+          }}
+        >
+
+          RUDRON delivers specialist recruitment
+          solutions across construction,
+          engineering, infrastructure,
+          mission critical and MEP sectors,
+          helping organizations secure the talent
+          needed to drive growth and project success.
+
+        </p>
+
+        {/* TAGS */}
+
+        <div
+          className="flex flex-wrap gap-3 mb-8 transition-all duration-700 delay-500"
+          style={{
+            opacity: heroVisible ? 1 : 0,
+            transform: heroVisible
+              ? "translateY(0)"
+              : "translateY(16px)",
+          }}
+        >
+
+          {[
+            "Executive Search",
+            "Project Staffing",
+            "Data Centers",
+            "Healthcare",
+            "Mission Critical",
+            "MEP",
+          ].map((item) => (
+
+            <span
+              key={item}
+              className="
+              px-5
+              py-2.5
+              rounded-full
+              border
+              border-white/15
+              bg-white/5
+              backdrop-blur-md
+              text-sm
+              text-white
+              hover:border-[#C89B3C]/40
+              transition-all
+              duration-300
+              "
+            >
+              {item}
+            </span>
+
+          ))}
+
+        </div>
+
+        {/* STATS */}
+
+        <div
+          className="grid grid-cols-3 gap-3 max-w-[620px] transition-all duration-700 delay-700"
+          style={{
+            opacity: heroVisible ? 1 : 0,
+            transform: heroVisible
+              ? "translateY(0)"
+              : "translateY(20px)",
+          }}
+        >
+
+          {[
+            ["Executive", "Search"],
+            ["Project", "Staffing"],
+            ["AEC + MEP", "Markets"],
+          ].map((item) => (
+
+            <div
+              key={item[0]}
+              className="
+              bg-white/[0.04]
+              border
+              border-white/10
+              rounded-[18px]
+              backdrop-blur-md
+              p-4
+              "
+            >
+
+              <h3 className="text-[#C89B3C] text-lg lg:text-xl font-bold">
+
+                {item[0]}
+
+              </h3>
+
+              <p className="text-gray-400 text-[11px] lg:text-sm">
+
+                {item[1]}
+
+              </p>
+
+            </div>
+
+          ))}
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
 
 {/* TALENT CHALLENGES */}
 
@@ -325,36 +497,16 @@ const recruitmentSolutions = [
 
 {/* MARKET MARQUEE */}
 
-<section className="bg-[#07111F] py-4 lg:py-6 overflow-hidden border-y border-white/10">
-
-  <div className="roles-marquee flex whitespace-nowrap">
-
-    {[...marketMarquee, ...marketMarquee].map((market, index) => (
-
-      <div
-        key={index}
-        className="flex items-center"
-      >
-
-        <span className="text-white text-[18px] sm:text-[26px] lg:text-[38px] font-bold mx-6">
-
-          {market}
-
-        </span>
-
-        <span className="text-[#C89B3C] text-[30px]">
-
-          •
-
-        </span>
-
+      <div className="border-y border-white/8 bg-[#060D18] py-5 overflow-hidden">
+        <div className="flex whitespace-nowrap" style={{ animation: "marquee 30s linear infinite" }}>
+          {[...marqueeItems, ...marqueeItems, ...marqueeItems].map((item, i) => (
+            <div key={i} className="flex items-center flex-shrink-0">
+              <span className="text-white/70 text-[13px] sm:text-[15px] font-semibold tracking-[0.2em] uppercase mx-6">{item}</span>
+              <span className="text-[#C89B3C] text-[8px]">◆</span>
+            </div>
+          ))}
+        </div>
       </div>
-
-    ))}
-
-  </div>
-
-</section>
 
 {/* RECRUITMENT SOLUTIONS */}
 
