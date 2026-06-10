@@ -83,24 +83,6 @@ export default function Hero() {
           }}
         />
 
-        {/* GOLD GLOW */}
-
-<div
-  className="
-  absolute
-  top-0
-  left-1/2
-  -translate-x-1/2
-  w-[700px]
-  h-[350px]
-  pointer-events-none
-  "
-  style={{
-    background:
-      "radial-gradient(circle, rgba(200,155,60,0.12) 0%, transparent 70%)",
-  }}
-/>
-
         {/* CONTENT */}
         <div className="relative z-10 w-full pointer-events-auto">
           <div className="max-w-7xl mx-auto px-5 sm:px-6 pt-20 sm:pt-24 lg:pt-28">
@@ -162,7 +144,7 @@ With Industry Leaders
 
 </h1>
 
-              {/* DESCRIPTION */}
+{/* DESCRIPTION */}
               <p className="text-gray-300 text-[13px] lg:text-[15px] sm:text-[17px] leading-6 sm:leading-7 mb-6 lg:mb-10 max-w-[860px]">
 
                 RUDRON is a specialist executive search and

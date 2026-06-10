@@ -54,97 +54,384 @@ export default function AboutPage() {
       <Navbar />
 
       {/* HERO */}
-      <section className="relative min-h-[85vh] flex items-center">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage:
-              "linear-gradient(to right, rgba(7,17,31,.95) 15%, rgba(7,17,31,.75) 45%, rgba(7,17,31,.3) 100%), url('/about/about-hero.png')",
-          }}
-        />
 
-        <div className="relative z-10 w-full">
-          <div className="max-w-7xl mx-auto px-6 pt-28">
-            <div className="max-w-[760px]">
-              <p className="uppercase tracking-[4px] text-[#C89B3C] text-sm mb-5">
-                About RUDRON
-              </p>
+<section className="relative min-h-[85vh] overflow-hidden pointer-events-none">
 
-              <h1 className="text-[34px] sm:text-[48px] lg:text-[64px] font-bold leading-[1.08] mb-6">
-                RUDRON helps in Precision Hiring for
+  {/* BACKGROUND IMAGE */}
 
-              <br/>
-                <span className="text-[#C89B3C]">
-                  {" "} AEC & MEP
-                </span>
+  <div
+    className="absolute inset-0 bg-cover bg-center"
+    style={{
+      backgroundImage:
+        "linear-gradient(to right, rgba(7,17,31,.97) 15%, rgba(7,17,31,.85) 45%, rgba(7,17,31,.35) 100%), url('/about/about-hero.png')",
+    }}
+  />
 
-                {" "} leaders
+  {/* GOLD GLOW */}
+  <div
+    className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[250px] pointer-events-none"
+    style={{
+      background:
+        "radial-gradient(ellipse at top, rgba(200,155,60,0.08) 0%, transparent 70%)",
+    }}
+  />
 
-                <br />
+  <div className="relative z-10">
 
-                </h1>
+    <div className="max-w-7xl mx-auto px-5 lg:px-6 pt-32 lg:pt-40 pb-16">
 
-              {/* DESCRIPTION */}
-              <p className="text-gray-300 text-[15px] sm:text-[17px] leading-7 sm:leading-8 max-w-[700px]">
-                RUDRON Global Talent Solutions is a specialist recruitment firm
-                connecting exceptional construction, engineering, and MEP talent with leading companies
-                across rapidly evolving markets.
-              </p>
+      <div className="max-w-[850px]">
 
-              <div className="flex flex-wrap gap-3 mt-8">
-                {["AEC", "MEP", "Data Centers", "Infrastructure"].map(
-                  (item) => (
-                    <div
-                      key={item}
-                      className="px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border border-white/15 bg-white/5 backdrop-blur-sm"
-                    >
-                      {item}
-                    </div>
-                  )
-                )}
-              </div>
-            </div>
-          </div>
+        {/* CONTENT */}
+
+        <div className="inline-flex items-center gap-3 mb-6">
+
+          <span className="h-px w-10 bg-[#C89B3C]" />
+
+          <p className="text-[#C89B3C] uppercase tracking-[5px] text-xs font-semibold">
+
+            About RUDRON
+
+          </p>
+
+          <span className="h-px w-8 bg-[#C89B3C]" />
+
         </div>
-      </section>
 
-      {/* STATS */}
-      <section className="py-10 lg:py-16 px-3 sm:px-4">
-        <div className="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-5">
+        {/* TITLE */}
+
+        <h1 className="text-white text-[30px] sm:text-[48px] lg:text-[64px] font-bold leading-[1.08] mb-6">
+
+          Building The Teams
+
+          <br />
+
+          Behind The World's
+
+          <br/>
+          <span className="relative inline-block text-[#C89B3C]">
+
+            {" "}Most Critical Projects
+
+            <span
+              className="
+              absolute
+              left-0
+              bottom-0
+              w-full
+              h-[3px]
+              bg-[#C89B3C]
+              rounded-full
+              opacity-20
+              "
+            />
+
+          </span>
+
+        </h1>
+
+        {/* DESCRIPTION */}
+
+        <p className="text-gray-300 text-[13px] lg:text-[15px] sm:text-[17px] leading-6 sm:leading-7 mb-6 lg:mb-10 max-w-[860px]">
+
+          RUDRON Global Talent Solutions partners with construction,
+          engineering, infrastructure and mission-critical organizations
+          to secure exceptional professionals, strengthen leadership teams
+          and support long-term business growth.
+
+        </p>
+
+        {/* INDUSTRY TAGS */}
+
+        <div className="flex flex-wrap gap-3 mb-12">
+
           {[
-            "AEC & MEP Specialists",
-            "National Talent Network",
-            "Relationship Driven",
-            "Long-Term Partnerships",
+            "Commercial",
+            "Healthcare",
+            "Mission Critical",
+            "Infrastructure",
           ].map((item) => (
+
             <div
               key={item}
-              className="bg-[#0D1726]
-              border border-white/10
-              rounded-[18px]
-              p-4
-              sm:p-5
-              lg:p-6
-              text-center"
+              className="
+              bg-white/5
+              backdrop-blur-md
+              border
+              border-white/10
+              rounded-full
+              px-5
+              py-2.5
+              text-sm
+              text-white
+              hover:border-[#C89B3C]/30
+              transition-all
+              duration-300
+              "
             >
-              <h3 className="font-semibold text-sm sm:text-base lg:text-lg">{item}</h3>
+
+              {item}
+
             </div>
+
           ))}
+
         </div>
-      </section>
+
+        {/* STATS */}
+
+        <div className="grid grid-cols-3 gap-3 mb-4">
+
+  {[
+    ["100+", "Placements Supported"],
+    ["4", "Global Markets"],
+    ["20+", "Industry Specialisations"],
+  ].map((item) => (
+
+    <div
+      key={item[1]}
+      className="
+      bg-white/[0.04]
+      border
+      border-white/10
+      rounded-[18px]
+      p-2
+      backdrop-blur-md
+      "
+    >
+
+      <h3 className="text-[#C89B3C] text-xl lg:text-2xl font-bold">
+
+        {item[0]}
+
+      </h3>
+
+      <p className="text-gray-400 text-[11px] lg:text-sm">
+
+        {item[1]}
+
+      </p>
+
+    </div>
+
+  ))}
+
+</div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+      {/* TRUSTED EXPERTISE */}
+
+<section className="relative bg-[#07111F] py-8 lg:py-12 px-4 overflow-hidden">
+
+  {/* GOLD GLOW */}
+  <div
+    className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[250px] pointer-events-none"
+    style={{
+      background:
+        "radial-gradient(ellipse at top, rgba(200,155,60,0.08) 0%, transparent 70%)",
+    }}
+  />
+
+    {/* GRID PATTERN */}
+
+  <div
+    className="absolute inset-0 opacity-[0.04]"
+    style={{
+      backgroundImage: `
+        linear-gradient(rgba(200,155,60,1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(200,155,60,1) 1px, transparent 1px)
+      `,
+      backgroundSize: "80px 80px",
+    }}
+  />
+
+  <div className="max-w-7xl mx-auto">
+
+    {/* HEADER */}
+
+    <div className="text-center mb-8">
+
+      <div className="inline-flex items-center gap-3 mb-4">
+
+        <span className="h-px w-8 bg-[#C89B3C]" />
+
+        <p className="text-[#C89B3C] uppercase tracking-[5px] text-xs font-semibold">
+
+          Trusted Expertise
+
+        </p>
+
+        <span className="h-px w-8 bg-[#C89B3C]" />
+
+      </div>
+
+      <h2 className="text-white text-[28px] sm:text-[36px] lg:text-[52px] font-bold leading-[1.05]">
+
+        Built Around Industry
+        <br/>
+<span className="relative inline-block text-[#C89B3C]">
+
+  {" "}Knowledge
+
+  <span
+    className="
+    absolute
+    left-0
+    bottom-0
+    w-full
+    h-[3px]
+    bg-[#C89B3C]
+    rounded-full
+    opacity-20
+    "
+  />
+
+</span>
+      </h2>
+
+    </div>
+
+    {/* GRID */}
+
+    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+
+      {[
+        {
+          number: "01",
+          title: "AEC Specialists",
+          desc: "Dedicated construction and engineering recruitment expertise.",
+        },
+
+        {
+          number: "02",
+          title: "National Reach",
+          desc: "Access to professionals across major construction markets.",
+        },
+
+        {
+          number: "03",
+          title: "Relationship Driven",
+          desc: "Long-term partnerships built through trust and consistency.",
+        },
+
+        {
+          number: "04",
+          title: "Executive Search",
+          desc: "Supporting leadership and confidential hiring assignments.",
+        },
+      ].map((item) => (
+
+        <div
+          key={item.number}
+          className="
+          group
+          relative
+          bg-[#0D1726]
+          border
+          border-white/10
+          rounded-[28px]
+          p-6
+          overflow-hidden
+          hover:-translate-y-2
+          hover:border-[#C89B3C]/30
+          transition-all
+          duration-500
+          "
+        >
+
+          {/* GHOST NUMBER */}
+
+          <div className="absolute right-4 top-0 text-[90px] font-black text-white/[0.04] leading-none">
+
+            {item.number}
+
+          </div>
+
+          {/* GOLD LINE */}
+
+          <div className="absolute top-0 left-6 right-6 h-[2px] bg-[#C89B3C] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500" />
+
+          <p className="text-[#C89B3C] text-xs tracking-[3px] font-bold mb-4">
+
+            {item.number}
+
+          </p>
+
+          <h3 className="text-white text-[20px] font-bold mb-4">
+
+            {item.title}
+
+          </h3>
+
+          <p className="text-gray-400 text-sm leading-7">
+
+            {item.desc}
+
+          </p>
+
+        </div>
+
+      ))}
+
+    </div>
+
+  </div>
+
+</section>
 
 {/* STORY */}
 <section className="py-12 lg:py-16 px-4 sm:px-6 bg-[#07111F] overflow-hidden">
 
   <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-8 lg:gap-14">
+    
 
     {/* LEFT CONTENT */}
 
 <div className="lg:sticky lg:top-32 self-start">
 
-  <p className="uppercase tracking-[5px] text-[#C89B3C] text-sm mb-4">
-    Our Story
-  </p>
+    {/* GRID PATTERN */}
+
+  <div
+    className="absolute inset-0 opacity-[0.04]"
+    style={{
+      backgroundImage: `
+        linear-gradient(rgba(200,155,60,1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(200,155,60,1) 1px, transparent 1px)
+      `,
+      backgroundSize: "80px 80px",
+    }}
+  />
+
+{/* GOLD GLOW */}
+  <div
+    className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[250px] pointer-events-none"
+    style={{
+      background:
+        "radial-gradient(ellipse at left, rgba(200,155,60,0.08) 0%, transparent 70%)",
+    }}
+  />
+
+
+  <div className="inline-flex items-center gap-3 mb-6">
+
+          <span className="h-px w-10 bg-[#C89B3C]" />
+
+          <p className="text-[#C89B3C] uppercase tracking-[5px] text-xs font-semibold">
+
+            About RUDRON
+
+          </p>
+
+          <span className="h-px w-8 bg-[#C89B3C]" />
+
+          </div>
 
   <h2 className="text-[26px] sm:text-[32px] lg:text-[56px] font-bold leading-[1.08] mb-6">
     Building The Teams Behind
@@ -373,14 +660,47 @@ desc:"As construction technologies evolve and workforce demands continue to chan
 
       {/* INDUSTRIES */}
       <section className="bg-[#0D1726] py-16 px-4">
+
         <div className="max-w-7xl mx-auto text-center">
-          <p className="uppercase tracking-[5px] text-[#C89B3C] text-sm mb-4">
+
+          <div className="inline-flex items-center gap-3 mb-6">
+
+          <span className="h-px w-10 bg-[#C89B3C]" />
+
+          <p className="text-[#C89B3C] uppercase tracking-[5px] text-xs font-semibold">
+
             Markets We Support
+
           </p>
 
-          <h2 className="text-[26px] sm:text-[32px] lg:text-[56px] font-bold mb-6">
-            Specialized Recruitment Across Key Construction Sectors
-          </h2>
+          <span className="h-px w-8 bg-[#C89B3C]" />
+
+        </div>
+
+          <h2 className="text-white text-[28px] sm:text-[36px] lg:text-[52px] font-bold leading-[1.05] mb-4">
+
+        Specialized Recruitment Across Key
+        <br/>
+      <span className="relative inline-block text-[#C89B3C]">
+
+        {" "}Construction Sectors
+
+        <span
+          className="
+          absolute
+          left-0
+          bottom-0
+          w-full
+          h-[3px]
+          bg-[#C89B3C]
+          rounded-full
+          opacity-20
+          "
+        />
+
+      </span>
+      
+      </h2>
 
           <div className="w-20 h-[3px] bg-[#C89B3C] rounded-full mx-auto mb-6" />
 
@@ -397,42 +717,172 @@ desc:"As construction technologies evolve and workforce demands continue to chan
         </div>
       </section>
 
-      {/* MISSION VISION */}
-      <section className="py-16 px-4 bg-[#F7F7F7]">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-8">
-          <div className="bg-white rounded-[24px] sm:rounded-[30px] lg:rounded-[36px] p-5 sm:p-8 lg:p-10 shadow-sm">
-            <p className="uppercase tracking-[5px] text-[#C89B3C] text-sm mb-4">
-              Our Mission
-            </p>
+      {/* MISSION & VISION */}
 
-            <h3 className="text-[#07111F] text-[24px] sm:text-[30px] lg:text-[40px] font-bold mb-6">
-              Building Teams That Deliver Successful Projects
-            </h3>
+<section className="relative bg-[#F4F4F0] py-12 lg:py-16 px-4 lg:px-20 overflow-hidden">
 
-            <p className="text-gray-600 text-[14px] sm:text-[15px] lg:text-base leading-6 leading-8">
-              Helping organisations secure exceptional talent while creating
-              meaningful career opportunities across construction and
-              engineering markets.
-            </p>
-          </div>
+  {/* GRID PATTERN */}
 
-          <div className="bg-[#07111F] rounded-[24px] sm:rounded-[30px] lg:rounded-[36px] p-5 sm:p-8 lg:p-10">
-            <p className="uppercase tracking-[5px] text-[#C89B3C] text-sm mb-4">
-              Our Vision
-            </p>
+  <div
+    className="absolute inset-0 opacity-[0.04] pointer-events-none"
+    style={{
+      backgroundImage: `
+        linear-gradient(rgba(200,155,60,1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(200,155,60,1) 1px, transparent 1px)
+      `,
+      backgroundSize: "60px 60px",
+    }}
+  />
 
-            <h3 className="text-white text-[24px] sm:text-[30px] lg:text-[40px] font-bold mb-6">
-              Becoming The Most Trusted Construction Recruitment Partner
-            </h3>
+  {/* GLOW */}
 
-            <p className="text-gray-600 text-[14px] sm:text-[15px] lg:text-base leading-6 leading-8">
-              To be recognised as a leading recruitment partner across the Globe
-              by consistently delivering expertise, relationships and
-              exceptional hiring outcomes.
-            </p>
-          </div>
+  <div
+    className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[250px]"
+    style={{
+      background:
+        "radial-gradient(ellipse at top, rgba(200,155,60,.08) 0%, transparent 70%)",
+    }}
+  />
+
+  <div className="relative max-w-7xl mx-auto">
+
+    {/* HEADER */}
+
+    <div className="text-center mb-10">
+
+      <div className="inline-flex items-center gap-3 mb-4">
+
+        <span className="h-px w-8 bg-[#C89B3C]" />
+
+        <p className="text-[#C89B3C] uppercase tracking-[5px] text-xs font-semibold">
+
+          Our Foundation
+
+        </p>
+
+        <span className="h-px w-8 bg-[#C89B3C]" />
+
+      </div>
+
+      <h2 className="text-[#07111F] text-[30px] sm:text-[40px] lg:text-[56px] font-bold leading-[1.05]">
+
+        Purpose Driven.
+        <span className="text-[#C89B3C]"> Future Focused.</span>
+
+      </h2>
+
+    </div>
+
+    {/* GRID */}
+
+    <div className="grid lg:grid-cols-2 gap-6">
+
+      {/* MISSION */}
+
+      <div
+        className="
+        group
+        relative
+        bg-white
+        rounded-[36px]
+        p-8 lg:p-10
+        overflow-hidden
+        border
+        border-black/5
+        hover:border-[#C89B3C]/25
+        hover:-translate-y-2
+        transition-all
+        duration-500
+        "
+      >
+
+        <div className="absolute right-4 top-0 text-[120px] font-black text-black/[0.03]">
+
+          M
+
         </div>
-      </section>
+
+        <div className="w-14 h-[2px] bg-[#C89B3C] mb-6" />
+
+        <p className="text-[#C89B3C] uppercase tracking-[4px] text-xs font-semibold mb-4">
+
+          Mission
+
+        </p>
+
+        <h3 className="text-[#07111F] text-[28px] lg:text-[36px] font-bold leading-[1.1] mb-6">
+
+          Building Teams That Deliver
+          Exceptional Projects
+
+        </h3>
+
+        <p className="text-gray-600 leading-8">
+
+          Helping organizations secure exceptional talent while creating
+          meaningful career opportunities across construction,
+          engineering, infrastructure and mission-critical markets.
+
+        </p>
+
+      </div>
+
+      {/* VISION */}
+
+      <div
+        className="
+        group
+        relative
+        bg-[#07111F]
+        rounded-[36px]
+        p-8 lg:p-10
+        overflow-hidden
+        border
+        border-white/10
+        hover:border-[#C89B3C]/30
+        hover:-translate-y-2
+        transition-all
+        duration-500
+        "
+      >
+
+        <div className="absolute right-4 top-0 text-[120px] font-black text-white/[0.03]">
+
+          V
+
+        </div>
+
+        <div className="w-14 h-[2px] bg-[#C89B3C] mb-6" />
+
+        <p className="text-[#C89B3C] uppercase tracking-[4px] text-xs font-semibold mb-4">
+
+          Vision
+
+        </p>
+
+        <h3 className="text-white text-[28px] lg:text-[36px] font-bold leading-[1.1] mb-6">
+
+          Becoming The Most Trusted
+          Construction Recruitment Partner
+
+        </h3>
+
+        <p className="text-gray-400 leading-8">
+
+          To be recognized as a leading recruitment partner across North
+          America and global construction markets by consistently
+          delivering expertise, relationships and exceptional hiring
+          outcomes.
+
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
 
       {/* WHY CLIENTS CHOOSE US */}
       <section className="py-16 px-6">
