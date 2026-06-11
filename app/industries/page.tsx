@@ -88,7 +88,7 @@ useEffect(() => {
 
 {/* HERO */}
 
-<section className="relative min-h-[90vh] flex items-center overflow-hidden">
+<section className="relative min-h-[85vh] flex items-center overflow-hidden">
 
   {/* BACKGROUND */}
 
@@ -169,7 +169,7 @@ useEffect(() => {
         {/* HEADING */}
 
         <h1
-          className="text-white text-[34px] sm:text-[52px] lg:text-[72px] font-bold leading-[1.02] mb-6"
+          className="text-white text-[32px] sm:text-[50px] lg:text-[68px] font-bold leading-[1.02] mb-6"
           style={{
             opacity: heroVisible ? 1 : 0,
             transform: heroVisible
@@ -202,7 +202,7 @@ useEffect(() => {
         {/* BODY */}
 
         <p
-          className="text-gray-300 text-[15px] lg:text-[17px] leading-8 max-w-[700px] mb-10"
+          className="text-gray-300 text-[14px] lg:text-[16px] leading-8 max-w-[700px] mb-10"
           style={{
             opacity: heroVisible ? 1 : 0,
             transform: heroVisible
@@ -325,7 +325,7 @@ useEffect(() => {
 
 {/* INDUSTRY EXPERTISE */}
 
-<section className="relative bg-[#F4F4F0] py-10 lg:py-14 px-4 sm:px-6 lg:px-20 overflow-hidden">
+<section className="relative bg-[#F4F4F0] py-6 lg:py-10 px-4 sm:px-6 lg:px-20 overflow-hidden">
 
   {/* GRID PATTERN */}
 
@@ -475,20 +475,28 @@ useEffect(() => {
       </div>
 
       {/* INDUSTRIES GRID */}
-      <section className="bg-[#0D1726] py-12 sm:py-16 lg:py-18 px-5 sm:px-6 lg:px-6">
+      <section className="bg-[#0D1726] py-6 lg:py-10 px-5 sm:px-6 lg:px-6">
 
         <div className="max-w-7xl mx-auto">
 
           {/* TOP */}
           <div className="text-center max-w-[860px] mx-auto mb-9 sm:mb-11">
 
-            <p className="text-[#C89B3C] uppercase tracking-[4px] text-[11px] sm:text-sm mb-4">
+      <div className="inline-flex items-center gap-3 mb-4">
 
-              Core Industries
+        <span className="h-px w-8 bg-[#C89B3C]" />
 
-            </p>
+        <p className="text-[#C89B3C] uppercase tracking-[5px] text-xs font-semibold">
 
-            <h2 className="text-[#F7F7F7] text-[26px] sm:text-[32px] lg:text-[56px] font-bold leading-[1.05] mb-5">
+          Why RUDRON
+
+        </p>
+
+        <span className="h-px w-8 bg-[#C89B3C]" />
+
+      </div>
+
+            <h2 className="text-[#F7F7F7] text-[28px] sm:text-[38px] lg:text-[56px] font-bold leading-[1.02] mb-5">
 
               Recruitment Expertise
               Built Around
@@ -576,7 +584,7 @@ useEffect(() => {
 
 {/* RECRUITMENT COVERAGE */}
 
-<section className="relative bg-[#F4F4F0] py-10 lg:py-14 px-4 sm:px-6 lg:px-20 overflow-hidden">
+<section className="relative bg-[#F4F4F0] py-6 lg:py-10 px-4 sm:px-6 lg:px-20 overflow-hidden">
 
   {/* GRID */}
 
@@ -709,7 +717,7 @@ useEffect(() => {
 
 {/* WHY ORGANIZATIONS CHOOSE RUDRON */}
 
-<section className="relative bg-[#07111F] py-10 lg:py-14 px-4 sm:px-6 lg:px-20 overflow-hidden">
+<section className="relative bg-[#07111F] py-6 lg:py-10 px-4 sm:px-6 lg:px-20 overflow-hidden">
 
   {/* GOLD GLOW */}
 

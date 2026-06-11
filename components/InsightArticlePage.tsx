@@ -48,9 +48,6 @@ export default function InsightsSection({
   slug: string;
   relatedArticles: [string, Article][];
 }) {
-  if (!article) {
-  return null;
-}
   const [heroVisible, setHeroVisible] = useState(false);
   const [copied, setCopied] = useState(false);
   const [bookmarked, setBookmarked] = useState(false);

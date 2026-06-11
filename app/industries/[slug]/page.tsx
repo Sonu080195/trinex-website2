@@ -242,6 +242,15 @@ export default async function IndustryDetailPage({
 
   }
 
+  const heroTitle =
+  industry.title.replace(
+    " Recruitment",
+    ""
+  );
+
+  const industryTags =
+  industry.markets.slice(0, 6);
+
   return (
 
     <main className="industry-glow bg-[#07111F] text-white overflow-hidden">
@@ -249,119 +258,172 @@ export default async function IndustryDetailPage({
       {/* NAVBAR */}
       <Navbar />
 
-      {/* HERO */}
-      <section className="relative min-h-[68vh] sm:min-h-[72vh] lg:min-h-[82vh] flex items-center overflow-hidden">
+{/* HERO */}
 
-        {/* BG */}
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: `
-              linear-gradient(
-                to right,
-                rgba(7,17,31,0.97) 16%,
-                rgba(7,17,31,0.80) 42%,
-                rgba(7,17,31,0.22) 76%
-              ),
-              url(${industry.image})
-            `,
-          }}
-        />
+<section className="relative min-h-[90vh] flex items-center overflow-hidden">
 
-        {/* CONTENT */}
-        <div className="relative z-10 w-full">
+  {/* BACKGROUND */}
 
-          <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-6 pt-28 sm:pt-30 lg:pt-20">
+  <div
+    className="absolute inset-0 bg-cover bg-center scale-105"
+    style={{
+      backgroundImage: `
+        linear-gradient(
+          to right,
+          rgba(7,17,31,0.97) 10%,
+          rgba(7,17,31,0.88) 42%,
+          rgba(7,17,31,0.30) 100%
+        ),
+        url(${industry.image})
+      `,
+    }}
+  />
 
-            <div className="max-w-[660px]">
+  {/* GOLD LINE */}
 
-              <p className="text-[#C89B3C] uppercase tracking-[4px] text-[11px] sm:text-sm mb-4">
+  <div
+    className="absolute left-0 top-0 bottom-0 w-[3px]"
+    style={{
+      background:
+        "linear-gradient(to bottom, transparent, #C89B3C, transparent)",
+    }}
+  />
 
-                Industry Expertise
+  {/* GOLD GLOW */}
 
-              </p>
+  <div
+    className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px]"
+    style={{
+      background:
+        "radial-gradient(ellipse at top, rgba(200,155,60,.10) 0%, transparent 70%)",
+    }}
+  />
 
-              <h1 className="text-white font-bold leading-[1.02] text-[36px] sm:text-[50px] lg:text-[66px] mb-6">
+  <div className="relative z-10 w-full">
 
-                {industry.title}
+    <div className="max-w-7xl mx-auto px-5 lg:px-6 pt-32 lg:pt-40 pb-16">
 
-              </h1>
+      <div className="max-w-[820px]">
 
-              <p className="text-gray-300 text-[15px] sm:text-[17px] leading-7 sm:leading-8">
+        {/* EYEBROW */}
 
-                {industry.intro}
+        <div className="inline-flex items-center gap-3 mb-6">
 
-              </p>
+          <span className="h-px w-8 bg-[#C89B3C]" />
 
-            </div>
+          <p className="text-[#C89B3C] uppercase tracking-[5px] text-xs font-semibold">
 
-          </div>
+            Industry Expertise
+
+          </p>
+
+          <span className="h-px w-8 bg-[#C89B3C]" />
 
         </div>
 
-      </section>
+        {/* HEADING */}
 
-      {/* INDUSTRY OVERVIEW */}
+        <h1 className="text-white text-[32px] sm:text-[50px] lg:text-[68px] font-bold leading-[1.02] mb-6">
 
-<section className="industry-glow bg-[#F7F7F7] py-12 lg:py-16 px-4 sm:px-6">
+          {heroTitle}
 
-  <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          <br />
 
-    {/* LEFT */}
+          <span className="text-[#C89B3C] relative inline-block">
 
-    <div>
+            Recruitment
 
-      <p className="uppercase tracking-[5px] text-[#C89B3C] text-sm mb-4">
+            <span className="absolute left-0 bottom-0 h-[3px] w-full bg-[#C89B3C] opacity-20 rounded-full" />
 
-        Industry Overview
+          </span>
 
-      </p>
+          <br />
 
-      <h2 className="text-[#07111F] text-[26px] sm:text-[34px] lg:text-[56px] font-bold leading-[1.05] mb-6">
+          For Modern Teams
 
-        Recruitment Built
-        Around Industry Demand
+        </h1>
 
-      </h2>
+        {/* BODY */}
 
-      <div className="w-20 h-[3px] bg-[#C89B3C] rounded-full mb-8" />
+        <p className="text-gray-300 text-[14px] lg:text-[16px] leading-8 max-w-[700px] mb-8">
 
-      <p className="text-gray-600 text-[15px] sm:text-[17px] leading-7 sm:leading-8">
+          {industry.intro}
 
-        {industry.overview}
+        </p>
 
-      </p>
+        {/* TAGS */}
 
-    </div>
+        <div className="flex flex-wrap gap-3 mb-8">
 
-    {/* RIGHT */}
+          {industryTags.map(
+            (tag: string) => (
 
-    <div className="grid grid-cols-2 gap-5">
+              <span
+                key={tag}
+                className="
+                px-5
+                py-2.5
+                rounded-full
+                border
+                border-white/15
+                bg-white/5
+                backdrop-blur-md
+                text-sm
+                text-white
+                hover:border-[#C89B3C]/40
+                transition-all
+                duration-300
+                "
+              >
+                {tag}
+              </span>
 
-      {industry.strengths.map(
-        (item: string, index: number) => (
+            )
+          )}
 
-          <div
-            key={index}
-            className="industry-glow bg-white rounded-[28px] border border-black/5 p-6 text-center"
-          >
+        </div>
 
-            <div className="text-[#C89B3C] text-4xl font-bold opacity-20 mb-4">
+        {/* STATS */}
 
-              0{index + 1}
+        <div className="grid grid-cols-3 gap-3 max-w-[650px]">
+
+          {[
+            ["5000+", "Professionals"],
+            ["National", "Coverage"],
+            ["Executive", "Search"],
+          ].map((item) => (
+
+            <div
+              key={item[0]}
+              className="
+              bg-white/[0.04]
+              backdrop-blur-md
+              border
+              border-white/10
+              rounded-[20px]
+              p-4
+              "
+            >
+
+              <h3 className="text-[#C89B3C] text-xl lg:text-2xl font-bold">
+
+                {item[0]}
+
+              </h3>
+
+              <p className="text-gray-400 text-sm">
+
+                {item[1]}
+
+              </p>
 
             </div>
 
-            <h3 className="text-[#07111F] font-bold">
+          ))}
 
-              {item}
+        </div>
 
-            </h3>
-
-          </div>
-
-        )
-      )}
+      </div>
 
     </div>
 
@@ -369,61 +431,288 @@ export default async function IndustryDetailPage({
 
 </section>
 
-{/* WHY THIS INDUSTRY MATTERS */}
+{/* MARKET INTELLIGENCE */}
 
-<section className="industry-glow bg-white py-12 lg:py-16 px-4 sm:px-6">
+<section className="relative bg-[#F4F4F0] py-6 lg:py-10 px-5 lg:px-20 overflow-hidden">
 
-  <div className="max-w-7xl mx-auto">
+  {/* GRID BACKGROUND */}
 
-    <div className="text-center mb-12">
+  <div
+    className="absolute inset-0 pointer-events-none"
+    style={{
+      backgroundImage: `
+        linear-gradient(rgba(200,155,60,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(200,155,60,0.04) 1px, transparent 1px)
+      `,
+      backgroundSize: "60px 60px",
+    }}
+  />
 
-      <p className="uppercase tracking-[5px] text-[#C89B3C] text-sm mb-4">
-        Industry Insights
-      </p>
+  {/* GOLD GLOW */}
 
-      <h2 className="text-[#07111F] text-[26px] sm:text-[34px] lg:text-[56px] font-bold leading-[1.05]">
-        Why This Industry
-        Continues To Evolve
-      </h2>
+  <div
+    className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[250px]"
+    style={{
+      background:
+        "radial-gradient(ellipse at top, rgba(200,155,60,.08) 0%, transparent 70%)",
+    }}
+  />
+
+  <div className="relative max-w-7xl mx-auto">
+
+    <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+      {/* LEFT */}
+
+      <div>
+
+        <div className="inline-flex items-center gap-3 mb-5">
+
+          <span className="h-px w-8 bg-[#C89B3C]" />
+
+          <p className="text-[#C89B3C] uppercase tracking-[5px] text-xs font-semibold">
+
+            Market Intelligence
+
+          </p>
+
+          <span className="h-px w-8 bg-[#C89B3C]" />
+
+        </div>
+
+        <h2 className="text-[#07111F] text-[30px] sm:text-[40px] lg:text-[58px] font-bold leading-[1.02] mb-6">
+
+          Talent Market
+
+          <br />
+
+          <span className="relative inline-block text-[#C89B3C]">
+
+            Overview
+
+            <span
+              className="
+              absolute
+              bottom-0
+              left-0
+              h-[3px]
+              bg-[#C89B3C]
+              rounded-full
+              opacity-20
+              w-full
+              "
+            />
+
+          </span>
+
+        </h2>
+
+        <p className="text-gray-600 text-[16px] leading-8">
+
+          {industry.overview}
+
+        </p>
+
+      </div>
+
+      {/* RIGHT */}
+
+      <div className="grid grid-cols-2 gap-4">
+
+        {industry.strengths.map(
+          (item: string, index: number) => (
+
+            <div
+              key={index}
+              className="
+              bg-white
+              rounded-[24px]
+              p-6
+              border
+              border-black/5
+              hover:border-[#C89B3C]/30
+              hover:-translate-y-2
+              transition-all
+              duration-500
+              relative
+              overflow-hidden
+              "
+            >
+
+              <div
+                className="
+                absolute
+                right-0
+                top-0
+                text-[70px]
+                font-black
+                text-black/[0.03]
+                leading-none
+                "
+              >
+
+                0{index + 1}
+
+              </div>
+
+              <div
+                className="
+                w-10
+                h-10
+                rounded-xl
+                bg-[#07111F]/5
+                flex
+                items-center
+                justify-center
+                mb-4
+                "
+              >
+
+                <span className="text-[#C89B3C] font-bold">
+
+                  0{index + 1}
+
+                </span>
+
+              </div>
+
+              <h3 className="text-[#07111F] font-bold text-[16px]">
+
+                {item}
+
+              </h3>
+
+            </div>
+
+          )
+        )}
+
+      </div>
 
     </div>
 
-    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+  </div>
+
+</section>
+
+{/* INDUSTRY TRENDS */}
+
+<section className="relative bg-[#07111F] py-6 lg:py-10 px-5 lg:px-20 overflow-hidden">
+
+  {/* GLOW */}
+
+  <div
+    className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[300px]"
+    style={{
+      background:
+        "radial-gradient(ellipse at top, rgba(200,155,60,.10) 0%, transparent 70%)",
+    }}
+  />
+
+  <div className="relative max-w-7xl mx-auto">
+
+    {/* HEADER */}
+
+    <div className="text-center mb-8">
+
+      <div className="inline-flex items-center gap-3 mb-4">
+
+        <span className="h-px w-8 bg-[#C89B3C]" />
+
+        <p className="text-[#C89B3C] uppercase tracking-[5px] text-xs font-semibold">
+
+          Industry Trends
+
+        </p>
+
+        <span className="h-px w-8 bg-[#C89B3C]" />
+
+      </div>
+
+      <h2 className="text-white text-[30px] sm:text-[40px] lg:text-[56px] font-bold leading-[1.02] mb-4">
+
+        What's Shaping
+
+        <br />
+
+        <span className="text-[#C89B3C]">
+
+          The Talent Market
+
+        </span>
+
+      </h2>
+
+      <p className="text-gray-400 text-[14px] sm:text-[15px] leading-relaxed max-w-3xl mx-auto">
+
+        Understanding the market forces influencing
+        hiring demand, leadership recruitment and
+        project delivery across the industry.
+
+      </p>
+
+    </div>
+
+    {/* CARDS */}
+
+    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
 
       {[
         {
-          title: "Project Growth",
-          desc: "Increasing investment continues to drive hiring demand.",
+          title: "Talent Shortages",
+          desc: "Growing competition for experienced professionals across key project disciplines.",
         },
         {
-          title: "Technology",
-          desc: "Digital transformation is reshaping technical requirements.",
+          title: "Leadership Demand",
+          desc: "Organizations continue investing in operational and executive leadership talent.",
         },
         {
-          title: "Leadership",
-          desc: "Organizations need stronger leadership pipelines.",
+          title: "Project Expansion",
+          desc: "Large-scale developments are driving demand for specialized expertise.",
         },
         {
-          title: "Talent Demand",
-          desc: "Competition for experienced professionals remains high.",
+          title: "Future Growth",
+          desc: "Industry investment continues to create new hiring opportunities nationwide.",
         },
       ].map((item, index) => (
 
         <div
-          key={index}
-          className="industry-glow bg-[#F7F7F7] rounded-[28px] p-6 border border-black/5 hover:-translate-y-2 transition-all duration-500"
+          key={item.title}
+          className="
+          group
+          bg-white/[0.04]
+          backdrop-blur-md
+          border
+          border-white/10
+          rounded-[24px]
+          p-6
+          hover:-translate-y-2
+          hover:border-[#C89B3C]/30
+          transition-all
+          duration-500
+          relative
+          overflow-hidden
+          "
         >
 
-          <div className="text-[#C89B3C] text-5xl font-bold opacity-20 mb-4">
+          <div className="absolute -right-2 -top-2 text-[90px] font-black text-white/[0.04]">
+
             0{index + 1}
+
           </div>
 
-          <h3 className="text-[#07111F] text-xl font-bold mb-4">
+          <div className="w-10 h-[2px] bg-[#C89B3C] mb-5 transition-all duration-500 group-hover:w-20" />
+
+          <h3 className="text-white text-[20px] font-bold mb-4">
+
             {item.title}
+
           </h3>
 
-          <p className="text-gray-600 leading-7">
+          <p className="text-gray-400 text-[14px] leading-7">
+
             {item.desc}
+
           </p>
 
         </div>
@@ -438,9 +727,9 @@ export default async function IndustryDetailPage({
 
 {/* INDUSTRY MARQUEE */}
 
-<section className="industry-glow bg-[#07111F] py-4 overflow-hidden border-y border-white/10">
+<section className="border-y border-white/8 bg-[#060D18] py-5 overflow-hidden">
 
-  <div className="roles-marquee flex whitespace-nowrap">
+        <div className="flex whitespace-nowrap" style={{ animation: "marquee 30s linear infinite" }}>
 
     {[...industry.markets, ...industry.markets].map(
       (item: string, index: number) => (
@@ -450,15 +739,13 @@ export default async function IndustryDetailPage({
           className="flex items-center"
         >
 
-          <span className="text-white text-[18px] sm:text-[24px] lg:text-[34px] font-bold mx-5">
+          <span className="text-white/70 text-[13px] sm:text-[15px] font-semibold tracking-[0.2em] uppercase mx-6">{item}
 
             {item}
 
           </span>
 
-          <span className="text-[#C89B3C] text-2xl">
-
-            ◆
+          <span className="text-[#C89B3C] text-[8px]">◆
 
           </span>
 
@@ -471,45 +758,128 @@ export default async function IndustryDetailPage({
 
 </section>
 
-      {/* KEY POSITIONS */}
+{/* ROLES WE RECRUIT */}
 
-<section className="industry-glow bg-[#07111F] py-12 lg:py-16 px-4 sm:px-6">
+<section className="relative bg-[#F4F4F0] py-6 lg:py-10 px-5 lg:px-20 overflow-hidden">
 
-  <div className="max-w-6xl mx-auto">
+  {/* GRID */}
+
+  <div
+    className="absolute inset-0 pointer-events-none"
+    style={{
+      backgroundImage: `
+        linear-gradient(rgba(200,155,60,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(200,155,60,0.04) 1px, transparent 1px)
+      `,
+      backgroundSize: "60px 60px",
+    }}
+  />
+
+  {/* GLOW */}
+
+  <div
+    className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[250px]"
+    style={{
+      background:
+        "radial-gradient(ellipse at top, rgba(200,155,60,.08) 0%, transparent 70%)",
+    }}
+  />
+
+  <div className="relative max-w-7xl mx-auto">
+
+    {/* HEADER */}
 
     <div className="text-center mb-8">
 
-      <p className="uppercase tracking-[5px] text-[#C89B3C] text-sm mb-4">
+      <div className="inline-flex items-center gap-3 mb-4">
 
-        Key Positions
+        <span className="h-px w-8 bg-[#C89B3C]" />
 
-      </p>
+        <p className="text-[#C89B3C] uppercase tracking-[5px] text-xs font-semibold">
 
-      <h2 className="text-white text-[20px] sm:text-[36px] lg:text-[56px] font-bold leading-[1.05]">
+          Roles We Recruit
 
-        Roles We Recruit For
+        </p>
+
+        <span className="h-px w-8 bg-[#C89B3C]" />
+
+      </div>
+
+      <h2 className="text-[#07111F] text-[30px] sm:text-[40px] lg:text-[56px] font-bold leading-[1.02] mb-4">
+
+        Critical Talent
+
+          <br />
+
+          <span className="relative inline-block text-[#C89B3C]">
+
+            Across Every Level
+
+            <span
+              className="
+              absolute
+              bottom-0
+              left-0
+              h-[3px]
+              bg-[#C89B3C]
+              rounded-full
+              opacity-20
+              w-full
+              "
+            />
+
+          </span>
 
       </h2>
 
+      <p className="text-gray-500 text-[15px] sm:text-[17px] leading-relaxed max-w-3xl mx-auto">
+
+        From project execution professionals to executive leadership,
+        we support recruitment across the entire project lifecycle.
+
+      </p>
+
     </div>
 
-    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+    {/* GRID */}
+
+    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
 
       {industry.roles.map(
         (role: string, index: number) => (
 
           <div
-            key={index}
-            className="group relative bg-[#0D1726] border border-white/10 rounded-[30px] p-5 sm:p-6 lg:p-8 hover:-translate-y-2 hover:border-[#C89B3C]/40 transition-all duration-500"
+            key={role}
+            className="
+            group
+            bg-white
+            rounded-[24px]
+            p-6
+            border
+            border-black/5
+            hover:border-[#C89B3C]/30
+            hover:-translate-y-2
+            hover:shadow-[0_20px_50px_rgba(200,155,60,.08)]
+            transition-all
+            duration-500
+            relative
+            overflow-hidden
+            "
           >
 
-            <div className="absolute right-4 -top-3 text-[50px] font-bold text-white/[0.04]">
+            {/* NUMBER */}
+
+            <div className="absolute -right-2 -top-2 text-[85px] font-black text-black/[0.04]">
 
               0{index + 1}
 
             </div>
 
-            <h3 className="text-white text-lg sm:text-xl font-bold group-hover:text-[#C89B3C] transition-colors">
+            {/* TOP BAR */}
+
+            <div className="w-10 h-[2px] bg-[#C89B3C] mb-5 transition-all duration-500 group-hover:w-20" />
+
+            <h3 className="text-[#07111F] text-[20px] font-bold leading-snug">
 
               {role}
 
@@ -526,97 +896,114 @@ export default async function IndustryDetailPage({
 
 </section>
 
-      {/* RECRUITMENT CHALLENGES */}
+{/* INDUSTRY CHALLENGES */}
 
-<section className="industry-glow bg-[#F7F7F7] py-12 lg:py-16 px-4 sm:px-6">
+<section className="relative bg-[#07111F] py-6 lg:py-10 px-5 lg:px-20 overflow-hidden">
 
-  <div className="max-w-6xl mx-auto">
+  {/* GLOW */}
 
-    <div className="text-center mb-6">
+  <div
+    className="absolute inset-0"
+    style={{
+      background:
+        "radial-gradient(circle at top right, rgba(200,155,60,.12), transparent 35%)",
+    }}
+  />
 
-      <p className="uppercase tracking-[5px] text-[#C89B3C] text-sm mb-4">
 
-        Industry Challenges
+  <div className="relative max-w-6xl mx-auto">
 
-      </p>
+    {/* HEADER */}
 
-      <h2 className="text-[#07111F] text-[26px] sm:text-[32px] lg:text-[56px] font-bold leading-[1.05]">
+    <div className="text-center mb-8">
 
-        Market Challenges
-        Driving Demand For
-        Specialized Talent
+      <div className="inline-flex items-center gap-3 mb-4">
+
+        <span className="h-px w-8 bg-[#C89B3C]" />
+
+        <p className="text-[#C89B3C] uppercase tracking-[5px] text-xs font-semibold">
+
+          Industry Challenges
+
+        </p>
+
+        <span className="h-px w-8 bg-[#C89B3C]" />
+
+      </div>
+
+      <h2 className="text-white text-[30px] sm:text-[40px] lg:text-[56px] font-bold leading-[1.02] mb-4">
+
+        Challenges Facing
+
+        <br />
+
+        <span className="text-[#C89B3C]">
+
+          Today's Employers
+
+        </span>
 
       </h2>
 
+      <p className="text-gray-400 text-[15px] sm:text-[17px] leading-relaxed max-w-3xl mx-auto">
+
+        Organizations across the industry continue to navigate
+        evolving workforce demands, leadership shortages and
+        increasing competition for experienced talent.
+
+      </p>
+
     </div>
 
-    <div className="relative">
+    {/* GRID */}
 
-      <div className="absolute left-5 lg:left-1/2 top-6 bottom-6 w-[2px] bg-[#C89B3C]/30" />
+    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
 
       {[
-        {
-          step: "01",
-          title: "Talent Shortages",
-          desc: "Organizations continue to face increasing competition for highly skilled professionals.",
-        },
-        {
-          step: "02",
-          title: "Project Growth",
-          desc: "Expanding project pipelines require experienced leaders capable of scaling operations.",
-        },
-        {
-          step: "03",
-          title: "Technical Complexity",
-          desc: "Modern projects demand specialized technical expertise across multiple disciplines.",
-        },
-        {
-          step: "04",
-          title: "Leadership Demand",
-          desc: "Strong leadership remains essential to successful project delivery and business growth.",
-        },
-        {
-          step: "05",
-          title: "Retention",
-          desc: "Attracting and retaining top talent continues to be a major competitive advantage.",
-        },
-        {
-          step: "06",
-          title: "Succession Planning",
-          desc: "Organizations must prepare future leaders to support long-term growth strategies.",
-        },
+        "Talent Shortages",
+        "Leadership Succession",
+        "Project Growth",
+        "Retention Challenges",
+        "Technical Skills Gap",
+        "Market Competition",
       ].map((item, index) => (
 
         <div
-          key={item.step}
-          className={`relative flex mb-4 lg:mb-6 ${
-            index % 2 === 0
-              ? "lg:justify-start"
-              : "lg:justify-end"
-          }`}
+          key={item}
+          className="
+          group
+          bg-white/[0.04]
+          backdrop-blur-md
+          border
+          border-white/10
+          rounded-[24px]
+          p-6
+          hover:-translate-y-2
+          hover:border-[#C89B3C]/30
+          transition-all
+          duration-500
+          relative
+          overflow-hidden
+          "
         >
 
-          <div className="absolute left-0 lg:left-1/2 lg:-translate-x-1/2 w-10 h-10 rounded-full bg-[#C89B3C] text-black font-bold flex items-center justify-center shadow-[0_0_25px_rgba(200,155,60,0.25)]">
+          {/* GHOST NUMBER */}
 
-            {item.step}
+          <div className="absolute -right-2 -top-2 text-[90px] font-black text-white/[0.04]">
 
-          </div>
-
-          <div className="ml-16 lg:ml-0 w-full lg:w-[40%] bg-white border border-black/5 rounded-[28px] p-5 lg:p-6">
-
-            <h3 className="text-[#07111F] text-lg lg:text-xl font-bold mb-4">
-
-              {item.title}
-
-            </h3>
-
-            <p className="text-gray-600 leading-6">
-
-              {item.desc}
-
-            </p>
+            0{index + 1}
 
           </div>
+
+          {/* GOLD BAR */}
+
+          <div className="w-10 h-[2px] bg-[#C89B3C] mb-5 transition-all duration-500 group-hover:w-20" />
+
+          <h3 className="text-white text-[20px] font-bold">
+
+            {item}
+
+          </h3>
 
         </div>
 
@@ -628,141 +1015,259 @@ export default async function IndustryDetailPage({
 
 </section>
 
-      {/* WHY RUDRON */}
-      <section className="industry-glow bg-[#07111F] py-12 lg:py-16 px-4 sm:px-6">
+{/* WHY ORGANIZATIONS CHOOSE RUDRON */}
 
-        <div className="max-w-7xl mx-auto">
+<section className="relative bg-[#07111F] py-4 lg:py-6 px-5 lg:px-20 overflow-hidden">
 
-          <div className="text-center mb-6">
 
-            <p className="uppercase tracking-[5px] text-[#C89B3C] text-sm mb-4">
+  <div className="relative max-w-7xl mx-auto">
 
-              Why Companies Choose RUDRON
+    {/* HEADER */}
 
-            </p>
+    <div className="text-center mb-8">
 
-            <h2 className="text-white text-[26px] sm:text-[32px] lg:text-[56px] font-bold leading-[1.05] mb-5">
+      <div className="inline-flex items-center gap-3 mb-4">
 
-              Recruitment Built
-              Around Precision &
-              Performance
+        <span className="h-px w-8 bg-[#C89B3C]" />
 
-            </h2>
+        <p className="text-[#C89B3C] uppercase tracking-[5px] text-xs font-semibold">
 
-            <p className="text-gray-400 text-[15px] sm:text-[17px] leading-7 sm:leading-8">
+          Why RUDRON
 
-              We combine technical market understanding with relationship-driven
-              recruitment strategies to help organizations build stronger teams.
+        </p>
 
-            </p>
+        <span className="h-px w-8 bg-[#C89B3C]" />
 
-          </div>
+      </div>
 
-          {/* GRID */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+      <h2 className="text-white text-[30px] sm:text-[40px] lg:text-[56px] font-bold leading-[1.02] mb-4">
 
-            {[
-              {
-                title: "Executive Search",
-                desc: "Leadership recruitment for high-growth organizations.",
-              },
+        A Recruitment Partner
 
-              {
-                title: "Project Staffing",
-                desc: "Flexible hiring solutions aligned with project demand.",
-              },
+        <br />
 
-              {
-                title: "Industry Specialisation",
-                desc: "Deep expertise across AEC and MEP environments.",
-              },
+        <span className="text-[#C89B3C]">
 
-              {
-                title: "Relationship-Driven Hiring",
-                desc: "Long-term recruitment partnerships built on trust.",
-              },
+          Built For This Industry
 
-            ].map((item, index) => (
+        </span>
 
-              <div
-                key={index}
-                className="industry-glow bg-[#0D1726] rounded-[24px] border border-white/10 p-6 hover:-translate-y-2 hover:border-[#C89B3C]/30 transition-all duration-500"
-              >
+      </h2>
 
-                <div className="text-[#C89B3C] text-4xl font-bold opacity-50 mb-4">
+      <p className="text-gray-400 text-[15px] sm:text-[17px] leading-relaxed max-w-3xl mx-auto">
 
-              0{index + 1}
+        Combining executive search expertise,
+        project staffing capability and deep
+        industry knowledge to support long-term hiring success.
 
-                <h3 className="text-[#C89B3C] text-3xl sm:text-[18px] font-bold opacity-90 leading-snug mb-4">
-                  
+      </p>
 
-                  {item.title}
+    </div>
 
-                </h3>
+    {/* GRID */}
 
-                <p className="text-gray-100 text-[14px] sm:text-[15px] leading-6">
-
-                  {item.desc}
-
-                </p>
-
-              </div>
-
-            </div>
-
-            ))}
-
-          </div>
-
-        </div>
-
-      </section>
-
-      {/* INDUSTRY IMPACT */}
-
-<section className="industry-glow bg-[#F7F7F7] py-12 lg:py-16 px-4 sm:px-6">
-
-  <div className="max-w-7xl mx-auto">
-
-    <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
+    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
 
       {[
         {
-          title: "Technical",
-          desc: "Industry Expertise",
+          title: "Industry Specialists",
+          desc: "Dedicated recruiters focused on architecture, engineering, construction and MEP markets.",
         },
         {
-          title: "Leadership",
-          desc: "Executive Search",
+          title: "Executive Search",
+          desc: "Confidential leadership hiring for critical business and project functions.",
         },
         {
-          title: "Projects",
-          desc: "Delivery Focused",
+          title: "Project Staffing",
+          desc: "Access to professionals capable of supporting immediate project requirements.",
         },
         {
-          title: "National",
-          desc: "Talent Network",
+          title: "Long-Term Partnerships",
+          desc: "Relationship-driven recruitment built around quality, trust and consistency.",
         },
-      ].map((item) => (
+      ].map((item, index) => (
 
         <div
           key={item.title}
-          className="industry-glow bg-white rounded-[28px] border border-black/5 p-6 text-center hover:-translate-y-2 transition-all duration-500"
+          className="
+          group
+          bg-white/[0.04]
+          backdrop-blur-md
+          border
+          border-white/10
+          rounded-[24px]
+          p-6
+          hover:-translate-y-2
+          hover:border-[#C89B3C]/30
+          transition-all
+          duration-500
+          relative
+          overflow-hidden
+          "
         >
 
-          <h3 className="text-[#C89B3C] text-[22px] lg:text-[34px] font-bold mb-3">
+          <div className="absolute -right-2 -top-2 text-[90px] font-black text-white/[0.04]">
+
+            0{index + 1}
+
+          </div>
+
+          <div className="w-10 h-[2px] bg-[#C89B3C] mb-5 transition-all duration-500 group-hover:w-20" />
+
+          <h3 className="text-white text-[20px] font-bold mb-4">
 
             {item.title}
 
           </h3>
 
-          <p className="text-gray-600">
+          <p className="text-gray-400 text-[14px] leading-7">
 
             {item.desc}
 
           </p>
 
         </div>
+
+      ))}
+
+    </div>
+
+  </div>
+
+</section>
+
+{/* INDUSTRY FAQ */}
+
+<section className="relative bg-[#F4F4F0] py-6 lg:py-10 px-5 lg:px-20 overflow-hidden">
+
+  {/* GRID BACKGROUND */}
+
+<div
+  className="absolute inset-0 pointer-events-none"
+  style={{
+    backgroundImage: `
+      linear-gradient(rgba(200,155,60,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(200,155,60,0.04) 1px, transparent 1px)
+    `,
+    backgroundSize: "60px 60px",
+  }}
+/>
+
+{/* GOLD GLOW */}
+
+<div
+  className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[250px]"
+  style={{
+    background:
+      "radial-gradient(ellipse at top, rgba(200,155,60,.08) 0%, transparent 70%)",
+  }}
+/>
+
+  <div className="relative max-w-5xl mx-auto">
+
+    {/* HEADER */}
+
+    <div className="text-center mb-8">
+
+      <div className="inline-flex items-center gap-3 mb-4">
+
+        <span className="h-px w-8 bg-[#C89B3C]" />
+
+        <p className="text-[#C89B3C] uppercase tracking-[5px] text-xs font-semibold">
+
+          Frequently Asked Questions
+
+        </p>
+
+        <span className="h-px w-8 bg-[#C89B3C]" />
+
+      </div>
+
+      <h2 className="text-[#07111F] text-[30px] sm:text-[40px] lg:text-[56px] font-bold leading-[1.02] mb-4">
+
+        Industry Recruitment
+
+        <br />
+
+        <span className="text-[#C89B3C]">
+
+          Questions Answered
+
+        </span>
+
+      </h2>
+
+      <p className="text-gray-600 text-[14px] sm:text-[15px] leading-relaxed max-w-3xl mx-auto">
+
+        Common questions about recruitment,
+        executive search and hiring within the industry.
+
+      </p>
+
+    </div>
+
+    {/* FAQS */}
+
+    <div className="space-y-4">
+
+      {[
+        {
+          q: `What roles do you recruit for within ${heroTitle}?`,
+          a: `We support recruitment across leadership, project delivery, technical and operational positions, helping organizations secure talent across the entire project lifecycle.`,
+        },
+        {
+          q: "Do you support executive search assignments?",
+          a: `Yes. We support confidential executive and leadership recruitment for critical business and project functions.`,
+        },
+        {
+          q: "How long does the recruitment process typically take?",
+          a: `Timeframes vary depending on role complexity, market conditions and hiring requirements, but our process is designed to identify qualified talent efficiently.`,
+        },
+        {
+          q: "Do you provide project staffing solutions?",
+          a: `Yes. We help organizations secure project-ready professionals capable of supporting immediate and long-term staffing requirements.`,
+        },
+      ].map((faq, index) => (
+
+        <details
+          key={index}
+          className="
+          group
+          bg-white
+          border
+          border-black/5
+          rounded-[24px]
+          p-6
+          hover:border-[#C89B3C]/30
+          hover:shadow-[0_20px_50px_rgba(200,155,60,.08)]
+          transition-all
+          duration-500
+          "
+        >
+
+          <summary className="cursor-pointer list-none flex items-center justify-between">
+
+            <h3 className="text-[#07111F] text-[18px] font-semibold">
+
+              {faq.q}
+
+            </h3>
+
+            <span className="text-[#C89B3C] text-2xl group-open:rotate-45 transition-all duration-300">
+
+              +
+
+            </span>
+
+          </summary>
+
+          <p className="text-gray-600 leading-7 mt-5">
+
+            {faq.a}
+
+          </p>
+
+        </details>
 
       ))}
 
