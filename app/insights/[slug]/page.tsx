@@ -2,7 +2,7 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import HomeCTA from "@/components/HomeCTA";
 import Footer from "@/components/Footer";
-import InsightArticleClient from "@/components/InsightsSection";
+import InsightArticleClient from "@/components/InsightArticlePage";
 
 const articles: Record<string, {
   title: string; category: string; image: string;

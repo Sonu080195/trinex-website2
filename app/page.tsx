@@ -37,6 +37,7 @@ export default function Home() {
 
       <Reveal>
         <InsightsSection />
+        
         </Reveal>
 
       <HomeCTA />
