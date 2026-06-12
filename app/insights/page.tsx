@@ -141,7 +141,7 @@ export default function InsightsPage() {
 
             {/* Headline */}
             <h1
-              className="font-bold leading-[1.02] text-[32px] sm:text-[50px] lg:text-[68px] mb-4 transition-all duration-700 delay-150"
+              className="font-bold leading-[1.08] text-[30px] sm:text-[48px] lg:text-[64px] mb-4 transition-all duration-700 delay-150"
               style={{ opacity: heroVisible ? 1 : 0, transform: heroVisible ? "translateY(0)" : "translateY(24px)" }}
             >
               Construction<br />

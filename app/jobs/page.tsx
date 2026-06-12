@@ -144,7 +144,7 @@ export default function JobsPage() {
 
             {/* Headline */}
             <h1
-              className="font-bold leading-[1.02] text-[30px] sm:text-[40px] lg:text-[56px] mb-4 transition-all duration-700 delay-150"
+              className="font-bold leading-[1.08] text-[30px] sm:text-[48px] lg:text-[64px] mb-4 transition-all duration-700 delay-150"
               style={{ opacity: heroVisible ? 1 : 0, transform: heroVisible ? "translateY(0)" : "translateY(22px)" }}
             >
               Explore Construction<br />

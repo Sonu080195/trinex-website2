@@ -165,3 +165,17 @@ body {
   opacity: 1;
   transform: translateY(0);
 }
+
+@keyframes storyScroll {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+.story-scroll {
+  animation: storyScroll 45s linear infinite;
+}

@@ -169,7 +169,7 @@ useEffect(() => {
         {/* HEADING */}
 
         <h1
-          className="text-white text-[32px] sm:text-[50px] lg:text-[68px] font-bold leading-[1.02] mb-6"
+          className="text-white text-[30px] sm:text-[48px] lg:text-[64px] font-bold leading-[1.08] mb-4"
           style={{
             opacity: heroVisible ? 1 : 0,
             transform: heroVisible

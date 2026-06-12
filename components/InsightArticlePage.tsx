@@ -163,7 +163,7 @@ export default function InsightsSection({
 
           {/* Title */}
           <h1
-            className="font-bold leading-[1.04] text-[34px] sm:text-[48px] lg:text-[62px] mb-8 max-w-[860px] transition-all duration-700 delay-200"
+            className="font-bold leading-[1.08] text-[30px] sm:text-[48px] lg:text-[64px] mb-4 max-w-[860px] transition-all duration-700 delay-200"
             style={{ opacity: heroVisible ? 1 : 0, transform: heroVisible ? "translateY(0)" : "translateY(20px)" }}
           >
             {article.title}

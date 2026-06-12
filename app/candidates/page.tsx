@@ -123,7 +123,7 @@ export default function CandidatesPage() {
                 <p className="text-[#C89B3C] uppercase tracking-[5px] text-[11px] font-semibold">Candidates</p>
                 <span className="h-px w-10 bg-[#C89B3C]" />
               </div>
-              <h1 className="text-white text-[32px] sm:text-[50px] lg:text-[68px] font-bold leading-[1.02] mb-6 transition-all duration-700 delay-150"
+              <h1 className="text-white text-[30px] sm:text-[48px] lg:text-[64px] font-bold leading-[1.08] mb-4 transition-all duration-700 delay-150"
                 style={{ opacity: heroVisible ? 1 : 0, transform: heroVisible ? "translateY(0)" : "translateY(28px)" }}>
                 Connecting<br />Professionals With<br />
                 <span className="relative inline-block text-[#C89B3C]">
@@ -439,10 +439,10 @@ function OpportunityCard({ card, index, inView }: {
         transform: inView ? "translateY(0)" : "translateY(28px)",
         transition: `opacity 0.6s ease ${index * 120}ms, transform 0.5s ease ${index * 120}ms, border 0.3s, box-shadow 0.3s`,
         animationName: inView ? (isEven ? "floatA" : "floatB") : "none",
-animationDuration: `${4.5 + index * 0.4}s`,
-animationTimingFunction: "ease-in-out",
-animationIterationCount: "infinite",
-animationDelay: `${index * 0.8}s`,
+        animationDuration: `${4.5 + index * 0.4}s`,
+        animationTimingFunction: "ease-in-out",
+        animationIterationCount: "infinite",
+        animationDelay: `${index * 0.8}s`,
       }}
     >
       {/* Top accent */}

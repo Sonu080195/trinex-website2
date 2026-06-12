@@ -125,7 +125,7 @@ export default function Hero() {
 
               {/* DESCRIPTION */}
               <p
-                className="text-gray-300 text-[13px] lg:text-[15px] sm:text-[17px] leading-6 sm:leading-7 mb-6 lg:mb-10 max-w-[860px] transition-all duration-700 delay-300"
+                className="text-gray-300 text-[14px] lg:text-[16px] leading-7 max-w-[720px] mb-8 transition-all duration-700 delay-300"
                 style={{
                   opacity: heroVisible ? 1 : 0,
                   transform: heroVisible ? "translateY(0)" : "translateY(20px)",

@@ -105,7 +105,7 @@ export default function ContactPage() {
 
             {/* Headline */}
             <h1
-              className="font-bold leading-[1.02] text-[30px] sm:text-[48px] lg:text-[64px] mb-6 transition-all duration-700 delay-150"
+              className="font-bold leading-[1.08] text-[30px] sm:text-[48px] lg:text-[64px] mb-4 transition-all duration-700 delay-150"
               style={{ opacity: heroVisible ? 1 : 0, transform: heroVisible ? "translateY(0)" : "translateY(24px)" }}
             >
               Let's Build
@@ -118,7 +118,7 @@ export default function ContactPage() {
 
             {/* Body */}
             <p
-              className="text-gray-300 text-[13px] sm:text-[15px] leading-6 max-w-[860px] mb-8 transition-all duration-700 delay-300"
+              className="text-gray-300 text-[14px] lg:text-[16px] leading-7 max-w-[720px] mb-8 transition-all duration-700 delay-300"
               style={{ opacity: heroVisible ? 1 : 0, transform: heroVisible ? "translateY(0)" : "translateY(20px)" }}
             >
               Whether you're hiring exceptional talent or exploring your next career opportunity, our team is ready to help.

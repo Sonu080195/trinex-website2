@@ -323,7 +323,7 @@ export default async function IndustryDetailPage({
 
         {/* HEADING */}
 
-        <h1 className="text-white text-[32px] sm:text-[50px] lg:text-[68px] font-bold leading-[1.02] mb-6">
+        <h1 className="text-white text-[30px] sm:text-[48px] lg:text-[64px] font-bold leading-[1.08] mb-4">
 
           {heroTitle}
 
