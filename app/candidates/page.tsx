@@ -248,7 +248,7 @@ export default function CandidatesPage() {
       {/* ══════════════════════════════════════
           FEATURED CAREER PATHS
       ══════════════════════════════════════ */}
-      <section className="bg-[#F4F4F0] pb-20 lg:pb-28 px-5 sm:px-6">
+      <section className="py-6 lg:py-10 px-5 sm:px-6 bg-[#F4F4F0] overflow-hidden">
         <div ref={pathsRef} className="max-w-7xl mx-auto">
           <div
             className="text-center mb-14 transition-all duration-700"
@@ -438,8 +438,11 @@ function OpportunityCard({ card, index, inView }: {
         opacity:   inView ? 1 : 0,
         transform: inView ? "translateY(0)" : "translateY(28px)",
         transition: `opacity 0.6s ease ${index * 120}ms, transform 0.5s ease ${index * 120}ms, border 0.3s, box-shadow 0.3s`,
-        animation: inView ? `${isEven ? "floatA" : "floatB"} ${4.5 + index * 0.4}s ease-in-out infinite` : "none",
-        animationDelay: `${index * 0.8}s`,
+        animationName: inView ? (isEven ? "floatA" : "floatB") : "none",
+animationDuration: `${4.5 + index * 0.4}s`,
+animationTimingFunction: "ease-in-out",
+animationIterationCount: "infinite",
+animationDelay: `${index * 0.8}s`,
       }}
     >
       {/* Top accent */}
