@@ -373,7 +373,7 @@ export default function Navbar() {
                     hover:shadow-[0_10px_30px_rgba(200,155,60,0.35)]
                   "
                 >
-                  Hire Talent
+                  Connect Now
                 </Link>
 
               </div>

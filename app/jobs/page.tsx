@@ -129,7 +129,7 @@ export default function JobsPage() {
           }}
         />
 
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 pt-24 lg:pt-28 pb-12">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 pt-34 lg:pt-38 pb-12">
           <div className="max-w-[650px]">
 
             {/* Eyebrow */}

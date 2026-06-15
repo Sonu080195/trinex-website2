@@ -190,7 +190,7 @@ export default function Footer() {
 
                 <p className="text-gray-400 text-[15px]">
 
-                  admin@rudron.com
+                  admin@rudrongts.com
 
                 </p>
 
