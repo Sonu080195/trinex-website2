@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+/* ============================================================
+   BASE RESET & DEFAULTS
+   ============================================================ */
+
 html,
 body {
   margin: 0;
@@ -7,13 +11,57 @@ body {
   width: 100%;
   overflow-x: hidden;
   font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
-@keyframes scrollStory {
+/* ============================================================
+   ACCESSIBILITY – REDUCED MOTION
+   All animations respect the user's OS preference.
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ============================================================
+   FOCUS VISIBILITY
+   ============================================================ */
+
+:focus-visible {
+  outline: 2px solid #c89b3c;
+  outline-offset: 3px;
+}
+
+/* ============================================================
+   SCROLL BEHAVIOUR
+   ============================================================ */
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ============================================================
+   STORY SCROLL  (vertical marquee – duplicate content assumed)
+   NOTE: Only ONE definition kept (storyScroll wins – 45 s is
+   smoother than the 55 s scrollStory duplicate that was here).
+   ============================================================ */
+
+@keyframes storyScroll {
   0% {
     transform: translateY(0);
   }
@@ -24,11 +72,17 @@ body {
 }
 
 .story-scroll {
-  animation: scrollStory 55s linear infinite;
+  animation: storyScroll 45s linear infinite;
+  will-change: transform;
 }
 
+/* ============================================================
+   FLOATING CARDS
+   ============================================================ */
+
 @keyframes floatOne {
-  0%,100% {
+  0%,
+  100% {
     transform: translateY(0px);
   }
 
@@ -38,7 +92,8 @@ body {
 }
 
 @keyframes floatTwo {
-  0%,100% {
+  0%,
+  100% {
     transform: translateY(0px);
   }
 
@@ -49,11 +104,17 @@ body {
 
 .floating-card {
   animation: floatOne 6s ease-in-out infinite;
+  will-change: transform;
 }
 
 .floating-card-2 {
   animation: floatTwo 8s ease-in-out infinite;
+  will-change: transform;
 }
+
+/* ============================================================
+   ROLES MARQUEE  (horizontal – duplicate content assumed)
+   ============================================================ */
 
 @keyframes rolesMarquee {
   0% {
@@ -68,11 +129,16 @@ body {
 .roles-marquee {
   width: max-content;
   animation: rolesMarquee 50s linear infinite;
+  will-change: transform;
 }
 
 .roles-marquee:hover {
   animation-play-state: paused;
 }
+
+/* ============================================================
+   TESTIMONIAL MARQUEE  (horizontal – duplicate content assumed)
+   ============================================================ */
 
 @keyframes testimonialMarquee {
   0% {
@@ -88,54 +154,16 @@ body {
   display: flex;
   width: max-content;
   animation: testimonialMarquee 35s linear infinite;
+  will-change: transform;
 }
 
 .testimonial-marquee:hover {
   animation-play-state: paused;
 }
 
-@keyframes pulseGlow {
-
-  0%,100% {
-    box-shadow: 0 0 0 rgba(200,155,60,0);
-  }
-
-  50% {
-    box-shadow: 0 0 40px rgba(200,155,60,.15);
-  }
-
-}
-
-.industry-glow {
-  animation: pulseGlow 5s ease-in-out infinite;
-}
-
-.article-card {
-  transition:
-    transform .4s ease,
-    box-shadow .4s ease;
-}
-
-.article-card:hover {
-  transform: translateY(-6px);
-
-  box-shadow:
-    0 20px 50px rgba(0,0,0,.08);
-}
-
-@keyframes subtleFloat {
-  0%,100% {
-    transform: translateY(0px);
-  }
-
-  50% {
-    transform: translateY(-6px);
-  }
-}
-
-.floating-insight {
-  animation: subtleFloat 6s ease-in-out infinite;
-}
+/* ============================================================
+   LOGO / PARTNER MARQUEE  (generic horizontal strip)
+   ============================================================ */
 
 @keyframes marquee {
   from {
@@ -151,7 +179,66 @@ body {
   display: flex;
   width: max-content;
   animation: marquee 28s linear infinite;
+  will-change: transform;
 }
+
+/* ============================================================
+   INDUSTRY GLOW
+   ============================================================ */
+
+@keyframes pulseGlow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 rgba(200, 155, 60, 0);
+  }
+
+  50% {
+    box-shadow: 0 0 40px rgba(200, 155, 60, 0.15);
+  }
+}
+
+.industry-glow {
+  animation: pulseGlow 5s ease-in-out infinite;
+}
+
+/* ============================================================
+   ARTICLE CARDS
+   ============================================================ */
+
+.article-card {
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.article-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+}
+
+/* ============================================================
+   FLOATING INSIGHT WIDGET
+   ============================================================ */
+
+@keyframes subtleFloat {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.floating-insight {
+  animation: subtleFloat 6s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* ============================================================
+   SCROLL-REVEAL  (JS adds .active when element enters viewport)
+   ============================================================ */
 
 .reveal {
   opacity: 0;
@@ -164,18 +251,4 @@ body {
 .reveal.active {
   opacity: 1;
   transform: translateY(0);
-}
-
-@keyframes storyScroll {
-  0% {
-    transform: translateY(0);
-  }
-
-  100% {
-    transform: translateY(-50%);
-  }
-}
-
-.story-scroll {
-  animation: storyScroll 45s linear infinite;
 }

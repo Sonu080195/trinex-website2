@@ -66,20 +66,6 @@ export const metadata: Metadata = {
 
   publisher: "RUDRON",
 
-  robots: {
-    index: true,
-    follow: true,
-    nocache: false,
-    googleBot: {
-      index: true,
-      follow: true,
-      noimageindex: false,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
-
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -94,7 +80,7 @@ export const metadata: Metadata = {
 
     images: [
       {
-        url: "/og-image.jpg",
+        url: "https://www.rudrongts.com/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "RUDRON Global Talent Solutions",

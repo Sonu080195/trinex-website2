@@ -149,7 +149,7 @@ export default function CandidatesPage() {
                 style={{ opacity: heroVisible ? 1 : 0, transform: heroVisible ? "translateY(0)" : "translateY(20px)" }}>
                 {[["Executive","Roles"],["Mission Critical","Projects"],["Nationwide","Opportunities"]].map((item) => (
                   <div key={item[0]} className="bg-white/[0.04] border border-white/10 rounded-[18px] backdrop-blur-md p-4">
-                    <h3 className="text-[#C89B3C] text-lg lg:text-xl font-bold">{item[0]}</h3>
+                    <h3 className="text-[#C89B3C] text-md lg:text-xl font-bold">{item[0]}</h3>
                     <p className="text-gray-400 text-[11px] lg:text-sm">{item[1]}</p>
                   </div>
                 ))}

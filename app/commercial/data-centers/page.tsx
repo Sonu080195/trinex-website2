@@ -36,9 +36,8 @@ const roles = [
 ];
 
 const stats = [
-  { value: "300+", label: "Data Center Projects Staffed" },
   { value: "38", label: "States Nationwide" },
-  { value: "92%", label: "Placement Retention Rate" },
+  { value: "95%", label: "Placement Retention Rate" },
   { value: "14 Days", label: "Avg. Time-to-Hire" },
 ];
 
@@ -262,13 +261,6 @@ export default function DataCenterPage() {
                 style={{ animationDelay: "0.4s" }}
               >
                 <a
-                  href="#contact"
-                  className="inline-flex items-center gap-2 bg-[#C89B3C] hover:bg-[#b8882e] text-[#07111F] font-semibold text-[14px] px-6 py-3 rounded-full transition-colors duration-200"
-                >
-                  Start a Search
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                </a>
-                <a
                   href="#roles"
                   className="inline-flex items-center gap-2 border border-white/20 hover:border-[#C89B3C]/50 text-white text-[14px] px-6 py-3 rounded-full transition-colors duration-200"
                 >
@@ -286,14 +278,14 @@ export default function DataCenterPage() {
       {/* ── STAT STRIP ── */}
       <div ref={statsReveal.ref} className="border-y border-white/8 bg-[#0A1520]">
         <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-0">
-          <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-white/8">
+          <div className="grid grid-cols-2 lg:grid-cols-3 divide-x divide-white/8">
             {stats.map((s, i) => (
               <div
                 key={i}
                 className={`stat-bar px-6 py-8 text-center ${statsReveal.visible ? "in" : ""}`}
                 style={{ animationDelay: `${0.1 + i * 0.1}s` }}
               >
-                <p className="text-[28px] sm:text-[34px] font-bold text-[#C89B3C] leading-none mb-1">{s.value}</p>
+                <p className="text-[24px] sm:text-[30px] font-bold text-[#C89B3C] leading-none mb-1">{s.value}</p>
                 <p className="text-gray-400 text-[12px] sm:text-[13px] tracking-wide uppercase">{s.label}</p>
               </div>
             ))}
@@ -506,13 +498,6 @@ export default function DataCenterPage() {
               Let's find the right construction<br className="hidden sm:block" /> professionals for your next project.
             </p>
           </div>
-          <a
-            href="#contact"
-            className="flex-shrink-0 inline-flex items-center gap-2 bg-[#C89B3C] hover:bg-[#b8882e] text-[#07111F] font-semibold text-[14px] px-7 py-3.5 rounded-full transition-colors duration-200"
-          >
-            Start a Search
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/></svg>
-          </a>
         </div>
       </div>
 

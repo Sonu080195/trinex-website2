@@ -19,26 +19,15 @@ export default function Home() {
 
       <HomeMarquee />
 
-      <Reveal>
-        <Specialisations />
-        </Reveal>
+      <Reveal><Specialisations /></Reveal>
 
-      <Reveal>
-        <WhyChooseUs />
-        </Reveal>
-
-      <Reveal>
-        <HeroJobsCarousel />
-        </Reveal>
-
-      <Reveal>
-        <ValueSection />
-        </Reveal>
-
-      <Reveal>
-        <InsightsSection />
-        
-        </Reveal>
+      <Reveal><WhyChooseUs /></Reveal>
+      
+      <Reveal><HeroJobsCarousel /></Reveal>
+      
+      <Reveal><ValueSection /></Reveal>
+      
+      <Reveal><InsightsSection /></Reveal>
 
       <HomeCTA />
 
