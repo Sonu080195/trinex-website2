@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { createPortal } from "react-dom";
 import Link from "next/link";
+import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import { X, ArrowLeft } from "lucide-react";
 
 const sectors = [
@@ -60,7 +61,12 @@ const sectors = [
   },
 ];
 
-export default function Specialisations() {
+function SpecialisationsInner() {
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const sectorParam = searchParams.get("sector");
+
   const [activeSector, setActiveSector] = useState<typeof sectors[0] | null>(null);
   const [panelVisible, setPanelVisible] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -68,19 +74,45 @@ export default function Specialisations() {
   // Portal needs client-side mount
   useEffect(() => { setMounted(true); }, []);
 
+  // The panel's open/closed state is now derived from the `?sector=` URL
+  // param instead of being purely local React state. This is the actual
+  // fix for the back-button bug: opening a sector pushes a real browser
+  // history entry, so navigating Back from a subsector page returns here
+  // with the param intact and the panel reopens automatically, instead of
+  // landing on a blank Home page.
+  useEffect(() => {
+    if (sectorParam) {
+      const match = sectors.find(
+        (s) => s.title.toLowerCase() === sectorParam.toLowerCase()
+      );
+      if (match) {
+        setActiveSector(match);
+        document.body.style.overflow = "hidden";
+        requestAnimationFrame(() => setTimeout(() => setPanelVisible(true), 10));
+        return;
+      }
+    }
+    setPanelVisible(false);
+    document.body.style.overflow = "auto";
+    const t = setTimeout(() => setActiveSector(null), 350);
+    return () => clearTimeout(t);
+  }, [sectorParam]);
+
+  // Opening a sector pushes a NEW history entry — this is what Back needs.
   const openSector = (sector: typeof sectors[0]) => {
-    setActiveSector(sector);
-    // Lock body scroll
-    document.body.style.overflow = "hidden";
-    requestAnimationFrame(() => setTimeout(() => setPanelVisible(true), 10));
+    router.push(`${pathname}?sector=${sector.title.toLowerCase()}`, { scroll: false });
   };
 
+  // Switching sectors while the panel is already open replaces the entry
+  // instead of stacking one per click.
+  const switchSector = (sector: typeof sectors[0]) => {
+    router.replace(`${pathname}?sector=${sector.title.toLowerCase()}`, { scroll: false });
+  };
+
+  // Explicit close (X button, backdrop, Escape) just clears the param —
+  // it doesn't need to be a Back-able action.
   const closeSector = () => {
-    setPanelVisible(false);
-    setTimeout(() => {
-      setActiveSector(null);
-      document.body.style.overflow = "auto";
-    }, 350);
+    router.replace(pathname, { scroll: false });
   };
 
   // Close on Escape key
@@ -88,7 +120,7 @@ export default function Specialisations() {
     const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") closeSector(); };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, []);
+  }, [pathname]);
 
   // Portal overlay — rendered on document.body, fully outside the section
   const overlay = activeSector && mounted ? createPortal(
@@ -145,7 +177,11 @@ export default function Specialisations() {
               <Link
                 href={item.link}
                 key={i}
-                onClick={closeSector}
+                // Just release the scroll lock before leaving — do NOT
+                // clear the `sector` param here, or the history entry
+                // the back-button fix depends on gets wiped out before
+                // the navigation even happens.
+                onClick={() => { document.body.style.overflow = "auto"; }}
                 className="group relative rounded-[22px] sm:rounded-[28px] overflow-hidden block cursor-pointer"
                 style={{
                   height: "clamp(200px, 28vw, 300px)",
@@ -187,7 +223,7 @@ export default function Specialisations() {
               {sectors.filter(s => s.title !== activeSector.title).map((s) => (
                 <button
                   key={s.title}
-                  onClick={() => { setPanelVisible(false); setTimeout(() => { setActiveSector(s); setPanelVisible(true); }, 200); }}
+                  onClick={() => switchSector(s)}
                   className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-white/5 border border-white/10 text-gray-300 hover:text-white hover:border-[#C89B3C]/40 transition-all duration-300 text-[13px]"
                 >
                   <span>{s.icon}</span>
@@ -289,6 +325,14 @@ export default function Specialisations() {
       {/* Portal overlay */}
       {overlay}
     </section>
+  );
+}
+
+export default function Specialisations() {
+  return (
+    <Suspense fallback={null}>
+      <SpecialisationsInner />
+    </Suspense>
   );
 }
 
