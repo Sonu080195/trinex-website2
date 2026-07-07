@@ -87,7 +87,8 @@ export default function AboutPage() {
               <div className="flex items-center gap-3 mb-6 transition-all duration-700"
                 style={{ opacity: heroVisible ? 1 : 0, transform: heroVisible ? "translateY(0)" : "translateY(18px)" }}>
                 <span className="h-px w-10 bg-[#C89B3C]" />
-                <p className="text-[#C89B3C] uppercase tracking-[5px] text-[11px] font-semibold">About RUDRON</p>
+                <p className="text-[#C89B3C] uppercase tracking-[5px] text-[11px] font-semibold">
+                  About RUDRON</p>
                 <span className="h-px w-10 bg-[#C89B3C]" />
               </div>
               <h1 className="text-white text-[30px] sm:text-[48px] lg:text-[64px] font-bold leading-[1.08] mb-4 transition-all duration-700 delay-150"

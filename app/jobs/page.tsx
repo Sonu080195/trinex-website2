@@ -27,8 +27,8 @@ function useInView(threshold = 0.08) {
 
 const marqueeRoles = [
   "PROJECT EXECUTIVE","PROJECT MANAGER","SUPERINTENDENT","ESTIMATOR",
-  "PRECONSTRUCTION","MEP LEADERSHIP","DATA CENTERS","HEALTHCARE",
-  "MISSION CRITICAL","FIELD OPERATIONS",
+  "PRECONSTRUCTION","MEP LEADERS", "BIM Engineers", "VDC Engineers", "Saftey Managers", "Project Directors", "Field Operation Managers", 
+  "Vice Presidents", "Presidents", "DATA CENTERS","HEALTHCARE", "MISSION CRITICAL", "K-12", "etc.",
 ];
 
 const opportunityCards = [
