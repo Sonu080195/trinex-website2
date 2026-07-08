@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
-import { X, Upload, CheckCircle } from "lucide-react";
+import { useState, useEffect } from "react";
+import { X, Upload, CheckCircle, Loader2 } from "lucide-react";
 
 interface ApplyModalProps {
   isOpen: boolean;
@@ -11,8 +11,10 @@ interface ApplyModalProps {
 
 export default function ApplyModal({ isOpen, onClose, jobTitle }: ApplyModalProps) {
   const [submitted, setSubmitted] = useState(false);
-  const [visible,   setVisible]   = useState(false);
-  const [fileName,  setFileName]  = useState("");
+  const [visible, setVisible] = useState(false);
+  const [fileName, setFileName] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     if (isOpen) {
@@ -23,6 +25,7 @@ export default function ApplyModal({ isOpen, onClose, jobTitle }: ApplyModalProp
       const t = setTimeout(() => {
         setSubmitted(false);
         setFileName("");
+        setError("");
         document.body.style.overflow = "auto";
       }, 350);
       return () => clearTimeout(t);
@@ -31,6 +34,31 @@ export default function ApplyModal({ isOpen, onClose, jobTitle }: ApplyModalProp
   }, [isOpen]);
 
   if (!isOpen) return null;
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setError("");
+    setSubmitting(true);
+
+    const formData = new FormData(e.currentTarget);
+    formData.set("type", "job_application");
+    formData.set("job_title", jobTitle);
+
+    try {
+      const res = await fetch("/api/apply", { method: "POST", body: formData });
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || "Submission failed. Please try again.");
+      }
+
+      setSubmitted(true);
+    } catch (err: any) {
+      setError(err.message || "Something went wrong. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
+  }
 
   return (
     <div className="fixed inset-0 z-[9999] flex items-center justify-center px-4 py-6">
@@ -45,17 +73,13 @@ export default function ApplyModal({ isOpen, onClose, jobTitle }: ApplyModalProp
       <div
         className="relative bg-[#0A1628] border border-white/8 rounded-[32px] w-full max-w-2xl max-h-[90vh] overflow-y-auto transition-all duration-350"
         style={{
-          opacity:   visible ? 1 : 0,
+          opacity: visible ? 1 : 0,
           transform: visible ? "translateY(0) scale(1)" : "translateY(24px) scale(0.97)",
         }}
       >
-        {/* Gold top bar */}
         <div className="absolute top-0 left-10 right-10 h-[2px] rounded-b-full bg-gradient-to-r from-transparent via-[#C89B3C] to-transparent opacity-60" />
-
-        {/* Ambient glow */}
         <div className="absolute inset-0 rounded-[32px] bg-[radial-gradient(ellipse_at_top_right,rgba(200,155,60,0.1),transparent_50%)] pointer-events-none" />
 
-        {/* Close */}
         <button
           onClick={onClose}
           className="absolute top-5 right-5 z-20 w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white hover:border-[#C89B3C]/50 hover:bg-white/10 transition-all duration-300"
@@ -65,7 +89,6 @@ export default function ApplyModal({ isOpen, onClose, jobTitle }: ApplyModalProp
 
         <div className="relative z-10 p-7 sm:p-9">
           {submitted ? (
-            /* ── SUCCESS ── */
             <div className="py-16 text-center">
               <div
                 className="w-20 h-20 rounded-full bg-[#C89B3C]/15 border border-[#C89B3C]/25 flex items-center justify-center mx-auto mb-6"
@@ -86,7 +109,6 @@ export default function ApplyModal({ isOpen, onClose, jobTitle }: ApplyModalProp
             </div>
           ) : (
             <>
-              {/* ── HEADER ── */}
               <div className="mb-8">
                 <div className="flex items-center gap-2 mb-4">
                   <span className="h-px w-6 bg-[#C89B3C]" />
@@ -102,30 +124,16 @@ export default function ApplyModal({ isOpen, onClose, jobTitle }: ApplyModalProp
                 </p>
               </div>
 
-              {/* ── FORM ── */}
-              <form
-                action="https://formsubmit.co/jobs@rudrongts.com"
-                method="POST"
-                encType="multipart/form-data"
-                className="space-y-4"
-                target="apply_iframe"
-                onSubmit={() => setTimeout(() => setSubmitted(true), 900)}
-              >
-                <input type="hidden" name="_subject"  value={`New Application – ${jobTitle}`} />
-                <input type="hidden" name="_captcha"  value="false" />
-                <input type="hidden" name="_template" value="table" />
-                <iframe name="apply_iframe" style={{ display: "none" }} />
-
+              <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid sm:grid-cols-2 gap-4">
                   <DarkInput name="first_name" placeholder="First Name" required />
-                  <DarkInput name="last_name"  placeholder="Last Name"  required />
+                  <DarkInput name="last_name" placeholder="Last Name" required />
                 </div>
 
-                <DarkInput name="email"    placeholder="Email Address"         type="email" required fullWidth />
-                <DarkInput name="phone"    placeholder="Phone Number"           type="tel"   fullWidth />
-                <DarkInput name="linkedin" placeholder="LinkedIn Profile URL"   type="url"   fullWidth />
+                <DarkInput name="email" placeholder="Email Address" type="email" required fullWidth />
+                <DarkInput name="phone" placeholder="Phone Number" type="tel" fullWidth />
+                <DarkInput name="linkedin" placeholder="LinkedIn Profile URL" type="url" fullWidth />
 
-                {/* Resume upload */}
                 <label className="flex items-center justify-between bg-white/[0.03] border border-dashed border-white/12 hover:border-[#C89B3C]/50 rounded-xl px-5 py-4 cursor-pointer transition-all duration-300 group">
                   <div className="flex items-center gap-3">
                     <div className="w-9 h-9 rounded-lg bg-[#C89B3C]/10 flex items-center justify-center group-hover:bg-[#C89B3C]/20 transition-colors duration-300">
@@ -161,13 +169,29 @@ export default function ApplyModal({ isOpen, onClose, jobTitle }: ApplyModalProp
                   </p>
                 </div>
 
+                {error && (
+                  <p className="text-red-400 text-[13px] bg-red-400/10 border border-red-400/20 rounded-xl px-4 py-3">
+                    {error}
+                  </p>
+                )}
+
                 <button
                   type="submit"
-                  className="group w-full relative overflow-hidden bg-[#C89B3C] hover:bg-[#d6ab52] text-[#07111F] font-bold py-4 rounded-2xl transition-all duration-300 hover:shadow-[0_8px_30px_rgba(200,155,60,0.35)] hover:scale-[1.01] active:scale-[0.99]"
+                  disabled={submitting}
+                  className="group w-full relative overflow-hidden bg-[#C89B3C] hover:bg-[#d6ab52] disabled:opacity-60 disabled:cursor-not-allowed text-[#07111F] font-bold py-4 rounded-2xl transition-all duration-300 hover:shadow-[0_8px_30px_rgba(200,155,60,0.35)] hover:scale-[1.01] active:scale-[0.99]"
                 >
                   <span className="relative z-10 flex items-center justify-center gap-2">
-                    Submit Application
-                    <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                    {submitting ? (
+                      <>
+                        <Loader2 size={18} className="animate-spin" />
+                        Submitting...
+                      </>
+                    ) : (
+                      <>
+                        Submit Application
+                        <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                      </>
+                    )}
                   </span>
                   <div className="absolute inset-0 bg-white/15 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-500 skew-x-12" />
                 </button>
