@@ -16,6 +16,16 @@ export const metadata: Metadata = {
     template: "%s | RUDRON",
   },
 
+  icons: {
+  icon: [
+    { url: "/favicon.ico", sizes: "any" },
+    { url: "/icon.png", type: "image/png" },
+  ],
+  apple: [
+    { url: "/apple-icon.png" },
+  ],
+},
+
   description:
     "RUDRON is a specialist recruitment partner connecting top talent with leading Construction, Engineering, Architecture, Mechanical, Electrical and Plumbing organizations across North America and global markets.",
 
@@ -96,7 +106,7 @@ export const metadata: Metadata = {
       "RUDRON | Construction, Engineering & MEP Recruitment",
 
     description:
-      "Specialist recruitment solutions across Construction, Engineering, Architecture and MEP sectors.",
+      "Specialist recruitment solutions across AEC and MEP sectors.",
 
     images: ["/og-image.jpg"],
   },
@@ -120,8 +130,6 @@ export default function RootLayout({
   return (
     <html lang="en-US">
 
-      <body>
-
         <Navbar />
 
         {children}
@@ -137,7 +145,7 @@ export default function RootLayout({
           "@id": "https://www.rudrongts.com/#organization",
           name: "RUDRON Global Talent Solutions",
           url: "https://www.rudrongts.com",
-          logo: "https://www.rudrongts.com/logo.png",
+          logo: "https://www.rudrongts.com/logo.webp",
           description:
             "Specialist recruitment solutions across Construction, Engineering, Architecture, Mechanical, Electrical and Plumbing sectors.",
           sameAs: [
@@ -162,16 +170,25 @@ export default function RootLayout({
             "Executive Search",
             "Talent Acquisition"
           ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://www.rudrongts.com/#website",
+          "name": "RUDRON Global Talent Solutions",
+          "url": "https://www.rudrongts.com",
+          "publisher": { "@id": "https://www.rudrongts.com/#organization" }
         }
       ]
     }),
   }}
 />
 
-      </body>
-
-      <SpeedInsights/>
-
-    </html>
+<body>
+  <Navbar />
+  {children}
+  <script type="application/ld+json" />
+  <SpeedInsights />
+</body>
+</html>
   );
 }

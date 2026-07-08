@@ -112,7 +112,7 @@ export default function Footer() {
                 {[
                   { region: "United States",        number: "+1 (239) 309 3969"  },
                   { region: "United Arab Emirates", number: "+971 56 957 5207"   },
-                  { region: "India",                number: "+91 99671 44597"    },
+                  { region: "India",                number: "+91 ----- -----"    },
                 ].map(({ region, number }) => (
                   <div key={region} className="group">
                     <p className="text-[#C89B3C]/80 text-[11px] uppercase tracking-[1.4px] font-medium mb-0.5">
