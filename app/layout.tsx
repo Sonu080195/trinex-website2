@@ -6,9 +6,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import Navbar from "@/components/Navbar";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    "https://www.rudrongts.com"
-  ),
+  metadataBase: new URL("https://www.rudrongts.com"),
 
   title: {
     default:
@@ -57,15 +55,15 @@ export const metadata: Metadata = {
     "recruitment firm",
   ],
 
-  authors: [
-    {
-      name: "RUDRON",
-    },
-  ],
-
+  authors: [{ name: "RUDRON" }],
   creator: "RUDRON",
-
   publisher: "RUDRON",
+
+  // Explicit icons block — points directly at the files you confirmed are in app/
+  icons: {
+    icon: [{ url: "/favicon.ico", sizes: "any" }, { url: "/icon.png", type: "image/png" }],
+    apple: [{ url: "/apple-icon.png" }],
+  },
 
   openGraph: {
     type: "website",
@@ -73,8 +71,7 @@ export const metadata: Metadata = {
     url: "https://www.rudrongts.com",
     siteName: "RUDRON",
 
-    title:
-      "RUDRON | Construction, Engineering & MEP Recruitment",
+    title: "RUDRON | Construction, Engineering & MEP Recruitment",
 
     description:
       "Specialist recruitment solutions across Construction, Engineering, Architecture and MEP sectors.",
@@ -91,13 +88,9 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-
-    title:
-      "RUDRON | Construction, Engineering & MEP Recruitment",
-
+    title: "RUDRON | Construction, Engineering & MEP Recruitment",
     description:
       "Specialist recruitment solutions across Construction, Engineering, Architecture and MEP sectors.",
-
     images: ["/og-image.jpg"],
   },
 
@@ -119,59 +112,61 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en-US">
-
       <body>
-
         <Navbar />
 
         {children}
 
+        {/* Structured data: Organization + WebSite + EmploymentAgency, cross-linked */}
         <script
-  type="application/ld+json"
-  dangerouslySetInnerHTML={{
-    __html: JSON.stringify({
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "Organization",
-          "@id": "https://www.rudrongts.com/#organization",
-          name: "RUDRON Global Talent Solutions",
-          url: "https://www.rudrongts.com",
-          logo: "https://www.rudrongts.com/logo.png",
-          description:
-            "Specialist recruitment solutions across Construction, Engineering, Architecture, Mechanical, Electrical and Plumbing sectors.",
-          sameAs: [
-            "https://www.linkedin.com/company/rudrongts"
-          ]
-        },
-        {
-          "@type": "EmploymentAgency",
-          "@id": "https://www.rudrongts.com/#agency",
-          name: "RUDRON Global Talent Solutions",
-          url: "https://www.rudrongts.com",
-          areaServed: [
-            "United States",
-            "Canada",
-            "United Arab Emirates",
-            "India"
-          ],
-          serviceType: [
-            "Construction Recruitment",
-            "Engineering Recruitment",
-            "MEP Recruitment",
-            "Executive Search",
-            "Talent Acquisition"
-          ]
-        }
-      ]
-    }),
-  }}
-/>
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": [
+                {
+                  "@type": "Organization",
+                  "@id": "https://www.rudrongts.com/#organization",
+                  name: "RUDRON Global Talent Solutions",
+                  url: "https://www.rudrongts.com",
+                  logo: "https://www.rudrongts.com/logo.png",
+                  description:
+                    "Specialist recruitment solutions across Construction, Engineering, Architecture, Mechanical, Electrical and Plumbing sectors.",
+                  sameAs: ["https://www.linkedin.com/company/rudrongts"],
+                },
+                {
+                  "@type": "WebSite",
+                  "@id": "https://www.rudrongts.com/#website",
+                  name: "RUDRON",
+                  url: "https://www.rudrongts.com",
+                  publisher: { "@id": "https://www.rudrongts.com/#organization" },
+                },
+                {
+                  "@type": "EmploymentAgency",
+                  "@id": "https://www.rudrongts.com/#agency",
+                  name: "RUDRON Global Talent Solutions",
+                  url: "https://www.rudrongts.com",
+                  areaServed: [
+                    "United States",
+                    "Canada",
+                    "United Arab Emirates",
+                    "India",
+                  ],
+                  serviceType: [
+                    "Construction Recruitment",
+                    "Engineering Recruitment",
+                    "MEP Recruitment",
+                    "Executive Search",
+                    "Talent Acquisition",
+                  ],
+                },
+              ],
+            }),
+          }}
+        />
 
+        <SpeedInsights />
       </body>
-
-      <SpeedInsights/>
-
     </html>
   );
 }
