@@ -63,6 +63,7 @@ export default function AboutPage() {
   return (
     <main className="bg-[#07111F] text-white overflow-hidden">
       <Navbar />
+      
 
       {/* ══════════════════════════════════════
           HERO — unchanged
@@ -190,30 +191,63 @@ export default function AboutPage() {
               <span className="h-px w-8 bg-[#C89B3C]" />
             </div>
 
-            <h2 className="text-[26px] sm:text-[32px] lg:text-[50px] font-bold leading-[1.08] mb-6">
-              Building The Teams Behind<br />Tomorrow's Infrastructure,<br />
-              <span className="text-[#C89B3C]">Data Centers &amp; Critical Projects</span>
+            <h2 className="text-[18px] sm:text-[24px] lg:text-[40px] font-bold leading-[1.08] mb-6">
+              Rudron is a specialized AEC & MEP talent partner delivering<br />recruitment solutions to organizations, building the<br />
+              <span className="text-[#C89B3C]">future of the built environment.</span>
             </h2>
 
             <div className="w-20 sm:w-32 h-[2px] bg-[#C89B3C] rounded-full mb-8" />
 
             <div className="space-y-5 text-[15px] sm:text-[16px] leading-7 lg:leading-8 text-gray-400">
-              <p>RUDRON was founded with a simple mission: to elevate recruitment within the construction and 
-                engineering industries through a more strategic, consultative, 
-                and relationship-driven approach.
+              <p>Backed by 15+ years of hands-on industry experience, our team understands that hiring in construction goes far beyond filling a seat. 
+                It requires identifying professionals with the technical expertise, project experience, 
+                and leadership capability to perform in fast-moving,
+                high-stakes project environments — and we built Rudron to do exactly that.
                 </p>
-              <p>As construction projects become increasingly complex and talent shortages 
-                continue to impact project delivery, organizations require more than recruiters — 
-                they need partners who understand the realities of the built environment.
+              <h2 className="text-[18px] sm:text-[19px] font-bold leading-7 lg:leading-8 text-white">
+                We support hiring across Ground-Up and Tenant Improvement (TI) projects 
+                spanning multiple sectors, including:
+                </h2>
+                <p>
+                🏗 Commercial & Mixed-Use Developments
+                <br />
+                ⚡ Mission Critical & Data Centers
+                <br />
+                🏥 Healthcare & Life Sciences
+                <br />
+                🏭 Industrial & Manufacturing Facilities
+                <br />
+                🏫 K-12 & Institutional Projects
+                <br />
+                🏘 Residential Construction
+                <br />
+                🛣 Civil & Infrastructure
+                <br />
                 </p>
+              <p>
+                We partner with: General Contractors | Specialty Contractors | MEP Contractors | Developers | EPC Firms | Engineering Consultancies | Owners' Representatives
+              </p>
               <p>We work alongside contractors, engineering consultancies, developers, owners, manufacturers, 
                 and mission-critical operators to identify professionals capable of delivering results across some of the 
                 industry's most demanding projects.
                 </p>
-              <p>From commercial developments and healthcare facilities to data centers, 
-                industrial manufacturing plants, and critical infrastructure projects, our focus remains the same: 
-                connecting exceptional people with exceptional opportunities.
-                </p>
+
+              <p>
+                At Rudron, every search is built around project demands, technical alignment, delivery timelines, 
+                and long-term business objectives — ensuring our clients get professionals who create immediate and lasting impact, 
+                and our candidates get placed where they'll genuinely thrive.
+              </p>
+
+              <div className="w-90 sm:w-112 h-[0.5px] bg-[#C89B3C] rounded-full mb-4" />
+
+              <h2 className="text-[18px] sm:text-[20px] font-bold leading-3 lg:leading-4">
+              In construction, project success starts with the right people.
+              <br />
+              </h2>
+              <h2 className="text-[18px] sm:text-[20px] font-bold leading-7 lg:leading-8 text-[#C89B3C]">
+              Rudron — Building Teams Behind Tomorrow's Projects.
+              <br />
+              </h2>
             </div>
 
             {/* FEATURE BOX */}
