@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import ApplyModal from "@/components/ApplyModal";
 import { Job, jobs } from "@/data/jobs";
 import { buildJobPostingSchema } from "@/lib/jobSchema";
+import { getRelativeTime } from "@/lib/relativeTime";
 import { MapPin, Briefcase, DollarSign, Clock, Building2, ArrowLeft, Share2, BookmarkPlus, CheckCircle } from "lucide-react";
 
 function useInView(threshold = 0.08) {
@@ -58,7 +59,7 @@ export default function JobDetailsClient({ job }: { job: Job }) {
     { icon: <DollarSign size={15} />,  label: "Salary",     value: job.salary },
     { icon: <Briefcase size={15} />,   label: "Type",       value: job.type },
     { icon: <Building2 size={15} />,   label: "Sector",     value: job.specialisation },
-    { icon: <Clock size={15} />,       label: "Posted",     value: job.postedDate || "Recently" },
+    { icon: <Clock size={15} />,       label: "Posted",     value: getRelativeTime(job.datePosted) },
   ];
 
   return (

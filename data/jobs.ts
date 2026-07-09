@@ -2,6 +2,8 @@ export interface Job {
 
   id: number;
 
+  datePosted: string; // ISO date, e.g. "2026-07-07"
+
   title: string;
 
   company: string;
@@ -41,12 +43,12 @@ export const jobs: Job[] = [
 
   {
   id: 1,
+  
+  datePosted: "2026-07-07",
 
   featured: true,
 
   urgent: true,
-
-  postedDate: "2 Days Ago",
 
   recruiter: "RUDRON Executive Search",
 
@@ -93,12 +95,12 @@ export const jobs: Job[] = [
 
   {
     id: 2,
+    
+    datePosted: "2026-07-04",
 
     featured: true,
 
     urgent: true,
-    
-    postedDate: "5 Days Ago",
     
     recruiter: "RUDRON Executive Search",
 
@@ -145,12 +147,12 @@ export const jobs: Job[] = [
 
   {
   id: 3,
+  
+  datePosted: "2026-06-29",
 
   featured: false,
 
   urgent: true,
-
-  postedDate: "10 Days Ago",
 
   recruiter: "RUDRON Executive Search",
 
@@ -201,12 +203,12 @@ export const jobs: Job[] = [
 
 {
   id: 4,
+  
+  datePosted: "2026-07-06",
 
   featured: false,
 
   urgent: true,
-
-  postedDate: "3 Days Ago",
 
   recruiter: "RUDRON Executive Search",
 
@@ -258,12 +260,12 @@ export const jobs: Job[] = [
 
 {
   id: 5,
+  
+  datePosted: "2026-07-07",
 
-  featured: false,
+  featured: true,
 
-  urgent: false,
-
-  postedDate: "2 Days Ago",
+  urgent: true,
 
   recruiter: "RUDRON Executive Search",
 
@@ -315,12 +317,12 @@ export const jobs: Job[] = [
 
 {
   id: 6,
+  
+  datePosted: "2026-06-29",
 
   featured: false,
 
-  urgent: false,
-
-  postedDate: "10 Days Ago",
+  urgent: true,
 
   recruiter: "RUDRON Executive Search",
 
@@ -373,12 +375,12 @@ export const jobs: Job[] = [
 
 {
   id: 7,
+  
+  datePosted: "2026-07-08",
 
   featured: false,
 
   urgent: true,
-
-  postedDate: "1 Day Ago",
 
   recruiter: "RUDRON Executive Search",
 
@@ -433,12 +435,12 @@ export const jobs: Job[] = [
 
 {
   id: 8,
+  
+  datePosted: "2026-07-08",
 
   featured: false,
 
   urgent: false,
-
-  postedDate: "1 Day Ago",
 
   recruiter: "RUDRON Executive Search",
 
@@ -500,12 +502,12 @@ export const jobs: Job[] = [
 
 {
   id: 9,
+  
+  datePosted: "2026-07-06",
 
   featured: false,
 
   urgent: true,
-
-  postedDate: "3 Days Ago",
 
   recruiter: "RUDRON Executive Search",
 
@@ -563,12 +565,12 @@ export const jobs: Job[] = [
 
 {
   id: 10,
+  
+  datePosted: "2026-06-29",
 
   featured: false,
 
   urgent: false,
-
-  postedDate: "10 Days Ago",
 
   recruiter: "RUDRON Executive Search",
 

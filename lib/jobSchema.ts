@@ -41,28 +41,6 @@ export function parseLocation(location: string): { city: string; state: string; 
   return { city: "", state: "", isRemote };
 }
 
-/**
- * Approximates an ISO date from strings like "2 Days Ago" / "10 Days Ago".
- * NOTE: this is a best-effort fallback since the source data stores relative
- * text, not a real date. For fully accurate schema (and so the "posted X days
- * ago" doesn't silently drift every time this recalculates), switch `postedDate`
- * in data/jobs.ts to real ISO date strings when convenient, e.g. "2026-07-05".
- */
-export function approximateDatePosted(postedDate?: string): string {
-  const now = new Date();
-  if (!postedDate) return now.toISOString();
-
-  const match = postedDate.match(/(\d+)\s*Day/i);
-  if (match) {
-    const daysAgo = parseInt(match[1], 10);
-    const date = new Date(now);
-    date.setDate(date.getDate() - daysAgo);
-    return date.toISOString();
-  }
-
-  return now.toISOString();
-}
-
 /** Maps your `type` field to Google's expected enum values. */
 export function mapEmploymentType(type: string): string {
   const t = type.toLowerCase();
@@ -77,7 +55,7 @@ export function mapEmploymentType(type: string): string {
 export function buildJobPostingSchema(job: Job) {
   const salary = parseSalary(job.salary);
   const { city, state, isRemote } = parseLocation(job.location);
-  const datePosted = approximateDatePosted(job.postedDate);
+  const datePosted = new Date(job.datePosted).toISOString();
 
   // validThrough: Google recommends an expiry; we default to 45 days out
   // since these listings don't currently store an explicit close date.

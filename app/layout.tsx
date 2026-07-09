@@ -125,7 +125,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@graph": [
                 {
-                  "@type": "Organization",
+                  "@type": "ProfessionalService",
                   "@id": "https://www.rudrongts.com/#organization",
                   name: "RUDRON Global Talent Solutions",
                   url: "https://www.rudrongts.com",
@@ -133,6 +133,10 @@ export default function RootLayout({
                   description:
                     "Specialist recruitment solutions across Construction, Engineering, Architecture, Mechanical, Electrical and Plumbing sectors.",
                   sameAs: ["https://www.linkedin.com/company/rudrongts"],
+                  email: "jobs@rudrongts.com",
+                  telephone: "+1 YOUR US NUMBER",
+                  foundingDate: "2026",
+                  image: "https://www.rudrongts.com/og-image.png",
                 },
                 {
                   "@type": "WebSite",
