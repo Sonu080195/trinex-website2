@@ -55,9 +55,9 @@ export const metadata: Metadata = {
     "recruitment firm",
   ],
 
-  authors: [{ name: "RUDRON" }],
-  creator: "RUDRON",
-  publisher: "RUDRON",
+  authors: [{ name: "RUDRON Global" }],
+  creator: "RUDRON Global",
+  publisher: "RUDRON Global",
 
   // Explicit icons block — points directly at the files you confirmed are in app/
   icons: {
@@ -69,9 +69,9 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://www.rudrongts.com",
-    siteName: "RUDRON",
+    siteName: "RUDRON Global",
 
-    title: "RUDRON | Construction, Engineering & MEP Recruitment",
+    title: "RUDRON Global Talent Solutions | Construction, Engineering & MEP Recruitment",
 
     description:
       "Specialist recruitment solutions across Construction, Engineering, Architecture and MEP sectors.",
@@ -88,7 +88,7 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "RUDRON | Construction, Engineering & MEP Recruitment",
+    title: "RUDRON Global Talent Solutions | Construction, Engineering & MEP Recruitment",
     description:
       "Specialist recruitment solutions across Construction, Engineering, Architecture and MEP sectors.",
     images: ["/og-image.jpg"],
@@ -137,7 +137,7 @@ export default function RootLayout({
                 {
                   "@type": "WebSite",
                   "@id": "https://www.rudrongts.com/#website",
-                  name: "RUDRON",
+                  name: "RUDRON Global Talent Solutions",
                   url: "https://www.rudrongts.com",
                   publisher: { "@id": "https://www.rudrongts.com/#organization" },
                 },
