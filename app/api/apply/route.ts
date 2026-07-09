@@ -3,6 +3,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 import { supabaseAdmin } from "@/lib/supabase";
 
+export const maxDuration = 30;
+
 const resend = new Resend(process.env.RESEND_API_KEY!);
 const NOTIFY_EMAIL = "jobs@rudrongts.com"; // where you receive applications
 const MAX_FILE_BYTES = 10 * 1024 * 1024; // 10 MB
