@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { Loader2 } from "lucide-react";
 
 /* ── tiny hook ── */
 function useInView(threshold = 0.1) {
@@ -48,6 +49,7 @@ export default function ContactPage() {
   const [selectedCountry, setSelectedCountry] = useState("United States");
   const [formState, setFormState]   = useState<"idle"|"sending"|"sent">("idle");
   const [activeCountry, setActiveCountry] = useState("United States");
+  const [error, setError] = useState("");
 
   const heroRef    = useRef<HTMLDivElement>(null);
   const { ref: officesRef, inView: officesInView } = useInView(0.05);
@@ -58,6 +60,29 @@ export default function ContactPage() {
     const t = setTimeout(() => setHeroVisible(true), 100);
     return () => clearTimeout(t);
   }, []);
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setError("");
+    setFormState("sending");
+
+    const formData = new FormData(e.currentTarget);
+    formData.set("type", "contact_inquiry");
+
+    try {
+      const res = await fetch("/api/apply", { method: "POST", body: formData });
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || "Submission failed. Please try again.");
+      }
+
+      setFormState("sent");
+    } catch (err: any) {
+      setError(err.message || "Something went wrong. Please try again.");
+      setFormState("idle");
+    }
+  }
 
   return (
     <main className="bg-[#07111F] text-white overflow-hidden">
@@ -305,19 +330,11 @@ export default function ContactPage() {
                       <p className="text-gray-400 text-[15px] leading-7">Our team will be in touch within one business day.</p>
                     </div>
                   ) : (
-                    <form
-                      action="https://formsubmit.co/admin@rudrongts.com"
-                      method="POST"
-                      encType="multipart/form-data"
-                      onSubmit={() => setTimeout(() => setFormState("sent"), 900)}
-                    >
-                      <input type="hidden" name="_subject" value="New Website Contact Inquiry" />
-                      <input type="hidden" name="_captcha" value="false" />
-
+                    <form onSubmit={handleSubmit}>
                       <div className="space-y-4">
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                          <FormInput name="Full Name"      placeholder="Full Name"      required />
-                          <FormInput name="Email Address"  placeholder="Email Address"  type="email" required />
+                          <FormInput name="full_name"    placeholder="Full Name"      required />
+                          <FormInput name="email"  placeholder="Email Address"  type="email" required />
                         </div>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                           <FormInput name="company" placeholder="Company Name" />
@@ -325,16 +342,19 @@ export default function ContactPage() {
                         </div>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                           <FormSelect
+                            name="country"
                             value={selectedCountry}
                             onChange={(v) => { setSelectedCountry(v); setActiveCountry(v); }}
                             options={Object.keys(statesByCountry)}
                           />
                           <FormSelect
+                            name="state"
                             defaultText="Select State"
                             options={statesByCountry[selectedCountry]}
                           />
                         </div>
                         <FormSelect
+                          name="service_needed"
                           defaultText="Service Needed"
                           options={["Hire Talent","Find Jobs","Executive Search"]}
                           fullWidth
@@ -349,6 +369,7 @@ export default function ContactPage() {
                           <input
                             type="file"
                             name="attachment"
+                            accept=".pdf,.doc,.docx"
                             className="w-full text-gray-400 text-[13px] file:mr-3 file:px-4 file:py-2 file:rounded-lg file:border-0 file:bg-[#C89B3C] file:text-black file:font-medium file:text-[13px] file:cursor-pointer"
                           />
                           <p className="text-gray-500 text-[11px] mt-1.5">Max file size: 10 MB</p>
@@ -374,15 +395,31 @@ export default function ContactPage() {
                           ))}
                         </div>
 
+                        {error && (
+                          <p className="text-red-400 text-[13px] bg-red-400/10 border border-red-400/20 rounded-xl px-4 py-3">
+                            {error}
+                          </p>
+                        )}
+
                         <button
                           type="submit"
+                          disabled={formState === "sending"}
                           className="group w-full relative overflow-hidden bg-[#C89B3C] text-[#07111F] font-bold py-4 rounded-2xl 
                           transition-all duration-300 hover:shadow-[0_8px_30px_rgba(200,155,60,0.35)] hover:scale-[1.01] 
-                          active:scale-[0.99]"
+                          active:scale-[0.99] disabled:opacity-60 disabled:cursor-not-allowed"
                         >
                           <span className="relative z-10 flex items-center justify-center gap-2">
-                            Send Inquiry
-                            <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                            {formState === "sending" ? (
+                              <>
+                                <Loader2 size={18} className="animate-spin" />
+                                Sending...
+                              </>
+                            ) : (
+                              <>
+                                Send Inquiry
+                                <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                              </>
+                            )}
                           </span>
                           <div className="absolute inset-0 bg-white/10 translate-x-[-100%] group-hover:translate-x-[100%] 
                           transition-transform duration-500 skew-x-12" />
@@ -430,12 +467,13 @@ function FormInput({ name, placeholder, type = "text", required = false }: {
   );
 }
 
-function FormSelect({ options, defaultText, value, onChange, fullWidth = false }: {
-  options: string[]; defaultText?: string; value?: string;
+function FormSelect({ name, options, defaultText, value, onChange, fullWidth = false }: {
+  name?: string; options: string[]; defaultText?: string; value?: string;
   onChange?: (v: string) => void; fullWidth?: boolean;
 }) {
   return (
     <select
+      name={name}
       value={value}
       onChange={onChange ? (e) => onChange(e.target.value) : undefined}
       className={`${fullWidth ? "w-full" : ""} h-[50px] bg-white/[0.04] border border-white/8 rounded-xl px-4 text-white text-[14px] outline-none focus:border-[#C89B3C]/40 transition-colors duration-200`}

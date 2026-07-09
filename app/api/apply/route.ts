@@ -6,7 +6,8 @@ import { supabaseAdmin } from "@/lib/supabase";
 export const maxDuration = 30;
 
 const resend = new Resend(process.env.RESEND_API_KEY!);
-const NOTIFY_EMAIL = "jobs@rudrongts.com"; // where you receive applications
+const NOTIFY_EMAIL = "jobs@rudrongts.com"; // job applications / candidates
+const CONTACT_NOTIFY_EMAIL = "admin@rudrongts.com"; // general contact inquiries
 const MAX_FILE_BYTES = 10 * 1024 * 1024; // 10 MB
 
 export async function POST(req: NextRequest) {
@@ -17,6 +18,8 @@ export async function POST(req: NextRequest) {
     const file = formData.get("attachment") as File | null;
 
     // ── Basic validation ─────────────────────────────────────
+    // Resume is required for job applications, optional for candidate
+    // profiles and contact inquiries.
     if (type === "job_application" && !file) {
       return NextResponse.json(
         { error: "Resume attachment is required." },
@@ -24,7 +27,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    if (file && file.size > MAX_FILE_BYTES) {
+    if (file && file.size > 0 && file.size > MAX_FILE_BYTES) {
       return NextResponse.json(
         { error: "File exceeds the 10MB limit." },
         { status: 400 }
@@ -32,7 +35,7 @@ export async function POST(req: NextRequest) {
     }
 
     // ── Collect shared + type-specific fields ────────────────
-    const email = (formData.get("email") as string) || "";
+    const email = (formData.get("email") as string) || (formData.get("Email Address") as string) || "";
     const phone = (formData.get("phone") as string) || "";
     const linkedin = (formData.get("linkedin") as string) || "";
     const message = (formData.get("message") as string) || "";
@@ -41,21 +44,28 @@ export async function POST(req: NextRequest) {
     const firstName = (formData.get("first_name") as string) || null;
     const lastName = (formData.get("last_name") as string) || null;
 
-    const fullName = (formData.get("full_name") as string) || null;
+    const fullName =
+      (formData.get("full_name") as string) ||
+      (formData.get("Full Name") as string) ||
+      null;
     const desiredRole = (formData.get("desired_role") as string) || null;
     const city = (formData.get("city") as string) || null;
     const state = (formData.get("state") as string) || null;
     const country = (formData.get("country") as string) || null;
 
+    // Contact-page-only fields
+    const company = (formData.get("company") as string) || null;
+    const serviceNeeded = (formData.get("service_needed") as string) || null;
+
     const displayName =
       fullName || `${firstName || ""} ${lastName || ""}`.trim() || "Unknown";
 
-    // ── Upload resume to Supabase Storage (if present) ───────
+    // ── Upload attachment to Supabase Storage (if present) ───
     let resumeUrl: string | null = null;
     let resumeFilename: string | null = null;
     let fileBuffer: Buffer | null = null;
 
-    if (file) {
+    if (file && file.size > 0) {
       fileBuffer = Buffer.from(await file.arrayBuffer());
       const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, "_");
       const storagePath = `${Date.now()}-${safeName}`;
@@ -70,12 +80,11 @@ export async function POST(req: NextRequest) {
       if (uploadError) {
         console.error("Supabase upload error:", uploadError);
         return NextResponse.json(
-          { error: "Failed to upload resume." },
+          { error: "Failed to upload file." },
           { status: 500 }
         );
       }
 
-      // Signed URL valid for 30 days so you can open it from the email/admin panel
       const { data: signedUrlData } = await supabaseAdmin.storage
         .from("resumes")
         .createSignedUrl(storagePath, 60 * 60 * 24 * 30);
@@ -98,6 +107,8 @@ export async function POST(req: NextRequest) {
       city,
       state,
       country,
+      company,
+      service_needed: serviceNeeded,
       message,
       resume_url: resumeUrl,
       resume_filename: resumeFilename,
@@ -111,27 +122,38 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // ── Send email notification (with the resume attached directly) ──
-    const subject =
-      type === "job_application"
-        ? `New Application – ${jobTitle || "Unknown Role"}`
-        : "New Candidate Submission";
+    // ── Send email notification ──────────────────────────────
+    let subject: string;
+    let notifyTo: string;
+
+    if (type === "job_application") {
+      subject = `New Application – ${jobTitle || "Unknown Role"}`;
+      notifyTo = NOTIFY_EMAIL;
+    } else if (type === "candidate_profile") {
+      subject = "New Candidate Submission";
+      notifyTo = NOTIFY_EMAIL;
+    } else {
+      subject = "New Website Contact Inquiry";
+      notifyTo = CONTACT_NOTIFY_EMAIL;
+    }
 
     const emailHtml = `
       <h2>${subject}</h2>
       <p><strong>Name:</strong> ${displayName}</p>
       <p><strong>Email:</strong> ${email}</p>
       <p><strong>Phone:</strong> ${phone || "—"}</p>
-      <p><strong>LinkedIn:</strong> ${linkedin || "—"}</p>
+      ${company ? `<p><strong>Company:</strong> ${company}</p>` : ""}
+      ${linkedin ? `<p><strong>LinkedIn:</strong> ${linkedin}</p>` : ""}
       ${desiredRole ? `<p><strong>Desired Role:</strong> ${desiredRole}</p>` : ""}
+      ${serviceNeeded ? `<p><strong>Service Needed:</strong> ${serviceNeeded}</p>` : ""}
       ${city || state || country ? `<p><strong>Location:</strong> ${[city, state, country].filter(Boolean).join(", ")}</p>` : ""}
       <p><strong>Message:</strong><br/>${(message || "—").replace(/\n/g, "<br/>")}</p>
-      ${resumeUrl ? `<p><strong>Resume:</strong> <a href="${resumeUrl}">${resumeFilename}</a> (link valid 30 days)</p>` : ""}
+      ${resumeUrl ? `<p><strong>Attachment:</strong> <a href="${resumeUrl}">${resumeFilename}</a> (link valid 30 days)</p>` : ""}
     `;
 
     await resend.emails.send({
-      from: "RUDRON Careers <careers@rudrongts.com>", // must be a verified domain in Resend
-      to: NOTIFY_EMAIL,
+      from: "RUDRON Website <careers@rudrongts.com>",
+      to: notifyTo,
       replyTo: email || undefined,
       subject,
       html: emailHtml,
