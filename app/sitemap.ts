@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { jobs } from "@/data/jobs";
 
 const BASE_URL = "https://www.rudrongts.com";
 
@@ -69,30 +70,35 @@ const staticRoutes: Array<{
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
 
-  return staticRoutes.map(({ path, changeFrequency, priority }) => ({
-    url: `${BASE_URL}${path}`,
+  const staticEntries: MetadataRoute.Sitemap = staticRoutes.map(
+    ({ path, changeFrequency, priority }) => ({
+      url: `${BASE_URL}${path}`,
+      lastModified: now,
+      changeFrequency,
+      priority,
+    })
+  );
+
+  // ── Individual job pages ─────────────────────────────────
+  // Sourced directly from the static jobs data — no CMS needed.
+  // Featured/urgent roles get a slightly higher priority since
+  // they're the highest-value pages to get indexed quickly.
+  const jobEntries: MetadataRoute.Sitemap = jobs.map((job) => ({
+    url: `${BASE_URL}/jobs/${job.slug}`,
     lastModified: now,
-    changeFrequency,
-    priority,
+    changeFrequency: "weekly" as const,
+    priority: job.featured ? 0.85 : 0.75,
   }));
+
+  return [...staticEntries, ...jobEntries];
 }
 
 /*
   ┌─────────────────────────────────────────────────────────────────┐
-  │  DYNAMIC ROUTES – implement when CMS / DB data is available     │
+  │  FUTURE: INSIGHTS / BLOG DYNAMIC ROUTES                          │
   │                                                                 │
-  │  /industries/[slug]  → fetch all industry slugs from CMS        │
-  │  /insights/[slug]    → fetch all published article slugs        │
-  │  /jobs/[id]          → fetch all active job-listing IDs         │
-  │                                                                 │
-  │  Example (add to the return array above):                       │
-  │                                                                 │
-  │  const posts = await getAllInsights();          // your fn       │
-  │  const dynamicInsights = posts.map((post) => ({                 │
-  │    url: `${BASE_URL}/insights/${post.slug}`,                     │
-  │    lastModified: new Date(post.updatedAt),                       │
-  │    changeFrequency: "weekly" as const,                          │
-  │    priority: 0.75,                                              │
-  │  }));                                                           │
+  │  /insights/[slug]  → fetch all published article slugs          │
+  │  once that content moves to a CMS or gets its own data file,    │
+  │  add it here the same way jobEntries was added above.           │
   └─────────────────────────────────────────────────────────────────┘
 */
