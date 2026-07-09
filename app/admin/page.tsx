@@ -2,6 +2,7 @@
 
 import { jobs } from "@/data/jobs";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 interface JobFormData {
   title: string;
@@ -35,6 +36,14 @@ requirements: "",
 benefits: "",
 slug: "",
     });
+
+    const router = useRouter();
+ 
+  const handleLogout = async () => {
+    await fetch("/api/admin/logout", { method: "POST" });
+    router.push("/admin/login");
+    router.refresh();
+  };
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -142,19 +151,21 @@ ${formData.benefits
 
   return (
 
-    <main className="min-h-screen bg-[#07111F] text-white px-6 py-16">
+    <main className="min-h-screen bg-[#07111F] text-white px-6 pt-36 lg:pt-44 pb-16">
 
       <div className="max-w-5xl mx-auto">
 
         {/* HEADER */}
-        <div className="mb-12">
-
+        <div className="mb-12 flex items-start justify-between gap-6 flex-wrap">
+ 
+          <div>
+ 
           <p className="text-[#C89B3C] uppercase tracking-[4px] text-sm mb-4">
-
+ 
             Internal Dashboard
-
+ 
           </p>
-
+ 
           <h1 className="text-[48px] font-bold leading-tight mb-5">
 
             Admin Job
@@ -165,12 +176,21 @@ ${formData.benefits
           </h1>
 
           <p className="text-gray-400 text-lg leading-8 max-w-3xl">
-
+ 
             Create and manage construction, architecture,
             engineering, and executive recruitment openings.
-
+ 
           </p>
-
+ 
+          </div>
+ 
+          <button
+            onClick={handleLogout}
+            className="text-gray-400 hover:text-white text-sm border border-white/10 hover:border-white/20 rounded-lg px-5 py-3 transition-colors duration-200 flex-shrink-0"
+          >
+            Log Out
+          </button>
+ 
         </div>
 
         {/* FORM */}
