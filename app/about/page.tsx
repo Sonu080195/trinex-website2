@@ -238,7 +238,7 @@ export default function AboutPage() {
                 and our candidates get placed where they'll genuinely thrive.
               </p>
 
-              <div className="w-90 sm:w-112 h-[0.5px] bg-[#C89B3C] rounded-full mb-4" />
+              <div className="w-90 sm:w-100 h-[0.5px] bg-[#C89B3C] rounded-full mb-4" />
 
               <h2 className="text-[18px] sm:text-[20px] font-bold leading-3 lg:leading-4">
               In construction, project success starts with the right people.
