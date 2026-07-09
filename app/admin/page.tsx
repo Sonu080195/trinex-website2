@@ -21,6 +21,9 @@ slug: string;
 
 export default function AdminPage() {
 
+  const [saving, setSaving] = useState(false);
+  const [saveError, setSaveError] = useState("");
+
   const [formData, setFormData] =
     useState<JobFormData>({
       title: "",
@@ -78,76 +81,49 @@ slug: "",
   });
 };
 
-  const handleSubmit = (
-  e: React.SyntheticEvent
-) => {
-
-  e.preventDefault();
-
-  const generatedJob = `
-
-{
-  id: ${Date.now()},
-
-  title: "${formData.title}",
-
-  company: "${formData.company}",
-
-  location: "${formData.location}",
-
-  salary: "${formData.salary}",
-
-  type: "${formData.type}",
-
-  industry: "${formData.industry}",
-
-  specialisation: "${formData.specialisation}",
-
-  slug: "${formData.slug}",
-
-  description:
-    "${formData.description}",
-
-  responsibilities: [
-${formData.responsibilities
-  .split("\n")
-  .filter(Boolean)
-  .map(
-    (item) => `    "${item.trim()}"`
-  )
-  .join(",\n")}
-  ],
-
-  requirements: [
-${formData.requirements
-  .split("\n")
-  .filter(Boolean)
-  .map(
-    (item) => `    "${item.trim()}"`
-  )
-  .join(",\n")}
-  ],
-
-  benefits: [
-${formData.benefits
-  .split("\n")
-  .filter(Boolean)
-  .map(
-    (item) => `    "${item.trim()}"`
-  )
-  .join(",\n")}
-  ],
-},
-`;
-
-  navigator.clipboard.writeText(
-    generatedJob
-  );
-
-  alert(
-    "Job Object Generated & Copied!"
-  );
-};
+  const handleSubmit = async (e: React.SyntheticEvent) => {
+    e.preventDefault();
+    setSaveError("");
+    setSaving(true);
+ 
+    try {
+      const res = await fetch("/api/admin/jobs/create", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+ 
+      const result = await res.json();
+ 
+      if (!res.ok) {
+        throw new Error(result.error || "Failed to create job.");
+      }
+ 
+      alert(
+        `Job created! The site will redeploy automatically — it should be live in about 1-2 minutes. New job slug: ${result.slug}`
+      );
+ 
+      // Reset the form
+      setFormData({
+        title: "",
+        company: "",
+        location: "",
+        salary: "",
+        type: "",
+        industry: "",
+        specialisation: "",
+        description: "",
+        responsibilities: "",
+        requirements: "",
+        benefits: "",
+        slug: "",
+      });
+    } catch (err: any) {
+      setSaveError(err.message || "Something went wrong.");
+    } finally {
+      setSaving(false);
+    }
+  };
 
   return (
 
@@ -550,12 +526,19 @@ ${formData.benefits
           {/* BUTTON */}
           <button
             type="submit"
-            className="bg-[#C89B3C] hover:bg-[#d6ab52] text-black font-semibold px-8 py-4 rounded-xl transition-all duration-300"
+            disabled={saving}
+            className="bg-[#C89B3C] hover:bg-[#d6ab52] disabled:opacity-60 disabled:cursor-not-allowed text-black font-semibold px-8 py-4 rounded-xl transition-all duration-300"
           >
-
-            Create Job Draft
-
+ 
+            {saving ? "Publishing..." : "Publish Job"}
+ 
           </button>
+ 
+          {saveError && (
+            <p className="text-red-400 text-sm bg-red-400/10 border border-red-400/20 rounded-xl px-4 py-3">
+              {saveError}
+            </p>
+          )}
 
         </form>
 

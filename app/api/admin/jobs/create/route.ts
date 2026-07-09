@@ -1,0 +1,87 @@
+// app/api/admin/jobs/create/route.ts
+import { NextRequest, NextResponse } from "next/server";
+import { verifySessionToken } from "@/lib/adminAuth";
+import { addJobToRepo } from "@/lib/githubJobs";
+
+// Escapes double quotes and backslashes so form input can't break the
+// generated TypeScript string literals.
+function esc(str: string): string {
+  return (str || "").replace(/\\/g, "\\\\").replace(/"/g, '\\"');
+}
+
+function buildJobObjectString(data: any, id: number, datePosted: string): string {
+  const linesToArray = (text: string) =>
+    (text || "")
+      .split("\n")
+      .map((l) => l.trim())
+      .filter(Boolean)
+      .map((line) => `    "${esc(line)}"`)
+      .join(",\n");
+
+  return `  {
+    id: ${id},
+    datePosted: "${datePosted}",
+    featured: false,
+    urgent: false,
+    recruiter: "RUDRON Executive Search",
+    heroImage: "/jobs/commercial-pm.webp",
+    title: "${esc(data.title)}",
+    company: "${esc(data.company)}",
+    location: "${esc(data.location)}",
+    salary: "${esc(data.salary)}",
+    type: "${esc(data.type)}",
+    industry: "${esc(data.industry)}",
+    specialisation: "${esc(data.specialisation)}",
+    slug: "${esc(data.slug)}",
+    description: "${esc(data.description)}",
+    responsibilities: [
+${linesToArray(data.responsibilities)}
+    ],
+    requirements: [
+${linesToArray(data.requirements)}
+    ],
+    benefits: [
+${linesToArray(data.benefits)}
+    ],
+  },
+`;
+}
+
+export async function POST(req: NextRequest) {
+  try {
+    // Verify the admin session directly (this route isn't covered by the
+    // /admin/:path* middleware matcher since it's under /api/admin/).
+    const token = req.cookies.get("admin_session")?.value;
+    const valid = await verifySessionToken(token);
+    if (!valid) {
+      return NextResponse.json({ error: "Not authenticated." }, { status: 401 });
+    }
+
+    const data = await req.json();
+
+    const required = ["title", "company", "location", "type", "industry", "specialisation", "slug", "description"];
+    for (const field of required) {
+      if (!data[field] || String(data[field]).trim() === "") {
+        return NextResponse.json({ error: `Missing required field: ${field}` }, { status: 400 });
+      }
+    }
+
+    const id = Date.now();
+    const datePosted = new Date().toISOString().split("T")[0]; // e.g. "2026-07-09"
+
+    const jobObjectString = buildJobObjectString(data, id, datePosted);
+
+    await addJobToRepo(
+      jobObjectString,
+      `Add job: ${data.title} (${data.location})`
+    );
+
+    return NextResponse.json({ success: true, slug: data.slug });
+  } catch (err: any) {
+    console.error("Admin job create error:", err);
+    return NextResponse.json(
+      { error: err.message || "Failed to create job." },
+      { status: 500 }
+    );
+  }
+}
