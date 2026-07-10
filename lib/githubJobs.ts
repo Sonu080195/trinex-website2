@@ -5,6 +5,7 @@
 
 const GITHUB_API = "https://api.github.com";
 const FILE_PATH = "data/jobs.ts";
+const ARRAY_MARKER = "export const jobs: Job[] = [";
 
 function getConfig() {
   const token = process.env.GITHUB_TOKEN;
@@ -67,25 +68,114 @@ async function updateFile(newContent: string, sha: string, commitMessage: string
 }
 
 /**
+ * Scans the jobs array text and finds the exact character range of the
+ * job object whose `id:` field matches. Uses brace-depth counting (and
+ * skips braces inside string literals) so it works regardless of each
+ * job's internal formatting/indentation.
+ */
+function findJobBlockRange(content: string, id: number): { start: number; end: number } | null {
+  const markerIndex = content.indexOf(ARRAY_MARKER);
+  if (markerIndex === -1) {
+    throw new Error("Could not find the jobs array in data/jobs.ts — file structure may have changed.");
+  }
+
+  let i = markerIndex + ARRAY_MARKER.length;
+  const len = content.length;
+
+  while (i < len) {
+    while (i < len && /[\s,]/.test(content[i])) i++;
+    if (content[i] === "]") break;
+    if (content[i] !== "{") {
+      i++;
+      continue;
+    }
+
+    const blockStart = i;
+    let depth = 0;
+    let inString: string | null = null;
+    let escaped = false;
+
+    for (; i < len; i++) {
+      const ch = content[i];
+      if (inString) {
+        if (escaped) escaped = false;
+        else if (ch === "\\") escaped = true;
+        else if (ch === inString) inString = null;
+        continue;
+      }
+      if (ch === '"' || ch === "'" || ch === "`") {
+        inString = ch;
+        continue;
+      }
+      if (ch === "{") depth++;
+      else if (ch === "}") {
+        depth--;
+        if (depth === 0) {
+          i++;
+          break;
+        }
+      }
+    }
+
+    const blockEnd = i;
+    const blockText = content.slice(blockStart, blockEnd);
+    const idMatch = blockText.match(/id:\s*(\d+)/);
+
+    if (idMatch && parseInt(idMatch[1], 10) === id) {
+      let end = blockEnd;
+      while (content[end] === "," || content[end] === " ") end++;
+      if (content[end] === "\n") end++;
+      return { start: blockStart, end };
+    }
+  }
+
+  return null;
+}
+
+/**
  * Inserts a new job object (as a formatted string) right after the
  * `export const jobs: Job[] = [` line, then commits the change.
  */
 export async function addJobToRepo(jobObjectString: string, commitMessage: string) {
   const { content, sha } = await getCurrentFile();
 
-  const marker = "export const jobs: Job[] = [";
-  const markerIndex = content.indexOf(marker);
-
+  const markerIndex = content.indexOf(ARRAY_MARKER);
   if (markerIndex === -1) {
     throw new Error("Could not find the jobs array in data/jobs.ts — file structure may have changed.");
   }
 
-  const insertAt = markerIndex + marker.length;
+  const insertAt = markerIndex + ARRAY_MARKER.length;
   const newContent =
-    content.slice(0, insertAt) +
-    "\n" +
-    jobObjectString +
-    content.slice(insertAt);
+    content.slice(0, insertAt) + "\n" + jobObjectString + content.slice(insertAt);
+
+  await updateFile(newContent, sha, commitMessage);
+}
+
+/** Replaces an existing job (matched by id) with a new object string. */
+export async function updateJobInRepo(id: number, newJobObjectString: string, commitMessage: string) {
+  const { content, sha } = await getCurrentFile();
+  const range = findJobBlockRange(content, id);
+
+  if (!range) {
+    throw new Error(`Job with id ${id} not found in repo file.`);
+  }
+
+  const newContent =
+    content.slice(0, range.start) + newJobObjectString + content.slice(range.end);
+
+  await updateFile(newContent, sha, commitMessage);
+}
+
+/** Removes an existing job (matched by id) entirely. */
+export async function deleteJobFromRepo(id: number, commitMessage: string) {
+  const { content, sha } = await getCurrentFile();
+  const range = findJobBlockRange(content, id);
+
+  if (!range) {
+    throw new Error(`Job with id ${id} not found in repo file.`);
+  }
+
+  const newContent = content.slice(0, range.start) + content.slice(range.end);
 
   await updateFile(newContent, sha, commitMessage);
 }

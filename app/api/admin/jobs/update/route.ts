@@ -1,16 +1,11 @@
-// app/api/admin/jobs/create/route.ts
+// app/api/admin/jobs/update/route.ts
 import { NextRequest, NextResponse } from "next/server";
 import { verifySessionToken } from "@/lib/adminAuth";
-import { addJobToRepo } from "@/lib/githubJobs";
+import { updateJobInRepo } from "@/lib/githubJobs";
 import { buildJobObjectString } from "@/lib/jobObjectString";
-
-// Escapes double quotes and backslashes so form input can't break the
-// generated TypeScript string literals.
 
 export async function POST(req: NextRequest) {
   try {
-    // Verify the admin session directly (this route isn't covered by the
-    // /admin/:path* middleware matcher since it's under /api/admin/).
     const token = req.cookies.get("admin_session")?.value;
     const valid = await verifySessionToken(token);
     if (!valid) {
@@ -19,6 +14,10 @@ export async function POST(req: NextRequest) {
 
     const data = await req.json();
 
+    if (!data.id) {
+      return NextResponse.json({ error: "Missing job id." }, { status: 400 });
+    }
+
     const required = ["title", "company", "location", "type", "industry", "specialisation", "slug", "description"];
     for (const field of required) {
       if (!data[field] || String(data[field]).trim() === "") {
@@ -26,27 +25,20 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    const id = Date.now();
-    const datePosted = new Date().toISOString().split("T")[0]; // e.g. "2026-07-09"
-
     const jobObjectString = buildJobObjectString(data, {
-      id,
-      datePosted,
-      featured: false,
-      urgent: false,
+      id: data.id,
+      datePosted: data.datePosted || new Date().toISOString().split("T")[0],
+      featured: !!data.featured,
+      urgent: !!data.urgent,
+      recruiter: data.recruiter,
+      heroImage: data.heroImage,
     });
 
-    await addJobToRepo(
-      jobObjectString,
-      `Add job: ${data.title} (${data.location})`
-    );
+    await updateJobInRepo(data.id, jobObjectString, `Update job: ${data.title} (${data.location})`);
 
     return NextResponse.json({ success: true, slug: data.slug });
   } catch (err: any) {
-    console.error("Admin job create error:", err);
-    return NextResponse.json(
-      { error: err.message || "Failed to create job." },
-      { status: 500 }
-    );
+    console.error("Admin job update error:", err);
+    return NextResponse.json({ error: err.message || "Failed to update job." }, { status: 500 });
   }
 }

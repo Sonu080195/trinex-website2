@@ -23,6 +23,8 @@ export default function AdminPage() {
 
   const [saving, setSaving] = useState(false);
   const [saveError, setSaveError] = useState("");
+  const [editingJob, setEditingJob] = useState<any>(null); // holds the full original job while editing, null = create mode
+  const [deletingId, setDeletingId] = useState<number | null>(null);
 
   const [formData, setFormData] =
     useState<JobFormData>({
@@ -60,6 +62,55 @@ slug: "",
     });
   };
 
+    const startEdit = (job: any) => {
+    setEditingJob(job);
+    setFormData({
+      title: job.title,
+      company: job.company,
+      location: job.location,
+      salary: job.salary,
+      type: job.type,
+      industry: job.industry,
+      specialisation: job.specialisation,
+      description: job.description,
+      responsibilities: (job.responsibilities || []).join("\n"),
+      requirements: (job.requirements || []).join("\n"),
+      benefits: (job.benefits || []).join("\n"),
+      slug: job.slug,
+    });
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+ 
+  const cancelEdit = () => {
+    setEditingJob(null);
+    setFormData({
+      title: "", company: "", location: "", salary: "", type: "",
+      industry: "", specialisation: "", description: "",
+      responsibilities: "", requirements: "", benefits: "", slug: "",
+    });
+  };
+
+    const handleDelete = async (job: any) => {
+    if (!confirm(`Delete "${job.title}"? This can't be undone.`)) return;
+ 
+    setDeletingId(job.id);
+    try {
+      const res = await fetch("/api/admin/jobs/delete", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: job.id, title: job.title }),
+      });
+      const result = await res.json();
+      if (!res.ok) throw new Error(result.error || "Failed to delete job.");
+ 
+      alert("Job deleted. The site will redeploy automatically in about 1-2 minutes.");
+    } catch (err: any) {
+      alert(err.message || "Something went wrong deleting the job.");
+    } finally {
+      setDeletingId(null);
+    }
+  };
+
   const generateSlug = () => {
 
   const titleSlug = formData.title
@@ -87,10 +138,24 @@ slug: "",
     setSaving(true);
  
     try {
-      const res = await fetch("/api/admin/jobs/create", {
+      const isEditing = !!editingJob;
+      const endpoint = isEditing ? "/api/admin/jobs/update" : "/api/admin/jobs/create";
+      const payload = isEditing
+        ? {
+            ...formData,
+            id: editingJob.id,
+            datePosted: editingJob.datePosted,
+            featured: editingJob.featured,
+            urgent: editingJob.urgent,
+            recruiter: editingJob.recruiter,
+            heroImage: editingJob.heroImage,
+          }
+        : formData;
+ 
+      const res = await fetch(endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(payload),
       });
  
       const result = await res.json();
@@ -100,7 +165,9 @@ slug: "",
       }
  
       alert(
-        `Job created! The site will redeploy automatically — it should be live in about 1-2 minutes. New job slug: ${result.slug}`
+        isEditing
+          ? `Job updated! The site will redeploy automatically in about 1-2 minutes.`
+          : `Job created! The site will redeploy automatically — it should be live in about 1-2 minutes. New job slug: ${result.slug}`
       );
  
       // Reset the form
@@ -118,6 +185,7 @@ slug: "",
         benefits: "",
         slug: "",
       });
+      setEditingJob(null);
     } catch (err: any) {
       setSaveError(err.message || "Something went wrong.");
     } finally {
@@ -524,15 +592,25 @@ slug: "",
 </div>
 
           {/* BUTTON */}
-          <button
-            type="submit"
-            disabled={saving}
-            className="bg-[#C89B3C] hover:bg-[#d6ab52] disabled:opacity-60 disabled:cursor-not-allowed text-black font-semibold px-8 py-4 rounded-xl transition-all duration-300"
-          >
+          <div className="flex gap-3 flex-wrap">
+            <button
+              type="submit"
+              disabled={saving}
+              className="bg-[#C89B3C] hover:bg-[#d6ab52] disabled:opacity-60 disabled:cursor-not-allowed text-black font-semibold px-8 py-4 rounded-xl transition-all duration-300"
+            >
+              {saving ? "Saving..." : editingJob ? "Update Job" : "Publish Job"}
+            </button>
  
-            {saving ? "Publishing..." : "Publish Job"}
- 
-          </button>
+            {editingJob && (
+              <button
+                type="button"
+                onClick={cancelEdit}
+                className="bg-white/10 hover:bg-white/20 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300"
+              >
+                Cancel Edit
+              </button>
+            )}
+          </div>
  
           {saveError && (
             <p className="text-red-400 text-sm bg-red-400/10 border border-red-400/20 rounded-xl px-4 py-3">
@@ -709,35 +787,52 @@ slug: "",
 
         {/* ACTIONS */}
         <div className="flex flex-wrap gap-3">
-
+ 
           {/* PREVIEW */}
           <a
             href={`/jobs/${job.slug}`}
             target="_blank"
             className="bg-[#C89B3C] hover:bg-[#d6ab52] text-black text-sm font-semibold px-4 py-2 rounded-lg transition-all duration-300"
           >
-
+ 
             Preview
-
+ 
           </a>
-
+ 
           {/* COPY */}
           <button
             onClick={() => {
-
+ 
               navigator.clipboard.writeText(
                 job.slug
               );
-
+ 
               alert("Slug Copied!");
             }}
             className="bg-white/10 hover:bg-white/20 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-all duration-300"
           >
-
+ 
             Copy Slug
-
+ 
           </button>
-
+ 
+          {/* EDIT */}
+          <button
+            onClick={() => startEdit(job)}
+            className="bg-white/10 hover:bg-white/20 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-all duration-300"
+          >
+            Edit
+          </button>
+ 
+          {/* DELETE */}
+          <button
+            onClick={() => handleDelete(job)}
+            disabled={deletingId === job.id}
+            className="bg-red-500/15 hover:bg-red-500/25 border border-red-400/30 text-red-400 text-sm font-semibold px-4 py-2 rounded-lg transition-all duration-300 disabled:opacity-60"
+          >
+            {deletingId === job.id ? "Deleting..." : "Delete"}
+          </button>
+ 
         </div>
 
       </div>
