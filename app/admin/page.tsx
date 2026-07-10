@@ -656,7 +656,7 @@ slug: "",
   <div className="bg-[#0D1726] border border-white/5 rounded-[28px] overflow-hidden">
 
     {/* HEADERS */}
-    <div className="grid grid-cols-5 gap-5 px-6 py-5 border-b border-white/5 text-gray-400 text-sm uppercase tracking-[2px]">
+    <div className="hidden md:grid md:grid-cols-5 gap-5 px-6 py-5 border-b border-white/5 text-gray-400 text-sm uppercase tracking-[2px]">
 
       <div>Title</div>
 
@@ -673,9 +673,9 @@ slug: "",
     {/* ROWS */}
     {jobs.map((job) => (
 
-      <div
+    <div
         key={job.id}
-        className="grid grid-cols-5 gap-5 px-6 py-6 border-b border-white/5 items-center"
+        className="grid grid-cols-1 md:grid-cols-5 gap-3 md:gap-5 px-5 md:px-6 py-6 border-b border-white/5 md:items-center"
       >
 
         {/* TITLE */}
@@ -691,27 +691,24 @@ slug: "",
 
         {/* COMPANY */}
         <div className="text-gray-300">
-
+          <span className="md:hidden text-gray-500 text-xs uppercase tracking-[1px] mr-2">Company:</span>
           {job.company}
-
         </div>
-
+ 
         {/* LOCATION */}
         <div className="text-gray-300">
-
+          <span className="md:hidden text-gray-500 text-xs uppercase tracking-[1px] mr-2">Location:</span>
           {job.location}
-
         </div>
-
+ 
         {/* SLUG */}
         <div className="text-gray-500 text-sm truncate">
-
+          <span className="md:hidden text-gray-500 text-xs uppercase tracking-[1px] mr-2">Slug:</span>
           {job.slug}
-
         </div>
 
         {/* ACTIONS */}
-        <div className="flex gap-3">
+        <div className="flex flex-wrap gap-3">
 
           {/* PREVIEW */}
           <a
