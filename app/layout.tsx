@@ -129,7 +129,8 @@ export default function RootLayout({
                   "@id": "https://www.rudrongts.com/#organization",
                   name: "RUDRON Global Talent Solutions",
                   url: "https://www.rudrongts.com",
-                  logo: "https://www.rudrongts.com/logo.png",
+                  logo: "https://www.rudrongts.com/logo.webp",
+                  title: "RUDRON Global Talent Solutions",
                   description:
                     "Specialist recruitment solutions across Construction, Engineering, Architecture, Mechanical, Electrical and Plumbing sectors.",
                   sameAs: ["https://www.linkedin.com/company/rudrongts"],
