@@ -55,9 +55,9 @@ export const metadata: Metadata = {
     "recruitment firm",
   ],
 
-  authors: [{ name: "RUDRON Global" }],
-  creator: "RUDRON Global",
-  publisher: "RUDRON Global",
+  authors: [{ name: "RUDRON Global Talent Solutions" }],
+  creator: "RUDRON Global Talent Solutions",
+  publisher: "RUDRON Global Talent Solutions",
 
   // Explicit icons block — points directly at the files you confirmed are in app/
   icons: {
