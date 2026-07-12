@@ -3,6 +3,7 @@
 import { jobs } from "@/data/jobs";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 interface JobFormData {
   title: string;
@@ -237,14 +238,21 @@ export default function AdminPage() {
  
           </div>
  
-          <button
-            onClick={handleLogout}
-            className="text-gray-400 hover:text-white text-sm border border-white/10 hover:border-white/20 rounded-lg px-5 py-3 transition-colors duration-200 flex-shrink-0"
-          >
-            Log Out
-          </button>
+          <div className="flex items-center gap-3 flex-shrink-0">
+            <Link
+              href="/admin/applications"
+              className="text-gray-400 hover:text-white text-sm border border-white/10 hover:border-white/20 rounded-lg px-5 py-3 transition-colors duration-200"
+            >
+              View Submissions
+            </Link>
  
-        </div>
+            <button
+              onClick={handleLogout}
+              className="text-gray-400 hover:text-white text-sm border border-white/10 hover:border-white/20 rounded-lg px-5 py-3 transition-colors duration-200"
+            >
+              Log Out
+            </button>
+          </div>
 
         {/* FORM */}
         <form
