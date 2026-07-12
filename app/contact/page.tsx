@@ -24,9 +24,9 @@ function useInView(threshold = 0.1) {
 
 const countryInfo: Record<string, { phone: string; hours: string; email: string; flag: string }> = {
   "United States": { phone: "+1 (239) 309 3969", hours: "Mon – Fri  |  8AM – 6PM EST", email: "usa@rudrongts.com", flag: "🇺🇸" },
-  India:           { phone: "+91 ----- -----",  hours: "Mon – Sat  |  9AM – 7PM IST", email: "india@rudrongts.com", flag: "🇮🇳" },
-  Canada:          { phone: "+1 (647) 555 0198", hours: "Mon – Fri  |  8AM – 5PM EST", email: "canada@rudrongts.com", flag: "🇨🇦" },
-  "United Arab Emirates": { phone: "+971 56 957 5207", hours: "Mon – Fri  |  9AM – 6PM GST", email: "uae@rudrongts.com", flag: "🇦🇪" },
+  India:           { phone: "+91 ",  hours: "Mon – Sat  |  9AM – 7PM IST", email: "india@rudrongts.com", flag: "🇮🇳" },
+  Canada:          { phone: "+1 (239) 309 3969", hours: "Mon – Fri  |  8AM – 5PM EST", email: "canada@rudrongts.com", flag: "🇨🇦" },
+  "United Arab Emirates": { phone: "+971 ", hours: "Mon – Fri  |  9AM – 6PM GST", email: "uae@rudrongts.com", flag: "🇦🇪" },
 };
 
 const statesByCountry: Record<string, string[]> = {
