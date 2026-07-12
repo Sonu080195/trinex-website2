@@ -192,14 +192,14 @@ export default function AboutPage() {
             </div>
 
             <h2 className="text-[18px] sm:text-[24px] lg:text-[40px] font-bold leading-[1.08] mb-6">
-              Rudron is a specialized AEC & MEP talent partner delivering<br />recruitment solutions to organizations, building the<br />
+              Rudron is a specialized <span className="text-[#C89B3C]">AEC & MEP talent partner</span> delivering recruitment solutions to organizations, building the 
               <span className="text-[#C89B3C]">future of the built environment.</span>
             </h2>
 
             <div className="w-20 sm:w-32 h-[2px] bg-[#C89B3C] rounded-full mb-8" />
 
             <div className="space-y-5 text-[15px] sm:text-[16px] leading-7 lg:leading-8 text-gray-400">
-              <p>Backed by 15+ years of hands-on industry experience, our team understands that hiring in construction goes far beyond filling a seat. 
+              <p>Backed by 10+ years of hands-on industry experience, our team understands that hiring in construction goes far beyond filling a seat. 
                 It requires identifying professionals with the technical expertise, project experience, 
                 and leadership capability to perform in fast-moving,
                 high-stakes project environments — and we built Rudron to do exactly that.
@@ -240,7 +240,7 @@ export default function AboutPage() {
 
               <div className="w-90 sm:w-100 h-[0.5px] bg-[#C89B3C] rounded-full mb-4" />
 
-              <h2 className="text-[18px] sm:text-[20px] font-bold leading-3 lg:leading-4">
+              <h2 className="text-[14px] sm:text-[16px] font-bold leading-7 lg:leading-8">
               In construction, project success starts with the right people.
               <br />
               </h2>

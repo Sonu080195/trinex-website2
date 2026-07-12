@@ -32,8 +32,8 @@ export async function POST(req: NextRequest) {
     const jobObjectString = buildJobObjectString(data, {
       id,
       datePosted,
-      featured: false,
-      urgent: false,
+      featured: !!data.featured,
+      urgent: !!data.urgent,
     });
 
     await addJobToRepo(

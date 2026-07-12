@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Building2, Users, BriefcaseBusiness, Mail, Phone, X, CheckCircle } from "lucide-react";
+import { Building2, Users, BriefcaseBusiness, Mail, Phone, X, CheckCircle, Loader2 } from "lucide-react";
 
 interface EmployerModalProps {
   isOpen: boolean;
@@ -11,6 +11,8 @@ interface EmployerModalProps {
 export default function EmployerModal({ isOpen, onClose }: EmployerModalProps) {
   const [submitted, setSubmitted] = useState(false);
   const [visible,   setVisible]   = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     if (isOpen) {
@@ -20,6 +22,7 @@ export default function EmployerModal({ isOpen, onClose }: EmployerModalProps) {
       setVisible(false);
       const t = setTimeout(() => {
         setSubmitted(false);
+        setError("");
         document.body.style.overflow = "auto";
       }, 350);
       return () => clearTimeout(t);
@@ -28,6 +31,30 @@ export default function EmployerModal({ isOpen, onClose }: EmployerModalProps) {
   }, [isOpen]);
 
   if (!isOpen) return null;
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setError("");
+    setSubmitting(true);
+
+    const formData = new FormData(e.currentTarget);
+    formData.set("type", "employer_inquiry");
+
+    try {
+      const res = await fetch("/api/apply", { method: "POST", body: formData });
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || "Submission failed. Please try again.");
+      }
+
+      setSubmitted(true);
+    } catch (err: any) {
+      setError(err.message || "Something went wrong. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
+  }
 
   return (
     <div className="fixed inset-0 z-[99999] overflow-hidden">
@@ -110,17 +137,7 @@ export default function EmployerModal({ isOpen, onClose }: EmployerModalProps) {
               </div>
 
               {/* ── FORM ── */}
-              <form
-                action="https://formsubmit.co/business@rudrongts.com"
-                method="POST"
-                className="space-y-3"
-                target="employer_iframe"
-                onSubmit={() => setTimeout(() => setSubmitted(true), 900)}
-              >
-                <input type="hidden" name="_subject" value="New Employer Inquiry" />
-                <input type="hidden" name="_captcha" value="false" />
-                <iframe name="employer_iframe" style={{ display: "none" }} />
-
+              <form onSubmit={handleSubmit} className="space-y-3">
                 <IconInput icon={<Building2 size={16} />}       name="company"    placeholder="Company Name"   required />
                 <IconInput icon={<BriefcaseBusiness size={16} />} name="hiring_for" placeholder="Hiring For"      required />
                 <IconInput icon={<Users size={16} />}           name="volume"     placeholder="Hiring Volume (e.g. 3–5 roles)" />
@@ -163,13 +180,29 @@ export default function EmployerModal({ isOpen, onClose }: EmployerModalProps) {
                   ))}
                 </div>
 
+                {error && (
+                  <p className="text-red-400 text-[13px] bg-red-400/10 border border-red-400/20 rounded-xl px-4 py-3">
+                    {error}
+                  </p>
+                )}
+
                 <button
                   type="submit"
-                  className="group w-full relative overflow-hidden bg-[#C89B3C] hover:bg-[#d6ab52] text-[#07111F] font-bold py-4 rounded-2xl transition-all duration-300 hover:shadow-[0_8px_30px_rgba(200,155,60,0.35)] hover:scale-[1.01] active:scale-[0.99]"
+                  disabled={submitting}
+                  className="group w-full relative overflow-hidden bg-[#C89B3C] hover:bg-[#d6ab52] disabled:opacity-60 disabled:cursor-not-allowed text-[#07111F] font-bold py-4 rounded-2xl transition-all duration-300 hover:shadow-[0_8px_30px_rgba(200,155,60,0.35)] hover:scale-[1.01] active:scale-[0.99]"
                 >
                   <span className="relative z-10 flex items-center justify-center gap-2">
-                    Request Talent Consultation
-                    <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                    {submitting ? (
+                      <>
+                        <Loader2 size={18} className="animate-spin" />
+                        Submitting...
+                      </>
+                    ) : (
+                      <>
+                        Request Talent Consultation
+                        <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                      </>
+                    )}
                   </span>
                   <div className="absolute inset-0 bg-white/15 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-500 skew-x-12" />
                 </button>

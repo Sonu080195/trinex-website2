@@ -8,6 +8,7 @@ export const maxDuration = 30;
 const resend = new Resend(process.env.RESEND_API_KEY!);
 const NOTIFY_EMAIL = "jobs@rudrongts.com"; // job applications / candidates
 const CONTACT_NOTIFY_EMAIL = "admin@rudrongts.com"; // general contact inquiries
+const BUSINESS_NOTIFY_EMAIL = "contact@rudrongts.com"; // employer inquiries / call requests
 const MAX_FILE_BYTES = 10 * 1024 * 1024; // 10 MB
 
 export async function POST(req: NextRequest) {
@@ -18,8 +19,6 @@ export async function POST(req: NextRequest) {
     const file = formData.get("attachment") as File | null;
 
     // ── Basic validation ─────────────────────────────────────
-    // Resume is required for job applications, optional for candidate
-    // profiles and contact inquiries.
     if (type === "job_application" && !file) {
       return NextResponse.json(
         { error: "Resume attachment is required." },
@@ -47,7 +46,8 @@ export async function POST(req: NextRequest) {
     const fullName =
       (formData.get("full_name") as string) ||
       (formData.get("Full Name") as string) ||
-      null;
+      (firstName && lastName ? `${firstName} ${lastName}` : null);
+
     const desiredRole = (formData.get("desired_role") as string) || null;
     const city = (formData.get("city") as string) || null;
     const state = (formData.get("state") as string) || null;
@@ -56,6 +56,10 @@ export async function POST(req: NextRequest) {
     // Contact-page-only fields
     const company = (formData.get("company") as string) || null;
     const serviceNeeded = (formData.get("service_needed") as string) || null;
+
+    // Employer-form-only fields
+    const hiringFor = (formData.get("hiring_for") as string) || null;
+    const volume = (formData.get("volume") as string) || null;
 
     const displayName =
       fullName || `${firstName || ""} ${lastName || ""}`.trim() || "Unknown";
@@ -109,6 +113,8 @@ export async function POST(req: NextRequest) {
       country,
       company,
       service_needed: serviceNeeded,
+      hiring_for: hiringFor,
+      volume,
       message,
       resume_url: resumeUrl,
       resume_filename: resumeFilename,
@@ -126,15 +132,26 @@ export async function POST(req: NextRequest) {
     let subject: string;
     let notifyTo: string;
 
-    if (type === "job_application") {
-      subject = `New Application – ${jobTitle || "Unknown Role"}`;
-      notifyTo = NOTIFY_EMAIL;
-    } else if (type === "candidate_profile") {
-      subject = "New Candidate Submission";
-      notifyTo = NOTIFY_EMAIL;
-    } else {
-      subject = "New Website Contact Inquiry";
-      notifyTo = CONTACT_NOTIFY_EMAIL;
+    switch (type) {
+      case "job_application":
+        subject = `New Application – ${jobTitle || "Unknown Role"}`;
+        notifyTo = NOTIFY_EMAIL;
+        break;
+      case "candidate_profile":
+        subject = "New Candidate Submission";
+        notifyTo = NOTIFY_EMAIL;
+        break;
+      case "employer_inquiry":
+        subject = `New Employer Inquiry – ${company || "Unknown Company"}`;
+        notifyTo = BUSINESS_NOTIFY_EMAIL;
+        break;
+      case "call_request":
+        subject = "New Call Request";
+        notifyTo = BUSINESS_NOTIFY_EMAIL;
+        break;
+      default:
+        subject = "New Website Contact Inquiry";
+        notifyTo = CONTACT_NOTIFY_EMAIL;
     }
 
     const emailHtml = `
@@ -143,6 +160,8 @@ export async function POST(req: NextRequest) {
       <p><strong>Email:</strong> ${email}</p>
       <p><strong>Phone:</strong> ${phone || "—"}</p>
       ${company ? `<p><strong>Company:</strong> ${company}</p>` : ""}
+      ${hiringFor ? `<p><strong>Hiring For:</strong> ${hiringFor}</p>` : ""}
+      ${volume ? `<p><strong>Hiring Volume:</strong> ${volume}</p>` : ""}
       ${linkedin ? `<p><strong>LinkedIn:</strong> ${linkedin}</p>` : ""}
       ${desiredRole ? `<p><strong>Desired Role:</strong> ${desiredRole}</p>` : ""}
       ${serviceNeeded ? `<p><strong>Service Needed:</strong> ${serviceNeeded}</p>` : ""}

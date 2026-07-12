@@ -38,7 +38,7 @@ export default function Footer() {
                 </p>
               </div>
 
-              <p className="text-gray-400/80 text-[13.5px] leading-[1.85] max-w-[440px]">
+              <p className="text-gray-400/80 text-[13.5px] leading-[1.85] max-w-[440px] mb-6">
                 RUDRON Global Talent Solutions is a specialist recruitment
                 partner serving the Architecture, Engineering, Construction,
                 Mechanical, Electrical and Plumbing industries. We connect
@@ -46,7 +46,26 @@ export default function Footer() {
                 commercial, industrial, infrastructure and mission-critical
                 markets.
               </p>
-
+ 
+              <div className="flex items-center gap-3">
+                {[
+                  { icon: <InstagramIcon />, href: "https://instagram.com/rudron_gts", label: "Instagram" },
+                  { icon: <FacebookIcon />,   href: "https://facebook.com/share/1HQMr8GCcd/?mibextid=wwXlfr",    label: "Facebook"  },
+                  { icon: <LinkedinIcon />,   href: "https://linkedin.com/company/rudrongts", label: "LinkedIn" },
+                ].map(({ icon, href, label }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                    className="w-9 h-9 rounded-full bg-white/[0.04] border border-white/10 flex items-center justify-center text-gray-400 hover:text-[#C89B3C] hover:border-[#C89B3C]/40 hover:bg-[#C89B3C]/10 transition-all duration-300"
+                  >
+                    {icon}
+                  </a>
+                ))}
+              </div>
+ 
             </div>
 
             {/* COMPANY */}
@@ -110,9 +129,9 @@ export default function Footer() {
 
               <div className="space-y-3.5">
                 {[
-                  { region: "United States",        number: "+1 (239) 309 3969"  },
-                  { region: "United Arab Emirates", number: "+971 56 957 5207"   },
-                  { region: "India",                number: "+91 ----- -----"    },
+                  { region: "United States & Canada",        number: "+1 (239) 309 3969"  },
+                  { region: "United Arab Emirates", number: "uae@rudrongts.com"   },
+                  { region: "India",                number: "india@rudrongts.com"    },
                 ].map(({ region, number }) => (
                   <div key={region} className="group">
                     <p className="text-[#C89B3C]/80 text-[11px] uppercase tracking-[1.4px] font-medium mb-0.5">
@@ -160,5 +179,30 @@ export default function Footer() {
 
       </div>
     </footer>
+  );
+}
+function InstagramIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+    </svg>
+  );
+}
+
+function FacebookIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.23.2 2.23.2v2.45h-1.26c-1.24 0-1.63.77-1.63 1.56v1.87h2.78l-.44 2.91h-2.34V22c4.78-.79 8.44-4.94 8.44-9.94z" />
+    </svg>
+  );
+}
+
+function LinkedinIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.15 1.45-2.15 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z" />
+    </svg>
   );
 }

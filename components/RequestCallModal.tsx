@@ -6,9 +6,9 @@ import {
   User,
   Mail,
   Phone,
-  MapPin,
   MessageSquare,
   X,
+  Loader2,
 } from "lucide-react";
 
 interface RequestCallModalProps {
@@ -20,10 +20,35 @@ export default function RequestCallModal({
   isOpen,
   onClose,
 }: RequestCallModalProps) {
-  const [submitted, setSubmitted] =
-    useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
 
   if (!isOpen) return null;
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setError("");
+    setSubmitting(true);
+
+    const formData = new FormData(e.currentTarget);
+    formData.set("type", "call_request");
+
+    try {
+      const res = await fetch("/api/apply", { method: "POST", body: formData });
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || "Submission failed. Please try again.");
+      }
+
+      setSubmitted(true);
+    } catch (err: any) {
+      setError(err.message || "Something went wrong. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
+  }
 
   return (
     <div className="fixed inset-0 z-[99999] overflow-hidden">
@@ -98,18 +123,7 @@ export default function RequestCallModal({
               </div>
 
               {/* FORM */}
-              <form
-                action="#"
-                method="POST"
-                className="space-y-4"
-                onSubmit={(e) => {
-                  e.preventDefault();
-
-                  setTimeout(() => {
-                    setSubmitted(true);
-                  }, 500);
-                }}
-              >
+              <form onSubmit={handleSubmit} className="space-y-4">
 
                 {/* NAME */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -123,6 +137,7 @@ export default function RequestCallModal({
 
                     <input
                       type="text"
+                      name="first_name"
                       required
                       placeholder="First Name"
                       className="w-full h-[56px] bg-white/[0.03] border border-white/10 rounded-2xl pl-12 pr-5 text-white outline-none"
@@ -132,6 +147,7 @@ export default function RequestCallModal({
 
                   <input
                     type="text"
+                    name="last_name"
                     required
                     placeholder="Last Name"
                     className="w-full h-[56px] bg-white/[0.03] border border-white/10 rounded-2xl px-5 text-white outline-none"
@@ -149,6 +165,7 @@ export default function RequestCallModal({
 
                   <input
                     type="email"
+                    name="email"
                     required
                     placeholder="Email Address"
                     className="w-full h-[56px] bg-white/[0.03] border border-white/10 rounded-2xl pl-12 pr-5 text-white outline-none"
@@ -166,6 +183,7 @@ export default function RequestCallModal({
 
                   <input
                     type="tel"
+                    name="phone"
                     required
                     placeholder="Phone Number"
                     className="w-full h-[56px] bg-white/[0.03] border border-white/10 rounded-2xl pl-12 pr-5 text-white outline-none"
@@ -178,18 +196,21 @@ export default function RequestCallModal({
 
                   <input
                     type="text"
+                    name="city"
                     placeholder="City"
                     className="w-full h-[52px] bg-white/[0.03] border border-white/10 rounded-2xl px-4 text-white outline-none"
                   />
 
                   <input
                     type="text"
+                    name="state"
                     placeholder="State"
                     className="w-full h-[52px] bg-white/[0.03] border border-white/10 rounded-2xl px-4 text-white outline-none"
                   />
 
                   <input
                     type="text"
+                    name="country"
                     placeholder="Country"
                     className="w-full h-[52px] bg-white/[0.03] border border-white/10 rounded-2xl px-4 text-white outline-none"
                   />
@@ -206,6 +227,7 @@ export default function RequestCallModal({
 
                   <textarea
                     rows={5}
+                    name="message"
                     required
                     placeholder="Purpose Of Call"
                     className="w-full bg-white/[0.03] border border-white/10 rounded-2xl pl-12 pr-5 py-4 text-white outline-none resize-none"
@@ -213,12 +235,26 @@ export default function RequestCallModal({
 
                 </div>
 
+                {error && (
+                  <p className="text-red-400 text-[13px] bg-red-400/10 border border-red-400/20 rounded-xl px-4 py-3">
+                    {error}
+                  </p>
+                )}
+
                 {/* BUTTON */}
                 <button
                   type="submit"
-                  className="w-full bg-[#C89B3C] hover:bg-[#d6ab52] text-black font-semibold py-4 rounded-2xl transition-all duration-300"
+                  disabled={submitting}
+                  className="w-full bg-[#C89B3C] hover:bg-[#d6ab52] disabled:opacity-60 disabled:cursor-not-allowed text-black font-semibold py-4 rounded-2xl transition-all duration-300 flex items-center justify-center gap-2"
                 >
-                  Request A Call Back
+                  {submitting ? (
+                    <>
+                      <Loader2 size={18} className="animate-spin" />
+                      Submitting...
+                    </>
+                  ) : (
+                    "Request A Call Back"
+                  )}
                 </button>
 
               </form>

@@ -13,10 +13,12 @@ interface JobFormData {
   industry: string;
   specialisation: string;
   description: string;
-responsibilities: string;
-requirements: string;
-benefits: string;
-slug: string;
+  responsibilities: string;
+  requirements: string;
+  benefits: string;
+  slug: string;
+  featured: boolean;
+  urgent: boolean;
 }
 
 export default function AdminPage() {
@@ -36,10 +38,12 @@ export default function AdminPage() {
       industry: "",
       specialisation: "",
       description: "",
-responsibilities: "",
-requirements: "",
-benefits: "",
-slug: "",
+      responsibilities: "",
+      requirements: "",
+      benefits: "",
+      slug: "",
+      featured: false,
+      urgent: false,
     });
 
     const router = useRouter();
@@ -55,10 +59,13 @@ slug: "",
       HTMLInputElement | HTMLSelectElement
     >
   ) => {
-
+ 
+    const { name, value, type } = e.target;
+    const checked = (e.target as HTMLInputElement).checked;
+ 
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [name]: type === "checkbox" ? checked : value,
     });
   };
 
@@ -77,6 +84,8 @@ slug: "",
       requirements: (job.requirements || []).join("\n"),
       benefits: (job.benefits || []).join("\n"),
       slug: job.slug,
+      featured: !!job.featured,
+      urgent: !!job.urgent,
     });
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -86,7 +95,7 @@ slug: "",
     setFormData({
       title: "", company: "", location: "", salary: "", type: "",
       industry: "", specialisation: "", description: "",
-      responsibilities: "", requirements: "", benefits: "", slug: "",
+      responsibilities: "", requirements: "", benefits: "", slug: "", featured: false, urgent: false,
     });
   };
 
@@ -145,8 +154,6 @@ slug: "",
             ...formData,
             id: editingJob.id,
             datePosted: editingJob.datePosted,
-            featured: editingJob.featured,
-            urgent: editingJob.urgent,
             recruiter: editingJob.recruiter,
             heroImage: editingJob.heroImage,
           }
@@ -184,6 +191,8 @@ slug: "",
         requirements: "",
         benefits: "",
         slug: "",
+        featured: false,
+        urgent: false,
       });
       setEditingJob(null);
     } catch (err: any) {
@@ -458,6 +467,33 @@ slug: "",
 
           </div>
 
+                    {/* FEATURED / URGENT TOGGLES */}
+          <div className="flex flex-wrap gap-6 py-2">
+ 
+            <label className="flex items-center gap-3 cursor-pointer select-none">
+              <input
+                type="checkbox"
+                name="featured"
+                checked={formData.featured}
+                onChange={handleChange}
+                className="w-5 h-5 accent-[#C89B3C]"
+              />
+              <span className="text-sm text-gray-300">Featured Job</span>
+            </label>
+ 
+            <label className="flex items-center gap-3 cursor-pointer select-none">
+              <input
+                type="checkbox"
+                name="urgent"
+                checked={formData.urgent}
+                onChange={handleChange}
+                className="w-5 h-5 accent-[#C89B3C]"
+              />
+              <span className="text-sm text-gray-300">Urgent Hire</span>
+            </label>
+ 
+          </div>
+
           {/* DESCRIPTION */}
 <div>
 
@@ -660,6 +696,18 @@ slug: "",
         <div className="bg-white/10 text-white text-xs font-semibold uppercase tracking-[2px] px-4 py-2 rounded-full">
 
           {formData.type}
+
+                {formData.featured && (
+        <div className="bg-[#C89B3C]/15 border border-[#C89B3C]/30 text-[#C89B3C] text-xs font-semibold uppercase tracking-[2px] px-4 py-2 rounded-full">
+          Featured
+        </div>
+      )}
+ 
+      {formData.urgent && (
+        <div className="bg-red-500/15 border border-red-400/30 text-red-400 text-xs font-semibold uppercase tracking-[2px] px-4 py-2 rounded-full">
+          Urgent
+        </div>
+      )}
 
         </div>
 
