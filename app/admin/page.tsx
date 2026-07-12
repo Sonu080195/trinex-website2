@@ -26,7 +26,8 @@ export default function AdminPage() {
 
   const [saving, setSaving] = useState(false);
   const [saveError, setSaveError] = useState("");
-  const [editingJob, setEditingJob] = useState<any>(null); // holds the full original job while editing, null = create mode
+  type Job = typeof jobs[number];
+  const [editingJob, setEditingJob] = useState<Job | null>(null); // holds the full original job while editing, null = create mode
   const [deletingId, setDeletingId] = useState<number | null>(null);
 
   const [formData, setFormData] =
@@ -252,6 +253,7 @@ export default function AdminPage() {
             >
               Log Out
             </button>
+          </div>
           </div>
 
         {/* FORM */}
@@ -703,19 +705,29 @@ export default function AdminPage() {
 
         <div className="bg-white/10 text-white text-xs font-semibold uppercase tracking-[2px] px-4 py-2 rounded-full">
 
-          {formData.type}
+          {formData.specialisation && (
+            <div className="bg-[#C89B3C] ...">
+              {formData.specialisation}
+            </div>
+          )}
 
-                {formData.featured && (
-        <div className="bg-[#C89B3C]/15 border border-[#C89B3C]/30 text-[#C89B3C] text-xs font-semibold uppercase tracking-[2px] px-4 py-2 rounded-full">
-          Featured
-        </div>
-      )}
- 
-      {formData.urgent && (
-        <div className="bg-red-500/15 border border-red-400/30 text-red-400 text-xs font-semibold uppercase tracking-[2px] px-4 py-2 rounded-full">
-          Urgent
-        </div>
-      )}
+          {formData.type && (
+            <div className="bg-white/10 ...">
+              {formData.type}
+            </div>
+          )}
+
+          {formData.featured && (
+            <div className="bg-[#C89B3C]/15 ...">
+              Featured
+            </div>
+          )}
+
+          {formData.urgent && (
+            <div className="bg-red-500/15 ...">
+              Urgent
+            </div>
+          )}
 
         </div>
 
