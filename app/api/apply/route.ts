@@ -6,9 +6,9 @@ import { supabaseAdmin } from "@/lib/supabase";
 export const maxDuration = 30;
 
 const resend = new Resend(process.env.RESEND_API_KEY!);
-const NOTIFY_EMAIL = "jobs@rudrongts.com"; // job applications / candidates
-const CONTACT_NOTIFY_EMAIL = "admin@rudrongts.com"; // general contact inquiries
-const BUSINESS_NOTIFY_EMAIL = "contact@rudrongts.com"; // employer inquiries / call requests
+const NOTIFY_EMAIL = "jobs@rudrongts.com";
+const CONTACT_NOTIFY_EMAIL = "admin@rudrongts.com";
+const BUSINESS_NOTIFY_EMAIL = "contact@rudrongts.com";
 const MAX_FILE_BYTES = 10 * 1024 * 1024; // 10 MB
 
 export async function POST(req: NextRequest) {
@@ -18,7 +18,6 @@ export async function POST(req: NextRequest) {
     const type = (formData.get("type") as string) || "job_application";
     const file = formData.get("attachment") as File | null;
 
-    // ── Basic validation ─────────────────────────────────────
     if (type === "job_application" && !file) {
       return NextResponse.json(
         { error: "Resume attachment is required." },
@@ -33,7 +32,6 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // ── Collect shared + type-specific fields ────────────────
     const email = (formData.get("email") as string) || (formData.get("Email Address") as string) || "";
     const phone = (formData.get("phone") as string) || "";
     const linkedin = (formData.get("linkedin") as string) || "";
@@ -53,11 +51,9 @@ export async function POST(req: NextRequest) {
     const state = (formData.get("state") as string) || null;
     const country = (formData.get("country") as string) || null;
 
-    // Contact-page-only fields
     const company = (formData.get("company") as string) || null;
     const serviceNeeded = (formData.get("service_needed") as string) || null;
 
-    // Employer-form-only fields
     const hiringFor = (formData.get("hiring_for") as string) || null;
     const volume = (formData.get("volume") as string) || null;
 
@@ -66,6 +62,7 @@ export async function POST(req: NextRequest) {
 
     // ── Upload attachment to Supabase Storage (if present) ───
     let resumeUrl: string | null = null;
+    let resumePath: string | null = null;
     let resumeFilename: string | null = null;
     let fileBuffer: Buffer | null = null;
 
@@ -89,11 +86,14 @@ export async function POST(req: NextRequest) {
         );
       }
 
+      // Signed URL for the immediate email notification — convenient
+      // short-term link, valid 30 days. Not relied on long-term.
       const { data: signedUrlData } = await supabaseAdmin.storage
         .from("resumes")
         .createSignedUrl(storagePath, 60 * 60 * 24 * 30);
 
       resumeUrl = signedUrlData?.signedUrl || storagePath;
+      resumePath = storagePath; // permanent — used to regenerate fresh links anytime
       resumeFilename = file.name;
     }
 
@@ -117,6 +117,7 @@ export async function POST(req: NextRequest) {
       volume,
       message,
       resume_url: resumeUrl,
+      resume_path: resumePath,
       resume_filename: resumeFilename,
     });
 
@@ -167,7 +168,7 @@ export async function POST(req: NextRequest) {
       ${serviceNeeded ? `<p><strong>Service Needed:</strong> ${serviceNeeded}</p>` : ""}
       ${city || state || country ? `<p><strong>Location:</strong> ${[city, state, country].filter(Boolean).join(", ")}</p>` : ""}
       <p><strong>Message:</strong><br/>${(message || "—").replace(/\n/g, "<br/>")}</p>
-      ${resumeUrl ? `<p><strong>Attachment:</strong> <a href="${resumeUrl}">${resumeFilename}</a> (link valid 30 days)</p>` : ""}
+      ${resumeUrl ? `<p><strong>Attachment:</strong> <a href="${resumeUrl}">${resumeFilename}</a> (link valid 30 days — for permanent access, use the admin panel)</p>` : ""}
     `;
 
     await resend.emails.send({
