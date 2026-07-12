@@ -281,7 +281,7 @@ export default function Navbar() {
                   alt="RUDRON Logo"
                   className={`
                     w-auto transition-all duration-500
-                    ${scrolled ? "h-12 lg:h-18" : "h-14 sm:h-18 lg:h-26"}
+                    ${scrolled ? "h-16 lg:h-22" : "h-18 sm:h-22 lg:h-30"}
                   `}
                 />
               </Link>
