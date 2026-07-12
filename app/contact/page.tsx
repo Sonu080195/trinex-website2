@@ -22,11 +22,11 @@ function useInView(threshold = 0.1) {
   return { ref, inView };
 }
 
-const countryInfo: Record<string, { phone: string; hours: string; email: string; flag: string }> = {
-  "United States": { phone: "+1 (239) 309 3969", hours: "Mon – Fri  |  8AM – 6PM EST", email: "usa@rudrongts.com", flag: "🇺🇸" },
-  India:           { phone: "+91 ",  hours: "Mon – Sat  |  9AM – 7PM IST", email: "india@rudrongts.com", flag: "🇮🇳" },
+const countryInfo: Record<string, { phone?: string; hours: string; email: string; flag: string }> = {
+  "United States": { phone: "+1 (239) 309 3969", hours: "Mon – Fri  |  8AM – 6PM EST", email: "usa@rudrongts.com",    flag: "🇺🇸" },
+  India:           {                              hours: "Mon – Sat  |  9AM – 7PM IST", email: "india@rudrongts.com",  flag: "🇮🇳" },
   Canada:          { phone: "+1 (239) 309 3969", hours: "Mon – Fri  |  8AM – 5PM EST", email: "canada@rudrongts.com", flag: "🇨🇦" },
-  "United Arab Emirates": { phone: "+971 ", hours: "Mon – Fri  |  9AM – 6PM GST", email: "uae@rudrongts.com", flag: "🇦🇪" },
+  "United Arab Emirates": {                      hours: "Mon – Fri  |  9AM – 6PM GST", email: "uae@rudrongts.com",    flag: "🇦🇪" },
 };
 
 const statesByCountry: Record<string, string[]> = {
@@ -72,17 +72,15 @@ export default function ContactPage() {
     try {
       const res = await fetch("/api/apply", { method: "POST", body: formData });
       const data = await res.json();
-
-      if (!res.ok) {
-        throw new Error(data.error || "Submission failed. Please try again.");
-      }
-
+      if (!res.ok) throw new Error(data.error || "Submission failed. Please try again.");
       setFormState("sent");
     } catch (err: any) {
       setError(err.message || "Something went wrong. Please try again.");
       setFormState("idle");
     }
   }
+
+  const info = countryInfo[selectedCountry];
 
   return (
     <main className="bg-[#07111F] text-white overflow-hidden">
@@ -92,8 +90,6 @@ export default function ContactPage() {
           HERO
       ════════════════════════════════════════ */}
       <section ref={heroRef} className="relative min-h-[85vh] flex items-center overflow-hidden">
-
-        {/* Layered background */}
         <div className="absolute inset-0">
           <div
             className="absolute inset-0 bg-cover bg-center transition-transform duration-[8000ms] ease-out"
@@ -106,7 +102,6 @@ export default function ContactPage() {
           <div className="absolute inset-0 bg-gradient-to-t from-[#07111F] via-transparent to-transparent" />
         </div>
 
-        {/* Decorative gold lines */}
         <div
           className="absolute left-0 top-0 bottom-0 w-[3px] transition-all duration-1000 delay-500"
           style={{
@@ -117,8 +112,6 @@ export default function ContactPage() {
 
         <div className="relative z-10 w-full max-w-7xl mx-auto px-5 lg:px-6 pt-32 lg:pt-40 pb-16">
           <div className="max-w-[680px]">
-
-            {/* Eyebrow */}
             <div
               className="flex items-center gap-3 mb-6 transition-all duration-700"
               style={{ opacity: heroVisible ? 1 : 0, transform: heroVisible ? "translateY(0)" : "translateY(16px)" }}
@@ -128,7 +121,6 @@ export default function ContactPage() {
               <span className="h-px w-10 bg-[#C89B3C]" />
             </div>
 
-            {/* Headline */}
             <h1
               className="font-bold leading-[1.08] text-[30px] sm:text-[48px] lg:text-[64px] mb-4 transition-all duration-700 delay-150"
               style={{ opacity: heroVisible ? 1 : 0, transform: heroVisible ? "translateY(0)" : "translateY(24px)" }}
@@ -141,7 +133,6 @@ export default function ContactPage() {
               </span>
             </h1>
 
-            {/* Body */}
             <p
               className="text-gray-300 text-[14px] lg:text-[16px] leading-7 max-w-[720px] mb-8 transition-all duration-700 delay-300"
               style={{ opacity: heroVisible ? 1 : 0, transform: heroVisible ? "translateY(0)" : "translateY(20px)" }}
@@ -149,7 +140,6 @@ export default function ContactPage() {
               Whether you're hiring exceptional talent or exploring your next career opportunity, our team is ready to help.
             </p>
 
-            {/* Tags */}
             <div
               className="flex flex-wrap gap-3 transition-all duration-700 delay-500"
               style={{ opacity: heroVisible ? 1 : 0, transform: heroVisible ? "translateY(0)" : "translateY(16px)" }}
@@ -186,7 +176,6 @@ export default function ContactPage() {
       ════════════════════════════════════════ */}
       <section className="bg-[#F4F4F0] py-6 lg:py-12 px-5 sm:px-6 overflow-hidden">
         <div className="max-w-7xl mx-auto">
-
           <div ref={officesRef} className="text-center mb-8">
             <div
               className="inline-flex items-center gap-3 mb-5 transition-all duration-700"
@@ -210,7 +199,7 @@ export default function ContactPage() {
               className="text-gray-500 text-[13px] sm:text-[15px] leading-6 max-w-2xl mx-auto transition-all duration-700 delay-200"
               style={{ opacity: officesInView ? 1 : 0, transform: officesInView ? "translateY(0)" : "translateY(16px)" }}
             >
-              Through our international recruitment network we support employers and professionals across construction, 
+              Through our international recruitment network we support employers and professionals across construction,
               engineering, infrastructure, mission critical and MEP markets.
             </p>
           </div>
@@ -220,7 +209,6 @@ export default function ContactPage() {
               <OfficeCard key={office.country} office={office} index={i} inView={officesInView} />
             ))}
           </div>
-
         </div>
       </section>
 
@@ -229,7 +217,6 @@ export default function ContactPage() {
       ════════════════════════════════════════ */}
       <section ref={contactRef} className="bg-[#F4F4F0] pb-10 lg:pb-18 px-5 sm:px-6">
         <div className="max-w-7xl mx-auto">
-
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.15fr] gap-6 items-start">
 
             {/* ── LEFT PANEL ── */}
@@ -246,7 +233,7 @@ export default function ContactPage() {
                     Strategic Recruitment<br />Partnerships Built<br />Around Results
                   </h2>
                   <p className="text-gray-400 text-[14px] leading-6">
-                    Whether you're seeking exceptional talent, exploring career opportunities, or discussing workforce strategy — 
+                    Whether you're seeking exceptional talent, exploring career opportunities, or discussing workforce strategy —
                     our team is ready across the built environment.
                   </p>
                 </div>
@@ -273,21 +260,31 @@ export default function ContactPage() {
                   ))}
                 </div>
 
-                {/* Info rows */}
+                {/* Info rows — phone only shown for US & Canada */}
                 <div className="space-y-3">
-                  {[
-                    { label: "Phone", value: countryInfo[selectedCountry].phone, icon: "📞" },
-                    { label: "Email", value: countryInfo[selectedCountry].email, icon: "✉️" },
-                    { label: "Hours", value: countryInfo[selectedCountry].hours, icon: "🕐" },
-                  ].map(({ label, value, icon }) => (
-                    <div key={label} className="flex items-center gap-4 p-4 rounded-[16px] bg-[#F4F4F0] border border-black/5">
-                      <span className="text-lg">{icon}</span>
+                  {info.phone && (
+                    <div className="flex items-center gap-4 p-4 rounded-[16px] bg-[#F4F4F0] border border-black/5">
+                      <span className="text-lg">📞</span>
                       <div>
-                        <p className="text-[11px] font-semibold uppercase tracking-[2px] text-[#C89B3C] mb-0.5">{label}</p>
-                        <p className="text-[#07111F] text-[14px] font-medium">{value}</p>
+                        <p className="text-[11px] font-semibold uppercase tracking-[2px] text-[#C89B3C] mb-0.5">Phone</p>
+                        <p className="text-[#07111F] text-[14px] font-medium">{info.phone}</p>
                       </div>
                     </div>
-                  ))}
+                  )}
+                  <div className="flex items-center gap-4 p-4 rounded-[16px] bg-[#F4F4F0] border border-black/5">
+                    <span className="text-lg">✉️</span>
+                    <div>
+                      <p className="text-[11px] font-semibold uppercase tracking-[2px] text-[#C89B3C] mb-0.5">Email</p>
+                      <p className="text-[#07111F] text-[14px] font-medium">{info.email}</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-4 p-4 rounded-[16px] bg-[#F4F4F0] border border-black/5">
+                    <span className="text-lg">🕐</span>
+                    <div>
+                      <p className="text-[11px] font-semibold uppercase tracking-[2px] text-[#C89B3C] mb-0.5">Hours</p>
+                      <p className="text-[#07111F] text-[14px] font-medium">{info.hours}</p>
+                    </div>
+                  </div>
                 </div>
               </div>
 
@@ -333,8 +330,8 @@ export default function ContactPage() {
                     <form onSubmit={handleSubmit}>
                       <div className="space-y-4">
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                          <FormInput name="full_name"    placeholder="Full Name"      required />
-                          <FormInput name="email"  placeholder="Email Address"  type="email" required />
+                          <FormInput name="full_name" placeholder="Full Name"     required />
+                          <FormInput name="email"     placeholder="Email Address" type="email" required />
                         </div>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                           <FormInput name="company" placeholder="Company Name" />
@@ -382,7 +379,6 @@ export default function ContactPage() {
                           </label>
                         </div>
 
-                        {/* Trust badges */}
                         <div className="grid grid-cols-2 gap-3">
                           {[
                             { title: "Fast Response",  sub: "Within 1 business day" },
@@ -404,8 +400,8 @@ export default function ContactPage() {
                         <button
                           type="submit"
                           disabled={formState === "sending"}
-                          className="group w-full relative overflow-hidden bg-[#C89B3C] text-[#07111F] font-bold py-4 rounded-2xl 
-                          transition-all duration-300 hover:shadow-[0_8px_30px_rgba(200,155,60,0.35)] hover:scale-[1.01] 
+                          className="group w-full relative overflow-hidden bg-[#C89B3C] text-[#07111F] font-bold py-4 rounded-2xl
+                          transition-all duration-300 hover:shadow-[0_8px_30px_rgba(200,155,60,0.35)] hover:scale-[1.01]
                           active:scale-[0.99] disabled:opacity-60 disabled:cursor-not-allowed"
                         >
                           <span className="relative z-10 flex items-center justify-center gap-2">
@@ -421,7 +417,7 @@ export default function ContactPage() {
                               </>
                             )}
                           </span>
-                          <div className="absolute inset-0 bg-white/10 translate-x-[-100%] group-hover:translate-x-[100%] 
+                          <div className="absolute inset-0 bg-white/10 translate-x-[-100%] group-hover:translate-x-[100%]
                           transition-transform duration-500 skew-x-12" />
                         </button>
                       </div>
@@ -437,15 +433,15 @@ export default function ContactPage() {
 
       <Footer />
 
-      {/* Global keyframes */}
       <style>{`
         @keyframes marquee {
           from { transform: translateX(0); }
           to   { transform: translateX(-33.333%); }
         }
-        @keyframes scrollBob {
-          0%, 100% { transform: translateY(0); opacity: 0.6; }
-          50%       { transform: translateY(4px); opacity: 1; }
+        /* Fix native <select> dropdown list colours in all browsers */
+        select option {
+          background-color: #07111F;
+          color: #ffffff;
         }
       `}</style>
     </main>
@@ -476,11 +472,13 @@ function FormSelect({ name, options, defaultText, value, onChange, fullWidth = f
       name={name}
       value={value}
       onChange={onChange ? (e) => onChange(e.target.value) : undefined}
-      className={`${fullWidth ? "w-full" : ""} h-[50px] bg-white/[0.04] border border-white/8 rounded-xl px-4 text-white text-[14px] outline-none focus:border-[#C89B3C]/40 transition-colors duration-200`}
-      style={{ width: fullWidth ? "100%" : undefined }}
+      className="h-[50px] bg-[#07111F] border border-white/8 rounded-xl px-4 text-white text-[14px] outline-none focus:border-[#C89B3C]/40 transition-colors duration-200 cursor-pointer"
+      style={{ width: fullWidth ? "100%" : "100%", colorScheme: "dark" }}
     >
-      {defaultText && <option value="">{defaultText}</option>}
-      {options.map((o) => <option key={o} value={o}>{o}</option>)}
+      {defaultText && <option value="" style={{ background: "#07111F", color: "#fff" }}>{defaultText}</option>}
+      {options.map((o) => (
+        <option key={o} value={o} style={{ background: "#07111F", color: "#fff" }}>{o}</option>
+      ))}
     </select>
   );
 }
@@ -504,7 +502,6 @@ function OfficeCard({ office, index, inView }: {
         transition: `opacity 0.6s ease ${index * 120}ms, transform 0.5s ease ${index * 120}ms, border 0.3s, box-shadow 0.3s`,
       }}
     >
-      {/* Top accent bar */}
       <div
         className="absolute top-0 left-6 right-6 h-[2px] rounded-b-full transition-all duration-500"
         style={{
