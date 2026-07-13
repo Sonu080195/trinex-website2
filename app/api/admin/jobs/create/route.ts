@@ -34,6 +34,7 @@ export async function POST(req: NextRequest) {
       datePosted,
       featured: !!data.featured,
       urgent: !!data.urgent,
+      heroImage: data.heroImage,
     });
 
     await addJobToRepo(

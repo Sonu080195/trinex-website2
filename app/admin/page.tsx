@@ -20,6 +20,7 @@ interface JobFormData {
   slug: string;
   featured: boolean;
   urgent: boolean;
+  heroImage: string;
 }
 
 export default function AdminPage() {
@@ -28,6 +29,7 @@ export default function AdminPage() {
   const [saveError, setSaveError] = useState("");
   const [editingJob, setEditingJob] = useState<any>(null); // holds the full original job while editing, null = create mode
   const [deletingId, setDeletingId] = useState<number | null>(null);
+  const [jobSearch, setJobSearch] = useState("");
 
   const [formData, setFormData] =
     useState<JobFormData>({
@@ -45,6 +47,7 @@ export default function AdminPage() {
       slug: "",
       featured: false,
       urgent: false,
+      heroImage: "/jobs/commercial-pm.webp",
     });
 
     const router = useRouter();
@@ -87,6 +90,7 @@ export default function AdminPage() {
       slug: job.slug,
       featured: !!job.featured,
       urgent: !!job.urgent,
+      heroImage: job.heroImage || "/jobs/commercial-pm.webp",
     });
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -96,7 +100,7 @@ export default function AdminPage() {
     setFormData({
       title: "", company: "", location: "", salary: "", type: "",
       industry: "", specialisation: "", description: "",
-      responsibilities: "", requirements: "", benefits: "", slug: "", featured: false, urgent: false,
+      responsibilities: "", requirements: "", benefits: "", slug: "", featured: false, urgent: false, heroImage: "/jobs/commercial-pm.webp",
     });
   };
 
@@ -156,7 +160,6 @@ export default function AdminPage() {
             id: editingJob.id,
             datePosted: editingJob.datePosted,
             recruiter: editingJob.recruiter,
-            heroImage: editingJob.heroImage,
           }
         : formData;
  
@@ -194,6 +197,7 @@ export default function AdminPage() {
         slug: "",
         featured: false,
         urgent: false,
+        heroImage: "/jobs/commercial-pm.webp",
       });
       setEditingJob(null);
     } catch (err: any) {
@@ -202,6 +206,16 @@ export default function AdminPage() {
       setSaving(false);
     }
   };
+
+    const filteredJobs = jobs.filter((job) => {
+    const q = jobSearch.toLowerCase();
+    return (
+      job.title.toLowerCase().includes(q) ||
+      job.company.toLowerCase().includes(q) ||
+      job.location.toLowerCase().includes(q) ||
+      job.slug.toLowerCase().includes(q)
+    );
+  });
 
   return (
 
@@ -636,6 +650,43 @@ export default function AdminPage() {
 
 </div>
 
+{/* HERO IMAGE */}
+<div>
+ 
+  <label className="block text-sm text-gray-300 mb-2">
+ 
+    Hero Image Path
+ 
+  </label>
+ 
+  <input
+    type="text"
+    name="heroImage"
+    value={formData.heroImage}
+    onChange={handleChange}
+    placeholder="/jobs/commercial-pm.webp"
+    className="w-full h-[56px] bg-[#07111F] border border-white/10 rounded-xl px-5 outline-none text-white"
+  />
+ 
+  <p className="text-gray-500 text-xs mt-2">
+    Path to an image already uploaded to your public/jobs folder.
+    Known available images: /jobs/commercial-pm.webp,
+    /jobs/mep-superintendent.webp
+  </p>
+ 
+  {formData.heroImage && (
+    <div className="mt-3 rounded-xl overflow-hidden border border-white/10 max-w-xs">
+      <img
+        src={formData.heroImage}
+        alt="Hero preview"
+        className="w-full h-32 object-cover"
+        onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
+      />
+    </div>
+  )}
+ 
+</div>
+
           {/* BUTTON */}
           <div className="flex gap-3 flex-wrap">
             <button
@@ -768,23 +819,31 @@ export default function AdminPage() {
       </div>
 
       {/* JOB MANAGEMENT TABLE */}
-<div className="mt-20">
+      <div className="mt-20">
 
   {/* HEADER */}
   <div className="mb-8">
-
+ 
     <p className="text-[#C89B3C] uppercase tracking-[4px] text-sm mb-3">
-
+ 
       Active Openings
-
+ 
     </p>
-
-    <h2 className="text-[38px] font-bold">
-
+ 
+    <h2 className="text-[38px] font-bold mb-5">
+ 
       Manage Jobs
-
+ 
     </h2>
-
+ 
+    <input
+      type="text"
+      value={jobSearch}
+      onChange={(e) => setJobSearch(e.target.value)}
+      placeholder="Search by title, company, location, or slug..."
+      className="w-full max-w-md h-[48px] bg-[#0D1726] border border-white/10 rounded-xl px-4 text-white text-sm outline-none focus:border-[#C89B3C]/40 transition-colors duration-200"
+    />
+ 
   </div>
 
   {/* TABLE */}
@@ -806,7 +865,7 @@ export default function AdminPage() {
     </div>
 
     {/* ROWS */}
-    {jobs.map((job) => (
+    {filteredJobs.map((job) => (
 
     <div
         key={job.id}
