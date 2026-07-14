@@ -56,7 +56,7 @@ shadow-[0_20px_60px_rgba(0,0,0,0.06)]
               <div className="absolute inset-0 flex items-center justify-center">
 
                 <img
-                  src="/images/RUDRON Logo.webp"
+                  src="/images/rudron-logo.webp"
                   alt="RUDRON"
                   className="w-[150px] sm:w-[170px] mb-5"
                 />

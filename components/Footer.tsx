@@ -24,7 +24,7 @@ export default function Footer() {
             <div className="lg:col-span-2">
 
               <img
-                src="/images/RUDRON Logo.webp"
+                src="/images/rudron-logo.webp"
                 alt="RUDRON"
                 className="w-[128px] sm:w-[138px] mb-4"
               />

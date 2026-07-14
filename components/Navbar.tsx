@@ -118,7 +118,7 @@ export default function Navbar() {
             }}
           >
             <img
-              src="/images/RUDRON Logo.webp"
+              src="/images/rudron-logo.webp"
               alt="RUDRON"
               className="h-14 w-auto"
             />
