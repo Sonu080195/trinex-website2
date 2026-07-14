@@ -24,8 +24,10 @@ const staticRoutes: Array<{
 
   // ── Jobs & Insights (high-traffic, frequently updated) ────
   { path: "/jobs",       changeFrequency: "daily",   priority: 0.95 },
-  { path: "/saved-jobs", changeFrequency: "daily",   priority: 0.7  },
   { path: "/insights",   changeFrequency: "weekly",  priority: 0.85 },
+  // NOTE: /saved-jobs removed — it's disallowed in robots.ts (personalized,
+  // login-gated content), so listing it in the sitemap contradicted that
+  // and Google would never index it anyway.
 
   // ── Sector landing pages ──────────────────────────────────
   { path: "/industries",  changeFrequency: "monthly", priority: 0.8 },
@@ -67,6 +69,19 @@ const staticRoutes: Array<{
   { path: "/terms",          changeFrequency: "yearly", priority: 0.4 },
 ];
 
+// ── Insights articles ────────────────────────────────────────
+// Matches the `articles` object in app/insights/[slug]/page.tsx.
+// If that content moves to a CMS, generate this list from the same
+// source instead of hand-maintaining two copies.
+const insightArticles: Array<{ slug: string; lastModified: string }> = [
+  { slug: "construction-hiring-trends",         lastModified: "2026-06-02" },
+  { slug: "data-center-construction-hiring",    lastModified: "2026-06-08" },
+  { slug: "mep-talent-shortage",                lastModified: "2026-06-14" },
+  { slug: "commercial-construction-outlook",    lastModified: "2026-06-19" },
+  { slug: "executive-search-construction",      lastModified: "2026-06-24" },
+  { slug: "infrastructure-talent-shortage",     lastModified: "2026-06-29" },
+];
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
 
@@ -80,9 +95,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   );
 
   // ── Individual job pages ─────────────────────────────────
-  // Sourced directly from the static jobs data — no CMS needed.
-  // Featured/urgent roles get a slightly higher priority since
-  // they're the highest-value pages to get indexed quickly.
   const jobEntries: MetadataRoute.Sitemap = jobs.map((job) => ({
     url: `${BASE_URL}/jobs/${job.slug}`,
     lastModified: now,
@@ -90,15 +102,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: job.featured ? 0.85 : 0.75,
   }));
 
-  return [...staticEntries, ...jobEntries];
-}
+  // ── Individual insight articles ──────────────────────────
+  const insightEntries: MetadataRoute.Sitemap = insightArticles.map(
+    ({ slug, lastModified }) => ({
+      url: `${BASE_URL}/insights/${slug}`,
+      lastModified: new Date(lastModified),
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    })
+  );
 
-/*
-  ┌─────────────────────────────────────────────────────────────────┐
-  │  FUTURE: INSIGHTS / BLOG DYNAMIC ROUTES                          │
-  │                                                                 │
-  │  /insights/[slug]  → fetch all published article slugs          │
-  │  once that content moves to a CMS or gets its own data file,    │
-  │  add it here the same way jobEntries was added above.           │
-  └─────────────────────────────────────────────────────────────────┘
-*/
+  return [...staticEntries, ...jobEntries, ...insightEntries];
+}

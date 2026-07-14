@@ -1,8 +1,11 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import HomeCTA from "@/components/HomeCTA";
 import Footer from "@/components/Footer";
 import InsightArticleClient from "@/components/InsightArticlePage";
+
+const SITE_URL = "https://www.rudrongts.com";
 
 const articles: Record<string, {
   title: string; category: string; image: string;
@@ -15,7 +18,7 @@ const articles: Record<string, {
     category: "Market Insights",
     image: "/insights/construction-trends.webp",
     readTime: "6 min read",
-    published: "January 2026",
+    published: "June 2, 2026",
     stats: [
       { value: "38%",  label: "Increase in PM demand" },
       { value: "2.1M", label: "Construction jobs gap" },
@@ -42,7 +45,7 @@ const articles: Record<string, {
     category: "Industry News",
     image: "/insights/datacenter-talent.webp",
     readTime: "7 min read",
-    published: "February 2026",
+    published: "June 8, 2026",
     stats: [
       { value: "340%",  label: "Data center growth" },
       { value: "$2.4T", label: "US infrastructure spend" },
@@ -69,7 +72,7 @@ const articles: Record<string, {
     category: "Salary Guides",
     image: "/insights/mep-salary.webp",
     readTime: "5 min read",
-    published: "March 2026",
+    published: "June 14, 2026",
     stats: [
       { value: "$175K+", label: "MEP Superintendent avg" },
       { value: "22%",    label: "YoY salary increase" },
@@ -96,7 +99,7 @@ const articles: Record<string, {
     category: "Commercial",
     image: "/insights/commercial-outlook.webp",
     readTime: "6 min read",
-    published: "February 2026",
+    published: "June 19, 2026",
     stats: [
       { value: "+14%",   label: "Healthcare construction" },
       { value: "$890B",  label: "Commercial pipeline" },
@@ -123,7 +126,7 @@ const articles: Record<string, {
     category: "Executive Search",
     image: "/insights/executive-search.webp",
     readTime: "8 min read",
-    published: "January 2026",
+    published: "June 24, 2026",
     stats: [
       { value: "78%",  label: "Execs open to new roles" },
       { value: "42d",  label: "Avg executive hire time" },
@@ -150,7 +153,7 @@ const articles: Record<string, {
     category: "Infrastructure",
     image: "/insights/infrastructure-talent.webp",
     readTime: "5 min read",
-    published: "March 2026",
+    published: "June 29, 2026",
     stats: [
       { value: "$1.2T", label: "Infrastructure bill value" },
       { value: "500K+", label: "Civil jobs needed" },
@@ -178,6 +181,42 @@ export async function generateStaticParams() {
   return Object.keys(articles).map((slug) => ({ slug }));
 }
 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const article = articles[slug];
+
+  if (!article) {
+    return { title: "Article Not Found" };
+  }
+
+  const description = article.content[0].slice(0, 155).trim() + "…";
+
+  return {
+    title: article.title, // renders as "{title} - RUDRON Global Talent Solutions"
+    description,
+    alternates: {
+      canonical: `${SITE_URL}/insights/${slug}`,
+    },
+    openGraph: {
+      type: "article",
+      title: article.title,
+      description,
+      url: `${SITE_URL}/insights/${slug}`,
+      images: [{ url: `${SITE_URL}${article.image}` }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: article.title,
+      description,
+      images: [`${SITE_URL}${article.image}`],
+    },
+  };
+}
+
 export default async function InsightArticlePage({
   params,
 }: {
@@ -201,5 +240,44 @@ export default async function InsightArticlePage({
     .filter(([s]) => s !== slug)
     .slice(0, 3);
 
-  return <InsightArticleClient article={article} slug={slug} relatedArticles={relatedArticles} />;
+  // article.published is stored as a human-readable date (e.g. "June 2, 2026")
+  // for display; convert it to ISO 8601 for structured data.
+  const isoDatePublished = new Date(article.published).toISOString().slice(0, 10);
+
+  return (
+    <>
+      {/* Article structured data — helps eligibility for rich results / Google Discover */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            headline: article.title,
+            image: [`${SITE_URL}${article.image}`],
+            datePublished: isoDatePublished,
+            author: {
+              "@type": "Organization",
+              name: "RUDRON Global Talent Solutions",
+              url: SITE_URL,
+            },
+            publisher: {
+              "@type": "Organization",
+              name: "RUDRON Global Talent Solutions",
+              logo: {
+                "@type": "ImageObject",
+                url: `${SITE_URL}/images/rudron-logo.webp`,
+              },
+            },
+            mainEntityOfPage: {
+              "@type": "WebPage",
+              "@id": `${SITE_URL}/insights/${slug}`,
+            },
+            description: article.content[0].slice(0, 155).trim() + "…",
+          }),
+        }}
+      />
+      <InsightArticleClient article={article} slug={slug} relatedArticles={relatedArticles} />
+    </>
+  );
 }
