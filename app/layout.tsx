@@ -5,13 +5,16 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import Navbar from "@/components/Navbar";
 
+const SITE_NAME = "RUDRON Global Talent Solutions";
+const SITE_URL = "https://www.rudrongts.com";
+const LOGO_URL = `${SITE_URL}/images/rudron-logo.webp`; // keep ONE canonical logo URL used everywhere
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.rudrongts.com"),
+  metadataBase: new URL(SITE_URL),
 
   title: {
-    default:
-      "RUDRON Global Talent Solutions | Construction, Engineering & MEP Recruitment",
-    template: "%s | RUDRON",
+    default: `${SITE_NAME} | Construction, Engineering & MEP Recruitment`,
+    template: `%s - ${SITE_NAME}`, // e.g. "About - RUDRON Global Talent Solutions"
   },
 
   description:
@@ -55,11 +58,10 @@ export const metadata: Metadata = {
     "recruitment firm",
   ],
 
-  authors: [{ name: "RUDRON Global Talent Solutions" }],
-  creator: "RUDRON Global Talent Solutions",
-  publisher: "RUDRON Global Talent Solutions",
+  authors: [{ name: SITE_NAME }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
 
-  // Explicit icons block — points directly at the files you confirmed are in app/
   icons: {
     icon: [{ url: "/favicon.ico", sizes: "any" }, { url: "/icon.png", type: "image/png" }],
     apple: [{ url: "/apple-icon.png" }],
@@ -68,34 +70,37 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://www.rudrongts.com",
-    siteName: "RUDRON Global",
+    url: SITE_URL,
+    siteName: SITE_NAME, // was "RUDRON Global" — must match JSON-LD name exactly
 
-    title: "RUDRON Global Talent Solutions | Construction, Engineering & MEP Recruitment",
+    title: `${SITE_NAME} | Construction, Engineering & MEP Recruitment`,
 
     description:
       "Specialist recruitment solutions across Construction, Engineering, Architecture and MEP sectors.",
 
     images: [
       {
-        url: "https://www.rudrongts.com/og-image.jpg",
+        url: `${SITE_URL}/og-image.jpg`,
         width: 1200,
         height: 630,
-        alt: "RUDRON Global Talent Solutions",
+        alt: SITE_NAME,
       },
     ],
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "RUDRON Global Talent Solutions | Construction, Engineering & MEP Recruitment",
+    title: `${SITE_NAME} | Construction, Engineering & MEP Recruitment`,
     description:
       "Specialist recruitment solutions across Construction, Engineering, Architecture and MEP sectors.",
     images: ["/og-image.jpg"],
   },
 
+  // NOTE: this is only the site-wide fallback. Every page.tsx should override
+  // this with its own canonical (see template below) — otherwise every route
+  // reports itself as a duplicate of the homepage to Google.
   alternates: {
-    canonical: "https://www.rudrongts.com",
+    canonical: SITE_URL,
   },
 };
 
@@ -117,7 +122,9 @@ export default function RootLayout({
 
         {children}
 
-        {/* Structured data: Organization + WebSite + EmploymentAgency, cross-linked */}
+        {/* Structured data: Organization + WebSite, cross-linked.
+            Switched ProfessionalService -> Organization as the primary type
+            so Google's Logo rich-result matcher reliably picks this up. */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -125,32 +132,28 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@graph": [
                 {
-                  "@type": "ProfessionalService",
-                  "@id": "https://www.rudrongts.com/#organization",
-                  name: "RUDRON Global Talent Solutions",
-                  url: "https://www.rudrongts.com",
-                  logo: "https://www.rudrongts.com/logo.webp",
-                  title: "RUDRON Global Talent Solutions",
+                  "@type": ["Organization", "EmploymentAgency"],
+                  "@id": `${SITE_URL}/#organization`,
+                  name: SITE_NAME,
+                  legalName: SITE_NAME,
+                  url: SITE_URL,
+                  logo: {
+                    "@type": "ImageObject",
+                    url: LOGO_URL,
+                    width: 512,
+                    height: 512,
+                  },
+                  image: LOGO_URL,
                   description:
                     "Specialist recruitment solutions across Construction, Engineering, Architecture, Mechanical, Electrical and Plumbing sectors.",
-                  sameAs: ["https://www.linkedin.com/company/rudrongts"],
-                  email: "jobs@rudrongts.com",
-                  telephone: "+1 YOUR US NUMBER",
+                  sameAs: [
+                    "https://www.linkedin.com/company/rudrongts",
+                    "https://instagram.com/rudron_gts",
+                    "https://facebook.com/share/1HQMr8GCcd/?mibextid=wwXlfr",
+                  ],
+                  email: "admin@rudrongts.com",
+                  telephone: "+1-239-309-3969",
                   foundingDate: "2026",
-                  image: "https://www.rudrongts.com/og-image.png",
-                },
-                {
-                  "@type": "WebSite",
-                  "@id": "https://www.rudrongts.com/#website",
-                  name: "RUDRON Global Talent Solutions",
-                  url: "https://www.rudrongts.com",
-                  publisher: { "@id": "https://www.rudrongts.com/#organization" },
-                },
-                {
-                  "@type": "EmploymentAgency",
-                  "@id": "https://www.rudrongts.com/#agency",
-                  name: "RUDRON Global Talent Solutions",
-                  url: "https://www.rudrongts.com",
                   areaServed: [
                     "United States",
                     "Canada",
@@ -164,6 +167,13 @@ export default function RootLayout({
                     "Executive Search",
                     "Talent Acquisition",
                   ],
+                },
+                {
+                  "@type": "WebSite",
+                  "@id": `${SITE_URL}/#website`,
+                  name: SITE_NAME,
+                  url: SITE_URL,
+                  publisher: { "@id": `${SITE_URL}/#organization` },
                 },
               ],
             }),
