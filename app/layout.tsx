@@ -4,6 +4,7 @@ import type { Metadata, Viewport } from "next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import Navbar from "@/components/Navbar";
+import ScrollToTopButton from "@/components/ScrollToTopButton";
 
 const SITE_NAME = "RUDRON Global Talent Solutions";
 const SITE_URL = "https://www.rudrongts.com";
@@ -179,7 +180,7 @@ export default function RootLayout({
             }),
           }}
         />
-
+        <ScrollToTopButton />
         <SpeedInsights />
       </body>
     </html>

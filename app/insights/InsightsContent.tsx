@@ -29,6 +29,12 @@ const insights = [
   { title: "Commercial Construction Market Outlook",       image: "/insights/commercial-outlook.webp",   category: "Commercial",         slug: "commercial-construction-outlook", read: "6 min read" },
   { title: "Executive Search Strategies For Contractors",  image: "/insights/executive-search.webp",     category: "Executive Search",   slug: "executive-search-construction",   read: "8 min read" },
   { title: "Infrastructure Talent Shortages Continue",     image: "/insights/infrastructure-talent.webp",category: "Infrastructure",     slug: "infrastructure-talent-shortage",  read: "5 min read" },
+  { title: "Q3 2026 Construction Salary Benchmark Report",       image: "/insights/salary-benchmark-q3.webp",     category: "Market Insights",  slug: "q3-2026-salary-benchmark-report",           read: "6 min read" },
+  { title: "Reshoring Fuels Industrial Construction Boom",       image: "/insights/reshoring-industrial.webp",    category: "Industry News",    slug: "reshoring-manufacturing-industrial-construction", read: "6 min read" },
+  { title: "Superintendent Compensation Trends By Market",      image: "/insights/superintendent-comp.webp",     category: "Salary Guides",    slug: "superintendent-compensation-trends",        read: "5 min read" },
+  { title: "Healthcare Construction Regulatory Complexity",     image: "/insights/healthcare-regulatory.webp",   category: "Commercial",       slug: "healthcare-construction-regulatory-complexity", read: "7 min read" },
+  { title: "Succession Planning For Construction Leadership",   image: "/insights/succession-planning.webp",     category: "Executive Search", slug: "succession-planning-construction-leadership", read: "7 min read" },
+  { title: "Bridge & Transportation Hiring Outlook",             image: "/insights/bridge-transportation.webp",   category: "Infrastructure",   slug: "bridge-transportation-infrastructure-hiring", read: "6 min read" },
 ];
 
 const intelligenceTopics = [
@@ -45,13 +51,14 @@ const resources = [
   { title: "Associated General Contractors", desc: "Construction workforce reports and economic data.",                                  link: "https://www.agc.org",                   icon: "📊" },
 ];
 
+
 const categories = [
-  { number: "01", title: "Market Insights",          count: "12 articles", icon: "📈" },
-  { number: "02", title: "Salary Guides",            count: "8 articles",  icon: "💰" },
-  { number: "03", title: "Industry News",            count: "15 articles", icon: "📰" },
-  { number: "04", title: "Executive Search",         count: "6 articles",  icon: "🎯" },
-  { number: "05", title: "Commercial Construction",  count: "9 articles",  icon: "🏙️" },
-  { number: "06", title: "Infrastructure",           count: "7 articles",  icon: "🌉" },
+  { number: "01", title: "Market Insights",  icon: "📈" },
+  { number: "02", title: "Salary Guides",    icon: "💰" },
+  { number: "03", title: "Industry News",    icon: "📰" },
+  { number: "04", title: "Executive Search", icon: "🎯" },
+  { number: "05", title: "Commercial",       icon: "🏙️" },
+  { number: "06", title: "Infrastructure",   icon: "🌉" },
 ];
 
 const marqueeItems = ["SALARY GUIDES","HIRING TRENDS","DATA CENTERS","EXECUTIVE SEARCH","INFRASTRUCTURE","MEP","COMMERCIAL","MISSION CRITICAL"];
@@ -59,7 +66,7 @@ const marqueeItems = ["SALARY GUIDES","HIRING TRENDS","DATA CENTERS","EXECUTIVE 
 const categoryColors: Record<string, string> = {
   "Market Insights":  "#C89B3C",
   "Industry News":    "#3ecfb2",
-  "Salary Guides":    "#a78cf5",
+  "Salary Guides":    "#b7a8e4",
   "Commercial":       "#f5a623",
   "Executive Search": "#f06292",
   "Infrastructure":   "#64b5f6",
@@ -411,32 +418,41 @@ export default function InsightsContent() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {categories.map((item, i) => (
-              <div
-                key={item.number}
-                className="group relative bg-[#0D1726] rounded-[24px] border border-white/6 p-6 overflow-hidden cursor-pointer hover:border-[#C89B3C]/30 transition-all duration-400"
-                style={{
-                  opacity:    catInView ? 1 : 0,
-                  transform:  catInView ? "translateY(0)" : "translateY(24px)",
-                  transition: `opacity 0.6s ease ${i * 100}ms, transform 0.5s ease ${i * 100}ms, border 0.3s`,
-                }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.transform = "translateY(-5px)"; }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.transform = catInView ? "translateY(0)" : "translateY(24px)"; }}
-              >
-                <div className="absolute top-0 left-6 right-6 h-[2px] rounded-b-full bg-gradient-to-r from-[#C89B3C] to-[#E8B84B] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
-                <div className="absolute right-4 top-1 text-[72px] font-black text-white/[0.03] select-none">{item.number}</div>
-
-                <div className="flex items-start justify-between mb-5">
-                  <div className="w-11 h-11 rounded-xl bg-white/5 group-hover:bg-[#C89B3C]/10 flex items-center justify-center text-xl transition-all duration-300">{item.icon}</div>
-                  <span className="text-gray-500 text-[12px] border border-white/8 rounded-full px-3 py-1">{item.count}</span>
+            {categories.map((item, i) => {
+              const articleCount = insights.filter((a) => a.category === item.title).length;
+              return (
+                <div
+                  key={item.number}
+                  onClick={() => {
+                    setActiveCategory(item.title);
+                    gridRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+                  }}
+                  className="group relative bg-[#0D1726] rounded-[24px] border border-white/6 p-6 overflow-hidden cursor-pointer hover:border-[#C89B3C]/30 transition-all duration-400"
+                  style={{
+                    opacity:    catInView ? 1 : 0,
+                    transform:  catInView ? "translateY(0)" : "translateY(24px)",
+                    transition: `opacity 0.6s ease ${i * 100}ms, transform 0.5s ease ${i * 100}ms, border 0.3s`,
+                  }}
+                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.transform = "translateY(-5px)"; }}
+                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.transform = catInView ? "translateY(0)" : "translateY(24px)"; }}
+                >
+                  <div className="absolute top-0 left-6 right-6 h-[2px] rounded-b-full bg-gradient-to-r from-[#C89B3C] to-[#E8B84B] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+                  <div className="absolute right-4 top-1 text-[72px] font-black text-white/[0.03] select-none">{item.number}</div>
+ 
+                  <div className="flex items-start justify-between mb-5">
+                    <div className="w-11 h-11 rounded-xl bg-white/5 group-hover:bg-[#C89B3C]/10 flex items-center justify-center text-xl transition-all duration-300">{item.icon}</div>
+                    <span className="text-gray-500 text-[12px] border border-white/8 rounded-full px-3 py-1">
+                      {articleCount} article{articleCount !== 1 ? "s" : ""}
+                    </span>
+                  </div>
+ 
+                  <p className="text-[#C89B3C] text-[11px] font-bold tracking-[3px] uppercase mb-2">{item.number}</p>
+                  <h3 className="text-white text-[18px] font-bold group-hover:text-[#C89B3C] transition-colors duration-300">{item.title}</h3>
+ 
+                  <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#C89B3C]/0 to-transparent group-hover:via-[#C89B3C]/20 transition-all duration-500" />
                 </div>
-
-                <p className="text-[#C89B3C] text-[11px] font-bold tracking-[3px] uppercase mb-2">{item.number}</p>
-                <h3 className="text-white text-[18px] font-bold group-hover:text-[#C89B3C] transition-colors duration-300">{item.title}</h3>
-
-                <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#C89B3C]/0 to-transparent group-hover:via-[#C89B3C]/20 transition-all duration-500" />
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

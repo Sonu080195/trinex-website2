@@ -136,7 +136,7 @@ export default function InsightsSection({
 
           {/* Back */}
           <Link
-            href="/insights"
+            href="/insights#insights"
             className="inline-flex items-center gap-2 text-gray-400 hover:text-white text-[14px] mb-8 transition-colors duration-300 group"
             style={{ opacity: heroVisible ? 1 : 0, transition: "opacity 0.7s ease" }}
           >
