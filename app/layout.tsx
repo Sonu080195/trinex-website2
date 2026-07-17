@@ -8,7 +8,7 @@ import ScrollToTopButton from "@/components/ScrollToTopButton";
 
 const SITE_NAME = "RUDRON Global Talent Solutions";
 const SITE_URL = "https://www.rudrongts.com";
-const LOGO_URL = `${SITE_URL}/images/rudron-logo.webp`; // matches the file actually in /public/images
+const LOGO_URL = `${SITE_URL}/images/rudron-logo.png`; // matches the file actually in /public/images
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

@@ -118,7 +118,7 @@ export default function Navbar() {
             }}
           >
             <img
-              src="/images/rudron-logo.webp"
+              src="/images/rudron-logo.png"
               alt="RUDRON"
               className="h-14 w-auto"
             />
@@ -277,7 +277,7 @@ export default function Navbar() {
                 }}
               >
                 <img
-                  src="/images/rudron-logo.webp"
+                  src="/images/rudron-logo.png"
                   alt="RUDRON Logo"
                   className={`
                     w-auto transition-all duration-500

@@ -433,7 +433,7 @@ export default async function InsightArticlePage({
               name: "RUDRON Global Talent Solutions",
               logo: {
                 "@type": "ImageObject",
-                url: `${SITE_URL}/images/rudron-logo.webp`,
+                url: `${SITE_URL}/images/rudron-logo.png`,
               },
             },
             mainEntityOfPage: {
