@@ -5,15 +5,15 @@ import Navbar from "@/components/Navbar";
 export const metadata: Metadata = {
   title: "Terms & Conditions",
   description:
-    "Read the Terms and Conditions governing your use of RUDRON Global Talent Solutions' website and recruitment services.",
+    "Read the Terms and Conditions governing your use of RUDRON Global Talent Solutions LLP' website and recruitment services.",
   alternates: {
     canonical: "https://www.rudrongts.com/terms",
   },
   robots: { index: true, follow: true },
 };
 
-const EFFECTIVE_DATE = "June 16, 2025";
-const LAST_UPDATED   = "June 16, 2025";
+const EFFECTIVE_DATE = "July 22, 2026";
+const LAST_UPDATED   = "July 22, 2026";
 
 interface SectionProps {
   id: string;
@@ -117,7 +117,7 @@ export default function TermsPage() {
 
             <Section id="agreement" title="1. Agreement to Terms">
               <p>
-                These Terms and Conditions (&quot;Terms&quot;) constitute a legally binding agreement between you and RUDRON Global Talent Solutions (&quot;RUDRON&quot;, &quot;we&quot;, &quot;us&quot;, or &quot;our&quot;). By accessing or using{" "}
+                These Terms and Conditions (&quot;Terms&quot;) constitute a legally binding agreement between you and RUDRON Global Talent Solutions LLP (&quot;RUDRON&quot;, &quot;we&quot;, &quot;us&quot;, or &quot;our&quot;). By accessing or using{" "}
                 <a href="https://www.rudrongts.com" className="text-[#C89B3C] underline underline-offset-2">
                   www.rudrongts.com
                 </a>{" "}
@@ -211,7 +211,11 @@ export default function TermsPage() {
               </p>
             </Section>
 
-            <Section id="disclaimer" title="9. Disclaimer of Warranties">
+
+            <Section id="ai-services" title="9. AI-Assisted Recruitment Services">
+              <p>RUDRON may use AI-assisted technologies to improve communications, scheduling, candidate matching, note generation and recruitment workflows. AI tools assist our team but do not replace human judgement in recruitment decisions. Processing of personal information remains subject to our Privacy Policy.</p>
+            </Section>
+            <Section id="disclaimer" title="10. Disclaimer of Warranties">
               <p>
                 The Website and Services are provided on an &quot;as is&quot; and &quot;as available&quot; basis without warranties of any kind. RUDRON does not warrant that:
               </p>
@@ -222,59 +226,56 @@ export default function TermsPage() {
               ]} />
             </Section>
 
-            <Section id="liability" title="10. Limitation of Liability">
+            <Section id="liability" title="11. Limitation of Liability">
               <p>
                 To the fullest extent permitted by applicable law, RUDRON shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of, or inability to use, our Website or Services. Our total aggregate liability shall not exceed USD $500 or the amount you paid us in the preceding 12 months, whichever is greater.
               </p>
             </Section>
 
-            <Section id="indemnification" title="11. Indemnification">
+            <Section id="indemnification" title="12. Indemnification">
               <p>
                 You agree to indemnify, defend, and hold harmless RUDRON and its officers, directors, employees, and agents from and against any claims, liabilities, damages, losses, and expenses (including legal fees) arising out of your use of our Services, your violation of these Terms, or your violation of any third-party rights.
               </p>
             </Section>
 
-            <Section id="third-party" title="12. Third-Party Services & Links">
+            <Section id="third-party" title="13. Third-Party Services & Links">
               <p>
                 Our Website may link to third-party websites or integrate with third-party platforms such as LinkedIn. RUDRON is not responsible for the content, policies, or practices of any third party. Use of third-party services is at your own risk.
               </p>
             </Section>
 
-            <Section id="governing-law" title="13. Governing Law & Dispute Resolution">
+            <Section id="governing-law" title="14. Governing Law & Dispute Resolution">
               <p>
-                These Terms shall be governed by the laws of the United States, without regard to conflict-of-law provisions. Any dispute arising out of or relating to these Terms shall first be subject to good-faith negotiation. If unresolved within 30 days, disputes shall be submitted to binding arbitration under the rules of the American Arbitration Association (AAA), conducted in English.
-              </p>
-              <p>
-                Nothing in this clause prevents either party from seeking injunctive or equitable relief in a court of competent jurisdiction.
+                These Terms shall be governed by the and construed in accordance with the laws of India. Unless otherwise agreed in a separate written agreement between RUDRON Global Talent Solutions LLP LLP and the client, disputes shall be subject to the exclusive jurisdiction of the competent courts in Mumbai, Maharashtra, India. The parties are encouraged to attempt good-faith negotiations before commencing legal proceedings.
               </p>
             </Section>
 
-            <Section id="modifications" title="14. Modifications to Terms">
+            <Section id="modifications" title="15. Modifications to Terms">
               <p>
                 RUDRON reserves the right to modify these Terms at any time. Continued use of the Website following the posting of changes constitutes your acceptance of the revised Terms. Material changes will be indicated by an updated &quot;Last Updated&quot; date.
               </p>
             </Section>
 
-            <Section id="termination" title="15. Termination">
+            <Section id="termination" title="16. Termination">
               <p>
                 RUDRON may suspend or terminate your access to the Website and Services at any time, with or without cause or notice, if we believe you have violated these Terms or applicable law. Upon termination, all licences granted under these Terms will immediately cease.
               </p>
             </Section>
 
-            <Section id="severability" title="16. Severability & Waiver">
+            <Section id="severability" title="17. Severability & Waiver">
               <p>
                 If any provision of these Terms is found to be unenforceable, it shall be modified to the minimum extent necessary to make it enforceable, with remaining provisions continuing in full force. Failure to enforce any right does not constitute a waiver of that right.
               </p>
             </Section>
 
-            <Section id="contact" title="17. Contact Information">
+            <Section id="contact" title="18. Contact Information">
               <p>For questions or concerns regarding these Terms:</p>
               <div className="mt-4 bg-[#F8F7F4] rounded-xl p-6 border border-gray-100 space-y-1">
-                <p className="font-bold text-[#1A1A2E]">RUDRON Global Talent Solutions</p>
+                <p className="font-bold text-[#1A1A2E]">RUDRON Global Talent Solutions LLP</p>
                 <p>
                   Email:{" "}
-                  <a href="mailto:legal@rudrongts.com" className="text-[#C89B3C] underline underline-offset-2">
-                    legal@rudrongts.com
+                  <a href="mailto:privacy@rudrongts.com" className="text-[#C89B3C] underline underline-offset-2">
+                    privacy@rudrongts.com
                   </a>
                 </p>
                 <p>
