@@ -82,7 +82,7 @@ export const metadata: Metadata = {
 
     images: [
       {
-        url: `${SITE_URL}/og-image.jpg`,
+        url: `${SITE_URL}/og-image.png`,
         width: 1200,
         height: 630,
         alt: SITE_NAME,
@@ -95,14 +95,7 @@ export const metadata: Metadata = {
     title: `${SITE_NAME} | Construction, Engineering & MEP Recruitment`,
     description:
       "Specialist recruitment solutions across Construction, Engineering, Architecture and MEP sectors.",
-    images: ["/og-image.jpg"],
-  },
-
-  // NOTE: this is only the site-wide fallback. Every page.tsx should override
-  // this with its own canonical (see template below) — otherwise every route
-  // reports itself as a duplicate of the homepage to Google.
-  alternates: {
-    canonical: SITE_URL,
+    images: ["/og-image.png"],
   },
 };
 

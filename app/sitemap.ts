@@ -97,7 +97,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // ── Individual job pages ─────────────────────────────────
   const jobEntries: MetadataRoute.Sitemap = jobs.map((job) => ({
     url: `${BASE_URL}/jobs/${job.slug}`,
-    lastModified: now,
+    lastModified: new Date(job.datePosted),
     changeFrequency: "weekly" as const,
     priority: job.featured ? 0.85 : 0.75,
   }));
@@ -108,7 +108,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${BASE_URL}/insights/${slug}`,
       lastModified: new Date(lastModified),
       changeFrequency: "monthly" as const,
-      priority: 0.7,
+      priority: 0.8,
     })
   );
 
