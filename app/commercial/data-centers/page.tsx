@@ -1,8 +1,6 @@
 "use client";
 
-import Navbar from "@/components/Navbar";
 import SubpageCTA from "@/components/SubpageCTA";
-import Footer from "@/components/Footer";
 import { useEffect, useRef, useState } from "react";
 
 /* ─── tiny animation hook ─── */
@@ -200,8 +198,6 @@ export default function DataCenterPage() {
           .reveal-child, .stat-bar, .diag-stripe { animation: none !important; opacity: 1 !important; }
         }
       `}</style>
-
-      <Navbar />
 
       {/* ── HERO ── */}
       <section
@@ -502,7 +498,6 @@ export default function DataCenterPage() {
       </div>
 
       <SubpageCTA />
-      <Footer />
     </main>
   );
 }

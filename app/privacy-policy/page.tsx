@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import Footer from "@/components/Footer";
-import Navbar from "@/components/Navbar";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
@@ -356,8 +354,6 @@ function PolicyBlocks({ blocks }: { blocks: PolicyBlock[] }) {
 export default function PrivacyPolicyPage() {
   return (
     <>
-      <Navbar />
-
       <main className="min-h-screen bg-white">
         <header className="bg-[#1A1A2E] px-6 py-32 text-center">
           <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-[#C89B3C]">
@@ -435,7 +431,6 @@ export default function PrivacyPolicyPage() {
         </div>
       </main>
 
-      <Footer />
     </>
   );
 }

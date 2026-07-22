@@ -2,9 +2,6 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import HomeCTA from "@/components/HomeCTA";
 
 export default function IndustriesContent() {
@@ -82,9 +79,6 @@ useEffect(() => {
   return (
 
     <main className="bg-[#07111F] text-white overflow-hidden">
-
-      {/* NAVBAR */}
-      <Navbar />
 
 {/* HERO */}
 
@@ -851,9 +845,6 @@ useEffect(() => {
 
       {/* CTA */}
       <HomeCTA />
-
-      {/* FOOTER */}
-      <Footer />
 
     </main>
 

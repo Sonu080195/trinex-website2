@@ -1,7 +1,4 @@
 import { notFound } from "next/navigation";
-
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import HomeCTA from "@/components/HomeCTA";
 
 const industryData: Record<string, any> = {
@@ -254,9 +251,6 @@ export default async function IndustryDetailPage({
   return (
 
     <main className="industry-glow bg-[#07111F] text-white overflow-hidden">
-
-      {/* NAVBAR */}
-      <Navbar />
 
 {/* HERO */}
 
@@ -1279,9 +1273,6 @@ export default async function IndustryDetailPage({
 
       {/* CTA */}
       <HomeCTA />
-
-      {/* FOOTER */}
-      <Footer />
 
     </main>
 

@@ -1,8 +1,6 @@
 "use client";
 
 import { useMemo, useState, useEffect, useRef } from "react";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import HomeCTA from "@/components/HomeCTA";
 import JobsSidebar from "@/components/JobsSidebar";
 import JobCard from "@/components/JobCard";
@@ -91,7 +89,6 @@ export default function JobsContent() {
 
   return (
     <main className="bg-[#07111F] text-white overflow-hidden">
-      <Navbar />
 
       {/* ═══════════════════════════════════════
           HERO
@@ -486,7 +483,6 @@ export default function JobsContent() {
       </section>
 
       <HomeCTA />
-      <Footer />
 
       <style>{`
         @keyframes marquee {

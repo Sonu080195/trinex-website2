@@ -1,7 +1,5 @@
 "use client";
 
-import Footer from "@/components/Footer";
-import Navbar from "@/components/Navbar";
 import SubpageCTA from "@/components/SubpageCTA";
 
 export default function TunnelPage() {
@@ -21,9 +19,6 @@ export default function TunnelPage() {
   return (
 
     <main className="bg-[#07111F] text-white overflow-hidden">
-
-      {/* NAVBAR */}
-      <Navbar />
 
       {/* HERO */}
       <section className="relative min-h-[72vh] lg:min-h-[82vh] flex items-center overflow-hidden">
@@ -147,9 +142,6 @@ export default function TunnelPage() {
 
       {/* CTA */}
       <SubpageCTA />
-
-      {/* FOOTER */}
-      <Footer />
 
     </main>
 

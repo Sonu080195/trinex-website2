@@ -4,6 +4,7 @@ import type { Metadata, Viewport } from "next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
 
 const SITE_NAME = "RUDRON Global Talent Solutions";
@@ -137,12 +138,16 @@ export default function RootLayout({
                   "@id": `${SITE_URL}/#organization`,
                   name: SITE_NAME,
                   legalName: SITE_NAME,
-                  url: SITE_URL,
+                  alternateName: ["RUDRON", "RUDRON GTS"],
+                  url: `${SITE_URL}/`,
                   logo: {
                     "@type": "ImageObject",
-                    url: LOGO_URL,
+                    "@id": `${SITE_URL}/#logo`,
+                    url: `${SITE_URL}/images/rudron-logo-square.png`,
+                    contentUrl: `${SITE_URL}/images/rudron-logo-square.png`,
                     width: 512,
                     height: 512,
+                    caption: SITE_NAME,
                   },
                   image: LOGO_URL,
                   description:
@@ -169,17 +174,26 @@ export default function RootLayout({
                     "Talent Acquisition",
                   ],
                 },
-                {
-                  "@type": "WebSite",
-                  "@id": `${SITE_URL}/#website`,
-                  name: SITE_NAME,
-                  url: SITE_URL,
-                  publisher: { "@id": `${SITE_URL}/#organization` },
+              {
+                "@type": "WebSite",
+                "@id": `${SITE_URL}/#website`,
+                url: `${SITE_URL}/`,
+                name: SITE_NAME,
+                alternateName: [
+                  "RUDRON",
+                  "RUDRON GTS",
+                  "RUDRON Global Talent Solutions"
+                ],
+                publisher: {
+                  "@id": `${SITE_URL}/#organization`
                 },
+                inLanguage: "en-US"
+              },
               ],
             }),
           }}
         />
+        <Footer />
         <ScrollToTopButton />
         <SpeedInsights />
       </body>

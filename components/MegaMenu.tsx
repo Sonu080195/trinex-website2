@@ -5,25 +5,25 @@ import { useState } from "react";
 const industries = [
   {
     title: "Commercial",
-    image: "/subsectors/Commercial/DataCenter.webp",
+    image: "/Subsectors/Commercial/DataCenter.webp",
     icon: "🏢",
     items: ["Educational Construction", "Healthcare Construction", "Data Centers", "Retail", "Office Buildings"],
   },
   {
     title: "Industrial",
-    image: "/subsectors/Industrial/Powerplant.png",
+    image: "/Subsectors/Industrial/Powerplant.png",
     icon: "🏭",
     items: ["Warehouse", "Distribution Centers", "Wastewater Treatment", "Power Plants", "Tilt-Up"],
   },
   {
     title: "Residential",
-    image: "/subsectors/Residential/Highrise.png",
+    image: "/Subsectors/Residential/Highrise.png",
     icon: "🏘️",
     items: ["Multi-Family", "Single-Family", "Highrise", "Student Housing", "Senior Housing"],
   },
   {
     title: "Infrastructure",
-    image: "/subsectors/Civil/Bridge.png",
+    image: "/Subsectors/Civil/Bridge.png",
     icon: "🌉",
     items: ["Roadways", "Rail & Metro", "Bridges", "Tunnels", "Airport Construction"],
   },

@@ -1,9 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import HomeCTA from "@/components/HomeCTA";
 import JobCard from "@/components/JobCard";
 
@@ -35,8 +32,6 @@ export default function SavedJobsPage() {
   return (
 
     <main className="bg-[#07111F] text-white min-h-screen overflow-hidden">
-
-      <Navbar />
 
       {/* HERO */}
       <section className="relative min-h-[42vh] flex items-center overflow-hidden">
@@ -152,8 +147,6 @@ export default function SavedJobsPage() {
       </section>
 
       <HomeCTA />
-
-      <Footer />
 
     </main>
   );

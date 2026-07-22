@@ -2,8 +2,6 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import ApplyModal from "@/components/ApplyModal";
 import { Job, jobs } from "@/data/jobs";
 import { buildJobPostingSchema } from "@/lib/jobSchema";
@@ -64,7 +62,6 @@ export default function JobDetailsClient({ job }: { job: Job }) {
 
   return (
     <main className="bg-[#07111F] text-white overflow-hidden">
-      <Navbar />
 
       {/* ═══════════════════════════════════════
           HERO
@@ -411,8 +408,6 @@ export default function JobDetailsClient({ job }: { job: Job }) {
           </div>
         </section>
       )}
-
-      <Footer />
 
       <ApplyModal isOpen={applyOpen} onClose={() => setApplyOpen(false)} jobTitle={job.title} />
 

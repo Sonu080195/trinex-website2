@@ -1,9 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
-import Navbar from "@/components/Navbar";
 import HomeCTA from "@/components/HomeCTA";
-import Footer from "@/components/Footer";
 
 function useInView(threshold = 0.08) {
   const ref = useRef<HTMLDivElement>(null);
@@ -61,9 +59,7 @@ export default function AboutContent() {
 
   return (
     <main className="bg-[#07111F] text-white overflow-hidden">
-      <Navbar />
       
-
       {/* ══════════════════════════════════════
           HERO — unchanged
       ══════════════════════════════════════ */}
@@ -565,7 +561,6 @@ desc:"As construction technologies evolve and workforce demands continue to chan
       </section>
 
       <HomeCTA />
-      <Footer />
     </main>
   );
 }

@@ -2,8 +2,6 @@
 
 import Link from "next/link";
 import { useEffect, useState, useRef } from "react";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import HomeCTA from "@/components/HomeCTA";
 
 function useInView(threshold = 0.08) {
@@ -92,7 +90,6 @@ export default function InsightsContent() {
 
   return (
     <main className="bg-[#07111F] text-white overflow-hidden">
-      <Navbar />
 
       {/* ════════════════════════════════════════
           HERO
@@ -520,7 +517,6 @@ export default function InsightsContent() {
       </section>
 
       <HomeCTA />
-      <Footer />
 
       <style>{`
         @keyframes marquee {

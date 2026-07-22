@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import Footer from "@/components/Footer";
-import Navbar from "@/components/Navbar";
 
 export const metadata: Metadata = {
   title: "Terms & Conditions",
@@ -70,7 +68,6 @@ const tocItems = [
 export default function TermsPage() {
   return (
     <>
-      <Navbar />
 
       <main className="bg-white min-h-screen">
 
@@ -290,8 +287,6 @@ export default function TermsPage() {
           </article>
         </div>
       </main>
-
-      <Footer />
     </>
   );
 }

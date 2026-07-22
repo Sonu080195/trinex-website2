@@ -1,8 +1,6 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import { Loader2 } from "lucide-react";
 
 /* ── tiny hook ── */
@@ -84,7 +82,6 @@ export default function ContactContent() {
 
   return (
     <main className="bg-[#07111F] text-white overflow-hidden">
-      <Navbar />
 
       {/* ════════════════════════════════════════
           HERO
@@ -430,8 +427,6 @@ export default function ContactContent() {
           </div>
         </div>
       </section>
-
-      <Footer />
 
       <style>{`
         @keyframes marquee {

@@ -2,8 +2,6 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import HomeCTA from "@/components/HomeCTA";
 import { ArrowLeft, Clock, Share2, BookmarkPlus, CheckCircle } from "lucide-react";
 
@@ -85,7 +83,6 @@ export default function InsightsSection({
 
   return (
     <main className="bg-[#07111F] text-white overflow-hidden">
-      <Navbar />
 
       {/* Read progress bar */}
       <div
@@ -453,7 +450,6 @@ export default function InsightsSection({
       </section>
 
       <HomeCTA />
-      <Footer />
 
       <style>{`
         @keyframes marquee {

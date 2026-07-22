@@ -1,7 +1,6 @@
 "use client";
 
 import Footer from "@/components/Footer";
-import Navbar from "@/components/Navbar";
 import SubpageCTA from "@/components/SubpageCTA";
 
 export default function RoadwaysPage() {
@@ -21,9 +20,6 @@ export default function RoadwaysPage() {
   return (
 
     <main className="bg-[#07111F] text-white overflow-hidden">
-
-      {/* NAVBAR */}
-      <Navbar />
 
       {/* HERO */}
       <section className="relative min-h-[72vh] lg:min-h-[82vh] flex items-center overflow-hidden">
