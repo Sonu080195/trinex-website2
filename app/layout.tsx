@@ -1,4 +1,3 @@
-import Script from "next/script";
 import "./globals.css";
 import type { Metadata, Viewport } from "next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -9,14 +8,14 @@ import ScrollToTopButton from "@/components/ScrollToTopButton";
 
 const SITE_NAME = "RUDRON Global Talent Solutions";
 const SITE_URL = "https://www.rudrongts.com";
-const LOGO_URL = `${SITE_URL}/images/rudron-logo.png`; // matches the file actually in /public/images
+const LOGO_URL = `${SITE_URL}/images/rudron-logo.png`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
 
   title: {
     default: `${SITE_NAME} | Construction, Engineering & MEP Recruitment`,
-    template: `%s - ${SITE_NAME}`, // e.g. "About - RUDRON Global Talent Solutions"
+    template: `%s - ${SITE_NAME}`,
   },
 
   description:
@@ -64,22 +63,14 @@ export const metadata: Metadata = {
   creator: SITE_NAME,
   publisher: SITE_NAME,
 
-  icons: {
-    icon: [{ url: "/favicon.ico", sizes: "any" }, { url: "/icon.png", type: "image/png" }],
-    apple: [{ url: "/apple-icon.png" }],
-  },
-
   openGraph: {
     type: "website",
     locale: "en_US",
     url: SITE_URL,
-    siteName: SITE_NAME, // was "RUDRON Global" — must match JSON-LD name exactly
-
+    siteName: SITE_NAME,
     title: `${SITE_NAME} | Construction, Engineering & MEP Recruitment`,
-
     description:
       "Specialist recruitment solutions across Construction, Engineering, Architecture and MEP sectors.",
-
     images: [
       {
         url: `${SITE_URL}/og-image.png`,

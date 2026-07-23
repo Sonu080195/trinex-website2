@@ -14,7 +14,7 @@ const staticRoutes: Array<{
   priority: number;
 }> = [
   // ── Homepage ──────────────────────────────────────────────
-  { path: "",            changeFrequency: "daily",   priority: 1.0 },
+  { path: "",            changeFrequency: "weekly",   priority: 1.0 },
 
   // ── Core pages ────────────────────────────────────────────
   { path: "/about",      changeFrequency: "monthly", priority: 0.8 },
