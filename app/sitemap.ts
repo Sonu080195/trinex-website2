@@ -12,6 +12,7 @@ const staticRoutes: Array<{
   path: string;
   changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"];
   priority: number;
+  lastModified?: string;
 }> = [
   // ── Homepage ──────────────────────────────────────────────
   { path: "",            changeFrequency: "weekly",   priority: 1.0 },
@@ -65,8 +66,11 @@ const staticRoutes: Array<{
   { path: "/residential/student-housing",changeFrequency: "monthly", priority: 0.65 },
 
   // ── Privacy Policy and T&C ─────────────────────────────────
-  { path: "/privacy-policy", changeFrequency: "yearly", priority: 0.4 },
-  { path: "/terms",          changeFrequency: "yearly", priority: 0.4 },
+  { path: "/privacy-policy", changeFrequency: "yearly", priority: 0.3, lastModified: "2026-07-22" },
+  { path: "/terms",          changeFrequency: "yearly", priority: 0.3, lastModified: "2026-07-22" },
+  { path: "/cookie-policy",  changeFrequency: "yearly", priority: 0.3, lastModified: "2026-07-22" },
+  { path: "/disclaimer",     changeFrequency: "yearly", priority: 0.3, lastModified: "2026-07-27" },
+  { path: "/accessibility",  changeFrequency: "yearly", priority: 0.3, lastModified: "2026-07-27" },
 ];
 
 // ── Insights articles ────────────────────────────────────────

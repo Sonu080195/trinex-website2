@@ -55,7 +55,7 @@ export const jobs: Job[] = [
   heroImage:
     "/jobs/commercial-pm.webp",
 
-  title: "Senior Project Manager",
+  title: "Senior Commercial Construction Project Manager",
 
   company: "Commercial GC Contractor",
 
@@ -215,7 +215,7 @@ export const jobs: Job[] = [
   heroImage:
     "/jobs/commercial-pm.webp",
 
-  title: "Sr. Project Manager - Healthcare",
+  title: "Senior Healthcare Construction Project Manager",
 
   company: "Commercial GC",
 
@@ -229,7 +229,7 @@ export const jobs: Job[] = [
 
   specialisation: "Commercial",
 
-  slug: "senior-project-manager-sanjose",
+  slug: "senior-healthcare-construction-project-manager-sanjose",
 
   description:
     "A leading general contractor is seeking an experienced Senior Project Manager to lead complex healthcare commercial construction projects in the San Jose area. This role requires a strong background in managing large-scale medical facility builds, including hospitals, outpatient centers, and specialized clinical environments.",
@@ -272,7 +272,7 @@ export const jobs: Job[] = [
   heroImage:
     "/jobs/commercial-pm.webp",
 
-  title: "Senior Project Manager",
+  title: "Senior Electrical Project Manager",
 
   company: "Electrical Contractor",
 
@@ -343,7 +343,7 @@ export const jobs: Job[] = [
 
   specialisation: "Electrical",
 
-  slug: "field-operations-manager-dallas",
+  slug: "electrical-field-operations-manager-dallas",
 
   description:
     "A leading electrical contractor is seeking a highly experienced Field Operations Manager to lead and scale field operations across large-scale industrial and commercial electrical projects throughout the DFW market. This executive-level role is responsible for operational performance, field leadership development, safety excellence, financial oversight, and client satisfaction.",
@@ -447,7 +447,7 @@ export const jobs: Job[] = [
   heroImage:
     "/jobs/commercial-pm.webp",
 
-  title: "Estimator",
+  title: "Electrical Estimator",
 
   company: "Electrical Contractor",
 
@@ -461,7 +461,7 @@ export const jobs: Job[] = [
 
   specialisation: "Electrical",
 
-  slug: "estimator-seattle",
+  slug: "electrical-estimator-seattle",
 
   description:
     "A leading electrical contractor is seeking an experienced Electrical Estimator to join a growing commercial and industrial construction team in Seattle, WA. This role is responsible for preparing accurate and competitive cost estimates for complex electrical construction projects, including industrial facilities, manufacturing plants, commercial buildings, healthcare, data centers, and mission-critical environments.",
@@ -514,7 +514,7 @@ export const jobs: Job[] = [
   heroImage:
     "/jobs/commercial-pm.webp",
 
-  title: "Senior Project Manager",
+  title: "Senior Commercial Construction Project Manager",
 
   company: "General Contractor",
 
@@ -528,7 +528,7 @@ export const jobs: Job[] = [
 
   specialisation: "Commercial/Industrial",
 
-  slug: "senior-project-manager-Philadelphia",
+  slug: "senior-commercial-construction-project-manager-philadelphia",
 
   description:
     "A leading general contractor is seeking an experienced Senior Project Manager to lead and oversee commercial and industrial construction projects in the Philadelphia area. This role is ideal for a driven professional who can manage complex builds, lead cross-functional teams, and ensure projects are delivered on time, within budget, and to the highest quality standards.",

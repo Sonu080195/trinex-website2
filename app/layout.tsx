@@ -1,10 +1,10 @@
 import "./globals.css";
 import type { Metadata, Viewport } from "next";
-import { SpeedInsights } from "@vercel/speed-insights/next";
-
+import ConsentAwareSpeedInsights from "@/components/ConsentAwareSpeedInsights";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
+import CookieConsent from "@/components/CookieConsent";
 
 const SITE_NAME = "RUDRON Global Talent Solutions";
 const SITE_URL = "https://www.rudrongts.com";
@@ -179,7 +179,8 @@ export default function RootLayout({
         />
         <Footer />
         <ScrollToTopButton />
-        <SpeedInsights />
+        <ConsentAwareSpeedInsights />
+        <CookieConsent />
       </body>
     </html>
   );
