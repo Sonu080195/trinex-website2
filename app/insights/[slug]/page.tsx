@@ -1,18 +1,33 @@
-import Link from "next/link";
 import type { Metadata } from "next";
-import Navbar from "@/components/Navbar";
+import { notFound } from "next/navigation";
+
 import HomeCTA from "@/components/HomeCTA";
-import Footer from "@/components/Footer";
 import InsightArticleClient from "@/components/InsightArticlePage";
 
 const SITE_URL = "https://www.rudrongts.com";
+const SITE_NAME = "RUDRON Global Talent Solutions";
 
-const articles: Record<string, {
-  title: string; category: string; image: string;
-  content: string[]; readTime: string; published: string;
+type Article = {
+  title: string;
+  category: string;
+  image: string;
+  content: string[];
+  readTime: string;
+  published: string;
   keyTakeaways: string[];
-  stats: { value: string; label: string }[];
-}> = {
+  stats: {
+    value: string;
+    label: string;
+  }[];
+};
+
+type InsightPageProps = {
+  params: Promise<{
+    slug: string;
+  }>;
+};
+
+const articles: Record<string, Article> = {
   "construction-hiring-trends": {
     title: "2026 Construction Hiring Trends",
     category: "Market Insights",
@@ -20,7 +35,7 @@ const articles: Record<string, {
     readTime: "6 min read",
     published: "June 2, 2026",
     stats: [
-      { value: "38%",  label: "Increase in PM demand" },
+      { value: "38%", label: "Increase in PM demand" },
       { value: "2.1M", label: "Construction jobs gap" },
       { value: "$185K+", label: "Avg Sr. PM salary" },
     ],
@@ -40,6 +55,7 @@ const articles: Record<string, {
       "As the industry enters a new cycle of expansion, organizations capable of securing top-tier talent early will hold significant competitive advantages across bidding, project delivery, and operational scalability.",
     ],
   },
+
   "data-center-construction-hiring": {
     title: "The Growing Demand for Data Center Talent",
     category: "Industry News",
@@ -47,7 +63,7 @@ const articles: Record<string, {
     readTime: "7 min read",
     published: "June 8, 2026",
     stats: [
-      { value: "340%",  label: "Data center growth" },
+      { value: "340%", label: "Data center growth" },
       { value: "$2.4T", label: "US infrastructure spend" },
       { value: "180K+", label: "Mission critical jobs" },
     ],
@@ -67,6 +83,7 @@ const articles: Record<string, {
       "As hyperscale expansion continues, recruitment strategy is becoming a critical business function rather than simply an HR responsibility. Companies investing early in talent acquisition and retention are positioning themselves for long-term market leadership.",
     ],
   },
+
   "mep-talent-shortage": {
     title: "MEP Salary & Workforce Insights",
     category: "Salary Guides",
@@ -75,8 +92,8 @@ const articles: Record<string, {
     published: "June 14, 2026",
     stats: [
       { value: "$175K+", label: "MEP Superintendent avg" },
-      { value: "22%",    label: "YoY salary increase" },
-      { value: "4.2x",   label: "Demand vs supply ratio" },
+      { value: "22%", label: "YoY salary increase" },
+      { value: "4.2x", label: "Demand vs supply ratio" },
     ],
     keyTakeaways: [
       "MEP salary expectations are rising rapidly across all experience levels.",
@@ -94,6 +111,7 @@ const articles: Record<string, {
       "As project complexity continues increasing across healthcare, data centers, industrial facilities, and infrastructure environments, demand for specialized MEP professionals is expected to remain exceptionally strong for years ahead.",
     ],
   },
+
   "commercial-construction-outlook": {
     title: "Commercial Construction Market Outlook",
     category: "Commercial",
@@ -101,9 +119,9 @@ const articles: Record<string, {
     readTime: "6 min read",
     published: "June 19, 2026",
     stats: [
-      { value: "+14%",   label: "Healthcare construction" },
-      { value: "$890B",  label: "Commercial pipeline" },
-      { value: "65K+",   label: "PM roles projected" },
+      { value: "+14%", label: "Healthcare construction" },
+      { value: "$890B", label: "Commercial pipeline" },
+      { value: "65K+", label: "PM roles projected" },
     ],
     keyTakeaways: [
       "Healthcare and life sciences continue leading commercial demand.",
@@ -121,6 +139,7 @@ const articles: Record<string, {
       "Long-term outlook across commercial construction remains positive as population growth, infrastructure modernization, and technology-driven development continue fueling nationwide investment.",
     ],
   },
+
   "executive-search-construction": {
     title: "Executive Search Strategies For Contractors",
     category: "Executive Search",
@@ -128,8 +147,8 @@ const articles: Record<string, {
     readTime: "8 min read",
     published: "June 24, 2026",
     stats: [
-      { value: "78%",  label: "Execs open to new roles" },
-      { value: "42d",  label: "Avg executive hire time" },
+      { value: "78%", label: "Execs open to new roles" },
+      { value: "42d", label: "Avg executive hire time" },
       { value: "3.4x", label: "ROI on exec placement" },
     ],
     keyTakeaways: [
@@ -148,6 +167,7 @@ const articles: Record<string, {
       "As consolidation, expansion, and succession planning continue reshaping the industry, executive recruitment will remain a major competitive differentiator for construction organizations nationwide.",
     ],
   },
+
   "infrastructure-talent-shortage": {
     title: "Infrastructure Talent Shortages Continue Rising",
     category: "Infrastructure",
@@ -157,7 +177,7 @@ const articles: Record<string, {
     stats: [
       { value: "$1.2T", label: "Infrastructure bill value" },
       { value: "500K+", label: "Civil jobs needed" },
-      { value: "31%",   label: "Shortage increase YoY" },
+      { value: "31%", label: "Shortage increase YoY" },
     ],
     keyTakeaways: [
       "Public funding is creating sustained long-term demand for civil talent.",
@@ -175,16 +195,17 @@ const articles: Record<string, {
       "Organizations capable of building stable recruitment strategies and long-term workforce pipelines are positioning themselves for sustained growth throughout the next decade of infrastructure expansion.",
     ],
   },
-    "q3-2026-salary-benchmark-report": {
+
+  "q3-2026-salary-benchmark-report": {
     title: "Q3 2026 Construction Salary Benchmark Report",
     category: "Market Insights",
     image: "/insights/salary-benchmark-q3.webp",
     readTime: "6 min read",
     published: "July 3, 2026",
     stats: [
-      { value: "9.2%",  label: "YoY comp growth" },
+      { value: "9.2%", label: "YoY comp growth" },
       { value: "$205K", label: "Avg PX salary" },
-      { value: "71%",   label: "Firms raising pay" },
+      { value: "71%", label: "Firms raising pay" },
     ],
     keyTakeaways: [
       "Compensation growth is outpacing general wage inflation industry-wide.",
@@ -202,7 +223,7 @@ const articles: Record<string, {
       "As the market heads into 2027 planning cycles, organizations that proactively adjust compensation ahead of turnover, rather than reactively after a resignation, are positioning themselves with a meaningful hiring advantage.",
     ],
   },
- 
+
   "reshoring-manufacturing-industrial-construction": {
     title: "Reshoring Fuels Industrial Construction Boom",
     category: "Industry News",
@@ -211,8 +232,8 @@ const articles: Record<string, {
     published: "July 6, 2026",
     stats: [
       { value: "$180B", label: "New industrial investment" },
-      { value: "27%",   label: "Growth in plant construction" },
-      { value: "95K+",  label: "Projected trade jobs" },
+      { value: "27%", label: "Growth in plant construction" },
+      { value: "95K+", label: "Projected trade jobs" },
     ],
     keyTakeaways: [
       "Domestic manufacturing reshoring is driving sustained industrial construction demand.",
@@ -230,7 +251,7 @@ const articles: Record<string, {
       "As reshoring investment continues through the remainder of the decade, firms that build durable, specialized talent pipelines now will be best positioned to capture the next wave of facility announcements.",
     ],
   },
- 
+
   "superintendent-compensation-trends": {
     title: "Superintendent Compensation Trends By Market",
     category: "Salary Guides",
@@ -239,8 +260,8 @@ const articles: Record<string, {
     published: "July 8, 2026",
     stats: [
       { value: "$155K", label: "Avg Sr. Superintendent" },
-      { value: "18%",   label: "Premium for MC experience" },
-      { value: "6",     label: "Markets tracked" },
+      { value: "18%", label: "Premium for MC experience" },
+      { value: "6", label: "Markets tracked" },
     ],
     keyTakeaways: [
       "Mission critical experience commands a significant compensation premium.",
@@ -258,7 +279,7 @@ const articles: Record<string, {
       "As field leadership scarcity shows no signs of easing, firms that proactively align compensation with current market realities are seeing measurably faster time-to-fill on Superintendent searches.",
     ],
   },
- 
+
   "healthcare-construction-regulatory-complexity": {
     title: "Healthcare Construction: Navigating Regulatory Complexity",
     category: "Commercial",
@@ -266,8 +287,8 @@ const articles: Record<string, {
     readTime: "7 min read",
     published: "July 10, 2026",
     stats: [
-      { value: "+14%",  label: "Healthcare construction growth" },
-      { value: "18mo",  label: "Avg regulatory approval time" },
+      { value: "+14%", label: "Healthcare construction growth" },
+      { value: "18mo", label: "Avg regulatory approval time" },
       { value: "$340B", label: "US healthcare capex pipeline" },
     ],
     keyTakeaways: [
@@ -286,7 +307,7 @@ const articles: Record<string, {
       "As health systems continue expanding capacity nationwide, contractors and recruiters who understand this sector's unique regulatory and operational demands will remain positioned to capture a disproportionate share of this consistently growing market.",
     ],
   },
- 
+
   "succession-planning-construction-leadership": {
     title: "Succession Planning For Construction Leadership",
     category: "Executive Search",
@@ -294,7 +315,7 @@ const articles: Record<string, {
     readTime: "7 min read",
     published: "July 13, 2026",
     stats: [
-      { value: "58%",  label: "Firms without a succession plan" },
+      { value: "58%", label: "Firms without a succession plan" },
       { value: "5-7yr", label: "Avg leadership transition window" },
       { value: "2.3x", label: "Cost of reactive vs planned transition" },
     ],
@@ -314,7 +335,7 @@ const articles: Record<string, {
       "As a wave of founder-led construction firms approaches natural leadership transitions over the coming decade, organizations that treat succession as an ongoing discipline rather than a future problem will be the ones best positioned to sustain what they've built.",
     ],
   },
- 
+
   "bridge-transportation-infrastructure-hiring": {
     title: "Bridge & Transportation Infrastructure Hiring Outlook",
     category: "Infrastructure",
@@ -323,8 +344,8 @@ const articles: Record<string, {
     published: "July 15, 2026",
     stats: [
       { value: "$550B", label: "Transportation infra pipeline" },
-      { value: "12%",   label: "YoY hiring growth" },
-      { value: "40K+",  label: "Bridge/rail roles needed" },
+      { value: "12%", label: "YoY hiring growth" },
+      { value: "40K+", label: "Bridge/rail roles needed" },
     ],
     keyTakeaways: [
       "Federal infrastructure funding continues driving sustained transportation project volume.",
@@ -344,107 +365,265 @@ const articles: Record<string, {
   },
 };
 
-export async function generateStaticParams() {
-  return Object.keys(articles).map((slug) => ({ slug }));
+function getArticleBySlug(slug: string): Article | undefined {
+  return articles[slug];
+}
+
+function createDescription(article: Article): string {
+  const firstParagraph = article.content[0]?.trim();
+
+  if (!firstParagraph) {
+    return `Read ${article.title} from RUDRON Global Talent Solutions.`;
+  }
+
+  return firstParagraph.length > 160
+    ? `${firstParagraph.slice(0, 157).trim()}...`
+    : firstParagraph;
+}
+
+function convertDateToIso(date: string): string {
+  const parsedDate = new Date(date);
+
+  if (Number.isNaN(parsedDate.getTime())) {
+    return "";
+  }
+
+  return parsedDate.toISOString().slice(0, 10);
+}
+
+export function generateStaticParams() {
+  return Object.keys(articles).map((slug) => ({
+    slug,
+  }));
 }
 
 export async function generateMetadata({
   params,
-}: {
-  params: Promise<{ slug: string }>;
-}): Promise<Metadata> {
+}: InsightPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const article = articles[slug];
+  const article = getArticleBySlug(slug);
 
   if (!article) {
-    return { title: "Article Not Found" };
+    return {
+      title: "Article Not Found",
+      description:
+        "The requested insight article could not be found on RUDRON Global Talent Solutions.",
+      robots: {
+        index: false,
+        follow: false,
+      },
+    };
   }
 
-  const description = article.content[0].slice(0, 155).trim() + "…";
+  const canonicalUrl = `${SITE_URL}/insights/${slug}`;
+  const description = createDescription(article);
+  const imageUrl = `${SITE_URL}${article.image}`;
 
   return {
-    title: article.title, // renders as "{title} - RUDRON Global Talent Solutions"
+    title: article.title,
+
     description,
+
     alternates: {
-      canonical: `${SITE_URL}/insights/${slug}`,
+      canonical: canonicalUrl,
     },
+
     openGraph: {
       type: "article",
+      url: canonicalUrl,
+      siteName: SITE_NAME,
       title: article.title,
       description,
-      url: `${SITE_URL}/insights/${slug}`,
-      images: [{ url: `${SITE_URL}${article.image}` }],
+      publishedTime: convertDateToIso(article.published),
+      section: article.category,
+      authors: [SITE_NAME],
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: article.title,
+        },
+      ],
     },
+
     twitter: {
       card: "summary_large_image",
       title: article.title,
       description,
-      images: [`${SITE_URL}${article.image}`],
+      images: [imageUrl],
+    },
+
+    robots: {
+      index: true,
+      follow: true,
     },
   };
 }
 
 export default async function InsightArticlePage({
   params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
+}: InsightPageProps) {
   const { slug } = await params;
-  const article = articles[slug];
+  const article = getArticleBySlug(slug);
 
   if (!article) {
-    return (
-      <main className="bg-[#07111F] text-white min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-4xl font-bold mb-4">Article Not Found</h1>
-          <Link href="/insights" className="text-[#C89B3C] hover:underline">← Back to Insights</Link>
-        </div>
-      </main>
-    );
+    notFound();
   }
 
+  const canonicalUrl = `${SITE_URL}/insights/${slug}`;
+  const imageUrl = `${SITE_URL}${article.image}`;
+  const description = createDescription(article);
+  const isoDatePublished = convertDateToIso(article.published);
+
   const relatedArticles = Object.entries(articles)
-    .filter(([s]) => s !== slug)
+    .filter(([relatedSlug]) => relatedSlug !== slug)
     .slice(0, 3);
 
-  // article.published is stored as a human-readable date (e.g. "June 2, 2026")
-  // for display; convert it to ISO 8601 for structured data.
-  const isoDatePublished = new Date(article.published).toISOString().slice(0, 10);
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "@id": `${canonicalUrl}#article`,
+
+    headline: article.title,
+    description,
+
+    image: {
+      "@type": "ImageObject",
+      url: imageUrl,
+      width: 1200,
+      height: 630,
+    },
+
+    datePublished: isoDatePublished,
+    dateModified: isoDatePublished,
+
+    articleSection: article.category,
+
+    author: {
+      "@type": "Organization",
+      "@id": `${SITE_URL}/#organization`,
+      name: SITE_NAME,
+      url: SITE_URL,
+    },
+
+    publisher: {
+      "@type": "Organization",
+      "@id": `${SITE_URL}/#organization`,
+      name: SITE_NAME,
+      url: SITE_URL,
+      logo: {
+        "@type": "ImageObject",
+        url: `${SITE_URL}/images/rudron-logo.webp`,
+      },
+    },
+
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${canonicalUrl}#webpage`,
+    },
+
+    url: canonicalUrl,
+    inLanguage: "en-US",
+
+    keywords: [
+      article.category,
+      "Construction Recruitment",
+      "Engineering Recruitment",
+      "MEP Recruitment",
+      "AEC Hiring",
+    ],
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "@id": `${canonicalUrl}#breadcrumb`,
+
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: SITE_URL,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Insights",
+        item: `${SITE_URL}/insights`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: article.title,
+        item: canonicalUrl,
+      },
+    ],
+  };
+
+  const webPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${canonicalUrl}#webpage`,
+
+    url: canonicalUrl,
+    name: article.title,
+    description,
+
+    datePublished: isoDatePublished,
+    dateModified: isoDatePublished,
+
+    isPartOf: {
+      "@id": `${SITE_URL}/#website`,
+    },
+
+    about: {
+      "@id": `${canonicalUrl}#article`,
+    },
+
+    breadcrumb: {
+      "@id": `${canonicalUrl}#breadcrumb`,
+    },
+
+    primaryImageOfPage: {
+      "@type": "ImageObject",
+      url: imageUrl,
+    },
+
+    inLanguage: "en-US",
+  };
 
   return (
     <>
-      {/* Article structured data — helps eligibility for rich results / Google Discover */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Article",
-            headline: article.title,
-            image: [`${SITE_URL}${article.image}`],
-            datePublished: isoDatePublished,
-            author: {
-              "@type": "Organization",
-              name: "RUDRON Global Talent Solutions",
-              url: SITE_URL,
-            },
-            publisher: {
-              "@type": "Organization",
-              name: "RUDRON Global Talent Solutions",
-              logo: {
-                "@type": "ImageObject",
-                url: `${SITE_URL}/images/rudron-logo.png`,
-              },
-            },
-            mainEntityOfPage: {
-              "@type": "WebPage",
-              "@id": `${SITE_URL}/insights/${slug}`,
-            },
-            description: article.content[0].slice(0, 155).trim() + "…",
-          }),
+          __html: JSON.stringify(articleSchema),
         }}
       />
-      <InsightArticleClient article={article} slug={slug} relatedArticles={relatedArticles} />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema),
+        }}
+      />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(webPageSchema),
+        }}
+      />
+
+      <InsightArticleClient
+        article={article}
+        slug={slug}
+        relatedArticles={relatedArticles}
+      />
+
+      <HomeCTA />
     </>
   );
 }

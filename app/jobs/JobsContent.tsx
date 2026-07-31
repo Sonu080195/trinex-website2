@@ -24,9 +24,23 @@ function useInView(threshold = 0.08) {
 }
 
 const marqueeRoles = [
-  "PROJECT EXECUTIVE","PROJECT MANAGER","SUPERINTENDENT","ESTIMATOR",
-  "PRECONSTRUCTION","MEP LEADERS", "BIM Engineers", "VDC Engineers", "Saftey Managers", "Project Directors", "Field Operation Managers", 
-  "Vice Presidents", "Presidents", "DATA CENTERS","HEALTHCARE", "MISSION CRITICAL", "K-12", "etc.",
+  "PROJECT EXECUTIVE",
+  "PROJECT MANAGER",
+  "SUPERINTENDENT",
+  "ESTIMATOR",
+  "PRECONSTRUCTION",
+  "MEP LEADERS",
+  "BIM / VDC PROFESSIONALS",
+  "SAFETY MANAGERS",
+  "PROJECT DIRECTORS",
+  "FIELD OPERATIONS MANAGERS",
+  "VICE PRESIDENTS",
+  "PRESIDENTS",
+  "DATA CENTERS",
+  "HEALTHCARE",
+  "MISSION CRITICAL",
+  "SEMICONDUCTORS",
+  "INDUSTRIAL",
 ];
 
 const opportunityCards = [

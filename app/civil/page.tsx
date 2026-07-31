@@ -5,24 +5,24 @@ import SubpageCTA from "@/components/SubpageCTA";
 const SITE_URL = "https://www.rudrongts.com";
 
 export const metadata: Metadata = {
-  title: "Commercial Construction Recruitment Specialists",
+  title: "Civil Construction Recruitment Specialists",
   description:
-    "RUDRON recruits Project Managers, Superintendents, Estimators, Preconstruction and MEP professionals for commercial contractors across healthcare, education, data centers, retail and office construction.",
+    "RUDRON recruits Project Managers, Superintendents, Estimators, Schedulers, Safety and Operations professionals for roadway, bridge, rail, tunnel and aviation infrastructure projects.",
   alternates: {
-    canonical: `${SITE_URL}/commercial`,
+    canonical: `${SITE_URL}/civil`,
   },
   openGraph: {
     type: "website",
-    url: `${SITE_URL}/commercial`,
-    title: "Commercial Construction Recruitment Specialists",
+    url: `${SITE_URL}/civil`,
+    title: "Civil Construction Recruitment Specialists",
     description:
-      "Specialist recruitment for commercial general contractors, developers, mechanical contractors and electrical contractors.",
+      "Specialist recruitment for heavy civil contractors, infrastructure firms, transportation builders and engineering organizations.",
     images: [
       {
-        url: `${SITE_URL}/Commercial.webp`,
+        url: `${SITE_URL}/Civil.webp`,
         width: 1200,
         height: 630,
-        alt: "Commercial construction recruitment specialists",
+        alt: "Civil construction recruitment specialists",
       },
     ],
   },
@@ -30,34 +30,34 @@ export const metadata: Metadata = {
 
 const sectors = [
   {
-    title: "Data Centers",
-    href: "/commercial/data-centers",
+    title: "Roadways",
+    href: "/civil/roadways",
     description:
-      "Mission-critical talent for hyperscale, colocation and enterprise data center construction.",
+      "Recruitment for highway, roadway, interchange and transportation improvement projects.",
   },
   {
-    title: "Healthcare",
-    href: "/commercial/healthcare",
+    title: "Bridges",
+    href: "/civil/bridge",
     description:
-      "Project leadership for hospitals, medical offices, surgical facilities and occupied renovations.",
+      "Project and field leadership for bridge construction, rehabilitation and structural infrastructure.",
   },
   {
-    title: "Educational",
-    href: "/commercial/educational",
+    title: "Rail & Metro",
+    href: "/civil/rail-metro",
     description:
-      "Construction professionals for K-12 schools, universities and campus development programs.",
+      "Talent for passenger rail, freight rail, metro and transit infrastructure programs.",
   },
   {
-    title: "Office Buildings",
-    href: "/commercial/office-buildings",
+    title: "Tunnels",
+    href: "/civil/tunnel",
     description:
-      "Talent for ground-up offices, corporate campuses, renovations and tenant improvements.",
+      "Specialist professionals for tunnel, underground and complex civil construction.",
   },
   {
-    title: "Retail",
-    href: "/commercial/retail",
+    title: "Aviation Infrastructure",
+    href: "/civil/airport",
     description:
-      "Experienced professionals for retail centers, mixed-use projects and phased occupied developments.",
+      "Recruitment for airport terminals, runways, airside infrastructure and aviation construction.",
   },
 ];
 
@@ -68,97 +68,97 @@ const roles = [
   "Assistant Project Managers",
   "General Superintendents",
   "Superintendents",
-  "Preconstruction Directors",
-  "Preconstruction Managers",
-  "Chief Estimators",
   "Estimators",
-  "MEP Managers",
-  "BIM & VDC Professionals",
+  "Chief Estimators",
+  "Preconstruction Managers",
+  "Schedulers",
+  "Cost Controls Professionals",
   "Safety Directors",
   "Safety Managers",
-  "Schedulers",
   "QA/QC Managers",
+  "Survey Managers",
+  "Operations Leaders",
 ];
 
 const challenges = [
   {
-    title: "Specialized project experience",
+    title: "Large-scale project complexity",
     description:
-      "Healthcare, data center, education and occupied renovation projects require professionals with relevant project-type experience—not simply general construction backgrounds.",
+      "Civil infrastructure projects require professionals who can manage long schedules, major budgets, public stakeholders, technical risk and complex coordination.",
   },
   {
-    title: "Leadership shortages",
+    title: "Specialized civil experience",
     description:
-      "Experienced Project Executives, Senior Project Managers, Superintendents and Preconstruction leaders are frequently approached and rarely remain active in the market for long.",
+      "Roadway, bridge, rail, tunnel and aviation projects each require distinct construction methods, equipment knowledge and delivery experience.",
   },
   {
-    title: "Location and travel requirements",
+    title: "Public-sector requirements",
     description:
-      "Project location, relocation, regional market knowledge and travel expectations can significantly reduce the available candidate pool.",
+      "Many infrastructure projects involve agency standards, reporting requirements, compliance obligations and strict procurement processes.",
   },
   {
-    title: "Complex MEP coordination",
+    title: "Regional workforce shortages",
     description:
-      "Technically demanding facilities require leaders who understand mechanical, electrical, plumbing, controls, commissioning and coordinated project delivery.",
+      "Experienced heavy civil professionals are often concentrated in specific markets, making relocation and travel requirements important parts of the search.",
   },
 ];
 
 const process = [
   {
     number: "01",
-    title: "Understand the requirement",
+    title: "Understand the project scope",
     description:
-      "We review the role, project type, location, reporting structure, compensation, technical requirements and business priorities.",
+      "We review the infrastructure type, contract value, location, delivery method, agency requirements and leadership needs.",
   },
   {
     number: "02",
-    title: "Identify relevant professionals",
+    title: "Target relevant professionals",
     description:
-      "Our search focuses on candidates with aligned contractor backgrounds, project experience, leadership scope and career motivations.",
+      "We identify candidates with aligned heavy civil, transportation and infrastructure project experience.",
   },
   {
     number: "03",
     title: "Pre-vet every candidate",
     description:
-      "Candidates are assessed for experience, project history, responsibilities, compensation expectations, location and interest before submission.",
+      "Candidates are assessed for project history, technical scope, leadership responsibilities, compensation and mobility.",
   },
   {
     number: "04",
     title: "Support the hiring process",
     description:
-      "We coordinate interviews, maintain candidate engagement, support offer discussions and help both parties reach a successful outcome.",
+      "We coordinate interviews, maintain communication and support offer, relocation and closing discussions.",
   },
 ];
 
 const faqs = [
   {
-    question: "Which commercial construction roles does RUDRON recruit?",
+    question: "Which civil construction sectors does RUDRON support?",
     answer:
-      "We recruit Project Executives, Project Managers, Superintendents, Estimators, Preconstruction professionals, MEP Managers, BIM/VDC professionals, Safety leaders, Schedulers and other construction management professionals.",
+      "We support roadways, bridges, rail and metro, tunnels, airports and other major infrastructure construction markets.",
   },
   {
-    question: "Which commercial construction sectors do you support?",
+    question: "Which heavy civil roles do you recruit?",
     answer:
-      "We support healthcare, data centers, education, office buildings, retail, mixed-use, hospitality and other complex commercial construction markets.",
+      "We recruit Project Executives, Project Managers, Superintendents, Estimators, Schedulers, Safety professionals, QA/QC leaders and Operations executives.",
   },
   {
-    question: "Do you recruit for general contractors and subcontractors?",
+    question: "Do you recruit for public infrastructure projects?",
     answer:
-      "Yes. We support general contractors, developers, construction managers, mechanical contractors, electrical contractors and other specialty subcontractors.",
+      "Yes. We support contractors working on state, municipal, transportation authority and other publicly funded infrastructure programs.",
   },
   {
-    question: "Do you provide executive search?",
+    question: "Can you recruit for travel-based civil construction roles?",
     answer:
-      "Yes. RUDRON supports confidential and targeted searches for Project Executives, Operations leaders, Preconstruction Directors, Regional leaders and other senior appointments.",
+      "Yes. We support local, relocation and travel-based searches depending on project location and workforce requirements.",
   },
   {
-    question: "Can RUDRON recruit across the United States?",
+    question: "Do you provide executive search for infrastructure firms?",
     answer:
-      "Yes. We support searches across major construction markets throughout the United States, including local, relocation and travel-based requirements.",
+      "Yes. We support confidential searches for Project Executives, Operations leaders, Regional Directors, Division Managers and other senior appointments.",
   },
 ];
 
-export default function CommercialPage() {
+export default function CivilPage() {
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -178,8 +178,8 @@ export default function CommercialPage() {
       {
         "@type": "ListItem",
         position: 3,
-        name: "Commercial Construction",
-        item: `${SITE_URL}/commercial`,
+        name: "Civil Construction",
+        item: `${SITE_URL}/civil`,
       },
     ],
   };
@@ -213,19 +213,16 @@ export default function CommercialPage() {
         }}
       />
 
-      {/* HERO */}
       <section className="relative min-h-[78vh] overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: "url('/Commercial.webp')",
+            backgroundImage: "url('/Civil.webp')",
           }}
         />
 
         <div className="absolute inset-0 bg-gradient-to-r from-[#07111F] via-[#07111F]/95 to-[#07111F]/45" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#07111F] via-transparent to-[#07111F]/20" />
-
-        <div className="absolute left-0 top-0 h-full w-[3px] bg-gradient-to-b from-transparent via-[#C89B3C] to-transparent" />
 
         <div className="relative z-10 mx-auto flex min-h-[78vh] max-w-7xl items-center px-5 pb-20 pt-36 sm:px-6 lg:px-8">
           <div className="max-w-[820px]">
@@ -233,12 +230,12 @@ export default function CommercialPage() {
               <span className="h-px w-10 bg-[#C89B3C]" />
 
               <p className="text-[11px] font-semibold uppercase tracking-[5px] text-[#C89B3C]">
-                Commercial Construction Recruitment
+                Civil Construction Recruitment
               </p>
             </div>
 
             <h1 className="text-[38px] font-bold leading-[1.08] sm:text-[52px] lg:text-[68px]">
-              Commercial Construction
+              Civil Construction
               <br />
               <span className="text-[#C89B3C]">
                 Recruitment Specialists
@@ -246,10 +243,10 @@ export default function CommercialPage() {
             </h1>
 
             <p className="mt-7 max-w-[760px] text-[15px] leading-8 text-gray-300 sm:text-[17px]">
-              RUDRON connects commercial general contractors, developers,
-              construction managers and specialty contractors with
-              high-performing professionals across project management, field
-              operations, preconstruction, estimating, MEP and executive
+              RUDRON connects heavy civil contractors, transportation builders,
+              infrastructure firms and engineering organizations with
+              experienced professionals across project management, field
+              operations, estimating, scheduling, safety and executive
               leadership.
             </p>
 
@@ -272,7 +269,6 @@ export default function CommercialPage() {
         </div>
       </section>
 
-      {/* INTRODUCTION */}
       <section className="border-y border-white/10 bg-[#0A1520] py-20">
         <div className="mx-auto grid max-w-7xl gap-12 px-5 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8">
           <div>
@@ -281,31 +277,26 @@ export default function CommercialPage() {
             </p>
 
             <h2 className="mt-4 text-3xl font-bold leading-tight sm:text-4xl">
-              Recruitment Built Around Commercial Construction
+              Recruitment Built Around Civil Infrastructure
             </h2>
 
             <div className="mt-6 space-y-5 text-[15px] leading-8 text-gray-300">
               <p>
-                Commercial construction hiring requires more than matching a
-                job title with a résumé. The right professional must understand
-                the project type, delivery method, contract structure, client
-                environment, subcontractor relationships and operational
-                expectations of the contractor.
+                Civil construction demands professionals who can manage complex
+                logistics, public stakeholders, technical constraints,
+                regulatory requirements and long-term project schedules.
               </p>
 
               <p>
-                RUDRON focuses on construction and MEP recruitment, allowing us
-                to evaluate candidates against the realities of project
-                delivery. We support organizations managing ground-up
-                construction, renovations, tenant improvements, occupied
-                facilities and technically complex developments.
+                RUDRON supports contractors delivering roadway, bridge, rail,
+                tunnel, airport and other major infrastructure projects across
+                the United States and international markets.
               </p>
 
               <p>
-                Whether an organization needs a Project Manager for a healthcare
-                project, a Superintendent for a major commercial development or
-                an Estimator capable of supporting growth, our search is shaped
-                around the actual requirement—not a generic candidate list.
+                Our search process focuses on relevant project type, contract
+                value, agency experience, technical scope, leadership
+                responsibilities and geographic flexibility.
               </p>
             </div>
           </div>
@@ -317,13 +308,13 @@ export default function CommercialPage() {
 
             <div className="mt-7 grid gap-3 sm:grid-cols-2">
               {[
-                "General Contractors",
-                "Construction Managers",
-                "Developers",
-                "Owners’ Representatives",
-                "Mechanical Contractors",
-                "Electrical Contractors",
-                "Plumbing Contractors",
+                "Heavy Civil Contractors",
+                "Infrastructure Contractors",
+                "Transportation Builders",
+                "Bridge Contractors",
+                "Rail Contractors",
+                "Tunnel Contractors",
+                "Aviation Contractors",
                 "Engineering Firms",
               ].map((item) => (
                 <div
@@ -339,7 +330,6 @@ export default function CommercialPage() {
         </div>
       </section>
 
-      {/* SECTORS */}
       <section className="py-20">
         <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
@@ -348,14 +338,8 @@ export default function CommercialPage() {
             </p>
 
             <h2 className="mt-4 text-3xl font-bold sm:text-4xl">
-              Commercial Markets We Support
+              Civil Markets We Support
             </h2>
-
-            <p className="mt-5 text-[15px] leading-8 text-gray-400">
-              Each commercial market carries different technical demands,
-              project risks and hiring requirements. Explore our specialist
-              recruitment coverage below.
-            </p>
           </div>
 
           <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
@@ -370,9 +354,7 @@ export default function CommercialPage() {
                     0{index + 1}
                   </span>
 
-                  <span className="text-lg text-[#C89B3C] transition group-hover:translate-x-1">
-                    →
-                  </span>
+                  <span className="text-lg text-[#C89B3C]">→</span>
                 </div>
 
                 <h3 className="mt-7 text-xl font-semibold">{sector.title}</h3>
@@ -386,7 +368,6 @@ export default function CommercialPage() {
         </div>
       </section>
 
-      {/* ROLES */}
       <section className="border-y border-white/10 bg-[#0A1520] py-20">
         <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
           <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
@@ -396,28 +377,20 @@ export default function CommercialPage() {
               </p>
 
               <h2 className="mt-4 text-3xl font-bold sm:text-4xl">
-                Commercial Construction Roles We Recruit
+                Civil Construction Roles We Recruit
               </h2>
 
               <p className="mt-5 text-[15px] leading-8 text-gray-400">
-                We support project delivery, field operations, preconstruction,
-                technical coordination, safety and senior leadership hiring.
+                We support project delivery, field operations, estimating,
+                scheduling, safety, quality and executive leadership hiring.
               </p>
-
-              <Link
-                href="/contact"
-                className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-[#C89B3C] hover:text-[#D5A943]"
-              >
-                Discuss Your Hiring Needs
-                <span>→</span>
-              </Link>
             </div>
 
             <div className="grid gap-3 sm:grid-cols-2">
               {roles.map((role) => (
                 <div
                   key={role}
-                  className="rounded-[12px] border border-white/10 bg-[#07111F] px-5 py-4 text-sm text-gray-200 transition hover:border-[#C89B3C]/40"
+                  className="rounded-[12px] border border-white/10 bg-[#07111F] px-5 py-4 text-sm text-gray-200"
                 >
                   <span className="mr-3 text-[#C89B3C]">✓</span>
                   {role}
@@ -428,18 +401,11 @@ export default function CommercialPage() {
         </div>
       </section>
 
-      {/* CHALLENGES */}
       <section className="py-20">
         <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <p className="text-[11px] font-semibold uppercase tracking-[4px] text-[#C89B3C]">
-              Hiring Challenges
-            </p>
-
-            <h2 className="mt-4 text-3xl font-bold sm:text-4xl">
-              Why Commercial Construction Hiring Requires A Specialist
-            </h2>
-          </div>
+          <h2 className="text-3xl font-bold sm:text-4xl">
+            Why Civil Construction Hiring Requires A Specialist
+          </h2>
 
           <div className="mt-10 grid gap-5 md:grid-cols-2">
             {challenges.map((challenge, index) => (
@@ -464,7 +430,6 @@ export default function CommercialPage() {
         </div>
       </section>
 
-      {/* PROCESS */}
       <section className="border-y border-white/10 bg-[#0A1520] py-20">
         <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
           <div className="text-center">
@@ -473,7 +438,7 @@ export default function CommercialPage() {
             </p>
 
             <h2 className="mt-4 text-3xl font-bold sm:text-4xl">
-              A Focused Approach To Every Search
+              A Focused Approach To Every Civil Search
             </h2>
           </div>
 
@@ -498,58 +463,6 @@ export default function CommercialPage() {
         </div>
       </section>
 
-      {/* EMPLOYERS + CANDIDATES */}
-      <section className="py-20">
-        <div className="mx-auto grid max-w-7xl gap-6 px-5 sm:px-6 lg:grid-cols-2 lg:px-8">
-          <div className="rounded-[24px] border border-[#C89B3C]/25 bg-[#C89B3C]/[0.06] p-8">
-            <p className="text-[11px] font-semibold uppercase tracking-[4px] text-[#C89B3C]">
-              For Employers
-            </p>
-
-            <h2 className="mt-4 text-2xl font-bold">
-              Build A Stronger Commercial Construction Team
-            </h2>
-
-            <p className="mt-4 text-sm leading-7 text-gray-300">
-              Share your hiring requirement with RUDRON and receive support
-              identifying professionals aligned with your project type,
-              location, culture and operational priorities.
-            </p>
-
-            <Link
-              href="/employers"
-              className="mt-7 inline-flex rounded-[10px] bg-[#C89B3C] px-5 py-3 text-sm font-semibold text-[#07111F]"
-            >
-              Employer Recruitment Solutions
-            </Link>
-          </div>
-
-          <div className="rounded-[24px] border border-white/10 bg-white/[0.035] p-8">
-            <p className="text-[11px] font-semibold uppercase tracking-[4px] text-[#C89B3C]">
-              For Candidates
-            </p>
-
-            <h2 className="mt-4 text-2xl font-bold">
-              Advance Your Commercial Construction Career
-            </h2>
-
-            <p className="mt-4 text-sm leading-7 text-gray-300">
-              Explore opportunities with commercial contractors across project
-              management, estimating, preconstruction, field operations, MEP
-              and executive leadership.
-            </p>
-
-            <Link
-              href="/jobs"
-              className="mt-7 inline-flex rounded-[10px] border border-white/20 px-5 py-3 text-sm font-semibold text-white transition hover:border-[#C89B3C]/50"
-            >
-              Browse Commercial Jobs
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ */}
       <section className="border-t border-white/10 bg-[#0A1520] py-20">
         <div className="mx-auto max-w-5xl px-5 sm:px-6 lg:px-8">
           <div className="text-center">
@@ -558,7 +471,7 @@ export default function CommercialPage() {
             </p>
 
             <h2 className="mt-4 text-3xl font-bold sm:text-4xl">
-              Commercial Construction Recruitment FAQs
+              Civil Construction Recruitment FAQs
             </h2>
           </div>
 
@@ -566,9 +479,9 @@ export default function CommercialPage() {
             {faqs.map((faq) => (
               <details
                 key={faq.question}
-                className="group rounded-[16px] border border-white/10 bg-[#07111F] p-6"
+                className="rounded-[16px] border border-white/10 bg-[#07111F] p-6"
               >
-                <summary className="cursor-pointer list-none pr-8 font-semibold text-white">
+                <summary className="cursor-pointer font-semibold text-white">
                   {faq.question}
                 </summary>
 

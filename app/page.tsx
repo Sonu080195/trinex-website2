@@ -9,6 +9,7 @@ import InsightsSection from "@/components/InsightsSection";
 import HeroJobsCarousel from "@/components/HeroJobsCarousel";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import Reveal from "@/components/Reveal";
+import HomeSEOSection from "@/components/HomeSEOSection";
 
 const SITE_URL = "https://www.rudrongts.com";
 
@@ -81,6 +82,8 @@ export default function Home() {
       <Reveal>
         <InsightsSection />
       </Reveal>
+
+      <HomeSEOSection />
 
       <HomeCTA />
     </main>
