@@ -1,10 +1,12 @@
 import "./globals.css";
 import type { Metadata, Viewport } from "next";
+
 import ConsentAwareSpeedInsights from "@/components/ConsentAwareSpeedInsights";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
 import CookieConsent from "@/components/CookieConsent";
+import EmployerModalProvider from "@/components/EmployerModalProvider";
 
 const SITE_NAME = "RUDRON Global Talent Solutions";
 const SITE_URL = "https://www.rudrongts.com";
@@ -86,14 +88,14 @@ export const metadata: Metadata = {
     title: `${SITE_NAME} | Construction, Engineering & MEP Recruitment`,
     description:
       "Specialist recruitment solutions across Construction, Engineering, Architecture and MEP sectors.",
-    images: ["/og-image.png"],
+    images: [`${SITE_URL}/og-image.png`],
   },
 };
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#ffffff",
+  themeColor: "#07111F",
 };
 
 export default function RootLayout({
@@ -101,86 +103,99 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": ["Organization", "EmploymentAgency"],
+        "@id": `${SITE_URL}/#organization`,
+        name: SITE_NAME,
+        legalName: SITE_NAME,
+        alternateName: ["RUDRON", "RUDRON GTS"],
+        url: `${SITE_URL}/`,
+
+        logo: {
+          "@type": "ImageObject",
+          "@id": `${SITE_URL}/#logo`,
+          url: `${SITE_URL}/images/rudron-logo-square.png`,
+          contentUrl: `${SITE_URL}/images/rudron-logo-square.png`,
+          width: 512,
+          height: 512,
+          caption: SITE_NAME,
+        },
+
+        image: LOGO_URL,
+
+        description:
+          "Specialist recruitment solutions across Construction, Engineering, Architecture, Mechanical, Electrical and Plumbing sectors.",
+
+        sameAs: [
+          "https://www.linkedin.com/company/rudrongts",
+          "https://instagram.com/rudron_gts",
+          "https://facebook.com/share/1HQMr8GCcd/?mibextid=wwXlfr",
+        ],
+
+        email: "admin@rudrongts.com",
+        telephone: "+1-239-309-3969",
+        foundingDate: "2026",
+
+        areaServed: [
+          "United States",
+          "Canada",
+          "United Arab Emirates",
+          "India",
+        ],
+
+        serviceType: [
+          "Construction Recruitment",
+          "Engineering Recruitment",
+          "MEP Recruitment",
+          "Executive Search",
+          "Talent Acquisition",
+        ],
+      },
+
+      {
+        "@type": "WebSite",
+        "@id": `${SITE_URL}/#website`,
+        url: `${SITE_URL}/`,
+        name: SITE_NAME,
+
+        alternateName: [
+          "RUDRON",
+          "RUDRON GTS",
+          "RUDRON Global Talent Solutions",
+        ],
+
+        publisher: {
+          "@id": `${SITE_URL}/#organization`,
+        },
+
+        inLanguage: "en-US",
+      },
+    ],
+  };
+
   return (
     <html lang="en-US">
       <body>
-        <Navbar />
+        <EmployerModalProvider>
+          <Navbar />
 
-        {children}
+          {children}
 
-        {/* Structured data: Organization + WebSite, cross-linked.
-            Switched ProfessionalService -> Organization as the primary type
-            so Google's Logo rich-result matcher reliably picks this up. */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@graph": [
-                {
-                  "@type": ["Organization", "EmploymentAgency"],
-                  "@id": `${SITE_URL}/#organization`,
-                  name: SITE_NAME,
-                  legalName: SITE_NAME,
-                  alternateName: ["RUDRON", "RUDRON GTS"],
-                  url: `${SITE_URL}/`,
-                  logo: {
-                    "@type": "ImageObject",
-                    "@id": `${SITE_URL}/#logo`,
-                    url: `${SITE_URL}/images/rudron-logo-square.png`,
-                    contentUrl: `${SITE_URL}/images/rudron-logo-square.png`,
-                    width: 512,
-                    height: 512,
-                    caption: SITE_NAME,
-                  },
-                  image: LOGO_URL,
-                  description:
-                    "Specialist recruitment solutions across Construction, Engineering, Architecture, Mechanical, Electrical and Plumbing sectors.",
-                  sameAs: [
-                    "https://www.linkedin.com/company/rudrongts",
-                    "https://instagram.com/rudron_gts",
-                    "https://facebook.com/share/1HQMr8GCcd/?mibextid=wwXlfr",
-                  ],
-                  email: "admin@rudrongts.com",
-                  telephone: "+1-239-309-3969",
-                  foundingDate: "2026",
-                  areaServed: [
-                    "United States",
-                    "Canada",
-                    "United Arab Emirates",
-                    "India",
-                  ],
-                  serviceType: [
-                    "Construction Recruitment",
-                    "Engineering Recruitment",
-                    "MEP Recruitment",
-                    "Executive Search",
-                    "Talent Acquisition",
-                  ],
-                },
-              {
-                "@type": "WebSite",
-                "@id": `${SITE_URL}/#website`,
-                url: `${SITE_URL}/`,
-                name: SITE_NAME,
-                alternateName: [
-                  "RUDRON",
-                  "RUDRON GTS",
-                  "RUDRON Global Talent Solutions"
-                ],
-                publisher: {
-                  "@id": `${SITE_URL}/#organization`
-                },
-                inLanguage: "en-US"
-              },
-              ],
-            }),
-          }}
-        />
-        <Footer />
-        <ScrollToTopButton />
-        <ConsentAwareSpeedInsights />
-        <CookieConsent />
+          <Footer />
+          <ScrollToTopButton />
+          <ConsentAwareSpeedInsights />
+          <CookieConsent />
+
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(structuredData),
+            }}
+          />
+        </EmployerModalProvider>
       </body>
     </html>
   );

@@ -247,6 +247,7 @@ export default function EmployersContent() {
               <p className="text-[11px] font-semibold uppercase tracking-[5px] text-[#C89B3C]">
                 Recruitment Solutions For Employers
               </p>
+              <span className="h-px w-10 bg-[#C89B3C]" />
             </div>
 
             <h1

@@ -2,66 +2,39 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import {
+  ArrowRight,
+  Mail,
+  MapPin,
+  Phone,
+  Sparkles,
+} from "lucide-react";
+
+import HireTalentButton from "@/components/HireTalentButton";
 
 const companyLinks = [
-  {
-    href: "/about",
-    label: "About Us",
-  },
-  {
-    href: "/industries",
-    label: "Industries",
-  },
-  {
-    href: "/insights",
-    label: "Insights",
-  },
-  {
-    href: "/contact",
-    label: "Contact",
-  },
+  { href: "/about", label: "About Us" },
+  { href: "/industries", label: "Industries" },
+  { href: "/insights", label: "Insights" },
+  { href: "/contact", label: "Contact" },
 ];
 
 const serviceLinks = [
+  { href: "/employers", label: "For Employers" },
+  { href: "/candidates", label: "For Candidates" },
+  { href: "/jobs", label: "Browse Jobs" },
   {
-    href: "/employers",
-    label: "For Employers",
-  },
-  {
-    href: "/candidates",
-    label: "For Candidates",
-  },
-  {
-    href: "/jobs",
-    label: "Browse Jobs",
-  },
-  {
-    href: "/contact",
-    label: "Request Talent",
+    href: "/recruitment-specialties",
+    label: "Recruitment Specialties",
   },
 ];
 
 const legalLinks = [
-  {
-    href: "/privacy-policy",
-    label: "Privacy Policy",
-  },
-  {
-    href: "/terms",
-    label: "Terms & Conditions",
-  },
-  {
-    href: "/cookie-policy",
-    label: "Cookie Policy",
-  },
-  {
-    href: "/disclaimer",
-    label: "Disclaimer",
-  },
-  {
-    href: "/accessibility",
-    label: "Accessibility",
-  },
+  { href: "/privacy-policy", label: "Privacy Policy" },
+  { href: "/terms", label: "Terms & Conditions" },
+  { href: "/cookie-policy", label: "Cookie Policy" },
+  { href: "/disclaimer", label: "Disclaimer" },
+  { href: "/accessibility", label: "Accessibility" },
 ];
 
 const socialLinks = [
@@ -87,7 +60,7 @@ function FooterHeading({ children }: { children: React.ReactNode }) {
     <h3 className="mb-5 flex items-center gap-2 text-[13px] font-semibold uppercase tracking-[1.8px] text-white">
       <span
         aria-hidden="true"
-        className="inline-block h-px w-4 bg-[#C89B3C]"
+        className="inline-block h-px w-4 bg-gradient-to-r from-[#C89B3C] to-transparent"
       />
       {children}
     </h3>
@@ -109,7 +82,7 @@ function FooterNavigation({
           <li key={href}>
             <Link
               href={href}
-              className="group flex items-center gap-2 text-gray-400 transition-colors duration-200 hover:text-white"
+              className="group flex items-center gap-2 text-gray-400 transition-all duration-300 hover:translate-x-1 hover:text-white"
             >
               <span
                 aria-hidden="true"
@@ -133,21 +106,37 @@ function openCookiePreferences() {
 export default function Footer() {
   return (
     <footer className="relative overflow-hidden bg-[#050D18]">
+      {/* Decorative background */}
       <div
         aria-hidden="true"
-        className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#C89B3C] to-transparent opacity-60"
+        className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#C89B3C] to-transparent opacity-70"
       />
 
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -left-32 -top-32 h-[480px] w-[480px] rounded-full opacity-[0.06]"
+        className="pointer-events-none absolute -left-40 -top-40 h-[520px] w-[520px] rounded-full bg-[#C89B3C]/10 blur-[135px]"
+      />
+
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-40 bottom-[-220px] h-[460px] w-[460px] rounded-full bg-blue-500/[0.06] blur-[140px]"
+      />
+
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 opacity-[0.025]"
         style={{
-          background:
-            "radial-gradient(circle, #C89B3C 0%, transparent 70%)",
+          backgroundImage: `
+            linear-gradient(rgba(200,155,60,1) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(200,155,60,1) 1px, transparent 1px)
+          `,
+          backgroundSize: "56px 56px",
         }}
       />
 
       <div className="relative mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+
+        {/* Main footer */}
         <div className="border-b border-white/[0.07] py-10 sm:py-12 lg:py-14">
           <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-6 lg:gap-8">
             {/* Brand */}
@@ -155,32 +144,33 @@ export default function Footer() {
               <Link
                 href="/"
                 aria-label="RUDRON Global Talent Solutions homepage"
-                className="inline-block"
+                className="group inline-block"
               >
                 <Image
                   src="/images/rudron-logo.webp"
                   alt="RUDRON Global Talent Solutions"
                   width={276}
                   height={108}
-                  className="mb-4 h-auto w-[128px] sm:w-[138px]"
+                  className="mb-4 h-auto w-[170px] transition-transform duration-500 group-hover:scale-[1.03] sm:w-[185px]"
                 />
               </Link>
 
-              <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#C89B3C]/25 bg-[#C89B3C]/10 px-4 py-1.5">
+              <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#C89B3C]/25 bg-[#C89B3C]/10 px-4 py-2">
                 <span
                   aria-hidden="true"
-                  className="h-1.5 w-1.5 flex-shrink-0 animate-pulse rounded-full bg-[#C89B3C]"
+                  className="h-1.5 w-1.5 shrink-0 animate-pulse rounded-full bg-[#C89B3C]"
                 />
+
                 <p className="text-[10.5px] font-medium uppercase leading-none tracking-[2px] text-[#C89B3C]">
                   Serving USA · Canada · UAE · India
                 </p>
               </div>
 
-              <p className="mb-6 max-w-[440px] text-[13.5px] leading-[1.85] text-gray-400/80">
-                RUDRON Global Talent Solutions is a specialist recruitment
-                partner connecting high-performing professionals with leading
-                organizations across Architecture, Engineering, Construction,
-                Mechanical, Electrical and Plumbing markets.
+              <p className="mb-6 max-w-[440px] text-[13.5px] leading-[1.85] text-gray-400/85">
+                RUDRON Global Talent Solutions connects high-performing
+                professionals with leading organizations across Architecture,
+                Engineering, Construction, Mechanical, Electrical and Plumbing
+                markets.
               </p>
 
               <div className="flex items-center gap-3">
@@ -191,7 +181,7 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={`Visit RUDRON on ${label}`}
-                    className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-gray-400 transition-all duration-300 hover:border-[#C89B3C]/40 hover:bg-[#C89B3C]/10 hover:text-[#C89B3C] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C89B3C] focus-visible:ring-offset-2 focus-visible:ring-offset-[#050D18]"
+                    className="group/social flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-gray-400 transition-all duration-300 hover:-translate-y-1 hover:border-[#C89B3C]/40 hover:bg-[#C89B3C]/10 hover:text-[#C89B3C] hover:shadow-[0_10px_24px_rgba(200,155,60,0.12)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C89B3C] focus-visible:ring-offset-2 focus-visible:ring-offset-[#050D18]"
                   >
                     {icon}
                   </a>
@@ -222,57 +212,33 @@ export default function Footer() {
               <FooterHeading>Contact</FooterHeading>
 
               <div className="space-y-4">
-                <div>
-                  <p className="mb-1 text-[11px] font-medium uppercase tracking-[1.4px] text-[#C89B3C]/80">
-                    United States & Canada
-                  </p>
+                <ContactItem
+                  icon={Phone}
+                  label="United States & Canada"
+                  href="tel:+12393093969"
+                  value="+1 (239) 309-3969"
+                />
 
-                  <a
-                    href="tel:+12393093969"
-                    className="text-[13.5px] font-light tracking-wide text-gray-300 transition-colors duration-200 hover:text-[#C89B3C]"
-                  >
-                    +1 (239) 309-3969
-                  </a>
-                </div>
+                <ContactItem
+                  icon={Mail}
+                  label="General Enquiries"
+                  href="mailto:contact@rudrongts.com"
+                  value="contact@rudrongts.com"
+                />
 
-                <div>
-                  <p className="mb-1 text-[11px] font-medium uppercase tracking-[1.4px] text-[#C89B3C]/80">
-                    General Enquiries
-                  </p>
+                <ContactItem
+                  icon={MapPin}
+                  label="UAE"
+                  href="mailto:uae@rudrongts.com"
+                  value="uae@rudrongts.com"
+                />
 
-                  <a
-                    href="mailto:contact@rudrongts.com"
-                    className="break-all text-[13.5px] text-gray-300 transition-colors duration-200 hover:text-[#C89B3C]"
-                  >
-                    contact@rudrongts.com
-                  </a>
-                </div>
-
-                <div>
-                  <p className="mb-1 text-[11px] font-medium uppercase tracking-[1.4px] text-[#C89B3C]/80">
-                    UAE
-                  </p>
-
-                  <a
-                    href="mailto:uae@rudrongts.com"
-                    className="break-all text-[13.5px] text-gray-300 transition-colors duration-200 hover:text-[#C89B3C]"
-                  >
-                    uae@rudrongts.com
-                  </a>
-                </div>
-
-                <div>
-                  <p className="mb-1 text-[11px] font-medium uppercase tracking-[1.4px] text-[#C89B3C]/80">
-                    India
-                  </p>
-
-                  <a
-                    href="mailto:india@rudrongts.com"
-                    className="break-all text-[13.5px] text-gray-300 transition-colors duration-200 hover:text-[#C89B3C]"
-                  >
-                    india@rudrongts.com
-                  </a>
-                </div>
+                <ContactItem
+                  icon={MapPin}
+                  label="India"
+                  href="mailto:india@rudrongts.com"
+                  value="india@rudrongts.com"
+                />
               </div>
             </div>
           </div>
@@ -281,7 +247,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="flex flex-col items-center justify-between gap-3 py-5 sm:flex-row">
           <p className="text-center text-[12px] tracking-wide text-gray-600 sm:text-left">
-            © {new Date().getFullYear()} RUDRON Global Talent Solutions LLP.
+            © {new Date().getFullYear()} RUDRON Global Talent Solutions.
             All rights reserved.
           </p>
 
@@ -330,6 +296,39 @@ export default function Footer() {
         </div>
       </div>
     </footer>
+  );
+}
+
+function ContactItem({
+  icon: Icon,
+  label,
+  href,
+  value,
+}: {
+  icon: typeof Phone;
+  label: string;
+  href: string;
+  value: string;
+}) {
+  return (
+    <div className="group flex items-start gap-3">
+      <div className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-[#C89B3C]/20 bg-[#C89B3C]/10 text-[#C89B3C] transition-all duration-300 group-hover:scale-105 group-hover:bg-[#C89B3C]/15">
+        <Icon size={15} />
+      </div>
+
+      <div>
+        <p className="mb-1 text-[10px] font-medium uppercase tracking-[1.4px] text-[#C89B3C]/80">
+          {label}
+        </p>
+
+        <a
+          href={href}
+          className="break-all text-[13px] text-gray-300 transition-colors duration-200 hover:text-[#C89B3C]"
+        >
+          {value}
+        </a>
+      </div>
+    </div>
   );
 }
 

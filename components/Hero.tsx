@@ -1,15 +1,39 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import {
+  ArrowRight,
+  BriefcaseBusiness,
+  Building2,
+  Globe2,
+  Sparkles,
+  Users,
+} from "lucide-react";
 
-import EmployerModal from "@/components/EmployerModal";
 import CandidateModal from "@/components/CandidateModal";
+import HireTalentButton from "@/components/HireTalentButton";
 
 const features = [
-  { title: "Executive Search",     subtitle: "Leadership & Strategic Hiring" },
-  { title: "Project Staffing",     subtitle: "Project-Ready Professionals" },
-  { title: "Global Talent Network", subtitle: "USA • Canada • UAE • India" },
-  { title: "5000+ Professionals",  subtitle: "Construction Talent Network" },
+  {
+    title: "Executive Search",
+    subtitle: "Leadership & Strategic Hiring",
+    icon: BriefcaseBusiness,
+  },
+  {
+    title: "Project Staffing",
+    subtitle: "Project-Ready Professionals",
+    icon: Building2,
+  },
+  {
+    title: "Global Talent Network",
+    subtitle: "USA • Canada • UAE • India",
+    icon: Globe2,
+  },
+  {
+    title: "5000+ Professionals",
+    subtitle: "Construction Talent Network",
+    icon: Users,
+  },
 ];
 
 const stats = [
@@ -19,172 +43,205 @@ const stats = [
 ];
 
 export default function Hero() {
-  const [employerOpen, setEmployerOpen] = useState(false);
   const [candidateOpen, setCandidateOpen] = useState(false);
   const [heroVisible, setHeroVisible] = useState(false);
 
   useEffect(() => {
-    const t = setTimeout(() => setHeroVisible(true), 80);
-    return () => clearTimeout(t);
+    const timer = window.setTimeout(() => setHeroVisible(true), 80);
+
+    return () => window.clearTimeout(timer);
   }, []);
 
   return (
     <>
-      {/* EMPLOYER MODAL */}
-      <EmployerModal
-        isOpen={employerOpen}
-        onClose={() => setEmployerOpen(false)}
-      />
-
-      {/* CANDIDATE MODAL */}
       <CandidateModal
         isOpen={candidateOpen}
         onClose={() => setCandidateOpen(false)}
       />
 
-      <section className="relative min-h-[85vh] overflow-hidden">
-
-        {/* GRID PATTERN */}
+      <section className="relative isolate min-h-[88vh] overflow-hidden bg-[#07111F]">
+        {/* Background image */}
         <div
-          className="absolute inset-0 opacity-[0.04] pointer-events-none"
+          className="pointer-events-none absolute inset-0 bg-cover bg-[76%] transition-transform duration-[9000ms] ease-out sm:bg-center"
+          style={{
+            backgroundImage:
+              "linear-gradient(to right, rgba(7,17,31,0.99) 8%, rgba(7,17,31,0.93) 42%, rgba(7,17,31,0.45) 72%, rgba(7,17,31,0.18) 100%), url('/hero-bg.webp')",
+            transform: heroVisible ? "scale(1.055)" : "scale(1)",
+          }}
+        />
+
+        {/* Layered visual effects */}
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#07111F] via-transparent to-[#07111F]/35" />
+
+        <div
+          className="pointer-events-none absolute left-1/2 top-[-220px] h-[620px] w-[900px] -translate-x-1/2 rounded-full bg-[#C89B3C]/10 blur-[145px] transition-opacity duration-[1600ms]"
+          style={{ opacity: heroVisible ? 1 : 0 }}
+        />
+
+        <div className="pointer-events-none absolute -left-52 bottom-[-240px] h-[500px] w-[500px] rounded-full bg-blue-500/10 blur-[150px]" />
+
+        <div
+          className="pointer-events-none absolute inset-0 opacity-[0.035]"
           style={{
             backgroundImage: `
               linear-gradient(rgba(200,155,60,1) 1px, transparent 1px),
               linear-gradient(90deg, rgba(200,155,60,1) 1px, transparent 1px)
             `,
-            backgroundSize: "70px 70px",
+            backgroundSize: "68px 68px",
           }}
         />
 
-        {/* GOLD GLOW */}
         <div
-          className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] pointer-events-none transition-opacity duration-[1500ms]"
+          className="pointer-events-none absolute bottom-0 left-0 top-0 w-[3px] transition-opacity duration-1000 delay-500"
           style={{
-            background: "radial-gradient(circle, rgba(200,155,60,0.12) 0%, transparent 70%)",
-            opacity: heroVisible ? 1 : 0,
-          }}
-        />
-
-        {/* BACKGROUND */}
-        <div
-          className="absolute inset-0 bg-cover bg-[76%] sm:bg-center transition-transform duration-[9000ms] ease-out pointer-events-none"
-          style={{
-            backgroundImage:
-              "linear-gradient(to right, rgba(7,17,31,0.97) 10%, rgba(7,17,31,0.88) 42%, rgba(7,17,31,0.30) 100%), url('/hero-bg.webp')",
-            transform: heroVisible ? "scale(1.05)" : "scale(1)",
-          }}
-        />
-
-        {/* Left gold accent line */}
-        <div
-          className="absolute left-0 top-0 bottom-0 w-[3px] transition-all duration-1000 delay-500 pointer-events-none"
-          style={{
-            background: "linear-gradient(to bottom, transparent, #C89B3C, transparent)",
+            background:
+              "linear-gradient(to bottom, transparent, #C89B3C, transparent)",
             opacity: heroVisible ? 0.6 : 0,
           }}
         />
 
-        {/* CONTENT */}
-        <div className="relative z-10 w-full">
-          <div className="max-w-7xl mx-auto px-5 sm:px-6 pt-32 sm:pt-36 lg:pt-40 pb-16">
-            <div className="max-w-[760px]">
+        <div className="pointer-events-none absolute left-[9%] top-32 h-px w-44 rotate-[-16deg] bg-gradient-to-r from-transparent via-[#C89B3C]/45 to-transparent" />
+        <div className="pointer-events-none absolute right-[8%] top-40 hidden h-px w-56 rotate-[15deg] bg-gradient-to-r from-transparent via-[#C89B3C]/35 to-transparent lg:block" />
 
-              {/* LABEL */}
-              <div
-                className="flex items-center gap-3 mb-6 transition-all duration-700"
-                style={{
-                  opacity: heroVisible ? 1 : 0,
-                  transform: heroVisible ? "translateY(0)" : "translateY(18px)",
-                }}
-              >
-                <span className="h-px w-10 bg-[#C89B3C]" />
-                <p className="text-[#C89B3C] uppercase tracking-[5px] text-[11px] font-semibold">
+        {/* Content */}
+        <div className="relative z-10 mx-auto flex min-h-[88vh] max-w-7xl items-center px-5 pb-16 pt-32 sm:px-6 sm:pt-36 lg:px-8 lg:pt-40">
+          <div className="w-full max-w-[820px]">
+            {/* Eyebrow */}
+            <div
+              className="mb-6 flex items-center gap-3 transition-all duration-700"
+              style={{
+                opacity: heroVisible ? 1 : 0,
+                transform: heroVisible
+                  ? "translateY(0)"
+                  : "translateY(18px)",
+              }}
+            >
+              <span className="h-px w-10 bg-gradient-to-r from-transparent to-[#C89B3C]" />
+
+              <div className="inline-flex items-center gap-2 rounded-full border border-[#C89B3C]/20 bg-[#C89B3C]/10 px-3 py-2 backdrop-blur-md">
+                <Sparkles size={13} className="text-[#C89B3C]" />
+
+                <p className="text-[10px] font-semibold uppercase tracking-[4px] text-[#C89B3C] sm:text-[11px]">
                   AEC • MEP • Construction Recruitment
                 </p>
-                <span className="h-px w-10 bg-[#C89B3C]" />
               </div>
 
-              {/* HEADING */}
-              <h1
-                className="text-white font-bold leading-[1.08] text-[30px] sm:text-[48px] lg:text-[64px] mb-4 transition-all duration-700 delay-150"
-                style={{
-                  opacity: heroVisible ? 1 : 0,
-                  transform: heroVisible ? "translateY(0)" : "translateY(28px)",
-                }}
-              >
-                Connecting Exceptional
-                <br />
-                <span className="relative inline-block text-[#C89B3C]">
-                  {" "}AEC &amp; MEP
-                  <span className="absolute left-0 bottom-0 w-full h-[3px] bg-[#C89B3C] rounded-full opacity-20" />
-                </span>
-                {" "}Talent
-                <br />
-                With Industry Leaders
-              </h1>
+              <span className="hidden h-px w-10 bg-gradient-to-l from-transparent to-[#C89B3C] sm:block" />
+            </div>
 
-              {/* DESCRIPTION */}
-              <p
-                className="text-gray-300 text-[14px] lg:text-[16px] leading-7 max-w-[720px] mb-8 transition-all duration-700 delay-300"
-                style={{
-                  opacity: heroVisible ? 1 : 0,
-                  transform: heroVisible ? "translateY(0)" : "translateY(20px)",
-                }}
-              >
-                RUDRON is a specialist executive search and recruitment partner serving the AEC &amp; MEP industries.
-                We help employers secure project-ready professionals, leadership talent and hard-to-find
-                technical specialists across commercial, industrial, infrastructure and mission-critical markets.
-              </p>
+            {/* Heading */}
+            <h1
+              className="mb-5 text-[34px] font-bold leading-[1.05] text-white transition-all duration-700 delay-150 sm:text-[50px] lg:text-[68px]"
+              style={{
+                opacity: heroVisible ? 1 : 0,
+                transform: heroVisible
+                  ? "translateY(0)"
+                  : "translateY(28px)",
+              }}
+            >
+              Connecting Exceptional
+              <br />
 
-              {/* BUTTONS */}
-              <div
-                className="flex flex-col sm:flex-row gap-3 mb-6 transition-all duration-700 delay-[450ms]"
-                style={{
-                  opacity: heroVisible ? 1 : 0,
-                  transform: heroVisible ? "translateY(0)" : "translateY(18px)",
-                }}
+              <span className="relative inline-block bg-gradient-to-r from-[#C89B3C] via-[#E0B55D] to-[#C89B3C] bg-clip-text text-transparent">
+                AEC &amp; MEP Talent
+                <span className="absolute -bottom-1 left-0 h-[3px] w-full origin-left scale-x-100 rounded-full bg-gradient-to-r from-[#C89B3C] to-transparent opacity-35" />
+              </span>
+
+              <br />
+              With Industry Leaders
+            </h1>
+
+            {/* Description */}
+            <p
+              className="mb-8 max-w-[760px] text-[14px] leading-7 text-gray-300 transition-all duration-700 delay-300 sm:text-[15px] lg:text-[17px] lg:leading-8"
+              style={{
+                opacity: heroVisible ? 1 : 0,
+                transform: heroVisible
+                  ? "translateY(0)"
+                  : "translateY(20px)",
+              }}
+            >
+              RUDRON is a specialist executive search and recruitment partner
+              serving the AEC and MEP industries. We help employers secure
+              project-ready professionals, leadership talent and hard-to-find
+              technical specialists across commercial, industrial,
+              infrastructure and mission-critical markets.
+            </p>
+
+            {/* Buttons */}
+            <div
+              className="mb-8 flex flex-col gap-3 transition-all duration-700 delay-[450ms] sm:flex-row"
+              style={{
+                opacity: heroVisible ? 1 : 0,
+                transform: heroVisible
+                  ? "translateY(0)"
+                  : "translateY(18px)",
+              }}
+            >
+              <HireTalentButton
+                ariaLabel="Hire construction and MEP talent"
+                className="group inline-flex items-center justify-center gap-2 rounded-xl bg-[#C89B3C] px-7 py-4 text-[14px] font-semibold text-[#07111F] shadow-[0_12px_35px_rgba(200,155,60,0.18)] transition-all duration-300 hover:-translate-y-1 hover:bg-[#D7AA4E] hover:shadow-[0_16px_45px_rgba(200,155,60,0.34)]"
               >
-                <button
-                  onClick={() => setEmployerOpen(true)}
-                  className="group bg-[#C89B3C] text-black px-6 py-3.5 lg:px-8 lg:py-4 rounded-xl text-[13px] lg:text-[15px] font-semibold transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_10px_30px_rgba(200,155,60,0.35)]"
+                Hire Talent
+                <ArrowRight
+                  size={17}
+                  className="transition-transform duration-300 group-hover:translate-x-1"
+                />
+              </HireTalentButton>
+
+              <button
+                type="button"
+                onClick={() => setCandidateOpen(true)}
+                className="group inline-flex items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/[0.04] px-7 py-4 text-[14px] font-medium text-white backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-[#C89B3C]/60 hover:bg-white/[0.08]"
+              >
+                Find Opportunity
+                <ArrowRight
+                  size={17}
+                  className="text-[#C89B3C] transition-transform duration-300 group-hover:translate-x-1"
+                />
+              </button>
+            </div>
+
+            {/* Stats */}
+            <div
+              className="mb-8 grid grid-cols-3 gap-3 transition-all duration-700 delay-[600ms]"
+              style={{
+                opacity: heroVisible ? 1 : 0,
+                transform: heroVisible
+                  ? "translateY(0)"
+                  : "translateY(20px)",
+              }}
+            >
+              {stats.map(([value, label]) => (
+                <div
+                  key={label}
+                  className="group relative overflow-hidden rounded-[18px] border border-white/10 bg-white/[0.045] p-3 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-[#C89B3C]/35 hover:bg-white/[0.065]"
                 >
-                  Hire Talent
-                </button>
+                  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(200,155,60,0.14),transparent_45%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
-                <button
-                  onClick={() => setCandidateOpen(true)}
-                  className="border border-white/20 text-white px-6 py-3.5 lg:px-8 lg:py-4 rounded-xl text-[13px] lg:text-[15px] font-medium hover:border-[#C89B3C] hover:bg-white/5 transition-all duration-300"
-                >
-                  Find Opportunity
-                </button>
-              </div>
+                  <div className="relative">
+                    <h3 className="text-xl font-bold text-[#C89B3C] lg:text-2xl">
+                      {value}
+                    </h3>
 
-              {/* STATS */}
-              <div
-                className="grid grid-cols-3 gap-3 mb-8 transition-all duration-700 delay-[600ms]"
-                style={{
-                  opacity: heroVisible ? 1 : 0,
-                  transform: heroVisible ? "translateY(0)" : "translateY(20px)",
-                }}
-              >
-                {stats.map(([value, label]) => (
-                  <div
-                    key={label}
-                    className="bg-white/[0.04] border border-white/10 rounded-[18px] p-2 backdrop-blur-md hover:border-[#C89B3C]/30 transition-colors duration-300"
-                  >
-                    <h3 className="text-[#C89B3C] text-xl lg:text-2xl font-bold">{value}</h3>
-                    <p className="text-gray-400 text-[11px] lg:text-sm">{label}</p>
+                    <p className="mt-1 text-[10px] leading-4 text-gray-400 sm:text-[11px] lg:text-[13px]">
+                      {label}
+                    </p>
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
+            </div>
 
-              {/* FEATURE CARDS */}
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
-                {features.map((item, index) => (
-                  <FeatureCard key={item.title} item={item} index={index} inView={heroVisible} />
-                ))}
-              </div>
-
+            {/* Feature cards */}
+            <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+              {features.map((item, index) => (
+                <FeatureCard
+                  key={item.title}
+                  item={item}
+                  index={index}
+                  inView={heroVisible}
+                />
+              ))}
             </div>
           </div>
         </div>
@@ -193,47 +250,53 @@ export default function Hero() {
   );
 }
 
-/* ── Feature card ── */
-function FeatureCard({ item, index, inView }: {
-  item: typeof features[0]; index: number; inView: boolean;
+function FeatureCard({
+  item,
+  index,
+  inView,
+}: {
+  item: (typeof features)[number];
+  index: number;
+  inView: boolean;
 }) {
-  const [hovered, setHovered] = useState(false);
+  const Icon = item.icon;
 
   return (
     <div
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      className="relative bg-white/5 backdrop-blur-md border rounded-[16px] p-2.5 lg:p-3 overflow-hidden cursor-default"
+      className="group relative cursor-default overflow-hidden rounded-[18px] border border-white/10 bg-white/[0.045] p-3 backdrop-blur-md transition-all duration-500 hover:-translate-y-2 hover:border-[#C89B3C]/35 hover:bg-white/[0.065] hover:shadow-[0_18px_50px_rgba(200,155,60,0.13)] lg:p-4"
       style={{
-        borderColor: hovered ? "rgba(200,155,60,0.3)" : "rgba(255,255,255,0.1)",
-        boxShadow: hovered ? "0 16px 40px rgba(200,155,60,0.12)" : "none",
         opacity: inView ? 1 : 0,
-        transform: inView ? (hovered ? "translateY(-6px)" : "translateY(0)") : "translateY(24px)",
-        transition: `opacity 0.6s ease ${750 + index * 100}ms, transform 0.5s ease ${750 + index * 100}ms, border-color 0.3s, box-shadow 0.3s`,
+        transform: inView ? "translateY(0)" : "translateY(24px)",
+        transitionDelay: `${750 + index * 110}ms`,
       }}
     >
-      <div
-        className="absolute top-0 left-4 right-4 h-[2px] rounded-b-full bg-gradient-to-r from-[#C89B3C] to-[#E8B84B] transition-transform duration-500 origin-left"
-        style={{ transform: hovered ? "scaleX(1)" : "scaleX(0)" }}
-      />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(200,155,60,0.15),transparent_44%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
-      <div
-        className="text-[22px] lg:text-[32px] font-bold mb-3 transition-opacity duration-300"
-        style={{ color: "#C89B3C", opacity: hovered ? 0.6 : 0.3 }}
-      >
-        0{index + 1}
+      <div className="absolute left-4 right-4 top-0 h-[2px] origin-left scale-x-0 rounded-b-full bg-gradient-to-r from-[#C89B3C] to-[#E8B84B] transition-transform duration-500 group-hover:scale-x-100" />
+
+      <div className="relative">
+        <div className="flex items-start justify-between gap-3">
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-[#C89B3C]/20 bg-[#C89B3C]/10 transition-all duration-500 group-hover:rotate-3 group-hover:scale-110">
+            <Icon
+              size={19}
+              className="text-[#C89B3C]"
+              strokeWidth={1.8}
+            />
+          </div>
+
+          <span className="text-[11px] font-semibold tracking-[2px] text-white/20">
+            0{index + 1}
+          </span>
+        </div>
+
+        <h4 className="mt-4 text-[13px] font-semibold text-white transition-colors duration-300 group-hover:text-[#C89B3C] lg:text-[15px]">
+          {item.title}
+        </h4>
+
+        <p className="mt-2 text-[11px] leading-5 text-gray-400 lg:text-[13px] lg:leading-6">
+          {item.subtitle}
+        </p>
       </div>
-
-      <h4
-        className="font-semibold text-[13px] lg:text-[15px] mb-2 transition-colors duration-300"
-        style={{ color: hovered ? "#C89B3C" : "#fff" }}
-      >
-        {item.title}
-      </h4>
-
-      <p className="text-gray-400 text-[11px] lg:text-sm leading-6">
-        {item.subtitle}
-      </p>
     </div>
   );
 }

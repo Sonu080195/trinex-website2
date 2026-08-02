@@ -673,16 +673,8 @@ export default function CookiePolicyPage() {
 
               <div className="mt-5 rounded-2xl border border-gray-100 bg-[#F8F7F4] p-6 md:p-7">
                 <p className="font-bold text-[#1A1A2E]">
-                  RUDRON Global Talent Solutions LLP
+                  RUDRON Global Talent Solutions
                 </p>
-
-                <address className="mt-3 not-italic leading-7">
-                  404, 10-A, Alica Nagar CHS. LTD.
-                  <br />
-                  Kandivali East, Mumbai 400101
-                  <br />
-                  Maharashtra, India
-                </address>
 
                 <p className="mt-4">
                   Email:{" "}

@@ -10,6 +10,7 @@ import HeroJobsCarousel from "@/components/HeroJobsCarousel";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import Reveal from "@/components/Reveal";
 import HomeSEOSection from "@/components/HomeSEOSection";
+import RecruitmentSpecialtiesSection from "@/components/RecruitmentSpecialtiesSection";
 
 const SITE_URL = "https://www.rudrongts.com";
 
@@ -72,6 +73,10 @@ export default function Home() {
       </Reveal>
 
       <Reveal>
+        <RecruitmentSpecialtiesSection />
+      </Reveal>
+
+      <Reveal>
         <HeroJobsCarousel />
       </Reveal>
 
@@ -83,7 +88,9 @@ export default function Home() {
         <InsightsSection />
       </Reveal>
 
-      <HomeSEOSection />
+      <Reveal>
+        <HomeSEOSection />
+      </Reveal>
 
       <HomeCTA />
     </main>

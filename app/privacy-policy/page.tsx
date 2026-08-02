@@ -304,7 +304,7 @@ const policySections: PolicySection[] = [
     "blocks": [
       {
         "type": "paragraph",
-        "text": "If you have questions or comments about this notice, you may email us at contact@rudrongts.com or contact us by post at: RUDRON Global Talent Solutions LLP 404, 10-A, Alica Nagar Building CHS LTD, Lokhandwala Township, Kandivali East Mumbai, Maharashtra 400101 India"
+        "text": "If you have questions or comments about this notice, you may email us at contact@rudrongts.com or contact us by post at: RUDRON Global Talent Solutions"
       }
     ]
   },

@@ -5,18 +5,21 @@ import { useEffect, useRef, useState } from "react";
 import {
   ArrowRight,
   Building2,
-  Factory,
-  House,
-  Landmark,
-  HeartPulse,
-  Server,
-  Zap,
-  Droplets,
-  Warehouse,
-  Wrench,
   Cable,
   Check,
+  Droplets,
+  Factory,
+  HardHat,
+  HeartPulse,
+  Home,
+  Server,
+  Sparkles,
+  Warehouse,
+  Wrench,
+  Zap,
 } from "lucide-react";
+
+import HireTalentButton from "@/components/HireTalentButton";
 
 const industries = [
   {
@@ -38,14 +41,14 @@ const industries = [
     description:
       "Multifamily, single-family, high-rise, student and senior housing.",
     href: "/residential",
-    icon: House,
+    icon: Home,
   },
   {
     name: "Civil Infrastructure",
     description:
       "Roadways, bridges, rail, tunnels, airports and public infrastructure.",
     href: "/civil",
-    icon: Landmark,
+    icon: HardHat,
   },
   {
     name: "Healthcare",
@@ -163,28 +166,21 @@ export default function HomeSEOSection() {
 
   return (
     <section className="relative overflow-hidden bg-[#F4F4F0] px-4 py-8 sm:px-5 lg:px-20 lg:py-10">
-      {/* Background grid */}
+      {/* Background */}
       <div
         className="pointer-events-none absolute inset-0"
         style={{
           backgroundImage: `
-            linear-gradient(rgba(200,155,60,0.045) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(200,155,60,0.045) 1px, transparent 1px)
+            linear-gradient(rgba(200,155,60,0.04) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(200,155,60,0.04) 1px, transparent 1px)
           `,
           backgroundSize: "60px 60px",
         }}
       />
 
-      {/* Background glows */}
-      <div
-        className="pointer-events-none absolute left-1/2 top-0 h-[300px] w-[650px] -translate-x-1/2"
-        style={{
-          background:
-            "radial-gradient(ellipse at top, rgba(200,155,60,0.09) 0%, transparent 65%)",
-        }}
-      />
-
-      <div className="pointer-events-none absolute -right-32 top-1/3 h-80 w-80 rounded-full bg-[#C89B3C]/5 blur-3xl" />
+      <div className="pointer-events-none absolute left-1/2 top-[-120px] h-[300px] w-[650px] -translate-x-1/2 rounded-full bg-[#C89B3C]/10 blur-[100px]" />
+      <div className="pointer-events-none absolute -right-32 top-1/3 h-80 w-80 rounded-full bg-[#C89B3C]/10 blur-[110px]" />
+      <div className="pointer-events-none absolute -left-24 bottom-[-160px] h-72 w-72 rounded-full bg-blue-500/[0.05] blur-[110px]" />
 
       <div className="relative mx-auto max-w-7xl">
         {/* Header */}
@@ -193,7 +189,7 @@ export default function HomeSEOSection() {
           className="mx-auto mb-10 max-w-5xl text-center lg:mb-14"
         >
           <div
-            className="mb-4 inline-flex items-center gap-3 transition-all duration-700"
+            className="mb-4 flex items-center justify-center gap-3 transition-all duration-700"
             style={{
               opacity: headerVisible ? 1 : 0,
               transform: headerVisible
@@ -201,13 +197,17 @@ export default function HomeSEOSection() {
                 : "translateY(20px)",
             }}
           >
-            <span className="h-px w-8 bg-[#C89B3C]" />
+            <span className="h-px w-8 bg-gradient-to-r from-transparent to-[#C89B3C]" />
 
-            <p className="text-xs font-semibold uppercase tracking-[5px] text-[#C89B3C]">
-              Specialist Recruitment Expertise
-            </p>
+            <div className="inline-flex items-center gap-2">
+              <Sparkles size={14} className="text-[#C89B3C]" />
 
-            <span className="h-px w-8 bg-[#C89B3C]" />
+              <p className="text-xs font-semibold uppercase tracking-[5px] text-[#C89B3C]">
+                Specialist Recruitment Expertise
+              </p>
+            </div>
+
+            <span className="h-px w-8 bg-gradient-to-l from-transparent to-[#C89B3C]" />
           </div>
 
           <h2
@@ -220,10 +220,11 @@ export default function HomeSEOSection() {
             }}
           >
             Construction, Engineering &amp; MEP
-            <span className="relative ml-2 inline-block text-[#C89B3C]">
+            <span className="relative ml-2 inline-block bg-gradient-to-r from-[#C89B3C] to-[#E0B55D] bg-clip-text text-transparent">
               Recruitment Specialists
+
               <span
-                className="absolute bottom-0 left-0 h-[3px] rounded-full bg-[#C89B3C] opacity-20 transition-all delay-500 duration-1000"
+                className="absolute -bottom-1 left-0 h-[3px] rounded-full bg-gradient-to-r from-[#C89B3C] to-transparent opacity-25 transition-all delay-500 duration-1000"
                 style={{
                   width: headerVisible ? "100%" : "0%",
                 }}
@@ -283,7 +284,7 @@ export default function HomeSEOSection() {
                 <Link
                   key={industry.name}
                   href={industry.href}
-                  className="group relative overflow-hidden rounded-[24px] border border-black/[0.06] bg-white p-6 transition-all duration-500 hover:-translate-y-2 hover:border-[#C89B3C]/35 hover:shadow-[0_20px_55px_rgba(200,155,60,0.12)]"
+                  className="group relative overflow-hidden rounded-[24px] border border-black/[0.06] bg-white p-6 shadow-[0_8px_24px_rgba(0,0,0,0.035)] transition-all duration-500 hover:-translate-y-2 hover:border-[#C89B3C]/35 hover:shadow-[0_20px_55px_rgba(200,155,60,0.12)]"
                   style={{
                     opacity: industryVisible ? 1 : 0,
                     transform: industryVisible
@@ -292,26 +293,39 @@ export default function HomeSEOSection() {
                     transitionDelay: `${index * 55}ms`,
                   }}
                 >
+                  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(200,155,60,0.12),transparent_42%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+
                   <div className="absolute left-6 right-6 top-0 h-[2px] origin-left scale-x-0 rounded-b-full bg-gradient-to-r from-[#C89B3C] to-[#E8B84B] transition-transform duration-500 group-hover:scale-x-100" />
 
-                  <div className="flex items-start justify-between gap-5">
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#07111F]/[0.05] text-[#07111F] transition-all duration-300 group-hover:bg-[#C89B3C]/10 group-hover:text-[#C89B3C]">
-                      <Icon size={23} strokeWidth={1.6} />
+                  <div className="relative">
+                    <div className="flex items-start justify-between gap-5">
+                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-black/[0.05] bg-[#07111F]/[0.05] text-[#07111F] transition-all duration-500 group-hover:rotate-3 group-hover:scale-110 group-hover:border-[#C89B3C]/20 group-hover:bg-[#C89B3C]/10 group-hover:text-[#C89B3C]">
+                        <Icon size={23} strokeWidth={1.6} />
+                      </div>
+
+                      <span className="text-[10px] font-semibold tracking-[2px] text-black/15">
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
                     </div>
 
-                    <ArrowRight
-                      size={19}
-                      className="text-[#C89B3C] transition-transform duration-300 group-hover:translate-x-1"
-                    />
+                    <h4 className="mt-6 text-[18px] font-bold text-[#07111F] transition-colors duration-300 group-hover:text-[#C89B3C]">
+                      {industry.name}
+                    </h4>
+
+                    <p className="mt-3 text-[14px] leading-7 text-gray-500">
+                      {industry.description}
+                    </p>
+
+                    <div className="mt-5 flex items-center justify-between border-t border-black/[0.06] pt-4">
+                      <span className="text-[13px] font-semibold text-[#07111F]">
+                        Explore Market
+                      </span>
+
+                      <span className="flex h-8 w-8 items-center justify-center rounded-full border border-[#C89B3C]/25 bg-[#C89B3C]/10 text-[#C89B3C] transition-all duration-300 group-hover:translate-x-1 group-hover:bg-[#C89B3C] group-hover:text-[#07111F]">
+                        <ArrowRight size={15} />
+                      </span>
+                    </div>
                   </div>
-
-                  <h4 className="mt-6 text-[18px] font-bold text-[#07111F]">
-                    {industry.name}
-                  </h4>
-
-                  <p className="mt-3 text-[14px] leading-7 text-gray-500">
-                    {industry.description}
-                  </p>
                 </Link>
               );
             })}
@@ -323,7 +337,6 @@ export default function HomeSEOSection() {
           ref={lowerRef}
           className="mt-10 grid gap-6 lg:mt-14 lg:grid-cols-[1.05fr_0.95fr]"
         >
-          {/* Roles */}
           <div
             className="rounded-[30px] border border-black/[0.06] bg-white p-7 shadow-[0_10px_35px_rgba(0,0,0,0.04)] transition-all duration-700 sm:p-9"
             style={{
@@ -351,9 +364,9 @@ export default function HomeSEOSection() {
               {roles.map((role) => (
                 <div
                   key={role}
-                  className="flex items-center gap-3 rounded-[14px] border border-black/[0.06] bg-[#F8F7F3] px-4 py-3.5 text-[13px] font-medium text-[#07111F] transition duration-300 hover:border-[#C89B3C]/30 hover:bg-[#C89B3C]/[0.05]"
+                  className="group flex items-center gap-3 rounded-[14px] border border-black/[0.06] bg-[#F8F7F3] px-4 py-3.5 text-[13px] font-medium text-[#07111F] transition duration-300 hover:-translate-y-0.5 hover:border-[#C89B3C]/30 hover:bg-[#C89B3C]/[0.05]"
                 >
-                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#C89B3C]/10 text-[#C89B3C]">
+                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#C89B3C]/10 text-[#C89B3C] transition-transform duration-300 group-hover:scale-110">
                     <Check size={14} strokeWidth={2.2} />
                   </span>
 
@@ -375,7 +388,6 @@ export default function HomeSEOSection() {
             </Link>
           </div>
 
-          {/* Employer card */}
           <div
             className="relative overflow-hidden rounded-[30px] border border-white/10 bg-[#07111F] p-7 text-white transition-all delay-150 duration-700 sm:p-9"
             style={{
@@ -386,7 +398,7 @@ export default function HomeSEOSection() {
             }}
           >
             <div
-              className="absolute inset-0 opacity-[0.05]"
+              className="pointer-events-none absolute inset-0 opacity-[0.045]"
               style={{
                 backgroundImage: `
                   linear-gradient(rgba(200,155,60,1) 1px, transparent 1px),
@@ -396,14 +408,19 @@ export default function HomeSEOSection() {
               }}
             />
 
-            <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-[#C89B3C]/15 blur-3xl" />
+            <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-[#C89B3C]/15 blur-3xl" />
+            <div className="pointer-events-none absolute left-7 right-7 top-0 h-[2px] rounded-b-full bg-gradient-to-r from-transparent via-[#C89B3C]/45 to-transparent" />
 
             <div className="relative">
-              <p className="text-xs font-semibold uppercase tracking-[4px] text-[#C89B3C]">
-                For Employers
-              </p>
+              <div className="mb-3 flex items-center gap-2">
+                <Sparkles size={14} className="text-[#C89B3C]" />
 
-              <h3 className="mt-3 text-[26px] font-bold leading-tight sm:text-[32px]">
+                <p className="text-xs font-semibold uppercase tracking-[4px] text-[#C89B3C]">
+                  For Employers
+                </p>
+              </div>
+
+              <h3 className="text-[26px] font-bold leading-tight sm:text-[32px]">
                 Why Employers Choose RUDRON
               </h3>
 
@@ -428,9 +445,9 @@ export default function HomeSEOSection() {
               </div>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <Link
-                  href="/contact"
-                  className="group inline-flex items-center justify-center gap-2 rounded-[12px] bg-[#C89B3C] px-6 py-3.5 text-sm font-semibold text-[#07111F] transition-all duration-300 hover:-translate-y-1 hover:bg-[#D5A943]"
+                <HireTalentButton
+                  ariaLabel="Request construction and MEP talent"
+                  className="group inline-flex items-center justify-center gap-2 rounded-[12px] bg-[#C89B3C] px-6 py-3.5 text-sm font-semibold text-[#07111F] transition-all duration-300 hover:-translate-y-1 hover:bg-[#D5A943] hover:shadow-[0_10px_28px_rgba(200,155,60,0.28)]"
                 >
                   Request Talent
 
@@ -438,11 +455,11 @@ export default function HomeSEOSection() {
                     size={17}
                     className="transition-transform duration-300 group-hover:translate-x-1"
                   />
-                </Link>
+                </HireTalentButton>
 
                 <Link
                   href="/employers"
-                  className="group inline-flex items-center justify-center gap-2 rounded-[12px] border border-white/15 bg-white/[0.04] px-6 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:border-[#C89B3C]/40 hover:bg-white/[0.08]"
+                  className="group inline-flex items-center justify-center gap-2 rounded-[12px] border border-white/15 bg-white/[0.04] px-6 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-1 hover:border-[#C89B3C]/40 hover:bg-white/[0.08]"
                 >
                   Employer Solutions
 

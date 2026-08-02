@@ -1,62 +1,50 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import {
+  Handshake,
+  Layers3,
+  SearchCheck,
+  Sparkles,
+  Star,
+  TrendingUp,
+} from "lucide-react";
 
 const items = [
   {
     number: "01",
     title: "Industry Specialists",
     description:
-      "Dedicated recruiters focused exclusively on construction, engineering, MEP and mission critical markets.",
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
-      </svg>
-    ),
+      "Dedicated recruiters focused exclusively on construction, engineering, MEP and mission-critical markets.",
+    icon: Layers3,
   },
   {
     number: "02",
     title: "Executive Search",
     description:
       "Supporting confidential leadership and executive hiring across high-growth construction sectors.",
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/>
-      </svg>
-    ),
+    icon: SearchCheck,
   },
   {
     number: "03",
     title: "Quality Over Volume",
     description:
-      "We prioritize long-term success and cultural alignment over transactional placements.",
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-      </svg>
-    ),
+      "We prioritize long-term success, technical relevance and cultural alignment over transactional placements.",
+    icon: Star,
   },
   {
     number: "04",
     title: "Partnership Approach",
     description:
       "Building trusted relationships with clients and candidates through transparency and consistency.",
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-      </svg>
-    ),
+    icon: Handshake,
   },
   {
     number: "05",
     title: "Growth Focused",
     description:
       "Helping businesses secure talent capable of supporting long-term project and organizational growth.",
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/>
-      </svg>
-    ),
+    icon: TrendingUp,
   },
 ];
 
@@ -65,14 +53,23 @@ function useInView(threshold = 0.15) {
   const [inView, setInView] = useState(false);
 
   useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { setInView(true); obs.disconnect(); } },
+    const element = ref.current;
+
+    if (!element) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          observer.disconnect();
+        }
+      },
       { threshold }
     );
-    obs.observe(el);
-    return () => obs.disconnect();
+
+    observer.observe(element);
+
+    return () => observer.disconnect();
   }, [threshold]);
 
   return { ref, inView };
@@ -83,195 +80,161 @@ export default function ValueSection() {
   const { ref: gridRef, inView: gridInView } = useInView(0.05);
 
   return (
-    <section className="relative bg-[#F4F4F0] py-8 lg:py-10 px-4 sm:px-4 lg:px-20 overflow-hidden">
-
-      {/* Subtle background grid pattern */}
+    <section className="relative overflow-hidden bg-[#F4F4F0] px-4 py-8 sm:px-4 lg:px-20 lg:py-10">
+      {/* Background */}
       <div
-        className="absolute inset-0 pointer-events-none"
+        className="pointer-events-none absolute inset-0"
         style={{
           backgroundImage: `
-            linear-gradient(rgba(200,155,60,0.045) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(200,155,60,0.045) 1px, transparent 1px)
+            linear-gradient(rgba(200,155,60,0.04) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(200,155,60,0.04) 1px, transparent 1px)
           `,
           backgroundSize: "60px 60px",
         }}
       />
 
-      {/* Faint radial glow top-center */}
-      <div
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[250px] pointer-events-none"
-        style={{
-          background: "radial-gradient(ellipse at top, rgba(200,155,60,0.07) 0%, transparent 65%)",
-        }}
-      />
+      <div className="pointer-events-none absolute left-1/2 top-[-120px] h-[280px] w-[560px] -translate-x-1/2 rounded-full bg-[#C89B3C]/10 blur-[95px]" />
+      <div className="pointer-events-none absolute -left-24 bottom-[-150px] h-[280px] w-[280px] rounded-full bg-blue-500/[0.05] blur-[100px]" />
+      <div className="pointer-events-none absolute -right-24 bottom-[-150px] h-[280px] w-[280px] rounded-full bg-[#C89B3C]/10 blur-[100px]" />
 
-      {/* ── HEADER ── */}
-      <div
-        ref={headerRef}
-        className="relative text-center mb-4 lg:mb-8"
-      >
-        {/* Eyebrow */}
+      <div className="relative mx-auto max-w-7xl">
+        {/* Header */}
         <div
-          className="inline-flex items-center gap-3 mb-4 transition-all duration-700"
-          style={{
-            opacity: headerInView ? 1 : 0,
-            transform: headerInView ? "translateY(0)" : "translateY(20px)",
-          }}
+          ref={headerRef}
+          className="mb-6 text-center lg:mb-8"
         >
-          <span className="h-px w-8 bg-[#C89B3C]" />
-          <p className="text-[#C89B3C] uppercase tracking-[5px] text-xs font-semibold">
-            Our Approach
+          <div
+            className="mb-4 flex items-center justify-center gap-3 transition-all duration-700"
+            style={{
+              opacity: headerInView ? 1 : 0,
+              transform: headerInView
+                ? "translateY(0)"
+                : "translateY(20px)",
+            }}
+          >
+            <span className="h-px w-8 bg-gradient-to-r from-transparent to-[#C89B3C]" />
+
+            <div className="inline-flex items-center gap-2">
+              <Sparkles size={14} className="text-[#C89B3C]" />
+
+              <p className="text-xs font-semibold uppercase tracking-[5px] text-[#C89B3C]">
+                Our Approach
+              </p>
+            </div>
+
+            <span className="h-px w-8 bg-gradient-to-l from-transparent to-[#C89B3C]" />
+          </div>
+
+          <h2
+            className="mb-5 text-[28px] font-bold leading-[1.02] text-[#07111F] transition-all duration-700 delay-100 sm:text-[36px] lg:text-[52px]"
+            style={{
+              opacity: headerInView ? 1 : 0,
+              transform: headerInView
+                ? "translateY(0)"
+                : "translateY(24px)",
+            }}
+          >
+            Recruitment Solutions{" "}
+            <span className="relative inline-block bg-gradient-to-r from-[#C89B3C] to-[#E0B55D] bg-clip-text text-transparent">
+              That Create Value
+
+              <span
+                className="absolute -bottom-1 left-0 h-[3px] rounded-full bg-gradient-to-r from-[#C89B3C] to-transparent transition-all duration-1000 delay-500"
+                style={{
+                  width: headerInView ? "100%" : "0%",
+                  opacity: 0.22,
+                }}
+              />
+            </span>
+          </h2>
+
+          <p
+            className="mx-auto max-w-2xl text-[15px] leading-relaxed text-gray-500 transition-all duration-700 delay-200 sm:text-[17px]"
+            style={{
+              opacity: headerInView ? 1 : 0,
+              transform: headerInView
+                ? "translateY(0)"
+                : "translateY(20px)",
+            }}
+          >
+            A recruitment strategy built around market expertise, long-term
+            partnerships and exceptional talent delivery.
           </p>
-          <span className="h-px w-8 bg-[#C89B3C]" />
         </div>
 
-        {/* Headline */}
-        <h2
-          className="text-[#07111F] text-[28px] sm:text-[36px] lg:text-[52px] font-bold leading-[1.02] mb-6 transition-all duration-700 delay-100"
-          style={{
-            opacity: headerInView ? 1 : 0,
-            transform: headerInView ? "translateY(0)" : "translateY(24px)",
-          }}
+        {/* Cards */}
+        <div
+          ref={gridRef}
+          className="relative grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5"
         >
-          Recruitment Solutions{" "}
-          <span
-            className="relative inline-block"
-            style={{ color: "#C89B3C" }}
-          >
-            That Create Value
-            {/* Underline accent */}
-            <span
-              className="absolute bottom-0 left-0 h-[3px] bg-[#C89B3C] rounded-full transition-all duration-1000 delay-500"
-              style={{
-                width: headerInView ? "100%" : "0%",
-                opacity: 0.15,
-              }}
+          {items.map((item, index) => (
+            <ValueCard
+              key={item.number}
+              item={item}
+              index={index}
+              inView={gridInView}
             />
-          </span>
-        </h2>
-
-        {/* Body */}
-        <p
-          className="text-gray-500 text-[15px] sm:text-[17px] leading-relaxed max-w-2xl mx-auto transition-all duration-700 delay-200 mb-4"
-          style={{
-            opacity: headerInView ? 1 : 0,
-            transform: headerInView ? "translateY(0)" : "translateY(20px)",
-          }}
-        >
-          A recruitment strategy built around market expertise, long-term
-          partnerships and exceptional talent delivery.
-        </p>
+          ))}
+        </div>
       </div>
-
-      {/* ── GRID ── */}
-      <div
-        ref={gridRef}
-        className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4"
-      >
-        {items.map((item, i) => (
-          <Card key={item.number} item={item} index={i} inView={gridInView} />
-        ))}
-      </div>
-
     </section>
   );
 }
 
-function Card({
+function ValueCard({
   item,
   index,
   inView,
 }: {
-  item: (typeof items)[0];
+  item: (typeof items)[number];
   index: number;
   inView: boolean;
 }) {
-  const [hovered, setHovered] = useState(false);
+  const Icon = item.icon;
 
   return (
-    <div
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      className="relative bg-white rounded-[24px] p-6 overflow-hidden cursor-default"
+    <article
+      className="group relative min-h-[275px] cursor-default overflow-hidden rounded-[24px] border border-black/[0.06] bg-white p-6 shadow-[0_4px_18px_rgba(0,0,0,0.04)] transition-all duration-500 hover:-translate-y-2 hover:border-[#C89B3C]/40 hover:shadow-[0_20px_55px_rgba(200,155,60,0.12)]"
       style={{
-        border: hovered ? "1px solid rgba(200,155,60,0.4)" : "1px solid rgba(0,0,0,0.06)",
-        boxShadow: hovered
-          ? "0 20px 60px rgba(200,155,60,0.12), 0 4px 16px rgba(0,0,0,0.06)"
-          : "0 2px 12px rgba(0,0,0,0.04)",
-        transform: inView
-          ? hovered ? "translateY(-6px)" : "translateY(0)"
-          : "translateY(32px)",
         opacity: inView ? 1 : 0,
-        transition: `opacity 0.6s ease ${index * 100}ms, transform 0.6s ease ${index * 100}ms, border 0.3s ease, box-shadow 0.3s ease`,
+        transform: inView ? "translateY(0)" : "translateY(32px)",
+        transitionDelay: `${index * 100}ms`,
       }}
     >
-      {/* Giant ghost number */}
-      <div
-        className="absolute -right-2 -top-2 text-[88px] font-black leading-none select-none pointer-events-none transition-all duration-500"
-        style={{
-          color: hovered ? "rgba(200,155,60,0.08)" : "rgba(0,0,0,0.04)",
-        }}
-      >
+      {/* Card effects */}
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(200,155,60,0.08),transparent_56%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+
+      <div className="pointer-events-none absolute left-6 right-6 top-0 h-[2px] origin-left scale-x-0 rounded-b-full bg-gradient-to-r from-[#C89B3C] to-[#E8B84B] transition-transform duration-500 group-hover:scale-x-100" />
+
+      <div className="pointer-events-none absolute -right-2 -top-3 select-none text-[88px] font-black leading-none text-black/[0.035] transition-all duration-500 group-hover:scale-105 group-hover:text-[#C89B3C]/10">
         {item.number}
       </div>
 
-      {/* Gold top bar — animates in on hover */}
-      <div
-        className="absolute top-0 left-6 right-6 h-[2px] rounded-b-full transition-all duration-500"
-        style={{
-          background: "linear-gradient(90deg, #C89B3C, #E8B84B)",
-          transform: hovered ? "scaleX(1)" : "scaleX(0)",
-          transformOrigin: "left",
-        }}
-      />
+      <div className="relative z-10">
+        <div className="flex items-start justify-between gap-3">
+          <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-black/[0.05] bg-[#07111F]/[0.045] text-[#07111F] transition-all duration-500 group-hover:rotate-3 group-hover:scale-110 group-hover:border-[#C89B3C]/20 group-hover:bg-[#C89B3C]/10 group-hover:text-[#C89B3C]">
+            <Icon size={22} strokeWidth={1.7} />
+          </div>
 
-      {/* Icon */}
-      <div
-        className="relative mb-5 transition-all duration-300"
-        style={{
-          color: hovered ? "#C89B3C" : "#07111F",
-          transform: hovered ? "scale(1.1)" : "scale(1)",
-        }}
-      >
-        <div
-          className="w-11 h-11 rounded-xl flex items-center justify-center transition-all duration-300"
-          style={{
-            background: hovered ? "rgba(200,155,60,0.1)" : "rgba(7,17,31,0.05)",
-          }}
-        >
-          {item.icon}
+          <span className="text-[10px] font-semibold tracking-[3px] text-[#C89B3C]/60 transition-colors duration-300 group-hover:text-[#C89B3C]">
+            {item.number}
+          </span>
+        </div>
+
+        <h3 className="mt-6 text-[17px] font-bold leading-snug text-[#1A2A3A] transition-colors duration-300 group-hover:text-[#07111F]">
+          {item.title}
+        </h3>
+
+        <p className="mt-3 text-[14px] leading-6 text-gray-500">
+          {item.description}
+        </p>
+
+        <div className="mt-6 h-px w-full bg-gradient-to-r from-[#C89B3C]/20 via-black/[0.04] to-transparent" />
+
+        <div className="mt-4 flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[2px] text-[#C89B3C]/65 transition-colors duration-300 group-hover:text-[#C89B3C]">
+          RUDRON Standard
         </div>
       </div>
-
-      {/* Number label */}
-      <p
-        className="text-xs font-bold tracking-[3px] uppercase mb-3 transition-colors duration-300"
-        style={{ color: hovered ? "#C89B3C" : "#C89B3C99" }}
-      >
-        {item.number}
-      </p>
-
-      {/* Title */}
-      <h3
-        className="text-[#07111F] text-[17px] font-bold mb-3 leading-snug transition-colors duration-300"
-        style={{ color: hovered ? "#07111F" : "#1a2a3a" }}
-      >
-        {item.title}
-      </h3>
-
-      {/* Description */}
-      <p className="text-gray-500 text-[14px] leading-[1.35] relative z-10">
-        {item.description}
-      </p>
-
-      {/* Bottom fill on hover */}
-      <div
-        className="absolute inset-0 rounded-[24px] pointer-events-none transition-opacity duration-500"
-        style={{
-          background: "radial-gradient(ellipse at bottom left, rgba(200,155,60,0.05) 0%, transparent 60%)",
-          opacity: hovered ? 1 : 0,
-        }}
-      />
-    </div>
+    </article>
   );
 }
