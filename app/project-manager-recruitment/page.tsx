@@ -42,7 +42,7 @@ export default function ProjectManagerRecruitmentPage() {
               <span className="h-px w-10 bg-[#C89B3C]" />
             </div>
 
-          <h1 className="mt-8 max-w-5xl text-5xl font-bold leading-tight lg:text-7xl">
+          <h1 className="mt-8 max-w-5xl text-5xl font-bold leading-18 lg:text-7xl">
             Construction Project Manager
             <br />
               <span className="text-[#C89B3C]">
@@ -50,12 +50,12 @@ export default function ProjectManagerRecruitmentPage() {
               </span>
           </h1>
 
-          <p className="mt-8 max-w-3xl text-lg leading-8 text-gray-300">
-            RUDRON Global Talent Solutions helps General Contractors,
-            Mechanical Contractors, EPC firms and Developers hire experienced
-            Construction Project Managers across Commercial, Industrial,
-            Healthcare, Data Centers, Civil Infrastructure and Residential
-            projects throughout North America.
+          <p className="mt-8 max-w-3xl text-lg leading-7 text-gray-300">
+            Hire experienced Construction Project Managers for commercial,
+            healthcare, industrial, infrastructure, mission-critical and
+            residential projects. RUDRON connects General Contractors,
+            Developers and EPC firms with proven project leaders who deliver
+            complex construction projects safely, on schedule and within budget.
           </p>
 
           <div className="mt-10 flex flex-wrap gap-4">
@@ -87,46 +87,62 @@ export default function ProjectManagerRecruitmentPage() {
 
       {/* Quick Stats */}
 
-      <section className="bg-[#0d1a2c] py-16">
+      <section className="bg-[#0d1a2c] py-10">
 
         <div className="mx-auto grid max-w-7xl gap-6 px-6 md:grid-cols-4">
 
-          {[
-            {
-              icon: Building2,
-              title: "Commercial",
-              text: "Healthcare, Education, Office, Retail",
-            },
-            {
-              icon: Users,
-              title: "Leadership",
-              text: "Project Managers & Executives",
-            },
-            {
-              icon: Clock3,
-              title: "Fast Hiring",
-              text: "Priority recruitment process",
-            },
-            {
-              icon: DollarSign,
-              title: "Executive Search",
-              text: "Senior Construction Talent",
-            },
+        {[
+          {
+            icon: Building2,
+            title: "Commercial Construction",
+            text: "Healthcare, education, offices, mixed-use and retail developments.",
+          },
+          {
+            icon: BriefcaseBusiness,
+            title: "Project Leadership",
+            text: "Project Managers, Senior PMs, Project Executives and Operations Leaders.",
+          },
+          {
+            icon: Target,
+            title: "Mission Critical",
+            text: "Data centers, healthcare, industrial and complex construction projects.",
+          },
+          {
+            icon: Users,
+            title: "Executive Search",
+            text: "Confidential hiring for strategic leadership and hard-to-find talent.",
+          },
           ].map((item) => {
             const Icon = item.icon;
 
             return (
               <div
                 key={item.title}
-                className="rounded-2xl border border-white/10 bg-white/5 p-7"
+                className="
+                group
+                relative
+                overflow-hidden
+                rounded-[28px]
+                border
+                border-white/10
+                bg-white/[0.04]
+                p-7
+                transition-all
+                duration-500
+                hover:-translate-y-2
+                hover:border-[#C89B3C]/35
+                hover:shadow-[0_20px_50px_rgba(200,155,60,0.12)]
+                "
               >
-                <Icon className="mb-5 text-[#C89B3C]" size={34} />
+                <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl border border-[#C89B3C]/20 bg-[#C89B3C]/10 transition-all duration-300 group-hover:scale-110 group-hover:bg-[#C89B3C]/15">
+                <Icon className="text-[#C89B3C]" size={28} />
+              </div>
 
-                <h3 className="text-xl font-bold">
+                <h3 className="text-[22px] font-bold text-white">
                   {item.title}
                 </h3>
 
-                <p className="mt-3 text-gray-400">
+                <p className="mt-4 leading-7 text-gray-400">
                   {item.text}
                 </p>
               </div>

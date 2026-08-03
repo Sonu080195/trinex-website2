@@ -37,9 +37,9 @@ const features = [
 ];
 
 const stats = [
-  ["100+", "Placements Supported"],
-  ["4", "Global Markets"],
-  ["20+", "Industry Specialisations"],
+  ["100+", "Successful Placements"],
+  ["20+", "Industry Specializations"],
+  ["USA, Canada, UAE & India", "Talent Coverage"],
 ];
 
 export default function Hero() {
@@ -153,7 +153,7 @@ export default function Hero() {
 
             {/* Description */}
             <p
-              className="mb-8 max-w-[760px] text-[14px] leading-7 text-gray-300 transition-all duration-700 delay-300 sm:text-[15px] lg:text-[17px] lg:leading-8"
+              className="mb-8 max-w-[760px] text-[14px] leading-7 text-gray-300 transition-all duration-700 delay-300 sm:text-[14px] lg:text-[16px] lg:leading-8"
               style={{
                 opacity: heroVisible ? 1 : 0,
                 transform: heroVisible
@@ -161,11 +161,15 @@ export default function Hero() {
                   : "translateY(20px)",
               }}
             >
+              <p className="text-[20px] font-semibold text-[#C89B3C]">
+                Hire exceptional AEC and MEP professionals with confidence.
+              </p>
               RUDRON is a specialist executive search and recruitment partner
-              serving the AEC and MEP industries. We help employers secure
+              serving the Architecture, Engineering, Construction, Mechanical, Electrical and Plumbing industries. We help employers secure
               project-ready professionals, leadership talent and hard-to-find
               technical specialists across commercial, industrial,
               infrastructure and mission-critical markets.
+
             </p>
 
             {/* Buttons */}
@@ -204,7 +208,7 @@ export default function Hero() {
 
             {/* Stats */}
             <div
-              className="mb-8 grid grid-cols-3 gap-3 transition-all duration-700 delay-[600ms]"
+              className="mb-8 grid grid-cols-3 gap-3 lg:grid-cols-3 transition-all duration-700 delay-[600ms]"
               style={{
                 opacity: heroVisible ? 1 : 0,
                 transform: heroVisible
@@ -220,7 +224,7 @@ export default function Hero() {
                   <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(200,155,60,0.14),transparent_45%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
                   <div className="relative">
-                    <h3 className="text-xl font-bold text-[#C89B3C] lg:text-2xl">
+                    <h3 className="text-md font-bold text-[#C89B3C] lg:text-md">
                       {value}
                     </h3>
 
