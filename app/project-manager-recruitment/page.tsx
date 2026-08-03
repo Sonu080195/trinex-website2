@@ -27,8 +27,59 @@ export const metadata: Metadata = {
 };
 
 export default function ProjectManagerRecruitmentPage() {
+    const faqs = [
+  {
+    question:
+      "How long does it take to hire a Construction Project Manager?",
+    answer:
+      "Hiring timelines vary based on the role's seniority, project requirements, location, compensation and candidate availability. RUDRON conducts targeted recruitment and market outreach based on each employer's specific requirements.",
+  },
+  {
+    question:
+      "Do you recruit Construction Project Managers nationwide?",
+    answer:
+      "Yes. RUDRON supports Construction Project Manager recruitment across the United States and can assist with selected hiring requirements in Canada and other international markets.",
+  },
+  {
+    question:
+      "Which construction sectors do your Project Manager candidates come from?",
+    answer:
+      "We recruit Project Managers with experience across commercial construction, healthcare, data centers, mission-critical facilities, industrial construction, civil infrastructure and residential development.",
+  },
+  {
+    question:
+      "Do you recruit senior and executive-level Project Managers?",
+    answer:
+      "Yes. We support recruitment for Project Managers, Senior Project Managers, Project Executives, Operations Leaders and other senior construction leadership positions.",
+  },
+  {
+    question:
+      "Can RUDRON conduct confidential Project Manager searches?",
+    answer:
+      "Yes. Confidential recruitment and executive search assignments can be supported when an employer needs discretion during a replacement, expansion or leadership search.",
+  },
+  {
+    question:
+      "How do you screen Construction Project Manager candidates?",
+    answer:
+      "Candidates are evaluated based on project type, project size, contractor background, leadership responsibilities, budgeting, scheduling, subcontractor management, client communication and overall alignment with the employer's requirements.",
+  },
+  {
+    question:
+      "What qualifications should a Construction Project Manager have?",
+    answer:
+      "Qualifications vary by employer, but commonly include relevant construction experience, project leadership capability, budget and schedule management, subcontractor coordination, contract knowledge and strong communication skills.",
+  },
+  {
+    question:
+      "Can you support urgent Construction Project Manager hiring?",
+    answer:
+      "Yes. RUDRON can prioritize urgent searches and begin targeted candidate outreach immediately, although delivery timelines depend on the role, market, location and availability of qualified professionals.",
+  },
+];
   return (
     <main className="bg-[#07111F] text-white">
+      
 
       {/* Hero */}
 
@@ -58,12 +109,11 @@ export default function ProjectManagerRecruitmentPage() {
             complex construction projects safely, on schedule and within budget.
           </p>
 
-          <div className="mt-10 flex flex-wrap gap-4">
+            <div className="mt-9 flex flex-wrap gap-3">
 
             <HireTalentButton
             ariaLabel="Hire a Project Manager"
-            className="rounded-xl bg-[#C89B3C] px-7 py-4 font-semibold text-[#07111F] transition hover:scale-105"
-            >
+            className="group inline-flex items-center gap-2 rounded-[12px] bg-[#C89B3C] px-6 py-3.5 text-sm font-semibold text-[#07111F] transition hover:-translate-y-0.5 hover:bg-[#D5A943]">
             Hire a Project Manager
 
             <ArrowRight
@@ -541,7 +591,6 @@ className="rounded-xl border border-white/10 bg-white/5 p-5"
 </section>
 
 
-
 {/* Why Choose RUDRON */}
 
 <section className="bg-[#0d1a2c] py-24">
@@ -739,51 +788,19 @@ Frequently Asked Questions
 
 <div className="mt-14 space-y-5">
 
-{[
-[
-"How long does it take to hire a Construction Project Manager?",
-"Hiring timelines vary depending on the project requirements, location, seniority level and candidate availability."
-],
-[
-"Do you recruit Project Managers nationwide?",
-"Yes. We support hiring across multiple U.S. markets and other regions depending on client requirements."
-],
-[
-"What industries do your Project Managers come from?",
-"Commercial, Industrial, Healthcare, Data Centers, Mission Critical, Civil Infrastructure and Residential Construction."
-],
-[
-"Do you recruit Executive level Project Managers?",
-"Yes. We support senior leadership and executive search assignments."
-],
-[
-"Can you recruit confidentially?",
-"Yes. Confidential searches are supported where required."
-],
-].map((faq)=>(
+{faqs.map((faq) => (
+  <details
+    key={faq.question}
+    className="rounded-2xl border border-white/10 bg-white/5 p-6"
+  >
+    <summary className="cursor-pointer text-lg font-semibold">
+      {faq.question}
+    </summary>
 
-<details
-
-key={faq[0]}
-
-className="rounded-2xl border border-white/10 bg-white/5 p-6"
-
->
-
-<summary className="cursor-pointer text-lg font-semibold">
-
-{faq[0]}
-
-</summary>
-
-<p className="mt-5 leading-8 text-gray-400">
-
-{faq[1]}
-
-</p>
-
-</details>
-
+    <p className="mt-5 leading-8 text-gray-400">
+      {faq.answer}
+    </p>
+  </details>
 ))}
 
 </div>
@@ -829,6 +846,81 @@ className="rounded-2xl border border-white/10 bg-white/5 p-6"
         </div>
 
       </section>
+
+            <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "Service",
+                "@id": `${SITE_URL}/project-manager-recruitment#service`,
+                name: "Construction Project Manager Recruitment",
+                serviceType:
+                  "Construction Project Manager Recruitment",
+                url: `${SITE_URL}/project-manager-recruitment`,
+                description:
+                  "Specialist recruitment services for Construction Project Managers across commercial, healthcare, industrial, infrastructure, mission-critical and residential construction markets.",
+                provider: {
+                  "@id": `${SITE_URL}/#organization`,
+                },
+                areaServed: [
+                  {
+                    "@type": "Country",
+                    name: "United States",
+                  },
+                  {
+                    "@type": "Country",
+                    name: "Canada",
+                  },
+                ],
+                audience: {
+                  "@type": "BusinessAudience",
+                  audienceType:
+                    "General Contractors, Developers, Mechanical Contractors, EPC Firms and Construction Employers",
+                },
+              },
+              {
+                "@type": "BreadcrumbList",
+                "@id": `${SITE_URL}/project-manager-recruitment#breadcrumb`,
+                itemListElement: [
+                  {
+                    "@type": "ListItem",
+                    position: 1,
+                    name: "Home",
+                    item: `${SITE_URL}/`,
+                  },
+                  {
+                    "@type": "ListItem",
+                    position: 2,
+                    name: "Recruitment Specialties",
+                    item: `${SITE_URL}/recruitment-specialties`,
+                  },
+                  {
+                    "@type": "ListItem",
+                    position: 3,
+                    name: "Project Manager Recruitment",
+                    item: `${SITE_URL}/project-manager-recruitment`,
+                  },
+                ],
+              },
+              {
+                "@type": "FAQPage",
+                "@id": `${SITE_URL}/project-manager-recruitment#faq`,
+                mainEntity: faqs.map((faq) => ({
+                  "@type": "Question",
+                  name: faq.question,
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: faq.answer,
+                  },
+                })),
+              },
+            ],
+          }),
+        }}
+      />
 
     </main>
   );
