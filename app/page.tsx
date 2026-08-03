@@ -88,9 +88,7 @@ export default function Home() {
         <InsightsSection />
       </Reveal>
 
-      <Reveal>
         <HomeSEOSection />
-      </Reveal>
 
       <HomeCTA />
     </main>
