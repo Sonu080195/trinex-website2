@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
@@ -104,12 +105,17 @@ export default function Navbar() {
   const [servicesDropdown, setServicesDropdown] = useState(false);
   const [jobsDropdown, setJobsDropdown] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   const servicesActive =
     pathname === "/recruitment-specialties" ||
     serviceGroups.some((group) =>
       group.links.some((link) => isActivePath(pathname, link.href))
     );
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "auto";
@@ -432,182 +438,162 @@ export default function Navbar() {
         </div>
       </div>
 
-      {menuOpen && (
-        <div className="fixed inset-0 z-[9999] overflow-y-auto bg-[#07111F]">
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(200,155,60,0.12),transparent_36%)]" />
+      {mounted &&
+        menuOpen &&
+        createPortal(
+          <div className="fixed inset-0 z-[99999] overflow-y-auto bg-[#07111F] text-white">
+            <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_top_right,rgba(200,155,60,0.12),transparent_36%)]" />
 
-          <div className="relative flex min-h-screen flex-col px-5 pb-8 pt-5">
-            <div className="mb-8 flex items-center justify-between">
-              <Link href="/" onClick={() => setMenuOpen(false)}>
-                <img
-                  src="/images/rudron-logo.webp"
-                  alt="RUDRON Global Talent Solutions"
-                  className="h-14 w-auto sm:h-16"
-                />
-              </Link>
-
-              <button
-                type="button"
-                onClick={() => setMenuOpen(false)}
-                className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/[0.06] text-white transition-all duration-300 hover:border-[#C89B3C]/40 hover:text-[#C89B3C] active:scale-95"
-                aria-label="Close navigation menu"
-              >
-                <X size={24} />
-              </button>
-            </div>
-
-            <div className="overflow-hidden rounded-3xl border border-white/[0.07] bg-[#0D1726] shadow-[0_20px_50px_rgba(0,0,0,0.22)]">
-              {mainLinks.slice(0, 2).map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`block border-b border-white/[0.06] px-5 py-4 text-[15px] transition sm:text-[16px] ${
-                    isActivePath(pathname, link.href)
-                      ? "bg-[#C89B3C]/10 text-[#C89B3C]"
-                      : "text-white active:bg-white/[0.05]"
-                  }`}
-                >
-                  {link.label}
+            <div className="relative mx-auto flex min-h-[100dvh] w-full max-w-3xl flex-col px-5 pb-8 pt-5">
+              <div className="mb-6 flex items-center justify-between">
+                <Link href="/" onClick={() => setMenuOpen(false)}>
+                  <img
+                    src="/images/rudron-logo.webp"
+                    alt="RUDRON Global Talent Solutions"
+                    className="h-[78px] w-auto sm:h-[88px]"
+                  />
                 </Link>
-              ))}
 
-              <div className="border-b border-white/[0.06]">
                 <button
                   type="button"
-                  onClick={() =>
-                    setOpenMobileDropdown(
-                      openMobileDropdown === "services" ? null : "services"
-                    )
-                  }
-                  className={`flex w-full items-center justify-between px-5 py-4 text-[15px] sm:text-[16px] ${
-                    servicesActive ? "text-[#C89B3C]" : "text-white"
-                  }`}
+                  onClick={() => setMenuOpen(false)}
+                  className="flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-white/[0.06] text-white transition-all duration-300 hover:border-[#C89B3C]/40 hover:text-[#C89B3C] active:scale-95"
+                  aria-label="Close navigation menu"
                 >
-                  Services
-
-                  <ChevronDown
-                    size={18}
-                    className={`transition-transform duration-300 ${
-                      openMobileDropdown === "services" ? "rotate-180" : ""
-                    }`}
-                  />
+                  <X size={25} />
                 </button>
+              </div>
 
-                {openMobileDropdown === "services" && (
-                  <div className="border-t border-white/[0.06] bg-[#07111F]/55 px-5 py-5">
-                    <Link
-                      href="/recruitment-specialties"
-                      className="group mb-5 flex items-center justify-between rounded-xl border border-[#C89B3C]/20 bg-[#C89B3C]/10 px-4 py-3 text-[13px] font-semibold text-[#C89B3C]"
-                    >
-                      View All Recruitment Specialties
+              <div className="overflow-visible rounded-3xl border border-white/[0.08] bg-[#0D1726] shadow-[0_20px_50px_rgba(0,0,0,0.28)]">
+                {mainLinks.slice(0, 2).map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setMenuOpen(false)}
+                    className={`block border-b border-white/[0.06] px-5 py-4 text-[16px] transition ${
+                      isActivePath(pathname, link.href)
+                        ? "bg-[#C89B3C]/10 text-[#C89B3C]"
+                        : "text-white active:bg-white/[0.05]"
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                ))}
 
-                      <ArrowRight
-                        size={15}
-                        className="transition-transform duration-300 group-hover:translate-x-1"
-                      />
-                    </Link>
+                <div className="border-b border-white/[0.06]">
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setOpenMobileDropdown(
+                        openMobileDropdown === "services" ? null : "services"
+                      )
+                    }
+                    className={`flex w-full items-center justify-between px-5 py-4 text-left text-[16px] ${
+                      servicesActive ? "text-[#C89B3C]" : "text-white"
+                    }`}
+                    aria-expanded={openMobileDropdown === "services"}
+                  >
+                    Services
+                    <ChevronDown
+                      size={19}
+                      className={`transition-transform duration-300 ${
+                        openMobileDropdown === "services" ? "rotate-180" : ""
+                      }`}
+                    />
+                  </button>
 
-                    <div className="space-y-6">
-                      {serviceGroups.map((group) => (
-                        <div key={group.title}>
-                          <p className="mb-3 text-[10px] font-semibold uppercase tracking-[3px] text-[#C89B3C]">
-                            {group.title}
-                          </p>
+                  {openMobileDropdown === "services" && (
+                    <div className="border-t border-white/[0.06] bg-[#07111F]/70 px-4 py-5">
+                      <Link
+                        href="/recruitment-specialties"
+                        onClick={() => setMenuOpen(false)}
+                        className="group mb-5 flex items-center justify-between rounded-xl border border-[#C89B3C]/20 bg-[#C89B3C]/10 px-4 py-3 text-[13px] font-semibold text-[#C89B3C]"
+                      >
+                        View All Recruitment Specialties
+                        <ArrowRight size={15} className="transition-transform duration-300 group-hover:translate-x-1" />
+                      </Link>
 
-                          <div className="flex flex-col gap-1">
-                            {group.links.map((link) => (
-                              <Link
-                                key={link.href}
-                                href={link.href}
-                                className={`rounded-lg px-3 py-2.5 text-[13px] leading-5 transition ${
-                                  isActivePath(pathname, link.href)
-                                    ? "bg-[#C89B3C]/10 text-[#C89B3C]"
-                                    : "text-gray-300 active:bg-white/[0.05]"
-                                }`}
-                              >
-                                {link.label}
-                              </Link>
-                            ))}
+                      <div className="space-y-6">
+                        {serviceGroups.map((group) => (
+                          <div key={group.title}>
+                            <p className="mb-3 px-2 text-[10px] font-semibold uppercase tracking-[3px] text-[#C89B3C]">
+                              {group.title}
+                            </p>
+                            <div className="flex flex-col gap-1">
+                              {group.links.map((link) => (
+                                <Link
+                                  key={link.href}
+                                  href={link.href}
+                                  onClick={() => setMenuOpen(false)}
+                                  className={`rounded-lg px-3 py-2.5 text-[13px] leading-5 transition ${
+                                    isActivePath(pathname, link.href)
+                                      ? "bg-[#C89B3C]/10 text-[#C89B3C]"
+                                      : "text-gray-300 active:bg-white/[0.05]"
+                                  }`}
+                                >
+                                  {link.label}
+                                </Link>
+                              ))}
+                            </div>
                           </div>
-                        </div>
-                      ))}
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                )}
-              </div>
+                  )}
+                </div>
 
-              {mainLinks.slice(2).map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`block border-b border-white/[0.06] px-5 py-4 text-[15px] transition sm:text-[16px] ${
-                    isActivePath(pathname, link.href)
-                      ? "bg-[#C89B3C]/10 text-[#C89B3C]"
-                      : "text-white active:bg-white/[0.05]"
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              ))}
-
-              <div>
-                <button
-                  type="button"
-                  onClick={() =>
-                    setOpenMobileDropdown(
-                      openMobileDropdown === "jobs" ? null : "jobs"
-                    )
-                  }
-                  className="flex w-full items-center justify-between px-5 py-4 text-[15px] text-white sm:text-[16px]"
-                >
-                  Jobs
-
-                  <ChevronDown
-                    size={18}
-                    className={`transition-transform duration-300 ${
-                      openMobileDropdown === "jobs" ? "rotate-180" : ""
+                {mainLinks.slice(2).map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setMenuOpen(false)}
+                    className={`block border-b border-white/[0.06] px-5 py-4 text-[16px] transition ${
+                      isActivePath(pathname, link.href)
+                        ? "bg-[#C89B3C]/10 text-[#C89B3C]"
+                        : "text-white active:bg-white/[0.05]"
                     }`}
-                  />
-                </button>
+                  >
+                    {link.label}
+                  </Link>
+                ))}
 
-                {openMobileDropdown === "jobs" && (
-                  <div className="flex flex-col gap-1 border-t border-white/[0.06] bg-[#07111F]/55 px-5 py-4">
-                    <Link
-                      href="/jobs"
-                      className="rounded-lg px-3 py-2.5 text-[14px] text-gray-300 active:bg-white/[0.05]"
-                    >
-                      Open Jobs
-                    </Link>
+                <div>
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setOpenMobileDropdown(
+                        openMobileDropdown === "jobs" ? null : "jobs"
+                      )
+                    }
+                    className="flex w-full items-center justify-between px-5 py-4 text-left text-[16px] text-white"
+                    aria-expanded={openMobileDropdown === "jobs"}
+                  >
+                    Jobs
+                    <ChevronDown
+                      size={19}
+                      className={`transition-transform duration-300 ${
+                        openMobileDropdown === "jobs" ? "rotate-180" : ""
+                      }`}
+                    />
+                  </button>
 
-                    <Link
-                      href="/saved-jobs"
-                      className="rounded-lg px-3 py-2.5 text-[14px] text-gray-300 active:bg-white/[0.05]"
-                    >
-                      Saved Jobs
-                    </Link>
-                  </div>
-                )}
+                  {openMobileDropdown === "jobs" && (
+                    <div className="flex flex-col gap-1 border-t border-white/[0.06] bg-[#07111F]/70 px-4 py-4">
+                      <Link href="/jobs" onClick={() => setMenuOpen(false)} className="rounded-lg px-3 py-2.5 text-[14px] text-gray-300 active:bg-white/[0.05]">Open Jobs</Link>
+                      <Link href="/saved-jobs" onClick={() => setMenuOpen(false)} className="rounded-lg px-3 py-2.5 text-[14px] text-gray-300 active:bg-white/[0.05]">Saved Jobs</Link>
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              <div className="mt-6 flex flex-col gap-3 pb-[max(1rem,env(safe-area-inset-bottom))]">
+                <Link href="/jobs" onClick={() => setMenuOpen(false)} className="rounded-2xl border border-[#C89B3C] py-3.5 text-center text-[14px] font-medium text-white transition active:scale-[0.98]">Explore Jobs</Link>
+                <HireTalentButton ariaLabel="Hire construction and MEP talent" className="rounded-2xl bg-[#C89B3C] py-3.5 text-center text-[14px] font-semibold text-[#07111F] transition active:scale-[0.98]">Hire Talent</HireTalentButton>
               </div>
             </div>
-
-            <div className="mt-6 flex flex-col gap-3">
-              <Link
-                href="/jobs"
-                className="rounded-2xl border border-[#C89B3C] py-3.5 text-center text-[14px] font-medium text-white transition active:scale-[0.98]"
-              >
-                Explore Jobs
-              </Link>
-
-              <HireTalentButton
-                ariaLabel="Hire construction and MEP talent"
-                className="rounded-2xl bg-[#C89B3C] py-3.5 text-center text-[14px] font-semibold text-[#07111F] transition active:scale-[0.98]"
-              >
-                Hire Talent
-              </HireTalentButton>
-            </div>
-          </div>
-        </div>
-      )}
+          </div>,
+          document.body
+        )}
     </header>
   );
 }

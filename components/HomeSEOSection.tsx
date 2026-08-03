@@ -134,12 +134,39 @@ const employerBenefits = [
 
 function useInView(threshold = 0.12) {
   const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
+
+  /*
+   * Keep content visible by default.
+   * Mobile Safari can occasionally fail to trigger IntersectionObserver
+   * for sections positioned beneath long animated content. Starting visible
+   * prevents a permanently blank section on mobile and during hydration.
+   */
+  const [visible, setVisible] = useState(true);
 
   useEffect(() => {
     const element = ref.current;
 
     if (!element) return;
+
+    const isDesktop = window.matchMedia("(min-width: 768px)").matches;
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    /*
+     * Mobile, unsupported browsers and reduced-motion users always receive
+     * fully visible content. Entrance animation is desktop-only.
+     */
+    if (
+      !isDesktop ||
+      reduceMotion ||
+      typeof IntersectionObserver === "undefined"
+    ) {
+      setVisible(true);
+      return;
+    }
+
+    setVisible(false);
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -148,7 +175,10 @@ function useInView(threshold = 0.12) {
           observer.disconnect();
         }
       },
-      { threshold }
+      {
+        threshold,
+        rootMargin: "0px 0px -40px 0px",
+      }
     );
 
     observer.observe(element);
@@ -186,7 +216,7 @@ export default function HomeSEOSection() {
         {/* Header */}
         <div
           ref={headerRef}
-          className="mx-auto mb-10 max-w-5xl text-center lg:mb-14"
+          className="mx-auto mb-10 max-w-5xl text-center opacity-100 lg:mb-14"
         >
           <div
             className="mb-4 flex items-center justify-center gap-3 transition-all duration-700"
@@ -251,7 +281,7 @@ export default function HomeSEOSection() {
         </div>
 
         {/* Industries */}
-        <div ref={industryRef}>
+        <div ref={industryRef} className="opacity-100">
           <div className="mb-7 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
             <div>
               <p className="mb-2 text-xs font-semibold uppercase tracking-[4px] text-[#C89B3C]">
@@ -335,7 +365,7 @@ export default function HomeSEOSection() {
         {/* Roles and employer value */}
         <div
           ref={lowerRef}
-          className="mt-10 grid gap-6 lg:mt-14 lg:grid-cols-[1.05fr_0.95fr]"
+          className="mt-10 grid gap-6 opacity-100 lg:mt-14 lg:grid-cols-[1.05fr_0.95fr]"
         >
           <div
             className="rounded-[30px] border border-black/[0.06] bg-white p-7 shadow-[0_10px_35px_rgba(0,0,0,0.04)] transition-all duration-700 sm:p-9"
