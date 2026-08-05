@@ -37,9 +37,9 @@ const features = [
 ];
 
 const stats = [
-  ["100+", "Successful Placements"],
-  ["20+", "Industry Specializations"],
-  ["USA, Canada, UAE & India", "Talent Coverage"],
+  ["24–48 Hrs", "Initial Candidate Delivery"],
+  ["Pre-Vetted", "Quality-First Shortlists"],
+  ["Global Reach", "Local Market Expertise"],
 ];
 
 export default function Hero() {
