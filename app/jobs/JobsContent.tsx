@@ -1,620 +1,461 @@
 "use client";
 
-import { useMemo, useState, useEffect, useRef } from "react";
-import HomeCTA from "@/components/HomeCTA";
-import JobsSidebar from "@/components/JobsSidebar";
-import JobCard from "@/components/JobCard";
-import { jobs } from "@/data/jobs";
+import Link from "next/link";
+import { useMemo, useState } from "react";
+import {
+  BriefcaseBusiness,
+  ChevronDown,
+  Search,
+  SlidersHorizontal,
+  X,
+} from "lucide-react";
 
-/* ── tiny scroll-reveal hook ── */
-function useInView(threshold = 0.08) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [inView, setInView] = useState(false);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) { setInView(true); obs.disconnect(); } },
-      { threshold }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, [threshold]);
-  return { ref, inView };
+import HomeCTA from "@/components/HomeCTA";
+import JobCard from "@/components/JobCard";
+import { Job, jobs } from "@/data/jobs";
+
+type SortOption = "newest" | "oldest" | "title";
+type StatusFilter = "all" | "featured" | "urgent";
+
+const ALL_VALUE = "all";
+
+function uniqueValues(values: string[]) {
+  return Array.from(new Set(values.filter(Boolean))).sort((a, b) =>
+    a.localeCompare(b),
+  );
 }
 
-const marqueeRoles = [
-  "PROJECT EXECUTIVE",
-  "PROJECT MANAGER",
-  "SUPERINTENDENT",
-  "ESTIMATOR",
-  "PRECONSTRUCTION",
-  "MEP LEADERS",
-  "BIM / VDC PROFESSIONALS",
-  "SAFETY MANAGERS",
-  "PROJECT DIRECTORS",
-  "FIELD OPERATIONS MANAGERS",
-  "VICE PRESIDENTS",
-  "PRESIDENTS",
-  "DATA CENTERS",
-  "HEALTHCARE",
-  "MISSION CRITICAL",
-  "SEMICONDUCTORS",
-  "INDUSTRIAL",
-];
-
-const opportunityCards = [
-  { sector: "Healthcare Construction", role: "Senior Project Manager", salary: "$185K+", color: "#1a3a2a" },
-  { sector: "Mission Critical",        role: "MEP Superintendent",      salary: "$175K+", color: "#1a2a3a" },
-  { sector: "Electrical Construction", role: "Field Operations Manager", salary: "$250K+", color: "#2a1a1a" },
-  { sector: "Process Piping",          role: "Project Manager",         salary: "$180K+", color: "#1a1a2e" },
-];
-
-const whyCards = [
-  { title: "Industry Specialists",    desc: "Dedicated recruiters focused exclusively on construction and engineering markets.", icon: "🎯" },
-  { title: "Executive Opportunities", desc: "Access confidential leadership and executive search assignments.",                 icon: "🏆" },
-  { title: "Career Guidance",         desc: "Strategic support throughout interviews, offers, and career transitions.",         icon: "🧭" },
-  { title: "National Network",        desc: "Opportunities across major North American construction markets.",                   icon: "🌎" },
-  { title: "Long-Term Relationships", desc: "We support careers, not just individual placements.",                              icon: "🤝" },
-  { title: "Market Intelligence",     desc: "Gain insights into salaries, hiring trends and workforce demand.",                 icon: "📊" },
-];
-
 export default function JobsContent() {
-  const [searchQuery,            setSearchQuery]            = useState("");
-  const [selectedIndustry,       setSelectedIndustry]       = useState("");
-  const [selectedSpecialisation, setSelectedSpecialisation] = useState("");
-  const [selectedCountry,        setSelectedCountry]        = useState("");
-  const [selectedState,          setSelectedState]          = useState("");
-  const [selectedEmployment,     setSelectedEmployment]     = useState("");
-  const [featuredOnly,           setFeaturedOnly]           = useState(false);
-  const [urgentOnly,             setUrgentOnly]             = useState(false);
-  const [heroVisible,            setHeroVisible]            = useState(false);
-  const [activeFilter,           setActiveFilter]           = useState("All");
+  const [keyword, setKeyword] = useState("");
+  const [location, setLocation] = useState("");
+  const [industry, setIndustry] = useState(ALL_VALUE);
+  const [specialisation, setSpecialisation] = useState(ALL_VALUE);
+  const [employmentType, setEmploymentType] = useState(ALL_VALUE);
+  const [status, setStatus] = useState<StatusFilter>("all");
+  const [sortBy, setSortBy] = useState<SortOption>("newest");
+  const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
 
-  useEffect(() => {
-    const t = setTimeout(() => setHeroVisible(true), 80);
-    return () => clearTimeout(t);
-  }, []);
+  const industries = useMemo(
+    () => uniqueValues(jobs.map((job) => job.industry)),
+    [],
+  );
 
-  const { ref: intelligenceRef, inView: intelligenceInView } = useInView();
-  const { ref: featuredRef,     inView: featuredInView }     = useInView();
-  const { ref: whyRef,          inView: whyInView }          = useInView();
+  const specialisations = useMemo(
+    () => uniqueValues(jobs.map((job) => job.specialisation)),
+    [],
+  );
+
+  const employmentTypes = useMemo(
+    () => uniqueValues(jobs.map((job) => job.type)),
+    [],
+  );
 
   const filteredJobs = useMemo(() => {
-    return jobs.filter((job: any) => {
-      const content = `${job.title} ${job.company} ${job.location} ${job.description}
-        ${job.responsibilities?.join(" ")} ${job.requirements?.join(" ")}
-        ${job.specialisation} ${job.industry}`.toLowerCase();
-      const qm  = !searchQuery || content.includes(searchQuery.toLowerCase());
-      const im  = !selectedIndustry || job.industry === selectedIndustry;
-      const sm  = !selectedSpecialisation || job.specialisation === selectedSpecialisation;
-      const cm  = !selectedCountry || job.country === selectedCountry;
-      const stm = !selectedState || job.state === selectedState;
-      const em  = !selectedEmployment || job.type === selectedEmployment;
-      const fm  = !featuredOnly || job.featured;
-      const um  = !urgentOnly || job.urgent;
-      return qm && im && sm && cm && stm && em && fm && um;
+    const normalizedKeyword = keyword.trim().toLowerCase();
+    const normalizedLocation = location.trim().toLowerCase();
+
+    const result = jobs.filter((job) => {
+      const searchableText = [
+        job.title,
+        job.company,
+        job.location,
+        job.salary,
+        job.type,
+        job.industry,
+        job.specialisation,
+        job.description,
+        ...job.responsibilities,
+        ...job.requirements,
+      ]
+        .join(" ")
+        .toLowerCase();
+
+      const matchesKeyword =
+        !normalizedKeyword || searchableText.includes(normalizedKeyword);
+      const matchesLocation =
+        !normalizedLocation ||
+        job.location.toLowerCase().includes(normalizedLocation);
+      const matchesIndustry =
+        industry === ALL_VALUE || job.industry === industry;
+      const matchesSpecialisation =
+        specialisation === ALL_VALUE ||
+        job.specialisation === specialisation;
+      const matchesEmploymentType =
+        employmentType === ALL_VALUE || job.type === employmentType;
+      const matchesStatus =
+        status === "all" ||
+        (status === "featured" && Boolean(job.featured)) ||
+        (status === "urgent" && Boolean(job.urgent));
+
+      return (
+        matchesKeyword &&
+        matchesLocation &&
+        matchesIndustry &&
+        matchesSpecialisation &&
+        matchesEmploymentType &&
+        matchesStatus
+      );
     });
-  }, [searchQuery, selectedIndustry, selectedSpecialisation, selectedCountry, selectedState, selectedEmployment, featuredOnly, urgentOnly]);
 
-  const featuredJobs = jobs.filter((j) => j.featured);
+    return [...result].sort((a, b) => {
+      if (sortBy === "title") {
+        return a.title.localeCompare(b.title);
+      }
 
-  const quickFilters = ["All", "Featured", "Urgent", "Full Time", "Executive"];
+      const aDate = new Date(a.datePosted).getTime();
+      const bDate = new Date(b.datePosted).getTime();
+
+      return sortBy === "oldest" ? aDate - bDate : bDate - aDate;
+    });
+  }, [
+    employmentType,
+    industry,
+    keyword,
+    location,
+    sortBy,
+    specialisation,
+    status,
+  ]);
+
+  const hasActiveFilters =
+    keyword.trim() !== "" ||
+    location.trim() !== "" ||
+    industry !== ALL_VALUE ||
+    specialisation !== ALL_VALUE ||
+    employmentType !== ALL_VALUE ||
+    status !== "all";
+
+  function clearFilters() {
+    setKeyword("");
+    setLocation("");
+    setIndustry(ALL_VALUE);
+    setSpecialisation(ALL_VALUE);
+    setEmploymentType(ALL_VALUE);
+    setStatus("all");
+  }
 
   return (
-    <main className="bg-[#07111F] text-white overflow-hidden">
-
-      {/* ═══════════════════════════════════════
-          HERO
-      ═══════════════════════════════════════ */}
-      <section className="relative min-h-[72vh] lg:min-h-[78vh] flex items-center overflow-hidden">
-
-        {/* Background with slow zoom */}
-        <div className="absolute inset-0">
-          <div
-            className="absolute inset-0 bg-cover bg-center transition-transform duration-[9000ms] ease-out"
-            style={{
-              backgroundImage: "url('/jobs/jobs-hero.webp')",
-              transform: heroVisible ? "scale(1.06)" : "scale(1)",
-            }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#07111F] via-[#07111F]/88 to-[#07111F]/20" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#07111F] via-transparent to-transparent" />
-        </div>
-
-        {/* Gold left accent */}
+    <main className="min-h-screen bg-[#f4f5f6] text-[#07111F]">
+      <section className="relative overflow-hidden bg-[#07111F] px-5 pb-16 pt-36 text-white sm:px-6 lg:pb-20 lg:pt-40">
         <div
-          className="absolute left-0 top-0 bottom-0 w-[3px] transition-all duration-1000 delay-700"
-          style={{
-            background: "linear-gradient(to bottom, transparent, #C89B3C 30%, #C89B3C 70%, transparent)",
-            opacity: heroVisible ? 0.55 : 0,
-          }}
+          className="absolute inset-0 bg-cover bg-center opacity-35"
+          style={{ backgroundImage: "url('/jobs/jobs-hero.webp')" }}
         />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#07111F] via-[#07111F]/95 to-[#07111F]/55" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#07111F] via-transparent to-transparent" />
 
-        {/* Faint grid overlay */}
-        <div
-          className="absolute inset-0 pointer-events-none opacity-[0.03]"
-          style={{
-            backgroundImage: "linear-gradient(rgba(200,155,60,1) 1px,transparent 1px),linear-gradient(90deg,rgba(200,155,60,1) 1px,transparent 1px)",
-            backgroundSize: "80px 80px",
-          }}
-        />
-
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 pt-34 lg:pt-38 pb-12">
-          <div className="max-w-[650px]">
-
-            {/* Eyebrow */}
-            <div
-              className="flex items-center gap-3 mb-6 transition-all duration-700"
-              style={{ opacity: heroVisible ? 1 : 0, transform: heroVisible ? "translateY(0)" : "translateY(14px)" }}
-            >
-              <span className="h-px w-10 bg-[#C89B3C]" />
-              <p className="text-[#C89B3C] uppercase tracking-[5px] text-[11px] font-semibold">Career Opportunities</p>
-              <span className="h-px w-10 bg-[#C89B3C]" />
-            </div>
-
-            {/* Headline */}
-            <h1
-              className="font-bold leading-[1.08] text-[30px] sm:text-[48px] lg:text-[64px] mb-4 transition-all duration-700 delay-150"
-              style={{ opacity: heroVisible ? 1 : 0, transform: heroVisible ? "translateY(0)" : "translateY(22px)" }}
-            >
-              Explore Construction<br />
-              <span className="text-[#C89B3C]">Career Opportunities</span>
-            </h1>
-
-            {/* Body */}
-            <p
-              className="text-gray-300 text-[14px] sm:text-[16px] leading-8 max-w-[560px] mb-5 transition-all duration-700 delay-300"
-              style={{ opacity: heroVisible ? 1 : 0, transform: heroVisible ? "translateY(0)" : "translateY(18px)" }}
-            >
-              Discover opportunities across commercial, industrial, infrastructure, mission critical, and executive construction sectors.
-            </p>
-
-            {/* Stat pills */}
-            <div
-              className="flex flex-wrap gap-3 transition-all duration-700 delay-[450ms]"
-              style={{ opacity: heroVisible ? 1 : 0, transform: heroVisible ? "translateY(0)" : "translateY(14px)" }}
-            >
-              {[
-                { value: `${jobs.length}`, label: "Live Roles" },
-                { value: `${jobs.filter(j=>j.urgent).length}`, label: "Urgent" },
-                { value: `${jobs.filter(j=>j.featured).length}`, label: "Featured" },
-                { value: "4", label: "Countries" },
-              ].map(({ value, label }) => (
-                <div key={label} className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-white/6 border border-white/12 backdrop-blur-sm">
-                  <span className="text-[#C89B3C] font-bold text-[16px]">{value}</span>
-                  <span className="text-gray-300 text-[13px]">{label}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════
-          MARQUEE
-      ═══════════════════════════════════════ */}
-      <div className="border-y border-white/8 bg-[#060D18] py-5 overflow-hidden">
-        <div className="flex whitespace-nowrap" style={{ animation: "marquee 28s linear infinite" }}>
-          {[...marqueeRoles, ...marqueeRoles, ...marqueeRoles].map((role, i) => (
-            <div key={i} className="flex items-center flex-shrink-0">
-              <span className="text-white/65 text-[13px] sm:text-[15px] font-semibold tracking-[0.2em] uppercase mx-6">{role}</span>
-              <span className="text-[#C89B3C] text-[7px]">◆</span>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* ═══════════════════════════════════════
-          CAREER INTELLIGENCE
-      ═══════════════════════════════════════ */}
-      <section className="py-6 lg:py-10 px-5 sm:px-6 bg-[#F4F4F0] overflow-hidden">
-        <div ref={intelligenceRef} className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-
-          {/* LEFT */}
-          <div
-            className="transition-all duration-800"
-            style={{ opacity: intelligenceInView ? 1 : 0, transform: intelligenceInView ? "translateX(0)" : "translateX(-28px)" }}
-          >
-            <div className="flex items-center gap-3 mb-5">
-              <span className="h-px w-8 bg-[#C89B3C]" />
-              <p className="uppercase tracking-[5px] text-[#C89B3C] text-[11px] font-semibold">Career Intelligence</p>
-            </div>
-            <h2 className="text-[#07111F] text-[28px] sm:text-[36px] lg:text-[50px] font-bold leading-[1.06] mb-6">
-              The Best Opportunities<br />Aren't Always<br />
-              <span className="text-[#C89B3C]">Advertised</span>
-            </h2>
-            <div className="w-16 h-[3px] bg-[#C89B3C] rounded-full mb-7" />
-            <div className="space-y-4 text-gray-500 text-[15px] sm:text-[17px] leading-7">
-              <p>RUDRON partners with leading contractors, developers, mission critical operators, engineering consultancies and owners across North America.</p>
-              <p>From project management and estimating to executive leadership and mission-critical construction, we connect professionals with career-defining opportunities.</p>
-              <p>Explore opportunities aligned with your technical expertise, leadership experience, and long-term career goals.</p>
-            </div>
-          </div>
-
-          {/* RIGHT — floating cards grid */}
-          <div
-            className="relative transition-all duration-800 delay-200"
-            style={{ opacity: intelligenceInView ? 1 : 0, transform: intelligenceInView ? "translateX(0)" : "translateX(28px)" }}
-          >
-            <div className="grid grid-cols-2 gap-4">
-              {opportunityCards.map((card, i) => (
-                <div
-                  key={card.role}
-                  className="rounded-[22px] p-5 border border-white/8 relative overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:border-[#C89B3C]/30"
-                  style={{
-                    background: `linear-gradient(135deg, ${card.color}, #07111F)`,
-                    animation: "floatAlt 5s ease-in-out infinite",
-                    animationDelay: `${i * 1.2}s`,
-                  }}
-                >
-                  <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#C89B3C]/40 to-transparent" />
-                  <p className="text-[#C89B3C] text-[12px] font-semibold mb-2 tracking-[1px]">{card.sector}</p>
-                  <h3 className="text-white text-[15px] font-bold mb-3 leading-tight">{card.role}</h3>
-                  <p className="text-[#C89B3C] text-[22px] font-bold">{card.salary}</p>
-                </div>
-              ))}
-            </div>
-
-            {/* Decorative glow */}
-            <div className="absolute -inset-4 bg-[radial-gradient(ellipse_at_center,rgba(200,155,60,0.06),transparent_65%)] pointer-events-none" />
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════
-          SEARCH + FILTER BAR
-      ═══════════════════════════════════════ */}
-      <section className="bg-[#F4F4F0] px-5 sm:px-6 pb-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="bg-white rounded-[24px] border border-black/5 shadow-[0_20px_60px_rgba(0,0,0,0.07)] p-5 sm:p-7">
-
-            {/* Quick filter pills */}
-            <div className="flex flex-wrap gap-2 mb-6">
-              {quickFilters.map((f) => (
-                <button
-                  key={f}
-                  onClick={() => setActiveFilter(f)}
-                  className="px-4 py-2 rounded-full text-sm font-medium transition-all duration-300"
-                  style={{
-                    background: activeFilter === f ? "#07111F" : "rgba(0,0,0,0.04)",
-                    color:      activeFilter === f ? "#fff"    : "#666",
-                    border:     activeFilter === f ? "1px solid rgba(200,155,60,0.3)" : "1px solid transparent",
-                  }}
-                >
-                  {f}
-                </button>
-              ))}
-              <div className="ml-auto flex items-center gap-2">
-                <label className="flex items-center gap-2 text-[13px] text-gray-500 cursor-pointer select-none">
-                  <input
-                    type="checkbox"
-                    checked={urgentOnly}
-                    onChange={(e) => setUrgentOnly(e.target.checked)}
-                    className="w-4 h-4 accent-[#C89B3C]"
-                  />
-                  Urgent only
-                </label>
-              </div>
-            </div>
-
-            {/* Filters row */}
-            <div className="grid grid-cols-1 lg:grid-cols-[1fr_180px_180px_180px] gap-3">
-              <div>
-                <label className="text-[#07111F] text-[12px] font-semibold mb-2 block uppercase tracking-[2px]">Search</label>
-                <input
-                  type="text"
-                  placeholder="Project Manager, BIM, Procore, Superintendent…"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full h-[50px] rounded-[14px] border border-gray-200 px-5 text-[#07111F] text-[14px] outline-none focus:border-[#C89B3C] transition-colors duration-200"
-                />
-              </div>
-              <div>
-                <label className="text-[#07111F] text-[12px] font-semibold mb-2 block uppercase tracking-[2px]">Industry</label>
-                <select
-                  value={selectedIndustry}
-                  onChange={(e) => setSelectedIndustry(e.target.value)}
-                  className="w-full h-[50px] rounded-[14px] border border-gray-200 px-4 text-[#07111F] text-[14px] outline-none focus:border-[#C89B3C] transition-colors duration-200 bg-white"
-                >
-                  <option value="">All Industries</option>
-                  <option value="Construction">Construction</option>
-                  <option value="MEP">MEP</option>
-                  <option value="Mechanical">Mechanical</option>
-                  <option value="Electrical">Electrical</option>
-                </select>
-              </div>
-              <div>
-                <label className="text-[#07111F] text-[12px] font-semibold mb-2 block uppercase tracking-[2px]">Location</label>
-                <select
-                  value={selectedCountry}
-                  onChange={(e) => setSelectedCountry(e.target.value)}
-                  className="w-full h-[50px] rounded-[14px] border border-gray-200 px-4 text-[#07111F] text-[14px] outline-none focus:border-[#C89B3C] transition-colors duration-200 bg-white"
-                >
-                  <option value="">All Locations</option>
-                  <option value="United States">United States</option>
-                  <option value="Canada">Canada</option>
-                  <option value="UAE">UAE</option>
-                  <option value="India">India</option>
-                </select>
-              </div>
-              <div>
-                <label className="text-[#07111F] text-[12px] font-semibold mb-2 block uppercase tracking-[2px]">Type</label>
-                <select
-                  value={selectedEmployment}
-                  onChange={(e) => setSelectedEmployment(e.target.value)}
-                  className="w-full h-[50px] rounded-[14px] border border-gray-200 px-4 text-[#07111F] text-[14px] outline-none focus:border-[#C89B3C] transition-colors duration-200 bg-white"
-                >
-                  <option value="">All Types</option>
-                  <option value="Full Time">Full Time</option>
-                  <option value="Contract">Contract</option>
-                </select>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════
-          FEATURED JOBS
-      ═══════════════════════════════════════ */}
-      <section id="featured" className="bg-[#F4F4F0] py-6 pb-20 px-5 sm:px-6">
-        <div ref={featuredRef} className="max-w-7xl mx-auto">
-
-          <div
-            className="text-center mb-12 transition-all duration-700"
-            style={{ opacity: featuredInView ? 1 : 0, transform: featuredInView ? "translateY(0)" : "translateY(20px)" }}
-          >
-            <div className="inline-flex items-center gap-3 mb-5">
-              <span className="h-px w-8 bg-[#C89B3C]" />
-              <p className="text-[#C89B3C] uppercase tracking-[5px] text-[11px] font-semibold">Featured Opportunities</p>
-              <span className="h-px w-8 bg-[#C89B3C]" />
-            </div>
-            <h2 className="text-[#07111F] text-[28px] sm:text-[38px] lg:text-[52px] font-bold leading-[1.06] max-w-[820px] mx-auto mb-5">
-              Executive & Construction Careers<br />Across Leading Markets
-            </h2>
-            <p className="text-gray-500 text-[15px] sm:text-[17px] leading-7 max-w-2xl mx-auto">
-              Explore high-impact opportunities across commercial construction, mission critical, healthcare, infrastructure, and executive leadership markets.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {featuredJobs.slice(0, 3).map((job: any, i: number) => (
-              <FeaturedJobCard key={job.slug} job={job} index={i} inView={featuredInView} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════
-          ALL JOBS
-      ═══════════════════════════════════════ */}
-      <section id="jobs" className="bg-[#07111F] py-16 lg:py-20 px-4 sm:px-6">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[260px_1fr] gap-6">
-
-          <JobsSidebar
-            selectedIndustry={selectedIndustry}
-            selectedSpecialisation={selectedSpecialisation}
-            selectedCountry={selectedCountry}
-            selectedState={selectedState}
-            selectedEmployment={selectedEmployment}
-            setSelectedIndustry={setSelectedIndustry}
-            setSelectedSpecialisation={setSelectedSpecialisation}
-            setSelectedCountry={setSelectedCountry}
-            setSelectedState={setSelectedState}
-            setSelectedEmployment={setSelectedEmployment}
-          />
-
-          <div>
-            {/* Section header */}
-            <div className="mb-8">
-              <div className="flex items-start justify-between flex-wrap gap-4 mb-2">
-                <div>
-                  <div className="flex items-center gap-2 mb-3">
-                    <span className="h-px w-6 bg-[#C89B3C]" />
-                    <p className="text-[#C89B3C] uppercase tracking-[5px] text-[11px] font-semibold">Career Marketplace</p>
-                  </div>
-                  <h2 className="text-white text-[26px] sm:text-[34px] lg:text-[44px] font-bold leading-[1.06]">
-                    Discover Opportunities<br />
-                    <span className="text-[#C89B3C]">Aligned With Your Expertise</span>
-                  </h2>
-                </div>
-
-                {/* Count badge */}
-                <div className="bg-[#0D1726] border border-white/10 rounded-[18px] px-5 py-4 text-center min-w-[130px] flex-shrink-0">
-                  <p className="text-gray-400 text-[10px] uppercase tracking-[2px] mb-1">Available</p>
-                  <p className="text-white text-[28px] font-bold leading-none">{filteredJobs.length}</p>
-                  <p className="text-[#C89B3C] text-[10px] uppercase tracking-[2px] mt-1">Roles</p>
-                </div>
-              </div>
-              <p className="text-gray-400 text-[15px] leading-7 max-w-xl mt-4">
-                Browse opportunities across construction, engineering, mission critical, healthcare, infrastructure and executive leadership sectors.
+        <div className="relative mx-auto max-w-7xl">
+          <div className="max-w-3xl">
+            <div className="mb-5 flex items-center gap-3">
+              <span className="h-px w-9 bg-[#C89B3C]" />
+              <p className="text-[11px] font-semibold uppercase tracking-[4px] text-[#C89B3C]">
+                Current opportunities
               </p>
             </div>
 
-            {/* Job list */}
-            <div className="space-y-4">
-              {filteredJobs.length > 0 ? (
-                filteredJobs.map((job: any, i: number) => (
-                  <JobCard
-                    key={i}
-                    title={job.title}
-                    company={job.company}
-                    location={job.location}
-                    salary={job.salary}
-                    type={job.type}
-                    industry={job.specialisation}
-                    slug={job.slug}
-                  />
-                ))
-              ) : (
-                <div className="bg-[#0D1726] border border-white/8 rounded-[24px] p-12 text-center">
-                  <div className="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center mx-auto mb-5 text-3xl">🔍</div>
-                  <h3 className="text-white text-[24px] font-bold mb-3">No Matching Positions</h3>
-                  <p className="text-gray-400 text-[14px] leading-7 max-w-md mx-auto">
-                    Try adjusting your filters or search keywords to discover additional opportunities.
-                  </p>
-                  <button
-                    onClick={() => { setSearchQuery(""); setSelectedIndustry(""); setSelectedCountry(""); setSelectedEmployment(""); }}
-                    className="mt-6 px-6 py-2.5 rounded-xl border border-[#C89B3C]/40 text-[#C89B3C] text-[14px] hover:bg-[#C89B3C]/10 transition-all duration-300"
-                  >
-                    Clear all filters
-                  </button>
-                </div>
-              )}
-            </div>
+            <h1 className="text-[34px] font-bold leading-[1.06] sm:text-[48px] lg:text-[62px]">
+              Find Your Next Opportunity In
+              <span className="block text-[#C89B3C]">
+                Construction, Engineering & MEP
+              </span>
+            </h1>
+
+            <p className="mt-5 max-w-2xl text-[15px] leading-8 text-gray-300 sm:text-base">
+              Search current positions with contractors, developers, engineering
+              firms and mission-critical organizations across leading markets.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════
-          WHY CANDIDATES CHOOSE RUDRON
-      ═══════════════════════════════════════ */}
-      <section className="bg-[#F4F4F0] py-20 lg:py-28 px-5 sm:px-6">
-        <div ref={whyRef} className="max-w-7xl mx-auto">
-          <div
-            className="text-center mb-14 transition-all duration-700"
-            style={{ opacity: whyInView ? 1 : 0, transform: whyInView ? "translateY(0)" : "translateY(20px)" }}
-          >
-            <div className="inline-flex items-center gap-3 mb-5">
-              <span className="h-px w-8 bg-[#C89B3C]" />
-              <p className="uppercase tracking-[5px] text-[#C89B3C] text-[11px] font-semibold">Why Candidates Choose RUDRON</p>
-              <span className="h-px w-8 bg-[#C89B3C]" />
-            </div>
-            <h2 className="text-[#07111F] text-[28px] sm:text-[38px] lg:text-[52px] font-bold leading-[1.06]">
-              More Than Job Listings.<br />
-              <span className="text-[#C89B3C]">A Career Partner.</span>
-            </h2>
+      <section className="relative z-10 -mt-8 px-4 sm:px-6">
+        <div className="mx-auto max-w-7xl rounded-[22px] border border-black/5 bg-white p-4 shadow-[0_18px_55px_rgba(7,17,31,0.12)] sm:p-6">
+          <div className="grid gap-3 lg:grid-cols-[1.25fr_1fr_auto]">
+            <SearchInput
+              label="Keyword"
+              placeholder="Job title, skill or sector"
+              value={keyword}
+              onChange={setKeyword}
+            />
+
+            <SearchInput
+              label="Location"
+              placeholder="City, state or remote"
+              value={location}
+              onChange={setLocation}
+            />
+
+            <button
+              type="button"
+              onClick={() =>
+                document
+                  .getElementById("job-results")
+                  ?.scrollIntoView({ behavior: "smooth", block: "start" })
+              }
+              className="mt-auto flex h-[52px] items-center justify-center gap-2 rounded-[12px] bg-[#C89B3C] px-7 text-sm font-bold text-[#07111F] transition hover:bg-[#d8ab4a] lg:min-w-[150px]"
+            >
+              <Search size={17} />
+              Search jobs
+            </button>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {whyCards.map((item, i) => (
-              <WhyCard key={item.title} item={item} index={i} inView={whyInView} />
-            ))}
+          <button
+            type="button"
+            onClick={() => setMobileFiltersOpen((current) => !current)}
+            className="mt-4 flex w-full items-center justify-between rounded-xl border border-gray-200 px-4 py-3 text-sm font-semibold text-[#07111F] lg:hidden"
+          >
+            <span className="flex items-center gap-2">
+              <SlidersHorizontal size={17} />
+              Additional filters
+            </span>
+            <ChevronDown
+              size={17}
+              className={`transition-transform ${
+                mobileFiltersOpen ? "rotate-180" : ""
+              }`}
+            />
+          </button>
+
+          <div
+            className={`${
+              mobileFiltersOpen ? "grid" : "hidden"
+            } mt-4 gap-3 border-t border-gray-100 pt-4 lg:grid lg:grid-cols-4`}
+          >
+            <FilterSelect
+              label="Industry"
+              value={industry}
+              onChange={setIndustry}
+              options={industries}
+              allLabel="All industries"
+            />
+            <FilterSelect
+              label="Specialisation"
+              value={specialisation}
+              onChange={setSpecialisation}
+              options={specialisations}
+              allLabel="All specialisations"
+            />
+            <FilterSelect
+              label="Employment type"
+              value={employmentType}
+              onChange={setEmploymentType}
+              options={employmentTypes}
+              allLabel="All types"
+            />
+            <FilterSelect
+              label="Opportunity"
+              value={status}
+              onChange={(value) => setStatus(value as StatusFilter)}
+              options={["featured", "urgent"]}
+              optionLabels={{ featured: "Featured", urgent: "Urgent" }}
+              allLabel="All opportunities"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section id="job-results" className="scroll-mt-24 px-4 py-14 sm:px-6 lg:py-18">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-7 flex flex-col gap-4 border-b border-gray-200 pb-6 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="text-[11px] font-semibold uppercase tracking-[3px] text-[#C89B3C]">
+                Open positions
+              </p>
+              <h2 className="mt-2 text-[28px] font-bold sm:text-[36px]">
+                {filteredJobs.length} {filteredJobs.length === 1 ? "role" : "roles"} found
+              </h2>
+              <p className="mt-2 text-sm text-gray-500">
+                Results update automatically as you refine your search.
+              </p>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-3">
+              {hasActiveFilters && (
+                <button
+                  type="button"
+                  onClick={clearFilters}
+                  className="inline-flex h-11 items-center gap-2 rounded-xl border border-gray-200 bg-white px-4 text-sm font-semibold text-gray-600 transition hover:border-[#C89B3C]/50 hover:text-[#07111F]"
+                >
+                  <X size={15} />
+                  Clear filters
+                </button>
+              )}
+
+              <label className="relative">
+                <span className="sr-only">Sort jobs</span>
+                <select
+                  value={sortBy}
+                  onChange={(event) =>
+                    setSortBy(event.target.value as SortOption)
+                  }
+                  className="h-11 appearance-none rounded-xl border border-gray-200 bg-white py-0 pl-4 pr-10 text-sm font-medium text-[#07111F] outline-none focus:border-[#C89B3C]"
+                >
+                  <option value="newest">Most recent</option>
+                  <option value="oldest">Oldest first</option>
+                  <option value="title">Job title A–Z</option>
+                </select>
+                <ChevronDown
+                  size={15}
+                  className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"
+                />
+              </label>
+            </div>
+          </div>
+
+          {filteredJobs.length > 0 ? (
+            <div className="space-y-4">
+              {filteredJobs.map((job) => (
+                <JobCard
+                  key={job.slug}
+                  title={job.title}
+                  company={job.company}
+                  location={job.location}
+                  salary={job.salary}
+                  type={job.type}
+                  industry={job.specialisation}
+                  slug={job.slug}
+                  datePosted={job.datePosted}
+                  featured={job.featured}
+                  urgent={job.urgent}
+                />
+              ))}
+            </div>
+          ) : (
+            <div className="rounded-[22px] border border-gray-200 bg-white px-6 py-14 text-center shadow-sm">
+              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#07111F]/5 text-[#C89B3C]">
+                <Search size={24} />
+              </div>
+              <h3 className="mt-5 text-2xl font-bold">No matching positions found</h3>
+              <p className="mx-auto mt-3 max-w-xl text-sm leading-7 text-gray-500">
+                We do not currently have a role matching these criteria. Clear
+                the filters or submit your profile for future opportunities.
+              </p>
+              <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
+                <button
+                  type="button"
+                  onClick={clearFilters}
+                  className="rounded-xl border border-gray-200 bg-white px-5 py-3 text-sm font-bold text-[#07111F] transition hover:border-[#C89B3C]/50"
+                >
+                  Clear filters
+                </button>
+                <Link
+                  href="/candidates"
+                  className="rounded-xl bg-[#C89B3C] px-5 py-3 text-sm font-bold text-[#07111F] transition hover:bg-[#d8ab4a]"
+                >
+                  Submit your profile
+                </Link>
+              </div>
+            </div>
+          )}
+        </div>
+      </section>
+
+      <section className="px-4 pb-16 sm:px-6 lg:pb-20">
+        <div className="mx-auto grid max-w-7xl overflow-hidden rounded-[26px] bg-[#07111F] text-white lg:grid-cols-[1fr_auto]">
+          <div className="p-7 sm:p-9 lg:p-11">
+            <div className="flex items-center gap-3">
+              <span className="h-px w-8 bg-[#C89B3C]" />
+              <p className="text-[11px] font-semibold uppercase tracking-[3px] text-[#C89B3C]">
+                Join our talent network
+              </p>
+            </div>
+            <h2 className="mt-4 text-[27px] font-bold sm:text-[34px]">
+              Cannot find the right opportunity today?
+            </h2>
+            <p className="mt-3 max-w-3xl text-sm leading-7 text-gray-400 sm:text-[15px]">
+              Share your profile with RUDRON. Our recruiters can consider your
+              experience for future construction, engineering, MEP and
+              mission-critical assignments.
+            </p>
+          </div>
+          <div className="flex items-center border-t border-white/10 p-7 lg:border-l lg:border-t-0 lg:p-10">
+            <Link
+              href="/candidates"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#C89B3C] px-6 py-3.5 text-sm font-bold text-[#07111F] transition hover:bg-[#d8ab4a] lg:w-auto"
+            >
+              <BriefcaseBusiness size={17} />
+              Submit your profile
+            </Link>
           </div>
         </div>
       </section>
 
       <HomeCTA />
-
-      <style>{`
-        @keyframes marquee {
-          from { transform: translateX(0); }
-          to   { transform: translateX(-33.333%); }
-        }
-        @keyframes floatAlt {
-          0%, 100% { transform: translateY(0px); }
-          50%       { transform: translateY(-7px); }
-        }
-      `}</style>
     </main>
   );
 }
 
-/* ── Featured job card ── */
-function FeaturedJobCard({ job, index, inView }: { job: any; index: number; inView: boolean }) {
-  const [hovered, setHovered] = useState(false);
+function SearchInput({
+  label,
+  placeholder,
+  value,
+  onChange,
+}: {
+  label: string;
+  placeholder: string;
+  value: string;
+  onChange: (value: string) => void;
+}) {
   return (
-    <a
-      href={`/jobs/${job.slug}`}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      className="group relative bg-white rounded-[28px] overflow-hidden flex flex-col"
-      style={{
-        border:     hovered ? "1px solid rgba(200,155,60,0.4)"  : "1px solid rgba(0,0,0,0.06)",
-        boxShadow:  hovered ? "0 20px 60px rgba(200,155,60,0.1)" : "0 2px 12px rgba(0,0,0,0.04)",
-        opacity:    inView ? 1 : 0,
-        transform:  inView ? hovered ? "translateY(-6px)" : "translateY(0)" : "translateY(28px)",
-        transition: `opacity 0.6s ease ${index * 130}ms, transform 0.5s ease ${index * 130}ms, border 0.3s, box-shadow 0.3s`,
-      }}
-    >
-      {/* Gold top bar */}
-      <div
-        className="absolute top-0 left-6 right-6 h-[2px] rounded-b-full transition-all duration-500"
-        style={{
-          background: "linear-gradient(90deg,#C89B3C,#E8B84B)",
-          transform: hovered ? "scaleX(1)" : "scaleX(0)",
-          transformOrigin: "left",
-        }}
-      />
-
-      {/* Ghost number */}
-      <div className="absolute right-4 top-0 text-[88px] font-black text-black/[0.04] leading-none select-none pointer-events-none">
-        0{index + 1}
+    <label className="block">
+      <span className="mb-2 block text-[11px] font-bold uppercase tracking-[2px] text-gray-500">
+        {label}
+      </span>
+      <div className="relative">
+        <Search
+          size={17}
+          className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
+        />
+        <input
+          type="text"
+          value={value}
+          onChange={(event) => onChange(event.target.value)}
+          placeholder={placeholder}
+          className="h-[52px] w-full rounded-[12px] border border-gray-200 bg-white pl-11 pr-4 text-sm text-[#07111F] outline-none transition placeholder:text-gray-400 focus:border-[#C89B3C] focus:ring-2 focus:ring-[#C89B3C]/10"
+        />
       </div>
-
-      <div className="p-6 flex flex-col flex-1">
-        <div className="flex items-center justify-between mb-5">
-          <span className="text-[#C89B3C] text-[12px] font-semibold tracking-[1px] uppercase">Featured</span>
-          {job.urgent && (
-            <span className="bg-red-50 border border-red-100 text-red-500 text-[11px] font-semibold px-3 py-1 rounded-full">Urgent</span>
-          )}
-        </div>
-
-        <h3 className="text-[#07111F] text-[20px] lg:text-[22px] font-bold leading-[1.2] mb-2">{job.title}</h3>
-        <p className="text-gray-400 text-[14px] mb-6">{job.company}</p>
-
-        <div className="grid grid-cols-2 gap-3 mb-6">
-          {[
-            { label: "Location", value: job.location },
-            { label: "Salary",   value: job.salary },
-            { label: "Type",     value: job.type },
-            { label: "Sector",   value: job.specialisation },
-          ].map(({ label, value }) => (
-            <div key={label} className="bg-[#F4F4F0] rounded-[14px] p-3">
-              <p className="text-[10px] text-gray-400 uppercase tracking-[1px] mb-1">{label}</p>
-              <p className="text-[#07111F] text-[13px] font-semibold leading-tight">{value}</p>
-            </div>
-          ))}
-        </div>
-
-        <div className="mt-auto flex items-center justify-between pt-4 border-t border-black/5">
-          <span className="text-[#07111F] text-[14px] font-semibold">View Opportunity</span>
-          <span
-            className="w-8 h-8 rounded-full bg-[#C89B3C]/10 flex items-center justify-center text-[#C89B3C] transition-all duration-300"
-            style={{ transform: hovered ? "translateX(3px)" : "translateX(0)" }}
-          >
-            →
-          </span>
-        </div>
-      </div>
-    </a>
+    </label>
   );
 }
 
-/* ── Why card ── */
-function WhyCard({ item, index, inView }: { item: typeof whyCards[0]; index: number; inView: boolean }) {
-  const [hovered, setHovered] = useState(false);
+function FilterSelect({
+  label,
+  value,
+  onChange,
+  options,
+  allLabel,
+  optionLabels,
+}: {
+  label: string;
+  value: string;
+  onChange: (value: string) => void;
+  options: string[];
+  allLabel: string;
+  optionLabels?: Record<string, string>;
+}) {
   return (
-    <div
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      className="relative bg-white rounded-[24px] p-6 overflow-hidden cursor-default"
-      style={{
-        border:     hovered ? "1px solid rgba(200,155,60,0.35)" : "1px solid rgba(0,0,0,0.06)",
-        boxShadow:  hovered ? "0 16px 50px rgba(200,155,60,0.1)" : "0 2px 8px rgba(0,0,0,0.04)",
-        opacity:    inView ? 1 : 0,
-        transform:  inView ? hovered ? "translateY(-5px)" : "translateY(0)" : "translateY(24px)",
-        transition: `opacity 0.6s ease ${index * 100}ms, transform 0.5s ease ${index * 100}ms, border 0.3s, box-shadow 0.3s`,
-      }}
-    >
-      <div
-        className="absolute top-0 left-6 right-6 h-[2px] rounded-b-full transition-all duration-500"
-        style={{
-          background: "linear-gradient(90deg,#C89B3C,#E8B84B)",
-          transform: hovered ? "scaleX(1)" : "scaleX(0)",
-          transformOrigin: "left",
-        }}
-      />
-      <div
-        className="w-11 h-11 rounded-xl flex items-center justify-center text-xl mb-5 transition-all duration-300"
-        style={{ background: hovered ? "rgba(200,155,60,0.12)" : "rgba(0,0,0,0.04)" }}
-      >
-        {item.icon}
+    <label className="block">
+      <span className="mb-2 block text-[11px] font-bold uppercase tracking-[2px] text-gray-500">
+        {label}
+      </span>
+      <div className="relative">
+        <select
+          value={value}
+          onChange={(event) => onChange(event.target.value)}
+          className="h-[48px] w-full appearance-none rounded-xl border border-gray-200 bg-white py-0 pl-4 pr-10 text-sm text-[#07111F] outline-none transition focus:border-[#C89B3C]"
+        >
+          <option value={ALL_VALUE}>{allLabel}</option>
+          {options.map((option) => (
+            <option key={option} value={option}>
+              {optionLabels?.[option] ?? option}
+            </option>
+          ))}
+        </select>
+        <ChevronDown
+          size={15}
+          className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"
+        />
       </div>
-      <h3 className="text-[#07111F] text-[17px] font-bold mb-3 leading-snug">{item.title}</h3>
-      <p className="text-gray-500 text-[14px] leading-[1.75]">{item.desc}</p>
-    </div>
+    </label>
   );
 }

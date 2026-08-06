@@ -7,9 +7,12 @@ import {
   Bookmark,
   BriefcaseBusiness,
   Building2,
+  Clock3,
   DollarSign,
   MapPin,
 } from "lucide-react";
+
+import { getRelativeTime } from "@/lib/relativeTime";
 
 interface JobCardProps {
   title: string;
@@ -19,6 +22,9 @@ interface JobCardProps {
   type: string;
   industry: string;
   slug: string;
+  datePosted: string;
+  featured?: boolean;
+  urgent?: boolean;
 }
 
 export default function JobCard({
@@ -29,123 +35,110 @@ export default function JobCard({
   type,
   industry,
   slug,
+  datePosted,
+  featured = false,
+  urgent = false,
 }: JobCardProps) {
   const [saved, setSaved] = useState(false);
 
   useEffect(() => {
     try {
       const savedJobs = JSON.parse(
-        localStorage.getItem("savedJobs") || "[]"
+        localStorage.getItem("savedJobs") || "[]",
       ) as string[];
-
       setSaved(savedJobs.includes(slug));
     } catch {
       setSaved(false);
     }
   }, [slug]);
 
-  const toggleSave = (event: React.MouseEvent<HTMLButtonElement>) => {
+  function toggleSave(event: React.MouseEvent<HTMLButtonElement>) {
     event.preventDefault();
     event.stopPropagation();
 
     try {
       const savedJobs = JSON.parse(
-        localStorage.getItem("savedJobs") || "[]"
+        localStorage.getItem("savedJobs") || "[]",
       ) as string[];
-
       const updatedJobs = savedJobs.includes(slug)
-        ? savedJobs.filter((item) => item !== slug)
+        ? savedJobs.filter((savedSlug) => savedSlug !== slug)
         : [...savedJobs, slug];
 
       localStorage.setItem("savedJobs", JSON.stringify(updatedJobs));
       setSaved(updatedJobs.includes(slug));
     } catch {
-      setSaved((previous) => !previous);
+      setSaved((current) => !current);
     }
-  };
+  }
 
   return (
     <Link
       href={`/jobs/${slug}`}
-      className="group block h-full"
+      className="group block rounded-[20px] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C89B3C] focus-visible:ring-offset-2"
       aria-label={`View ${title} at ${company}`}
     >
-      <article className="relative flex h-full min-h-[330px] flex-col overflow-hidden rounded-[24px] border border-white/[0.07] bg-[#0D1726] p-5 shadow-[0_16px_45px_rgba(0,0,0,0.16)] transition-all duration-500 hover:-translate-y-2 hover:border-[#C89B3C]/35 hover:shadow-[0_24px_65px_rgba(200,155,60,0.12)]">
-        {/* Decorative effects */}
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(200,155,60,0.14),transparent_40%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+      <article className="relative overflow-hidden rounded-[20px] border border-gray-200 bg-white p-5 shadow-[0_8px_30px_rgba(7,17,31,0.045)] transition duration-300 hover:-translate-y-0.5 hover:border-[#C89B3C]/45 hover:shadow-[0_14px_42px_rgba(7,17,31,0.09)] sm:p-6">
+        <div className="absolute inset-y-0 left-0 w-1 origin-bottom scale-y-0 bg-[#C89B3C] transition-transform duration-300 group-hover:scale-y-100" />
 
-        <div className="pointer-events-none absolute left-5 right-5 top-0 h-[2px] origin-left scale-x-0 rounded-b-full bg-gradient-to-r from-[#C89B3C] to-[#E8B84B] transition-transform duration-500 group-hover:scale-x-100" />
-
-        <div className="pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full border border-[#C89B3C]/10 transition-transform duration-700 group-hover:scale-125" />
-
-        {/* Save button */}
-        <button
-          type="button"
-          onClick={toggleSave}
-          className={`absolute right-5 top-5 z-20 flex h-10 w-10 items-center justify-center rounded-full border backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 ${
-            saved
-              ? "border-[#C89B3C] bg-[#C89B3C] text-[#07111F] shadow-[0_8px_24px_rgba(200,155,60,0.28)]"
-              : "border-white/10 bg-white/[0.06] text-white hover:border-[#C89B3C]/50 hover:bg-white/[0.1] hover:text-[#C89B3C]"
-          }`}
-          aria-label={saved ? "Remove from saved jobs" : "Save this job"}
-          title={saved ? "Remove from saved jobs" : "Save this job"}
-        >
-          <Bookmark
-            size={17}
-            className={saved ? "fill-current" : ""}
-          />
-        </button>
-
-        <div className="relative z-10 flex h-full flex-col">
-          {/* Badges */}
-          <div className="mb-5 flex flex-wrap gap-2 pr-12">
-            <span className="rounded-full bg-[#C89B3C] px-3.5 py-2 text-[10px] font-semibold uppercase tracking-[2px] text-[#07111F] shadow-[0_8px_20px_rgba(200,155,60,0.18)]">
-              {industry}
-            </span>
-
-            <span className="rounded-full border border-white/10 bg-white/[0.05] px-3.5 py-2 text-[10px] font-semibold uppercase tracking-[2px] text-white">
-              {type}
-            </span>
-          </div>
-
-          {/* Role */}
-          <h3 className="max-w-[90%] text-[21px] font-bold leading-tight text-white transition-colors duration-300 group-hover:text-[#C89B3C] lg:text-[24px]">
-            {title}
-          </h3>
-
-          {/* Company */}
-          <div className="mt-4 flex items-center gap-2">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg border border-[#C89B3C]/20 bg-[#C89B3C]/10">
-              <Building2
-                size={15}
-                className="text-[#C89B3C]"
-                strokeWidth={1.8}
-              />
+        <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
+          <div className="min-w-0 flex-1">
+            <div className="mb-3 flex flex-wrap items-center gap-2">
+              <span className="rounded-full bg-[#07111F]/5 px-3 py-1 text-[11px] font-semibold text-[#07111F]">
+                {industry}
+              </span>
+              <span className="rounded-full border border-gray-200 px-3 py-1 text-[11px] font-medium text-gray-500">
+                {type}
+              </span>
+              {featured && (
+                <span className="rounded-full bg-[#C89B3C]/12 px-3 py-1 text-[11px] font-semibold text-[#9a6e14]">
+                  Featured
+                </span>
+              )}
+              {urgent && (
+                <span className="rounded-full bg-red-50 px-3 py-1 text-[11px] font-semibold text-red-600">
+                  Urgent
+                </span>
+              )}
             </div>
 
-            <p className="text-[14px] font-medium text-[#C89B3C]">
-              {company}
-            </p>
+            <h3 className="pr-12 text-[20px] font-bold leading-snug text-[#07111F] transition-colors group-hover:text-[#9a6e14] sm:text-[23px]">
+              {title}
+            </h3>
+
+            <div className="mt-2 flex items-center gap-2 text-sm text-gray-500">
+              <Building2 size={15} className="shrink-0 text-[#C89B3C]" />
+              <span className="truncate">{company}</span>
+            </div>
+
+            <div className="mt-5 grid gap-3 text-sm text-gray-600 sm:grid-cols-2 xl:grid-cols-4">
+              <Detail icon={MapPin} value={location} />
+              <Detail icon={DollarSign} value={salary} />
+              <Detail icon={BriefcaseBusiness} value={type} />
+              <Detail icon={Clock3} value={getRelativeTime(datePosted)} />
+            </div>
           </div>
 
-          {/* Details */}
-          <div className="mt-5 grid gap-2.5">
-            <JobDetail icon={MapPin} value={location} />
-            <JobDetail icon={DollarSign} value={salary} />
-            <JobDetail icon={BriefcaseBusiness} value={type} />
-          </div>
+          <div className="flex items-center justify-between gap-4 border-t border-gray-100 pt-4 lg:min-w-[165px] lg:flex-col lg:items-end lg:border-l lg:border-t-0 lg:pl-6 lg:pt-0">
+            <button
+              type="button"
+              onClick={toggleSave}
+              aria-label={saved ? "Remove from saved jobs" : "Save this job"}
+              title={saved ? "Remove from saved jobs" : "Save this job"}
+              className={`flex h-10 w-10 items-center justify-center rounded-full border transition ${
+                saved
+                  ? "border-[#C89B3C] bg-[#C89B3C] text-[#07111F]"
+                  : "border-gray-200 bg-white text-gray-500 hover:border-[#C89B3C]/60 hover:text-[#9a6e14]"
+              }`}
+            >
+              <Bookmark size={17} className={saved ? "fill-current" : ""} />
+            </button>
 
-          {/* CTA */}
-          <div className="mt-auto pt-6">
-            <div className="flex items-center justify-between border-t border-white/[0.07] pt-4">
-              <span className="text-[14px] font-semibold text-white">
-                View Position
-              </span>
-
-              <span className="flex h-9 w-9 items-center justify-center rounded-full border border-[#C89B3C]/25 bg-[#C89B3C]/10 text-[#C89B3C] transition-all duration-300 group-hover:translate-x-1 group-hover:bg-[#C89B3C] group-hover:text-[#07111F]">
+            <span className="inline-flex items-center gap-2 text-sm font-bold text-[#07111F] transition-colors group-hover:text-[#9a6e14]">
+              View job
+              <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#07111F] text-white transition group-hover:translate-x-0.5 group-hover:bg-[#C89B3C] group-hover:text-[#07111F]">
                 <ArrowRight size={16} />
               </span>
-            </div>
+            </span>
           </div>
         </div>
       </article>
@@ -153,7 +146,7 @@ export default function JobCard({
   );
 }
 
-function JobDetail({
+function Detail({
   icon: Icon,
   value,
 }: {
@@ -161,14 +154,9 @@ function JobDetail({
   value: string;
 }) {
   return (
-    <div className="flex items-center gap-2.5 rounded-xl border border-white/[0.06] bg-white/[0.035] px-3.5 py-3 text-[13px] text-gray-400 transition-colors duration-300 group-hover:border-[#C89B3C]/15 group-hover:text-gray-300">
-      <Icon
-        size={15}
-        className="shrink-0 text-[#C89B3C]"
-        strokeWidth={1.8}
-      />
-
-      <span className="line-clamp-1">{value}</span>
+    <div className="flex min-w-0 items-center gap-2">
+      <Icon size={15} className="shrink-0 text-[#C89B3C]" strokeWidth={1.8} />
+      <span className="truncate">{value}</span>
     </div>
   );
 }
