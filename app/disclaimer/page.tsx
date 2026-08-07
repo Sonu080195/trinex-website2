@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Footer from "@/components/Footer";
 
 const SITE_URL = "https://www.rudrongts.com";
 const LAST_UPDATED = "July 27, 2026";
@@ -744,7 +743,6 @@ export default function DisclaimerPage() {
         </div>
       </main>
 
-      <Footer />
     </>
   );
 }

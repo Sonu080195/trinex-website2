@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Footer from "@/components/Footer";
 import CookiePreferencesButton from "@/components/CookiePreferencesButton";
 
 const SITE_URL = "https://www.rudrongts.com";
@@ -727,7 +726,6 @@ export default function CookiePolicyPage() {
         </div>
       </main>
 
-      <Footer />
     </>
   );
 }
