@@ -114,8 +114,7 @@ export default function SavedJobsPage() {
                     salary={job.salary}
                     type={job.type}
                     industry={job.specialisation}
-                    slug={job.slug}
-                  />
+                    slug={job.slug} datePosted={""}                  />
 
                 )
               )
