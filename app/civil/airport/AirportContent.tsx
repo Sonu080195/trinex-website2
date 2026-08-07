@@ -1,6 +1,5 @@
 "use client";
 
-import Footer from "@/components/Footer";
 import SubpageCTA from "@/components/SubpageCTA";
 
 export default function AirportContent() {
@@ -143,9 +142,6 @@ export default function AirportContent() {
 
       {/* CTA */}
       <SubpageCTA />
-
-      {/* FOOTER */}
-      <Footer />
 
     </main>
 

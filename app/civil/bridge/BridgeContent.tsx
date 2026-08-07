@@ -1,6 +1,5 @@
 "use client";
 
-import Footer from "@/components/Footer";
 import SubpageCTA from "@/components/SubpageCTA";
 
 export default function BridgeContent() {
@@ -143,9 +142,6 @@ export default function BridgeContent() {
 
       {/* CTA */}
       <SubpageCTA />
-
-      {/* FOOTER */}
-      <Footer />
 
     </main>
 

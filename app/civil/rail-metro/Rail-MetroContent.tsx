@@ -1,6 +1,5 @@
 "use client";
 
-import Footer from "@/components/Footer";
 import SubpageCTA from "@/components/SubpageCTA";
 
 export default function RailMetroContent() {
@@ -143,9 +142,6 @@ export default function RailMetroContent() {
 
       {/* CTA */}
       <SubpageCTA />
-
-      {/* FOOTER */}
-      <Footer />
 
     </main>
 
