@@ -11,11 +11,11 @@ import HireTalentButton from "@/components/HireTalentButton";
 
 const stats = [
   {
-    value: "100+",
-    label: "Placements",
+    value: "5000+",
+    label: "Pre-Vetted Talents",
   },
   {
-    value: "USA",
+    value: "Global",
     label: "Coverage",
   },
   {

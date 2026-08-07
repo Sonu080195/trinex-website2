@@ -38,8 +38,8 @@ const pillars = [
 ];
 
 const highlights = [
-  ["100+", "Placements"],
-  ["48H", "Shortlist Delivery"],
+  ["5000+", "Professionals"],
+  ["24H-48H", "Shortlist Delivery"],
   ["95%", "Retention Rate"],
 ];
 
