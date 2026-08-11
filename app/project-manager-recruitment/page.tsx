@@ -77,6 +77,7 @@ export default function ProjectManagerRecruitmentPage() {
       "Yes. RUDRON can prioritize urgent searches and begin targeted candidate outreach immediately, although delivery timelines depend on the role, market, location and availability of qualified professionals.",
   },
 ];
+
   return (
     <main className="bg-[#07111F] text-white">
       
