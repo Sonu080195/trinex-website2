@@ -40,6 +40,59 @@ export interface Job {
 }
 
 export const jobs: Job[] = [
+  {
+    id: 1786760979897,
+    datePosted: "2026-08-15",
+    featured: true,
+    urgent: true,
+    recruiter: "RUDRON Executive Search",
+    heroImage: "/jobs/commercial-pm.webp",
+    title: "Construction Project Manager - Commercial & Multi-Family",
+    company: "General Contractor",
+    location: "Portland, OR",
+    salary: "$90K - $160K",
+    type: "Full Time",
+    industry: "Construction",
+    specialisation: "Commercial",
+    slug: "construction-project-manager---commercial-multi-family-portland",
+    description: "About the Opportunity
+We are seeking an experienced Project Manager for a well-established General Contractor in the Phoenix market. This individual will be responsible for managing commercial and multifamily construction projects from preconstruction through final completion and closeout.
+The ideal candidate brings strong project management experience within commercial, multifamily, mixed-use, or similarly complex construction and is comfortable managing project budgets, schedules, subcontractors, documentation, procurement, and stakeholder relationships.
+This position offers the opportunity to take ownership of significant projects while working alongside experienced construction and field teams.",
+    responsibilities: [
+    "Manage commercial and multifamily construction projects from preconstruction through completion.",
+    "Develop and maintain project schedules, budgets, procurement plans, and key milestones.",
+    "Coordinate with owners, architects, engineers, consultants, subcontractors, vendors, and internal project teams.",
+    "Lead project meetings and ensure action items and deliverables are completed on schedule.",
+    "Manage project documentation, including contracts, RFIs, submittals, change orders, meeting minutes, and correspondence.",
+    "Monitor project budgets, commitments, expenditures, contingencies, cost forecasts, and projected costs to complete.",
+    "Review subcontractor and vendor invoices and manage change orders, including cost and schedule impacts.",
+    "Participate in estimating, budgeting, value engineering, constructability reviews, and project planning.",
+    "Review drawings and specifications to identify scope gaps, conflicts, and potential cost or schedule risks.",
+    "Support subcontractor and vendor procurement and coordinate long-lead materials and equipment.",
+    "Work closely with the Superintendent to maintain safety, quality, schedule, and financial performance.",
+    "Monitor subcontractor performance and resolve project issues in a timely manner.",
+    "Maintain strong relationships with owners, design teams, subcontractors, and vendors.",
+    "Lead project closeout, including punch lists, inspections, commissioning, warranties, O&M manuals, final documentation, and turnover."
+    ],
+    requirements: [
+    "3+ years of construction project management experience.",
+    "Proven experience managing construction projects from preconstruction through completion.",
+    "Experience with ground-up multifamily, mixed-use, commercial, renovation, or similarly complex projects strongly preferred.",
+    "Strong knowledge of construction contracts, scheduling, cost control, procurement, and subcontractor management.",
+    "Ability to read and interpret architectural, structural, MEP, civil, and other construction documents.",
+    "Excellent communication, organizational, leadership, and negotiation skills.",
+    "Proficiency with Procore, Bluebeam, Microsoft Project, Primavera P6, or similar construction management and scheduling platforms.",
+    "Bachelor’s degree in Construction Management, Engineering, Business, or a related field preferred."
+    ],
+    benefits: [
+    "Performance-based bonus opportunities",
+    "Medical, dental, and vision insurance",
+    "401(k) with company contribution/match",
+    "Paid time off and company holidays"
+    ],
+  },
+
 
   {
   id: 1,
