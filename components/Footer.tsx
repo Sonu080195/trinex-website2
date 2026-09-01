@@ -215,8 +215,8 @@ export default function Footer() {
                 <ContactItem
                   icon={Phone}
                   label="United States & Canada"
-                  href="tel:+12393093969"
-                  value="+1 (239) 309-3969"
+                  href="tel:+16233092345"
+                  value="+1 (623) 309-2345"
                 />
 
                 <ContactItem

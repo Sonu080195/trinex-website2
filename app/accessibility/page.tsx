@@ -585,10 +585,10 @@ export default function AccessibilityPage() {
                 <p className="mt-2">
                   Telephone:{" "}
                   <a
-                    href="tel:+12393093969"
+                    href="tel:+16233092345"
                     className="font-medium text-[#9B7429] underline decoration-[#C89B3C]/50 underline-offset-4 hover:text-[#C89B3C]"
                   >
-                    +1 (239) 309-3969
+                    +1 (623) 309-2345
                   </a>
                 </p>
 
