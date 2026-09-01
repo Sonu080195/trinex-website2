@@ -29,13 +29,14 @@ export async function POST(req: NextRequest) {
     const id = Date.now();
     const datePosted = new Date().toISOString().split("T")[0]; // e.g. "2026-07-09"
 
-    const jobObjectString = buildJobObjectString(data, {
-      id,
-      datePosted,
-      featured: !!data.featured,
-      urgent: !!data.urgent,
-      heroImage: data.heroImage,
-    });
+const jobObjectString = buildJobObjectString(data, {
+  id,
+  datePosted,
+  featured: !!data.featured,
+  urgent: !!data.urgent,
+  recruiter: data.recruiter || "RUDRON Executive Search",
+  heroImage: data.heroImage || "/jobs/commercial-pm.webp",
+});
 
     await addJobToRepo(
       jobObjectString,
