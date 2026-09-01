@@ -40,6 +40,108 @@ export interface Job {
 }
 
 export const jobs: Job[] = [
+  {
+    id: 1788288876293,
+    datePosted: "2026-09-01",
+    featured: true,
+    urgent: true,
+    recruiter: "RUDRON Executive Search",
+    heroImage: "/jobs/commercial-pm.webp",
+    title: "Mechanical Construction — Sr. Project Manager",
+    company: "Top ENR Contractor",
+    location: "Pittsburgh, PA",
+    salary: "$140K - $180K",
+    type: "Full Time",
+    industry: "Construction",
+    specialisation: "Commercial",
+    slug: "mechanical-construction-sr-project-manager-pittsburgh",
+    description: "Our client is looking for an experienced Mechanical Construction Project Manager with a strong background in commercial and industrial mechanical construction. The ideal candidate will have hands-on knowledge of mechanical systems and the ability to manage projects from estimating and planning through execution, completion, and closeout.
+
+The role would be well suited for someone with experience in HVAC, piping, plumbing, sheet metal, fabrication, and design-build projects, along with strong project management and field coordination skills.",
+    responsibilities: [
+    "Manage multiple mechanical construction projects from preconstruction/estimating through project closeout.",
+    "Oversee commercial and industrial HVAC, piping, plumbing, and sheet metal projects.",
+    "Coordinate with field crews, subcontractors, vendors, engineers, and customers.",
+    "Manage project schedules, budgets, manpower, materials, and overall project performance.",
+    "Review drawings, specifications, and project requirements and coordinate design-build activities.",
+    "Support estimating, scope development, cost tracking, change orders, and project forecasting.",
+    "Utilize AutoCAD/CAD knowledge to review and coordinate mechanical designs and layouts.",
+    "Work closely with field operations to ensure projects are completed safely, efficiently, on schedule, and within budget.",
+    "Manage projects across a variety of environments, including commercial, light industrial, retail, and government facilities."
+    ],
+    requirements: [
+    "7+ years of mechanical construction experience, with significant exposure to plumbing, piping, and/or sheet metal.",
+    "Experience with a mechanical contractor, MEP contractor, or specialty subcontractor.",
+    "Experience managing projects ranging from mid-size to $50M+ mechanical scopes.",
+    "Ability to read and interpret construction drawings and specifications",
+    "Strong leadership and communication skills",
+    "Experience with Procore, Bluebeam, BIM/VDC coordination, and scheduling software preferred",
+    "Bachelor's degree in Mechanical, Construction, or a related field is preferred but not required with strong industry experience."
+    ],
+    benefits: [
+    "Career growth and advancement opportunities",
+    "Exposure to high-quality commercial and multifamily projects",
+    "Collaborative and professional work environment",
+    "Opportunity to work alongside experienced construction professionals",
+    "Competitive benefits package",
+    "Paid time off and company holidays",
+    "Professional development and training opportunities"
+    ],
+  },
+
+  {
+    id: 1786760979897,
+    datePosted: "2026-08-15",
+    featured: true,
+    urgent: true,
+    recruiter: "RUDRON Executive Search",
+    heroImage: "/jobs/commercial-pm.webp",
+    title: "Construction Project Manager - Commercial & Multi-Family",
+    company: "General Contractor",
+    location: "Portland, OR",
+    salary: "$90K - $160K",
+    type: "Full Time",
+    industry: "Construction",
+    specialisation: "Commercial",
+    slug: "construction-project-manager---commercial-multi-family-portland",
+    description: "About the Opportunity
+We are seeking an experienced Project Manager for a well-established General Contractor in the Phoenix market. This individual will be responsible for managing commercial and multifamily construction projects from preconstruction through final completion and closeout.
+The ideal candidate brings strong project management experience within commercial, multifamily, mixed-use, or similarly complex construction and is comfortable managing project budgets, schedules, subcontractors, documentation, procurement, and stakeholder relationships.
+This position offers the opportunity to take ownership of significant projects while working alongside experienced construction and field teams.",
+    responsibilities: [
+    "Manage commercial and multifamily construction projects from preconstruction through completion.",
+    "Develop and maintain project schedules, budgets, procurement plans, and key milestones.",
+    "Coordinate with owners, architects, engineers, consultants, subcontractors, vendors, and internal project teams.",
+    "Lead project meetings and ensure action items and deliverables are completed on schedule.",
+    "Manage project documentation, including contracts, RFIs, submittals, change orders, meeting minutes, and correspondence.",
+    "Monitor project budgets, commitments, expenditures, contingencies, cost forecasts, and projected costs to complete.",
+    "Review subcontractor and vendor invoices and manage change orders, including cost and schedule impacts.",
+    "Participate in estimating, budgeting, value engineering, constructability reviews, and project planning.",
+    "Review drawings and specifications to identify scope gaps, conflicts, and potential cost or schedule risks.",
+    "Support subcontractor and vendor procurement and coordinate long-lead materials and equipment.",
+    "Work closely with the Superintendent to maintain safety, quality, schedule, and financial performance.",
+    "Monitor subcontractor performance and resolve project issues in a timely manner.",
+    "Maintain strong relationships with owners, design teams, subcontractors, and vendors.",
+    "Lead project closeout, including punch lists, inspections, commissioning, warranties, O&M manuals, final documentation, and turnover."
+    ],
+    requirements: [
+    "3+ years of construction project management experience.",
+    "Proven experience managing construction projects from preconstruction through completion.",
+    "Experience with ground-up multifamily, mixed-use, commercial, renovation, or similarly complex projects strongly preferred.",
+    "Strong knowledge of construction contracts, scheduling, cost control, procurement, and subcontractor management.",
+    "Ability to read and interpret architectural, structural, MEP, civil, and other construction documents.",
+    "Excellent communication, organizational, leadership, and negotiation skills.",
+    "Proficiency with Procore, Bluebeam, Microsoft Project, Primavera P6, or similar construction management and scheduling platforms.",
+    "Bachelor’s degree in Construction Management, Engineering, Business, or a related field preferred."
+    ],
+    benefits: [
+    "Performance-based bonus opportunities",
+    "Medical, dental, and vision insurance",
+    "401(k) with company contribution/match",
+    "Paid time off and company holidays"
+    ],
+  },
+
 
   {
   id: 1,
