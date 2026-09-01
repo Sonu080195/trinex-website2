@@ -1,7 +1,7 @@
 // lib/githubJobs.ts
-// Reads and updates data/jobs.ts directly in your GitHub repo via GitHub's
-// REST API. Pushing to `main` this way triggers Vercel's existing
-// auto-deploy — no separate deploy hook needed.
+//
+// Reads and updates data/jobs.ts directly in the GitHub repository.
+// Changes committed to the configured branch automatically trigger Vercel.
 
 const GITHUB_API = "https://api.github.com";
 const FILE_PATH = "data/jobs.ts";
@@ -19,48 +19,98 @@ function getConfig() {
     );
   }
 
-  return { token, owner, repo, branch };
+  return {
+    token,
+    owner,
+    repo,
+    branch,
+  };
 }
 
-async function githubFetch(url: string, options: RequestInit = {}) {
+async function githubFetch(
+  url: string,
+  options: RequestInit = {}
+) {
   const { token } = getConfig();
+
   const res = await fetch(url, {
     ...options,
     headers: {
       Authorization: `Bearer ${token}`,
       Accept: "application/vnd.github+json",
       "Content-Type": "application/json",
+      "X-GitHub-Api-Version": "2022-11-28",
       ...(options.headers || {}),
     },
+    cache: "no-store",
   });
 
   if (!res.ok) {
     const body = await res.text();
-    throw new Error(`GitHub API error (${res.status}): ${body}`);
+
+    throw new Error(
+      `GitHub API error (${res.status}): ${body}`
+    );
   }
 
   return res.json();
 }
 
-/** Fetches the current data/jobs.ts content and its SHA (needed to update it). */
-async function getCurrentFile(): Promise<{ content: string; sha: string }> {
+/**
+ * Fetches the latest data/jobs.ts from GitHub together with its SHA.
+ * GitHub requires the SHA when updating an existing file.
+ */
+async function getCurrentFile(): Promise<{
+  content: string;
+  sha: string;
+}> {
   const { owner, repo, branch } = getConfig();
-  const url = `${GITHUB_API}/repos/${owner}/${repo}/contents/${FILE_PATH}?ref=${branch}`;
+
+  const url =
+    `${GITHUB_API}/repos/${owner}/${repo}/contents/${FILE_PATH}` +
+    `?ref=${encodeURIComponent(branch)}`;
+
   const data = await githubFetch(url);
-  const content = Buffer.from(data.content, "base64").toString("utf-8");
-  return { content, sha: data.sha };
+
+  if (!data.content || !data.sha) {
+    throw new Error(
+      "GitHub returned an invalid response for data/jobs.ts."
+    );
+  }
+
+  const content = Buffer.from(
+    data.content,
+    "base64"
+  ).toString("utf-8");
+
+  return {
+    content,
+    sha: data.sha,
+  };
 }
 
-/** Commits updated file content back to the repo. */
-async function updateFile(newContent: string, sha: string, commitMessage: string) {
+/**
+ * Commits the updated jobs.ts file to GitHub.
+ */
+async function updateFile(
+  newContent: string,
+  sha: string,
+  commitMessage: string
+) {
   const { owner, repo, branch } = getConfig();
-  const url = `${GITHUB_API}/repos/${owner}/${repo}/contents/${FILE_PATH}`;
+
+  const url =
+    `${GITHUB_API}/repos/${owner}/${repo}/contents/${FILE_PATH}`;
 
   await githubFetch(url, {
     method: "PUT",
+
     body: JSON.stringify({
       message: commitMessage,
-      content: Buffer.from(newContent, "utf-8").toString("base64"),
+      content: Buffer.from(
+        newContent,
+        "utf-8"
+      ).toString("base64"),
       sha,
       branch,
     }),
@@ -68,48 +118,93 @@ async function updateFile(newContent: string, sha: string, commitMessage: string
 }
 
 /**
- * Scans the jobs array text and finds the exact character range of the
- * job object whose `id:` field matches. Uses brace-depth counting (and
- * skips braces inside string literals) so it works regardless of each
- * job's internal formatting/indentation.
+ * Finds the beginning of the jobs array.
  */
-function findJobBlockRange(content: string, id: number): { start: number; end: number } | null {
+function getJobsArrayStart(content: string): number {
   const markerIndex = content.indexOf(ARRAY_MARKER);
+
   if (markerIndex === -1) {
-    throw new Error("Could not find the jobs array in data/jobs.ts — file structure may have changed.");
+    throw new Error(
+      "Could not find the jobs array in data/jobs.ts. " +
+        "The expected marker is missing."
+    );
   }
 
-  let i = markerIndex + ARRAY_MARKER.length;
+  return markerIndex + ARRAY_MARKER.length;
+}
+
+/**
+ * Finds the exact character range occupied by a job object.
+ *
+ * The parser counts braces while ignoring braces occurring inside
+ * JavaScript/TypeScript strings.
+ */
+function findJobBlockRange(
+  content: string,
+  id: number
+): {
+  start: number;
+  end: number;
+} | null {
+  const arrayStart = getJobsArrayStart(content);
+
+  let i = arrayStart;
   const len = content.length;
 
   while (i < len) {
-    while (i < len && /[\s,]/.test(content[i])) i++;
-    if (content[i] === "]") break;
+    // Skip whitespace and commas separating job objects.
+    while (
+      i < len &&
+      /[\s,]/.test(content[i])
+    ) {
+      i++;
+    }
+
+    // Reached the end of the jobs array.
+    if (content[i] === "]") {
+      break;
+    }
+
     if (content[i] !== "{") {
       i++;
       continue;
     }
 
     const blockStart = i;
+
     let depth = 0;
     let inString: string | null = null;
     let escaped = false;
 
     for (; i < len; i++) {
       const ch = content[i];
+
       if (inString) {
-        if (escaped) escaped = false;
-        else if (ch === "\\") escaped = true;
-        else if (ch === inString) inString = null;
+        if (escaped) {
+          escaped = false;
+        } else if (ch === "\\") {
+          escaped = true;
+        } else if (ch === inString) {
+          inString = null;
+        }
+
         continue;
       }
-      if (ch === '"' || ch === "'" || ch === "`") {
+
+      if (
+        ch === '"' ||
+        ch === "'" ||
+        ch === "`"
+      ) {
         inString = ch;
         continue;
       }
-      if (ch === "{") depth++;
-      else if (ch === "}") {
+
+      if (ch === "{") {
+        depth++;
+      } else if (ch === "}") {
         depth--;
+
         if (depth === 0) {
           i++;
           break;
@@ -118,14 +213,23 @@ function findJobBlockRange(content: string, id: number): { start: number; end: n
     }
 
     const blockEnd = i;
-    const blockText = content.slice(blockStart, blockEnd);
-    const idMatch = blockText.match(/id:\s*(\d+)/);
+    const blockText = content.slice(
+      blockStart,
+      blockEnd
+    );
 
-    if (idMatch && parseInt(idMatch[1], 10) === id) {
-      let end = blockEnd;
-      while (content[end] === "," || content[end] === " ") end++;
-      if (content[end] === "\n") end++;
-      return { start: blockStart, end };
+    const idMatch = blockText.match(
+      /\bid:\s*(\d+)/
+    );
+
+    if (
+      idMatch &&
+      Number(idMatch[1]) === Number(id)
+    ) {
+      return {
+        start: blockStart,
+        end: blockEnd,
+      };
     }
   }
 
@@ -133,49 +237,205 @@ function findJobBlockRange(content: string, id: number): { start: number; end: n
 }
 
 /**
- * Inserts a new job object (as a formatted string) right after the
- * `export const jobs: Job[] = [` line, then commits the change.
+ * Looks at what comes after a job object and determines whether
+ * the object needs a trailing comma.
  */
-export async function addJobToRepo(jobObjectString: string, commitMessage: string) {
-  const { content, sha } = await getCurrentFile();
+function needsTrailingComma(
+  content: string,
+  position: number
+): boolean {
+  let i = position;
 
-  const markerIndex = content.indexOf(ARRAY_MARKER);
-  if (markerIndex === -1) {
-    throw new Error("Could not find the jobs array in data/jobs.ts — file structure may have changed.");
+  while (
+    i < content.length &&
+    /\s/.test(content[i])
+  ) {
+    i++;
   }
 
-  const insertAt = markerIndex + ARRAY_MARKER.length;
-  const newContent =
-    content.slice(0, insertAt) + "\n" + jobObjectString + content.slice(insertAt);
+  // If another object follows, the current object needs a comma.
+  if (content[i] === "{") {
+    return true;
+  }
 
-  await updateFile(newContent, sha, commitMessage);
+  // If an existing comma already follows, don't duplicate it.
+  if (content[i] === ",") {
+    return false;
+  }
+
+  // At the end of the array a trailing comma is still safe and
+  // keeps formatting consistent.
+  if (content[i] === "]") {
+    return true;
+  }
+
+  return true;
 }
 
-/** Replaces an existing job (matched by id) with a new object string. */
-export async function updateJobInRepo(id: number, newJobObjectString: string, commitMessage: string) {
-  const { content, sha } = await getCurrentFile();
-  const range = findJobBlockRange(content, id);
+/**
+ * Inserts a new job at the top of the jobs array.
+ */
+export async function addJobToRepo(
+  jobObjectString: string,
+  commitMessage: string
+) {
+  const { content, sha } =
+    await getCurrentFile();
+
+  const insertAt =
+    getJobsArrayStart(content);
+
+  const before = content.slice(
+    0,
+    insertAt
+  );
+
+  const after = content.slice(insertAt);
+
+  /*
+   * CRITICAL:
+   * Every inserted job object receives a comma.
+   *
+   * Without this the generated file becomes:
+   *
+   *   }
+   *   {
+   *
+   * instead of:
+   *
+   *   },
+   *   {
+   */
+  const newContent =
+    `${before}\n${jobObjectString},${after}`;
+
+  await updateFile(
+    newContent,
+    sha,
+    commitMessage
+  );
+}
+
+/**
+ * Replaces an existing job while preserving correct array separators.
+ */
+export async function updateJobInRepo(
+  id: number,
+  newJobObjectString: string,
+  commitMessage: string
+) {
+  const { content, sha } =
+    await getCurrentFile();
+
+  const range = findJobBlockRange(
+    content,
+    id
+  );
 
   if (!range) {
-    throw new Error(`Job with id ${id} not found in repo file.`);
+    throw new Error(
+      `Job with id ${id} was not found in data/jobs.ts.`
+    );
+  }
+
+  const before = content.slice(
+    0,
+    range.start
+  );
+
+  const after = content.slice(
+    range.end
+  );
+
+  const comma =
+    needsTrailingComma(
+      content,
+      range.end
+    )
+      ? ","
+      : "";
+
+  const newContent =
+    before +
+    newJobObjectString +
+    comma +
+    after;
+
+  await updateFile(
+    newContent,
+    sha,
+    commitMessage
+  );
+}
+
+/**
+ * Deletes a job and safely cleans up its separator.
+ */
+export async function deleteJobFromRepo(
+  id: number,
+  commitMessage: string
+) {
+  const { content, sha } =
+    await getCurrentFile();
+
+  const range = findJobBlockRange(
+    content,
+    id
+  );
+
+  if (!range) {
+    throw new Error(
+      `Job with id ${id} was not found in data/jobs.ts.`
+    );
+  }
+
+  let deleteEnd = range.end;
+
+  /*
+   * Remove whitespace immediately following the job.
+   */
+  while (
+    deleteEnd < content.length &&
+    /\s/.test(content[deleteEnd])
+  ) {
+    deleteEnd++;
+  }
+
+  /*
+   * If the deleted job owns a trailing comma, remove it too.
+   */
+  if (content[deleteEnd] === ",") {
+    deleteEnd++;
+
+    while (
+      deleteEnd < content.length &&
+      (
+        content[deleteEnd] === " " ||
+        content[deleteEnd] === "\t"
+      )
+    ) {
+      deleteEnd++;
+    }
+
+    if (
+      content[deleteEnd] === "\r" &&
+      content[deleteEnd + 1] === "\n"
+    ) {
+      deleteEnd += 2;
+    } else if (
+      content[deleteEnd] === "\n"
+    ) {
+      deleteEnd++;
+    }
   }
 
   const newContent =
-    content.slice(0, range.start) + newJobObjectString + content.slice(range.end);
+    content.slice(0, range.start) +
+    content.slice(deleteEnd);
 
-  await updateFile(newContent, sha, commitMessage);
-}
-
-/** Removes an existing job (matched by id) entirely. */
-export async function deleteJobFromRepo(id: number, commitMessage: string) {
-  const { content, sha } = await getCurrentFile();
-  const range = findJobBlockRange(content, id);
-
-  if (!range) {
-    throw new Error(`Job with id ${id} not found in repo file.`);
-  }
-
-  const newContent = content.slice(0, range.start) + content.slice(range.end);
-
-  await updateFile(newContent, sha, commitMessage);
+  await updateFile(
+    newContent,
+    sha,
+    commitMessage
+  );
 }

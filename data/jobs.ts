@@ -84,7 +84,7 @@ export const jobs: Job[] = [
       "Collaborative environment with experienced construction and engineering professionals.",
       "Opportunity to play a key role in securing and delivering high-value mechanical projects."
     ],
-  }
+  },
   {
     id: 1788288876293,
     datePosted: "2026-09-01",
