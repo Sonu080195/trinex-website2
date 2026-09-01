@@ -41,6 +41,51 @@ export interface Job {
 
 export const jobs: Job[] = [
   {
+    id: 1788291657639,
+    datePosted: "2026-09-01",
+    featured: false,
+    urgent: false,
+    recruiter: "RUDRON Executive Search",
+    heroImage: "/jobs/commercial-pm.webp",
+    title: "Senior Mechanical Estimator - Plumbing/Piping",
+    company: "Rudron Global Talent Solutions",
+    location: "Pittsburgh, PA",
+    salary: "$130K - $190K",
+    type: "Full Time",
+    industry: "MEP",
+    specialisation: "Commercial",
+    slug: "senior-mechanical-estimator---plumbingpiping-pittsburgh",
+    description: "The ideal candidate will have extensive experience preparing competitive estimates for large-scale mechanical construction projects, interpreting plans and specifications, developing detailed scopes of work, soliciting subcontractor/vendor pricing, and working closely with project management, engineering, and operations teams from preconstruction through project award.\n\nThis is an excellent opportunity to join a Top ENR-ranked mechanical contractor with a strong project portfolio and long-term growth opportunities.",
+    responsibilities: [
+      "Lead the estimating process for commercial and industrial plumbing, piping, and sheet metal projects.",
+      "Review and interpret construction drawings, specifications, bid documents, and project scopes.",
+      "Perform detailed quantity takeoffs for labor, materials, equipment, and subcontracted work.",
+      "Develop accurate and competitive project estimates while identifying potential risks, exclusions, and opportunities.",
+      "Solicit and evaluate pricing from vendors, subcontractors, and suppliers.",
+      "Develop labor and material costs based on project requirements and historical data.",
+      "Coordinate with engineering and design teams on design-build and design-assist projects.",
+      "Prepare detailed bid proposals and communicate estimate assumptions, clarifications, and exclusions.",
+      "Work closely with Project Managers, Superintendents, and Operations during the transition from estimating to project execution.",
+      "Participate in pre-bid meetings, site visits, scope reviews, and bid strategy meetings.",
+      "Analyze subcontractor and supplier proposals to ensure scope alignment and accurate comparisons.",
+      "Manage multiple estimates and deadlines simultaneously while maintaining a high level of accuracy."
+    ],
+    requirements: [
+      "7+ years of mechanical construction estimating experience, with significant exposure to plumbing, piping, and/or sheet metal.",
+      "Experience with a mechanical contractor, MEP contractor, or specialty subcontractor.",
+      "Experience estimating projects ranging from mid-size to $10M+ mechanical scopes.",
+      "Proficiency with AutoCAD and/or construction estimating software.",
+      "Experience with platforms such as Accubid, Trimble, Bluebeam, On-Screen Takeoff, or similar estimating/takeoff software is a plus.",
+      "Bachelor's degree in Mechanical, Construction, or a related field is preferred but not required with strong industry experience."
+    ],
+    benefits: [
+      "Competitive compensation and comprehensive benefits.",
+      "Long-term career growth and advancement opportunities.",
+      "Collaborative environment with experienced construction and engineering professionals.",
+      "Opportunity to play a key role in securing and delivering high-value mechanical projects."
+    ],
+  }
+  {
     id: 1788288876293,
     datePosted: "2026-09-01",
     featured: true,
