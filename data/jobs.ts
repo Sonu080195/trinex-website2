@@ -41,6 +41,55 @@ export interface Job {
 
 export const jobs: Job[] = [
   {
+    id: 1788288876293,
+    datePosted: "2026-09-01",
+    featured: true,
+    urgent: true,
+    recruiter: "RUDRON Executive Search",
+    heroImage: "/jobs/commercial-pm.webp",
+    title: "Mechanical Construction — Sr. Project Manager",
+    company: "Top ENR Contractor",
+    location: "Pittsburgh, PA",
+    salary: "$140K - $180K",
+    type: "Full Time",
+    industry: "Construction",
+    specialisation: "Commercial",
+    slug: "mechanical-construction-sr-project-manager-pittsburgh",
+    description: "Our client is looking for an experienced Mechanical Construction Project Manager with a strong background in commercial and industrial mechanical construction. The ideal candidate will have hands-on knowledge of mechanical systems and the ability to manage projects from estimating and planning through execution, completion, and closeout.
+
+The role would be well suited for someone with experience in HVAC, piping, plumbing, sheet metal, fabrication, and design-build projects, along with strong project management and field coordination skills.",
+    responsibilities: [
+    "Manage multiple mechanical construction projects from preconstruction/estimating through project closeout.",
+    "Oversee commercial and industrial HVAC, piping, plumbing, and sheet metal projects.",
+    "Coordinate with field crews, subcontractors, vendors, engineers, and customers.",
+    "Manage project schedules, budgets, manpower, materials, and overall project performance.",
+    "Review drawings, specifications, and project requirements and coordinate design-build activities.",
+    "Support estimating, scope development, cost tracking, change orders, and project forecasting.",
+    "Utilize AutoCAD/CAD knowledge to review and coordinate mechanical designs and layouts.",
+    "Work closely with field operations to ensure projects are completed safely, efficiently, on schedule, and within budget.",
+    "Manage projects across a variety of environments, including commercial, light industrial, retail, and government facilities."
+    ],
+    requirements: [
+    "7+ years of mechanical construction experience, with significant exposure to plumbing, piping, and/or sheet metal.",
+    "Experience with a mechanical contractor, MEP contractor, or specialty subcontractor.",
+    "Experience managing projects ranging from mid-size to $50M+ mechanical scopes.",
+    "Ability to read and interpret construction drawings and specifications",
+    "Strong leadership and communication skills",
+    "Experience with Procore, Bluebeam, BIM/VDC coordination, and scheduling software preferred",
+    "Bachelor's degree in Mechanical, Construction, or a related field is preferred but not required with strong industry experience."
+    ],
+    benefits: [
+    "Career growth and advancement opportunities",
+    "Exposure to high-quality commercial and multifamily projects",
+    "Collaborative and professional work environment",
+    "Opportunity to work alongside experienced construction professionals",
+    "Competitive benefits package",
+    "Paid time off and company holidays",
+    "Professional development and training opportunities"
+    ],
+  },
+
+  {
     id: 1786760979897,
     datePosted: "2026-08-15",
     featured: true,
