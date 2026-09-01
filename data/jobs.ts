@@ -55,9 +55,8 @@ export const jobs: Job[] = [
     industry: "Construction",
     specialisation: "Commercial",
     slug: "mechanical-construction-sr-project-manager-pittsburgh",
-    description: "Our client is looking for an experienced Mechanical Construction Project Manager with a strong background in commercial and industrial mechanical construction. The ideal candidate will have hands-on knowledge of mechanical systems and the ability to manage projects from estimating and planning through execution, completion, and closeout.
-
-The role would be well suited for someone with experience in HVAC, piping, plumbing, sheet metal, fabrication, and design-build projects, along with strong project management and field coordination skills.",
+description:
+  "Our client is looking for an experienced Mechanical Construction Project Manager with a strong background in commercial and industrial mechanical construction. The ideal candidate will have hands-on knowledge of mechanical systems and the ability to manage projects from estimating and planning through execution, completion, and closeout. The role would be well suited for someone with experience in HVAC, piping, plumbing, sheet metal, fabrication, and design-build projects, along with strong project management and field coordination skills.",
     responsibilities: [
     "Manage multiple mechanical construction projects from preconstruction/estimating through project closeout.",
     "Oversee commercial and industrial HVAC, piping, plumbing, and sheet metal projects.",
@@ -104,10 +103,8 @@ The role would be well suited for someone with experience in HVAC, piping, plumb
     industry: "Construction",
     specialisation: "Commercial",
     slug: "construction-project-manager---commercial-multi-family-portland",
-    description: "About the Opportunity
-We are seeking an experienced Project Manager for a well-established General Contractor in the Phoenix market. This individual will be responsible for managing commercial and multifamily construction projects from preconstruction through final completion and closeout.
-The ideal candidate brings strong project management experience within commercial, multifamily, mixed-use, or similarly complex construction and is comfortable managing project budgets, schedules, subcontractors, documentation, procurement, and stakeholder relationships.
-This position offers the opportunity to take ownership of significant projects while working alongside experienced construction and field teams.",
+description:
+  "About the Opportunity. We are seeking an experienced Project Manager for a well-established General Contractor in the Phoenix market. This individual will be responsible for managing commercial and multifamily construction projects from preconstruction through final completion and closeout. The ideal candidate brings strong project management experience within commercial, multifamily, mixed-use, or similarly complex construction and is comfortable managing project budgets, schedules, subcontractors, documentation, procurement, and stakeholder relationships. This position offers the opportunity to take ownership of significant projects while working alongside experienced construction and field teams.",
     responsibilities: [
     "Manage commercial and multifamily construction projects from preconstruction through completion.",
     "Develop and maintain project schedules, budgets, procurement plans, and key milestones.",
