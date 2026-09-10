@@ -1,13 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-const SITE_URL = "https://www.rudrongts.com";
-const LAST_UPDATED = "July 27, 2026";
+import { SITE } from "@/lib/site";
+
+const SITE_URL = SITE.url;
+const LAST_UPDATED = "September 10, 2026";
 
 export const metadata: Metadata = {
   title: "Website Disclaimer",
+
   description:
-    "Read the Website Disclaimer governing information, job listings, recruitment content and third-party materials published by RUDRON Global Talent Solutions LLP.",
+    "Read the Website Disclaimer governing information, job listings, recruitment content and third-party materials published by RUDRON Global Talent Solutions LLC.",
 
   alternates: {
     canonical: `${SITE_URL}/disclaimer`,
@@ -16,7 +19,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: `${SITE_URL}/disclaimer`,
-    siteName: "RUDRON Global Talent Solutions",
+    siteName: SITE.name,
     title: "Website Disclaimer | RUDRON Global Talent Solutions",
     description:
       "Important information about the use of RUDRON's website, recruitment content, job listings and external resources.",
@@ -25,7 +28,7 @@ export const metadata: Metadata = {
         url: `${SITE_URL}/og-image.png`,
         width: 1200,
         height: 630,
-        alt: "RUDRON Global Talent Solutions",
+        alt: SITE.name,
       },
     ],
   },
@@ -50,9 +53,16 @@ interface SectionProps {
   children: React.ReactNode;
 }
 
-function Section({ id, title, children }: SectionProps) {
+function Section({
+  id,
+  title,
+  children,
+}: SectionProps) {
   return (
-    <section id={id} className="mb-10 scroll-mt-28">
+    <section
+      id={id}
+      className="mb-10 scroll-mt-28"
+    >
       <h2 className="mb-4 border-b-2 border-[#C89B3C] pb-2 text-xl font-bold text-[#1A1A2E] md:text-2xl">
         {title}
       </h2>
@@ -64,15 +74,23 @@ function Section({ id, title, children }: SectionProps) {
   );
 }
 
-function BulletList({ items }: { items: React.ReactNode[] }) {
+function BulletList({
+  items,
+}: {
+  items: React.ReactNode[];
+}) {
   return (
     <ul className="ml-1 space-y-2">
       {items.map((item, index) => (
-        <li key={index} className="flex items-start gap-3">
+        <li
+          key={index}
+          className="flex items-start gap-3"
+        >
           <span
             aria-hidden="true"
             className="mt-[10px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#C89B3C]"
           />
+
           <span>{item}</span>
         </li>
       ))}
@@ -144,6 +162,9 @@ const tocItems = [
 ];
 
 export default function DisclaimerPage() {
+  const mapsUrl =
+    "https://www.google.com/maps/search/?api=1&query=3707+East+Southern+Avenue+Mesa+AZ+85206";
+
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "WebPage",
@@ -151,7 +172,7 @@ export default function DisclaimerPage() {
     url: `${SITE_URL}/disclaimer`,
     name: "Website Disclaimer",
     description:
-      "Website Disclaimer for RUDRON Global Talent Solutions LLP.",
+      "Website Disclaimer for RUDRON Global Talent Solutions LLC.",
     isPartOf: {
       "@id": `${SITE_URL}/#website`,
     },
@@ -159,7 +180,7 @@ export default function DisclaimerPage() {
       "@id": `${SITE_URL}/#organization`,
     },
     inLanguage: "en-US",
-    dateModified: "2026-07-27",
+    dateModified: "2026-09-10",
   };
 
   return (
@@ -198,8 +219,8 @@ export default function DisclaimerPage() {
             </h1>
 
             <p className="mx-auto max-w-2xl text-sm leading-6 text-gray-400 md:text-base">
-              Important information about the use of our website, recruitment
-              services, job listings and published content.
+              Important information about the use of our website,
+              recruitment services, job listings and published content.
             </p>
 
             <p className="mt-5 text-xs uppercase tracking-wider text-gray-500">
@@ -218,16 +239,18 @@ export default function DisclaimerPage() {
 
               <nav aria-label="Website Disclaimer contents">
                 <ul className="space-y-2.5">
-                  {tocItems.map(({ href, label }) => (
-                    <li key={href}>
-                      <a
-                        href={href}
-                        className="block text-[13px] leading-5 text-[#555555] transition-colors duration-200 hover:text-[#C89B3C]"
-                      >
-                        {label}
-                      </a>
-                    </li>
-                  ))}
+                  {tocItems.map(
+                    ({ href, label }) => (
+                      <li key={href}>
+                        <a
+                          href={href}
+                          className="block text-[13px] leading-5 text-[#555555] transition-colors duration-200 hover:text-[#C89B3C]"
+                        >
+                          {label}
+                        </a>
+                      </li>
+                    )
+                  )}
                 </ul>
               </nav>
             </div>
@@ -237,7 +260,8 @@ export default function DisclaimerPage() {
           <article className="min-w-0 flex-1">
             <div className="mb-10 rounded-2xl border border-[#C89B3C]/20 bg-[#C89B3C]/[0.06] p-6 md:p-7">
               <p className="text-[15px] leading-7 text-[#444444]">
-                This Website Disclaimer should be read together with our{" "}
+                This Website Disclaimer should be read together with
+                our{" "}
                 <Link
                   href="/terms"
                   className="font-medium text-[#9B7429] underline decoration-[#C89B3C]/50 underline-offset-4 hover:text-[#C89B3C]"
@@ -262,7 +286,10 @@ export default function DisclaimerPage() {
               </p>
             </div>
 
-            <Section id="general" title="1. General Information">
+            <Section
+              id="general"
+              title="1. General Information"
+            >
               <p>
                 The information provided on{" "}
                 <a
@@ -271,58 +298,68 @@ export default function DisclaimerPage() {
                 >
                   www.rudrongts.com
                 </a>{" "}
-                is published by RUDRON Global Talent Solutions LLP
-                (&quot;RUDRON&quot;, &quot;we&quot;, &quot;us&quot;, or
-                &quot;our&quot;) for general informational, recruitment and
-                business purposes.
+                is published by RUDRON Global Talent Solutions LLC
+                (&quot;RUDRON&quot;, &quot;we&quot;,
+                &quot;us&quot;, or &quot;our&quot;) for general
+                informational, recruitment and business purposes.
               </p>
 
               <p>
-                While we aim to keep website information accurate, relevant and
-                current, we do not represent or warrant that all information
-                will always be complete, error-free, current or suitable for a
-                particular purpose.
+                While we aim to keep website information accurate,
+                relevant and current, we do not represent or warrant
+                that all information will always be complete,
+                error-free, current or suitable for a particular
+                purpose.
               </p>
 
               <p>
-                Website content may be changed, corrected, removed or updated
-                at any time without prior notice.
-              </p>
-            </Section>
-
-            <Section id="recruitment" title="2. Recruitment Services">
-              <p>
-                RUDRON provides recruitment, executive search, candidate
-                sourcing, talent acquisition and related advisory services to
-                candidates and employer clients.
-              </p>
-
-              <p>
-                Information on this website describes our general capabilities
-                and service areas. It does not by itself create a recruitment,
-                agency, employment, consulting or contractual relationship
-                between RUDRON and any visitor.
-              </p>
-
-              <p>
-                Recruitment services provided to an employer or client may be
-                governed by a separate signed agreement, fee schedule,
-                statement of work, replacement guarantee or other written
-                commercial terms.
+                Website content may be changed, corrected, removed or
+                updated at any time without prior notice.
               </p>
             </Section>
 
-            <Section id="job-listings" title="3. Job Listings">
+            <Section
+              id="recruitment"
+              title="2. Recruitment Services"
+            >
               <p>
-                Job listings published on the website are provided for general
-                recruitment purposes and may be supplied by employers,
-                representatives, recruiters or other sources.
+                RUDRON provides recruitment, executive search,
+                candidate sourcing, talent acquisition and related
+                advisory services to candidates and employer clients.
               </p>
 
               <p>
-                Although we take reasonable steps to review listings before
-                publication, job details may change without notice. This may
-                include:
+                Information on this website describes our general
+                capabilities and service areas. It does not by itself
+                create a recruitment, agency, employment, consulting
+                or contractual relationship between RUDRON and any
+                visitor.
+              </p>
+
+              <p>
+                Recruitment services provided to an employer or client
+                may be governed by a separate Recruitment Services
+                Agreement, Master Services Agreement, fee schedule,
+                statement of work, replacement guarantee or other
+                agreed commercial terms.
+              </p>
+            </Section>
+
+            <Section
+              id="job-listings"
+              title="3. Job Listings"
+            >
+              <p>
+                Job listings published on the website are provided for
+                general recruitment purposes and may be supplied by
+                employers, representatives, recruiters or other
+                authorised sources.
+              </p>
+
+              <p>
+                Although we take reasonable steps to review listings
+                before publication, job details may change without
+                notice. This may include:
               </p>
 
               <BulletList
@@ -338,16 +375,20 @@ export default function DisclaimerPage() {
               />
 
               <p>
-                A listed vacancy may be placed on hold, amended, filled or
-                withdrawn at any time. Candidates should not rely solely on the
-                continued appearance of a vacancy on the website.
+                A listed vacancy may be placed on hold, amended, filled
+                or withdrawn at any time. Candidates should not rely
+                solely on the continued appearance of a vacancy on the
+                website.
               </p>
             </Section>
 
-            <Section id="employment" title="4. No Employment Guarantee">
+            <Section
+              id="employment"
+              title="4. No Employment Guarantee"
+            >
               <p>
-                Submission of a resume, job application, enquiry or candidate
-                profile does not guarantee:
+                Submission of a resume, job application, enquiry or
+                candidate profile does not guarantee:
               </p>
 
               <BulletList
@@ -363,14 +404,15 @@ export default function DisclaimerPage() {
               />
 
               <p>
-                Hiring decisions remain under the control of the relevant
-                employer. RUDRON does not have authority to compel an employer
-                to interview, hire or retain a candidate.
+                Hiring decisions remain under the control of the
+                relevant employer. RUDRON does not have authority to
+                compel an employer to interview, hire or retain a
+                candidate.
               </p>
 
               <p>
-                RUDRON is not the employer of a candidate unless this is
-                expressly confirmed in a separate written agreement.
+                RUDRON is not the employer of a candidate unless this
+                is expressly confirmed in a separate written agreement.
               </p>
             </Section>
 
@@ -379,8 +421,9 @@ export default function DisclaimerPage() {
               title="5. Candidate Information and Verification"
             >
               <p>
-                Candidates are responsible for ensuring that all information
-                supplied to RUDRON is truthful, complete and current.
+                Candidates are responsible for ensuring that all
+                information supplied to RUDRON is truthful, complete
+                and current.
               </p>
 
               <p>This includes information relating to:</p>
@@ -398,16 +441,16 @@ export default function DisclaimerPage() {
               />
 
               <p>
-                RUDRON may review, screen or discuss candidate information but
-                does not warrant that every statement made by a candidate has
-                been independently verified.
+                RUDRON may review, screen, store or discuss candidate
+                information but does not warrant that every statement
+                made by a candidate has been independently verified.
               </p>
 
               <p>
                 Employer clients should conduct the background checks,
-                reference checks, licence verification and other due diligence
-                they consider appropriate before making an employment or
-                engagement decision.
+                reference checks, licence verification and other due
+                diligence they consider appropriate before making an
+                employment or engagement decision.
               </p>
             </Section>
 
@@ -417,19 +460,18 @@ export default function DisclaimerPage() {
             >
               <p>
                 Candidate profiles, assessments, screening notes and
-                recommendations supplied by RUDRON are intended to assist
-                employer clients in their recruitment process.
+                recommendations supplied by RUDRON are intended to
+                assist employer clients in their recruitment process.
               </p>
 
               <p>
-                They should not replace an employer&apos;s own evaluation,
-                interview process, background checks, reference verification,
-                legal review or internal approval procedures.
+                They should not replace an employer&apos;s own
+                evaluation, interview process, background checks,
+                reference verification, legal review or internal
+                approval procedures.
               </p>
 
-              <p>
-                The employer remains responsible for:
-              </p>
+              <p>The employer remains responsible for:</p>
 
               <BulletList
                 items={[
@@ -449,22 +491,22 @@ export default function DisclaimerPage() {
               title="7. Salary and Market Information"
             >
               <p>
-                Salary ranges, market reports, compensation estimates and
-                hiring-trend information published by RUDRON are provided for
-                general informational purposes.
+                Salary ranges, market reports, compensation estimates
+                and hiring-trend information published by RUDRON are
+                provided for general informational purposes.
               </p>
 
               <p>
                 Actual compensation may vary substantially depending on
-                location, employer, project type, market demand, candidate
-                experience, qualifications, benefits, incentives and other
-                factors.
+                location, employer, project type, market demand,
+                candidate experience, qualifications, benefits,
+                incentives and other factors.
               </p>
 
               <p>
-                Published salary information does not constitute a promise,
-                offer or guarantee that any employer will pay a particular
-                amount.
+                Published salary information does not constitute a
+                promise, offer or guarantee that any employer will pay
+                a particular amount.
               </p>
             </Section>
 
@@ -474,13 +516,14 @@ export default function DisclaimerPage() {
             >
               <p>
                 Website content is not intended to provide legal, tax,
-                immigration, accounting, financial, licensing or regulatory
-                advice.
+                immigration, accounting, financial, licensing,
+                compliance or regulatory advice.
               </p>
 
               <p>
-                Candidates and employers should obtain advice from appropriately
-                qualified professionals regarding matters such as:
+                Candidates and employers should obtain advice from
+                appropriately qualified professionals regarding matters
+                such as:
               </p>
 
               <BulletList
@@ -496,16 +539,20 @@ export default function DisclaimerPage() {
               />
 
               <p>
-                No content on this website creates a professional-adviser
-                relationship between RUDRON and a website visitor.
+                No content on this website creates a
+                professional-adviser relationship between RUDRON and a
+                website visitor.
               </p>
             </Section>
 
-            <Section id="ai" title="9. AI-Assisted Recruitment Services">
+            <Section
+              id="ai"
+              title="9. AI-Assisted Recruitment Services"
+            >
               <p>
-                RUDRON may use artificial intelligence, automation and other
-                technology-assisted tools to support certain recruitment and
-                business processes.
+                RUDRON may use artificial intelligence, automation and
+                other technology-assisted tools to support certain
+                recruitment, administrative and business processes.
               </p>
 
               <p>These tools may assist with:</p>
@@ -516,22 +563,24 @@ export default function DisclaimerPage() {
                   "Drafting or organising communications;",
                   "Scheduling and administrative workflows;",
                   "Summarising recruitment information;",
-                  "Identifying potentially relevant roles or candidates; and",
+                  "Identifying potentially relevant roles or candidates;",
+                  "Organising or analysing information supplied during recruitment processes; and",
                   "Improving website and service performance.",
                 ]}
               />
 
               <p>
                 AI-assisted outputs may contain errors, omissions or
-                inappropriate recommendations. They should not be treated as
-                the sole basis for an employment, hiring or other material
-                decision.
+                inappropriate recommendations. They should not be
+                treated as the sole basis for an employment, hiring or
+                other material decision.
               </p>
 
               <p>
-                RUDRON seeks to maintain human involvement in recruitment
-                decisions and does not guarantee that an AI-assisted output will
-                be accurate or suitable in every situation.
+                RUDRON seeks to maintain appropriate human involvement
+                in recruitment processes and does not guarantee that an
+                AI-assisted output will be accurate, complete or
+                suitable in every situation.
               </p>
             </Section>
 
@@ -540,14 +589,15 @@ export default function DisclaimerPage() {
               title="10. Third-Party Websites and Content"
             >
               <p>
-                The website may contain links to external websites, job boards,
-                social-media platforms, scheduling services, employer websites
-                or other third-party resources.
+                The website may contain links to external websites, job
+                boards, social-media platforms, scheduling services,
+                employer websites or other third-party resources.
               </p>
 
               <p>
-                External links are provided for convenience and informational
-                purposes. RUDRON does not control and is not responsible for:
+                External links are provided for convenience and
+                informational purposes. RUDRON does not control and is
+                not responsible for:
               </p>
 
               <BulletList
@@ -561,8 +611,9 @@ export default function DisclaimerPage() {
               />
 
               <p>
-                The inclusion of an external link does not necessarily imply
-                endorsement, partnership, sponsorship or approval.
+                The inclusion of an external link does not necessarily
+                imply endorsement, partnership, sponsorship or
+                approval.
               </p>
             </Section>
 
@@ -571,27 +622,30 @@ export default function DisclaimerPage() {
               title="11. Website Availability and Security"
             >
               <p>
-                We aim to keep the website available and secure, but we do not
-                guarantee uninterrupted, error-free or continuously available
-                access.
+                We aim to keep the website available and secure, but we
+                do not guarantee uninterrupted, error-free or
+                continuously available access.
               </p>
 
               <p>
-                The website may be unavailable because of maintenance, hosting
-                interruptions, network failures, security incidents, software
-                errors or circumstances beyond our reasonable control.
+                The website may be unavailable because of maintenance,
+                hosting interruptions, network failures, security
+                incidents, software errors, third-party service
+                interruptions or circumstances beyond our reasonable
+                control.
               </p>
 
               <p>
                 Visitors are responsible for using appropriate security
-                measures, including updated devices, browsers, antivirus tools
-                and secure internet connections.
+                measures, including updated devices, browsers,
+                antivirus tools and secure internet connections.
               </p>
 
               <p>
-                RUDRON does not warrant that the website, downloaded materials
-                or electronic communications will always be free from harmful
-                code, malware or security vulnerabilities.
+                RUDRON does not warrant that the website, downloaded
+                materials or electronic communications will always be
+                free from harmful code, malware or security
+                vulnerabilities.
               </p>
             </Section>
 
@@ -600,27 +654,29 @@ export default function DisclaimerPage() {
               title="12. International Recruitment Services"
             >
               <p>
-                RUDRON serves clients and candidates in multiple jurisdictions,
-                including the United States, Canada, the United Arab Emirates
-                and India.
+                RUDRON provides recruitment services across multiple
+                markets and may support clients, candidates and hiring
+                requirements in jurisdictions including the United
+                States, Canada, the United Arab Emirates and India.
               </p>
 
               <p>
-                The availability, suitability and lawful provision of a
-                particular service may vary depending on the location of the
-                candidate, employer, position or project.
+                The availability, suitability and lawful provision of
+                a particular service may vary depending on the location
+                of the candidate, employer, position or project.
               </p>
 
               <p>
-                Website visitors are responsible for determining whether their
-                use of our services complies with laws and requirements
-                applicable in their jurisdiction.
+                Website visitors, employers and candidates remain
+                responsible for complying with laws and requirements
+                applicable to them in their respective jurisdictions.
               </p>
 
               <p>
-                RUDRON may restrict or decline a service where legal,
-                regulatory, commercial or practical considerations make the
-                service unavailable or inappropriate.
+                RUDRON may restrict, modify or decline a service where
+                legal, regulatory, commercial, technical or practical
+                considerations make the service unavailable or
+                inappropriate.
               </p>
             </Section>
 
@@ -629,28 +685,34 @@ export default function DisclaimerPage() {
               title="13. Limitation of Responsibility"
             >
               <p>
-                To the maximum extent permitted by applicable law, RUDRON will
-                not be responsible for losses arising solely from reliance on
-                general website information, withdrawn vacancies, unsuccessful
-                applications, employer decisions, candidate statements,
-                third-party websites or temporary website unavailability.
+                To the maximum extent permitted by applicable law,
+                RUDRON will not be responsible for losses arising
+                solely from reliance on general website information,
+                withdrawn vacancies, unsuccessful applications,
+                employer decisions, candidate statements, third-party
+                websites or temporary website unavailability.
               </p>
 
               <p>
-                Nothing in this Website Disclaimer excludes or limits any
-                responsibility that cannot lawfully be excluded or limited.
+                Nothing in this Website Disclaimer excludes or limits
+                any responsibility that cannot lawfully be excluded or
+                limited.
               </p>
 
               <p>
-                Detailed limitations of liability and other legal provisions
-                governing website and service use are contained in our{" "}
+                Detailed limitations of liability and other legal
+                provisions governing website and service use are
+                contained in our{" "}
                 <Link
                   href="/terms"
                   className="font-medium text-[#9B7429] underline decoration-[#C89B3C]/50 underline-offset-4 hover:text-[#C89B3C]"
                 >
                   Terms &amp; Conditions
                 </Link>
-                .
+                . Where recruitment services are provided under a
+                separate written agreement, that agreement may contain
+                additional terms governing liability and
+                responsibility.
               </p>
             </Section>
 
@@ -659,39 +721,80 @@ export default function DisclaimerPage() {
               title="14. Changes to This Website Disclaimer"
             >
               <p>
-                We may update this Website Disclaimer to reflect changes to our
-                services, website, technology, business practices or legal
-                obligations.
+                We may update this Website Disclaimer to reflect
+                changes to our services, website, technology, business
+                practices or legal obligations.
               </p>
 
               <p>
-                The revised version will be published on this page and the
-                &quot;Last updated&quot; date will be changed.
+                The revised version will be published on this page and
+                the &quot;Last updated&quot; date will be changed.
               </p>
 
               <p>
-                Continued use of the website after an update is subject to the
-                revised disclaimer.
+                Continued use of the website after an update is subject
+                to the revised disclaimer and other applicable website
+                terms.
               </p>
             </Section>
 
-            <Section id="contact" title="15. Contact Us">
+            <Section
+              id="contact"
+              title="15. Contact Us"
+            >
               <p>
-                Questions regarding this Website Disclaimer may be directed to:
+                Questions regarding this Website Disclaimer may be
+                directed to:
               </p>
 
               <div className="mt-5 rounded-2xl border border-gray-100 bg-[#F8F7F4] p-6 md:p-7">
                 <p className="font-bold text-[#1A1A2E]">
-                  RUDRON Global Talent Solutions
+                  RUDRON Global Talent Solutions LLC
                 </p>
 
                 <p className="mt-4">
-                  Email:{" "}
+                  United States address:{" "}
+                  <a
+                    href={mapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-medium text-[#9B7429] underline decoration-[#C89B3C]/50 underline-offset-4 hover:text-[#C89B3C]"
+                  >
+                    {SITE.address.street},{" "}
+                    {SITE.address.city},{" "}
+                    {SITE.address.state}{" "}
+                    {SITE.address.postalCode},{" "}
+                    {SITE.address.country}
+                  </a>
+                </p>
+
+                <p className="mt-2">
+                  Privacy and legal enquiries:{" "}
                   <a
                     href="mailto:privacy@rudrongts.com"
                     className="font-medium text-[#9B7429] underline decoration-[#C89B3C]/50 underline-offset-4 hover:text-[#C89B3C]"
                   >
                     privacy@rudrongts.com
+                  </a>
+                </p>
+
+                <p className="mt-2">
+                  General enquiries:{" "}
+                  <a
+                    href={`mailto:${SITE.emails.general}`}
+                    className="font-medium text-[#9B7429] underline decoration-[#C89B3C]/50 underline-offset-4 hover:text-[#C89B3C]"
+                  >
+                    {SITE.emails.general}
+                  </a>
+                </p>
+
+                <p className="mt-2">
+                  Telephone:{" "}
+                  <a
+                    href={`tel:${SITE.phone.tel}`}
+                    className="font-medium text-[#9B7429] underline decoration-[#C89B3C]/50 underline-offset-4 hover:text-[#C89B3C]"
+                  >
+                    {SITE.phone.display}
                   </a>
                 </p>
 
@@ -742,7 +845,6 @@ export default function DisclaimerPage() {
           </article>
         </div>
       </main>
-
     </>
   );
 }

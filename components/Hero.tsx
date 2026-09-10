@@ -152,7 +152,7 @@ export default function Hero() {
             </h1>
 
             {/* Description */}
-            <p
+            <div
               className="mb-8 max-w-[760px] text-[14px] leading-7 text-gray-300 transition-all duration-700 delay-300 sm:text-[14px] lg:text-[16px] lg:leading-8"
               style={{
                 opacity: heroVisible ? 1 : 0,
@@ -164,13 +164,16 @@ export default function Hero() {
               <p className="text-[20px] font-semibold text-[#C89B3C]">
                 Hire exceptional AEC and MEP professionals with confidence.
               </p>
-              RUDRON is a specialist executive search and recruitment partner
-              serving the Architecture, Engineering, Construction, Mechanical, Electrical and Plumbing industries. We help employers secure
-              project-ready professionals, leadership talent and hard-to-find
-              technical specialists across commercial, industrial,
-              infrastructure and mission-critical markets.
 
-            </p>
+              <p className="mt-3">
+                RUDRON is a specialist executive search and recruitment partner
+                serving the Architecture, Engineering, Construction, Mechanical,
+                Electrical and Plumbing industries. We help employers secure
+                project-ready professionals, leadership talent and hard-to-find
+                technical specialists across commercial, industrial,
+                infrastructure and mission-critical markets.
+              </p>
+            </div>
 
             {/* Buttons */}
             <div

@@ -1,13 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-const SITE_URL = "https://www.rudrongts.com";
-const LAST_UPDATED = "July 27, 2026";
+import { SITE } from "@/lib/site";
+
+const SITE_URL = SITE.url;
+const LAST_UPDATED = "September 10, 2026";
 
 export const metadata: Metadata = {
   title: "Accessibility Statement",
+
   description:
-    "Learn about RUDRON Global Talent Solutions LLP's commitment to providing an accessible and inclusive website experience.",
+    "Learn about RUDRON Global Talent Solutions LLC's commitment to providing an accessible and inclusive website experience.",
 
   alternates: {
     canonical: `${SITE_URL}/accessibility`,
@@ -16,7 +19,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: `${SITE_URL}/accessibility`,
-    siteName: "RUDRON Global Talent Solutions",
+    siteName: SITE.name,
     title: "Accessibility Statement | RUDRON Global Talent Solutions",
     description:
       "Information about RUDRON's website accessibility efforts, supported technologies and feedback process.",
@@ -25,7 +28,7 @@ export const metadata: Metadata = {
         url: `${SITE_URL}/og-image.png`,
         width: 1200,
         height: 630,
-        alt: "RUDRON Global Talent Solutions",
+        alt: SITE.name,
       },
     ],
   },
@@ -50,9 +53,16 @@ interface SectionProps {
   children: React.ReactNode;
 }
 
-function Section({ id, title, children }: SectionProps) {
+function Section({
+  id,
+  title,
+  children,
+}: SectionProps) {
   return (
-    <section id={id} className="mb-10 scroll-mt-28">
+    <section
+      id={id}
+      className="mb-10 scroll-mt-28"
+    >
       <h2 className="mb-4 border-b-2 border-[#C89B3C] pb-2 text-xl font-bold text-[#1A1A2E] md:text-2xl">
         {title}
       </h2>
@@ -64,11 +74,18 @@ function Section({ id, title, children }: SectionProps) {
   );
 }
 
-function BulletList({ items }: { items: React.ReactNode[] }) {
+function BulletList({
+  items,
+}: {
+  items: React.ReactNode[];
+}) {
   return (
     <ul className="ml-1 space-y-2">
       {items.map((item, index) => (
-        <li key={index} className="flex items-start gap-3">
+        <li
+          key={index}
+          className="flex items-start gap-3"
+        >
           <span
             aria-hidden="true"
             className="mt-[10px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#C89B3C]"
@@ -137,6 +154,9 @@ const tocItems = [
 ];
 
 export default function AccessibilityPage() {
+  const mapsUrl =
+    "https://www.google.com/maps/search/?api=1&query=3707+East+Southern+Avenue+Mesa+AZ+85206";
+
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "WebPage",
@@ -144,7 +164,7 @@ export default function AccessibilityPage() {
     url: `${SITE_URL}/accessibility`,
     name: "Accessibility Statement",
     description:
-      "Accessibility Statement for RUDRON Global Talent Solutions LLP.",
+      "Accessibility Statement for RUDRON Global Talent Solutions LLC.",
     isPartOf: {
       "@id": `${SITE_URL}/#website`,
     },
@@ -152,7 +172,7 @@ export default function AccessibilityPage() {
       "@id": `${SITE_URL}/#organization`,
     },
     inLanguage: "en-US",
-    dateModified: "2026-07-27",
+    dateModified: "2026-09-10",
   };
 
   return (
@@ -191,8 +211,9 @@ export default function AccessibilityPage() {
             </h1>
 
             <p className="mx-auto max-w-2xl text-sm leading-6 text-gray-400 md:text-base">
-              RUDRON is committed to providing an inclusive digital experience
-              for candidates, employers and other website visitors.
+              RUDRON is committed to providing an inclusive digital
+              experience for candidates, employers and other website
+              visitors.
             </p>
 
             <p className="mt-5 text-xs uppercase tracking-wider text-gray-500">
@@ -211,16 +232,18 @@ export default function AccessibilityPage() {
 
               <nav aria-label="Accessibility Statement contents">
                 <ul className="space-y-2.5">
-                  {tocItems.map(({ href, label }) => (
-                    <li key={href}>
-                      <a
-                        href={href}
-                        className="block text-[13px] leading-5 text-[#555555] transition-colors duration-200 hover:text-[#C89B3C]"
-                      >
-                        {label}
-                      </a>
-                    </li>
-                  ))}
+                  {tocItems.map(
+                    ({ href, label }) => (
+                      <li key={href}>
+                        <a
+                          href={href}
+                          className="block text-[13px] leading-5 text-[#555555] transition-colors duration-200 hover:text-[#C89B3C]"
+                        >
+                          {label}
+                        </a>
+                      </li>
+                    )
+                  )}
                 </ul>
               </nav>
             </div>
@@ -230,60 +253,75 @@ export default function AccessibilityPage() {
           <article className="min-w-0 flex-1">
             <div className="mb-10 rounded-2xl border border-[#C89B3C]/20 bg-[#C89B3C]/[0.06] p-6 md:p-7">
               <p className="text-[15px] leading-7 text-[#444444]">
-                Accessibility is an ongoing process. We welcome feedback from
-                people who experience difficulty accessing any part of our
-                website, recruitment content, job listings or forms.
+                Accessibility is an ongoing process. We welcome
+                feedback from people who experience difficulty
+                accessing any part of our website, recruitment
+                content, job listings or forms.
               </p>
             </div>
 
-            <Section id="commitment" title="1. Our Commitment">
+            <Section
+              id="commitment"
+              title="1. Our Commitment"
+            >
               <p>
-                RUDRON Global Talent Solutions LLP
-                (&quot;RUDRON&quot;, &quot;we&quot;, &quot;us&quot;, or
-                &quot;our&quot;) is committed to making our website accessible
-                and usable for the broadest possible audience.
+                RUDRON Global Talent Solutions LLC
+                (&quot;RUDRON&quot;, &quot;we&quot;,
+                &quot;us&quot;, or &quot;our&quot;) is committed
+                to making our website accessible and usable for the
+                broadest possible audience.
               </p>
 
               <p>
-                We aim to provide candidates, employers and other visitors with
-                equal access to information about our recruitment services,
-                employment opportunities, industry insights and contact
-                facilities.
+                We aim to provide candidates, employers and other
+                visitors with equal access to information about our
+                recruitment services, employment opportunities,
+                industry insights and contact facilities.
               </p>
 
               <p>
-                We recognise that accessibility needs differ between users and
-                that accessibility requires ongoing review, testing and
-                improvement.
-              </p>
-            </Section>
-
-            <Section id="standard" title="2. Accessibility Standard">
-              <p>
-                We aim to improve the website with reference to the Web Content
-                Accessibility Guidelines, commonly known as WCAG.
-              </p>
-
-              <p>
-                Our current objective is to work toward alignment with WCAG 2.2
-                Level AA where reasonably possible.
-              </p>
-
-              <p>
-                This statement does not represent that every page, component or
-                third-party service has been independently audited or formally
-                certified as fully conforming to WCAG 2.2 Level AA.
-              </p>
-
-              <p>
-                As the website develops, we intend to review accessibility as
-                part of design, content, development and maintenance work.
+                We recognise that accessibility needs differ between
+                users and that accessibility requires ongoing review,
+                testing and improvement.
               </p>
             </Section>
 
-            <Section id="measures" title="3. Measures We Take">
+            <Section
+              id="standard"
+              title="2. Accessibility Standard"
+            >
               <p>
-                Measures intended to support website accessibility include:
+                We aim to improve the website with reference to the
+                Web Content Accessibility Guidelines, commonly known
+                as WCAG.
+              </p>
+
+              <p>
+                Our current objective is to work toward alignment with
+                WCAG 2.2 Level AA where reasonably possible.
+              </p>
+
+              <p>
+                This statement does not represent that every page,
+                component or third-party service has been
+                independently audited or formally certified as fully
+                conforming to WCAG 2.2 Level AA.
+              </p>
+
+              <p>
+                As the website develops, we intend to review
+                accessibility as part of design, content, development
+                and maintenance work.
+              </p>
+            </Section>
+
+            <Section
+              id="measures"
+              title="3. Measures We Take"
+            >
+              <p>
+                Measures intended to support website accessibility
+                include:
               </p>
 
               <BulletList
@@ -304,10 +342,13 @@ export default function AccessibilityPage() {
               />
             </Section>
 
-            <Section id="features" title="4. Website Accessibility Features">
+            <Section
+              id="features"
+              title="4. Website Accessibility Features"
+            >
               <p>
-                Depending on the page or feature being used, the website may
-                provide:
+                Depending on the page or feature being used, the
+                website may provide:
               </p>
 
               <BulletList
@@ -325,8 +366,9 @@ export default function AccessibilityPage() {
               />
 
               <p>
-                Some accessibility features may depend on your browser, device,
-                operating system or assistive technology.
+                Some accessibility features may depend on your
+                browser, device, operating system or assistive
+                technology.
               </p>
             </Section>
 
@@ -335,8 +377,8 @@ export default function AccessibilityPage() {
               title="5. Browser and Assistive-Technology Compatibility"
             >
               <p>
-                The website is intended to work with current versions of
-                commonly used browsers, including:
+                The website is intended to work with current versions
+                of commonly used browsers, including:
               </p>
 
               <BulletList
@@ -350,22 +392,26 @@ export default function AccessibilityPage() {
               />
 
               <p>
-                The website may also be used with keyboard navigation, screen
-                magnification, browser zoom, voice-control software and
-                screen-reading technologies.
+                The website may also be used with keyboard navigation,
+                screen magnification, browser zoom, voice-control
+                software and screen-reading technologies.
               </p>
 
               <p>
-                Older browsers, unsupported operating systems or unusual
-                browser configurations may not display or operate every feature
-                correctly.
+                Older browsers, unsupported operating systems or
+                unusual browser configurations may not display or
+                operate every feature correctly.
               </p>
             </Section>
 
-            <Section id="limitations" title="6. Known Limitations">
+            <Section
+              id="limitations"
+              title="6. Known Limitations"
+            >
               <p>
-                Although we are working to improve accessibility, some areas may
-                not yet provide an ideal experience for every visitor.
+                Although we are working to improve accessibility, some
+                areas may not yet provide an ideal experience for
+                every visitor.
               </p>
 
               <p>Potential limitations may include:</p>
@@ -383,9 +429,9 @@ export default function AccessibilityPage() {
               />
 
               <p>
-                Identification of a limitation does not mean that every visitor
-                will experience it. We use feedback and testing to prioritise
-                improvements.
+                Identification of a limitation does not mean that every
+                visitor will experience it. We use feedback and testing
+                to prioritise improvements.
               </p>
             </Section>
 
@@ -394,8 +440,8 @@ export default function AccessibilityPage() {
               title="7. Third-Party Content and Services"
             >
               <p>
-                The website may link to or integrate services operated by third
-                parties, including:
+                The website may link to or integrate services operated
+                by third parties, including:
               </p>
 
               <BulletList
@@ -410,37 +456,46 @@ export default function AccessibilityPage() {
               />
 
               <p>
-                We cannot guarantee the accessibility of third-party websites,
-                applications or embedded content that we do not control.
+                We cannot guarantee the accessibility of third-party
+                websites, applications or embedded content that we do
+                not control.
               </p>
 
               <p>
                 Visitors experiencing an accessibility problem with a
-                third-party service may contact us, and we will try to provide
-                an alternative method where reasonably possible.
+                third-party service may contact us, and we will try to
+                provide an alternative method where reasonably
+                possible.
               </p>
             </Section>
 
-            <Section id="documents" title="8. Documents and Downloadable Files">
+            <Section
+              id="documents"
+              title="8. Documents and Downloadable Files"
+            >
               <p>
-                Some information may be supplied in PDF, Microsoft Word,
-                spreadsheet, image or other downloadable formats.
+                Some information may be supplied in PDF, Microsoft
+                Word, spreadsheet, image or other downloadable
+                formats.
               </p>
 
               <p>
                 We aim to make newly created documents accessible where
-                reasonably possible, but some existing or third-party documents
-                may not be fully compatible with all assistive technologies.
+                reasonably possible, but some existing or third-party
+                documents may not be fully compatible with all
+                assistive technologies.
               </p>
 
               <p>
                 A visitor who cannot access a document may request the
-                information in another reasonable format by contacting us.
+                information in another reasonable format by contacting
+                us.
               </p>
 
               <p>
-                Please identify the page, document or information required and
-                describe the format that would be most helpful.
+                Please identify the page, document or information
+                required and describe the format that would be most
+                helpful.
               </p>
             </Section>
 
@@ -450,8 +505,9 @@ export default function AccessibilityPage() {
             >
               <p>
                 RUDRON aims to support fair and inclusive recruitment
-                processes. Candidates who require a reasonable adjustment or an
-                alternative method of communication may notify us.
+                processes. Candidates who require a reasonable
+                adjustment or an alternative method of communication
+                may notify us.
               </p>
 
               <p>Examples of assistance may include:</p>
@@ -468,29 +524,34 @@ export default function AccessibilityPage() {
               />
 
               <p>
-                The availability and approval of a workplace or interview
-                adjustment may ultimately depend on the relevant employer.
-                However, we will seek to communicate reasonable requests to the
-                employer where appropriate and authorised by the candidate.
+                The availability and approval of a workplace or
+                interview adjustment may ultimately depend on the
+                relevant employer. However, we will seek to communicate
+                reasonable requests to the employer where appropriate
+                and authorised by the candidate.
               </p>
 
               <p>
-                Candidates are not required to disclose detailed medical
-                information through a general website form. Only information
-                reasonably necessary to understand and support an adjustment
-                request should be provided.
+                Candidates are not required to disclose detailed
+                medical information through a general website form.
+                Only information reasonably necessary to understand
+                and support an adjustment request should be provided.
               </p>
             </Section>
 
-            <Section id="feedback" title="10. Feedback and Assistance">
+            <Section
+              id="feedback"
+              title="10. Feedback and Assistance"
+            >
               <p>
-                We welcome feedback regarding the accessibility of our website
-                and recruitment services.
+                We welcome feedback regarding the accessibility of our
+                website and recruitment services.
               </p>
 
               <p>
-                When reporting an accessibility issue, please provide as much
-                of the following information as you feel comfortable sharing:
+                When reporting an accessibility issue, please provide
+                as much of the following information as you feel
+                comfortable sharing:
               </p>
 
               <BulletList
@@ -505,13 +566,16 @@ export default function AccessibilityPage() {
               />
 
               <p>
-                We will review accessibility feedback and aim to respond within
-                a reasonable period. More complex technical issues may require
-                additional investigation.
+                We will review accessibility feedback and aim to
+                respond within a reasonable period. More complex
+                technical issues may require additional investigation.
               </p>
             </Section>
 
-            <Section id="assessment" title="11. Assessment Approach">
+            <Section
+              id="assessment"
+              title="11. Assessment Approach"
+            >
               <p>
                 Accessibility may be reviewed through a combination of:
               </p>
@@ -529,9 +593,9 @@ export default function AccessibilityPage() {
               />
 
               <p>
-                Automated testing alone cannot identify every accessibility
-                issue. Manual testing and feedback from people using assistive
-                technologies remain important.
+                Automated testing alone cannot identify every
+                accessibility issue. Manual testing and feedback from
+                people using assistive technologies remain important.
               </p>
             </Section>
 
@@ -541,34 +605,54 @@ export default function AccessibilityPage() {
             >
               <p>
                 We may update this Accessibility Statement when website
-                features, accessibility practices, technical standards or
-                business processes change.
+                features, accessibility practices, technical standards
+                or business processes change.
               </p>
 
               <p>
-                The latest version will be published on this page and the
-                &quot;Last updated&quot; date will be revised.
+                The latest version will be published on this page and
+                the &quot;Last updated&quot; date will be revised.
               </p>
             </Section>
 
-            <Section id="contact" title="13. Contact Us">
+            <Section
+              id="contact"
+              title="13. Contact Us"
+            >
               <p>
-                To report an accessibility problem, request assistance or ask
-                for information in an alternative format, contact:
+                To report an accessibility problem, request assistance,
+                request a reasonable adjustment, or ask for information
+                in an alternative format, please contact:
               </p>
 
               <div className="mt-5 rounded-2xl border border-gray-100 bg-[#F8F7F4] p-6 md:p-7">
                 <p className="font-bold text-[#1A1A2E]">
-                  RUDRON Global Talent Solutions
+                  RUDRON Global Talent Solutions LLC
                 </p>
 
                 <p className="mt-4">
-                  General email:{" "}
+                  United States address:{" "}
                   <a
-                    href="mailto:contact@rudrongts.com"
+                    href={mapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="font-medium text-[#9B7429] underline decoration-[#C89B3C]/50 underline-offset-4 hover:text-[#C89B3C]"
                   >
-                    contact@rudrongts.com
+                    {SITE.address.street},{" "}
+                    {SITE.address.city},{" "}
+                    {SITE.address.state}{" "}
+                    {SITE.address.postalCode},{" "}
+                    {SITE.address.country}
+                  </a>
+                </p>
+
+                <p className="mt-2">
+                  General email:{" "}
+                  <a
+                    href={`mailto:${SITE.emails.general}`}
+                    className="font-medium text-[#9B7429] underline decoration-[#C89B3C]/50 underline-offset-4 hover:text-[#C89B3C]"
+                  >
+                    {SITE.emails.general}
                   </a>
                 </p>
 
@@ -585,10 +669,10 @@ export default function AccessibilityPage() {
                 <p className="mt-2">
                   Telephone:{" "}
                   <a
-                    href="tel:+16233092345"
+                    href={`tel:${SITE.phone.tel}`}
                     className="font-medium text-[#9B7429] underline decoration-[#C89B3C]/50 underline-offset-4 hover:text-[#C89B3C]"
                   >
-                    +1 (623) 309-2345
+                    {SITE.phone.display}
                   </a>
                 </p>
 
@@ -614,9 +698,9 @@ export default function AccessibilityPage() {
               </h2>
 
               <p className="mt-3 max-w-2xl text-sm leading-6 text-gray-400">
-                Describe the accessibility issue and we will try to provide an
-                appropriate alternative or help you access the relevant
-                information.
+                Describe the accessibility issue and we will try to
+                provide an appropriate alternative or help you access
+                the relevant information.
               </p>
 
               <div className="mt-6 flex flex-wrap gap-3">
@@ -645,7 +729,6 @@ export default function AccessibilityPage() {
           </article>
         </div>
       </main>
-
     </>
   );
 }

@@ -1,436 +1,1188 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+
+import { SITE } from "@/lib/site";
+
+const SITE_URL = SITE.url;
+const LAST_UPDATED = "September 10, 2026";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
+
   description:
-    "Learn how RUDRON Global Talent Solutions LLP collects, uses, shares, and protects personal information through its recruitment and talent solutions services.",
+    "Learn how RUDRON Global Talent Solutions LLC collects, uses, shares, stores and protects personal information through its recruitment and talent solutions services.",
+
   alternates: {
-    canonical: "https://www.rudrongts.com/privacy-policy",
+    canonical: `${SITE_URL}/privacy-policy`,
   },
-  robots: { index: true, follow: true },
+
+  openGraph: {
+    type: "website",
+    url: `${SITE_URL}/privacy-policy`,
+    siteName: SITE.name,
+    title: "Privacy Policy | RUDRON Global Talent Solutions",
+    description:
+      "Learn how RUDRON Global Talent Solutions LLC handles personal information relating to candidates, clients, website visitors and recruitment services.",
+    images: [
+      {
+        url: `${SITE_URL}/og-image.png`,
+        width: 1200,
+        height: 630,
+        alt: SITE.name,
+      },
+    ],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Privacy Policy | RUDRON Global Talent Solutions",
+    description:
+      "Information about how RUDRON Global Talent Solutions LLC collects, uses and protects personal information.",
+    images: [`${SITE_URL}/og-image.png`],
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
-const LAST_UPDATED = "May 16, 2026";
-
-type PolicyBlock =
-  | { type: "paragraph" | "subheading"; text: string }
-  | { type: "list"; items: string[] };
-
-interface PolicySection {
+interface SectionProps {
   id: string;
   title: string;
-  blocks: PolicyBlock[];
+  children: React.ReactNode;
 }
 
-const policySections: PolicySection[] = [
-  {
-    "id": "section-1",
-    "title": "1. What Information Do We Collect?",
-    "blocks": [
-      {
-        "type": "paragraph",
-        "text": "Personal information you disclose to us In Short: We collect personal information that you provide to us. We collect personal information that you voluntarily provide to us when you express an interest in obtaining information about us or our products and Services, when you participate in activities on the Services, or otherwise when you contact us. Personal Information Provided by You. The personal information that we collect depends on the context of your interactions with us and the Services, the choices you make, and the products and features you use. The personal information we collect may include the following:"
-      },
-      {
-        "type": "list",
-        "items": [
-          "names",
-          "phone numbers",
-          "email addresses",
-          "job titles",
-          "resume / cv uploads",
-          "employment history",
-          "location",
-          "company information (clients)",
-          "calendly / appointment data",
-          "cookies & analytics",
-          "ip address",
-          "device/browser info",
-          "contact forms Sensitive Information. We do not process sensitive information. All personal information that you provide to us must be true, complete, and accurate, and you must notify us of any changes to such personal information. Information automatically collected In Short: Some information — such as your Internet Protocol (IP) address and/or browser and device characteristics — is collected automatically when you visit our Services. We automatically collect certain information when you visit, use, or navigate the Services. This information does not reveal your specific identity (like your name or contact information) but may include device and usage information, such as your IP address, browser and device characteristics, operating system, language preferences, referring URLs, device name, country, location, information about how and when you use our Services, and other technical information. This information is primarily needed to maintain the security and operation of our Services, and for our internal analytics and reporting purposes. Like many businesses, we also collect information through cookies and similar technologies. You can find out more about this in our Cookie Notice: https://www.rudrongts.com/cookie-policy. The information we collect includes:",
-          "Log and Usage Data. Log and usage data is service-related, diagnostic, usage, and performance information our servers automatically collect when you access or use our Services and which we record in log files. Depending on how you interact with us, this log data may include your IP address, device information, browser type, and settings and information about your activity in the Services (such as the date/time stamps associated with your usage, pages and files viewed, searches, and other actions you take such as which features you use), device event information (such as system activity, error reports (sometimes called \"crash dumps\"), and hardware settings).",
-          "Device Data. We collect device data such as information about your computer, phone, tablet, or other device you use to access the Services. Depending on the device used, this device data may include information such as your IP address (or proxy server), device and application identification numbers, location, browser type, hardware model, Internet service provider and/or mobile carrier, operating system, and system configuration information.",
-          "Location Data. We collect location data such as information about your device's location, which can be either precise or imprecise. How much information we collect depends on the type and settings of the device you use to access the Services. For example, we may use GPS and other technologies to collect geolocation data that tells us your current location (based on your IP address). You can opt out of allowing us to collect this information either by refusing access to the information or by disabling your Location setting on your device. However, if you choose to opt out, you may not be able to use certain aspects of the Services.",
-          "Pages visited.",
-          "Time spent.",
-          "Referring website. Information collected from other sources In Short: We may collect limited data from public databases, marketing partners, and other outside sources. In order to enhance our ability to provide relevant marketing, offers, and services to you and update our records, we may obtain information about you from other sources, such as public databases, joint marketing partners, affiliate programs, data providers, and from other third parties. This information includes mailing addresses, job titles, email addresses, phone numbers, intent data (or user behavior data), Internet Protocol (IP) addresses, social media profiles, social media URLs, and custom profiles, for purposes of targeted advertising and event promotion."
-        ]
-      }
-    ]
-  },
-  {
-    "id": "section-2",
-    "title": "2. How Do We Process Your Information?",
-    "blocks": [
-      {
-        "type": "paragraph",
-        "text": "In Short: We process your information to provide, improve, and administer our Services, communicate with you, for security and fraud prevention, and to comply with law. We process the personal information for the following purposes listed below. We may also process your information for other purposes only with your prior explicit consent. We process your personal information for a variety of reasons, depending on how you interact with our Services, including:"
-      },
-      {
-        "type": "list",
-        "items": [
-          "To deliver and facilitate delivery of services to the user. We may process your information to provide you with the requested service.",
-          "To respond to user inquiries/offer support to users. We may process your information to respond to your inquiries and solve any potential issues you might have with the requested service.",
-          "To send administrative information to you. We may process your information to send you details about our products and services, changes to our terms and policies, and other similar information.",
-          "To request feedback. We may process your information when necessary to request feedback and to contact you about your use of our Services.",
-          "To send you marketing and promotional communications. We may process the personal information you send to us for our marketing purposes, if this is in accordance with your marketing preferences. You can opt out of our marketing emails at any time. For more information, see \"WHAT ARE YOUR PRIVACY RIGHTS?\" below.",
-          "To protect our Services. We may process your information as part of our efforts to keep our Services safe and secure, including fraud monitoring and prevention.",
-          "To identify usage trends. We may process information about how you use our Services to better understand how they are being used so we can improve them.",
-          "To determine the effectiveness of our marketing and promotional campaigns. We may process your information to better understand how to provide marketing and promotional campaigns that are most relevant to you.",
-          "To save or protect an individual's vital interest. We may process your information when necessary to save or protect an individual’s vital interest, such as to prevent harm.",
-          "Candidate evaluation and recruitment processes.",
-          "Job placement and talent acquisition services.",
-          "Interview coordination and communication.",
-          "Client hiring support and workforce solutions.",
-          "Business development and relationship management.",
-          "Career opportunity notifications.",
-          "Candidate sourcing, recruitment, talent acquisition, and workforce placement services.. We use personal information to identify, evaluate, communicate with, and connect qualified candidates with employers. This information also helps us provide recruitment, staffing, hiring support, interview coordination, and workforce solutions to our clients and candidates."
-        ]
-      }
-    ]
-  },
-  {
-    "id": "section-3",
-    "title": "3. What Legal Bases Do We Rely on to Process Your Information?",
-    "blocks": [
-      {
-        "type": "paragraph",
-        "text": "In Short: We only process your personal information when we believe it is necessary and we have a valid legal reason (i.e., legal basis) to do so under applicable law, like with your consent, to comply with laws, to provide you with services to enter into or fulfill our contractual obligations, to protect your rights, or to fulfill our legitimate business interests. If you are located in the EU or UK, this section applies to you. The General Data Protection Regulation (GDPR) and UK GDPR require us to explain the valid legal bases we rely on in order to process your personal information. As such, we may rely on the following legal bases to process your personal information:"
-      },
-      {
-        "type": "list",
-        "items": [
-          "Consent. We may process your information if you have given us permission (i.e., consent) to use your personal information for a specific purpose. You can withdraw your consent at any time. Learn more about withdrawing your consent.",
-          "Performance of a Contract. We may process your personal information when we believe it is necessary to fulfill our contractual obligations to you, including providing our Services or at your request prior to entering into a contract with you.",
-          "Legitimate Interests. We may process your information when we believe it is reasonably necessary to achieve our legitimate business interests and those interests do not outweigh your interests and fundamental rights and freedoms. For example, we may process your personal information for some of the purposes described in order to:",
-          "Send users information about special offers and discounts on our products and services",
-          "Analyze how our Services are used so we can improve them to engage and retain users",
-          "Support our marketing activities",
-          "Diagnose problems and/or prevent fraudulent activities",
-          "Understand how our users use our products and services so we can improve user experience",
-          "In order to connect qualified candidates with employers, support recruitment and hiring processes, maintain talent pipelines, and provide efficient staffing and workforce solutions to clients.",
-          "Legal Obligations. We may process your information where we believe it is necessary for compliance with our legal obligations, such as to cooperate with a law enforcement body or regulatory agency, exercise or defend our legal rights, or disclose your information as evidence in litigation in which we are involved.",
-          "Vital Interests. We may process your information where we believe it is necessary to protect your vital interests or the vital interests of a third party, such as situations involving potential threats to the safety of any person. If you are located in Canada, this section applies to you. We may process your information if you have given us specific permission (i.e., express consent) to use your personal information for a specific purpose, or in situations where your permission can be inferred (i.e., implied consent). You can withdraw your consent at any time. In some exceptional cases, we may be legally permitted under applicable law to process your information without your consent, including, for example:",
-          "If collection is clearly in the interests of an individual and consent cannot be obtained in a timely way",
-          "For investigations and fraud detection and prevention",
-          "For business transactions provided certain conditions are met",
-          "If it is contained in a witness statement and the collection is necessary to assess, process, or settle an insurance claim",
-          "For identifying injured, ill, or deceased persons and communicating with next of kin",
-          "If we have reasonable grounds to believe an individual has been, is, or may be victim of financial abuse",
-          "If it is reasonable to expect collection and use with consent would compromise the availability or the accuracy of the information and the collection is reasonable for purposes related to investigating a breach of an agreement or a contravention of the laws of Canada or a province",
-          "If disclosure is required to comply with a subpoena, warrant, court order, or rules of the court relating to the production of records",
-          "If it was produced by an individual in the course of their employment, business, or profession and the collection is consistent with the purposes for which the information was produced",
-          "If the collection is solely for journalistic, artistic, or literary purposes",
-          "If the information is publicly available and is specified by the regulations",
-          "We may disclose de-identified information for approved research or statistics projects, subject to ethics oversight and confidentiality commitments"
-        ]
-      }
-    ]
-  },
-  {
-    "id": "section-4",
-    "title": "4. When and With Whom Do We Share Your Personal Information?",
-    "blocks": [
-      {
-        "type": "paragraph",
-        "text": "In Short: We may share information in specific situations described in this section and/or with the following categories of third parties. Vendors, Consultants, and Other Third-Party Service Providers. We may share your data with third-party vendors, service providers, contractors, or agents (\"third parties\") who perform services for us or on our behalf and require access to such information to do that work. We have contracts in place with our third parties, which are designed to help safeguard your personal information. This means that they cannot do anything with your personal information unless we have instructed them to do it. They will also not share your personal information with any organization apart from us. They also commit to protect the data they hold on our behalf and to retain it for the period we instruct. The categories of third parties we may share personal information with are as follows:"
-      },
-      {
-        "type": "list",
-        "items": [
-          "Communication & Collaboration Tools",
-          "Data Analytics Services",
-          "Data Storage Service Providers",
-          "Sales & Marketing Tools",
-          "Social Networks",
-          "Website Hosting Service Providers",
-          "Performance Monitoring Tools",
-          "Cloud Computing Services",
-          "Recruitment Clients / Hiring Companies",
-          "Scheduling / Appointment Management Services",
-          "Recruitment Management / ATS / CRM Systems We also may need to share your personal information in the following situations:",
-          "Business Transfers. We may share or transfer your information in connection with, or during negotiations of, any merger, sale of company assets, financing, or acquisition of all or a portion of our business to another company.",
-          "Business Partners. We may share your information with our business partners to offer you certain products, services, or promotions."
-        ]
-      }
-    ]
-  },
-  {
-    "id": "section-5",
-    "title": "5. Do We Use Cookies and Other Tracking Technologies?",
-    "blocks": [
-      {
-        "type": "paragraph",
-        "text": "In Short: We may use cookies and other tracking technologies to collect and store your information. We may use cookies and similar tracking technologies (like web beacons and pixels) to gather information when you interact with our Services. Some online tracking technologies help us maintain the security of our Services, prevent crashes, fix bugs, save your preferences, and assist with basic site functions. We also permit third parties and service providers to use online tracking technologies on our Services for analytics and advertising, including to help manage and display advertisements, to tailor advertisements to your interests, or to send abandoned shopping cart reminders (depending on your communication preferences). The third parties and service providers use their technology to provide advertising about products and services tailored to your interests which may appear either on our Services or on other websites. To the extent these online tracking technologies are deemed to be a \"sale\"/\"sharing\" (which includes targeted advertising, as defined under the applicable laws) under applicable US state laws, you can opt out of these online tracking technologies by submitting a request as described below under section \"DO UNITED STATES RESIDENTS HAVE SPECIFIC PRIVACY RIGHTS?\" Specific information about how we use such technologies and how you can refuse certain cookies is set out in our Cookie Notice: https://www.rudrongts.com/cookie-policy. Google Analytics We may share your information with Google Analytics to track and analyze the use of the Services. To opt out of being tracked by Google Analytics across the Services, visit https://tools.google.com/dlpage/gaoptout. For more information on the privacy practices of Google, please visit the Google Privacy & Terms page."
-      }
-    ]
-  },
-  {
-    "id": "section-6",
-    "title": "6. Is Your Information Transferred Internationally?",
-    "blocks": [
-      {
-        "type": "paragraph",
-        "text": "In Short: We may transfer, store, and process your information in countries other than your own. Our servers are located in India. Regardless of your location, please be aware that your information may be transferred to, stored by, and processed by us in our facilities and in the facilities of the third parties with whom we may share your personal information (see \"WHEN AND WITH WHOM DO WE SHARE YOUR PERSONAL INFORMATION?\" above), including facilities in the United States, United Arab Emirates, Canada, Germany, Ireland, United Kingdom, and other countries. If you are a resident in the European Economic Area (EEA), United Kingdom (UK), or Switzerland, then these countries may not necessarily have data protection laws or other similar laws as comprehensive as those in your country. However, we will take all necessary measures to protect your personal information in accordance with this Privacy Notice and applicable law. European Commission's Standard Contractual Clauses: We have implemented measures to protect your personal information, including by using the European Commission's Standard Contractual Clauses for transfers of personal information between our group companies and between us and our third-party providers. These clauses require all recipients to protect all personal information that they process originating from the EEA or UK in accordance with European data protection laws and regulations.Our Standard Contractual Clauses can be provided upon request.We have implemented similar appropriate safeguards with our third-party service providers and partners and further details can be provided upon request."
-      }
-    ]
-  },
-  {
-    "id": "section-7",
-    "title": "7. How Long Do We Keep Your Information?",
-    "blocks": [
-      {
-        "type": "paragraph",
-        "text": "In Short: We keep your information for as long as necessary to fulfill the purposes outlined in this Privacy Notice unless otherwise required by law. We will only keep your personal information for as long as it is necessary for the purposes set out in this Privacy Notice, unless a longer retention period is required or permitted by law (such as tax, accounting, or other legal requirements). No purpose in this notice will require us keeping your personal information for longer than 3 years. When we have no ongoing legitimate business need to process your personal information, we will either delete or anonymize such information, or, if this is not possible (for example, because your personal information has been stored in backup archives), then we will securely store your personal information and isolate it from any further processing until deletion is possible."
-      }
-    ]
-  },
-  {
-    "id": "section-8",
-    "title": "8. How Do We Keep Your Information Safe?",
-    "blocks": [
-      {
-        "type": "paragraph",
-        "text": "In Short: We aim to protect your personal information through a system of organizational and technical security measures. We have implemented appropriate and reasonable technical and organizational security measures designed to protect the security of any personal information we process. However, despite our safeguards and efforts to secure your information, no electronic transmission over the Internet or information storage technology can be guaranteed to be 100% secure, so we cannot promise or guarantee that hackers, cybercriminals, or other unauthorized third parties will not be able to defeat our security and improperly collect, access, steal, or modify your information. Although we will do our best to protect your personal information, transmission of personal information to and from our Services is at your own risk. You should only access the Services within a secure environment."
-      }
-    ]
-  },
-  {
-    "id": "section-9",
-    "title": "9. Do We Collect Information From Minors?",
-    "blocks": [
-      {
-        "type": "paragraph",
-        "text": "In Short: We do not knowingly collect data from or market to children under 18 years of age or the equivalent age as specified by law in your jurisdiction. We do not knowingly collect, solicit data from, or market to children under 18 years of age or the equivalent age as specified by law in your jurisdiction, nor do we knowingly sell such personal information. By using the Services, you represent that you are at least 18 or the equivalent age as specified by law in your jurisdiction or that you are the parent or guardian of such a minor and consent to such minor dependent’s use of the Services. If we learn that personal information from users less than 18 years of age or the equivalent age as specified by law in your jurisdiction has been collected, we will deactivate the account and take reasonable measures to promptly delete such data from our records. If you become aware of any data we may have collected from children under age 18 or the equivalent age as specified by law in your jurisdiction, please contact us at contact@rudrongts.com."
-      }
-    ]
-  },
-  {
-    "id": "section-10",
-    "title": "10. What Are Your Privacy Rights?",
-    "blocks": [
-      {
-        "type": "paragraph",
-        "text": "In Short: Depending on your state of residence in the US or in some regions, such as the European Economic Area (EEA), United Kingdom (UK), Switzerland, and Canada, you have rights that allow you greater access to and control over your personal information.You may review, change, or terminate your account at any time, depending on your country, province, or state of residence. In some regions (like the EEA, UK, Switzerland, and Canada), you have certain rights under applicable data protection laws. These may include the right (i) to request access and obtain a copy of your personal information, (ii) to request rectification or erasure; (iii) to restrict the processing of your personal information; (iv) if applicable, to data portability; and (v) not to be subject to automated decision-making. If a decision that produces legal or similarly significant effects is made solely by automated means, we will inform you, explain the main factors, and offer a simple way to request human review. In certain circumstances, you may also have the right to object to the processing of your personal information. You can make such a request by contacting us by using the contact details provided in the section \"HOW CAN YOU CONTACT US ABOUT THIS NOTICE?\" below. We will consider and act upon any request in accordance with applicable data protection laws. If you are located in the EEA or UK and you believe we are unlawfully processing your personal information, you also have the right to complain to your Member State data protection authority or UK data protection authority. If you are located in Switzerland, you may contact the Federal Data Protection and Information Commissioner. Withdrawing your consent: If we are relying on your consent to process your personal information, which may be express and/or implied consent depending on the applicable law, you have the right to withdraw your consent at any time. You can withdraw your consent at any time by contacting us by using the contact details provided in the section \"HOW CAN YOU CONTACT US ABOUT THIS NOTICE?\" below. However, please note that this will not affect the lawfulness of the processing before its withdrawal nor, when applicable law allows, will it affect the processing of your personal information conducted in reliance on lawful processing grounds other than consent. Opting out of marketing and promotional communications: You can unsubscribe from our marketing and promotional communications at any time by replying \"STOP\" or \"UNSUBSCRIBE\" to the SMS messages that we send, or by contacting us using the details provided in the section \"HOW CAN YOU CONTACT US ABOUT THIS NOTICE?\" below. You will then be removed from the marketing lists. However, we may still communicate with you — for example, to send you service-related messages that are necessary for the administration and use of your account, to respond to service requests, or for other non-marketing purposes. No mobile information will be shared with third parties or affiliates for marketing or promotional purposes. Information sharing to subcontractors in support services, such as customer service, is permitted. All other use case categories exclude text messaging originator opt-in data and consent; this information will not be shared with third parties. Cookies and similar technologies: Most Web browsers are set to accept cookies by default. If you prefer, you can usually choose to set your browser to remove cookies and to reject cookies. If you choose to remove cookies or reject cookies, this could affect certain features or services of our Services. For further information, please see our Cookie Notice: https://www.rudrongts.com/cookie-policy. If you have questions or comments about your privacy rights, you may email us at contact@rudrongts.com."
-      }
-    ]
-  },
-  {
-    "id": "section-11",
-    "title": "11. Controls for Do-Not-Track Features",
-    "blocks": [
-      {
-        "type": "paragraph",
-        "text": "Most web browsers and some mobile operating systems and mobile applications include a Do-Not-Track (\"DNT\") feature or setting you can activate to signal your privacy preference not to have data about your online browsing activities monitored and collected. At this stage, no uniform technology standard for recognizing and implementing DNT signals has been finalized. As such, we do not currently respond to DNT browser signals or any other mechanism that automatically communicates your choice not to be tracked online. If a standard for online tracking is adopted that we must follow in the future, we will inform you about that practice in a revised version of this Privacy Notice. California law requires us to let you know how we respond to web browser DNT signals. Because there currently is not an industry or legal standard for recognizing or honoring DNT signals, we do not respond to them at this time."
-      }
-    ]
-  },
-  {
-    "id": "section-12",
-    "title": "12. Do United States Residents Have Specific Privacy Rights?",
-    "blocks": [
-      {
-        "type": "paragraph",
-        "text": "In Short: If you are a resident of California, Colorado, Connecticut, Delaware, Florida, Indiana, Iowa, Kentucky, Maryland, Minnesota, Montana, Nebraska, New Hampshire, New Jersey, Oregon, Rhode Island, Tennessee, Texas, Utah, or Virginia, you may have the right to request access to and receive details about the personal information we maintain about you and how we have processed it, correct inaccuracies, get a copy of, or delete your personal information. You may also have the right to withdraw your consent to our processing of your personal information. These rights may be limited in some circumstances by applicable law. More information is provided below. Categories of Personal Information We Collect The table below shows the categories of personal information we have collected in the past twelve (12) months. The table includes illustrative examples of each category and does not reflect the personal information we collect from you. For a comprehensive inventory of all personal information we process, please refer to the section \"WHAT INFORMATION DO WE COLLECT?\" Category Examples Collected A. Identifiers Contact details, such as real name, alias, postal address, telephone or mobile contact YES number, unique personal identifier, online identifier, Internet Protocol address, email address, and account name B. Personal information as Name, contact information, defined in the California education, employment, Customer Records statute employment history, and financial YES information C. Protected classification Gender, age, date of birth, race characteristics under state or and ethnicity, national origin, federal law marital status, and other YES demographic data D. Commercial information Transaction information, purchase history, financial details, and payment information NO E. Biometric information Fingerprints and voiceprints NO F. Internet or other similar Browsing history, search history, network activity online behavior, interest data, and interactions with our and other YES websites, applications, systems, and advertisements G. Geolocation data Device location YES H. Audio, electronic, sensory, or Images and audio, video or call similar information recordings created in connection with our business activities NO I. Professional or employment- Business contact details in order related information to provide you our Services at a business level or job title, work YES history, and professional qualifications if you apply for a job with us J. Education Information Student records and directory information NO K. Inferences drawn from Inferences drawn from any of the collected personal information collected personal information listed above to create a profile or NO summary about, for example, an individual’s preferences and characteristics L. Sensitive personal Information NO We may also collect other personal information outside of these categories through instances where you interact with us in person, online, or by phone or mail in the context of:"
-      },
-      {
-        "type": "list",
-        "items": [
-          "Receiving help through our customer support channels;",
-          "Participation in customer surveys or contests; and",
-          "Facilitation in the delivery of our Services and to respond to your inquiries. We will use and retain the collected personal information as needed to provide the Services or for:",
-          "Category A - 3 years",
-          "Category B - 3 years",
-          "Category C - 3 years",
-          "Category F - 1 year",
-          "Category G - 1 year",
-          "Category I - 3 years Sources of Personal Information Learn more about the sources of personal information we collect in \"WHAT INFORMATION DO WE COLLECT?\" How We Use and Share Personal Information Learn more about how we use your personal information in the section, \"HOW DO WE PROCESS YOUR INFORMATION?\" We collect and share your personal information through:",
-          "Targeting cookies/Marketing cookies",
-          "Social media cookies",
-          "Beacons/Pixels/Tags Will your information be shared with anyone else? We may disclose your personal information with our service providers pursuant to a written contract between us and each service provider. Learn more about how we disclose personal information to in the section, \"WHEN AND WITH WHOM DO WE SHARE YOUR PERSONAL INFORMATION?\" We may use your personal information for our own business purposes, such as for undertaking internal research for technological development and demonstration. This is not considered to be \"selling\" of your personal information. We have not sold or shared any personal information to third parties for a business or commercial purpose in the preceding twelve (12) months. We have disclosed the following categories of personal information to third parties for a business or commercial purpose in the preceding twelve (12) months:",
-          "Category A. Identifiers",
-          "Category B. Personal information as defined in the California Customer Records law",
-          "Category C. Characteristics of protected classifications under state or federal law",
-          "Category F. Internet or other electronic network activity information",
-          "Category G. Geolocation data",
-          "Category I. Professional or employment-related information The categories of third parties to whom we disclosed personal information for a business or commercial purpose can be found under \"WHEN AND WITH WHOM DO WE SHARE YOUR PERSONAL INFORMATION?\" Your Rights You have rights under certain US state data protection laws. However, these rights are not absolute, and in certain cases, we may decline your request as permitted by law. These rights include:",
-          "Right to know whether or not we are processing your personal data",
-          "Right to access your personal data",
-          "Right to correct inaccuracies in your personal data",
-          "Right to request the deletion of your personal data",
-          "Right to obtain a copy of the personal data you previously shared with us",
-          "Right to non-discrimination for exercising your rights",
-          "Right to opt out of the processing of your personal data if it is used for targeted advertising (or sharing as defined under California’s privacy law), the sale of personal data, or profiling in furtherance of decisions that produce legal or similarly significant effects (\"profiling\") Depending upon the state where you live, you may also have the following rights:",
-          "Right to access the categories of personal data being processed (as permitted by applicable law, including the privacy law in Minnesota)",
-          "Right to obtain a list of the categories of third parties to which we have disclosed personal data (as permitted by applicable law, including the privacy law in California, Delaware, and Maryland)",
-          "Right to obtain a list of specific third parties to which we have disclosed personal data (as permitted by applicable law, including the privacy law in Minnesota and Oregon)",
-          "Right to obtain a list of third parties to which we have sold personal data (as permitted by applicable law, including the privacy law in Connecticut)",
-          "Right to review, understand, question, and depending on where you live, correct how personal data has been profiled (as permitted by applicable law, including the privacy law in Connecticut and Minnesota)",
-          "Right to limit use and disclosure of sensitive personal data (as permitted by applicable law, including the privacy law in California)",
-          "Right to opt out of the collection of sensitive data and personal data collected through the operation of a voice or facial recognition feature (as permitted by applicable law, including the privacy law in Florida) How to Exercise Your Rights To exercise these rights, you can contact us by visiting https://www.rudrongts.com/contact, by emailing us at contact@rudrongts.com, by visiting https://www.rudrongts.com/contact, or by referring to the contact details at the bottom of this document. Under certain US state data protection laws, you can designate an authorized agent to make a request on your behalf. We may deny a request from an authorized agent that does not submit proof that they have been validly authorized to act on your behalf in accordance with applicable laws. Request Verification Upon receiving your request, we will need to verify your identity to determine you are the same person about whom we have the information in our system. We will only use personal information provided in your request to verify your identity or authority to make the request. However, if we cannot verify your identity from the information already maintained by us, we may request that you provide additional information for the purposes of verifying your identity and for security or fraud-prevention purposes. If you submit the request through an authorized agent, we may need to collect additional information to verify your identity before processing your request and the agent will need to provide a written and signed permission from you to submit such request on your behalf. Appeals Under certain US state data protection laws, if we decline to take action regarding your request, you may appeal our decision by emailing us at contact@rudrongts.com. We will inform you in writing of any action taken or not taken in response to the appeal, including a written explanation of the reasons for the decisions. If your appeal is denied, you may submit a complaint to your state attorney general. California \"Shine The Light\" Law California Civil Code Section 1798.83, also known as the \"Shine The Light\" law, permits our users who are California residents to request and obtain from us, once a year and free of charge, information about categories of personal information (if any) we disclosed to third parties for direct marketing purposes and the names and addresses of all third parties with which we shared personal information in the immediately preceding calendar year. If you are a California resident and would like to make such a request, please submit your request in writing to us by using the contact details provided in the section \"HOW CAN YOU CONTACT US ABOUT THIS NOTICE?\""
-        ]
-      }
-    ]
-  },
-  {
-    "id": "section-13",
-    "title": "13. Do Other Regions Have Specific Privacy Rights?",
-    "blocks": [
-      {
-        "type": "paragraph",
-        "text": "In Short: You may have additional rights based on the country you reside in. Australia and New Zealand We collect and process your personal information under the obligations and conditions set by Australia's Privacy Act 1988 and New Zealand's Privacy Act 2020 (Privacy Act). This Privacy Notice satisfies the notice requirements defined in both Privacy Acts, in particular: what personal information we collect from you, from which sources, for which purposes, and other recipients of your personal information. If you do not wish to provide the personal information necessary to fulfill their applicable purpose, it may affect our ability to provide our services, in particular:"
-      },
-      {
-        "type": "list",
-        "items": [
-          "offer you the products or services that you want",
-          "respond to or help with your requests At any time, you have the right to request access to or correction of your personal information. You can make such a request by contacting us by using the contact details provided in the section \"HOW CAN YOU REVIEW, UPDATE, OR DELETE THE DATA WE COLLECT FROM YOU?\" If you believe we are unlawfully processing your personal information, you have the right to submit a complaint about a breach of the Australian Privacy Principles to the Office of the Australian Information Commissioner and a breach of New Zealand's Privacy Principles to the Office of New Zealand Privacy Commissioner. Republic of South Africa At any time, you have the right to request access to or correction of your personal information. You can make such a request by contacting us by using the contact details provided in the section \"HOW CAN YOU REVIEW, UPDATE, OR DELETE THE DATA WE COLLECT FROM YOU?\" If you are unsatisfied with the manner in which we address any complaint with regard to our processing of personal information, you can contact the office of the regulator, the details of which are: The Information Regulator (South Africa) General enquiries: enquiries@inforegulator.org.za Complaints (complete POPIA/PAIA form 5): PAIAComplaints@inforegulator.org.za & POPIAComplaints@inforegulator.org.za"
-        ]
-      }
-    ]
-  },
-  {
-    "id": "section-14",
-    "title": "14. Do We Make Updates to This Notice?",
-    "blocks": [
-      {
-        "type": "paragraph",
-        "text": "In Short: Yes, we will update this notice as necessary to stay compliant with relevant laws. We may update this Privacy Notice from time to time. The updated version will be indicated by an updated \"Revised\" date at the top of this Privacy Notice. If we make material changes to this Privacy Notice, we may notify you either by prominently posting a notice of such changes or by directly sending you a notification. We encourage you to review this Privacy Notice frequently to be informed of how we are protecting your information."
-      }
-    ]
-  },
-  {
-    "id": "section-15",
-    "title": "15. How Can You Contact Us About This Notice?",
-    "blocks": [
-      {
-        "type": "paragraph",
-        "text": "If you have questions or comments about this notice, you may email us at contact@rudrongts.com or contact us by post at: RUDRON Global Talent Solutions"
-      }
-    ]
-  },
-  {
-    "id": "section-16",
-    "title": "16. How Can You Review, Update, or Delete the Data We Collect From You?",
-    "blocks": [
-      {
-        "type": "paragraph",
-        "text": "Based on the applicable laws of your country or state of residence in the US, you may have the right to request access to the personal information we collect from you, details about how we have processed it, correct inaccuracies, or delete your personal information. You may also have the right to withdraw your consent to our processing of your personal information. These rights may be limited in some circumstances by applicable law. To request to review, update, or delete your personal information, please visit: https://www.rudrongts.com/contact."
-      }
-    ]
-  }
-];
-
-function PolicyBlocks({ blocks }: { blocks: PolicyBlock[] }) {
+function Section({
+  id,
+  title,
+  children,
+}: SectionProps) {
   return (
-    <div className="space-y-4 text-[15px] leading-7 text-[#444444]">
-      {blocks.map((block, index) => {
-        if (block.type === "list") {
-          return (
-            <ul key={index} className="space-y-2 pl-1">
-              {block.items.map((item, itemIndex) => (
-                <li key={itemIndex} className="flex gap-3">
-                  <span className="mt-0.5 shrink-0 font-bold text-[#C89B3C]">•</span>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          );
-        }
+    <section
+      id={id}
+      className="mb-10 scroll-mt-28"
+    >
+      <h2 className="mb-4 border-b-2 border-[#C89B3C] pb-2 text-xl font-bold text-[#1A1A2E] md:text-2xl">
+        {title}
+      </h2>
 
-        if (block.type === "subheading") {
-          return (
-            <h3 key={index} className="pt-2 text-base font-bold text-[#1A1A2E]">
-              {block.text}
-            </h3>
-          );
-        }
-
-        return <p key={index}>{block.text}</p>;
-      })}
-    </div>
+      <div className="space-y-4 text-[15px] leading-7 text-[#444444]">
+        {children}
+      </div>
+    </section>
   );
 }
 
+function BulletList({
+  items,
+}: {
+  items: React.ReactNode[];
+}) {
+  return (
+    <ul className="ml-1 space-y-2">
+      {items.map((item, index) => (
+        <li
+          key={index}
+          className="flex items-start gap-3"
+        >
+          <span
+            aria-hidden="true"
+            className="mt-[10px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#C89B3C]"
+          />
+
+          <span>{item}</span>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+const tocItems = [
+  {
+    href: "#scope",
+    label: "Scope",
+  },
+  {
+    href: "#information",
+    label: "Information We Collect",
+  },
+  {
+    href: "#sources",
+    label: "Sources of Information",
+  },
+  {
+    href: "#use",
+    label: "How We Use Information",
+  },
+  {
+    href: "#legal-bases",
+    label: "Legal Bases",
+  },
+  {
+    href: "#sharing",
+    label: "Information Sharing",
+  },
+  {
+    href: "#recruitment",
+    label: "Recruitment Information",
+  },
+  {
+    href: "#ai",
+    label: "AI & Automation",
+  },
+  {
+    href: "#cookies",
+    label: "Cookies & Analytics",
+  },
+  {
+    href: "#international",
+    label: "International Transfers",
+  },
+  {
+    href: "#retention",
+    label: "Data Retention",
+  },
+  {
+    href: "#security",
+    label: "Data Security",
+  },
+  {
+    href: "#children",
+    label: "Children",
+  },
+  {
+    href: "#rights",
+    label: "Your Privacy Rights",
+  },
+  {
+    href: "#us-rights",
+    label: "U.S. Privacy Rights",
+  },
+  {
+    href: "#international-rights",
+    label: "International Privacy Rights",
+  },
+  {
+    href: "#changes",
+    label: "Policy Updates",
+  },
+  {
+    href: "#contact",
+    label: "Contact Us",
+  },
+];
+
 export default function PrivacyPolicyPage() {
+  const mapsUrl =
+    "https://www.google.com/maps/search/?api=1&query=3707+East+Southern+Avenue+Mesa+AZ+85206";
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${SITE_URL}/privacy-policy#webpage`,
+    url: `${SITE_URL}/privacy-policy`,
+    name: "Privacy Policy",
+    description:
+      "Privacy Policy for RUDRON Global Talent Solutions LLC.",
+    isPartOf: {
+      "@id": `${SITE_URL}/#website`,
+    },
+    about: {
+      "@id": `${SITE_URL}/#organization`,
+    },
+    inLanguage: "en-US",
+    dateModified: "2026-09-10",
+  };
+
   return (
     <>
       <main className="min-h-screen bg-white">
-        <header className="bg-[#1A1A2E] px-6 py-32 text-center">
-          <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-[#C89B3C]">
-            Legal
-          </p>
-          <h1 className="mb-4 text-4xl font-bold text-white md:text-5xl">
-            Privacy Policy
-          </h1>
-          <p className="text-sm text-gray-400">Last updated: {LAST_UPDATED}</p>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(structuredData),
+          }}
+        />
+
+        {/* Hero */}
+        <header className="relative overflow-hidden bg-[#050D18] px-6 pb-20 pt-32 text-center md:pb-24 md:pt-40">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 opacity-[0.08]"
+            style={{
+              backgroundImage:
+                "radial-gradient(circle at 50% 0%, #C89B3C 0%, transparent 45%)",
+            }}
+          />
+
+          <div
+            aria-hidden="true"
+            className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#C89B3C] to-transparent opacity-50"
+          />
+
+          <div className="relative mx-auto max-w-4xl">
+            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.28em] text-[#C89B3C]">
+              Legal
+            </p>
+
+            <h1 className="mb-5 text-4xl font-bold tracking-tight text-white md:text-5xl lg:text-6xl">
+              Privacy Policy
+            </h1>
+
+            <p className="mx-auto max-w-2xl text-sm leading-6 text-gray-400 md:text-base">
+              This Privacy Policy explains how RUDRON Global Talent
+              Solutions LLC collects, uses, stores, shares and protects
+              personal information.
+            </p>
+
+            <p className="mt-5 text-xs uppercase tracking-wider text-gray-500">
+              Last updated: {LAST_UPDATED}
+            </p>
+          </div>
         </header>
 
-        <div className="mx-auto max-w-7xl px-6 py-14 lg:flex lg:gap-12">
+        <div className="mx-auto max-w-7xl px-5 py-14 sm:px-6 lg:flex lg:gap-14 lg:px-8 lg:py-20">
+          {/* Contents */}
           <aside className="hidden w-72 shrink-0 lg:block">
-            <div className="sticky top-24 max-h-[calc(100vh-7rem)] overflow-y-auto rounded-xl border border-gray-100 bg-[#F8F7F4] p-6">
-              <p className="mb-4 text-xs font-bold uppercase tracking-widest text-[#C89B3C]">
+            <div className="sticky top-28 max-h-[calc(100vh-8rem)] overflow-y-auto rounded-2xl border border-gray-100 bg-[#F8F7F4] p-6 shadow-sm">
+              <p className="mb-5 text-xs font-bold uppercase tracking-[0.2em] text-[#C89B3C]">
                 Contents
               </p>
-              <nav aria-label="Privacy policy contents">
+
+              <nav aria-label="Privacy Policy contents">
                 <ul className="space-y-2.5">
-                  {policySections.map((section) => (
-                    <li key={section.id}>
-                      <a
-                        href={`#${section.id}`}
-                        className="block text-[13px] leading-5 text-[#555555] transition-colors hover:text-[#C89B3C]"
-                      >
-                        {section.title}
-                      </a>
-                    </li>
-                  ))}
+                  {tocItems.map(
+                    ({ href, label }) => (
+                      <li key={href}>
+                        <a
+                          href={href}
+                          className="block text-[13px] leading-5 text-[#555555] transition-colors duration-200 hover:text-[#C89B3C]"
+                        >
+                          {label}
+                        </a>
+                      </li>
+                    )
+                  )}
                 </ul>
               </nav>
             </div>
           </aside>
 
+          {/* Policy */}
           <article className="min-w-0 flex-1">
-            <section className="mb-12 rounded-2xl border border-gray-100 bg-[#F8F7F4] p-6 md:p-8">
-              <p className="mb-4 text-[15px] leading-7 text-[#444444]">
-                This Privacy Notice for RUDRON Global Talent Solutions LLP, doing business as RUDRON GTS
-                (&quot;we,&quot; &quot;us,&quot; or &quot;our&quot;), explains how and why we may access,
-                collect, store, use, and share your personal information when you use our Services.
+            <div className="mb-10 rounded-2xl border border-[#C89B3C]/20 bg-[#C89B3C]/[0.06] p-6 md:p-7">
+              <p className="text-[15px] leading-7 text-[#444444]">
+                This Privacy Policy applies to information processed by
+                RUDRON Global Talent Solutions LLC
+                (&quot;RUDRON&quot;, &quot;we&quot;, &quot;us&quot;
+                or &quot;our&quot;) through our website, recruitment
+                services, communications and related business
+                activities.
               </p>
-              <ul className="space-y-2 text-[15px] leading-7 text-[#444444]">
-                <li className="flex gap-3"><span className="font-bold text-[#C89B3C]">•</span><span>Visit <a href="https://www.rudrongts.com" className="text-[#C89B3C] underline underline-offset-2">www.rudrongts.com</a> or another website that links to this Privacy Notice.</span></li>
-                <li className="flex gap-3"><span className="font-bold text-[#C89B3C]">•</span><span>Use our global AEC and MEP recruitment, talent acquisition, staffing, hiring support, workforce consulting, and career opportunity services.</span></li>
-                <li className="flex gap-3"><span className="font-bold text-[#C89B3C]">•</span><span>Engage with us in other related ways, including marketing communications or events.</span></li>
-              </ul>
+
               <p className="mt-4 text-[15px] leading-7 text-[#444444]">
-                If you do not agree with our policies and practices, please do not use our Services. Questions may be sent to <a href="mailto:contact@rudrongts.com" className="text-[#C89B3C] underline underline-offset-2">contact@rudrongts.com</a>.
+                It should be read together with our{" "}
+                <Link
+                  href="/terms"
+                  className="font-medium text-[#9B7429] underline decoration-[#C89B3C]/50 underline-offset-4 hover:text-[#C89B3C]"
+                >
+                  Terms &amp; Conditions
+                </Link>
+                ,{" "}
+                <Link
+                  href="/cookie-policy"
+                  className="font-medium text-[#9B7429] underline decoration-[#C89B3C]/50 underline-offset-4 hover:text-[#C89B3C]"
+                >
+                  Cookie Policy
+                </Link>{" "}
+                and{" "}
+                <Link
+                  href="/disclaimer"
+                  className="font-medium text-[#9B7429] underline decoration-[#C89B3C]/50 underline-offset-4 hover:text-[#C89B3C]"
+                >
+                  Website Disclaimer
+                </Link>
+                .
               </p>
-            </section>
+            </div>
 
-            <section className="mb-12">
-              <h2 className="mb-4 border-b-2 border-[#C89B3C] pb-2 text-xl font-bold text-[#1A1A2E]">
-                Summary of Key Points
-              </h2>
-              <div className="space-y-3 text-[15px] leading-7 text-[#444444]">
-                <p><strong>Information processed:</strong> Information depends on how you interact with us, the Services you use, and the choices you make.</p>
-                <p><strong>Sensitive information:</strong> We do not intentionally process sensitive personal information.</p>
-                <p><strong>Third-party sources:</strong> We may obtain limited information from public databases, marketing partners, social media platforms, data providers, and other outside sources.</p>
-                <p><strong>Purposes:</strong> We process information to provide and improve Services, communicate with you, support recruitment and hiring, maintain security, prevent fraud, and comply with law.</p>
-                <p><strong>Sharing:</strong> We share personal information only in the situations and with the categories of recipients described below.</p>
-                <p><strong>Your rights:</strong> Your rights depend on the privacy laws applicable where you reside.</p>
+            <Section
+              id="scope"
+              title="1. Scope of This Privacy Policy"
+            >
+              <p>
+                This Privacy Policy applies when you:
+              </p>
+
+              <BulletList
+                items={[
+                  <>
+                    Visit{" "}
+                    <a
+                      href={SITE_URL}
+                      className="font-medium text-[#9B7429] underline decoration-[#C89B3C]/50 underline-offset-4 hover:text-[#C89B3C]"
+                    >
+                      www.rudrongts.com
+                    </a>{" "}
+                    or another RUDRON webpage linking to this policy;
+                  </>,
+                  "Apply for a job or submit a resume or candidate profile;",
+                  "Contact us regarding employment opportunities;",
+                  "Submit an employer hiring enquiry or request recruitment support;",
+                  "Communicate with us by email, telephone, forms, video conference, social media or other channels;",
+                  "Receive recruitment, business-development or service communications from us;",
+                  "Participate in a recruitment, screening, interview or placement process; or",
+                  "Otherwise interact with our recruitment, executive-search or talent services.",
+                ]}
+              />
+
+              <p>
+                This policy does not govern the independent privacy
+                practices of employers, job boards, social-media
+                platforms or other third parties that operate their own
+                websites and services.
+              </p>
+            </Section>
+
+            <Section
+              id="information"
+              title="2. Information We Collect"
+            >
+              <h3 className="font-semibold text-[#1A1A2E]">
+                2.1 Information You Provide
+              </h3>
+
+              <p>
+                The personal information we collect depends on how you
+                interact with RUDRON and may include:
+              </p>
+
+              <BulletList
+                items={[
+                  "Name;",
+                  "Email address;",
+                  "Telephone number;",
+                  "City, state, country or other location information;",
+                  "Current and desired job title;",
+                  "Resume or curriculum vitae;",
+                  "Employment history;",
+                  "Education and professional qualifications;",
+                  "Skills, certifications and licences;",
+                  "Compensation expectations;",
+                  "Availability and notice period;",
+                  "Work-authorisation information;",
+                  "Professional references;",
+                  "LinkedIn or other professional profile information;",
+                  "Interview and scheduling information;",
+                  "Information contained in messages, forms or enquiries;",
+                  "Employer or company information;",
+                  "Hiring requirements and job specifications; and",
+                  "Other information you voluntarily provide during a recruitment or business interaction.",
+                ]}
+              />
+
+              <h3 className="pt-2 font-semibold text-[#1A1A2E]">
+                2.2 Information Collected Automatically
+              </h3>
+
+              <p>
+                When you use our website, certain technical information
+                may be collected automatically by our hosting,
+                security, analytics or technology providers.
+              </p>
+
+              <p>This may include:</p>
+
+              <BulletList
+                items={[
+                  "Internet Protocol address;",
+                  "Browser type and version;",
+                  "Device type;",
+                  "Operating system;",
+                  "Referring website or page;",
+                  "Pages visited;",
+                  "Approximate location derived from technical information such as IP address;",
+                  "Date and time of access;",
+                  "Website interaction and performance information;",
+                  "Error, diagnostic and security logs; and",
+                  "Cookie or similar technology identifiers where applicable.",
+                ]}
+              />
+
+              <p>
+                We do not ordinarily require access to your device&apos;s
+                precise GPS location simply to browse the RUDRON
+                website.
+              </p>
+
+              <h3 className="pt-2 font-semibold text-[#1A1A2E]">
+                2.3 Sensitive Personal Information
+              </h3>
+
+              <p>
+                RUDRON does not generally request sensitive personal
+                information through ordinary website forms unless it is
+                reasonably necessary for a lawful recruitment,
+                accommodation, compliance or related purpose.
+              </p>
+
+              <p>
+                Candidates should avoid including unnecessary sensitive
+                information in resumes, cover letters or general
+                enquiries.
+              </p>
+            </Section>
+
+            <Section
+              id="sources"
+              title="3. Sources of Personal Information"
+            >
+              <p>
+                We may collect personal information from:
+              </p>
+
+              <BulletList
+                items={[
+                  "You directly;",
+                  "Our website forms and recruitment applications;",
+                  "Resumes or documents submitted to RUDRON;",
+                  "Public professional profiles and publicly available sources;",
+                  "Professional networking platforms;",
+                  "Job boards and recruitment databases;",
+                  "Employer clients and hiring managers;",
+                  "References or professional contacts where appropriate;",
+                  "Recruitment, ATS, CRM, sourcing or business-development platforms;",
+                  "Scheduling and communication tools;",
+                  "Service providers supporting our website and recruitment operations; and",
+                  "Other lawful sources relevant to recruitment or business development.",
+                ]}
+              />
+
+              <p>
+                When we obtain information from third-party or publicly
+                available sources, we use it in accordance with
+                applicable law and our legitimate recruitment and
+                business purposes.
+              </p>
+            </Section>
+
+            <Section
+              id="use"
+              title="4. How We Use Personal Information"
+            >
+              <p>
+                We may process personal information to:
+              </p>
+
+              <BulletList
+                items={[
+                  "Provide recruitment, executive-search and talent-acquisition services;",
+                  "Identify and evaluate candidates for potential opportunities;",
+                  "Match candidate experience with employer requirements;",
+                  "Communicate with candidates regarding relevant job opportunities;",
+                  "Submit candidate information to employer clients where appropriate;",
+                  "Coordinate interviews, screening and recruitment activities;",
+                  "Respond to candidate, client and website enquiries;",
+                  "Support employer hiring requirements;",
+                  "Maintain candidate and business-contact records;",
+                  "Operate our recruitment databases, systems and workflows;",
+                  "Manage client relationships and business development;",
+                  "Send administrative or service-related communications;",
+                  "Send marketing or opportunity communications where legally permitted;",
+                  "Improve our website, recruitment services and business processes;",
+                  "Maintain website security and prevent fraud or misuse;",
+                  "Comply with applicable legal and regulatory obligations;",
+                  "Establish, exercise or defend legal rights; and",
+                  "Perform other purposes disclosed when information is collected or otherwise permitted by law.",
+                ]}
+              />
+            </Section>
+
+            <Section
+              id="legal-bases"
+              title="5. Legal Bases for Processing"
+            >
+              <p>
+                The legal basis for processing personal information
+                depends on the applicable jurisdiction and the
+                circumstances in which the information is processed.
+              </p>
+
+              <p>
+                Where applicable, RUDRON may rely on:
+              </p>
+
+              <BulletList
+                items={[
+                  <>
+                    <strong>Consent:</strong> where you have given us
+                    permission to process information for a particular
+                    purpose.
+                  </>,
+                  <>
+                    <strong>Contractual necessity:</strong> where
+                    processing is necessary to provide requested
+                    services or take steps connected with a potential
+                    contractual relationship.
+                  </>,
+                  <>
+                    <strong>Legitimate interests:</strong> where
+                    processing is reasonably necessary for our
+                    recruitment, client-service, security, operational
+                    or business interests and those interests are not
+                    overridden by applicable individual rights.
+                  </>,
+                  <>
+                    <strong>Legal obligations:</strong> where processing
+                    is necessary to comply with applicable law, court
+                    orders, regulatory requirements or lawful requests.
+                  </>,
+                  <>
+                    <strong>Protection of legal rights or vital
+                    interests:</strong> where applicable and legally
+                    permitted.
+                  </>,
+                ]}
+              />
+
+              <p>
+                Candidates and clients may contact us if they would like
+                additional information concerning the basis relied upon
+                for a particular processing activity.
+              </p>
+            </Section>
+
+            <Section
+              id="sharing"
+              title="6. When and With Whom We Share Information"
+            >
+              <p>
+                We do not disclose personal information indiscriminately.
+                Information may be shared when reasonably necessary for
+                recruitment, service delivery, business operations,
+                compliance or other lawful purposes.
+              </p>
+
+              <p>
+                Categories of recipients may include:
+              </p>
+
+              <BulletList
+                items={[
+                  <>
+                    <strong>Employer clients and hiring organisations:</strong>{" "}
+                    when candidate information is relevant to a potential
+                    opportunity or recruitment engagement.
+                  </>,
+                  <>
+                    <strong>Technology and service providers:</strong>{" "}
+                    including hosting, database, file-storage, email,
+                    communication, analytics, scheduling, security and
+                    recruitment-system providers.
+                  </>,
+                  <>
+                    <strong>Professional advisers:</strong> such as legal,
+                    accounting, compliance or other professional service
+                    providers where necessary.
+                  </>,
+                  <>
+                    <strong>Business transaction participants:</strong>{" "}
+                    where information is relevant to a merger,
+                    acquisition, financing, restructuring, sale or other
+                    corporate transaction.
+                  </>,
+                  <>
+                    <strong>Government or legal authorities:</strong>{" "}
+                    where disclosure is required or permitted by law.
+                  </>,
+                ]}
+              />
+
+              <p>
+                Third-party service providers may process personal
+                information on our behalf in connection with services
+                they provide to RUDRON.
+              </p>
+
+              <p>
+                Employer clients receiving candidate information may
+                process that information independently under their own
+                privacy and employment practices.
+              </p>
+            </Section>
+
+            <Section
+              id="recruitment"
+              title="7. Candidate and Recruitment Information"
+            >
+              <p>
+                When you submit a resume, apply for a role or otherwise
+                engage with RUDRON as a candidate, we may retain your
+                professional information in our recruitment systems and
+                databases.
+              </p>
+
+              <p>
+                We may use this information to:
+              </p>
+
+              <BulletList
+                items={[
+                  "Assess your suitability for current opportunities;",
+                  "Consider you for future relevant opportunities;",
+                  "Contact you regarding employment opportunities;",
+                  "Conduct recruitment screening and qualification discussions;",
+                  "Maintain records concerning recruitment activity;",
+                  "Coordinate with employer clients;",
+                  "Avoid duplicate candidate submissions where appropriate;",
+                  "Support placement and post-placement administration; and",
+                  "Comply with applicable contractual and legal requirements.",
+                ]}
+              />
+
+              <p>
+                Submission of candidate information does not guarantee
+                an interview, presentation to a client, job offer or
+                placement.
+              </p>
+
+              <p>
+                Candidates should ensure information provided to RUDRON
+                is accurate and current.
+              </p>
+            </Section>
+
+            <Section
+              id="ai"
+              title="8. Artificial Intelligence and Automated Tools"
+            >
+              <p>
+                RUDRON may use artificial intelligence, automation,
+                search, matching, summarisation and other
+                technology-assisted tools to support recruitment and
+                business processes.
+              </p>
+
+              <p>Such tools may assist with:</p>
+
+              <BulletList
+                items={[
+                  "Searching and organising candidate information;",
+                  "Matching experience with job requirements;",
+                  "Drafting or summarising recruitment information;",
+                  "Organising communications and administrative workflows;",
+                  "Supporting candidate sourcing and screening;",
+                  "Identifying potentially relevant candidates or opportunities; and",
+                  "Improving operational efficiency.",
+                ]}
+              />
+
+              <p>
+                Technology-assisted outputs may be incomplete or
+                inaccurate and are intended to support, rather than
+                automatically replace, appropriate human involvement in
+                recruitment processes.
+              </p>
+
+              <p>
+                Where applicable law provides rights relating to solely
+                automated decisions that produce legal or similarly
+                significant effects, those rights will be respected.
+              </p>
+            </Section>
+
+            <Section
+              id="cookies"
+              title="9. Cookies, Analytics and Similar Technologies"
+            >
+              <p>
+                RUDRON and service providers supporting our website may
+                use cookies, local storage, server logs and similar
+                technologies for purposes such as:
+              </p>
+
+              <BulletList
+                items={[
+                  "Operating website functionality;",
+                  "Remembering privacy and cookie preferences;",
+                  "Maintaining website security;",
+                  "Understanding website performance;",
+                  "Diagnosing technical problems;",
+                  "Preventing fraud or misuse; and",
+                  "Measuring website usage where permitted.",
+                ]}
+              />
+
+              <p>
+                Optional analytics or other non-essential technologies
+                are subject to our cookie controls where consent is
+                required.
+              </p>
+
+              <p>
+                Additional information is available in our{" "}
+                <Link
+                  href="/cookie-policy"
+                  className="font-medium text-[#9B7429] underline decoration-[#C89B3C]/50 underline-offset-4 hover:text-[#C89B3C]"
+                >
+                  Cookie Policy
+                </Link>
+                .
+              </p>
+            </Section>
+
+            <Section
+              id="international"
+              title="10. International Processing and Transfers"
+            >
+              <p>
+                RUDRON operates and provides recruitment services across
+                multiple markets. Our website, databases,
+                communications and service providers may process or
+                store information in the United States and other
+                countries.
+              </p>
+
+              <p>
+                This means personal information may be processed in a
+                country different from the country in which it was
+                originally collected.
+              </p>
+
+              <p>
+                Data-protection and privacy laws may differ between
+                jurisdictions. Where applicable law requires safeguards
+                for international transfers, RUDRON will seek to use
+                appropriate lawful mechanisms and contractual,
+                technical or organisational safeguards.
+              </p>
+
+              <p>
+                Third-party technology providers may maintain
+                infrastructure or personnel in multiple jurisdictions.
+                Their processing is subject to their applicable service
+                terms, privacy commitments and our arrangements with
+                them.
+              </p>
+            </Section>
+
+            <Section
+              id="retention"
+              title="11. How Long We Keep Information"
+            >
+              <p>
+                RUDRON retains personal information for as long as
+                reasonably necessary for the purposes for which it was
+                collected and for legitimate recruitment, contractual,
+                operational, legal, security and compliance purposes.
+              </p>
+
+              <p>
+                Retention periods may vary depending on:
+              </p>
+
+              <BulletList
+                items={[
+                  "The nature of the information;",
+                  "Whether you are a candidate, client or other business contact;",
+                  "Ongoing or potential recruitment opportunities;",
+                  "Client contractual requirements;",
+                  "Candidate ownership or placement-related records;",
+                  "Legal, tax, accounting or regulatory requirements;",
+                  "Dispute-resolution requirements;",
+                  "Fraud-prevention or security requirements; and",
+                  "Whether deletion is technically possible from backup systems.",
+                ]}
+              />
+
+              <p>
+                Candidate information may generally be retained for a
+                reasonable period so we can consider candidates for
+                relevant current and future opportunities, unless a
+                shorter period is required by law or a valid deletion
+                request applies.
+              </p>
+
+              <p>
+                When information is no longer reasonably required, we
+                may delete, anonymise or securely restrict further use
+                of it, subject to applicable legal and technical
+                requirements.
+              </p>
+            </Section>
+
+            <Section
+              id="security"
+              title="12. How We Protect Personal Information"
+            >
+              <p>
+                We use reasonable technical, administrative and
+                organisational measures intended to protect personal
+                information against unauthorised access, loss, misuse,
+                alteration or disclosure.
+              </p>
+
+              <p>
+                Measures may include, where appropriate:
+              </p>
+
+              <BulletList
+                items={[
+                  "Access restrictions;",
+                  "Secure database and cloud infrastructure;",
+                  "Authentication controls;",
+                  "Encrypted network communications;",
+                  "Secure file-storage systems;",
+                  "Administrative access controls;",
+                  "System logging and monitoring;",
+                  "Software and infrastructure security controls; and",
+                  "Use of established technology providers.",
+                ]}
+              />
+
+              <p>
+                However, no method of electronic transmission, internet
+                communication or data storage can be guaranteed to be
+                completely secure.
+              </p>
+
+              <p>
+                Users should use appropriate security precautions when
+                communicating sensitive or confidential information
+                electronically.
+              </p>
+            </Section>
+
+            <Section
+              id="children"
+              title="13. Children's Privacy"
+            >
+              <p>
+                RUDRON&apos;s recruitment and business services are
+                primarily intended for adults and professional users.
+                We do not knowingly collect personal information from
+                children under 18 through our general recruitment
+                website for marketing or ordinary candidate-placement
+                purposes.
+              </p>
+
+              <p>
+                If we become aware that personal information from a
+                child has been collected in circumstances where it
+                should not have been collected, we will take reasonable
+                steps to review and delete or otherwise appropriately
+                handle the information.
+              </p>
+
+              <p>
+                Concerns regarding information relating to a minor may
+                be sent to{" "}
+                <a
+                  href={`mailto:${SITE.emails.general}`}
+                  className="font-medium text-[#9B7429] underline decoration-[#C89B3C]/50 underline-offset-4 hover:text-[#C89B3C]"
+                >
+                  {SITE.emails.general}
+                </a>
+                .
+              </p>
+            </Section>
+
+            <Section
+              id="rights"
+              title="14. Your Privacy Rights"
+            >
+              <p>
+                Depending on where you live and the laws applicable to
+                the processing of your information, you may have rights
+                concerning your personal information.
+              </p>
+
+              <p>These may include the right to:</p>
+
+              <BulletList
+                items={[
+                  "Request access to personal information we maintain about you;",
+                  "Request correction of inaccurate personal information;",
+                  "Request deletion of certain personal information;",
+                  "Request restriction of certain processing;",
+                  "Object to certain processing;",
+                  "Withdraw consent where processing relies on consent;",
+                  "Request a portable copy of certain information;",
+                  "Opt out of certain marketing communications;",
+                  "Opt out of certain targeted advertising, sale or sharing activities where applicable;",
+                  "Request information concerning categories or recipients of disclosures where applicable;",
+                  "Request human review of certain automated decisions where applicable; and",
+                  "Appeal certain privacy-request decisions where applicable law provides that right.",
+                ]}
+              />
+
+              <p>
+                These rights are not absolute. We may need to retain or
+                continue processing certain information where permitted
+                or required by law.
+              </p>
+
+              <p>
+                We may also need to verify your identity before
+                completing a privacy request.
+              </p>
+
+              <p>
+                You may exercise applicable rights by contacting us
+                using the details in the Contact Us section below or by
+                using our{" "}
+                <Link
+                  href="/contact"
+                  className="font-medium text-[#9B7429] underline decoration-[#C89B3C]/50 underline-offset-4 hover:text-[#C89B3C]"
+                >
+                  contact page
+                </Link>
+                .
+              </p>
+            </Section>
+
+            <Section
+              id="us-rights"
+              title="15. United States Privacy Rights"
+            >
+              <p>
+                Residents of certain U.S. states may have additional
+                privacy rights under applicable state privacy laws.
+              </p>
+
+              <p>
+                Depending on the law and whether it applies to RUDRON,
+                these rights may include access, correction, deletion,
+                portability, opt-out and appeal rights.
+              </p>
+
+              <p>
+                RUDRON does not intend to sell personal information in
+                exchange for monetary payment.
+              </p>
+
+              <p>
+                If RUDRON engages in processing that qualifies as a
+                &quot;sale&quot;, &quot;sharing&quot;, targeted
+                advertising or profiling under an applicable state
+                privacy law, we will provide any legally required
+                notices and opt-out mechanisms.
+              </p>
+
+              <p>
+                We will not unlawfully discriminate against an
+                individual for exercising an applicable privacy right.
+              </p>
+
+              <h3 className="pt-2 font-semibold text-[#1A1A2E]">
+                Authorised Agents
+              </h3>
+
+              <p>
+                Where applicable law permits use of an authorised agent,
+                we may request evidence that the agent is authorised to
+                act on your behalf and may independently verify your
+                identity.
+              </p>
+
+              <h3 className="pt-2 font-semibold text-[#1A1A2E]">
+                Appeals
+              </h3>
+
+              <p>
+                If applicable state law gives you a right to appeal a
+                privacy-request decision, instructions for submitting an
+                appeal will be provided with our response.
+              </p>
+            </Section>
+
+            <Section
+              id="international-rights"
+              title="16. International Privacy Rights"
+            >
+              <p>
+                Individuals in jurisdictions such as the European
+                Economic Area, United Kingdom, Switzerland, Canada,
+                Australia and other regions may have additional rights
+                under applicable privacy or data-protection laws.
+              </p>
+
+              <p>
+                Depending on the jurisdiction and whether the relevant
+                law applies to RUDRON&apos;s processing, these rights
+                may include:
+              </p>
+
+              <BulletList
+                items={[
+                  "Access to personal information;",
+                  "Correction or rectification;",
+                  "Deletion or erasure;",
+                  "Restriction of processing;",
+                  "Objection to certain processing;",
+                  "Data portability;",
+                  "Withdrawal of consent;",
+                  "Rights relating to certain automated decision-making; and",
+                  "The right to complain to a competent privacy or data-protection authority.",
+                ]}
+              />
+
+              <p>
+                Applicable rights and legal requirements vary by
+                jurisdiction and may be subject to exemptions and
+                limitations.
+              </p>
+            </Section>
+
+            <Section
+              id="changes"
+              title="17. Changes to This Privacy Policy"
+            >
+              <p>
+                We may update this Privacy Policy from time to time to
+                reflect changes in our services, technology, business
+                practices, service providers or legal obligations.
+              </p>
+
+              <p>
+                The revised policy will be published on this page and
+                the &quot;Last updated&quot; date will be changed.
+              </p>
+
+              <p>
+                Where required or appropriate, material changes may
+                also be communicated through an additional website
+                notice or other communication.
+              </p>
+            </Section>
+
+            <Section
+              id="contact"
+              title="18. Contact Us"
+            >
+              <p>
+                Questions, privacy requests or concerns regarding this
+                Privacy Policy or RUDRON&apos;s handling of personal
+                information may be directed to:
+              </p>
+
+              <div className="mt-5 rounded-2xl border border-gray-100 bg-[#F8F7F4] p-6 md:p-7">
+                <p className="font-bold text-[#1A1A2E]">
+                  RUDRON Global Talent Solutions LLC
+                </p>
+
+                <p className="mt-4">
+                  United States address:{" "}
+                  <a
+                    href={mapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-medium text-[#9B7429] underline decoration-[#C89B3C]/50 underline-offset-4 hover:text-[#C89B3C]"
+                  >
+                    {SITE.address.street},{" "}
+                    {SITE.address.city},{" "}
+                    {SITE.address.state}{" "}
+                    {SITE.address.postalCode},{" "}
+                    {SITE.address.country}
+                  </a>
+                </p>
+
+                <p className="mt-2">
+                  Privacy and legal enquiries:{" "}
+                  <a
+                    href="mailto:privacy@rudrongts.com"
+                    className="font-medium text-[#9B7429] underline decoration-[#C89B3C]/50 underline-offset-4 hover:text-[#C89B3C]"
+                  >
+                    privacy@rudrongts.com
+                  </a>
+                </p>
+
+                <p className="mt-2">
+                  General enquiries:{" "}
+                  <a
+                    href={`mailto:${SITE.emails.general}`}
+                    className="font-medium text-[#9B7429] underline decoration-[#C89B3C]/50 underline-offset-4 hover:text-[#C89B3C]"
+                  >
+                    {SITE.emails.general}
+                  </a>
+                </p>
+
+                <p className="mt-2">
+                  Telephone:{" "}
+                  <a
+                    href={`tel:${SITE.phone.tel}`}
+                    className="font-medium text-[#9B7429] underline decoration-[#C89B3C]/50 underline-offset-4 hover:text-[#C89B3C]"
+                  >
+                    {SITE.phone.display}
+                  </a>
+                </p>
+
+                <p className="mt-2">
+                  Privacy request page:{" "}
+                  <Link
+                    href="/contact"
+                    className="font-medium text-[#9B7429] underline decoration-[#C89B3C]/50 underline-offset-4 hover:text-[#C89B3C]"
+                  >
+                    www.rudrongts.com/contact
+                  </Link>
+                </p>
               </div>
-            </section>
 
-            {policySections.map((section) => (
-              <section key={section.id} id={section.id} className="mb-12 scroll-mt-24">
-                <h2 className="mb-4 border-b-2 border-[#C89B3C] pb-2 text-xl font-bold text-[#1A1A2E]">
-                  {section.title}
-                </h2>
-                <PolicyBlocks blocks={section.blocks} />
-              </section>
-            ))}
+              <p>
+                To help us process a privacy request, please provide
+                enough information to identify the relevant records and
+                explain the nature of your request.
+              </p>
+
+              <p>
+                We may request additional information when reasonably
+                necessary to verify identity, protect personal
+                information or comply with applicable law.
+              </p>
+            </Section>
+
+            <div className="mt-14 rounded-2xl bg-[#050D18] p-7 text-white md:p-9">
+              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#C89B3C]">
+                Privacy controls
+              </p>
+
+              <h2 className="mt-3 text-2xl font-bold">
+                Questions about your information?
+              </h2>
+
+              <p className="mt-3 max-w-2xl text-sm leading-6 text-gray-400">
+                Contact RUDRON if you would like to ask a privacy
+                question or submit a request concerning personal
+                information associated with you.
+              </p>
+
+              <div className="mt-6 flex flex-wrap gap-3">
+                <Link
+                  href="/contact"
+                  className="rounded-full bg-[#C89B3C] px-5 py-2.5 text-sm font-semibold text-[#050D18] transition-transform duration-200 hover:-translate-y-0.5"
+                >
+                  Contact RUDRON
+                </Link>
+
+                <Link
+                  href="/cookie-policy"
+                  className="rounded-full border border-white/20 px-5 py-2.5 text-sm font-semibold text-white transition-colors duration-200 hover:border-[#C89B3C] hover:text-[#C89B3C]"
+                >
+                  Cookie Policy
+                </Link>
+
+                <Link
+                  href="/terms"
+                  className="rounded-full border border-white/20 px-5 py-2.5 text-sm font-semibold text-white transition-colors duration-200 hover:border-[#C89B3C] hover:text-[#C89B3C]"
+                >
+                  Terms &amp; Conditions
+                </Link>
+              </div>
+            </div>
           </article>
         </div>
       </main>
-
     </>
   );
 }

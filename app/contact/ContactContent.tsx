@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { Loader2 } from "lucide-react";
+import ReactCountryFlag from "react-country-flag";
 
 /* ── tiny hook ── */
 function useInView(threshold = 0.1) {
@@ -20,11 +21,43 @@ function useInView(threshold = 0.1) {
   return { ref, inView };
 }
 
-const countryInfo: Record<string, { phone?: string; hours: string; email: string; flag: string }> = {
-  "United States": { phone: "+1 (623) 309 2345", hours: "Mon – Fri  |  8AM – 6PM EST", email: "usa@rudrongts.com",    flag: "🇺🇸" },
-  India:           {                              hours: "Mon – Sat  |  9AM – 7PM IST", email: "india@rudrongts.com",  flag: "🇮🇳" },
-  Canada:          { phone: "+1 (623) 309 2345", hours: "Mon – Fri  |  8AM – 5PM EST", email: "canada@rudrongts.com", flag: "🇨🇦" },
-  "United Arab Emirates": {                      hours: "Mon – Fri  |  9AM – 6PM GST", email: "uae@rudrongts.com",    flag: "🇦🇪" },
+const countryInfo: Record<
+  string,
+  {
+    phone?: string;
+    address?: string;
+    hours: string;
+    email: string;
+    countryCode: string;
+  }
+> = {
+  "United States": {
+    phone: "+1 (623) 309-2345",
+    address:
+      "3707 East Southern Avenue, Mesa, AZ 85206, United States",
+    hours: "Mon – Fri  |  8AM – 6PM EST",
+    email: "usa@rudrongts.com",
+    countryCode: "US",
+  },
+
+  India: {
+    hours: "Mon – Sat  |  9AM – 7PM IST",
+    email: "india@rudrongts.com",
+    countryCode: "IN",
+  },
+
+  Canada: {
+    phone: "+1 (623) 309-2345",
+    hours: "Mon – Fri  |  8AM – 5PM EST",
+    email: "canada@rudrongts.com",
+    countryCode: "CA",
+  },
+
+  "United Arab Emirates": {
+    hours: "Mon – Fri  |  9AM – 6PM GST",
+    email: "uae@rudrongts.com",
+    countryCode: "AE",
+  },
 };
 
 const statesByCountry: Record<string, string[]> = {
@@ -35,10 +68,10 @@ const statesByCountry: Record<string, string[]> = {
 };
 
 const globalOffices = [
-  { country: "United States", focus: "Executive Search & Construction Recruitment", flag: "🇺🇸" },
-  { country: "Canada",        focus: "Commercial & Infrastructure Markets",         flag: "🇨🇦" },
-  { country: "UAE",           focus: "MEP & Mission Critical Recruitment",          flag: "🇦🇪" },
-  { country: "India",         focus: "Global Talent Delivery & Operations",         flag: "🇮🇳" },
+  { country: "United States", focus: "Global Headquarter · Recruitment & Client Services", countryCode: "US" },
+  { country: "Canada",        focus: "North American Recruitment",         countryCode: "CA" },
+  { country: "UAE",           focus: "Middle East Recruitment",          countryCode: "AE" },
+  { country: "India",         focus: "Global Talent Delivery & Operations",         countryCode: "IN" },
 ];
 
 const marqueeItems = ["EXECUTIVE SEARCH","PROJECT STAFFING","DATA CENTERS","HEALTHCARE","MEP","COMMERCIAL","INFRASTRUCTURE","MISSION CRITICAL"];
@@ -251,7 +284,17 @@ export default function ContactContent() {
                         border:     activeCountry === c ? "1px solid rgba(200,155,60,0.3)" : "1px solid rgba(0,0,0,0.06)",
                       }}
                     >
-                      <span>{countryInfo[c].flag}</span>
+                      <ReactCountryFlag
+                          countryCode={countryInfo[c].countryCode}
+                          svg
+                          aria-label={`${c} flag`}
+                          style={{
+                            width: "1.35em",
+                            height: "1.35em",
+                            borderRadius: "4px",
+                            objectFit: "cover",
+                          }}
+                        />
                       <span className="truncate">{c}</span>
                     </button>
                   ))}
@@ -265,6 +308,21 @@ export default function ContactContent() {
                       <div>
                         <p className="text-[11px] font-semibold uppercase tracking-[2px] text-[#C89B3C] mb-0.5">Phone</p>
                         <p className="text-[#07111F] text-[14px] font-medium">{info.phone}</p>
+                      </div>
+                    </div>
+                  )}
+                  {info.address && (
+                    <div className="flex items-start gap-4 p-4 rounded-[16px] bg-[#F4F4F0] border border-black/5">
+                      <span className="text-lg">📍</span>
+
+                      <div>
+                        <p className="text-[11px] font-semibold uppercase tracking-[2px] text-[#C89B3C] mb-0.5">
+                          United States Address
+                        </p>
+
+                        <p className="text-[#07111F] text-[14px] font-medium leading-6">
+                          {info.address}
+                        </p>
                       </div>
                     </div>
                   )}
@@ -433,6 +491,36 @@ export default function ContactContent() {
           from { transform: translateX(0); }
           to   { transform: translateX(-33.333%); }
         }
+
+        @keyframes flagFloat {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-5px); }
+        }
+
+        @keyframes flagWave {
+          0%, 100% { transform: perspective(180px) rotateY(0deg) rotateZ(0deg); }
+          25% { transform: perspective(180px) rotateY(-7deg) rotateZ(-1deg); }
+          50% { transform: perspective(180px) rotateY(5deg) rotateZ(0.5deg); }
+          75% { transform: perspective(180px) rotateY(-4deg) rotateZ(1deg); }
+        }
+
+        .flag-float {
+          animation: flagFloat 3.6s ease-in-out infinite;
+        }
+
+        .flag-wave {
+          animation: flagWave 3s ease-in-out infinite;
+          backface-visibility: hidden;
+          transform-style: preserve-3d;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .flag-float,
+          .flag-wave {
+            animation: none !important;
+          }
+        }
+
         /* Fix native <select> dropdown list colours in all browsers */
         select option {
           background-color: #07111F;
@@ -505,7 +593,27 @@ function OfficeCard({ office, index, inView }: {
           transformOrigin: "left",
         }}
       />
-      <div className="text-4xl mb-4">{office.flag}</div>
+      <div
+        className="flag-float mb-5 flex h-14 w-14 items-center justify-center rounded-2xl border border-black/5 bg-white shadow-[0_8px_24px_rgba(7,17,31,0.10)]"
+        style={{ animationDelay: `${index * 180}ms` }}
+      >
+        <div className="flag-wave origin-left">
+          <ReactCountryFlag
+            countryCode={office.countryCode}
+            svg
+            aria-label={`${office.country} flag`}
+            title={office.country}
+            style={{
+              width: "38px",
+              height: "28px",
+              borderRadius: "5px",
+              objectFit: "cover",
+              boxShadow: "0 2px 8px rgba(7,17,31,0.16)",
+            }}
+          />
+        </div>
+      </div>
+
       <h3 className="text-[#07111F] text-xl font-bold mb-3">{office.country}</h3>
       <p className="text-gray-500 text-[14px] leading-6">{office.focus}</p>
     </div>

@@ -2,15 +2,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import {
-  ArrowRight,
-  Mail,
-  MapPin,
-  Phone,
-  Sparkles,
-} from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 
-import HireTalentButton from "@/components/HireTalentButton";
+import { SITE } from "@/lib/site";
 
 const companyLinks = [
   { href: "/about", label: "About Us" },
@@ -39,29 +33,34 @@ const legalLinks = [
 
 const socialLinks = [
   {
-    href: "https://www.instagram.com/rudron_gts/",
+    href: SITE.social.instagram,
     label: "Instagram",
     icon: <InstagramIcon />,
   },
   {
-    href: "https://www.facebook.com/share/1HQMr8GCcd/?mibextid=wwXlfr",
+    href: SITE.social.facebook,
     label: "Facebook",
     icon: <FacebookIcon />,
   },
   {
-    href: "https://www.linkedin.com/company/rudrongts/",
+    href: SITE.social.linkedin,
     label: "LinkedIn",
     icon: <LinkedinIcon />,
   },
 ];
 
-function FooterHeading({ children }: { children: React.ReactNode }) {
+function FooterHeading({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <h3 className="mb-5 flex items-center gap-2 text-[13px] font-semibold uppercase tracking-[1.8px] text-white">
       <span
         aria-hidden="true"
         className="inline-block h-px w-4 bg-gradient-to-r from-[#C89B3C] to-transparent"
       />
+
       {children}
     </h3>
   );
@@ -88,6 +87,7 @@ function FooterNavigation({
                 aria-hidden="true"
                 className="h-px w-0 bg-[#C89B3C] transition-all duration-300 ease-out group-hover:w-3"
               />
+
               <span>{label}</span>
             </Link>
           </li>
@@ -104,24 +104,30 @@ function openCookiePreferences() {
 }
 
 export default function Footer() {
+  const mapsUrl =
+    "https://www.google.com/maps/search/?api=1&query=3707+East+Southern+Avenue+Mesa+AZ+85206";
+
   return (
     <footer className="relative overflow-hidden bg-[#050D18]">
-      {/* Decorative background */}
+      {/* Top gold line */}
       <div
         aria-hidden="true"
         className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#C89B3C] to-transparent opacity-70"
       />
 
+      {/* Decorative glow - left */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute -left-40 -top-40 h-[520px] w-[520px] rounded-full bg-[#C89B3C]/10 blur-[135px]"
       />
 
+      {/* Decorative glow - right */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute -right-40 bottom-[-220px] h-[460px] w-[460px] rounded-full bg-blue-500/[0.06] blur-[140px]"
       />
 
+      {/* Subtle grid */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 opacity-[0.025]"
@@ -135,20 +141,19 @@ export default function Footer() {
       />
 
       <div className="relative mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
-
-        {/* Main footer */}
+        {/* Main Footer */}
         <div className="border-b border-white/[0.07] py-10 sm:py-12 lg:py-14">
           <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-6 lg:gap-8">
             {/* Brand */}
             <div className="lg:col-span-2">
               <Link
                 href="/"
-                aria-label="RUDRON Global Talent Solutions homepage"
+                aria-label={`${SITE.name} homepage`}
                 className="group inline-block"
               >
                 <Image
                   src="/images/rudron-logo.webp"
-                  alt="RUDRON Global Talent Solutions"
+                  alt={SITE.name}
                   width={276}
                   height={108}
                   className="mb-4 h-auto w-[170px] transition-transform duration-500 group-hover:scale-[1.03] sm:w-[185px]"
@@ -167,25 +172,29 @@ export default function Footer() {
               </div>
 
               <p className="mb-6 max-w-[440px] text-[13.5px] leading-[1.85] text-gray-400/85">
-                RUDRON Global Talent Solutions connects high-performing
-                professionals with leading organizations across Architecture,
-                Engineering, Construction, Mechanical, Electrical and Plumbing
+                RUDRON Global Talent Solutions connects
+                high-performing professionals with leading
+                organizations across Architecture, Engineering,
+                Construction, Mechanical, Electrical and Plumbing
                 markets.
               </p>
 
+              {/* Social links */}
               <div className="flex items-center gap-3">
-                {socialLinks.map(({ icon, href, label }) => (
-                  <a
-                    key={label}
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`Visit RUDRON on ${label}`}
-                    className="group/social flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-gray-400 transition-all duration-300 hover:-translate-y-1 hover:border-[#C89B3C]/40 hover:bg-[#C89B3C]/10 hover:text-[#C89B3C] hover:shadow-[0_10px_24px_rgba(200,155,60,0.12)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C89B3C] focus-visible:ring-offset-2 focus-visible:ring-offset-[#050D18]"
-                  >
-                    {icon}
-                  </a>
-                ))}
+                {socialLinks.map(
+                  ({ icon, href, label }) => (
+                    <a
+                      key={label}
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Visit RUDRON on ${label}`}
+                      className="group/social flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-gray-400 transition-all duration-300 hover:-translate-y-1 hover:border-[#C89B3C]/40 hover:bg-[#C89B3C]/10 hover:text-[#C89B3C] hover:shadow-[0_10px_24px_rgba(200,155,60,0.12)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C89B3C] focus-visible:ring-offset-2 focus-visible:ring-offset-[#050D18]"
+                    >
+                      {icon}
+                    </a>
+                  )
+                )}
               </div>
             </div>
 
@@ -215,40 +224,34 @@ export default function Footer() {
                 <ContactItem
                   icon={Phone}
                   label="United States & Canada"
-                  href="tel:+16233092345"
-                  value="+1 (623) 309-2345"
+                  href={`tel:${SITE.phone.tel}`}
+                  value={SITE.phone.display}
                 />
 
                 <ContactItem
                   icon={Mail}
                   label="General Enquiries"
-                  href="mailto:contact@rudrongts.com"
-                  value="contact@rudrongts.com"
+                  href={`mailto:${SITE.emails.general}`}
+                  value={SITE.emails.general}
                 />
 
                 <ContactItem
                   icon={MapPin}
-                  label="UAE"
-                  href="mailto:uae@rudrongts.com"
-                  value="uae@rudrongts.com"
-                />
-
-                <ContactItem
-                  icon={MapPin}
-                  label="India"
-                  href="mailto:india@rudrongts.com"
-                  value="india@rudrongts.com"
+                  label="United States"
+                  href={mapsUrl}
+                  value={`${SITE.address.street}, ${SITE.address.city}, ${SITE.address.state} ${SITE.address.postalCode}`}
+                  external
                 />
               </div>
             </div>
           </div>
         </div>
 
-        {/* Bottom bar */}
+        {/* Bottom Bar */}
         <div className="flex flex-col items-center justify-between gap-3 py-5 sm:flex-row">
           <p className="text-center text-[12px] tracking-wide text-gray-600 sm:text-left">
-            © {new Date().getFullYear()} RUDRON Global Talent Solutions.
-            All rights reserved.
+            © {new Date().getFullYear()} {SITE.name}. All rights
+            reserved.
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-x-1 gap-y-1 text-[12px] text-gray-600">
@@ -259,7 +262,10 @@ export default function Footer() {
               Privacy
             </Link>
 
-            <span aria-hidden="true" className="select-none text-white/10">
+            <span
+              aria-hidden="true"
+              className="select-none text-white/10"
+            >
               |
             </span>
 
@@ -270,7 +276,10 @@ export default function Footer() {
               Terms
             </Link>
 
-            <span aria-hidden="true" className="select-none text-white/10">
+            <span
+              aria-hidden="true"
+              className="select-none text-white/10"
+            >
               |
             </span>
 
@@ -282,7 +291,10 @@ export default function Footer() {
               Cookie Preferences
             </button>
 
-            <span aria-hidden="true" className="select-none text-white/10">
+            <span
+              aria-hidden="true"
+              className="select-none text-white/10"
+            >
               |
             </span>
 
@@ -304,11 +316,13 @@ function ContactItem({
   label,
   href,
   value,
+  external = false,
 }: {
   icon: typeof Phone;
   label: string;
   href: string;
   value: string;
+  external?: boolean;
 }) {
   return (
     <div className="group flex items-start gap-3">
@@ -316,14 +330,16 @@ function ContactItem({
         <Icon size={15} />
       </div>
 
-      <div>
+      <div className="min-w-0">
         <p className="mb-1 text-[10px] font-medium uppercase tracking-[1.4px] text-[#C89B3C]/80">
           {label}
         </p>
 
         <a
           href={href}
-          className="break-all text-[13px] text-gray-300 transition-colors duration-200 hover:text-[#C89B3C]"
+          target={external ? "_blank" : undefined}
+          rel={external ? "noopener noreferrer" : undefined}
+          className="block text-[13px] leading-5 text-gray-300 transition-colors duration-200 hover:text-[#C89B3C]"
         >
           {value}
         </a>
@@ -342,10 +358,26 @@ function InstagramIcon() {
       fill="none"
       stroke="currentColor"
       strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     >
-      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+      <rect
+        x="2"
+        y="2"
+        width="20"
+        height="20"
+        rx="5"
+        ry="5"
+      />
+
       <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+
+      <line
+        x1="17.5"
+        y1="6.5"
+        x2="17.51"
+        y2="6.5"
+      />
     </svg>
   );
 }

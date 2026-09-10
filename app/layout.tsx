@@ -1,3 +1,5 @@
+// app/layout.tsx
+
 import "./globals.css";
 import type { Metadata, Viewport } from "next";
 
@@ -8,8 +10,10 @@ import ScrollToTopButton from "@/components/ScrollToTopButton";
 import CookieConsent from "@/components/CookieConsent";
 import EmployerModalProvider from "@/components/EmployerModalProvider";
 
-const SITE_NAME = "RUDRON Global Talent Solutions";
-const SITE_URL = "https://www.rudrongts.com";
+import { SITE } from "@/lib/site";
+
+const SITE_NAME = SITE.name;
+const SITE_URL = SITE.url;
 const LOGO_URL = `${SITE_URL}/images/rudron-logo.png`;
 
 export const metadata: Metadata = {
@@ -105,13 +109,17 @@ export default function RootLayout({
 }) {
   const structuredData = {
     "@context": "https://schema.org",
+
     "@graph": [
       {
         "@type": ["Organization", "EmploymentAgency"],
         "@id": `${SITE_URL}/#organization`,
+
         name: SITE_NAME,
         legalName: SITE_NAME,
+
         alternateName: ["RUDRON", "RUDRON GTS"],
+
         url: `${SITE_URL}/`,
 
         logo: {
@@ -130,13 +138,42 @@ export default function RootLayout({
           "Specialist recruitment solutions across Construction, Engineering, Architecture, Mechanical, Electrical and Plumbing sectors.",
 
         sameAs: [
-          "https://www.linkedin.com/company/rudrongts",
-          "https://instagram.com/rudron_gts",
-          "https://facebook.com/share/1HQMr8GCcd/?mibextid=wwXlfr",
+          SITE.social.linkedin,
+          SITE.social.instagram,
+          SITE.social.facebook,
         ],
 
-        email: "admin@rudrongts.com",
-        telephone: "+1-239-309-3969",
+        email: SITE.emails.general,
+
+        telephone: SITE.phone.international,
+
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: SITE.address.street,
+          addressLocality: SITE.address.city,
+          addressRegion: SITE.address.state,
+          postalCode: SITE.address.postalCode,
+          addressCountry: SITE.address.countryCode,
+        },
+
+        contactPoint: [
+          {
+            "@type": "ContactPoint",
+            telephone: SITE.phone.international,
+            contactType: "customer service",
+            email: SITE.emails.general,
+            areaServed: ["US", "CA"],
+            availableLanguage: ["English"],
+          },
+          {
+            "@type": "ContactPoint",
+            email: SITE.emails.jobs,
+            contactType: "recruitment",
+            areaServed: ["US", "CA", "AE", "IN"],
+            availableLanguage: ["English"],
+          },
+        ],
+
         foundingDate: "2026",
 
         areaServed: [
@@ -158,7 +195,9 @@ export default function RootLayout({
       {
         "@type": "WebSite",
         "@id": `${SITE_URL}/#website`,
+
         url: `${SITE_URL}/`,
+
         name: SITE_NAME,
 
         alternateName: [
@@ -185,8 +224,11 @@ export default function RootLayout({
           {children}
 
           <Footer />
+
           <ScrollToTopButton />
+
           <ConsentAwareSpeedInsights />
+
           <CookieConsent />
 
           <script

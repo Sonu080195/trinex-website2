@@ -1,14 +1,17 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import CookiePreferencesButton from "@/components/CookiePreferencesButton";
 
-const SITE_URL = "https://www.rudrongts.com";
-const LAST_UPDATED = "July 27, 2026";
+import CookiePreferencesButton from "@/components/CookiePreferencesButton";
+import { SITE } from "@/lib/site";
+
+const SITE_URL = SITE.url;
+const LAST_UPDATED = "September 10, 2026";
 
 export const metadata: Metadata = {
   title: "Cookie Policy",
+
   description:
-    "Learn how RUDRON Global Talent Solutions LLP uses cookies and similar technologies on its website and how you can manage your preferences.",
+    "Learn how RUDRON Global Talent Solutions LLC uses cookies and similar technologies on its website and how you can manage your preferences.",
 
   alternates: {
     canonical: `${SITE_URL}/cookie-policy`,
@@ -17,7 +20,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: `${SITE_URL}/cookie-policy`,
-    siteName: "RUDRON Global Talent Solutions",
+    siteName: SITE.name,
     title: "Cookie Policy | RUDRON Global Talent Solutions",
     description:
       "Information about the cookies and similar technologies used on the RUDRON Global Talent Solutions website.",
@@ -26,7 +29,7 @@ export const metadata: Metadata = {
         url: `${SITE_URL}/og-image.png`,
         width: 1200,
         height: 630,
-        alt: "RUDRON Global Talent Solutions",
+        alt: SITE.name,
       },
     ],
   },
@@ -51,9 +54,16 @@ interface SectionProps {
   children: React.ReactNode;
 }
 
-function Section({ id, title, children }: SectionProps) {
+function Section({
+  id,
+  title,
+  children,
+}: SectionProps) {
   return (
-    <section id={id} className="mb-10 scroll-mt-28">
+    <section
+      id={id}
+      className="mb-10 scroll-mt-28"
+    >
       <h2 className="mb-4 border-b-2 border-[#C89B3C] pb-2 text-xl font-bold text-[#1A1A2E] md:text-2xl">
         {title}
       </h2>
@@ -65,15 +75,23 @@ function Section({ id, title, children }: SectionProps) {
   );
 }
 
-function BulletList({ items }: { items: React.ReactNode[] }) {
+function BulletList({
+  items,
+}: {
+  items: React.ReactNode[];
+}) {
   return (
     <ul className="ml-1 space-y-2">
       {items.map((item, index) => (
-        <li key={index} className="flex items-start gap-3">
+        <li
+          key={index}
+          className="flex items-start gap-3"
+        >
           <span
             aria-hidden="true"
             className="mt-[10px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#C89B3C]"
           />
+
           <span>{item}</span>
         </li>
       ))}
@@ -137,6 +155,9 @@ const tocItems = [
 ];
 
 export default function CookiePolicyPage() {
+  const mapsUrl =
+    "https://www.google.com/maps/search/?api=1&query=3707+East+Southern+Avenue+Mesa+AZ+85206";
+
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "WebPage",
@@ -144,7 +165,7 @@ export default function CookiePolicyPage() {
     url: `${SITE_URL}/cookie-policy`,
     name: "Cookie Policy",
     description:
-      "Information about cookies and similar technologies used by RUDRON Global Talent Solutions LLP.",
+      "Information about cookies and similar technologies used by RUDRON Global Talent Solutions LLC.",
     isPartOf: {
       "@id": `${SITE_URL}/#website`,
     },
@@ -152,7 +173,7 @@ export default function CookiePolicyPage() {
       "@id": `${SITE_URL}/#organization`,
     },
     inLanguage: "en-US",
-    dateModified: "2026-07-27",
+    dateModified: "2026-09-10",
   };
 
   return (
@@ -191,8 +212,9 @@ export default function CookiePolicyPage() {
             </h1>
 
             <p className="mx-auto max-w-2xl text-sm leading-6 text-gray-400 md:text-base">
-              This policy explains how RUDRON Global Talent Solutions LLP uses
-              cookies and similar technologies when you visit our website.
+              This policy explains how RUDRON Global Talent Solutions LLC
+              uses cookies and similar technologies when you visit our
+              website.
             </p>
 
             <p className="mt-5 text-xs uppercase tracking-wider text-gray-500">
@@ -211,16 +233,18 @@ export default function CookiePolicyPage() {
 
               <nav aria-label="Cookie Policy contents">
                 <ul className="space-y-2.5">
-                  {tocItems.map(({ href, label }) => (
-                    <li key={href}>
-                      <a
-                        href={href}
-                        className="block text-[13px] leading-5 text-[#555555] transition-colors duration-200 hover:text-[#C89B3C]"
-                      >
-                        {label}
-                      </a>
-                    </li>
-                  ))}
+                  {tocItems.map(
+                    ({ href, label }) => (
+                      <li key={href}>
+                        <a
+                          href={href}
+                          className="block text-[13px] leading-5 text-[#555555] transition-colors duration-200 hover:text-[#C89B3C]"
+                        >
+                          {label}
+                        </a>
+                      </li>
+                    )
+                  )}
                 </ul>
               </nav>
             </div>
@@ -248,12 +272,16 @@ export default function CookiePolicyPage() {
               </p>
             </div>
 
-            <Section id="introduction" title="1. Introduction">
+            <Section
+              id="introduction"
+              title="1. Introduction"
+            >
               <p>
-                This Cookie Policy describes how RUDRON Global Talent Solutions
-                LLP (&quot;RUDRON&quot;, &quot;we&quot;, &quot;us&quot;, or
-                &quot;our&quot;) uses cookies, local storage, pixels, tags,
-                scripts, software development kits and similar technologies on{" "}
+                This Cookie Policy describes how RUDRON Global Talent
+                Solutions LLC (&quot;RUDRON&quot;, &quot;we&quot;,
+                &quot;us&quot;, or &quot;our&quot;) uses cookies,
+                local storage, pixels, tags, scripts, software
+                development kits and similar technologies on{" "}
                 <a
                   href={SITE_URL}
                   className="text-[#9B7429] underline decoration-[#C89B3C]/50 underline-offset-4 hover:text-[#C89B3C]"
@@ -264,39 +292,45 @@ export default function CookiePolicyPage() {
               </p>
 
               <p>
-                These technologies may be used to operate and secure the
-                website, remember your preferences, understand website
-                performance and improve the experience provided to candidates,
+                These technologies may be used to operate and secure
+                the website, remember your preferences, process website
+                functionality, understand website performance and
+                improve the experience provided to candidates,
                 employers and other visitors.
               </p>
 
               <p>
-                Where applicable law requires consent before a non-essential
-                cookie or similar technology is used, we will request your
-                consent through our cookie preference tool.
+                Where applicable law requires consent before a
+                non-essential cookie or similar technology is used, we
+                will request your consent through our cookie preference
+                tool.
               </p>
             </Section>
 
-            <Section id="what-are-cookies" title="2. What Are Cookies?">
+            <Section
+              id="what-are-cookies"
+              title="2. What Are Cookies?"
+            >
               <p>
-                Cookies are small text files that a website places on your
-                computer, mobile device or other internet-connected device when
-                you visit it. Cookies allow websites to recognise a device,
-                remember information about a visit and support website
-                functionality.
+                Cookies are small text files that a website places on
+                your computer, mobile device or other internet-connected
+                device when you visit it. Cookies allow websites to
+                recognise a device, remember information about a visit
+                and support website functionality.
               </p>
 
               <p>
-                Some cookies operate only during a browsing session and are
-                removed when you close your browser. Other cookies may remain
-                on your device for a defined period or until you delete them.
+                Some cookies operate only during a browsing session and
+                are removed when you close your browser. Other cookies
+                may remain on your device for a defined period or until
+                you delete them.
               </p>
 
               <p>
-                Technologies such as local storage, pixels and scripts may
-                perform similar functions. References to &quot;cookies&quot; in
-                this policy include these similar technologies where
-                appropriate.
+                Technologies such as local storage, pixels and scripts
+                may perform similar functions. References to
+                &quot;cookies&quot; in this policy include these similar
+                technologies where appropriate.
               </p>
             </Section>
 
@@ -307,50 +341,57 @@ export default function CookiePolicyPage() {
               <BulletList
                 items={[
                   <>
-                    <strong>HTTP cookies:</strong> Small files stored through
-                    your browser.
+                    <strong>HTTP cookies:</strong> Small files stored
+                    through your browser.
                   </>,
                   <>
-                    <strong>Local and session storage:</strong> Browser storage
-                    used to remember preferences or maintain website
-                    functionality.
+                    <strong>Local and session storage:</strong> Browser
+                    storage used to remember preferences or maintain
+                    website functionality.
                   </>,
                   <>
-                    <strong>Pixels and tags:</strong> Small pieces of code that
-                    may measure whether a page or communication has been viewed
-                    or interacted with.
+                    <strong>Pixels and tags:</strong> Small pieces of
+                    code that may measure whether a page or communication
+                    has been viewed or interacted with.
                   </>,
                   <>
-                    <strong>Scripts:</strong> Code used to provide interactive
-                    functionality, security, forms and performance monitoring.
+                    <strong>Scripts:</strong> Code used to provide
+                    interactive functionality, security, forms,
+                    analytics and performance monitoring.
                   </>,
                   <>
-                    <strong>Server logs:</strong> Technical records that may
-                    include IP address, browser type, request time, referring
-                    page and system events.
+                    <strong>Server logs:</strong> Technical records that
+                    may include IP address, browser type, request time,
+                    referring page, request information and system
+                    events.
                   </>,
                 ]}
               />
             </Section>
 
-            <Section id="categories" title="4. Categories of Cookies">
+            <Section
+              id="categories"
+              title="4. Categories of Cookies"
+            >
               <h3 className="font-semibold text-[#1A1A2E]">
                 4.1 Strictly Necessary Cookies
               </h3>
 
               <p>
-                These technologies are required for the website to function
-                properly or to provide a service you specifically request. They
-                may support security, network management, form submission,
-                accessibility, load balancing and storage of your cookie
-                preferences.
+                These technologies are required for the website to
+                function properly or to provide a service you
+                specifically request. They may support security,
+                network management, form submission, accessibility,
+                load balancing, authentication, session management and
+                storage of your cookie preferences.
               </p>
 
               <p>
-                Because these technologies are necessary for basic website
-                operation, they cannot generally be disabled through our cookie
-                preference tool. You may still be able to block them through
-                your browser, but parts of the website may then stop working.
+                Because these technologies are necessary for basic
+                website operation, they cannot generally be disabled
+                through our cookie preference tool. You may still be
+                able to block them through your browser, but parts of
+                the website may then stop working correctly.
               </p>
 
               <h3 className="pt-2 font-semibold text-[#1A1A2E]">
@@ -358,11 +399,11 @@ export default function CookiePolicyPage() {
               </h3>
 
               <p>
-                Functional cookies allow the website to remember choices you
-                make, such as display preferences, previously selected options
-                or other customised settings. Disabling them may reduce
-                personalisation but should not normally prevent basic use of
-                the website.
+                Functional cookies allow the website to remember choices
+                you make, such as display preferences, previously
+                selected options or other customised settings.
+                Disabling them may reduce personalisation but should not
+                normally prevent basic use of the website.
               </p>
 
               <h3 className="pt-2 font-semibold text-[#1A1A2E]">
@@ -370,17 +411,17 @@ export default function CookiePolicyPage() {
               </h3>
 
               <p>
-                Analytics technologies help us understand how visitors interact
-                with the website, which pages are visited, whether errors occur
-                and how the website performs across different devices and
-                browsers.
+                Analytics technologies help us understand how visitors
+                interact with the website, which pages are visited,
+                whether errors occur and how the website performs across
+                different devices and browsers.
               </p>
 
               <p>
-                Where required, these technologies will remain disabled until
-                you provide consent. Analytics information is generally used in
-                aggregated form to improve website content, performance and
-                navigation.
+                Where required, these technologies will remain disabled
+                until you provide consent. Analytics information may be
+                used in aggregated or pseudonymised form to improve
+                website content, performance and navigation.
               </p>
 
               <h3 className="pt-2 font-semibold text-[#1A1A2E]">
@@ -388,15 +429,17 @@ export default function CookiePolicyPage() {
               </h3>
 
               <p>
-                Advertising or targeting technologies may be used in the future
-                to measure campaigns, understand referrals or deliver relevant
-                advertising through third-party platforms.
+                Advertising or targeting technologies may be used in the
+                future to measure campaigns, understand referrals or
+                deliver relevant advertising through third-party
+                platforms.
               </p>
 
               <p>
-                RUDRON does not currently intend to activate advertising or
-                behavioural-targeting cookies without first providing
-                appropriate notice and consent controls where required.
+                RUDRON does not currently intend to activate advertising
+                or behavioural-targeting cookies without first
+                providing appropriate notice and consent controls where
+                required.
               </p>
             </Section>
 
@@ -406,20 +449,29 @@ export default function CookiePolicyPage() {
             >
               <p>
                 The exact technologies used may change as we improve the
-                website. Based on the website&apos;s current functionality, the
-                following categories may apply:
+                website. Based on the website&apos;s current
+                functionality, the following categories may apply:
               </p>
 
               <div className="mt-5 overflow-x-auto rounded-xl border border-gray-200">
                 <table className="w-full min-w-[720px] border-collapse text-left text-sm">
                   <thead className="bg-[#1A1A2E] text-white">
                     <tr>
-                      <th className="px-5 py-4 font-semibold">Purpose</th>
-                      <th className="px-5 py-4 font-semibold">Category</th>
+                      <th className="px-5 py-4 font-semibold">
+                        Purpose
+                      </th>
+
+                      <th className="px-5 py-4 font-semibold">
+                        Category
+                      </th>
+
                       <th className="px-5 py-4 font-semibold">
                         Typical duration
                       </th>
-                      <th className="px-5 py-4 font-semibold">Control</th>
+
+                      <th className="px-5 py-4 font-semibold">
+                        Control
+                      </th>
                     </tr>
                   </thead>
 
@@ -428,10 +480,15 @@ export default function CookiePolicyPage() {
                       <td className="px-5 py-4">
                         Remembering cookie consent and preference choices
                       </td>
-                      <td className="px-5 py-4">Strictly necessary</td>
+
+                      <td className="px-5 py-4">
+                        Strictly necessary
+                      </td>
+
                       <td className="px-5 py-4">
                         Until preferences expire or are cleared
                       </td>
+
                       <td className="px-5 py-4">
                         Required to remember your selection
                       </td>
@@ -439,12 +496,18 @@ export default function CookiePolicyPage() {
 
                     <tr className="align-top">
                       <td className="px-5 py-4">
-                        Website security, delivery and technical operation
+                        Website security, delivery and technical
+                        operation
                       </td>
-                      <td className="px-5 py-4">Strictly necessary</td>
+
+                      <td className="px-5 py-4">
+                        Strictly necessary
+                      </td>
+
                       <td className="px-5 py-4">
                         Session-based or limited-duration
                       </td>
+
                       <td className="px-5 py-4">
                         May be controlled through browser settings
                       </td>
@@ -455,12 +518,15 @@ export default function CookiePolicyPage() {
                         Measuring website speed, stability and technical
                         performance
                       </td>
+
                       <td className="px-5 py-4">
                         Analytics or performance
                       </td>
+
                       <td className="px-5 py-4">
                         Depends on the provider and configuration
                       </td>
+
                       <td className="px-5 py-4">
                         Cookie preference tool where consent applies
                       </td>
@@ -468,17 +534,21 @@ export default function CookiePolicyPage() {
 
                     <tr className="align-top">
                       <td className="px-5 py-4">
-                        Supporting job applications, employer requests and
-                        contact forms
+                        Supporting job applications, employer requests,
+                        contact forms and related recruitment workflows
                       </td>
+
                       <td className="px-5 py-4">
                         Strictly necessary or functional
                       </td>
+
                       <td className="px-5 py-4">
-                        Usually session-based
+                        Usually session-based or limited-duration
                       </td>
+
                       <td className="px-5 py-4">
-                        Some website functionality may not work if blocked
+                        Some website functionality may not work if
+                        blocked
                       </td>
                     </tr>
                   </tbody>
@@ -486,8 +556,9 @@ export default function CookiePolicyPage() {
               </div>
 
               <p className="mt-5">
-                We will update this section when new analytics, advertising,
-                embedded-media or marketing technologies are activated.
+                We will update this section when new analytics,
+                advertising, embedded-media or marketing technologies
+                are activated or materially changed.
               </p>
             </Section>
 
@@ -496,29 +567,40 @@ export default function CookiePolicyPage() {
               title="6. Third-Party Technologies"
             >
               <p>
-                Parts of the website may be provided, secured, hosted or
-                measured using third-party service providers. Depending on the
-                features enabled, these providers may process limited technical
+                Parts of the website may be provided, secured, hosted,
+                stored, processed or measured using third-party service
+                providers. Depending on the features enabled, these
+                providers may process limited technical or personal
                 information or use their own technologies.
               </p>
 
-              <p>Third-party services may include:</p>
+              <p>
+                Third-party services may include:
+              </p>
 
               <BulletList
                 items={[
                   "Cloud hosting, content delivery and website security providers;",
                   "Website performance and reliability monitoring providers;",
-                  "Form-processing, database and file-storage providers;",
-                  "Recruitment, scheduling or communication platforms;",
-                  "Embedded social-media or external content providers; and",
-                  "Analytics or campaign-measurement providers if enabled in the future.",
+                  "Database, file-storage and application-processing providers;",
+                  "Recruitment, scheduling, email or communication platforms;",
+                  "Embedded social-media or external content providers;",
+                  "Analytics providers where enabled; and",
+                  "Campaign-measurement or advertising providers if enabled in the future.",
                 ]}
               />
 
               <p>
-                Third parties may process information under their own privacy
-                notices. RUDRON does not control cookies placed directly by
-                third-party websites that you visit through an external link.
+                These providers may process information on our behalf
+                under applicable contractual, privacy or security
+                arrangements, or under their own terms where they act
+                independently.
+              </p>
+
+              <p>
+                RUDRON does not control cookies placed directly by
+                independent third-party websites that you visit through
+                an external link.
               </p>
             </Section>
 
@@ -527,44 +609,45 @@ export default function CookiePolicyPage() {
               title="7. Managing Your Cookie Preferences"
             >
               <p>
-                When our cookie consent banner is available, you will be able
-                to:
+                Through our cookie consent and preference controls, you
+                may be able to:
               </p>
 
               <BulletList
                 items={[
-                  "Accept all optional cookies;",
+                  "Accept optional cookies;",
                   "Reject non-essential cookies;",
-                  "Choose individual categories of cookies; and",
+                  "Choose available categories of optional cookies; and",
                   "Change or withdraw your preferences later.",
                 ]}
               />
 
               <p>
-                Rejecting optional cookies will not prevent you from using the
-                core areas of the website. However, some optional features,
-                personalisation or performance measurement may be unavailable.
+                Rejecting optional cookies will not prevent you from
+                using the core areas of the website. However, some
+                optional features, personalisation or performance
+                measurement may be unavailable.
               </p>
 
               <p>
-                Withdrawing consent does not affect the lawfulness of processing
-                that occurred before consent was withdrawn.
+                Withdrawing consent does not affect the lawfulness of
+                processing that occurred before consent was withdrawn.
               </p>
 
-            <div className="mt-5 rounded-xl border border-gray-200 bg-[#F8F7F4] p-5">
-            <p className="font-semibold text-[#1A1A2E]">
-                Cookie preferences
-            </p>
+              <div className="mt-5 rounded-xl border border-gray-200 bg-[#F8F7F4] p-5">
+                <p className="font-semibold text-[#1A1A2E]">
+                  Cookie preferences
+                </p>
 
-            <p className="mt-2 text-sm leading-6 text-[#555555]">
-                Review, change or withdraw your optional cookie choices at any
-                time.
-            </p>
+                <p className="mt-2 text-sm leading-6 text-[#555555]">
+                  Review, change or withdraw your optional cookie
+                  choices at any time.
+                </p>
 
-            <CookiePreferencesButton className="mt-4 rounded-full bg-[#C89B3C] px-5 py-2.5 text-sm font-semibold text-[#050D18] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#D7AA48] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C89B3C] focus-visible:ring-offset-2">
-                Open Cookie Preferences
-            </CookiePreferencesButton>
-            </div>
+                <CookiePreferencesButton className="mt-4 rounded-full bg-[#C89B3C] px-5 py-2.5 text-sm font-semibold text-[#050D18] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#D7AA48] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C89B3C] focus-visible:ring-offset-2">
+                  Open Cookie Preferences
+                </CookiePreferencesButton>
+              </div>
             </Section>
 
             <Section
@@ -572,37 +655,44 @@ export default function CookiePolicyPage() {
               title="8. Browser and Device Controls"
             >
               <p>
-                Most web browsers allow you to view, block or delete cookies
-                through their privacy or security settings. The steps vary
-                depending on the browser and device you use.
+                Most web browsers allow you to view, block or delete
+                cookies through their privacy or security settings. The
+                steps vary depending on the browser and device you use.
               </p>
 
               <p>
                 Blocking all cookies may prevent website forms, saved
-                preferences or other functions from operating correctly.
-                Browser controls may also need to be configured separately on
-                each device you use.
+                preferences, administrative sessions or other functions
+                from operating correctly. Browser controls may also
+                need to be configured separately on each device you
+                use.
               </p>
 
               <p>
-                You may also use privacy controls offered by your operating
-                system, browser extensions or device settings, where available.
+                You may also use privacy controls offered by your
+                operating system, browser extensions or device
+                settings, where available.
               </p>
             </Section>
 
-            <Section id="retention" title="9. Cookie Retention">
+            <Section
+              id="retention"
+              title="9. Cookie Retention"
+            >
               <p>
-                Cookies and similar technologies are retained only for as long
-                as reasonably necessary for their stated purpose, subject to
-                legal, technical and security requirements.
+                Cookies and similar technologies are retained only for
+                as long as reasonably necessary for their stated
+                purpose, subject to legal, contractual, technical,
+                fraud-prevention and security requirements.
               </p>
 
               <p>
-                Session cookies normally expire when the browser session ends.
-                Persistent cookies remain for a specified period unless you
-                delete them earlier. Consent preferences may be stored for a
-                reasonable period so that the website does not repeatedly ask
-                you to make the same selection.
+                Session cookies normally expire when the browser
+                session ends. Persistent cookies remain for a specified
+                period unless you delete them earlier. Consent
+                preferences may be stored for a reasonable period so
+                that the website does not repeatedly ask you to make
+                the same selection.
               </p>
             </Section>
 
@@ -611,17 +701,18 @@ export default function CookiePolicyPage() {
               title="10. International Visitors"
             >
               <p>
-                RUDRON serves clients and candidates in multiple countries,
-                including the United States, Canada, the United Arab Emirates
-                and India. Cookie and electronic-communications rules may vary
-                by jurisdiction.
+                RUDRON provides recruitment services across multiple
+                markets, including the United States, Canada, the United
+                Arab Emirates and India. Cookie, privacy and electronic
+                communications requirements may vary by jurisdiction.
               </p>
 
               <p>
-                Where local law provides additional rights or requires consent
-                for particular technologies, we will seek to apply the
-                appropriate controls based on the website configuration and
-                available location signals.
+                Where applicable law provides additional rights or
+                requires consent for particular technologies, we will
+                seek to apply appropriate controls based on our website
+                configuration, applicable requirements and available
+                location or consent signals.
               </p>
             </Section>
 
@@ -630,15 +721,16 @@ export default function CookiePolicyPage() {
               title="11. Privacy and Personal Information"
             >
               <p>
-                Some information collected through cookies or similar
-                technologies may qualify as personal information, personal data
-                or an online identifier under applicable law.
+                Some information collected through cookies, server logs
+                or similar technologies may qualify as personal
+                information, personal data or an online identifier
+                under applicable law.
               </p>
 
               <p>
-                Details about how we collect, use, disclose, secure and retain
-                personal information, and how you may exercise applicable
-                rights, are provided in our{" "}
+                Details about how we collect, use, disclose, secure,
+                store and retain personal information, and how you may
+                exercise applicable rights, are provided in our{" "}
                 <Link
                   href="/privacy-policy"
                   className="font-medium text-[#9B7429] underline decoration-[#C89B3C]/50 underline-offset-4 hover:text-[#C89B3C]"
@@ -649,39 +741,82 @@ export default function CookiePolicyPage() {
               </p>
             </Section>
 
-            <Section id="changes" title="12. Changes to This Cookie Policy">
+            <Section
+              id="changes"
+              title="12. Changes to This Cookie Policy"
+            >
               <p>
-                We may update this Cookie Policy to reflect changes in our
-                website, technologies, service providers, legal obligations or
-                business practices.
+                We may update this Cookie Policy to reflect changes in
+                our website, technologies, service providers, legal
+                obligations or business practices.
               </p>
 
               <p>
-                When changes are made, the revised policy will be published on
-                this page and the &quot;Last updated&quot; date will be changed.
-                Material changes may also be communicated through an additional
-                website notice where appropriate.
+                When changes are made, the revised policy will be
+                published on this page and the &quot;Last updated&quot;
+                date will be changed. Material changes may also be
+                communicated through an additional website notice where
+                appropriate.
               </p>
             </Section>
 
-            <Section id="contact" title="13. Contact Us">
+            <Section
+              id="contact"
+              title="13. Contact Us"
+            >
               <p>
-                Questions, concerns or requests relating to this Cookie Policy
-                may be directed to:
+                Questions, concerns or requests relating to this Cookie
+                Policy may be directed to:
               </p>
 
               <div className="mt-5 rounded-2xl border border-gray-100 bg-[#F8F7F4] p-6 md:p-7">
                 <p className="font-bold text-[#1A1A2E]">
-                  RUDRON Global Talent Solutions
+                  RUDRON Global Talent Solutions LLC
                 </p>
 
                 <p className="mt-4">
-                  Email:{" "}
+                  United States address:{" "}
+                  <a
+                    href={mapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-medium text-[#9B7429] underline decoration-[#C89B3C]/50 underline-offset-4 hover:text-[#C89B3C]"
+                  >
+                    {SITE.address.street},{" "}
+                    {SITE.address.city},{" "}
+                    {SITE.address.state}{" "}
+                    {SITE.address.postalCode},{" "}
+                    {SITE.address.country}
+                  </a>
+                </p>
+
+                <p className="mt-2">
+                  Privacy and legal enquiries:{" "}
                   <a
                     href="mailto:privacy@rudrongts.com"
                     className="font-medium text-[#9B7429] underline decoration-[#C89B3C]/50 underline-offset-4 hover:text-[#C89B3C]"
                   >
                     privacy@rudrongts.com
+                  </a>
+                </p>
+
+                <p className="mt-2">
+                  General enquiries:{" "}
+                  <a
+                    href={`mailto:${SITE.emails.general}`}
+                    className="font-medium text-[#9B7429] underline decoration-[#C89B3C]/50 underline-offset-4 hover:text-[#C89B3C]"
+                  >
+                    {SITE.emails.general}
+                  </a>
+                </p>
+
+                <p className="mt-2">
+                  Telephone:{" "}
+                  <a
+                    href={`tel:${SITE.phone.tel}`}
+                    className="font-medium text-[#9B7429] underline decoration-[#C89B3C]/50 underline-offset-4 hover:text-[#C89B3C]"
+                  >
+                    {SITE.phone.display}
                   </a>
                 </p>
 
@@ -725,7 +860,6 @@ export default function CookiePolicyPage() {
           </article>
         </div>
       </main>
-
     </>
   );
 }
