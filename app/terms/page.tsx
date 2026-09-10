@@ -150,22 +150,37 @@ export default function TermsPage() {
     <>
       <main className="min-h-screen bg-white">
         {/* Hero */}
-        <div className="bg-[#1A1A2E] px-6 py-34 text-center">
-          <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-[#C89B3C]">
-            Legal
-          </p>
+                <header className="relative overflow-hidden bg-[#050D18] px-6 pb-20 pt-32 text-center md:pb-24 md:pt-40">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 opacity-[0.08]"
+            style={{
+              backgroundImage:
+                "radial-gradient(circle at 50% 0%, #C89B3C 0%, transparent 45%)",
+            }}
+          />
 
-          <h1 className="mb-4 text-4xl font-bold text-white md:text-5xl">
-            Terms &amp; Conditions
-          </h1>
+          <div
+            aria-hidden="true"
+            className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#C89B3C] to-transparent opacity-50"
+          />
 
-          <p className="text-sm text-gray-400">
+          <div className="relative mx-auto max-w-4xl">
+            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.28em] text-[#C89B3C]">
+              Legal
+            </p>
+
+            <h1 className="mb-5 text-4xl font-bold tracking-tight text-white md:text-5xl lg:text-6xl">
+              Terms &amp; Conditions
+            </h1>
+
+            <p className="mx-auto max-w-2xl text-sm leading-6 text-gray-400 md:text-base">
             Effective: {EFFECTIVE_DATE}
             &nbsp;·&nbsp;
             Last updated: {LAST_UPDATED}
-          </p>
-        </div>
-
+            </p>
+          </div>
+        </header>
         <div className="mx-auto max-w-6xl px-6 py-14 lg:flex lg:gap-14">
           {/* Sidebar */}
           <aside className="hidden w-64 shrink-0 lg:block">
