@@ -4,6 +4,7 @@ import "./globals.css";
 import type { Metadata, Viewport } from "next";
 
 import ConsentAwareSpeedInsights from "@/components/ConsentAwareSpeedInsights";
+import ConsentAwareGoogleAnalytics from "@/components/ConsentAwareGoogleAnalytics";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
@@ -116,7 +117,8 @@ export default function RootLayout({
         "@id": `${SITE_URL}/#organization`,
 
         name: SITE_NAME,
-        legalName: SITE_NAME,
+
+        legalName: "RUDRON Global Talent Solutions LLC",
 
         alternateName: ["RUDRON", "RUDRON GTS"],
 
@@ -228,6 +230,8 @@ export default function RootLayout({
           <ScrollToTopButton />
 
           <ConsentAwareSpeedInsights />
+
+          <ConsentAwareGoogleAnalytics />
 
           <CookieConsent />
 

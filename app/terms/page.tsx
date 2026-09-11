@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   },
 };
 
-const EFFECTIVE_DATE = "July 22, 2026";
+const EFFECTIVE_DATE = "June 23, 2026";
 const LAST_UPDATED = "September 10, 2026";
 
 interface SectionProps {
