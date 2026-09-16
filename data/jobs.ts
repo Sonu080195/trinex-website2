@@ -149,7 +149,7 @@ description:
     specialisation: "Commercial",
     slug: "construction-project-manager---commercial-multi-family-portland",
 description:
-  "About the Opportunity. We are seeking an experienced Project Manager for a well-established General Contractor in the Phoenix market. This individual will be responsible for managing commercial and multifamily construction projects from preconstruction through final completion and closeout. The ideal candidate brings strong project management experience within commercial, multifamily, mixed-use, or similarly complex construction and is comfortable managing project budgets, schedules, subcontractors, documentation, procurement, and stakeholder relationships. This position offers the opportunity to take ownership of significant projects while working alongside experienced construction and field teams.",
+  "About the Opportunity. We are seeking an experienced Project Manager for a well-established General Contractor in the Portland market. This individual will be responsible for managing commercial and multifamily construction projects from preconstruction through final completion and closeout. The ideal candidate brings strong project management experience within commercial, multifamily, mixed-use, or similarly complex construction and is comfortable managing project budgets, schedules, subcontractors, documentation, procurement, and stakeholder relationships. This position offers the opportunity to take ownership of significant projects while working alongside experienced construction and field teams.",
     responsibilities: [
     "Manage commercial and multifamily construction projects from preconstruction through completion.",
     "Develop and maintain project schedules, budgets, procurement plans, and key milestones.",
@@ -766,4 +766,294 @@ description:
     "Flexible work environment (Remote or Atlanta-based)",
   ],
 },
+
+  {
+    id: 1789584000001,
+    datePosted: "2026-09-16",
+    featured: true,
+    urgent: true,
+    recruiter: "RUDRON Executive Search",
+    heroImage: "/jobs/mechanical-pm.webp",
+
+    title: "Senior Mechanical Project Manager",
+    company: "Mechanical Contractor",
+    location: "Pittsburgh, PA",
+    salary: "$150K - $200K",
+    type: "Full Time",
+    industry: "Mechanical Construction",
+    specialisation: "Project Management",
+    slug: "senior-mechanical-project-manager-pittsburgh-pa",
+
+    description:
+      "Our client is seeking an experienced Senior Mechanical Project Manager to lead commercial and industrial mechanical construction projects in the Pittsburgh market. This position requires strong knowledge of HVAC, piping, plumbing, sheet metal, fabrication, and design-build construction, along with the ability to manage projects from estimating and preconstruction through execution, completion, and closeout. The ideal candidate will combine technical mechanical construction knowledge with strong project leadership, financial management, client communication, and field coordination skills.",
+
+    responsibilities: [
+      "Lead commercial and industrial mechanical construction projects from estimating and preconstruction through completion and closeout.",
+      "Manage HVAC, plumbing, piping, sheet metal, fabrication, and design-build project scopes.",
+      "Prepare estimates, support sales efforts, develop customer relationships, and assist with targeted business development activities.",
+      "Review project proposals and proactively follow up with clients regarding open opportunities.",
+      "Review and negotiate contract language and project requirements to ensure acceptable commercial terms.",
+      "Set up awarded projects with detailed estimate breakdowns, vendor quotations, scopes of work, and supporting documentation.",
+      "Develop and maintain project schedules while coordinating subcontractor activities, equipment deliveries, procurement, and field progress.",
+      "Monitor project costs, forecasts, budgets, change orders, and overall profitability throughout project execution.",
+      "Develop detailed scopes of work for subcontractors and coordinate material and equipment purchases.",
+      "Work closely with field leadership, engineering, estimating, vendors, subcontractors, and clients to maintain project performance.",
+      "Ensure projects are executed safely, efficiently, on schedule, within budget, and in accordance with quality standards.",
+      "Ensure project work complies with applicable plans, specifications, codes, and permitting requirements.",
+      "Manage project billing, collections, invoice reviews, and discrepancies to support positive project cash flow.",
+      "Prepare conceptual estimates and provide preconstruction support when required.",
+      "Maintain strong relationships with owners, general contractors, subcontractors, vendors, and other project stakeholders.",
+    ],
+
+    requirements: [
+      "Extensive experience managing commercial and industrial mechanical construction projects.",
+      "Strong working knowledge of HVAC, plumbing, piping, sheet metal, fabrication, and mechanical systems.",
+      "Demonstrated ability to manage projects from estimating and planning through execution and closeout.",
+      "Bachelor's degree in Construction Management, Engineering, Business, or a related field preferred, or equivalent industry experience.",
+      "Candidates without a degree should have 10+ years of construction or service operations experience, including at least 5 years in a leadership role.",
+      "Strong understanding of project budgets, cost control, scheduling, procurement, contracts, billing, and profitability.",
+      "Knowledge of construction service, maintenance, and warranty operations.",
+      "Experience coordinating project teams, field operations, subcontractors, suppliers, and customers.",
+      "Strong leadership, communication, negotiation, problem-solving, and critical-thinking skills.",
+      "Experience with HVAC and plumbing construction strongly preferred.",
+    ],
+
+    benefits: [
+      "Base salary of $150,000 - $200,000",
+      "Competitive benefits package",
+      "Leadership opportunity with significant project responsibility",
+      "Long-term career growth potential",
+      "Exposure to complex commercial and industrial mechanical projects",
+    ],
+  },
+
+  {
+    id: 1789584000002,
+    datePosted: "2026-09-16",
+    featured: true,
+    urgent: true,
+    recruiter: "RUDRON Executive Search",
+    heroImage: "/jobs/mechanical-estimator.webp",
+
+    title: "Senior / Lead Mechanical Estimator",
+    company: "Mechanical Contractor",
+    location: "Pittsburgh, PA",
+    salary: "$130K - $180K",
+    type: "Full Time",
+    industry: "Mechanical Construction",
+    specialisation: "Estimating",
+    slug: "senior-lead-mechanical-estimator-pittsburgh-pa",
+
+    description:
+      "A Leading Mechanical Contractor is seeking an experienced Senior / Lead Mechanical Estimator in Pittsburgh to lead estimating efforts across commercial and industrial HVAC, plumbing, piping, and sheet metal projects. The successful candidate will have extensive mechanical estimating experience and the ability to develop detailed, competitive estimates for complex projects while coordinating with preconstruction, engineering, project management, and operations teams. Experience with design-build, design-assist, fabrication, and large mechanical scopes is highly valued.",
+
+    responsibilities: [
+      "Lead the estimating process for commercial and industrial HVAC, plumbing, piping, and sheet metal projects.",
+      "Review construction drawings, specifications, bid documents, addenda, and project scopes.",
+      "Perform and oversee detailed quantity takeoffs for labor, materials, equipment, and subcontracted work.",
+      "Develop accurate and competitive estimates while identifying project risks, exclusions, clarifications, and opportunities.",
+      "Solicit and evaluate quotations from vendors, subcontractors, suppliers, and equipment manufacturers.",
+      "Develop labor, material, equipment, and subcontractor costs using project requirements and historical information.",
+      "Coordinate with engineering and design teams on design-build and design-assist opportunities.",
+      "Prepare detailed bid proposals and clearly communicate estimate assumptions, exclusions, and clarifications.",
+      "Participate in pre-bid meetings, site visits, scope reviews, estimate reviews, and bid strategy meetings.",
+      "Analyze subcontractor and supplier proposals to confirm scope alignment and accurate comparisons.",
+      "Support Project Managers and Operations during turnover from estimating to project execution.",
+      "Manage multiple concurrent estimates and bid deadlines while maintaining accuracy and attention to detail.",
+      "Provide estimating leadership, technical guidance, and review support to other members of the estimating team.",
+    ],
+
+    requirements: [
+      "7+ years of mechanical construction estimating experience.",
+      "Strong estimating experience across HVAC, plumbing, piping, and sheet metal systems.",
+      "Experience working for a mechanical contractor, MEP contractor, or specialty trade contractor.",
+      "Experience estimating commercial and industrial mechanical construction projects.",
+      "Experience with mid-size through $10M+ mechanical scopes strongly preferred.",
+      "Strong ability to interpret construction drawings, specifications, bid documents, and technical requirements.",
+      "Experience performing detailed quantity takeoffs and developing labor and material pricing.",
+      "Experience with design-build and/or design-assist mechanical construction preferred.",
+      "Proficiency with AutoCAD and/or construction estimating software.",
+      "Experience with Accubid, Trimble, Bluebeam, On-Screen Takeoff, or comparable estimating and takeoff platforms is a plus.",
+      "Bachelor's degree in Mechanical Engineering, Construction Management, or a related field preferred but not required with strong industry experience.",
+    ],
+
+    benefits: [
+      "Base salary of $130,000 - $180,000",
+      "Competitive benefits package",
+      "Opportunity to join a Top ENR-ranked mechanical contractor",
+      "Long-term career advancement opportunities",
+      "Exposure to major commercial and industrial mechanical projects",
+    ],
+  },
+
+  {
+    id: 1789584000003,
+    datePosted: "2026-09-16",
+    featured: true,
+    urgent: true,
+    recruiter: "RUDRON Executive Search",
+    heroImage: "/jobs/mechanical-estimator.webp",
+
+    title: "Plumbing Estimator",
+    company: "Mechanical Contractor",
+    location: "Pittsburgh, PA",
+    salary: "$110K - $150K",
+    type: "Full Time",
+    industry: "Mechanical Construction",
+    specialisation: "Plumbing Estimating",
+    slug: "plumbing-estimator-pittsburgh-pa",
+
+    description:
+      "A Leading Mechanical Contractor is seeking an experienced Plumbing Estimator to support commercial and industrial construction projects in Pittsburgh. This role will focus on preparing detailed and competitive plumbing estimates, performing quantity takeoffs, reviewing plans and specifications, developing labor and material pricing, soliciting vendor and subcontractor quotations, and supporting projects through the preconstruction and bidding process.",
+
+    responsibilities: [
+      "Prepare detailed estimates for commercial and industrial plumbing construction projects.",
+      "Review plumbing drawings, specifications, bid documents, addenda, and project requirements.",
+      "Perform quantity takeoffs for plumbing fixtures, piping, equipment, materials, labor, and related project scopes.",
+      "Develop labor, material, equipment, and subcontractor pricing for competitive bids.",
+      "Solicit and evaluate vendor, supplier, and subcontractor quotations.",
+      "Identify scope gaps, project risks, exclusions, clarifications, and value-engineering opportunities.",
+      "Prepare detailed bid proposals with clearly defined assumptions and scope inclusions.",
+      "Participate in pre-bid meetings, site visits, bid reviews, and project strategy meetings.",
+      "Coordinate with project management, engineering, preconstruction, and operations teams.",
+      "Support design-build and design-assist plumbing projects when required.",
+      "Assist with project turnover from estimating to operations following successful awards.",
+      "Manage multiple estimating assignments and deadlines while maintaining accuracy.",
+    ],
+
+    requirements: [
+      "Strong experience estimating commercial and/or industrial plumbing construction projects.",
+      "Experience with a mechanical contractor, MEP contractor, plumbing contractor, or specialty trade contractor.",
+      "Ability to read and interpret plumbing drawings, specifications, and construction documents.",
+      "Experience performing detailed quantity takeoffs and developing labor and material costs.",
+      "Knowledge of plumbing systems, fixtures, equipment, piping materials, and installation requirements.",
+      "Experience soliciting and evaluating vendor and subcontractor pricing.",
+      "Experience with Bluebeam, Trimble, Accubid, On-Screen Takeoff, or similar estimating software is preferred.",
+      "Strong analytical, organizational, communication, and time-management skills.",
+      "Ability to manage multiple estimates and bid deadlines simultaneously.",
+      "Relevant construction, engineering, or estimating education is preferred but equivalent industry experience will be considered.",
+    ],
+
+    benefits: [
+      "Base salary of $110,000 - $150,000",
+      "Competitive benefits package",
+      "Long-term career growth opportunities",
+      "Work with an established mechanical construction team",
+      "Exposure to major commercial and industrial projects",
+    ],
+  },
+
+  {
+    id: 1789584000004,
+    datePosted: "2026-09-16",
+    featured: true,
+    urgent: true,
+    recruiter: "RUDRON Executive Search",
+    heroImage: "/jobs/mechanical-estimator.webp",
+
+    title: "Piping Estimator",
+    company: "Mechanical Contractor",
+    location: "Pittsburgh, PA",
+    salary: "$110K - $150K",
+    type: "Full Time",
+    industry: "Mechanical Construction",
+    specialisation: "Piping Estimating",
+    slug: "piping-estimator-pittsburgh-pa",
+
+    description:
+      "A Leading Mechanical Contractor is seeking an experienced Piping Estimator for commercial and industrial mechanical construction projects in Pittsburgh. The position will focus on developing accurate estimates for complex piping scopes, including detailed quantity takeoffs, labor and material pricing, equipment and subcontractor evaluation, bid preparation, and coordination with engineering, preconstruction, project management, and operations teams.",
+
+    responsibilities: [
+      "Prepare detailed estimates for commercial and industrial mechanical piping projects.",
+      "Review piping drawings, specifications, P&IDs where applicable, bid documents, and project scopes.",
+      "Perform detailed takeoffs for piping systems, fittings, valves, equipment, supports, insulation, and related materials.",
+      "Develop labor, material, equipment, fabrication, and subcontractor costs.",
+      "Solicit and analyze quotations from vendors, suppliers, fabricators, and subcontractors.",
+      "Identify estimate risks, exclusions, clarifications, scope gaps, and potential value-engineering opportunities.",
+      "Prepare competitive bid proposals and clearly document estimate assumptions.",
+      "Participate in pre-bid meetings, site visits, scope reviews, and bid strategy discussions.",
+      "Coordinate with engineering and design teams on design-build and design-assist piping projects.",
+      "Work with Project Managers and Operations during estimate turnover and project award.",
+      "Maintain accurate estimating documentation and historical pricing information.",
+      "Manage multiple bids and deadlines while maintaining estimate accuracy.",
+    ],
+
+    requirements: [
+      "Strong mechanical piping estimating experience within commercial and/or industrial construction.",
+      "Experience working with a mechanical contractor, MEP contractor, piping contractor, or specialty trade contractor.",
+      "Strong understanding of mechanical piping systems, materials, valves, equipment, fabrication, and installation requirements.",
+      "Ability to interpret piping drawings, specifications, bid documents, and technical project information.",
+      "Experience performing quantity takeoffs and developing labor, material, equipment, and subcontractor pricing.",
+      "Knowledge of design-build and design-assist mechanical construction is preferred.",
+      "Experience with Bluebeam, Trimble, Accubid, On-Screen Takeoff, or comparable estimating platforms is preferred.",
+      "Strong analytical, organizational, communication, and problem-solving skills.",
+      "Ability to manage multiple estimates and competing bid deadlines.",
+      "Relevant construction, mechanical, or engineering education is preferred but equivalent industry experience will be considered.",
+    ],
+
+    benefits: [
+      "Base salary of $110,000 - $150,000",
+      "Competitive benefits package",
+      "Long-term career advancement opportunities",
+      "Exposure to complex commercial and industrial piping projects",
+      "Opportunity to work with an established mechanical contractor",
+    ],
+  },
+
+  {
+    id: 1789584000005,
+    datePosted: "2026-09-16",
+    featured: true,
+    urgent: true,
+    recruiter: "RUDRON Executive Search",
+    heroImage: "/jobs/mechanical-estimator.webp",
+
+    title: "Sheet Metal Estimator",
+    company: "Leading Mechanical Contractor",
+    location: "Pittsburgh, PA",
+    salary: "$110K - $150K",
+    type: "Full Time",
+    industry: "Mechanical Construction",
+    specialisation: "Sheet Metal Estimating",
+    slug: "sheet-metal-estimator-pittsburgh-pa",
+
+    description:
+      "A Leading Mechanical Contractor is seeking an experienced Sheet Metal Estimator to support commercial and industrial HVAC construction projects in Pittsburgh. The successful candidate will prepare detailed estimates for sheet metal and ductwork scopes, complete quantity takeoffs, develop labor and material pricing, review fabrication requirements, evaluate vendor and subcontractor quotations, and collaborate with preconstruction, engineering, project management, and field operations teams.",
+
+    responsibilities: [
+      "Prepare detailed estimates for commercial and industrial sheet metal and HVAC construction projects.",
+      "Review mechanical drawings, ductwork plans, specifications, bid documents, and project scopes.",
+      "Perform detailed quantity takeoffs for ductwork, fittings, accessories, equipment connections, insulation, and related sheet metal scopes.",
+      "Develop labor, material, fabrication, equipment, and subcontractor costs.",
+      "Evaluate sheet metal fabrication requirements and installation conditions during the estimating process.",
+      "Solicit and analyze vendor, supplier, equipment, and subcontractor quotations.",
+      "Identify project risks, exclusions, clarifications, scope gaps, and value-engineering opportunities.",
+      "Prepare detailed and competitive bid proposals with clearly documented assumptions.",
+      "Participate in pre-bid meetings, site visits, scope reviews, and bid strategy meetings.",
+      "Coordinate with engineering and design teams on design-build and design-assist HVAC projects.",
+      "Support Project Managers and Operations during project turnover following award.",
+      "Manage multiple estimates and bid deadlines while maintaining a high level of accuracy.",
+    ],
+
+    requirements: [
+      "Strong sheet metal and HVAC estimating experience within commercial and/or industrial mechanical construction.",
+      "Experience with a mechanical contractor, sheet metal contractor, MEP contractor, or specialty trade contractor.",
+      "Strong knowledge of ductwork systems, fittings, accessories, fabrication, and installation methods.",
+      "Ability to read and interpret HVAC and sheet metal drawings, specifications, and construction documents.",
+      "Experience performing detailed takeoffs and developing labor, material, fabrication, and equipment pricing.",
+      "Understanding of sheet metal fabrication processes and field installation requirements.",
+      "Experience with Bluebeam, Trimble, Accubid, On-Screen Takeoff, or similar estimating software is preferred.",
+      "Experience with design-build and design-assist mechanical construction is a plus.",
+      "Strong analytical, organizational, communication, and time-management skills.",
+      "Relevant construction, mechanical, or engineering education is preferred but equivalent industry experience will be considered.",
+    ],
+
+    benefits: [
+      "Base salary of $110,000 - $150,000",
+      "Competitive benefits package",
+      "Long-term career growth opportunities",
+      "Exposure to complex commercial and industrial HVAC projects",
+      "Opportunity to work with an established mechanical construction team",
+    ],
+  },
 ];

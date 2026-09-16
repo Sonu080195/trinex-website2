@@ -4,7 +4,6 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import ApplyModal from "@/components/ApplyModal";
 import { Job, jobs } from "@/data/jobs";
-import { buildJobPostingSchema } from "@/lib/jobSchema";
 import { getRelativeTime } from "@/lib/relativeTime";
 import { MapPin, Briefcase, DollarSign, Clock, Building2, ArrowLeft, Share2, BookmarkPlus, CheckCircle } from "lucide-react";
 
@@ -50,7 +49,6 @@ export default function JobDetailsClient({ job }: { job: Job }) {
   const relatedJobs = jobs
     .filter((j) => j.slug !== job.slug && (j.industry === job.industry || j.specialisation === job.specialisation))
     .slice(0, 3);
-    const jobPostingSchema = buildJobPostingSchema(job);
 
   const metaItems = [
     { icon: <MapPin size={15} />,      label: "Location",   value: job.location },
@@ -411,11 +409,7 @@ export default function JobDetailsClient({ job }: { job: Job }) {
 
       <ApplyModal isOpen={applyOpen} onClose={() => setApplyOpen(false)} jobTitle={job.title} />
 
-              <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jobPostingSchema) }}
-      />
-    </main>
+            </main>
   );
 }
 

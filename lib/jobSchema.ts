@@ -1,96 +1,317 @@
 // lib/jobSchema.ts
-// Converts your existing free-text job fields (salary, location, postedDate)
-// into the structured values Google's JobPosting schema requires.
 
-import { Job } from "@/data/jobs";
+import type { Job } from "@/data/jobs";
+
+const SITE_URL = "https://www.rudrongts.com";
+const SITE_NAME = "RUDRON Global Talent Solutions";
 
 /**
- * Parses "$160K - $190K" → { min: 160000, max: 190000 }
- * Falls back to a single value if only one number is found.
+ * Converts plain text into safe HTML text for JSON-LD descriptions.
  */
-export function parseSalary(salary: string): { min: number; max: number } | null {
-  const matches = salary.match(/[\d.]+K?/gi);
-  if (!matches || matches.length === 0) return null;
-
-  const toNumber = (s: string) => {
-    const isK = /K$/i.test(s);
-    const num = parseFloat(s.replace(/K$/i, ""));
-    return isK ? num * 1000 : num;
-  };
-
-  const nums = matches.map(toNumber);
-  if (nums.length === 1) return { min: nums[0], max: nums[0] };
-  return { min: Math.min(...nums), max: Math.max(...nums) };
+function escapeHtml(value: string): string {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
 }
 
 /**
- * Parses "Dallas, TX" → { city: "Dallas", state: "TX" }
- * Handles "Remote or Atlanta, GA" by extracting the real location part.
- * Falls back gracefully for anything unexpected.
+ * Parses salary strings such as:
+ *
+ * "$160K - $190K"
+ * "$120,000 - $160,000"
+ * "$95K"
+ *
+ * into numeric salary values.
  */
-export function parseLocation(location: string): { city: string; state: string; isRemote: boolean } {
-  const isRemote = /remote/i.test(location);
-  // Strip "Remote or " / "Remote/" prefixes, keep the physical location if present
-  const cleaned = location.replace(/remote\s*(or|\/)?\s*/i, "").trim();
-  const parts = cleaned.split(",").map((p) => p.trim()).filter(Boolean);
+export function parseSalary(
+  salary: string,
+): { min: number; max: number } | null {
+  if (!salary) {
+    return null;
+  }
+
+  const matches = salary.match(/\$?\s*[\d,.]+(?:\.\d+)?\s*[Kk]?/g);
+
+  if (!matches || matches.length === 0) {
+    return null;
+  }
+
+  const numbers = matches
+    .map((match) => {
+      const normalized = match
+        .replace(/\$/g, "")
+        .replace(/,/g, "")
+        .replace(/\s/g, "");
+
+      const isThousands = /k$/i.test(normalized);
+
+      const numericPart = normalized.replace(/k$/i, "");
+
+      const value = Number.parseFloat(numericPart);
+
+      if (!Number.isFinite(value)) {
+        return null;
+      }
+
+      return isThousands ? value * 1000 : value;
+    })
+    .filter((value): value is number => value !== null);
+
+  if (numbers.length === 0) {
+    return null;
+  }
+
+  if (numbers.length === 1) {
+    return {
+      min: numbers[0],
+      max: numbers[0],
+    };
+  }
+
+  return {
+    min: Math.min(...numbers),
+    max: Math.max(...numbers),
+  };
+}
+
+/**
+ * Parses standard U.S. locations such as:
+ *
+ * "Portland, OR"
+ * "Dallas, TX"
+ * "Pittsburgh, PA"
+ *
+ * It also recognizes jobs explicitly containing the word "Remote".
+ */
+export function parseLocation(location: string): {
+  city: string;
+  state: string;
+  isRemote: boolean;
+} {
+  const value = location?.trim() ?? "";
+
+  const isRemote = /\bremote\b/i.test(value);
+
+  const physicalLocation = value
+    .replace(/\bremote\b\s*(?:or|\/|-)?\s*/gi, "")
+    .trim();
+
+  const parts = physicalLocation
+    .split(",")
+    .map((part) => part.trim())
+    .filter(Boolean);
 
   if (parts.length >= 2) {
-    return { city: parts[0], state: parts[1], isRemote };
+    return {
+      city: parts[0],
+      state: parts[1],
+      isRemote,
+    };
   }
-  // No physical location left (pure remote) — city/state omitted, isRemote flags it
-  return { city: "", state: "", isRemote };
+
+  return {
+    city: "",
+    state: "",
+    isRemote,
+  };
 }
 
-/** Maps your `type` field to Google's expected enum values. */
+/**
+ * Maps the website's employment type to Google's supported
+ * JobPosting employmentType values.
+ */
 export function mapEmploymentType(type: string): string {
-  const t = type.toLowerCase();
-  if (t.includes("contract")) return "CONTRACTOR";
-  if (t.includes("part")) return "PART_TIME";
-  if (t.includes("temp")) return "TEMPORARY";
-  if (t.includes("intern")) return "INTERN";
-  return "FULL_TIME";
+  const normalized = type?.trim().toLowerCase() ?? "";
+
+  if (
+    normalized.includes("full time") ||
+    normalized.includes("full-time") ||
+    normalized === "fulltime"
+  ) {
+    return "FULL_TIME";
+  }
+
+  if (
+    normalized.includes("part time") ||
+    normalized.includes("part-time") ||
+    normalized === "parttime"
+  ) {
+    return "PART_TIME";
+  }
+
+  if (
+    normalized.includes("contract") ||
+    normalized.includes("contractor")
+  ) {
+    return "CONTRACTOR";
+  }
+
+  if (
+    normalized.includes("temporary") ||
+    normalized.includes("temp")
+  ) {
+    return "TEMPORARY";
+  }
+
+  if (
+    normalized.includes("internship") ||
+    normalized.includes("intern")
+  ) {
+    return "INTERN";
+  }
+
+  if (normalized.includes("per diem")) {
+    return "PER_DIEM";
+  }
+
+  if (normalized.includes("volunteer")) {
+    return "VOLUNTEER";
+  }
+
+  return "OTHER";
 }
 
-/** Builds the full JobPosting JSON-LD object for a given job. */
+/**
+ * Validates and returns the original posting date.
+ *
+ * Google expects the employer's original posting date rather than
+ * the date on which Google happens to crawl the page.
+ */
+function normalizeDatePosted(datePosted: string): string {
+  const value = datePosted?.trim();
+
+  if (!value) {
+    return "";
+  }
+
+  const parsed = new Date(`${value}T00:00:00Z`);
+
+  if (Number.isNaN(parsed.getTime())) {
+    return value;
+  }
+
+  return parsed.toISOString().slice(0, 10);
+}
+
+/**
+ * Creates the complete HTML description used in JobPosting JSON-LD.
+ *
+ * Google recommends that the description contain a meaningful
+ * representation of the position rather than only a short summary.
+ */
+function buildDescriptionHtml(job: Job): string {
+  const sections: string[] = [];
+
+  if (job.description?.trim()) {
+    sections.push(
+      `<p>${escapeHtml(job.description.trim()).replace(/\n+/g, "<br />")}</p>`,
+    );
+  }
+
+  if (job.responsibilities?.length) {
+    const items = job.responsibilities
+      .filter(Boolean)
+      .map((responsibility) => `<li>${escapeHtml(responsibility)}</li>`)
+      .join("");
+
+    if (items) {
+      sections.push(
+        `<h2>Key Responsibilities</h2><ul>${items}</ul>`,
+      );
+    }
+  }
+
+  if (job.requirements?.length) {
+    const items = job.requirements
+      .filter(Boolean)
+      .map((requirement) => `<li>${escapeHtml(requirement)}</li>`)
+      .join("");
+
+    if (items) {
+      sections.push(
+        `<h2>Requirements & Qualifications</h2><ul>${items}</ul>`,
+      );
+    }
+  }
+
+  if (job.benefits?.length) {
+    const items = job.benefits
+      .filter(Boolean)
+      .map((benefit) => `<li>${escapeHtml(benefit)}</li>`)
+      .join("");
+
+    if (items) {
+      sections.push(
+        `<h2>Compensation & Benefits</h2><ul>${items}</ul>`,
+      );
+    }
+  }
+
+  return sections.join("");
+}
+
+/**
+ * Builds ONE Google-compatible JobPosting schema for an
+ * individual RUDRON job page.
+ *
+ * Important:
+ * - Do not generate another JobPosting schema in JobDetailsClient.
+ * - Do not put JobPosting schema on /jobs.
+ * - Do not invent validThrough when an actual expiry date is unknown.
+ */
 export function buildJobPostingSchema(job: Job) {
+  const canonicalUrl = `${SITE_URL}/jobs/${job.slug}`;
+
   const salary = parseSalary(job.salary);
+
   const { city, state, isRemote } = parseLocation(job.location);
-  const datePosted = new Date(job.datePosted).toISOString();
 
-  // validThrough: Google recommends an expiry; we default to 45 days out
-  // since these listings don't currently store an explicit close date.
-  const validThrough = new Date(datePosted);
-  validThrough.setDate(validThrough.getDate() + 45);
+  const datePosted = normalizeDatePosted(job.datePosted);
 
-  const schema: Record<string, any> = {
+  const schema: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "JobPosting",
+    "@id": `${canonicalUrl}#jobposting`,
+
     title: job.title,
+
     description: buildDescriptionHtml(job),
+
     identifier: {
       "@type": "PropertyValue",
-      name: "RUDRON",
+      name: SITE_NAME,
       value: String(job.id),
     },
+
     datePosted,
-    validThrough: validThrough.toISOString(),
+
     employmentType: mapEmploymentType(job.type),
+
     hiringOrganization: {
       "@type": "Organization",
       name: job.company,
-      sameAs: "https://www.rudrongts.com",
     },
+
+    url: canonicalUrl,
+
     directApply: true,
+
     industry: job.industry,
   };
 
-  if (isRemote && !city) {
-    schema.jobLocationType = "TELECOMMUTE";
-    schema.applicantLocationRequirements = {
-      "@type": "Country",
-      name: "US",
-    };
-  } else if (city && state) {
+  /**
+   * Physical job location.
+   *
+   * We intentionally do NOT invent:
+   * - streetAddress
+   * - postalCode
+   *
+   * because the jobs data currently contains only city/state.
+   */
+  if (city && state) {
     schema.jobLocation = {
       "@type": "Place",
       address: {
@@ -102,6 +323,25 @@ export function buildJobPostingSchema(job: Job) {
     };
   }
 
+  /**
+   * Only mark a role as TELECOMMUTE when the actual location data
+   * explicitly identifies it as remote.
+   */
+  if (isRemote) {
+    schema.jobLocationType = "TELECOMMUTE";
+
+    schema.applicantLocationRequirements = {
+      "@type": "Country",
+      name: "USA",
+    };
+  }
+
+  /**
+   * Salary.
+   *
+   * The website currently stores annual salary ranges.
+   * This therefore uses YEAR as the unit.
+   */
   if (salary) {
     schema.baseSalary = {
       "@type": "MonetaryAmount",
@@ -116,23 +356,4 @@ export function buildJobPostingSchema(job: Job) {
   }
 
   return schema;
-}
-
-/** Combines description + responsibilities + requirements into one HTML block, as Google prefers a fuller description field. */
-function buildDescriptionHtml(job: Job): string {
-  let html = `<p>${job.description}</p>`;
-
-  if (job.responsibilities?.length) {
-    html += `<p><strong>Responsibilities:</strong></p><ul>${job.responsibilities
-      .map((r) => `<li>${r}</li>`)
-      .join("")}</ul>`;
-  }
-
-  if (job.requirements?.length) {
-    html += `<p><strong>Requirements:</strong></p><ul>${job.requirements
-      .map((r) => `<li>${r}</li>`)
-      .join("")}</ul>`;
-  }
-
-  return html;
 }

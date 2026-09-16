@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { jobs } from "@/data/jobs";
 import JobDetailsClient from "@/components/JobDetailsClient";
+import { jobs } from "@/data/jobs";
+import { buildJobPostingSchema } from "@/lib/jobSchema";
 
 const SITE_URL = "https://www.rudrongts.com";
 const SITE_NAME = "RUDRON Global Talent Solutions";
@@ -17,7 +18,7 @@ function getJobBySlug(slug: string) {
   return jobs.find((job) => job.slug === slug);
 }
 
-function createJobDescription(job: {
+function createMetaDescription(job: {
   title: string;
   company: string;
   location: string;
@@ -58,7 +59,7 @@ export async function generateMetadata({
   }
 
   const canonicalUrl = `${SITE_URL}/jobs/${job.slug}`;
-  const description = createJobDescription(job);
+  const description = createMetaDescription(job);
 
   return {
     title: `${job.title} – ${job.location}`,
@@ -111,31 +112,13 @@ export default async function JobDetailsPage({
 
   const canonicalUrl = `${SITE_URL}/jobs/${job.slug}`;
 
-  const jobPostingSchema = {
-    "@context": "https://schema.org",
-    "@type": "JobPosting",
-    "@id": `${canonicalUrl}#jobposting`,
-
-    title: job.title,
-    description: job.description,
-
-    url: canonicalUrl,
-
-    hiringOrganization: {
-      "@type": "Organization",
-      name: job.company,
-    },
-
-    jobLocation: {
-      "@type": "Place",
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: job.location,
-      },
-    },
-
-    directApply: true,
-  };
+  /**
+   * IMPORTANT:
+   * This is the ONE and ONLY JobPosting schema for the individual job page.
+   *
+   * JobDetailsClient must not generate another JobPosting JSON-LD object.
+   */
+  const jobPostingSchema = buildJobPostingSchema(job);
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
