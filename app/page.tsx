@@ -15,10 +15,13 @@ import RecruitmentSpecialtiesSection from "@/components/RecruitmentSpecialtiesSe
 const SITE_URL = "https://www.rudrongts.com";
 
 export const metadata: Metadata = {
-  title: "AEC, Construction & MEP Recruiters",
+  title: {
+    absolute:
+      "RUDRON Global Talent Solutions | Construction & MEP Recruitment",
+  },
 
   description:
-    "RUDRON connects construction, engineering, architecture and MEP employers with pre-vetted professionals across the USA, Canada, UAE and India.",
+    "RUDRON Global Talent Solutions connects construction, engineering and MEP employers with pre-vetted professionals across the USA, Canada, UAE and India.",
 
   alternates: {
     canonical: SITE_URL,
@@ -29,9 +32,9 @@ export const metadata: Metadata = {
     url: SITE_URL,
     siteName: "RUDRON Global Talent Solutions",
     title:
-      "AEC, Construction & MEP Recruiters | RUDRON Global Talent Solutions",
+      "RUDRON Global Talent Solutions | Construction, AEC & MEP Recruitment",
     description:
-      "Specialist recruitment services connecting construction, engineering, architecture and MEP employers with high-performing professionals.",
+      "Specialist recruitment services connecting construction, engineering and MEP employers with high-performing professionals.",
     images: [
       {
         url: `${SITE_URL}/og-image.png`,
@@ -45,9 +48,9 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title:
-      "AEC, Construction & MEP Recruiters | RUDRON Global Talent Solutions",
+      "RUDRON Global Talent Solutions | Construction & MEP Recruitment",
     description:
-      "Specialist recruitment services for construction, engineering, architecture and MEP organizations.",
+      "Specialist recruitment services for construction, engineering and MEP organizations.",
     images: [`${SITE_URL}/og-image.png`],
   },
 

@@ -5,10 +5,10 @@ const SITE_URL = "https://www.rudrongts.com";
 const SITE_NAME = "RUDRON Global Talent Solutions";
 
 export const metadata: Metadata = {
-  title: "Construction, Engineering & MEP Recruitment for Employers",
+  title: "Hire Construction & MEP Talent",
 
   description:
-    "Hire pre-vetted construction, engineering and MEP professionals through RUDRON. Specialist permanent recruitment, executive search and project staffing across the United States.",
+    "Hire pre-vetted construction, engineering and MEP professionals through RUDRON. Permanent recruitment and executive search for contractors, developers and engineering firms.",
 
   alternates: {
     canonical: `${SITE_URL}/employers`,
@@ -18,24 +18,24 @@ export const metadata: Metadata = {
     type: "website",
     url: `${SITE_URL}/employers`,
     siteName: SITE_NAME,
-    title: "Construction, Engineering & MEP Recruitment for Employers",
+    title: "Hire Construction & MEP Talent | RUDRON",
     description:
-      "Specialist recruitment solutions for general contractors, developers, EPC firms, mechanical contractors and electrical contractors.",
+      "Specialist recruitment for general contractors, developers, EPC firms, mechanical contractors and electrical contractors.",
     images: [
       {
         url: `${SITE_URL}/employers/employers-hero.webp`,
         width: 1200,
         height: 630,
-        alt: "Construction recruitment solutions for employers",
+        alt: "Construction and MEP recruitment for employers",
       },
     ],
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "Construction, Engineering & MEP Recruitment for Employers",
+    title: "Hire Construction & MEP Talent | RUDRON",
     description:
-      "Hire construction, engineering and MEP professionals through RUDRON Global Talent Solutions.",
+      "Specialist construction, engineering and MEP recruitment for employers.",
     images: [`${SITE_URL}/employers/employers-hero.webp`],
   },
 

@@ -7,10 +7,10 @@ const SITE_URL = "https://www.rudrongts.com";
 const SITE_NAME = "RUDRON Global Talent Solutions";
 
 export const metadata: Metadata = {
-  title: "Construction, Engineering & MEP Jobs",
+  title: "Construction & MEP Jobs",
 
   description:
-    "Explore construction, engineering, MEP, mechanical, electrical, mission critical and executive career opportunities with RUDRON Global Talent Solutions.",
+    "Explore construction, engineering, mechanical, electrical, MEP and leadership opportunities with RUDRON Global Talent Solutions.",
 
   alternates: {
     canonical: `${SITE_URL}/jobs`,
@@ -20,24 +20,24 @@ export const metadata: Metadata = {
     type: "website",
     url: `${SITE_URL}/jobs`,
     siteName: SITE_NAME,
-    title: "Construction, Engineering & MEP Jobs",
+    title: "Construction & MEP Jobs | RUDRON",
     description:
-      "Browse current construction, engineering, MEP, mechanical, electrical, mission critical and executive career opportunities.",
+      "Browse current construction, engineering, mechanical, electrical, MEP and leadership opportunities.",
     images: [
       {
         url: `${SITE_URL}/jobs/jobs-hero.webp`,
         width: 1200,
         height: 630,
-        alt: "Construction, engineering and MEP career opportunities",
+        alt: "Construction and MEP career opportunities",
       },
     ],
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "Construction, Engineering & MEP Jobs",
+    title: "Construction & MEP Jobs | RUDRON",
     description:
-      "Browse construction, engineering, MEP and executive career opportunities with RUDRON Global Talent Solutions.",
+      "Browse current construction, engineering and MEP career opportunities.",
     images: [`${SITE_URL}/jobs/jobs-hero.webp`],
   },
 

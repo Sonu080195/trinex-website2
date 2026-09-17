@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
 
   title: {
-    default: `${SITE_NAME} | Construction, Engineering & MEP Recruitment`,
+    default: `${SITE_NAME} | Construction, AEC & MEP Recruitment`,
     template: `%s - ${SITE_NAME}`,
   },
 
@@ -111,18 +111,17 @@ export default function RootLayout({
   const structuredData = {
     "@context": "https://schema.org",
 
-    "@graph": [
-      {
-        "@type": ["Organization", "EmploymentAgency"],
-        "@id": `${SITE_URL}/#organization`,
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${SITE_URL}/#organization`,
 
-        name: SITE_NAME,
+      name: "RUDRON Global Talent Solutions",
+      legalName: "RUDRON Global Talent Solutions LLC",
 
-        legalName: "RUDRON Global Talent Solutions LLC",
+      alternateName: ["RUDRON", "RUDRON GTS"],
 
-        alternateName: ["RUDRON", "RUDRON GTS"],
-
-        url: `${SITE_URL}/`,
+      url: `${SITE_URL}/`,
 
         logo: {
           "@type": "ImageObject",
@@ -131,19 +130,20 @@ export default function RootLayout({
           contentUrl: `${SITE_URL}/images/rudron-logo-square.png`,
           width: 512,
           height: 512,
-          caption: SITE_NAME,
+          caption: "RUDRON Global Talent Solutions",
         },
 
-        image: LOGO_URL,
+        image: `${SITE_URL}/images/rudron-logo.png`,
+
 
         description:
-          "Specialist recruitment solutions across Construction, Engineering, Architecture, Mechanical, Electrical and Plumbing sectors.",
+          "RUDRON Global Talent Solutions is a specialist recruitment firm connecting Construction, AEC and MEP employers with experienced professionals across the USA, Canada, UAE and India.",
 
         sameAs: [
           SITE.social.linkedin,
           SITE.social.instagram,
           SITE.social.facebook,
-        ],
+          ].filter(Boolean),
 
         email: SITE.emails.general,
 
@@ -178,13 +178,6 @@ export default function RootLayout({
 
         foundingDate: "2026",
 
-        areaServed: [
-          "United States",
-          "Canada",
-          "United Arab Emirates",
-          "India",
-        ],
-
         serviceType: [
           "Construction Recruitment",
           "Engineering Recruitment",
@@ -199,11 +192,10 @@ export default function RootLayout({
         "@id": `${SITE_URL}/#website`,
 
         url: `${SITE_URL}/`,
-
         name: SITE_NAME,
-
         alternateName: [
           "RUDRON",
+          "RUDRON Global",
           "RUDRON GTS",
           "RUDRON Global Talent Solutions",
         ],
